@@ -5,6 +5,27 @@ import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.rpc
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonObject
+
+@Serializable
+private data class SyncRepairCapabilitiesRequest(
+    @SerialName("p_organization_id") val organizationId: String,
+)
+
+@Serializable
+private data class SyncRepairCapabilitiesWire(
+    val contractFamily: String,
+    val contractVersion: Int,
+    val payloadVersions: JsonObject = JsonObject(emptyMap()),
+    val maxGroupBytes: Long,
+    val definitionFingerprint: String,
+    val receiptHorizonDays: Int,
+    val minAvailableRevision: Long,
+    val legacyFence: JsonObject = JsonObject(emptyMap()),
+    val storageCapabilities: JsonObject = JsonObject(emptyMap()),
+)
 
 interface UnifiedSyncPullRemote {
     suspend fun resolveScope(): SyncScope
@@ -18,11 +39,27 @@ class SupabaseUnifiedSyncPullRemote @Inject constructor() : UnifiedSyncPullRemot
             .rpc("verto_resolve_sync_scope_v2")
             .decodeList<UnifiedSyncScopeWire>()
         require(rows.size == 1) { "FAIL_SCOPE_MISMATCH: expected exactly one trusted V2 scope" }
-        return rows.single().toContract().also {
-            require(it.contractFamily == UNIFIED_SYNC_CONTRACT_FAMILY && it.contractVersion == SYNC_REPAIR_CONTRACT_VERSION) {
-                "CONTRACT_BLOCKED: server scope is not unified-sync V2"
-            }
+        val scope = rows.single().toContract()
+        require(scope.contractFamily == UNIFIED_SYNC_CONTRACT_FAMILY && scope.contractVersion == SYNC_REPAIR_CONTRACT_VERSION) {
+            "CONTRACT_BLOCKED: server scope is not unified-sync V2"
         }
+        val capabilities = VertoSupabase.client.postgrest.rpc(
+            function = "verto_sync_repair_capabilities_v1",
+            parameters = SyncRepairCapabilitiesRequest(scope.organizationId),
+        ).decodeAs<SyncRepairCapabilitiesWire>()
+        require(capabilities.contractFamily == scope.contractFamily && capabilities.contractVersion == scope.contractVersion) {
+            "CONTRACT_BLOCKED: capabilities contract mismatch"
+        }
+        require(capabilities.maxGroupBytes == MAX_GROUP_BYTES) {
+            "CONTRACT_BLOCKED: maxGroupBytes mismatch"
+        }
+        require(capabilities.definitionFingerprint.matches(Regex("^[0-9a-f]{64}$"))) {
+            "CONTRACT_BLOCKED: server definition fingerprint missing"
+        }
+        require(capabilities.receiptHorizonDays > 0 && capabilities.minAvailableRevision >= 0) {
+            "CONTRACT_BLOCKED: receipt/cursor horizon unavailable"
+        }
+        return scope
     }
 
     override suspend fun pull(scope: SyncScope, afterCursor: String, limit: Int): SyncPullPage {
@@ -46,5 +83,6 @@ class SupabaseUnifiedSyncPullRemote @Inject constructor() : UnifiedSyncPullRemot
 
     companion object {
         const val MAX_PULL_PAGE_CHANGES = 1_000
+        const val MAX_GROUP_BYTES = 2_097_152L
     }
 }
