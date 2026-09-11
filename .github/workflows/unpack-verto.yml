@@ -1,0 +1,47 @@
+name: Unpack Verto source
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/unpack-verto.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Unpack source archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/verto-unpack
+          mkdir -p /tmp/verto-unpack
+          unzip -q Verto-b01b13done.zip -d /tmp/verto-unpack
+          shopt -s dotglob nullglob
+          entries=(/tmp/verto-unpack/*)
+          if [ "${#entries[@]}" -eq 1 ] && [ -d "${entries[0]}" ]; then
+            src="${entries[0]}"
+          else
+            src="/tmp/verto-unpack"
+          fi
+          rsync -a --exclude='.git' --exclude='.github/workflows/unpack-verto.yml' "$src"/ ./
+          rm -f Verto-b01b13done.zip
+      - name: Commit unpacked source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Unpack Verto source for B07-B08 execution"
+            git push origin HEAD:main
+          fi
