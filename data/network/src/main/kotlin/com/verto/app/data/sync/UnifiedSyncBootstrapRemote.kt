@@ -16,16 +16,19 @@ interface UnifiedSyncBootstrapRemote {
 @Singleton
 class SupabaseUnifiedSyncBootstrapRemote @Inject constructor() : UnifiedSyncBootstrapRemote {
     override suspend fun resolveScope(): SyncScope {
-        val rows = VertoSupabase.client.postgrest.rpc("verto_resolve_sync_scope").decodeList<UnifiedSyncScopeWire>()
-        require(rows.size == 1) { "FAIL_BOOTSTRAP_SCOPE_MISMATCH: expected exactly one trusted scope" }
+        val rows = VertoSupabase.client.postgrest.rpc("verto_resolve_sync_scope_v2").decodeList<UnifiedSyncScopeWire>()
+        require(rows.size == 1) { "FAIL_BOOTSTRAP_SCOPE_MISMATCH: expected exactly one trusted V2 scope" }
         val row = rows.single()
-        return SyncScope(row.organizationId, row.syncPrincipalId, row.scopeId, row.contractFamily, row.contractVersion, row.scopeDefinitionVersion)
+        return SyncScope(row.organizationId, row.syncPrincipalId, row.scopeId, row.contractFamily, row.contractVersion, row.scopeDefinitionVersion).also {
+            require(it.contractVersion == SYNC_REPAIR_CONTRACT_VERSION) { "CONTRACT_BLOCKED: bootstrap requires V2 scope" }
+        }
     }
 
     override suspend fun begin(scope: SyncScope): SyncBootstrapStart {
         UnifiedSyncContractRules.requireValidScope(scope)
+        require(scope.contractVersion == SYNC_REPAIR_CONTRACT_VERSION) { "CONTRACT_BLOCKED: bootstrap requires V2 scope" }
         val w = VertoSupabase.client.postgrest.rpc(
-            "verto_begin_sync_bootstrap", UnifiedSyncBootstrapBeginRequestWire(scope.scopeId)
+            "verto_begin_sync_bootstrap_v2", UnifiedSyncBootstrapBeginRequestWire(scope.scopeId)
         ).decodeAs<UnifiedSyncBootstrapStartWire>()
         require(w.scopeId == scope.scopeId && w.contractFamily == scope.contractFamily && w.contractVersion == scope.contractVersion) {
             "FAIL_BOOTSTRAP_SCOPE_MISMATCH: bootstrap handshake identity mismatch"
@@ -34,6 +37,10 @@ class SupabaseUnifiedSyncBootstrapRemote @Inject constructor() : UnifiedSyncBoot
             "FAIL_BOOTSTRAP_INCOMPLETE: bootstrap identity/cursor/page token missing"
         }
         require(w.snapshotRowCount >= 0) { "FAIL_BOOTSTRAP_INCOMPLETE: negative snapshot row count" }
+        require(!w.snapshotDigestSha256.isNullOrBlank() && w.coverageAggregateTypes?.size == 35 &&
+            w.highWatermark != null && w.deltaToken == w.baselineCursor) {
+            "FAIL_BOOTSTRAP_SEAL_MISSING: V2 server seal incomplete"
+        }
         return SyncBootstrapStart(
             scope = scope, bootstrapSessionId = w.bootstrapSessionId, baselineRevision = w.baselineRevision,
             baselineCursor = w.baselineCursor, expectedSnapshotRows = w.snapshotRowCount,
@@ -45,9 +52,9 @@ class SupabaseUnifiedSyncBootstrapRemote @Inject constructor() : UnifiedSyncBoot
 
     override suspend fun pullPage(sessionId: String, pageToken: String, limit: Int): SyncBootstrapPage {
         require(sessionId.isNotBlank() && pageToken.isNotBlank()) { "FAIL_BOOTSTRAP_INCOMPLETE: session/page token missing" }
-        require(limit in 1..200) { "VALIDATION: bootstrap limit must be 1..200" }
+        require(limit in 1..1_000) { "VALIDATION: bootstrap limit must be 1..1000" }
         val w = VertoSupabase.client.postgrest.rpc(
-            "verto_pull_bootstrap_page", UnifiedSyncBootstrapPageRequestWire(sessionId, pageToken, limit)
+            "verto_pull_sync_bootstrap_page_v2", UnifiedSyncBootstrapPageRequestWire(sessionId, pageToken, limit)
         ).decodeAs<UnifiedSyncBootstrapPageWire>()
         return SyncBootstrapPage(
             w.bootstrapSessionId, w.baselineCursor,
@@ -57,8 +64,9 @@ class SupabaseUnifiedSyncBootstrapRemote @Inject constructor() : UnifiedSyncBoot
     }
 
     override suspend fun reconciliationManifest(scope: SyncScope, partitionToken: String?): SyncReconciliationPage {
+        require(scope.contractVersion == SYNC_REPAIR_CONTRACT_VERSION) { "CONTRACT_BLOCKED: reconciliation requires V2 scope" }
         val w = VertoSupabase.client.postgrest.rpc(
-            "verto_get_reconciliation_manifest", UnifiedSyncManifestRequestWire(scope.scopeId, partitionToken)
+            "verto_get_reconciliation_manifest_v2", UnifiedSyncManifestRequestWire(scope.scopeId, partitionToken)
         ).decodeAs<UnifiedSyncManifestPageWire>()
         require(w.scopeId == scope.scopeId) { "FAIL_BOOTSTRAP_SCOPE_MISMATCH: reconciliation scope mismatch" }
         return SyncReconciliationPage(
