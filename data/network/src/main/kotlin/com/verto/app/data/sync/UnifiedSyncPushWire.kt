@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 
-/** Session 309 explicit RPC boundary. Local sequence/lease/time metadata never crosses the wire. */
+/** Legacy V1 DTO remains read-compatible for historical reconciliation only. */
 @Serializable
 data class UnifiedSyncMutationWire(
     @SerialName("mutation_id") val mutationId: String,
@@ -23,6 +23,25 @@ data class UnifiedSyncMutationWire(
 @Serializable
 data class UnifiedSyncPushRpcRequestWire(
     @SerialName("p_mutation") val mutation: UnifiedSyncMutationWire,
+)
+
+/** B07 exact UTF-8 text/hash boundary. PostgREST must not deserialize/re-serialize the frozen body. */
+@Serializable
+data class UnifiedSyncBatchRpcRequestWire(
+    @SerialName("p_wire_json") val wireJson: String,
+    @SerialName("p_wire_sha256") val wireSha256: String,
+)
+
+@Serializable
+data class UnifiedSyncBatchResponseWire(
+    @SerialName("contract_family") val contractFamily: String,
+    @SerialName("contract_version") val contractVersion: Int,
+    val status: String,
+    @SerialName("batch_id") val batchId: String,
+    @SerialName("request_hash") val requestHash: String,
+    @SerialName("validation_code") val validationCode: String? = null,
+    val detail: String? = null,
+    @SerialName("member_receipts") val memberReceipts: List<UnifiedSyncPushResponseWire> = emptyList(),
 )
 
 @Serializable
