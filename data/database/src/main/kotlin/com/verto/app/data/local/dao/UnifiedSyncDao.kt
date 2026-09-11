@@ -16,7 +16,8 @@ abstract class UnifiedSyncDao :
     UnifiedSyncInboxDao,
     DurableSyncInboxDao,
     UnifiedSyncCursorDao,
-    SyncRepairV2Dao {
+    SyncRepairV2Dao,
+    SyncWriteBatchDispatchDao {
     companion object {
         const val MAX_MUTATION_PAYLOAD_BYTES = 524_288
         const val MAX_WORKER_OPERATIONS_PER_RUN = 500
