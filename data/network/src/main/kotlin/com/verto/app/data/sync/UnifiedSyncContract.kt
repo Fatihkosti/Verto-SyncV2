@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 
 const val UNIFIED_SYNC_CONTRACT_FAMILY: String = "verto-unified-sync"
-const val UNIFIED_SYNC_CONTRACT_VERSION: Int = 1
+const val UNIFIED_SYNC_CONTRACT_VERSION: Int = 2
 
 @Serializable
 enum class SyncMutationOperation {

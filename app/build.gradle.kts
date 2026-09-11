@@ -32,6 +32,7 @@ val releaseKeyPassword = secureProperty("VERT_RELEASE_KEY_PASSWORD")
 val releaseStoreType = secureProperty("VERT_RELEASE_STORE_TYPE").ifBlank { "JKS" }
 val supabaseUrl = secureProperty("SUPABASE_URL")
 val supabaseAnonKey = secureProperty("SUPABASE_ANON_KEY")
+val allowUnsignedRelease = providers.environmentVariable("VERT_ALLOW_UNSIGNED_RELEASE").orNull?.equals("true", ignoreCase = true) == true
 val resolvedReleaseStoreFile = releaseStoreFile.takeIf { it.isNotBlank() }?.let { path ->
     rootProject.file(path).takeIf { it.isAbsolute || it.exists() } ?: file(path)
 }
@@ -50,14 +51,14 @@ gradle.taskGraph.whenReady {
     val isReleaseBuild = allTasks.any { task ->
         task.path.startsWith(":app:") && task.name.contains("Release")
     }
-    if (isReleaseBuild && !hasReleaseSigningConfig) {
+    if (isReleaseBuild && !hasReleaseSigningConfig && !allowUnsignedRelease) {
         throw GradleException(
             "Release signing is not configured. Set VERT_RELEASE_STORE_FILE, " +
                 "VERT_RELEASE_STORE_PASSWORD, VERT_RELEASE_KEY_ALIAS, and " +
                 "VERT_RELEASE_KEY_PASSWORD through environment variables or local.properties."
         )
     }
-    if (isReleaseBuild && resolvedReleaseStoreFile?.isFile != true) {
+    if (isReleaseBuild && !allowUnsignedRelease && resolvedReleaseStoreFile?.isFile != true) {
         throw GradleException("Release keystore file does not exist: $releaseStoreFile")
     }
     if (isReleaseBuild && !hasSupabaseReleaseConfig) {
@@ -73,8 +74,8 @@ android {
 
     defaultConfig {
         applicationId = "com.verto.app"
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 426
+        versionName = "1.0.426"
     }
 
     signingConfigs {
@@ -91,7 +92,7 @@ android {
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
+            if (hasReleaseSigningConfig) signingConfig = signingConfigs.getByName("release")
             if (gradle.startParameter.isOffline) {
                 matchingFallbacks += listOf("debug")
             }
