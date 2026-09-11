@@ -1,0 +1,1041 @@
+{
+  "schemaVersion": 303,
+  "sourceArchive": "Verto-v302-implemented-static.zip",
+  "sourceSha256": "8790e35961c1c33badb7cd6731c82758fd17548252e76355e1151f9dcf70b090",
+  "summary": {
+    "auditedTargets": 33,
+    "unclassified": 0,
+    "criticalFailures": 0,
+    "unresolvedTouchTargetFailures": 0,
+    "unresolvedInteractiveLabelFailures": 0,
+    "unresolvedFocusOrderFailures": 0,
+    "unresolvedFontScaleClippingFailures": 0,
+    "manualTalkBackPending": 9,
+    "automatedRuntimePending": 33,
+    "measuredTouchTargets": 0,
+    "note": "Failure counts are zero because runtime tests did not execute; they are not PASS claims. Pending counters block Full PASS."
+  },
+  "blocker": "Gradle bootstrap is blocked and adb/device runtime is unavailable.",
+  "records": [
+    {
+      "id": "V303-A11Y-001",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/CanonicalComponents.kt",
+      "componentOrScreen": "VertoButton",
+      "interactionType": "button",
+      "labelSource": "visible caller/resource text",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-002",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/CanonicalComponents.kt",
+      "componentOrScreen": "VertoOutlinedButton",
+      "interactionType": "button",
+      "labelSource": "visible caller/resource text",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-003",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/CanonicalComponents.kt",
+      "componentOrScreen": "VertoOutlinedTextField",
+      "interactionType": "text-field",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-004",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt",
+      "componentOrScreen": "VertoIconButton",
+      "interactionType": "icon-button",
+      "labelSource": "caller/resource contentDescription",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-005",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt",
+      "componentOrScreen": "VertoTopAppBar",
+      "interactionType": "container/navigation-host",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-006",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt",
+      "componentOrScreen": "VertoBottomSheet",
+      "interactionType": "modal",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-007",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt",
+      "componentOrScreen": "VertoTabRow",
+      "interactionType": "selection-container",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-008",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt",
+      "componentOrScreen": "VertoScrollableTabRow",
+      "interactionType": "selection-container",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-009",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+      "componentOrScreen": "VertoCard",
+      "interactionType": "container/clickable-when-onClick",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-010",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+      "componentOrScreen": "VertoTextField",
+      "interactionType": "text-field",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle/device runtime blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-011",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+      "componentOrScreen": "VertoPasswordField",
+      "interactionType": "password-field + visibility action",
+      "labelSource": "caller/resource contentDescription",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-012",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+      "componentOrScreen": "VertoPrimaryButton",
+      "interactionType": "button",
+      "labelSource": "visible caller/resource text",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        },
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle/device runtime blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-013",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+      "componentOrScreen": "VertoSecondaryButton",
+      "interactionType": "button",
+      "labelSource": "visible caller/resource text",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        },
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle/device runtime blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-014",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+      "componentOrScreen": "VertoInlineStatus",
+      "interactionType": "live status",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle/device runtime blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-015",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+      "componentOrScreen": "VertoFormSectionHeader",
+      "interactionType": "static heading",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-016",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+      "componentOrScreen": "VertoStepIndicator",
+      "interactionType": "state indicator",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-017",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+      "componentOrScreen": "VertoFormCard",
+      "interactionType": "static container",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-018",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+      "componentOrScreen": "VertoStatusBanner",
+      "interactionType": "live status + optional action",
+      "labelSource": "visible caller/resource text",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        },
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle/device runtime blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-019",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+      "componentOrScreen": "VertoEmptyState",
+      "interactionType": "state + optional action",
+      "labelSource": "visible caller/resource text",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        },
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle/device runtime blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-020",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+      "componentOrScreen": "VertoLoadingState",
+      "interactionType": "progress status",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-021",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+      "componentOrScreen": "VertoConfirmationDialog",
+      "interactionType": "modal dialog",
+      "labelSource": "visible caller/resource text",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-022",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/DateRangePickerDialog.kt",
+      "componentOrScreen": "DateRangePickerDialog",
+      "interactionType": "modal date dialog",
+      "labelSource": "visible caller/resource text",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-023",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+      "componentOrScreen": "VertoLinearValueProgress",
+      "interactionType": "progress visual",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-024",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+      "componentOrScreen": "VertoTopBar",
+      "interactionType": "navigation + actions",
+      "labelSource": "caller/resource contentDescription",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        },
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle/device runtime blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-025",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+      "componentOrScreen": "AmountText",
+      "interactionType": "static value",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-026",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+      "componentOrScreen": "KpiMini",
+      "interactionType": "static metric",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle/device runtime blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-027",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+      "componentOrScreen": "InfoChip",
+      "interactionType": "static metric",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle/device runtime blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-028",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+      "componentOrScreen": "SettingsCard",
+      "interactionType": "static container",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-029",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+      "componentOrScreen": "SettingsSectionHeader",
+      "interactionType": "static heading",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-030",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+      "componentOrScreen": "SettingsDivider",
+      "interactionType": "decorative divider",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-031",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+      "componentOrScreen": "SettingsNavRow",
+      "interactionType": "navigation row",
+      "labelSource": "visible caller/resource text",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle bootstrap blocked"
+        },
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle/device runtime blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-032",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+      "componentOrScreen": "DialogTextField",
+      "interactionType": "text-field",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": true,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": null,
+          "result": "NOT_RUN",
+          "reason": "No runnable component-specific automation was executed in this environment"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "V303-A11Y-033",
+      "owner": "core/designsystem",
+      "sourceFile": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoScreenScaffolds.kt",
+      "componentOrScreen": "VertoAuthScaffold",
+      "interactionType": "scrollable shell",
+      "labelSource": "visible text/semantics or N/A for decorative/static content",
+      "contentDescriptionPolicy": "Interactive icon-only controls require non-empty labels; decorative icons remain null; visible text remains primary label where appropriate.",
+      "roleOrState": "Must preserve truthful Material/Compose role, selected/disabled/error/loading/live-region state where exposed.",
+      "minTouchTargetRequired": false,
+      "minTouchTargetMeasuredDp": null,
+      "fontScale2Result": "NOT_RUN",
+      "rtlResult": "NOT_RUN",
+      "focusResult": "NOT_RUN",
+      "talkBackResult": "NOT_RUN",
+      "automatedEvidence": [
+        {
+          "source": "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+          "result": "NOT_RUN",
+          "reason": "Gradle/device runtime blocked"
+        }
+      ],
+      "manualEvidence": {
+        "source": "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md",
+        "result": "NOT_RUN"
+      },
+      "finding": null,
+      "repairFile": null,
+      "status": "NOT_RUN"
+    }
+  ]
+}

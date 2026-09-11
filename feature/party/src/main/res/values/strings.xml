@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="legacy_ui_1b1196755a04">جنيه</string>
+    <string name="party_today">اليوم</string>
+    <string name="party_days_elapsed">مضى %1$d يوم</string>
+    <string name="party_invoice_number_short">#%1$04d</string>
+    <string name="party_invoice_history_title">فاتورة #%1$04d — %2$s</string>
+    <string name="party_invoice_title">فاتورة #%1$04d</string>
+    <string name="party_filter_from_date">من تاريخ</string>
+    <string name="party_filter_to_date">إلى تاريخ</string>
+
+    <string name="party_ds_008e2f198440">إلغاء الفاتورة؟</string>
+    <string name="party_ds_00d1d2effa2a">سيُخصم هذا الرصيد من فاتورة العميل القادمة</string>
+    <string name="party_ds_02f3b7d85f04">لا توجد فواتير آجلة</string>
+    <string name="party_ds_0a249d4772ec">فلتر التاريخ</string>
+    <string name="party_ds_0a92bc139f64">سيتم سداد %1$s بعملة المورد، وخصم %2$s من الصندوق بالعملة المحلية. هل تريد المتابعة؟</string>
+    <string name="party_ds_0fd53029cf2d">%1$s فاتورة</string>
+    <string name="party_ds_10b3012187c4">لا توجد مدفوعات بعد</string>
+    <string name="party_ds_11b0cc7ecdb7">تأكيد السداد</string>
+    <string name="party_ds_11b6c2f6e241">سيتم سداد %1$s جنيه على %2$s. هل تريد المتابعة؟</string>
+    <string name="party_ds_147f4dd714bd">معاينة السداد</string>
+    <string name="party_ds_16fd9c43a308">الرصيد الإجمالي</string>
+    <string name="party_ds_17afb7d7e0b1">نسخ رقم الحساب</string>
+    <string name="party_ds_17d302682a1a">أمانة عليّ</string>
+    <string name="party_ds_181238f87187">ديون جديدة</string>
+    <string name="party_ds_1b0effada977">سيبقى المستند في السجل وتُنشأ حركات عكس مرتبطة بالأصل.</string>
+    <string name="party_ds_1d8ec12f58be">العمر (اختياري)</string>
+    <string name="party_ds_23d53816d13d">بضائع</string>
+    <string name="party_ds_27e7ca15e55f">التنبيهات</string>
+    <string name="party_ds_28e9f3017715">نوع السيارة %1$s</string>
+    <string name="party_ds_2e528f9cb3df">حي / مدينة</string>
+    <string name="party_ds_2e7b5639c2d5">Blink</string>
+    <string name="party_ds_32110649b8fc">نعم، ألغِ</string>
+    <string name="party_ds_348ae40b33e4">→ أنا دفعت له</string>
+    <string name="party_ds_34c281e54733">من قام بالدفع؟</string>
+    <string name="party_ds_35805e4f14c6">مثال: بنك الخرطوم</string>
+    <string name="party_ds_3627fabf3151">إضافة حساب بنكي</string>
+    <string name="party_ds_364769e1f926">الحسابات البنكية</string>
+    <string name="party_ds_3dfa681200f8">أعكس الدفعات وأرد أثرها النقدي صراحةً</string>
+    <string name="party_ds_3e9efeb9fe17">المبلغ بالعملة المحلية (سيُخصم من الصندوق)</string>
+    <string name="party_ds_416adf43052a">سيتم حذف "%1$s" نهائياً. لا يمكن التراجع.
+يُمنع الحذف إذا كانت هناك فواتير مرتبطة.</string>
+    <string name="party_ds_45b9464a6aff">سيتم خصم %1$s من الصندوق وتسوية الديون. هل تريد المتابعة؟</string>
+    <string name="party_ds_4673d127bd9c">حفظ التنبيه</string>
+    <string name="party_ds_494feab789bf">نعم، احذف</string>
+    <string name="party_ds_4a327dae4b45">إجمالي الأرباح</string>
+    <string name="party_ds_4e2390f638f0">نوع السيارة</string>
+    <string name="party_ds_53383c97802a">اتجاه السداد</string>
+    <string name="party_ds_557f737dff23">المتبقي</string>
+    <string name="party_ds_58061aa54439">Alpha</string>
+    <string name="party_ds_59539fc909e2">اسم المحل</string>
+    <string name="party_ds_5abe48f77e9b">متبقي %1$s ج (%2$s%%)</string>
+    <string name="party_ds_5fdb177bdd36">مجال العمل (اختياري)</string>
+    <string name="party_ds_60d37c38e2d8">نوع العمل (اختياري)</string>
+    <string name="party_ds_62e5021947c6">إجمالي المشتريات</string>
+    <string name="party_ds_69369f94e61a">جنيه</string>
+    <string name="party_ds_6bde36b19201">المبلغ المدفوع</string>
+    <string name="party_ds_6dee7dfa8898">إجمالي العمولات</string>
+    <string name="party_ds_71d462418352">✓ مسدَّد %1$s ج</string>
+    <string name="party_ds_78698483b2d9">تعذّر تسجيل الدفعة</string>
+    <string name="party_ds_7a2b8b01a05a">بحث بالاسم أو الهاتف…</string>
+    <string name="party_ds_7db74e774f7c">إجمالي المبيعات</string>
+    <string name="party_ds_7f93875e0d32">XXXX-XXXX-XXXX</string>
+    <string name="party_ds_8179643cdc80">←</string>
+    <string name="party_ds_87555b034843">سيُخصم هذا الرصيد تلقائياً من الفاتورة القادمة</string>
+    <string name="party_ds_8898da70bb4c">عميل</string>
+    <string name="party_ds_935d8234319a">سبب الإلغاء</string>
+    <string name="party_ds_97edc79b4788">عدد السيارات (اختياري)</string>
+    <string name="party_ds_9b1524057781">اسم البنك %1$s</string>
+    <string name="party_ds_9f1e2bf55b66">اسم مسئول المشتريات (اختياري)</string>
+    <string name="party_ds_9f21bd2067a1">نوع السيارة (اختياري)</string>
+    <string name="party_ds_9fccc80f9668">المنافس دفع لي ←</string>
+    <string name="party_ds_a33fa614b279">آخر تعامل</string>
+    <string name="party_ds_a762bd14a446">ملاحظة عامة (اختياري)</string>
+    <string name="party_ds_a8436ce4b250">سداد</string>
+    <string name="party_ds_a91ce95c8276">إضافة تنبيه جديد</string>
+    <string name="party_ds_aad9199c55fe">الملاحظة</string>
+    <string name="party_ds_ad29ae3715f1">مدفوع</string>
+    <string name="party_ds_adebc50ade66">#%1$s</string>
+    <string name="party_ds_aff299f08da2">عدد الفواتير</string>
+    <string name="party_ds_b53abd3067ba">إجمالي الديون المستحقة</string>
+    <string name="party_ds_b5a60fad7803">الديون المستحقة</string>
+    <string name="party_ds_b7deadbeaa38">العمولات</string>
+    <string name="party_ds_b858cb282617"> </string>
+    <string name="party_ds_bd525c68ae0e">اسم الورشة</string>
+    <string name="party_ds_c79fa29eab43">مثال: توزيع قطع غيار</string>
+    <string name="party_ds_ce2a1c5ac6a2">سيارة %1$s</string>
+    <string name="party_ds_ce9268395ea4">عرض المسددة</string>
+    <string name="party_ds_d249c7b6df49">رقم الحساب</string>
+    <string name="party_ds_d5ae5ad86a68">عدد العمال (اختياري)</string>
+    <string name="party_ds_d60cb6693cde">الديون المحصّلة</string>
+    <string name="party_ds_d7f3b1601dcd">مثال: قطع غيار</string>
+    <string name="party_ds_d97768142ad4">مسددة</string>
+    <string name="party_ds_d977a7bb758d">الوضع الحالي</string>
+    <string name="party_ds_da39a3ee5e6b"></string>
+    <string name="party_ds_dc59f41a9afb">اسم المحل التجاري</string>
+    <string name="party_ds_ddb9dbdc6483">العنوان (اختياري)</string>
+    <string name="party_ds_e19b16bdb71a">الاسم الكامل</string>
+    <string name="party_ds_e5ce6bd59016">لا توجد فواتير</string>
+    <string name="party_ds_e775115db05e">سداد الكل (%1$s جنيه)</string>
+    <string name="party_ds_ea1e6de14b99">الأرباح</string>
+    <string name="party_ds_eae0ed8d8f9b">بحث برقم، وصف، أو اسم صنف...</string>
+    <string name="party_ds_ebfeae4e577a">كشف حساب</string>
+    <string name="party_ds_f4868972c46a">إضافة فاتورة</string>
+    <string name="party_ds_f78b4a851b65">مثال: متابعة الدفعة</string>
+    <string name="party_ds_f8fca53d963f">متبقي: %1$s ج</string>
+    <string name="party_ds_f96a754ed8d1">الرصيد</string>
+    <string name="party_ds_f984bcbf2b80">تم السداد بنجاح ✓</string>
+    <string name="party_ds_fd829449a723">سعر الصرف</string>
+    <string name="party_ds_feba07c05ccb">إضافة سيارة أخرى</string>
+
+    <!-- Session 298: owner-local hardcoded string migration. -->
+    <string name="party_v298_098be7325bd3" translatable="false">"اسم العميل"</string>
+    <string name="party_v298_1b09c6628c92" translatable="false">"حتى %1$s"</string>
+    <string name="party_v298_1fb02a1016e7" translatable="false">"لا توجد نتائج"</string>
+    <string name="party_v298_218d2f0a0acd" translatable="false">" جنيه"</string>
+    <string name="party_v298_218d2f0a0acd_2" translatable="false">"رصيد مقدَّم للعميل"</string>
+    <string name="party_v298_2867ca0edb8e" translatable="false">"رصيد الصندوق"</string>
+    <string name="party_v298_2bb1a30cfc1d" translatable="false">"مورد"</string>
+    <string name="party_v298_2bb1a30cfc1d_2" translatable="false">"%1$s %2$s"</string>
+    <string name="party_v298_2d7e9a5b2b8b" translatable="false">"تعديل المورد"</string>
+    <string name="party_v298_3261ea023466" translatable="false">" جنيه"</string>
+    <string name="party_v298_4579312f1ac7" translatable="false">"—"</string>
+    <string name="party_v298_510019481a3e" translatable="false">"رصيد لصالحنا "</string>
+    <string name="party_v298_5674108a7757" translatable="false">"تعديل العميل"</string>
+    <string name="party_v298_5d59a0eaccc1" translatable="false">"الرصيد الختامي"</string>
+    <string name="party_v298_608fde11871b" translatable="false">"إضافة عميل"</string>
+    <string name="party_v298_614e009d4779" translatable="false">"لا توجد حركات في هذه الفترة"</string>
+    <string name="party_v298_625354da1b9a" translatable="false">"الرصيد الختامي"</string>
+    <string name="party_v298_6452be84295b" translatable="false">"رصيد لصالحنا عند المورد"</string>
+    <string name="party_v298_6a2f4c006f80" translatable="false">"رصيد مُرحَّل / بكت مطالبة"</string>
+    <string name="party_v298_6ca9ee8ebffd" translatable="false">"البيان"</string>
+    <string name="party_v298_75001defcb35" translatable="false">"مدين"</string>
+    <string name="party_v298_769deaaffce8" translatable="false">"حتى %1$s"</string>
+    <string name="party_v298_777a9eca72b9" translatable="false">"إضافة مورد"</string>
+    <string name="party_v298_8d7a1a5199a0" translatable="false">"دائن"</string>
+    <string name="party_v298_8de3f4a96430" translatable="false">"التاريخ"</string>
+    <string name="party_v298_8e55f6b2d8d6" translatable="false">"إضافة عميل"</string>
+    <string name="party_v298_8e55f6b2d8d6_2" translatable="false">"إضافة مورد"</string>
+    <string name="party_v298_93520f4d8132" translatable="false">" ج"</string>
+    <string name="party_v298_a6c4b78fa899" translatable="false">"%04d"</string>
+    <string name="party_v298_a6c4b78fa899_2" translatable="false">"فاتورة #%1$s"</string>
+    <string name="party_v298_aafc3e4edd56" translatable="false">"لا توجد حركات في هذه الفترة"</string>
+    <string name="party_v298_ae5a9f7f0614" translatable="false">" جنيه"</string>
+    <string name="party_v298_bee05588cb21" translatable="false">" جنيه"</string>
+    <string name="party_v298_bee05588cb21_2" translatable="false">"الديون المتبقية"</string>
+    <string name="party_v298_c06a610db2b5" translatable="false">"عملاء"</string>
+    <string name="party_v298_c06a610db2b5_2" translatable="false">"موردين"</string>
+    <string name="party_v298_c06a610db2b5_3" translatable="false">"لا يوجد %1$s"</string>
+    <string name="party_v298_c5ab7e55aca1" translatable="false">"(سيتم السداد تلقائياً للأقدم)"</string>
+    <string name="party_v298_c5ab7e55aca1_2" translatable="false">"الفواتير الآجلة %1$s"</string>
+    <string name="party_v298_c7acfb3fe862" translatable="false">"الديون المتبقية"</string>
+    <string name="party_v298_d965ac63be2e" translatable="false">"المبلغ بعملة المورد"</string>
+    <string name="party_v298_db196ee83669" translatable="false">"العميل"</string>
+    <string name="party_v298_db196ee83669_2" translatable="false">"المورد"</string>
+    <string name="party_v298_db196ee83669_3" translatable="false">"حذف %1$s نهائياً؟"</string>
+    <string name="party_v298_ddf62c1c203a" translatable="false">"طرف جديد"</string>
+    <string name="party_v298_efa26154d532" translatable="false">"إضافة العميل"</string>
+    <string name="party_v298_efa26154d532_2" translatable="false">"إضافة المورد"</string>
+    <string name="party_v298_efa26154d532_3" translatable="false">"حفظ التعديلات"</string>
+    <string name="party_v298_f7cc82ae5d5b" translatable="false">"—"</string>
+
+    <!-- Session 298 legacy hardcoded closure. -->
+    <string name="party_v298_client_payment_title" translatable="false">"سداد — %1$s"</string>
+    <string name="party_v298_client_statement_title" translatable="false">"كشف حساب — %1$s"</string>
+    <string name="party_v298_supplier_payment_title" translatable="false">"سداد — %1$s"</string>
+    <string name="party_v298_supplier_statement_title" translatable="false">"كشف حساب — %1$s"</string>
+    <string name="party_v298_loading_name" translatable="false">"…"</string>
+    <string name="party_v298_print_content_description" translatable="false">"طباعة"</string>
+    <!-- v388 customer closeout -->
+    <string name="party_archive_role_title" translatable="false">"أرشفة %1$s؟"</string>
+    <string name="party_archive_action" translatable="false">"أرشفة"</string>
+    <string name="party_profile_title" translatable="false">"ملف العميل"</string>
+    <string name="party_profile_age" translatable="false">"العمر"</string>
+    <string name="party_profile_purchase_contact" translatable="false">"مسؤول الشراء"</string>
+    <string name="party_profile_business_activity" translatable="false">"النشاط"</string>
+    <string name="party_profile_workplace" translatable="false">"مكان العمل"</string>
+    <string name="party_profile_shop_name" translatable="false">"اسم المحل"</string>
+    <string name="party_profile_workshop_name" translatable="false">"اسم الورشة"</string>
+    <string name="party_profile_vehicles" translatable="false">"المركبات"</string>
+    <string name="party_profile_worker_count" translatable="false">"عدد العاملين"</string>
+
+</resources>

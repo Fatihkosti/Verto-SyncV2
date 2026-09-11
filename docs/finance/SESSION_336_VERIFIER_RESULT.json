@@ -1,0 +1,159 @@
+{
+  "behavioral": {
+    "a_then_b": true,
+    "amount_minor_conflicts": true,
+    "b_then_a": true,
+    "canonical_after_projection": true,
+    "canonical_amount": true,
+    "canonical_before_projection": true,
+    "crash_after_parent_ack_child_recovers": true,
+    "crash_before_parent_ack_child_stays_blocked": true,
+    "created_at_conflicts": true,
+    "dependency_ack": true,
+    "dependency_direction_no_cycle": true,
+    "dependency_leased": true,
+    "dependency_missing": true,
+    "dependency_pending": true,
+    "dependency_rejected": true,
+    "dependency_retry": true,
+    "dependency_review": true,
+    "movement_type_conflicts": true,
+    "no_self_dependency": true,
+    "note_conflicts": true,
+    "projection_reorder_accepts": true,
+    "raw_double_not_identity": true,
+    "reference_conflicts": true,
+    "register_not_mutated_by_projection": true,
+    "rejected_parent_never_releases_child": true,
+    "remote_first_insert_semantics": true,
+    "same_device_noop": true,
+    "source_id_conflicts": true,
+    "source_type_conflicts": true,
+    "source_version_conflicts": true,
+    "three_device_final": true,
+    "update_decrease_dependency": true,
+    "void_refund_dependency": true,
+    "write_id_conflicts": true
+  },
+  "behavioral_pass": true,
+  "mutation_pass": true,
+  "mutations": {
+    "M1": {
+      "failed_required_behaviors": [
+        "projection_does_not_change_register",
+        "projection_reorder_accepted"
+      ],
+      "status": "DETECTED"
+    },
+    "M10": {
+      "failed_required_behaviors": [
+        "void_depends_on_parent"
+      ],
+      "status": "DETECTED"
+    },
+    "M11": {
+      "failed_required_behaviors": [
+        "create_depends_on_parent",
+        "decrease_depends_on_parent",
+        "dependency_not_self",
+        "increase_depends_on_parent",
+        "void_depends_on_parent"
+      ],
+      "status": "DETECTED"
+    },
+    "M12": {
+      "failed_required_behaviors": [
+        "pending_parent_blocks"
+      ],
+      "status": "DETECTED"
+    },
+    "M13": {
+      "failed_required_behaviors": [
+        "rejected_parent_blocks"
+      ],
+      "status": "DETECTED"
+    },
+    "M14": {
+      "failed_required_behaviors": [
+        "decrease_depends_on_parent",
+        "void_depends_on_parent"
+      ],
+      "status": "DETECTED"
+    },
+    "M2": {
+      "failed_required_behaviors": [
+        "projection_does_not_change_register",
+        "projection_reorder_accepted"
+      ],
+      "status": "DETECTED"
+    },
+    "M3": {
+      "failed_required_behaviors": [
+        "projection_does_not_change_register",
+        "projection_reorder_accepted"
+      ],
+      "status": "DETECTED"
+    },
+    "M4": {
+      "failed_required_behaviors": [
+        "amount_minor_mismatch_conflicts"
+      ],
+      "status": "DETECTED"
+    },
+    "M5": {
+      "failed_required_behaviors": [
+        "write_id_mismatch_conflicts"
+      ],
+      "status": "DETECTED"
+    },
+    "M6": {
+      "failed_required_behaviors": [
+        "projection_does_not_change_register"
+      ],
+      "status": "DETECTED"
+    },
+    "M7": {
+      "failed_required_behaviors": [
+        "amount_minor_mismatch_conflicts",
+        "semantic_source_corruption_conflicts",
+        "write_id_mismatch_conflicts"
+      ],
+      "status": "DETECTED"
+    },
+    "M8": {
+      "failed_required_behaviors": [
+        "raw_double_noise_not_identity"
+      ],
+      "status": "DETECTED"
+    },
+    "M9": {
+      "failed_required_behaviors": [
+        "decrease_depends_on_parent"
+      ],
+      "status": "DETECTED"
+    }
+  },
+  "pass": true,
+  "session": 336,
+  "source_guards": {
+    "amount_double_excluded_from_identity": true,
+    "applier_canonicalizes_minor": true,
+    "applier_does_not_update_register_from_movement": true,
+    "applier_no_full_row_equality": true,
+    "applier_requires_created_at": true,
+    "cash_command_no_balance_snapshot": true,
+    "dao_projection_update_not_replace": true,
+    "dao_projection_update_present": true,
+    "dependency_missing_block": true,
+    "dependency_parent_state_gate": true,
+    "expense_refund_passes_dependency": true,
+    "forward_expense_dependency_preserved": true,
+    "no_cash_register_push_regression": true,
+    "normal_cash_writer_no_full_history_scan": true,
+    "projection_excluded_from_identity": true,
+    "reverse_api_dependency_field": true,
+    "reverse_identity_keeps_dependency": true,
+    "semantic_helper_present": true
+  },
+  "static_pass": true
+}

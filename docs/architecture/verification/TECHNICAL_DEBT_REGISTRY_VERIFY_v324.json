@@ -1,0 +1,15 @@
+{
+  "critical_open_count": 0,
+  "expiry_check": "PASS",
+  "failures": [],
+  "format": "verto-technical-debt-registry-verification-v1",
+  "owners_present": "PASS",
+  "reasons_present": "PASS",
+  "registry_parse": "PASS",
+  "schema": "PASS",
+  "status": "PASS",
+  "suppression_links": "PASS",
+  "targets_present": "PASS",
+  "undocumented_suppressions": 0,
+  "unique_ids": "PASS"
+}

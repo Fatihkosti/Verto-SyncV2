@@ -1,0 +1,10 @@
+transition,preconditions,actions,postconditions,failure_behavior
+login,authenticated profile,cancel old work; stop realtime; prepare; commit org; activate epoch; schedule,new epoch active,clear failure aborts before new org commit
+restore,restored profile,cancel; stop realtime; prepare; activate epoch; schedule if needed,fresh epoch,stale old workers no-op
+logout,active session,cancel work; stop realtime; invalidate via next activation/clear,no old continuation,cancellation not trusted alone
+org_switch,old org != new,cancel; stop realtime; clear under sync mutex; commit new org; activate epoch,new tenant isolated,clear failure blocks commit
+same_org_reauth,same org/user,cancel old work; activate new epoch,old epoch stale,old job no-op
+user_switch_same_org,same org different user,cancel; new trusted profile; new epoch,user-scoped work,wrong user no-op
+stale_worker,old input,validate org/user/epoch before/between passes,no mutation,Result.success no-op
+stale_realtime,old listener,stop before activation; current-scope request validation,no accepted old request,listener cancellation + trusted scope
+clear_failure,old org data present,clearLocalData.getOrThrow before setLastOrganizationId,old org bookkeeping retained,surface failure; no new worker committed

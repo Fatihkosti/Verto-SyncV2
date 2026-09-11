@@ -1,0 +1,12 @@
+{
+  "inheritedExceptionCount": 9,
+  "inputArchiveEntries": 1765,
+  "inputProductionKotlinCount": 1178,
+  "inputZipName": "Verto-v310-source-of-truth.zip",
+  "inputZipSha256": "7b9a7070e389e0ec047c9252fde03f1891c2ffeaef406f97c3f9f30d15275b30",
+  "roomVersion": 80,
+  "session": 311,
+  "session310ContractSha256": "6b26c6de0cc3bd500ddc15fee830f5fcea1fd84c937d4667584c268e49384094",
+  "v310VerificationSha256": "0872e3f81b8b1a6968f19e0c305fcf5e92e6a7d9d15d0673ce17e98055a8211f",
+  "workManagerVersion": "2.10.0"
+}

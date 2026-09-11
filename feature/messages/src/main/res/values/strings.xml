@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="messages_ds_015d3289457b">محادثة جديدة</string>
+    <string name="messages_ds_26f08012fb44">اختر مسوّقاً</string>
+    <string name="messages_ds_2e35c67ba8ca">swipe_color</string>
+    <string name="messages_ds_4607329d2e82">حذف الرسالة</string>
+    <string name="messages_ds_5283562f6da8">اضغط + لبدء محادثة جديدة</string>
+    <string name="messages_ds_60ecbc7f40b3">›</string>
+    <string name="messages_ds_6375368b96ee">هل تريد حذف هذه الرسالة؟</string>
+    <string name="messages_ds_8320b1bcc158">لا توجد رسائل بعد</string>
+    <string name="messages_ds_86a01e164614">لا يوجد مسوقون مسجلون في AutoDrive أو لديهم محادثات مفتوحة بالفعل</string>
+    <string name="messages_ds_9bb687f4a9a7">لا توجد محادثات بعد</string>
+    <string name="messages_ds_aa54ca9529fa">اكتب رسالة...</string>
+    <string name="messages_ds_beab66f16492">جارٍ التسجيل... %%d:%%02d</string>
+    <string name="messages_ds_c875f6f6f2e6">هل تريد حذف هذه المحادثة وجميع رسائلها؟</string>
+    <string name="messages_ds_d11d4ef8c977">%%d:%%02d</string>
+    <string name="messages_ds_e2ed01a92bf1">حذف المحادثة</string>
+    <string name="messages_ds_ed3d29d919f1">الرسائل</string>
+    <string name="messages_ds_f96a9c56df7e">icon_scale</string>
+</resources>

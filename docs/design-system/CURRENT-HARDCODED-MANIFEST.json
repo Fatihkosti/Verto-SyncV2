@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 290,
+  "source": "Verto-v289",
+  "snapshotId": "74d36a8c84029f63fe7072961a16378524aebfc49afae975de90e7fc54094945",
+  "legacyCoreVisibleSignatures": [
+    {
+      "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/DateRangePickerDialog.kt",
+      "literalValue": "إلغاء"
+    },
+    {
+      "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/DateRangePickerDialog.kt",
+      "literalValue": "التالي"
+    },
+    {
+      "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/DateRangePickerDialog.kt",
+      "literalValue": "تأكيد"
+    },
+    {
+      "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/DateRangePickerDialog.kt",
+      "literalValue": "تاريخ البداية"
+    },
+    {
+      "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/DateRangePickerDialog.kt",
+      "literalValue": "تاريخ النهاية"
+    },
+    {
+      "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/DateRangePickerDialog.kt",
+      "literalValue": "رجوع"
+    },
+    {
+      "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+      "literalValue": "جنيه"
+    },
+    {
+      "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+      "literalValue": "معدل السداد"
+    },
+    {
+      "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+      "literalValue": "إلغاء"
+    },
+    {
+      "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+      "literalValue": "ليس الآن"
+    }
+  ],
+  "findingCount": 0,
+  "findings": []
+}

@@ -1,0 +1,39 @@
+{
+  "checkpoint": "B09-V02",
+  "captured_at_utc": "2026-09-10T20:28:11.248685+00:00",
+  "status": "BLOCKED",
+  "tools": {
+    "java": {
+      "executable": "/usr/bin/java",
+      "exit_code": 0,
+      "version": "openjdk version \"21.0.11\" 2026-04-21\nOpenJDK Runtime Environment (build 21.0.11+10-1-deb13u2-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.11+10-1-deb13u2-Debian, mixed mode, sharing)"
+    },
+    "kotlinc": {
+      "executable": "/root/.sdkman/candidates/kotlin/current/bin/kotlinc",
+      "exit_code": 0,
+      "version": "info: kotlinc-jvm 1.9.0 (JRE 21.0.11+10-1-deb13u2-Debian)"
+    }
+  },
+  "gradle_distributions": [],
+  "sdk_paths": [],
+  "adb": null,
+  "emulator": null,
+  "blockers": [
+    "Gradle 8.9 distribution is not cached at the wrapper distribution location",
+    "Android SDK not found in environment or standard local locations",
+    "adb is unavailable; no connected-device check or instrumentation could start"
+  ],
+  "network_attempted": false,
+  "gradle_wrapper_launched": false,
+  "reason_not_launched": "Uncached wrapper downloads its distribution before --offline applies; no network workaround was attempted",
+  "required_commands": {
+    "jvm": "bash gradlew --offline --no-daemon :data:sync:testDebugUnitTest --tests com.verto.app.data.sync.pull.FinancialMaterializationContractV2Test",
+    "room": "bash gradlew --offline --no-daemon :data:sync:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.verto.app.data.sync.pull.FinancialMaterializerV2InstrumentedTest",
+    "compile": "bash gradlew --offline --no-daemon :app:compileDebugKotlin"
+  },
+  "actual_jvm": "NOT_RUN",
+  "actual_room": "NOT_RUN",
+  "app_ksp_hilt_compile": "NOT_RUN",
+  "G-B09": "BLOCKED",
+  "owner_gate_waiver": "NOT_RECORDED"
+}

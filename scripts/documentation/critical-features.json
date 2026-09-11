@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "baseline": "v317",
+  "description": "Explicit production-critical feature documentation admission set. Update only with an intentional Documentation Impact: REQUIRED change.",
+  "documents": [
+    "docs/features/authentication.md",
+    "docs/features/cash.md",
+    "docs/features/customers.md",
+    "docs/features/design-system.md",
+    "docs/features/employees.md",
+    "docs/features/expenses.md",
+    "docs/features/home.md",
+    "docs/features/inventory.md",
+    "docs/features/invoices.md",
+    "docs/features/logistics.md",
+    "docs/features/notifications.md",
+    "docs/features/reports.md",
+    "docs/features/search.md",
+    "docs/features/settings.md",
+    "docs/features/suppliers.md",
+    "docs/features/sync.md"
+  ]
+}

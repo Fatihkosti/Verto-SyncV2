@@ -1,0 +1,15 @@
+{
+  "status": "PASS_OFFLINE_ONLY",
+  "limitation": "Source checks + real schema SQLite / Python projection model. NOT Room/Gradle/production execution; G-B09 BLOCKED.",
+  "sqlite_version": "3.46.1",
+  "schema_version": 98,
+  "schema_tables": 139,
+  "schema_sha256": "bb81eb8777c454efa9c47bc772a5468938f4632e2f45f56143cec91c9a876ca4",
+  "fixture_business_hash": "b096cf576d76a62c9a5f54450e1d666e7f6a57d47893508e9d67453a43cd8b5f",
+  "checked_queries": 25,
+  "rollback_cuts": 13,
+  "assertion_count": 612,
+  "G-B09": "BLOCKED",
+  "Room": "NOT_RUN",
+  "Txx": "NOT_RUN"
+}

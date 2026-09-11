@@ -1,0 +1,1537 @@
+{
+  "contracts": {
+    "commission.report.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "buildMarketerCommissionReport",
+          "parameter_count": 3,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "clientId",
+              "nullable": false,
+              "type": "String"
+            },
+            {
+              "has_default": false,
+              "name": "from",
+              "nullable": true,
+              "type": "Long?"
+            },
+            {
+              "has_default": false,
+              "name": "to",
+              "nullable": true,
+              "type": "Long?"
+            }
+          ],
+          "return_type": "Result<MarketerCommissionReportItem>",
+          "signature": "suspend fun buildMarketerCommissionReport(clientId:String:required,from:Long?:required,to:Long?:required):Result<MarketerCommissionReportItem>",
+          "suspend": true
+        },
+        {
+          "name": "sendAdminReminder",
+          "parameter_count": 3,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "clientId",
+              "nullable": false,
+              "type": "String"
+            },
+            {
+              "has_default": false,
+              "name": "message",
+              "nullable": false,
+              "type": "String"
+            },
+            {
+              "has_default": false,
+              "name": "navRoute",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun sendAdminReminder(clientId:String:required,message:String:required,navRoute:String:required):Result<Unit>",
+          "suspend": true
+        }
+      ],
+      "id": "commission.report.v1",
+      "methods": [
+        "suspend fun buildMarketerCommissionReport(clientId:String:required,from:Long?:required,to:Long?:required):Result<MarketerCommissionReportItem>",
+        "suspend fun sendAdminReminder(clientId:String:required,message:String:required,navRoute:String:required):Result<Unit>"
+      ],
+      "owner_module": ":feature:commission",
+      "source": "feature/commission/src/main/kotlin/com/verto/app/feature/commission/application/CommissionReportContract.kt",
+      "source_sha256": "a48e27b89e886d482d9a1d05bd2d99128c6344db93122fdd56be90f0d51954a6",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.commission.application.CommissionReportGateway",
+      "version": "1"
+    },
+    "dashboard.home-search.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "data class",
+      "field_names": [
+        "limit",
+        "text"
+      ],
+      "fields": [
+        {
+          "has_default": true,
+          "name": "limit",
+          "nullable": false,
+          "required": false,
+          "type": "Int"
+        },
+        {
+          "has_default": false,
+          "name": "text",
+          "nullable": false,
+          "required": true,
+          "type": "String"
+        }
+      ],
+      "found": true,
+      "functions": [],
+      "id": "dashboard.home-search.v1",
+      "methods": [],
+      "owner_module": ":feature:dashboard:api",
+      "source": "feature/dashboard/api/src/main/kotlin/com/verto/feature/dashboard/api/HomeContracts.kt",
+      "source_sha256": "3037206ce2c40b3cdadfd3048499648d7e3735e274b303602db9b4dd21bbc2db",
+      "status": "ACTIVE",
+      "symbol": "com.verto.feature.dashboard.api.HomeSearchQuery",
+      "version": "1"
+    },
+    "expenses.gateway.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "addExpense",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "command",
+              "nullable": false,
+              "type": "AddExpenseCommand"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun addExpense(command:AddExpenseCommand:required):Unit",
+          "suspend": true
+        },
+        {
+          "name": "adjustCash",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "command",
+              "nullable": false,
+              "type": "CashAdjustmentCommand"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun adjustCash(command:CashAdjustmentCommand:required):Unit",
+          "suspend": true
+        },
+        {
+          "name": "deleteExpense",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "id",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun deleteExpense(id:String:required):Unit",
+          "suspend": true
+        },
+        {
+          "name": "observeCashBalance",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Flow<Double>",
+          "signature": "fun observeCashBalance():Flow<Double>",
+          "suspend": false
+        },
+        {
+          "name": "observeExpenses",
+          "parameter_count": 2,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "from",
+              "nullable": false,
+              "type": "Long"
+            },
+            {
+              "has_default": false,
+              "name": "to",
+              "nullable": false,
+              "type": "Long"
+            }
+          ],
+          "return_type": "Flow<List<ExpenseItem>>",
+          "signature": "fun observeExpenses(from:Long:required,to:Long:required):Flow<List<ExpenseItem>>",
+          "suspend": false
+        },
+        {
+          "name": "observeRecentMovements",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "limit",
+              "nullable": false,
+              "type": "Int"
+            }
+          ],
+          "return_type": "Flow<List<CashMovementItem>>",
+          "signature": "fun observeRecentMovements(limit:Int:required):Flow<List<CashMovementItem>>",
+          "suspend": false
+        },
+        {
+          "name": "observeRecentPurchaseInvoices",
+          "parameter_count": 2,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "from",
+              "nullable": false,
+              "type": "Long"
+            },
+            {
+              "has_default": false,
+              "name": "to",
+              "nullable": false,
+              "type": "Long"
+            }
+          ],
+          "return_type": "Flow<List<PurchaseInvoiceOption>>",
+          "signature": "fun observeRecentPurchaseInvoices(from:Long:required,to:Long:required):Flow<List<PurchaseInvoiceOption>>",
+          "suspend": false
+        },
+        {
+          "name": "observeTotalExpenses",
+          "parameter_count": 2,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "from",
+              "nullable": false,
+              "type": "Long"
+            },
+            {
+              "has_default": false,
+              "name": "to",
+              "nullable": false,
+              "type": "Long"
+            }
+          ],
+          "return_type": "Flow<Double>",
+          "signature": "fun observeTotalExpenses(from:Long:required,to:Long:required):Flow<Double>",
+          "suspend": false
+        },
+        {
+          "name": "pendingWithdrawalRequestsCount",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Result<Int>",
+          "signature": "suspend fun pendingWithdrawalRequestsCount():Result<Int>",
+          "suspend": true
+        },
+        {
+          "name": "refreshRole",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Unit",
+          "signature": "fun refreshRole():Unit",
+          "suspend": false
+        }
+      ],
+      "id": "expenses.gateway.v1",
+      "methods": [
+        "suspend fun addExpense(command:AddExpenseCommand:required):Unit",
+        "suspend fun adjustCash(command:CashAdjustmentCommand:required):Unit",
+        "suspend fun deleteExpense(id:String:required):Unit",
+        "fun observeCashBalance():Flow<Double>",
+        "fun observeExpenses(from:Long:required,to:Long:required):Flow<List<ExpenseItem>>",
+        "fun observeRecentMovements(limit:Int:required):Flow<List<CashMovementItem>>",
+        "fun observeRecentPurchaseInvoices(from:Long:required,to:Long:required):Flow<List<PurchaseInvoiceOption>>",
+        "fun observeTotalExpenses(from:Long:required,to:Long:required):Flow<Double>",
+        "suspend fun pendingWithdrawalRequestsCount():Result<Int>",
+        "fun refreshRole():Unit"
+      ],
+      "owner_module": ":feature:expenses",
+      "source": "feature/expenses/src/main/kotlin/com/verto/app/feature/expenses/application/ExpensesContract.kt",
+      "source_sha256": "df3972120b24a16e8e8903b0024b562f6dfab973303ba4306603a54528a08723",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.expenses.application.ExpensesGateway",
+      "version": "1"
+    },
+    "invoice.presentation.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "canExport",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "category",
+              "nullable": false,
+              "type": "InvoiceCategory"
+            }
+          ],
+          "return_type": "Boolean",
+          "signature": "suspend fun canExport(category:InvoiceCategory:required):Boolean",
+          "suspend": true
+        },
+        {
+          "name": "canManageCommission",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Boolean",
+          "signature": "suspend fun canManageCommission():Boolean",
+          "suspend": true
+        },
+        {
+          "name": "createInvoicePdf",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "request",
+              "nullable": false,
+              "type": "InvoicePdfRequest"
+            }
+          ],
+          "return_type": "File",
+          "signature": "suspend fun createInvoicePdf(request:InvoicePdfRequest:required):File",
+          "suspend": true
+        },
+        {
+          "name": "fullSync",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun fullSync():Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "observeClient",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "clientId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Flow<ClientItem?>",
+          "signature": "fun observeClient(clientId:String:required):Flow<ClientItem?>",
+          "suspend": false
+        },
+        {
+          "name": "observeClients",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Flow<List<ClientItem>>",
+          "signature": "fun observeClients():Flow<List<ClientItem>>",
+          "suspend": false
+        },
+        {
+          "name": "observeInvoiceItems",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "invoiceId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Flow<List<InvoiceLineView>>",
+          "signature": "fun observeInvoiceItems(invoiceId:String:required):Flow<List<InvoiceLineView>>",
+          "suspend": false
+        },
+        {
+          "name": "observeOrganizationSettings",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Flow<InvoiceOrgSettings>",
+          "signature": "fun observeOrganizationSettings():Flow<InvoiceOrgSettings>",
+          "suspend": false
+        },
+        {
+          "name": "observePagedInvoices",
+          "parameter_count": 6,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "category",
+              "nullable": false,
+              "type": "String"
+            },
+            {
+              "has_default": false,
+              "name": "tab",
+              "nullable": false,
+              "type": "Int"
+            },
+            {
+              "has_default": false,
+              "name": "from",
+              "nullable": false,
+              "type": "Long"
+            },
+            {
+              "has_default": false,
+              "name": "to",
+              "nullable": false,
+              "type": "Long"
+            },
+            {
+              "has_default": false,
+              "name": "search",
+              "nullable": false,
+              "type": "String"
+            },
+            {
+              "has_default": false,
+              "name": "sort",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Flow<PagingData<InvoicePaymentSummary>>",
+          "signature": "fun observePagedInvoices(category:String:required,tab:Int:required,from:Long:required,to:Long:required,search:String:required,sort:String:required):Flow<PagingData<InvoicePaymentSummary>>",
+          "suspend": false
+        },
+        {
+          "name": "observePrintSettings",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Flow<InvoicePrintSettings>",
+          "signature": "fun observePrintSettings():Flow<InvoicePrintSettings>",
+          "suspend": false
+        },
+        {
+          "name": "observeSummary",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "invoiceId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Flow<InvoiceSummary?>",
+          "signature": "fun observeSummary(invoiceId:String:required):Flow<InvoiceSummary?>",
+          "suspend": false
+        },
+        {
+          "name": "reversePayment",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "paymentId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "InvoicePaymentReversalResult",
+          "signature": "suspend fun reversePayment(paymentId:String:required):InvoicePaymentReversalResult",
+          "suspend": true
+        },
+        {
+          "name": "updateCommission",
+          "parameter_count": 2,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "invoiceId",
+              "nullable": false,
+              "type": "String"
+            },
+            {
+              "has_default": false,
+              "name": "commission",
+              "nullable": false,
+              "type": "Double"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun updateCommission(invoiceId:String:required,commission:Double:required):Unit",
+          "suspend": true
+        }
+      ],
+      "id": "invoice.presentation.v1",
+      "methods": [
+        "suspend fun canExport(category:InvoiceCategory:required):Boolean",
+        "suspend fun canManageCommission():Boolean",
+        "suspend fun createInvoicePdf(request:InvoicePdfRequest:required):File",
+        "suspend fun fullSync():Result<Unit>",
+        "fun observeClient(clientId:String:required):Flow<ClientItem?>",
+        "fun observeClients():Flow<List<ClientItem>>",
+        "fun observeInvoiceItems(invoiceId:String:required):Flow<List<InvoiceLineView>>",
+        "fun observeOrganizationSettings():Flow<InvoiceOrgSettings>",
+        "fun observePagedInvoices(category:String:required,tab:Int:required,from:Long:required,to:Long:required,search:String:required,sort:String:required):Flow<PagingData<InvoicePaymentSummary>>",
+        "fun observePrintSettings():Flow<InvoicePrintSettings>",
+        "fun observeSummary(invoiceId:String:required):Flow<InvoiceSummary?>",
+        "suspend fun reversePayment(paymentId:String:required):InvoicePaymentReversalResult",
+        "suspend fun updateCommission(invoiceId:String:required,commission:Double:required):Unit"
+      ],
+      "owner_module": ":feature:invoice",
+      "source": "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/application/port/InvoicePresentationPort.kt",
+      "source_sha256": "6120faee7d0d13e7f46ff78b2fe549ce8c99fc6dada6aeef96ae4d7f454743b9",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.invoice.application.port.InvoicePresentationPort",
+      "version": "1"
+    },
+    "messages.gateway.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "deleteConversation",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "conversationId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun deleteConversation(conversationId:String:required):Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "deleteMessage",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "messageId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun deleteMessage(messageId:String:required):Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "getConversations",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Result<List<ConversationListItem>>",
+          "signature": "suspend fun getConversations():Result<List<ConversationListItem>>",
+          "suspend": true
+        },
+        {
+          "name": "getMessages",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "conversationId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<List<MessageItem>>",
+          "signature": "suspend fun getMessages(conversationId:String:required):Result<List<MessageItem>>",
+          "suspend": true
+        },
+        {
+          "name": "getRegisteredMarketers",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Result<List<RegisteredMarketerItem>>",
+          "signature": "suspend fun getRegisteredMarketers():Result<List<RegisteredMarketerItem>>",
+          "suspend": true
+        },
+        {
+          "name": "markConversationRead",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "conversationId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun markConversationRead(conversationId:String:required):Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "observeConversationListChanges",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Flow<Unit>",
+          "signature": "fun observeConversationListChanges():Flow<Unit>",
+          "suspend": false
+        },
+        {
+          "name": "observeMessages",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "conversationId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Flow<MessageItem>",
+          "signature": "fun observeMessages(conversationId:String:required):Flow<MessageItem>",
+          "suspend": false
+        },
+        {
+          "name": "openConversation",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "clientId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<String>",
+          "signature": "suspend fun openConversation(clientId:String:required):Result<String>",
+          "suspend": true
+        },
+        {
+          "name": "sendMessage",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "command",
+              "nullable": false,
+              "type": "SendMessageCommand"
+            }
+          ],
+          "return_type": "Result<MessageItem>",
+          "signature": "suspend fun sendMessage(command:SendMessageCommand:required):Result<MessageItem>",
+          "suspend": true
+        }
+      ],
+      "id": "messages.gateway.v1",
+      "methods": [
+        "suspend fun deleteConversation(conversationId:String:required):Result<Unit>",
+        "suspend fun deleteMessage(messageId:String:required):Result<Unit>",
+        "suspend fun getConversations():Result<List<ConversationListItem>>",
+        "suspend fun getMessages(conversationId:String:required):Result<List<MessageItem>>",
+        "suspend fun getRegisteredMarketers():Result<List<RegisteredMarketerItem>>",
+        "suspend fun markConversationRead(conversationId:String:required):Result<Unit>",
+        "fun observeConversationListChanges():Flow<Unit>",
+        "fun observeMessages(conversationId:String:required):Flow<MessageItem>",
+        "suspend fun openConversation(clientId:String:required):Result<String>",
+        "suspend fun sendMessage(command:SendMessageCommand:required):Result<MessageItem>"
+      ],
+      "owner_module": ":feature:messages",
+      "source": "feature/messages/src/main/kotlin/com/verto/app/feature/messages/application/MessagesContract.kt",
+      "source_sha256": "d31914dcbe1ee0c4c01b3d88c6537049f62aaef56a15b210b61e306f05ebf45a",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.messages.application.MessagesGateway",
+      "version": "1"
+    },
+    "notifications.center.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "createTestDirectToCurrentUser",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun createTestDirectToCurrentUser():Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "createTestForAllEmployees",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun createTestForAllEmployees():Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "createTestForManager",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun createTestForManager():Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "markAllAsRead",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Unit",
+          "signature": "suspend fun markAllAsRead():Unit",
+          "suspend": true
+        },
+        {
+          "name": "markAsRead",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "id",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun markAsRead(id:String:required):Unit",
+          "suspend": true
+        },
+        {
+          "name": "observeCurrentUserNotifications",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Flow<List<AppNotification>>",
+          "signature": "suspend fun observeCurrentUserNotifications():Flow<List<AppNotification>>",
+          "suspend": true
+        },
+        {
+          "name": "sync",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun sync():Result<Unit>",
+          "suspend": true
+        }
+      ],
+      "id": "notifications.center.v1",
+      "methods": [
+        "suspend fun createTestDirectToCurrentUser():Result<Unit>",
+        "suspend fun createTestForAllEmployees():Result<Unit>",
+        "suspend fun createTestForManager():Result<Unit>",
+        "suspend fun markAllAsRead():Unit",
+        "suspend fun markAsRead(id:String:required):Unit",
+        "suspend fun observeCurrentUserNotifications():Flow<List<AppNotification>>",
+        "suspend fun sync():Result<Unit>"
+      ],
+      "owner_module": ":feature:notifications",
+      "source": "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/domain/repository/NotificationCenterGateway.kt",
+      "source_sha256": "76c2b5569b47144c73b87794e33abc37096921ef21afb76e4dafd27cb8fb6a11",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.notifications.domain.repository.NotificationCenterGateway",
+      "version": "1"
+    },
+    "optimal.messaging.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "INTEGRATION_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "getConversation",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "clientId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<OptimalConversationState?>",
+          "signature": "suspend fun getConversation(clientId:String:required):Result<OptimalConversationState?>",
+          "suspend": true
+        },
+        {
+          "name": "getOrCreateConversation",
+          "parameter_count": 2,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "clientId",
+              "nullable": false,
+              "type": "String"
+            },
+            {
+              "has_default": false,
+              "name": "companyName",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<OptimalConversationState>",
+          "signature": "suspend fun getOrCreateConversation(clientId:String:required,companyName:String:required):Result<OptimalConversationState>",
+          "suspend": true
+        },
+        {
+          "name": "markConversationRead",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "clientId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<Int>",
+          "signature": "suspend fun markConversationRead(clientId:String:required):Result<Int>",
+          "suspend": true
+        },
+        {
+          "name": "observeMessages",
+          "parameter_count": 2,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "organizationId",
+              "nullable": false,
+              "type": "String"
+            },
+            {
+              "has_default": false,
+              "name": "conversationId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Flow<List<OptimalMessage>>",
+          "signature": "fun observeMessages(organizationId:String:required,conversationId:String:required):Flow<List<OptimalMessage>>",
+          "suspend": false
+        },
+        {
+          "name": "saveOutgoingMessage",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "draft",
+              "nullable": false,
+              "type": "OptimalOutgoingMessageDraft"
+            }
+          ],
+          "return_type": "Result<OptimalMessage>",
+          "signature": "suspend fun saveOutgoingMessage(draft:OptimalOutgoingMessageDraft:required):Result<OptimalMessage>",
+          "suspend": true
+        },
+        {
+          "name": "setConversationArchived",
+          "parameter_count": 2,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "clientId",
+              "nullable": false,
+              "type": "String"
+            },
+            {
+              "has_default": false,
+              "name": "archived",
+              "nullable": false,
+              "type": "Boolean"
+            }
+          ],
+          "return_type": "Result<OptimalConversationState>",
+          "signature": "suspend fun setConversationArchived(clientId:String:required,archived:Boolean:required):Result<OptimalConversationState>",
+          "suspend": true
+        }
+      ],
+      "id": "optimal.messaging.v1",
+      "methods": [
+        "suspend fun getConversation(clientId:String:required):Result<OptimalConversationState?>",
+        "suspend fun getOrCreateConversation(clientId:String:required,companyName:String:required):Result<OptimalConversationState>",
+        "suspend fun markConversationRead(clientId:String:required):Result<Int>",
+        "fun observeMessages(organizationId:String:required,conversationId:String:required):Flow<List<OptimalMessage>>",
+        "suspend fun saveOutgoingMessage(draft:OptimalOutgoingMessageDraft:required):Result<OptimalMessage>",
+        "suspend fun setConversationArchived(clientId:String:required,archived:Boolean:required):Result<OptimalConversationState>"
+      ],
+      "owner_module": ":feature:integration:optimal",
+      "source": "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/domain/port/OptimalMessagingPort.kt",
+      "source_sha256": "c2a8386c91ffbab29b3f99a6fad6d54d8ad6e02e274a7ea49a9343f9fa93b228",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.integration.optimal.domain.port.OptimalMessagingPort",
+      "version": "1"
+    },
+    "organization.team.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "generateInviteCode",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "request",
+              "nullable": false,
+              "type": "CreateOrganizationInviteRequest"
+            }
+          ],
+          "return_type": "Result<String>",
+          "signature": "suspend fun generateInviteCode(request:CreateOrganizationInviteRequest:required):Result<String>",
+          "suspend": true
+        },
+        {
+          "name": "getEmployeePermissions",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "employeeId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<EmployeePermissions>",
+          "signature": "suspend fun getEmployeePermissions(employeeId:String:required):Result<EmployeePermissions>",
+          "suspend": true
+        },
+        {
+          "name": "getEmployees",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Result<List<OrganizationEmployee>>",
+          "signature": "suspend fun getEmployees():Result<List<OrganizationEmployee>>",
+          "suspend": true
+        },
+        {
+          "name": "removeEmployee",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "employeeId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun removeEmployee(employeeId:String:required):Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "saveEmployeePermissions",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "permissions",
+              "nullable": false,
+              "type": "EmployeePermissions"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun saveEmployeePermissions(permissions:EmployeePermissions:required):Result<Unit>",
+          "suspend": true
+        }
+      ],
+      "id": "organization.team.v1",
+      "methods": [
+        "suspend fun generateInviteCode(request:CreateOrganizationInviteRequest:required):Result<String>",
+        "suspend fun getEmployeePermissions(employeeId:String:required):Result<EmployeePermissions>",
+        "suspend fun getEmployees():Result<List<OrganizationEmployee>>",
+        "suspend fun removeEmployee(employeeId:String:required):Result<Unit>",
+        "suspend fun saveEmployeePermissions(permissions:EmployeePermissions:required):Result<Unit>"
+      ],
+      "owner_module": ":feature:organization",
+      "source": "feature/organization/src/main/kotlin/com/verto/app/feature/organization/domain/repository/OrganizationTeamGateway.kt",
+      "source_sha256": "1158720270f72c705dac212b555040a9bfefe3f5a5e0b3b16118ed4d43387023",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.organization.domain.repository.OrganizationTeamGateway",
+      "version": "1"
+    },
+    "party.lookup.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "deleteClient",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "id",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun deleteClient(id:String:required):Unit",
+          "suspend": true
+        },
+        {
+          "name": "deleteClientPermanently",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "id",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun deleteClientPermanently(id:String:required):Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "getAllClientSummaries",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Flow<List<PartyClientSummary>>",
+          "signature": "fun getAllClientSummaries():Flow<List<PartyClientSummary>>",
+          "suspend": false
+        },
+        {
+          "name": "getAllClients",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Flow<List<PartyClient>>",
+          "signature": "fun getAllClients():Flow<List<PartyClient>>",
+          "suspend": false
+        },
+        {
+          "name": "getAllClientsSync",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "List<PartyClient>",
+          "signature": "suspend fun getAllClientsSync():List<PartyClient>",
+          "suspend": true
+        },
+        {
+          "name": "getClientById",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "id",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Flow<PartyClient?>",
+          "signature": "fun getClientById(id:String:required):Flow<PartyClient?>",
+          "suspend": false
+        },
+        {
+          "name": "getClientByIdSync",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "id",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "PartyClient?",
+          "signature": "suspend fun getClientByIdSync(id:String:required):PartyClient?",
+          "suspend": true
+        },
+        {
+          "name": "insertClient",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "client",
+              "nullable": false,
+              "type": "PartyClient"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun insertClient(client:PartyClient:required):Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "searchClientSummaries",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "query",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Flow<List<PartyClientSummary>>",
+          "signature": "fun searchClientSummaries(query:String:required):Flow<List<PartyClientSummary>>",
+          "suspend": false
+        },
+        {
+          "name": "updateClient",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "client",
+              "nullable": false,
+              "type": "PartyClient"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun updateClient(client:PartyClient:required):Result<Unit>",
+          "suspend": true
+        }
+      ],
+      "id": "party.lookup.v1",
+      "methods": [
+        "suspend fun deleteClient(id:String:required):Unit",
+        "suspend fun deleteClientPermanently(id:String:required):Result<Unit>",
+        "fun getAllClientSummaries():Flow<List<PartyClientSummary>>",
+        "fun getAllClients():Flow<List<PartyClient>>",
+        "suspend fun getAllClientsSync():List<PartyClient>",
+        "fun getClientById(id:String:required):Flow<PartyClient?>",
+        "suspend fun getClientByIdSync(id:String:required):PartyClient?",
+        "suspend fun insertClient(client:PartyClient:required):Result<Unit>",
+        "fun searchClientSummaries(query:String:required):Flow<List<PartyClientSummary>>",
+        "suspend fun updateClient(client:PartyClient:required):Result<Unit>"
+      ],
+      "owner_module": ":feature:party",
+      "source": "feature/party/src/main/kotlin/com/verto/app/feature/party/domain/repository/PartyDirectoryGateway.kt",
+      "source_sha256": "8470a08a38ba99239e576e75c6c0000ade9b5ce10f0de55ce470f9f6cef36b21",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.party.domain.repository.PartyDirectoryGateway",
+      "version": "1"
+    },
+    "payment.purchase-shipment.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "createShipment",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "command",
+              "nullable": false,
+              "type": "PurchaseShipmentCreateCommand"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun createShipment(command:PurchaseShipmentCreateCommand:required):Unit",
+          "suspend": true
+        },
+        {
+          "name": "observeActiveShipments",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Flow<List<PurchaseShipmentOption>>",
+          "signature": "fun observeActiveShipments():Flow<List<PurchaseShipmentOption>>",
+          "suspend": false
+        }
+      ],
+      "id": "payment.purchase-shipment.v1",
+      "methods": [
+        "suspend fun createShipment(command:PurchaseShipmentCreateCommand:required):Unit",
+        "fun observeActiveShipments():Flow<List<PurchaseShipmentOption>>"
+      ],
+      "owner_module": ":feature:payment",
+      "source": "feature/payment/src/main/kotlin/com/verto/app/feature/payment/application/port/PurchaseShipmentGateway.kt",
+      "source_sha256": "a7d8b9119f0151dd4fb90fa9a2e9f6443f5bc25d0008a7d8ee3bd0e3df567b53",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.payment.application.port.PurchaseShipmentGateway",
+      "version": "1"
+    },
+    "profile.gateway.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "canEditName",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Boolean",
+          "signature": "suspend fun canEditName():Boolean",
+          "suspend": true
+        },
+        {
+          "name": "changePassword",
+          "parameter_count": 2,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "currentPassword",
+              "nullable": false,
+              "type": "String"
+            },
+            {
+              "has_default": false,
+              "name": "newPassword",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun changePassword(currentPassword:String:required,newPassword:String:required):Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "updateName",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "name",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun updateName(name:String:required):Unit",
+          "suspend": true
+        },
+        {
+          "name": "updatePhone",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "phone",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun updatePhone(phone:String:required):Unit",
+          "suspend": true
+        }
+      ],
+      "id": "profile.gateway.v1",
+      "methods": [
+        "suspend fun canEditName():Boolean",
+        "suspend fun changePassword(currentPassword:String:required,newPassword:String:required):Result<Unit>",
+        "suspend fun updateName(name:String:required):Unit",
+        "suspend fun updatePhone(phone:String:required):Unit"
+      ],
+      "owner_module": ":feature:profile",
+      "source": "feature/profile/src/main/kotlin/com/verto/app/feature/profile/domain/repository/ProfileGateway.kt",
+      "source_sha256": "e750c280a3280d3aa09dfa0fe243b655badfa39022a96bb11a2572b8167f041c",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.profile.domain.repository.ProfileGateway",
+      "version": "1"
+    },
+    "reports.operations.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "closeShift",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "command",
+              "nullable": false,
+              "type": "CloseReportShiftCommand"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun closeShift(command:CloseReportShiftCommand:required):Unit",
+          "suspend": true
+        },
+        {
+          "name": "deleteBudget",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "command",
+              "nullable": false,
+              "type": "DeleteReportBudgetCommand"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun deleteBudget(command:DeleteReportBudgetCommand:required):Unit",
+          "suspend": true
+        },
+        {
+          "name": "recalculateRfm",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Unit",
+          "signature": "suspend fun recalculateRfm():Unit",
+          "suspend": true
+        },
+        {
+          "name": "saveBudget",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "command",
+              "nullable": false,
+              "type": "SaveReportBudgetCommand"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun saveBudget(command:SaveReportBudgetCommand:required):Unit",
+          "suspend": true
+        },
+        {
+          "name": "startShift",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "command",
+              "nullable": false,
+              "type": "StartReportShiftCommand"
+            }
+          ],
+          "return_type": "Unit",
+          "signature": "suspend fun startShift(command:StartReportShiftCommand:required):Unit",
+          "suspend": true
+        }
+      ],
+      "id": "reports.operations.v1",
+      "methods": [
+        "suspend fun closeShift(command:CloseReportShiftCommand:required):Unit",
+        "suspend fun deleteBudget(command:DeleteReportBudgetCommand:required):Unit",
+        "suspend fun recalculateRfm():Unit",
+        "suspend fun saveBudget(command:SaveReportBudgetCommand:required):Unit",
+        "suspend fun startShift(command:StartReportShiftCommand:required):Unit"
+      ],
+      "owner_module": ":feature:reports",
+      "source": "feature/reports/src/main/kotlin/com/verto/app/feature/reports/application/ReportsOperationsGateway.kt",
+      "source_sha256": "78df15d3de49c0bf6cef943ad06fa758b953441e4d49277cac9382a2b67f2dfb",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.reports.application.ReportsOperationsGateway",
+      "version": "1"
+    },
+    "settings.operations.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "currentUserCanViewManagement",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Boolean",
+          "signature": "suspend fun currentUserCanViewManagement():Boolean",
+          "suspend": true
+        },
+        {
+          "name": "currentUserIsAdmin",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Boolean",
+          "signature": "suspend fun currentUserIsAdmin():Boolean",
+          "suspend": true
+        },
+        {
+          "name": "exportBackup",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "target",
+              "nullable": false,
+              "type": "SettingsBackupTarget"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun exportBackup(target:SettingsBackupTarget:required):Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "importBackup",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "uri",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Result<String>",
+          "signature": "suspend fun importBackup(uri:String:required):Result<String>",
+          "suspend": true
+        },
+        {
+          "name": "logout",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun logout():Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "observeLastSuccessfulSyncAt",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Flow<Long?>",
+          "signature": "fun observeLastSuccessfulSyncAt():Flow<Long?>",
+          "suspend": false
+        },
+        {
+          "name": "resetData",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "scope",
+              "nullable": false,
+              "type": "SettingsDataScope"
+            }
+          ],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun resetData(scope:SettingsDataScope:required):Result<Unit>",
+          "suspend": true
+        },
+        {
+          "name": "syncNow",
+          "parameter_count": 0,
+          "parameters": [],
+          "return_type": "Result<Unit>",
+          "signature": "suspend fun syncNow():Result<Unit>",
+          "suspend": true
+        }
+      ],
+      "id": "settings.operations.v1",
+      "methods": [
+        "suspend fun currentUserCanViewManagement():Boolean",
+        "suspend fun currentUserIsAdmin():Boolean",
+        "suspend fun exportBackup(target:SettingsBackupTarget:required):Result<Unit>",
+        "suspend fun importBackup(uri:String:required):Result<String>",
+        "suspend fun logout():Result<Unit>",
+        "fun observeLastSuccessfulSyncAt():Flow<Long?>",
+        "suspend fun resetData(scope:SettingsDataScope:required):Result<Unit>",
+        "suspend fun syncNow():Result<Unit>"
+      ],
+      "owner_module": ":feature:settings",
+      "source": "feature/settings/src/main/kotlin/com/verto/app/feature/settings/domain/repository/SettingsOperationsGateway.kt",
+      "source_sha256": "243c040e297b3b06e3e93a7aca61dc9992d3affd1061744631f78fb5e27e8745",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.settings.domain.repository.SettingsOperationsGateway",
+      "version": "1"
+    },
+    "shipment.read.v1": {
+      "compatibility": "BACKWARD_COMPATIBLE",
+      "contract_type": "CROSS_FEATURE_STABLE",
+      "declaration_kind": "interface",
+      "field_names": [],
+      "fields": [],
+      "found": true,
+      "functions": [
+        {
+          "name": "events",
+          "parameter_count": 2,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "organizationId",
+              "nullable": false,
+              "type": "String"
+            },
+            {
+              "has_default": false,
+              "name": "shipmentId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "List<ShipmentEventReadRecord>",
+          "signature": "suspend fun events(organizationId:String:required,shipmentId:String:required):List<ShipmentEventReadRecord>",
+          "suspend": true
+        },
+        {
+          "name": "observe",
+          "parameter_count": 1,
+          "parameters": [
+            {
+              "has_default": false,
+              "name": "organizationId",
+              "nullable": false,
+              "type": "String"
+            }
+          ],
+          "return_type": "Flow<List<LogisticsUnifiedReadRecord>>",
+          "signature": "fun observe(organizationId:String:required):Flow<List<LogisticsUnifiedReadRecord>>",
+          "suspend": false
+        }
+      ],
+      "id": "shipment.read.v1",
+      "methods": [
+        "suspend fun events(organizationId:String:required,shipmentId:String:required):List<ShipmentEventReadRecord>",
+        "fun observe(organizationId:String:required):Flow<List<LogisticsUnifiedReadRecord>>"
+      ],
+      "owner_module": ":feature:shipment",
+      "source": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/port/ShipmentPresentationPorts.kt",
+      "source_sha256": "9d0c7ba8dad6e65a425e4629e57f0820dafa44e149db47d2487b4b26d245610d",
+      "status": "ACTIVE",
+      "symbol": "com.verto.app.feature.shipment.application.port.LogisticsUnifiedReadPort",
+      "version": "1"
+    }
+  },
+  "format": "verto-contract-api-snapshot-v1",
+  "session": 330
+}

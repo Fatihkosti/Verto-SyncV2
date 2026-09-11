@@ -1,0 +1,12 @@
+{
+  "checkpoint": "B11-V01",
+  "input_archive": "Verto-425-B10-V01-WIP_NOT_RELEASE_READY(1).zip",
+  "input_archive_sha256": "db0eb5ae27697a72dd4ce2829128b292334e6380f2a403b3c53f1b76f8a6198f",
+  "baseline_product_tree_sha256": "2c9379972d1d9db3f52d96f0a2dbe2325f77558e53bf3ef97265e1f3ee90eda0",
+  "baseline_manifest_file_count": 1866,
+  "matches": 1866,
+  "mismatches": [],
+  "archive_crc_result": "PASS_EXTRACTED_BY_SANDBOX",
+  "commit": null,
+  "mode": "TREE_HASH_NO_GIT"
+}

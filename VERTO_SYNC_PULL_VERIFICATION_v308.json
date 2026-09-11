@@ -1,0 +1,514 @@
+{
+  "session": 308,
+  "inputZipName": "Verto-v307-source-of-truth.zip",
+  "inputZipSha256": "eec7c332b26ab6cafec3fa2f2ecf0f03278d6591664f433094083a1e67c736ba",
+  "inputArchiveEntries": 1712,
+  "contractSha256": "e908993c61ffb07acb9a92cd10f16b9eec366c398a20931e1a5b6d97a5c7053c",
+  "planSha256": "a767087c5f1659dcd7c660c189542ef2d7774c0f647ff9321e9f53219a7dfd97",
+  "roomVersionBefore": 79,
+  "roomVersionAfter": 79,
+  "schema79Sha256": "ab4a24d0698914a852bf1c52498174adcd32999006a1011b6a80a438395031da",
+  "v307FinalVerdict": "PASS_STATIC_WITH_DOCUMENTED_EXCEPTIONS / RUNTIME_V2_DISABLED / BUILD_NOT_VERIFIED",
+  "v307InheritedExceptionCount": 9,
+  "v307InheritedExceptions": [
+    "room_version_79",
+    "persisted_sequence_authority",
+    "payload_bound_preserved",
+    "producer_discovery_unclassified_zero",
+    "stronger_outboxes_proven",
+    "datastore_delete_authority_zero",
+    "dirty_only_authority_zero",
+    "org_settings_room_canonical",
+    "attachment_intent_persisted"
+  ],
+  "v307ExceptionsWorsenedCount": 0,
+  "new308WaiverCount": 0,
+  "serverMigrationV305Sha256": "a2daf28b3a05b35907267bfc766fc6919ba5c28613854c0c0d68ee186313e908",
+  "staticGateStatus": "FAIL",
+  "staticFixtureStats": {
+    "byCategory": {
+      "atomicity": 16,
+      "clock": 5,
+      "cursor": 5,
+      "delete": 5,
+      "inbox_fingerprint": 22,
+      "pagination": 18,
+      "pending_local": 11,
+      "revision": 19,
+      "transaction_groups": 19,
+      "wire_scope": 17
+    },
+    "failures": 0,
+    "failuresList": [],
+    "model10k": "PASS",
+    "session": 308,
+    "total": 137
+  },
+  "productionKotlinCount": 1340,
+  "legacyPullFunctionCount": 26,
+  "legacyLastPulledAtFileCount": 8,
+  "legacyTimestampFilterFileCount": 6,
+  "aggregateRegistryCount": 34,
+  "pullCoverageRows": 34,
+  "owner307TargetCount": 16,
+  "owner308TargetCount": 1,
+  "shadowReadyTargetCount": 17,
+  "owner310DeferredCount": 17,
+  "unclassifiedAggregateCount": 0,
+  "wireRpcResolveScopeCount": 1,
+  "wireRpcPullChangesCount": 1,
+  "staleSyncPullV2ReachableCount": 0,
+  "staleSyncAckV2ReachableCount": 0,
+  "numericV2CursorAuthorityCount": 0,
+  "timestampV2CursorAuthorityCount": 0,
+  "scopeMismatchSkipCount": 0,
+  "unknownAggregateSkipCount": 0,
+  "unsupportedPayloadSkipCount": 0,
+  "incompleteTransactionAdvanceCount": 0,
+  "pendingMutationOverwriteCount": 0,
+  "remoteApplyEnqueueCount": 0,
+  "cursorAdvanceOutsideDomainTransactionCount": 0,
+  "networkInsideRoomTransactionCount": 0,
+  "duplicateSemanticMismatchAcceptedCount": 0,
+  "serverChangedCount": 0,
+  "roomSchemaChangedCount": 0,
+  "protectedRuntimeChangedCount": 0,
+  "gradleFilesChangedCount": 0,
+  "buildExecuted": false,
+  "compileStatus": "NOT_RUN_STATIC_ONLY_ACCEPTANCE",
+  "unitTestStatus": "NOT_RUN_STATIC_ONLY_ACCEPTANCE",
+  "instrumentationExecuted": false,
+  "runtimeV2": "DISABLED",
+  "finalVerdict": "FAIL_STATIC",
+  "blockers": [
+    "protected:data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt",
+    "protected:data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt",
+    "protected:data/database/src/main/kotlin/com/verto/app/data/local/entity/UnifiedSyncEntities.kt",
+    "protected:data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncContract.kt",
+    "protected:data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncAggregateRegistry.kt",
+    "protected:data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorker.kt",
+    "protected:data/sync/src/main/kotlin/com/verto/app/data/sync/RealtimeManager.kt",
+    "protected:core/common/src/main/kotlin/com/verto/app/utils/FeatureFlags.kt",
+    "protected:data/preferences/src/main/kotlin/com/verto/app/utils/SyncPreferencesStore.kt",
+    "no_79_80_migration",
+    "room_version_source_79",
+    "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncClients.kt",
+    "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncInvoiceHeaders.kt",
+    "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncInvoicePayments.kt",
+    "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncMisc.kt",
+    "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncFinancialEvents.kt",
+    "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncPurchaseCycle.kt",
+    "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncNotifications.kt",
+    "server_tree_unchanged",
+    "gradle_files_unchanged",
+    "origin_mutation_not_ack_authority",
+    "owner310_fail_closed",
+    "semantic_duplicate_fingerprint_check"
+  ],
+  "handoff309Authorized": false,
+  "handoff310Authorized": false,
+  "handoff311Authorized": false,
+  "checks": [
+    {
+      "name": "input_zip_sha",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "input_archive_entries",
+      "status": "PASS",
+      "detail": "1712"
+    },
+    {
+      "name": "input_production_kotlin_count",
+      "status": "PASS",
+      "detail": "1162"
+    },
+    {
+      "name": "room_version_79",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "v307_handoff308",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "v307_blockers_empty",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "inherited_exception_count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "inherited_exception_names",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "inherited_exceptions_not_worsened",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "new308_waivers_zero",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "protected:app/schemas/com.verto.app.data.local.AppDatabase/79.json",
+      "status": "PASS",
+      "detail": "ab4a24d0698914a852bf1c52498174adcd32999006a1011b6a80a438395031da"
+    },
+    {
+      "name": "protected:data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt",
+      "status": "FAIL",
+      "detail": "565c4d03f8757f4544bf829383c93ceb7f61aefe33c71638427842f2610b9a63"
+    },
+    {
+      "name": "protected:data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt",
+      "status": "FAIL",
+      "detail": "dd7b159e8204254dc79e5ac8b5fe3ae431a6480fbe625e4a792782e04b7b38ea"
+    },
+    {
+      "name": "protected:data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations78To79.kt",
+      "status": "PASS",
+      "detail": "de06a7530d58ce45b6f0149f6e997c615003bb34fea6bfb89d1f6b0dc7e0e11e"
+    },
+    {
+      "name": "protected:data/database/src/main/kotlin/com/verto/app/data/local/entity/UnifiedSyncEntities.kt",
+      "status": "FAIL",
+      "detail": "3f0e9df13932677f73465697c2c21455886e63b447cd4e37d7c05343a0fffdd0"
+    },
+    {
+      "name": "protected:data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncContract.kt",
+      "status": "FAIL",
+      "detail": "e908993c61ffb07acb9a92cd10f16b9eec366c398a20931e1a5b6d97a5c7053c"
+    },
+    {
+      "name": "protected:data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncAggregateRegistry.kt",
+      "status": "FAIL",
+      "detail": "0c4ba3378cb7872cd3300acf1e7fc7684b66956d439c243ecee453a2e7c353d1"
+    },
+    {
+      "name": "protected:data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorker.kt",
+      "status": "FAIL",
+      "detail": "358d9538a5786a6268c9462ce4584e00061d65a2d2b4f4dc796be2989f578ffc"
+    },
+    {
+      "name": "protected:data/sync/src/main/kotlin/com/verto/app/data/sync/RealtimeManager.kt",
+      "status": "FAIL",
+      "detail": "52cf6fc58090b3627c5a8ba492934d84302310db4f95e8044cba8a6520419710"
+    },
+    {
+      "name": "protected:core/common/src/main/kotlin/com/verto/app/utils/FeatureFlags.kt",
+      "status": "FAIL",
+      "detail": "e531848ad8f1fc6bbed06bc37b72cccab8e2912f54ce88526818c3eca9f1e66c"
+    },
+    {
+      "name": "protected:data/preferences/src/main/kotlin/com/verto/app/utils/SyncPreferencesStore.kt",
+      "status": "FAIL",
+      "detail": "a2cd40d37bdd5e5544c96bef6d1688057c91616b3cc21720dab0d5bc7bd94a3f"
+    },
+    {
+      "name": "protected:supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql",
+      "status": "PASS",
+      "detail": "a2daf28b3a05b35907267bfc766fc6919ba5c28613854c0c0d68ee186313e908"
+    },
+    {
+      "name": "no_79_80_migration",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "room_version_source_79",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncCash.kt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncClients.kt",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncClientCredits.kt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncInventory.kt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncInvoiceHeaders.kt",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncInvoiceLines.kt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncInvoicePayments.kt",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncMisc.kt",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncFinancialEvents.kt",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncInventoryLedgerV2.kt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncPurchaseCycle.kt",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncNotifications.kt",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "legacy_reader_unchanged:data/network/src/main/kotlin/com/verto/app/data/sync/SyncLogisticsV2.kt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "server_tree_unchanged",
+      "status": "FAIL",
+      "detail": "31 files"
+    },
+    {
+      "name": "gradle_files_unchanged",
+      "status": "FAIL",
+      "detail": "39 files"
+    },
+    {
+      "name": "coverage_34",
+      "status": "PASS",
+      "detail": "34"
+    },
+    {
+      "name": "coverage_unique",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "owner307_count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "notification_count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "shadow_ready_17",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "owner310_exact_17",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "no_unclassified",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "legacy_pull_function_count",
+      "status": "PASS",
+      "detail": "26"
+    },
+    {
+      "name": "rpc_resolve_scope_exact",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "rpc_pull_exact",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "no_stale_rpc_new_remote",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "page_limit_1_200",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "opaque_string_cursor",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "unsafe_manager_bridge_unreachable",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "runtime_v2_feature_flag_off",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "no_timestamp_or_numeric_v2_authority",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "no_device_clock_domain_ordering",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "atomic_page_transaction_structure",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "commit_method_found",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "inbox_domain_applied_cursor_same_method",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "no_network_inside_room_transaction",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "strict_revision_order_duplicate_reject",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "global_scope_only",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "tenant_scope_fail_closed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "pending_local_guards",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "origin_mutation_not_ack_authority",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "owner310_fail_closed",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "notification_no_absence_delete",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "notification_explicit_delete",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "delete_policy_adapters",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "remote_apply_no_enqueue",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "received_at_excluded_from_semantic_equality",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "semantic_duplicate_fingerprint_check",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "canonical_json_recursive_key_order",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "received_at_not_fingerprint",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "cursor_token_not_revision_arithmetic",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "bootstrap_recovery_boundary",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "bounded_invocation_budget",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "all_17_applier_symbols",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "fixture_harness_exit",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "name": "fixtures_100_zero_fail",
+      "status": "PASS",
+      "detail": "137"
+    }
+  ],
+  "staticVerifierNormalizedHash": "739e1a84ed5000410f87753819eb4ee2fb2ad56d6fde1a42023f7c0f56fe7b65"
+}

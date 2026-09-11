@@ -1,0 +1,72 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.expenses.application.ExpensesGateway"
+    ],
+    "external_dependencies": [
+      "implementation:libs.androidx.activity.compose",
+      "implementation:libs.androidx.compose.foundation",
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app"
+    ],
+    "internal_packages": [
+      "com.verto.app.feature.expenses.application",
+      "com.verto.app.feature.expenses.application.quickaction",
+      "com.verto.app.feature.expenses.di",
+      "com.verto.app.ui.screens.expenses"
+    ],
+    "outgoing_dependencies": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":feature:dashboard:api"
+    ],
+    "public_api": [
+      "com.verto.app.feature.expenses.application.*",
+      "com.verto.app.feature.expenses.application.AddExpenseCommand",
+      "com.verto.app.feature.expenses.application.ExpensesGateway",
+      "com.verto.app.feature.expenses.bridge.ExpensesOperationsAdapter"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:expenses",
+    "name": "feature/expenses",
+    "owner": ":feature:expenses",
+    "purpose": "Production capability implemented by :feature:expenses; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [
+      ":feature:dashboard:api"
+    ],
+    "legacy_cross_feature_debt": []
+  },
+  "provides_contracts": ["expenses.gateway.v1"],
+  "consumes_contracts": ["dashboard.home-search.v1"],
+  "deprecated_contracts": [],
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "35fde546582f1a17efcfb26e5eaa4070aeb9da620d53b88d3d0e9c87f91bc4d9",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v321"
+  }
+}

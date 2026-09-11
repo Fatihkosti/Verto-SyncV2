@@ -1,0 +1,13 @@
+{
+  "input_archive": "Verto-425-B09-WIP_NOT_RELEASE_READY(1).zip",
+  "input_archive_sha256": "33c67ceab661921e0fb0e64e3f3025a195894fba36f503fe4ee0ccd0ee2f122b",
+  "input_checkpoint": "B09-V01",
+  "input_product_tree_sha256": "65aacd59b1c71ae3b5f8353841c999ab536770dd13f818147bf3dd84632344c9",
+  "product_manifest_entries": 1851,
+  "manifest_mismatches": [],
+  "contract_sha256": "34963f943ecc8d359711aaf1f2c4fc3805085dd61c988107edd2c2875a7609e0",
+  "contract_embedded_matches": true,
+  "source": "user-uploaded tree only",
+  "selected_session": "B09-V02",
+  "reason": "NEXT_ACTION explicitly resumes B09; B10 dependency gate not closed"
+}

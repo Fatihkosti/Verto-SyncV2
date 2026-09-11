@@ -1,0 +1,18 @@
+
+PASS policy: admissionIncludesWalIndexAndRollbackReserve
+PASS policy: canonicalGroupLimitIsInclusive
+PASS policy: fetchLimitStopsAtQuotaAndRemainsConservative
+PASS policy: firstGroupExceptionDoesNotResetAtNextPage
+PASS policy: firstGroupMayBe9991000Or1001WithoutSplitting
+PASS policy: identicalReplayConsumesNoQuotaEvenWhenDiskIsFull
+PASS policy: independentAppliedYDoesNotJumpOverWaitingX
+PASS policy: invalidCoverageAndOverlappingGroupsFailClosed
+PASS policy: lastCompleteGroupNotLargestObservedRevisionDefinesCheckpoint
+PASS policy: laterGroupMustFitAndIntegerOverflowCannotGrantAdmission
+PASS policy: scopeCanCrossQuotaOnlyWhileBeforeQuotaAndByOneLegalGroup
+PASS policy: settlingXReleasesTheCoveredAppliedPrefixIncludingScopedRevisionGaps
+12 real policy test methods executed. JUnit assertion-only shim; no Android/Room/JSON claim.
+
+PASS: separate-module Kotlin signature compile: actual network DTO/registry, actual Room entities/DAO/migration,
+actual receive/apply/checkpoint/echo/wake/storage/engine/mapper + 12 validator and 14 Room-test signatures.
+Collaborators are EXPLICIT signature stubs. JSON/Room/Hilt/Gradle execution NOT_RUN. G-B10 remains BLOCKED.

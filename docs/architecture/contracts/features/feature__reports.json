@@ -1,0 +1,125 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.reports.application.ReportsOperationsGateway",
+      "com.verto.app.feature.reports.application.port.ReportsAccessPort",
+      "com.verto.app.feature.reports.application.port.ReportsDocumentExportPort",
+      "com.verto.app.feature.reports.application.port.ReportsLogisticsSource",
+      "com.verto.app.feature.reports.bridge.DefaultReportsOperationsGateway"
+    ],
+    "external_dependencies": [
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core",
+      "implementation:libs.vico.compose",
+      "implementation:libs.vico.compose.m3",
+      "testImplementation:libs.junit"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app",
+      ":data:operations"
+    ],
+    "internal_packages": [
+      "com.verto.app.feature.reports.application",
+      "com.verto.app.feature.reports.application.analytics",
+      "com.verto.app.feature.reports.application.model",
+      "com.verto.app.feature.reports.application.port",
+      "com.verto.app.feature.reports.domain.model",
+      "com.verto.app.feature.reports.presentation",
+      "com.verto.app.feature.reports.presentation.analytics",
+      "com.verto.app.feature.reports.presentation.bottomsheets",
+      "com.verto.app.feature.reports.presentation.components.core",
+      "com.verto.app.feature.reports.presentation.components.financial",
+      "com.verto.app.feature.reports.presentation.components.operations",
+      "com.verto.app.feature.reports.presentation.components.sales",
+      "com.verto.app.feature.reports.presentation.export",
+      "com.verto.app.feature.reports.presentation.insights",
+      "com.verto.app.feature.reports.presentation.tabs"
+    ],
+    "outgoing_dependencies": [
+      ":core:audit",
+      ":core:common",
+      ":core:designsystem",
+      ":core:export",
+      ":core:session"
+    ],
+    "public_api": [
+      "com.verto.app.feature.reports.application.ReportsOperationsGateway",
+      "com.verto.app.feature.reports.application.ReportsReadModelQuery",
+      "com.verto.app.feature.reports.application.ReportsReadRequest",
+      "com.verto.app.feature.reports.application.analytics.ClvCalculator",
+      "com.verto.app.feature.reports.application.analytics.CostAllocationEngine",
+      "com.verto.app.feature.reports.application.analytics.ForecastEngine",
+      "com.verto.app.feature.reports.application.analytics.SmartInsightsEngine",
+      "com.verto.app.feature.reports.application.model.*",
+      "com.verto.app.feature.reports.application.model.DataQualityIssue",
+      "com.verto.app.feature.reports.application.model.FinancialDiagnosticsData",
+      "com.verto.app.feature.reports.application.model.InternationalSupplierStatementRow",
+      "com.verto.app.feature.reports.application.model.OperationalAlertAmount",
+      "com.verto.app.feature.reports.application.model.OperationalAlertSeverity",
+      "com.verto.app.feature.reports.application.model.OperationalAlertType",
+      "com.verto.app.feature.reports.application.model.OperationalAnalyticsAlert",
+      "com.verto.app.feature.reports.application.model.PurchasePriceVarianceData",
+      "com.verto.app.feature.reports.application.model.ReconciliationCheck",
+      "com.verto.app.feature.reports.application.model.ReportCategoryExportRow",
+      "com.verto.app.feature.reports.application.model.ReportItemExportRow",
+      "com.verto.app.feature.reports.application.model.ReportRfmMetrics",
+      "com.verto.app.feature.reports.application.model.ReportRfmSegment",
+      "com.verto.app.feature.reports.application.model.SupplierFxVarianceData",
+      "com.verto.app.feature.reports.application.port.ReportsAccessPort",
+      "com.verto.app.feature.reports.application.port.ReportsDocumentExportPort",
+      "com.verto.app.feature.reports.application.port.ReportsLogisticsSource",
+      "com.verto.app.feature.reports.application.port.ReportsShipmentCostSnapshot",
+      "com.verto.app.feature.reports.application.port.ReportsShipmentSnapshot",
+      "com.verto.app.feature.reports.bridge.DefaultReportsOperationsGateway",
+      "com.verto.app.feature.reports.bridge.DefaultReportsReadModelQuery",
+      "com.verto.app.feature.reports.domain.model.CloseReportShiftCommand",
+      "com.verto.app.feature.reports.domain.model.DeleteReportBudgetCommand",
+      "com.verto.app.feature.reports.domain.model.ReportBudget",
+      "com.verto.app.feature.reports.domain.model.ReportBudgetPeriod",
+      "com.verto.app.feature.reports.domain.model.ReportBudgetType",
+      "com.verto.app.feature.reports.domain.model.ReportCashDenomination",
+      "com.verto.app.feature.reports.domain.model.ReportCashSession",
+      "com.verto.app.feature.reports.domain.model.ReportCashStatus",
+      "com.verto.app.feature.reports.domain.model.SaveReportBudgetCommand",
+      "com.verto.app.feature.reports.domain.model.StartReportShiftCommand",
+      "com.verto.app.feature.reports.infrastructure.analytics.RfmCalculator",
+      "com.verto.app.feature.reports.presentation.ReportsScreen"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:reports",
+    "name": "feature/reports",
+    "owner": ":feature:reports",
+    "purpose": "Production capability implemented by :feature:reports; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [],
+    "legacy_cross_feature_debt": []
+  },
+  "provides_contracts": ["reports.operations.v1"],
+  "consumes_contracts": [],
+  "deprecated_contracts": [],
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "3d5d57b4c6d61dd6ee73a11c2bc7c3a0daea47e11f944950a31cd781288f6e0c",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v327"
+  }
+}

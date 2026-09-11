@@ -1,0 +1,117 @@
+{
+  "architecture": {
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "server SQL/API redesign",
+      "sync protocol semantic change",
+      "UI/navigation redesign",
+      "plugin framework",
+      "service locator",
+      "unadmitted production external Gradle dependency"
+    ],
+    "invariants": [
+      "expense financial authority is amount_minor Long",
+      "expense plus cash plus outbox commits atomically",
+      "void refund is idempotent and semantically distinct from update refund",
+      "linked expense plus landed cost local effects share one top-level Room transaction",
+      "landed-cost allocation conserves exact minor units or fails closed",
+      "manual cash permission denial is surfaced as failure",
+      "expense month range is start-inclusive and next-month-exclusive",
+      "Room migration 81 to 82 preserves expense identity and lifecycle",
+      "existing architecture dependency persistence compatibility documentation and testability gates are not weakened"
+    ]
+  },
+  "session": {
+    "id": 334,
+    "input_sha256": "0c7fe57077b11418bfbfcc4e005fc6ca40d30ee7f7091097ba9c0a767e0748c5",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_334_INPUT_SNAPSHOT.json",
+    "scope": "CASH AND EXPENSES FINANCIAL INTEGRITY AND ATOMICITY",
+    "allowed_modules": [
+      ":app",
+      ":core:common",
+      ":data:database",
+      ":data:operations",
+      ":feature:expenses",
+      ":feature:inventory"
+    ],
+    "allowed_files": [
+      "SESSION_334_FINAL.md",
+      "app/src/main/kotlin/com/verto/app/feature/expenses/bridge/ExpensesOperationsAdapter.kt",
+      "core/common/src/test/kotlin/com/verto/app/money/ExpenseMoney334Test.kt",
+      "data/database/src/androidTest/kotlin/com/verto/app/data/local/ExpenseMigration334Test.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations81To82.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/ExpenseDao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/InvoicePaymentEntities.kt",
+      "data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogV306Test.kt",
+      "data/operations/src/main/kotlin/com/verto/app/data/repository/ExpenseRepository.kt",
+      "data/operations/src/main/kotlin/com/verto/app/utils/CashRegisterManager.kt",
+      "data/operations/src/test/kotlin/com/verto/app/data/repository/ExpenseAtomicity334Test.kt",
+      "docs/DOCUMENTATION_INVENTORY.md",
+      "docs/architecture/contracts/sessions/session-334.json",
+      "docs/architecture/overview.md",
+      "docs/architecture/verification/SESSION_334_INPUT_SNAPSHOT.json",
+      "docs/finance/SESSION_334_FINANCIAL_INTEGRITY.md",
+      "docs/finance/SESSION_334_INVARIANTS.json",
+      "docs/finance/SESSION_334_MIGRATION_81_82.md",
+      "docs/finance/SESSION_334_TRANSACTION_MATRIX.md",
+      "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+      "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesViewModel.kt",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/data/RoomInventoryLandedCostAdjustmentAdapter.kt",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/domain/port/InventoryLandedCostAdjustmentPort.kt",
+      "tools/persistence/verto_persistence_guard.py",
+      "tools/quality/verto_finance_behavior_v334.py"
+    ],
+    "forbidden_files": [
+      "supabase/**",
+      "functions/**",
+      "sql/**",
+      "settings.gradle.kts",
+      "build.gradle.kts",
+      "gradle/libs.versions.toml"
+    ],
+    "scope_amendments": [
+      {
+        "id": "334-A1",
+        "reason": "The permanent v326 migration-schema guard hard-coded schema 81 and could not admit the contract-required 81->82 migration. Generalize the guard without weakening no-change checks: a version advance must have contiguous migration source, catalog registration, migration test, and a genuine Room schema export.",
+        "production_scope_changed": false
+      }
+    ]
+  },
+  "verification": {
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "dependency",
+      "contract-compatibility",
+      "feature-scalability-admission",
+      "data-ownership",
+      "persistence-boundary",
+      "transaction-contract",
+      "migration-schema",
+      "persistence-ratchet",
+      "technical-debt-ratchet",
+      "differential-quality",
+      "kotlin-quality",
+      "maintainability-testability",
+      "behavioral-mutations",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ],
+    "required_tests": [
+      "expense fixed-point boundaries",
+      "expense transaction atomicity",
+      "linked expense rollback including middle item",
+      "permission fail-closed behavior",
+      "calendar month boundaries",
+      "Room 81 to 82 migration",
+      "Session 334 behavioral mutation evidence"
+    ]
+  }
+}

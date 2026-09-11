@@ -1,0 +1,8 @@
+{
+  "version": 135,
+  "source": "Verto-v134-source-clean.zip",
+  "sha256": {
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/ReportsViewModel.kt": "a65abe5c3a511bf444dbe909065408a4ff595c25eae44847328f2624bd68d172",
+    "app/src/main/kotlin/com/verto/app/feature/reports/bridge/ReportsAppBridgeModule.kt": "1e8ad4f44e03469176da47478d247e180345a272340e1a9cfd28cb06f7b7a566"
+  }
+}

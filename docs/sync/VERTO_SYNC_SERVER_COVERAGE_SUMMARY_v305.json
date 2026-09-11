@@ -1,0 +1,35 @@
+{
+  "aggregateCount": 34,
+  "mappingRows": 89,
+  "presence": {
+    "PRESENT_IN_EXACT_DUMP": 65,
+    "ABSENT_IN_EXACT_DUMP": 24
+  },
+  "status": {
+    "DEFERRED_WITH_EXPLICIT_OWNER": 46,
+    "SERVER_ONLY_DOCUMENTED": 2,
+    "EXISTING_STRONGER_STREAM": 17,
+    "INERT_UNTIL_OWNER_SESSION": 24
+  },
+  "permissionLiteralsAffectingCurrentServer": [
+    "cash_adjust",
+    "clients_add_payment",
+    "clients_delete",
+    "clients_edit",
+    "clients_view",
+    "commission_credit",
+    "commission_manage",
+    "expenses_create",
+    "expenses_delete",
+    "expenses_view",
+    "inventory_edit",
+    "inventory_view",
+    "payments_reverse",
+    "sales_create",
+    "sales_delete",
+    "sales_edit",
+    "sales_view",
+    "shipments_manage",
+    "shipments_view"
+  ]
+}

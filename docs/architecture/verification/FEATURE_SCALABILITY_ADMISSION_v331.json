@@ -1,0 +1,591 @@
+{
+  "failures": [],
+  "features": [
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 0,
+        "external_dependencies": 10,
+        "feature_id": "auth",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 477,
+        "module": ":feature:auth",
+        "risk": "HIGH",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 0,
+        "transitive_feature_dependencies": 0
+      },
+      "feature_id": "auth",
+      "metrics": {
+        "direct_feature_dependencies": 0,
+        "direct_feature_dependency_ids": [],
+        "external_dependencies": 10,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": true,
+        "max_file_loc": 477,
+        "production_files": 19,
+        "stable_contracts_provided": 0,
+        "test_files": 1
+      },
+      "module": ":feature:auth",
+      "risk": "HIGH"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 0,
+        "external_dependencies": 10,
+        "feature_id": "commission",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 462,
+        "module": ":feature:commission",
+        "risk": "LOW",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "feature_id": "commission",
+      "metrics": {
+        "direct_feature_dependencies": 0,
+        "direct_feature_dependency_ids": [],
+        "external_dependencies": 10,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": false,
+        "max_file_loc": 462,
+        "production_files": 14,
+        "stable_contracts_provided": 1,
+        "test_files": 0
+      },
+      "module": ":feature:commission",
+      "risk": "LOW"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 1,
+        "external_dependencies": 13,
+        "feature_id": "dashboard",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 469,
+        "module": ":feature:dashboard",
+        "risk": "LOW",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 0,
+        "transitive_feature_dependencies": 1
+      },
+      "feature_id": "dashboard",
+      "metrics": {
+        "direct_feature_dependencies": 1,
+        "direct_feature_dependency_ids": [
+          ":feature:dashboard:api"
+        ],
+        "external_dependencies": 13,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": false,
+        "max_file_loc": 469,
+        "production_files": 33,
+        "stable_contracts_provided": 0,
+        "test_files": 0
+      },
+      "module": ":feature:dashboard",
+      "risk": "LOW"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 0,
+        "external_dependencies": 1,
+        "feature_id": "dashboard-api",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 424,
+        "module": ":feature:dashboard:api",
+        "risk": "LOW",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "feature_id": "dashboard-api",
+      "metrics": {
+        "direct_feature_dependencies": 0,
+        "direct_feature_dependency_ids": [],
+        "external_dependencies": 1,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": false,
+        "max_file_loc": 424,
+        "production_files": 3,
+        "stable_contracts_provided": 1,
+        "test_files": 0
+      },
+      "module": ":feature:dashboard:api",
+      "risk": "LOW"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 1,
+        "external_dependencies": 10,
+        "feature_id": "expenses",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 321,
+        "module": ":feature:expenses",
+        "risk": "MEDIUM",
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "feature_id": "expenses",
+      "metrics": {
+        "direct_feature_dependencies": 1,
+        "direct_feature_dependency_ids": [
+          ":feature:dashboard:api"
+        ],
+        "external_dependencies": 10,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": false,
+        "max_file_loc": 321,
+        "production_files": 7,
+        "stable_contracts_provided": 1,
+        "test_files": 0
+      },
+      "module": ":feature:expenses",
+      "risk": "MEDIUM"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 1,
+        "external_dependencies": 16,
+        "feature_id": "integration-optimal",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 484,
+        "module": ":feature:integration:optimal",
+        "risk": "HIGH",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "feature_id": "integration-optimal",
+      "metrics": {
+        "direct_feature_dependencies": 1,
+        "direct_feature_dependency_ids": [
+          ":feature:dashboard:api"
+        ],
+        "external_dependencies": 16,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": true,
+        "max_file_loc": 484,
+        "production_files": 115,
+        "stable_contracts_provided": 1,
+        "test_files": 1
+      },
+      "module": ":feature:integration:optimal",
+      "risk": "HIGH"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 1,
+        "external_dependencies": 16,
+        "feature_id": "inventory",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 435,
+        "module": ":feature:inventory",
+        "risk": "CRITICAL",
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 0,
+        "transitive_feature_dependencies": 1
+      },
+      "feature_id": "inventory",
+      "metrics": {
+        "direct_feature_dependencies": 1,
+        "direct_feature_dependency_ids": [
+          ":feature:dashboard:api"
+        ],
+        "external_dependencies": 16,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": true,
+        "max_file_loc": 435,
+        "production_files": 63,
+        "stable_contracts_provided": 0,
+        "test_files": 4
+      },
+      "module": ":feature:inventory",
+      "risk": "CRITICAL"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 1,
+        "external_dependencies": 13,
+        "feature_id": "invoice",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 546,
+        "module": ":feature:invoice",
+        "risk": "CRITICAL",
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "feature_id": "invoice",
+      "metrics": {
+        "direct_feature_dependencies": 1,
+        "direct_feature_dependency_ids": [
+          ":feature:dashboard:api"
+        ],
+        "external_dependencies": 13,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": true,
+        "max_file_loc": 546,
+        "production_files": 54,
+        "stable_contracts_provided": 1,
+        "test_files": 6
+      },
+      "module": ":feature:invoice",
+      "risk": "CRITICAL"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 0,
+        "external_dependencies": 9,
+        "feature_id": "management",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 192,
+        "module": ":feature:management",
+        "risk": "LOW",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 0,
+        "transitive_feature_dependencies": 0
+      },
+      "feature_id": "management",
+      "metrics": {
+        "direct_feature_dependencies": 0,
+        "direct_feature_dependency_ids": [],
+        "external_dependencies": 9,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": false,
+        "max_file_loc": 192,
+        "production_files": 14,
+        "stable_contracts_provided": 0,
+        "test_files": 0
+      },
+      "module": ":feature:management",
+      "risk": "LOW"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 0,
+        "external_dependencies": 11,
+        "feature_id": "messages",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 467,
+        "module": ":feature:messages",
+        "risk": "MEDIUM",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "feature_id": "messages",
+      "metrics": {
+        "direct_feature_dependencies": 0,
+        "direct_feature_dependency_ids": [],
+        "external_dependencies": 11,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": false,
+        "max_file_loc": 467,
+        "production_files": 10,
+        "stable_contracts_provided": 1,
+        "test_files": 0
+      },
+      "module": ":feature:messages",
+      "risk": "MEDIUM"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 0,
+        "external_dependencies": 12,
+        "feature_id": "notifications",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 175,
+        "module": ":feature:notifications",
+        "risk": "MEDIUM",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "feature_id": "notifications",
+      "metrics": {
+        "direct_feature_dependencies": 0,
+        "direct_feature_dependency_ids": [],
+        "external_dependencies": 12,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": true,
+        "max_file_loc": 175,
+        "production_files": 5,
+        "stable_contracts_provided": 1,
+        "test_files": 1
+      },
+      "module": ":feature:notifications",
+      "risk": "MEDIUM"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 0,
+        "external_dependencies": 11,
+        "feature_id": "organization",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 503,
+        "module": ":feature:organization",
+        "risk": "MEDIUM",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "feature_id": "organization",
+      "metrics": {
+        "direct_feature_dependencies": 0,
+        "direct_feature_dependency_ids": [],
+        "external_dependencies": 11,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": false,
+        "max_file_loc": 503,
+        "production_files": 19,
+        "stable_contracts_provided": 1,
+        "test_files": 0
+      },
+      "module": ":feature:organization",
+      "risk": "MEDIUM"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 1,
+        "external_dependencies": 12,
+        "feature_id": "party",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 506,
+        "module": ":feature:party",
+        "risk": "HIGH",
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "feature_id": "party",
+      "metrics": {
+        "direct_feature_dependencies": 1,
+        "direct_feature_dependency_ids": [
+          ":feature:dashboard:api"
+        ],
+        "external_dependencies": 12,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": true,
+        "max_file_loc": 506,
+        "production_files": 71,
+        "stable_contracts_provided": 1,
+        "test_files": 3
+      },
+      "module": ":feature:party",
+      "risk": "HIGH"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 1,
+        "external_dependencies": 11,
+        "feature_id": "payment",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 487,
+        "module": ":feature:payment",
+        "risk": "CRITICAL",
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "feature_id": "payment",
+      "metrics": {
+        "direct_feature_dependencies": 1,
+        "direct_feature_dependency_ids": [
+          ":feature:dashboard:api"
+        ],
+        "external_dependencies": 11,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": true,
+        "max_file_loc": 487,
+        "production_files": 45,
+        "stable_contracts_provided": 1,
+        "test_files": 2
+      },
+      "module": ":feature:payment",
+      "risk": "CRITICAL"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 0,
+        "external_dependencies": 10,
+        "feature_id": "profile",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 187,
+        "module": ":feature:profile",
+        "risk": "LOW",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "feature_id": "profile",
+      "metrics": {
+        "direct_feature_dependencies": 0,
+        "direct_feature_dependency_ids": [],
+        "external_dependencies": 10,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": false,
+        "max_file_loc": 187,
+        "production_files": 5,
+        "stable_contracts_provided": 1,
+        "test_files": 0
+      },
+      "module": ":feature:profile",
+      "risk": "LOW"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 0,
+        "external_dependencies": 11,
+        "feature_id": "reports",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 340,
+        "module": ":feature:reports",
+        "risk": "MEDIUM",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "feature_id": "reports",
+      "metrics": {
+        "direct_feature_dependencies": 0,
+        "direct_feature_dependency_ids": [],
+        "external_dependencies": 11,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": true,
+        "max_file_loc": 340,
+        "production_files": 64,
+        "stable_contracts_provided": 1,
+        "test_files": 1
+      },
+      "module": ":feature:reports",
+      "risk": "MEDIUM"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 0,
+        "external_dependencies": 12,
+        "feature_id": "settings",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 397,
+        "module": ":feature:settings",
+        "risk": "MEDIUM",
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "feature_id": "settings",
+      "metrics": {
+        "direct_feature_dependencies": 0,
+        "direct_feature_dependency_ids": [],
+        "external_dependencies": 12,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": true,
+        "max_file_loc": 397,
+        "production_files": 15,
+        "stable_contracts_provided": 1,
+        "test_files": 1
+      },
+      "module": ":feature:settings",
+      "risk": "MEDIUM"
+    },
+    {
+      "admission_status": "PASS",
+      "budget": {
+        "baseline_source": "v330 current manifests and source scan",
+        "budget_change_requires": "machine-readable justification and gate evidence",
+        "direct_feature_dependencies": 1,
+        "external_dependencies": 16,
+        "feature_id": "shipment",
+        "max_constructor_dependency_ratchet": 0,
+        "max_file_loc_ratchet": 657,
+        "module": ":feature:shipment",
+        "risk": "CRITICAL",
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "feature_id": "shipment",
+      "metrics": {
+        "direct_feature_dependencies": 1,
+        "direct_feature_dependency_ids": [
+          ":feature:dashboard:api"
+        ],
+        "external_dependencies": 16,
+        "foreign_persistence_accesses": 0,
+        "has_unit_or_integration_tests": true,
+        "max_file_loc": 657,
+        "production_files": 150,
+        "stable_contracts_provided": 1,
+        "test_files": 26
+      },
+      "module": ":feature:shipment",
+      "risk": "CRITICAL"
+    }
+  ],
+  "format": "verto-feature-scalability-admission-v1",
+  "metrics": {
+    "admitted_feature_entries": 18,
+    "critical_features": 4,
+    "dependency_cycles": 0,
+    "dependency_edges": 8,
+    "feature_count": 18,
+    "high_risk_contracts": 4,
+    "stable_contracts": 14,
+    "unknown_scalability_metadata": 0
+  },
+  "status": "PASS"
+}

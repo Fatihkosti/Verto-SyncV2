@@ -1,0 +1,72 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.commission.application.CommissionReportGateway"
+    ],
+    "external_dependencies": [
+      "implementation:libs.androidx.activity.compose",
+      "implementation:libs.androidx.compose.foundation",
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app"
+    ],
+    "internal_packages": [
+      "com.verto.app.feature.commission.application",
+      "com.verto.app.ui.screens.commission",
+      "com.verto.app.ui.screens.commissionreport"
+    ],
+    "outgoing_dependencies": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:export"
+    ],
+    "public_api": [
+      "com.verto.app.feature.commission.application.*",
+      "com.verto.app.feature.commission.application.CommissionControllerFactory",
+      "com.verto.app.feature.commission.application.CommissionReportGateway",
+      "com.verto.app.feature.commission.application.MarketerCommissionReport",
+      "com.verto.app.feature.commission.application.MarketerCommissionRow",
+      "com.verto.app.feature.commission.bridge.CommissionReportGatewayAdapter",
+      "com.verto.app.feature.commission.bridge.DefaultCommissionControllerFactory"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:commission",
+    "name": "feature/commission",
+    "owner": ":feature:commission",
+    "purpose": "Production capability implemented by :feature:commission; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [],
+    "legacy_cross_feature_debt": []
+  },
+  "provides_contracts": ["commission.report.v1"],
+  "consumes_contracts": [],
+  "deprecated_contracts": [],
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "51a69fe65e7862dbcbc9cb04547333b2f0c1da1fc7a08bff94b6582dc53192c3",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v318"
+  }
+}

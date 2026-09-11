@@ -1,0 +1,65 @@
+{
+  "session": 305,
+  "inputZipSha256": "68088f78fbd47033b0a4acdab23804c06e68d82c7ce8ef34dd49f4c1aafd4b1e",
+  "inputArchiveEntries": 2535,
+  "serverDumpSha256": "fb83bf253fefe7f7b684a41dc5df6e06b0aa933a2c13e26cb835842e1c7f9ea8",
+  "roomVersion": 77,
+  "productionKotlinCount": 1155,
+  "productionKotlinTreeHash": "8a6866f613bf0205789ccb643872bb2adfc7efa9f230c2621d3ccfb48b6a8680",
+  "gradleCount": 41,
+  "gradleTreeHash": "1473b995aba6bb72ad73070f6f84d192cce2fefc66212c2650b2830cd04dacf2",
+  "historicalSqlCount": 32,
+  "historicalSqlTreeHash": "57f42447aaf4cea1ed914599925160ccbce30923da7653be80768f2facdaf5e6",
+  "protected": {
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt": "48da86c2e5e558eddaf6b07f89f6474013ddc66a85a132e8a01bf8e64afae233",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorker.kt": "16eab4a5533bf791e860281c08c142c2fa8d0f618471a1b54b7189f2f6c03a43",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/RealtimeManager.kt": "f5671b96b17c3f562391f97e7c9562f83c246f08d5f4921186ba4282a78270b6",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorkScope.kt": "e9f7e0a050bf16995c82d1c9177c4656af2ad0fb3b4e9f859181ba59d2374697",
+    "data/network/src/main/kotlin/com/verto/app/data/sync/SyncProtocolV2.kt": "aa52ce57139a4cee46e9fe3a702c518bb9c8708625480e33cbd05e7031608412",
+    "data/network/src/main/kotlin/com/verto/app/data/sync/SyncProtocolV2Remote.kt": "48046bca02b768efc4d889bae5ebae0968ae3d8ffee3bde4ff758bf6c3d6f94f",
+    "data/network/src/main/kotlin/com/verto/app/data/sync/PartySyncV2Contract.kt": "ac54d44bf1afe28b17956085a0dda2508a614d72169fe246c7e5e010263d6f3b",
+    "data/network/src/main/kotlin/com/verto/app/data/sync/SyncRuntime.kt": "98f14f00426bb51e0efd406786c9089709da0c37fc66a33c789d177e6a0b22b1",
+    "core/common/src/main/kotlin/com/verto/app/utils/FeatureFlags.kt": "ad159d5e9f91e406127a5220c4e6729a51f659577ea4e673f9cce98f0de57203",
+    "data/preferences/src/main/kotlin/com/verto/app/utils/SyncPreferencesStore.kt": "3cd5bb3b019e094ee4209860bd3796620477861b55cd5aac8c54140e32234f48"
+  },
+  "budgets": {
+    "defaultPullPageChanges": 100,
+    "maxPullPageChanges": 200,
+    "maxPullPageBytes": 1048576,
+    "maxTransactionGroupBytes": 2097152,
+    "maxMutationPayloadBytes": 524288,
+    "bootstrapSessionTtlSeconds": 1800,
+    "bootstrapPageMaxRows": 200,
+    "bootstrapPageMaxBytes": 1048576,
+    "supportedOfflineWindowDays": 90,
+    "supportedOldClientWindowDays": 30,
+    "retentionSafetyMarginDays": 30,
+    "changeLogRetentionDays": 120,
+    "tombstoneRetentionDays": 120,
+    "receiptRetentionDays": 180,
+    "productionPruning": false
+  },
+  "revision2Absent": {
+    "INVENTORY_COST_REVISION": [
+      "inventory_apply_cost_revisions_v2",
+      "inventory_pull_cost_revisions_v2"
+    ],
+    "INVENTORY_ITEM": [
+      "archive_inventory_item_v2"
+    ],
+    "INVENTORY_MOVEMENT": [
+      "inventory_apply_commands_v2",
+      "inventory_pull_movements_v2",
+      "inventory_prepare_reconciliation_batch_v2"
+    ],
+    "INVOICE": [
+      "financial_sync_apply_event_v1",
+      "financial_sync_pull_events_v1"
+    ],
+    "PAYMENT": [
+      "payment_allocations",
+      "realized_fx_events",
+      "financial_sync_apply_event_v1"
+    ]
+  }
+}

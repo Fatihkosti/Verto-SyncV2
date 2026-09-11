@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="legacy_ui_eace596bb652">99+</string>
+
+    <string name="ds_40981bc8679a">اختر الخدمة التي تريد إدارتها</string>
+    <string name="ds_4b20c54bf31d">إدارة العمولات</string>
+    <string name="ds_4e4171ec12a8">الخدمات والتكاملات</string>
+    <string name="ds_6c6f10844989">لا توجد خدمات إدارية متاحة</string>
+    <string name="ds_7f080fc4f5c1">المسوقون والورش</string>
+    <string name="ds_860b0b533067">سيتم تفعيل هذا القسم في الجلسة المخصصة له</string>
+    <string name="ds_b95f941f9fe1">الإدارة</string>
+    <string name="ds_bdda0c5b4a61">بنزين</string>
+    <string name="ds_c2c78c63c043">إدارة قناة المسوقين والورش</string>
+</resources>

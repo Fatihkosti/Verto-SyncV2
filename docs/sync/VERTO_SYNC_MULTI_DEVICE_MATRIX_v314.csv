@@ -1,0 +1,8 @@
+scenario_id,aggregate_scope,device_a_action,device_b_action,expected_resolution,model_evidence,runtime_required_for_final
+MULTI_CLIENT_EDIT,PARTY_IDENTITY,edit base v0,edit base v0,explicit optimistic conflict then convergence,PASS_MODEL,true
+MULTI_DELETE_EDIT,PARTY_IDENTITY,delete/versioned tombstone,edit stale base,registry delete/conflict policy; no timestamp authority,PASS_MODEL,true
+MULTI_LONG_OFFLINE,ALL,offline + pending intent,online writes,trusted bootstrap/recovery preserves pending mutation identity,PASS_MODEL,true
+MULTI_INVOICE_PAYMENT,INVOICE/PAYMENT,invoice semantic command,payment delayed/retried,dependency/precondition + exactly-once financial effect,PASS_MODEL,true
+MULTI_INVENTORY,INVENTORY_MOVEMENT,stock movement,concurrent stock movement,immutable movement identities + reconciliation,PASS_MODEL,true
+MULTI_CASH_EXPENSE,CASH_MOVEMENT/EXPENSE,cash/expense command,retry same command,no LWW; effect once,PASS_MODEL,true
+MULTI_SHIPMENT,SHIPMENT,state transition,late stale transition,server state-machine rejects/regards stale transition,PASS_MODEL,true

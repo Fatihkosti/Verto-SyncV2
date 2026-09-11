@@ -1,0 +1,12 @@
+{
+  "checkpoint": "B13-V02",
+  "product_code_changed": false,
+  "b13_static": "PASS_48_OF_48",
+  "b13_sqlite": "PASS",
+  "regressions": "PASS_LOCAL_PRECURSORS",
+  "gradle_room_android": "BLOCKED_ENVIRONMENT",
+  "b08_server_seal": "BLOCKED_NOT_PROVEN",
+  "g_b13": "BLOCKED",
+  "b14_started": false,
+  "live_server_actions": "NONE"
+}

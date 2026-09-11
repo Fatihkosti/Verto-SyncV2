@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="expenses_ds_0380431d559d">البيان (مثال: شحن بضاعة، نثريات)</string>
+    <string name="expenses_ds_07c4c3ae426d">لا توجد حركات بعد</string>
+    <string name="expenses_ds_17f76fe31e9c">فاتورة #%1$s - </string>
+    <string name="expenses_ds_45fb4b937312">إضافة مصروف</string>
+    <string name="expenses_ds_45feb3f2c9c3">سيتم حذف هذا المصروف نهائياً</string>
+    <string name="expenses_ds_4b20c54bf31d">إدارة العمولات</string>
+    <string name="expenses_ds_4e6d12e2bec8">مصاريف هذا الشهر</string>
+    <string name="expenses_ds_6d9c3cb56058">رصيد الصندوق</string>
+    <string name="expenses_ds_6df056fbc97a">الصندوق والمصاريف</string>
+    <string name="expenses_ds_833616b578ba">لا توجد مصاريف هذا الشهر</string>
+    <string name="expenses_ds_852612b65a24">اكتب رقم الفاتورة للبحث...</string>
+    <string name="expenses_ds_8823f3af2012">بحث برقم فاتورة المشتريات (اختياري)</string>
+    <string name="expenses_ds_97bded51e8dc">حركات الصندوق</string>
+    <string name="expenses_ds_9ade70a03d81">رصيد: </string>
+    <string name="expenses_ds_c21a0b0d354d">بدون ربط بفاتورة</string>
+    <string name="expenses_ds_c78b4cc71d0d">خصم</string>
+    <string name="expenses_ds_d63732cb3135">السبب / الملاحظة</string>
+    <string name="expenses_ds_edaaeb3f2841">حذف المصروف؟</string>
+    <string name="expenses_ds_f58002349bfd">المبلغ (ج)</string>
+    <string name="expenses_ds_faffd946d457">المصاريف</string>
+
+    <!-- Session 298: owner-local hardcoded string migration. -->
+    <string name="expenses_v298_00cb6d6bbcd6" translatable="false">" ج"</string>
+    <string name="expenses_v298_1f1eda8fe97b" translatable="false">"%1$s ج"</string>
+    <string name="expenses_v298_2264ee37b709" translatable="false">"خصم يدوي"</string>
+    <string name="expenses_v298_2dfd1e87b2d8" translatable="false">"خصم من الصندوق"</string>
+    <string name="expenses_v298_2dfd1e87b2d8_2" translatable="false">"إضافة للصندوق"</string>
+    <string name="expenses_v298_44f3911755d2" translatable="false">" ج"</string>
+    <string name="expenses_v298_44f3911755d2_2" translatable="false">"+"</string>
+    <string name="expenses_v298_4b868a584d59" translatable="false">"إضافة يدوية"</string>
+    <string name="expenses_v298_552e04d88526" translatable="false">"مصروف جديد"</string>
+    <string name="expenses_v298_63148af8793f" translatable="false">" ج"</string>
+    <string name="expenses_v298_6f2777431c78" translatable="false">" ج"</string>
+    <string name="expenses_v298_734376fb84ea" translatable="false">" ج"</string>
+    <string name="expenses_v298_896003127258" translatable="false">"بيع نقدي"</string>
+    <string name="expenses_v298_aab19987ca8f" translatable="false">"دفع"</string>
+    <string name="expenses_v298_c4658f502cad" translatable="false">"مصروف"</string>
+    <string name="expenses_v298_ef188f311424" translatable="false">"شراء نقدي"</string>
+    <string name="expenses_v298_f1acf4828a3a" translatable="false">"تحصيل دفعة"</string>
+</resources>

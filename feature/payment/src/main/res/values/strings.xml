@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="payment_invoice_title">فاتورة #%1$04d</string>
+    <string name="payment_amount_with_currency">%1$s %2$s</string>
+    <string name="payment_currency_short_default">ج</string>
+    <string name="payment_currency_default">جنيه</string>
+    <string name="payment_pay_full_amount">سداد المبلغ كاملاً (%1$s %2$s)</string>
+    <string name="payment_success_full">✅ تم السداد كاملاً!</string>
+    <string name="payment_success_partial">✅ تم تسجيل الدفعة</string>
+
+    <string name="payment_ds_05af0b67f8b6">سعر البيع (اختياري)</string>
+    <string name="payment_ds_09c3eaebb559">هامش الربح</string>
+    <string name="payment_ds_0afc564d1d18">اختياري — لعميل الشركة فقط</string>
+    <string name="payment_ds_181a5cb5d713">إبحث عن اسم الصنف أو الباركود</string>
+    <string name="payment_ds_1a04184075e9">كاش 💵</string>
+    <string name="payment_ds_1efad76458c1">مبلغ مسدد مقدماً (اختياري)</string>
+    <string name="payment_ds_1fc552d0983b">لم تتم إضافة أصناف بعد</string>
+    <string name="payment_ds_20da09c47003">الهامش بعد العمولة</string>
+    <string name="payment_ds_22cf82b68b95">0.00</string>
+    <string name="payment_ds_23fbaecfd69d">حفظ في المخزون تلقائياً</string>
+    <string name="payment_ds_24186e0873cf">• تم تحديث %1$s صنف (السعر والكمية)</string>
+    <string name="payment_ds_28527bb31491">البقاء</string>
+    <string name="payment_ds_2a4bfa9d9d0e">الصنف</string>
+    <string name="payment_ds_2fa0b20ec00e">السيارة</string>
+    <string name="payment_ds_371b6485c111">اكتب اسم السيارة أو نوعها أو لوحتها</string>
+    <string name="payment_ds_38c4d4d8461f">سعر الشراء أساسي • سعر البيع اختياري</string>
+    <string name="payment_ds_42186a14c45a">حذف الصورة</string>
+    <string name="payment_ds_4224c509b704">إضافة صور (%1$s/%2$s)</string>
+    <string name="payment_ds_4652e511d2d9">عمولة الفاتورة</string>
+    <string name="payment_ds_46e5ed980154">ملاحظات (اختياري)</string>
+    <string name="payment_ds_52c23ba1af88">تم حفظ فاتورة المشتريات</string>
+    <string name="payment_ds_539b58dcff4e">اكتب تفاصيل الصيانة</string>
+    <string name="payment_ds_557f737dff23">المتبقي</string>
+    <string name="payment_ds_56390caa2af4">سعر البيع</string>
+    <string name="payment_ds_58c64fef6c81">آجل 📅</string>
+    <string name="payment_ds_5b76fcd74eac">عدد أيام الاستحقاق (اختياري)</string>
+    <string name="payment_ds_5e1bf3bddf74">سعر الفاتورة التاريخي: %1$s %2$s لكل %3$s</string>
+    <string name="payment_ds_672ec1fb1101">يمكنك حفظ المسودة على الجهاز والعودة إليها لاحقًا.</string>
+    <string name="payment_ds_69fb8c578ce0">• تمت إضافة %1$s صنف جديد للمخزون</string>
+    <string name="payment_ds_6bde36b19201">المبلغ المدفوع</string>
+    <string name="payment_ds_6cf184df8a3d">تاريخ الدفعة</string>
+    <string name="payment_ds_6d3b8a57de85">سعر الشراء</string>
+    <string name="payment_ds_7a168061c36f">الاسم أو وسيلة التعريف</string>
+    <string name="payment_ds_7d917d330a23">تغييرات غير محفوظة</string>
+    <string name="payment_ds_7fbf2c353e51">بحث عن صنف</string>
+    <string name="payment_ds_805be7445a76">بيانات الصيانة</string>
+    <string name="payment_ds_85c5c53e9b00">المسدَّد</string>
+    <string name="payment_ds_90725495747d">موافق</string>
+    <string name="payment_ds_91c95ed336dd">إضافة إلى الفاتورة</string>
+    <string name="payment_ds_9305c41b0adf">كاش — اختياري</string>
+    <string name="payment_ds_996b82b34e59">لا توجد سيارة مسجلة مطابقة — سيُحفظ الإدخال كنص حر</string>
+    <string name="payment_ds_9d1fff301aff">السائق أو المندوب</string>
+    <string name="payment_ds_9dbbc65d695e">الربح بعد العمولة</string>
+    <string name="payment_ds_a0e947ff51b1">إضافة "%1$s" كجديد</string>
+    <string name="payment_ds_a7bb28042d01">حفظ المسودة والخروج</string>
+    <string name="payment_ds_a8436ce4b250">سداد</string>
+    <string name="payment_ds_a95134401afe">الكمية</string>
+    <string name="payment_ds_aebb4ccfcadd">اختياري...</string>
+    <string name="payment_ds_b0dccf38e5fa">سيارة رسمية مرتبطة بـ Optimal</string>
+    <string name="payment_ds_b4c88c744018">سعر الصرف الفعلي</string>
+    <string name="payment_ds_b6aa0c7d7a21">السعر</string>
+    <string name="payment_ds_c0d1656706f7">تغيير</string>
+    <string name="payment_ds_c2fc4667bcf9">إضافة للمخزون</string>
+    <string name="payment_ds_c89ae688bf37">قيمة الفاتورة</string>
+    <string name="payment_ds_c8c41d14ffb2">تجاهل</string>
+    <string name="payment_ds_cc6b2386a9b3">مبلغ العمولة (ج)</string>
+    <string name="payment_ds_d20f71350085">وصف العطل أو العمل</string>
+    <string name="payment_ds_d4862b1b04ee">رقم اللوحة</string>
+    <string name="payment_ds_d603b6287052">%1$s × %2$s</string>
+    <string name="payment_ds_dac9c7342c53">هل تريد إرسال رسالة شكر للعميل عبر واتساب؟</string>
+    <string name="payment_ds_deae8315201f">إرسال رسالة شكر 📤</string>
+    <string name="payment_ds_e1ed7cb6a121">تعذّر فتح الفاتورة</string>
+    <string name="payment_ds_edf2477f8e2f">متاح: %1$s</string>
+    <string name="payment_ds_f3fe66977ef0">الربح الحالي</string>
+    <string name="payment_ds_fb4eb0bbfb7f">تُملأ تلقائيًا عند اختيار سيارة مسجلة</string>
+    <!-- Session 298: owner-local hardcoded string migration. -->
+    <string name="payment_v298_054d2bb4d679" translatable="false">"صورة صيانة"</string>
+    <string name="payment_v298_0e86478a8f18" translatable="false">"حفظ الفاتورة"</string>
+    <string name="payment_v298_154af6afc58b" translatable="false">"المبلغ المعكوس"</string>
+    <string name="payment_v298_29f0eeb91ab8" translatable="false">"المورد"</string>
+    <string name="payment_v298_29f0eeb91ab8_2" translatable="false">"العميل"</string>
+    <string name="payment_v298_311c9d6223e9" translatable="false">"دفعة مسجلة"</string>
+    <string name="payment_v298_311c9d6223e9_2" translatable="false">"عكس دفعة"</string>
+    <string name="payment_v298_33b6e5fbc9dd" translatable="false">" ج"</string>
+    <string name="payment_v298_550ccc7d25f4" translatable="false">"حذف الصنف"</string>
+    <string name="payment_v298_57434c957bf8" translatable="false">"جاري استعادة بيانات الفاتورة…"</string>
+    <string name="payment_v298_67162a6abd83" translatable="false">"طي"</string>
+    <string name="payment_v298_6b351b5edb1b" translatable="false">"سعر الشراء (%1$s)"</string>
+    <string name="payment_v298_78abc319de33" translatable="false">"معاينة فاتورة مشتريات"</string>
+    <string name="payment_v298_78abc319de33_2" translatable="false">"معاينة فاتورة بيع"</string>
+    <string name="payment_v298_7c9e322f0b23" translatable="false">"%.1f%%"</string>
+    <string name="payment_v298_7ec6d34a3caf" translatable="false">"%.1f%%"</string>
+    <string name="payment_v298_80b5de8e0909" translatable="false">"ج.س"</string>
+    <string name="payment_v298_8bdb96f3fc3f" translatable="false">" ج"</string>
+    <string name="payment_v298_928c4d12f5a2" translatable="false">" (اختياري)"</string>
+    <string name="payment_v298_928c4d12f5a2_2" translatable="false">"اكتب اسم %1$s%2$s"</string>
+    <string name="payment_v298_a9134cf937f9" translatable="false">"%1$s = "</string>
+    <string name="payment_v298_c7a414741af9" translatable="false">"عملة"</string>
+    <string name="payment_v298_c7a414741af9_2" translatable="false">"%1$s %2$s × "</string>
+    <string name="payment_v298_ce36710a895e" translatable="false">"خيارات إضافية"</string>
+    <string name="payment_v298_ce36710a895e_2" translatable="false">"ملاحظات"</string>
+    <string name="payment_v298_d78f31c7ac43" translatable="false">"%1$s Functional"</string>
+    <string name="payment_v298_ebbc2586ed13" translatable="false">" ج"</string>
+    <string name="payment_v298_f82b638b0d34" translatable="false">"اختيار التاريخ"</string>
+
+    <!-- Session 298 legacy hardcoded closure. -->
+    <string name="payment_invoice_type_sale" translatable="false">"بيع"</string>
+    <string name="payment_invoice_type_purchase" translatable="false">"مشتريات"</string>
+    <!-- Session 349: progressive-disclosure sale invoice editor. -->
+    <string name="payment_v349_sale_invoice_title" translatable="false">فاتورة بيع</string>
+    <string name="payment_v349_no_customer" translatable="false">بدون عميل</string>
+    <string name="payment_v349_choose_customer" translatable="false">اختيار العميل</string>
+    <string name="payment_v349_remove_customer" translatable="false">متابعة بدون عميل</string>
+    <string name="payment_v349_items_count" translatable="false">%1$d بند</string>
+    <string name="payment_v349_edit_line" translatable="false">تعديل البند</string>
+    <string name="payment_v349_delete_line" translatable="false">حذف البند</string>
+    <string name="payment_v349_deleted_line" translatable="false">تم حذف %1$s</string>
+    <string name="payment_v349_undo" translatable="false">تراجع</string>
+    <string name="payment_v349_empty_lines" translatable="false">ابدأ بالبحث عن أول صنف</string>
+    <string name="payment_v349_save_invoice" translatable="false">حفظ</string>
+    <string name="payment_v349_settlement_title" translatable="false">تسوية الفاتورة</string>
+    <string name="payment_v349_invoice_value" translatable="false">قيمة الفاتورة</string>
+    <string name="payment_v349_paid" translatable="false">المدفوع</string>
+    <string name="payment_v349_remaining" translatable="false">المتبقي</string>
+    <string name="payment_v349_continue" translatable="false">متابعة</string>
+    <string name="payment_v349_invalid_paid" translatable="false">أدخل مبلغًا من صفر حتى قيمة الفاتورة</string>
+    <string name="payment_v349_price" translatable="false">السعر</string>
+    <string name="payment_v349_update_line" translatable="false">تحديث البند</string>
+
+    <!-- Session 369: dedicated local purchase invoice editor. -->
+    <string name="payment_v369_purchase_invoice_title" translatable="false">فاتورة شراء</string>
+    <string name="payment_v369_no_supplier" translatable="false">بدون مورد</string>
+    <string name="payment_v369_choose_supplier" translatable="false">اختيار المورد</string>
+    <string name="payment_v369_remove_supplier" translatable="false">متابعة بدون مورد</string>
+    <string name="payment_v369_purchase_price" translatable="false">سعر الشراء</string>
+    <string name="payment_v369_sale_price" translatable="false">سعر البيع</string>
+    <string name="payment_v369_invalid_purchase_price" translatable="false">سعر الشراء غير صالح</string>
+    <string name="payment_v369_date" translatable="false">اختيار تاريخ الفاتورة</string>
+    <string name="payment_v369_settlement_title" translatable="false">تسوية فاتورة الشراء</string>
+    <string name="payment_v369_item_required" translatable="false">اكتب اسم الصنف أو اختره من القائمة</string>
+    <string name="payment_v369_quantity_invalid" translatable="false">أدخل كمية صحيحة أكبر من صفر</string>
+    <string name="payment_v369_line_price" translatable="false">%1$s × %2$s</string>
+
+    <string name="payment_v370_installment_amount">قيمة كل دفعة مستحقة</string>
+    <string name="payment_v370_installment_every_months">التكرار كل كم شهر</string>
+    <string name="payment_v370_installment_count">عدد الدفعات: %1$d</string>
+    <string name="payment_v370_installment_amount_invalid">أدخل قيمة دفعة صحيحة لا تتجاوز المتبقي</string>
+    <string name="payment_v370_installment_interval_invalid">أدخل فترة صحيحة بين الدفعات بالأشهر</string>
+    <string name="payment_v370_first_due_date">أول استحقاق: %1$s</string>
+    <string name="payment_v370_first_due_invalid">اختر تاريخ أول استحقاق يساوي أو يلي تاريخ الفاتورة.</string>
+    <string name="payment_v372_sale_due_date" translatable="false">الاستحقاق: %1$s</string>
+    <string name="payment_v372_sale_due_required" translatable="false">حدد تاريخ استحقاق يساوي أو يلي تاريخ الفاتورة.</string>
+    <string name="payment_v372_international_purchase_title" translatable="false">فاتورة شراء دولية</string>
+    <string name="payment_v372_schedule_changed" translatable="false">تغيّر المبلغ المتبقي؛ حدّث جدول الاستحقاق قبل الحفظ.</string>
+</resources>

@@ -1,0 +1,46 @@
+{
+  "checkpoint": "B12-V01",
+  "input_archive_sha256": "0ae6cdbfe810c222300874d3fa3b123a670517a1cefb7fbef37ccb14c4195d27",
+  "baseline_product_tree_sha256": "bf610527fe6590ec0804825884e8c4baaf301d52cc736bf7a29ed3ef282c8ec4",
+  "product_tree_sha256": "150e580c12b9d1609f7cb4a7b48eafe680d7bfa0488561225a46b395238e035e",
+  "product_file_count": 1912,
+  "local_checks": {
+    "b12_static_contract": "PASS_22_OF_22",
+    "b12_native_sqlite_contract": "PASS",
+    "sync_contract_schema": "PASS_DEFS_42",
+    "selected_pure_kotlin_contract_compile": "PASS",
+    "python_py_compile": "PASS",
+    "change_contract": "PASS",
+    "documentation_delta": "NO_NEW_ERRORS_BASELINE_141_CURRENT_141",
+    "gradle_compile": "BLOCKED_BEFORE_BUILD"
+  },
+  "not_run": [
+    "Gradle8.9/Kotlin2.1 project compile",
+    "KSP/Hilt",
+    "Room B12 transaction/history tests",
+    "Android/device",
+    "T21 full application+Room+SQL",
+    "T27 full conflict scenario",
+    "PostgreSQL B12 migration/RPC",
+    "B07 atomic expense+cash server batch"
+  ],
+  "gates": {
+    "G-B09": "BLOCKED_PREDECESSOR",
+    "G-B11": "BLOCKED_PREDECESSOR",
+    "G-B12": "BLOCKED",
+    "change-contract": "PASS",
+    "documentation": "FAIL_141_PREEXISTING_NO_NEW_B12_ERROR"
+  },
+  "tasks": {
+    "B12.01": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B12.02": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B12.03": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B12.04": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B12.05": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED"
+  },
+  "r08": "OPEN",
+  "next_task": "B12.01",
+  "live_mutations": false,
+  "apk_built": false,
+  "b13_started": false
+}

@@ -1,0 +1,171 @@
+{
+  "checkpoint": "B12-V01",
+  "scope": "full worktree vs input snapshot",
+  "changed_count": 41,
+  "changed": [
+    {
+      "path": "CHANGELOG.md",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "EVIDENCE_INDEX.md",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "SYNC_CONTRACT_V2.schema.json",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "SYNC_IMPLEMENTATION_MAP.md",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "VERTO_SYNC_REPAIR_BACKLOG_AR.md",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/di/RepositoryModule.kt",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseB12ExpenseGuards.kt",
+      "change": "ADDED"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRepairV2Dao.kt",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "data/network/src/main/kotlin/com/verto/app/data/sync/FinancialSyncContractV2.kt",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "data/operations/src/main/kotlin/com/verto/app/data/repository/ExpenseRepository.kt",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "data/operations/src/main/kotlin/com/verto/app/utils/CashMovementSyncWriter.kt",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "data/operations/src/main/kotlin/com/verto/app/utils/CashRegisterManager.kt",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/expense/ExpenseRevisionContractB12.kt",
+      "change": "ADDED"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedStrongerSyncChangeApplier.kt",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "data/sync/src/test/kotlin/com/verto/app/data/sync/expense/ExpenseRevisionContractB12Test.kt",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/DOCUMENTATION_INVENTORY.md",
+      "change": "MODIFIED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/change-contract-result.json",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/change-contract.json",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/change-contract.txt",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/change.patch",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/changed-files.json",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/commands-and-results.md",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/delivery-validation.json",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/documentation-delta.json",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/documentation-gate.json",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/documentation-gate.txt",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/gradle-first-failure.txt",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/input-tree.json",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/input-validation.json",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/kotlin-contract-compile.txt",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/product-tree.json",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/runtime-environment.json",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/schema-results.txt",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/session-report.md",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/sqlite-results.txt",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/static-results.txt",
+      "change": "ADDED"
+    },
+    {
+      "path": "docs/sync-repair/evidence/B12/V01/verification-summary.json",
+      "change": "ADDED"
+    },
+    {
+      "path": "supabase/migrations/20260911001500_b12_expense_versioned_history.sql",
+      "change": "ADDED"
+    },
+    {
+      "path": "tools/test_sync_b12_sqlite.py",
+      "change": "ADDED"
+    },
+    {
+      "path": "tools/verify_b12_expense_revision.py",
+      "change": "ADDED"
+    }
+  ]
+}

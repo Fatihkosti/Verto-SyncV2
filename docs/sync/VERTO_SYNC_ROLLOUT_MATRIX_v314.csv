@@ -1,0 +1,8 @@
+wave,group,ownership,v2_pull,v2_push,financial,inventory,realtime,legacy_fallback,entry_gate,exit_gate,runtime_evidence
+0,ALL,LEGACY_AUTHORITATIVE,OFF,OFF,OFF,OFF,OFF,ON,synthetic harness only,deterministic fault harness passes,MODEL_ONLY
+1,TEST_ORG,LEGACY_AUTHORITATIVE,OFF,OFF,OFF,OFF,OFF,ON,explicit test org,baseline telemetry,RUNTIME_REQUIRED
+2,ALL,V2_SHADOW_READ,ON,OFF,OFF,OFF,OFF,ON,wave1 exit,zero unexplained shadow divergence; zero side effects,RUNTIME_REQUIRED
+3,NON_FINANCIAL,V2_AUTHORITATIVE,ON,ON,OFF,OFF,OFF,ON,wave2 exit,nonfinancial convergence,RUNTIME_REQUIRED
+4,FINANCIAL+INVENTORY,V2_AUTHORITATIVE,ON,ON,ON,ON,OFF,ON,wave3 exit,exactly-once + convergence,RUNTIME_REQUIRED
+5,ALL,V2_AUTHORITATIVE,ON,ON,ON,ON,ON,ON,wave4 exit,Realtime ON/OFF parity,RUNTIME_REQUIRED
+6,ALL,V2_AUTHORITATIVE,ON,ON,ON,ON,POLICY,ON_OBSERVATION_THEN_OFF,all runtime gates,observation + old-client + zero legacy use,RUNTIME_REQUIRED

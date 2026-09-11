@@ -1,0 +1,288 @@
+{
+  "session": 305,
+  "migrationSha256": "a2daf28b3a05b35907267bfc766fc6919ba5c28613854c0c0d68ee186313e908",
+  "objects": [
+    {
+      "name": "public.verto_sync_change_revision_seq",
+      "kind": "SEQUENCE",
+      "signature": null,
+      "owner_schema": "public",
+      "security_mode": "N/A",
+      "rls_enabled": false,
+      "grants": [
+        "NO_DIRECT_APP_GRANT"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_sync_contract",
+      "kind": "TABLE",
+      "signature": null,
+      "owner_schema": "public",
+      "security_mode": "N/A",
+      "rls_enabled": true,
+      "grants": [
+        "NO_DIRECT_APP_GRANT"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_sync_scopes",
+      "kind": "TABLE",
+      "signature": null,
+      "owner_schema": "public",
+      "security_mode": "N/A",
+      "rls_enabled": true,
+      "grants": [
+        "NO_DIRECT_APP_GRANT"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_sync_change_log",
+      "kind": "TABLE",
+      "signature": null,
+      "owner_schema": "public",
+      "security_mode": "N/A",
+      "rls_enabled": true,
+      "grants": [
+        "NO_DIRECT_APP_GRANT"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_sync_receipts",
+      "kind": "TABLE",
+      "signature": null,
+      "owner_schema": "public",
+      "security_mode": "N/A",
+      "rls_enabled": true,
+      "grants": [
+        "NO_DIRECT_APP_GRANT"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_sync_cursor_tokens",
+      "kind": "TABLE",
+      "signature": null,
+      "owner_schema": "public",
+      "security_mode": "N/A",
+      "rls_enabled": true,
+      "grants": [
+        "NO_DIRECT_APP_GRANT"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_sync_snapshot_state",
+      "kind": "TABLE",
+      "signature": null,
+      "owner_schema": "public",
+      "security_mode": "N/A",
+      "rls_enabled": true,
+      "grants": [
+        "NO_DIRECT_APP_GRANT"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_sync_bootstrap_sessions",
+      "kind": "TABLE",
+      "signature": null,
+      "owner_schema": "public",
+      "security_mode": "N/A",
+      "rls_enabled": true,
+      "grants": [
+        "NO_DIRECT_APP_GRANT"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_sync_bootstrap_rows",
+      "kind": "TABLE",
+      "signature": null,
+      "owner_schema": "public",
+      "security_mode": "N/A",
+      "rls_enabled": true,
+      "grants": [
+        "NO_DIRECT_APP_GRANT"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_sync_bootstrap_page_tokens",
+      "kind": "TABLE",
+      "signature": null,
+      "owner_schema": "public",
+      "security_mode": "N/A",
+      "rls_enabled": true,
+      "grants": [
+        "NO_DIRECT_APP_GRANT"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_sync_manifest_partition_tokens",
+      "kind": "TABLE",
+      "signature": null,
+      "owner_schema": "public",
+      "security_mode": "N/A",
+      "rls_enabled": true,
+      "grants": [
+        "NO_DIRECT_APP_GRANT"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_expected_payload_version",
+      "kind": "FUNCTION",
+      "signature": "p_aggregate_type text",
+      "owner_schema": "public",
+      "security_mode": "INVOKER/TRIGGER",
+      "rls_enabled": false,
+      "grants": [],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_current_visibility_fingerprint",
+      "kind": "FUNCTION",
+      "signature": "",
+      "owner_schema": "public",
+      "security_mode": "SECURITY DEFINER",
+      "rls_enabled": false,
+      "grants": [],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_validate_sync_scope",
+      "kind": "FUNCTION",
+      "signature": "p_scope_id uuid",
+      "owner_schema": "public",
+      "security_mode": "SECURITY DEFINER",
+      "rls_enabled": false,
+      "grants": [],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_resolve_sync_scope",
+      "kind": "FUNCTION",
+      "signature": "",
+      "owner_schema": "public",
+      "security_mode": "SECURITY DEFINER",
+      "rls_enabled": false,
+      "grants": [
+        "EXECUTE:authenticated"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_assign_sync_change_revision",
+      "kind": "FUNCTION",
+      "signature": "",
+      "owner_schema": "public",
+      "security_mode": "INVOKER/TRIGGER",
+      "rls_enabled": false,
+      "grants": [],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_reject_sync_change_log_mutation",
+      "kind": "FUNCTION",
+      "signature": "",
+      "owner_schema": "public",
+      "security_mode": "INVOKER/TRIGGER",
+      "rls_enabled": false,
+      "grants": [],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_reject_sync_receipt_mutation",
+      "kind": "FUNCTION",
+      "signature": "",
+      "owner_schema": "public",
+      "security_mode": "INVOKER/TRIGGER",
+      "rls_enabled": false,
+      "grants": [],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_encode_sync_cursor",
+      "kind": "FUNCTION",
+      "signature": "p_scope_id uuid, p_revision bigint",
+      "owner_schema": "public",
+      "security_mode": "SECURITY DEFINER",
+      "rls_enabled": false,
+      "grants": [],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_decode_sync_cursor",
+      "kind": "FUNCTION",
+      "signature": "p_scope_id uuid, p_cursor text",
+      "owner_schema": "public",
+      "security_mode": "SECURITY DEFINER",
+      "rls_enabled": false,
+      "grants": [],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    },
+    {
+      "name": "public.verto_begin_sync_bootstrap",
+      "kind": "FUNCTION",
+      "signature": "p_scope_id uuid",
+      "owner_schema": "public",
+      "security_mode": "SECURITY DEFINER",
+      "rls_enabled": false,
+      "grants": [
+        "EXECUTE:authenticated"
+      ],
+      "purpose": "Verto unified sync v305 server data-plane component",
+      "contract_dependency": "verto-unified-sync/1",
+      "migration_source": "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+    }
+  ],
+  "notes": [
+    "Additional internal cursor/snapshot/token tables are intentional server infrastructure; no Android runtime activation.",
+    "No existing Optimal objects are rewritten."
+  ]
+}

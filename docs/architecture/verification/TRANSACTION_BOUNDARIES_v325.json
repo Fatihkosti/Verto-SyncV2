@@ -1,0 +1,203 @@
+{
+  "format": "verto-transaction-boundaries-v325",
+  "session": 325,
+  "room_schema_version": 81,
+  "boundaries": [
+    {
+      "workflow_id": "invoice-posting",
+      "semantic_owner": "invoice",
+      "entry_point": "data/operations/src/main/kotlin/com/verto/app/data/operations/transaction/FinancialOutboxWriter.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "data/operations/src/main/kotlin/com/verto/app/data/operations/transaction/FinancialOutboxWriter.kt"
+    },
+    {
+      "workflow_id": "invoice-update-with-items",
+      "semantic_owner": "invoice",
+      "entry_point": "data/database/src/main/kotlin/com/verto/app/data/local/dao/InvoiceAggregateTransactionDao.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/InvoiceAggregateTransactionDao.kt"
+    },
+    {
+      "workflow_id": "financial-outbox-write",
+      "semantic_owner": "invoice",
+      "entry_point": "data/database/src/main/kotlin/com/verto/app/data/local/dao/InvoiceFinancialEventDao.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/InvoiceFinancialEventDao.kt"
+    },
+    {
+      "workflow_id": "inventory-movement",
+      "semantic_owner": "inventory",
+      "entry_point": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/data/InventoryStockWriter.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/data/InventoryStockWriter.kt"
+    },
+    {
+      "workflow_id": "payment-posting",
+      "semantic_owner": "payment",
+      "entry_point": "data/operations/src/main/kotlin/com/verto/app/data/repository/InvoiceRepository.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "data/operations/src/main/kotlin/com/verto/app/data/repository/InvoiceRepository.kt"
+    },
+    {
+      "workflow_id": "logistics-planning-save",
+      "semantic_owner": "shipment",
+      "entry_point": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsV2AppAdapters.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsV2AppAdapters.kt"
+    },
+    {
+      "workflow_id": "logistics-state-transition",
+      "semantic_owner": "shipment",
+      "entry_point": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsJourneyAdapters.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsJourneyAdapters.kt"
+    },
+    {
+      "workflow_id": "logistics-receiving-posting",
+      "semantic_owner": "shipment",
+      "entry_point": "app/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsReceivingAdapters.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "app/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsReceivingAdapters.kt"
+    },
+    {
+      "workflow_id": "logistics-cost-payment",
+      "semantic_owner": "shipment",
+      "entry_point": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsCostAdapters.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsCostAdapters.kt"
+    },
+    {
+      "workflow_id": "sync-outbox-enqueue",
+      "semantic_owner": "sync",
+      "entry_point": "data/sync/src/main/kotlin/com/verto/app/data/sync/UnifiedOutboxWriter.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "data/sync/src/main/kotlin/com/verto/app/data/sync/UnifiedOutboxWriter.kt"
+    },
+    {
+      "workflow_id": "sync-push-terminal-retry",
+      "semantic_owner": "sync",
+      "entry_point": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushEngine.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushEngine.kt"
+    },
+    {
+      "workflow_id": "sync-conflict-recording",
+      "semantic_owner": "sync",
+      "entry_point": "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncConflictDao.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncConflictDao.kt"
+    },
+    {
+      "workflow_id": "sync-inbox-apply",
+      "semantic_owner": "sync",
+      "entry_point": "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncInboxDao.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncInboxDao.kt"
+    },
+    {
+      "workflow_id": "sync-cursor-advance",
+      "semantic_owner": "sync",
+      "entry_point": "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncCursorDao.kt",
+      "participating_daos": [
+        "stable facade + cohesive contract"
+      ],
+      "transaction_mechanism": "preserved from v324; outer withTransaction/@Transaction unchanged",
+      "atomic_writes": "preserved",
+      "idempotency_key": "preserved by existing workflow contract",
+      "failure_behavior": "rollback expected; runtime evidence blocked",
+      "rollback_expectation": "all-or-nothing",
+      "evidence_path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncCursorDao.kt"
+    }
+  ]
+}

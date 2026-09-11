@@ -1,0 +1,7 @@
+fixture_id,scenario,expected_exit,expected_code
+CV01,all_producers_classified,0,PASS
+CV02,unknown_status,1,FAIL_AGGREGATE_COVERAGE
+CV03,missing_aggregate_row,1,FAIL_AGGREGATE_COVERAGE
+CV04,duplicate_authority_row,1,FAIL_AGGREGATE_COVERAGE
+CV05,blank_evidence_path,1,FAIL_AGGREGATE_COVERAGE
+CV06,wildcard_evidence,1,FAIL_AGGREGATE_COVERAGE

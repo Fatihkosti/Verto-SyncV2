@@ -1,0 +1,184 @@
+{
+  "version": 135,
+  "source": "Verto-v134-source-clean.zip",
+  "before": {
+    "files": {
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/ReportsScreen.kt": {
+        "dp": 13,
+        "sp": 4,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/BudgetEditorSheet.kt": {
+        "dp": 7,
+        "sp": 5,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/CashCountSheet.kt": {
+        "dp": 16,
+        "sp": 14,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/AdvancedFiltersSheet.kt": {
+        "dp": 24,
+        "sp": 6,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/CollapsibleSection.kt": {
+        "dp": 5,
+        "sp": 2,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/HeroNetProfitCard.kt": {
+        "dp": 7,
+        "sp": 8,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/PeriodSelectorPill.kt": {
+        "dp": 8,
+        "sp": 1,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/SmartInsightCarousel.kt": {
+        "dp": 7,
+        "sp": 5,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/AgedReceivablesCard.kt": {
+        "dp": 12,
+        "sp": 9,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/BudgetVsActualCard.kt": {
+        "dp": 7,
+        "sp": 9,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/CashFlowStatement.kt": {
+        "dp": 9,
+        "sp": 7,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/ProfitLossStatement.kt": {
+        "dp": 13,
+        "sp": 9,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/AuditLogTodayCard.kt": {
+        "dp": 3,
+        "sp": 2,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/CashReconciliationCard.kt": {
+        "dp": 12,
+        "sp": 10,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/EmployeePerformanceCard.kt": {
+        "dp": 15,
+        "sp": 12,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/InventoryHealthCard.kt": {
+        "dp": 15,
+        "sp": 10,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/ReturnsAnalysisCard.kt": {
+        "dp": 10,
+        "sp": 7,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/ShipmentsSummaryCard.kt": {
+        "dp": 10,
+        "sp": 6,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/ShrinkageReportCard.kt": {
+        "dp": 13,
+        "sp": 8,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/SuppliersAnalysisCard.kt": {
+        "dp": 14,
+        "sp": 7,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/XReportSnapshot.kt": {
+        "dp": 9,
+        "sp": 5,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/CategoryDonutChart.kt": {
+        "dp": 6,
+        "sp": 5,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/ClientSegmentsCard.kt": {
+        "dp": 10,
+        "sp": 7,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/RealMarginCard.kt": {
+        "dp": 10,
+        "sp": 7,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/SalesForecastCard.kt": {
+        "dp": 8,
+        "sp": 4,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/SalesHeatmap.kt": {
+        "dp": 12,
+        "sp": 4,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/TopItemsCard.kt": {
+        "dp": 9,
+        "sp": 9,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/export/ReportsExportFab.kt": {
+        "dp": 1,
+        "sp": 0,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/export/UnifiedExportDialog.kt": {
+        "dp": 14,
+        "sp": 4,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/export/WhatsAppShareUtil.kt": {
+        "dp": 0,
+        "sp": 0,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/tabs/FinancialTab.kt": {
+        "dp": 13,
+        "sp": 1,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/tabs/OperationsTab.kt": {
+        "dp": 3,
+        "sp": 0,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/tabs/SalesTab.kt": {
+        "dp": 3,
+        "sp": 0,
+        "color": 0
+      }
+    },
+    "totals": {
+      "dp": 318,
+      "sp": 187,
+      "color": 0
+    }
+  },
+  "after": {
+    "scatteredDp": 0,
+    "scatteredSp": 0,
+    "rawColor": 0
+  },
+  "policy": "Reports Presentation literals migrate to Report-owned/Core tokens; chart geometry stays Report-owned."
+}

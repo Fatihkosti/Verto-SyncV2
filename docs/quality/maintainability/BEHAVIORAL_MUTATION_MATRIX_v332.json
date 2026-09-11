@@ -1,0 +1,99 @@
+{
+  "behavioral_mutations_detected": 8,
+  "failures": [],
+  "format": "verto-behavioral-mutation-matrix-v332",
+  "mutations": [
+    {
+      "actual_result": "DETECTED",
+      "detected": true,
+      "detecting_test": "InvoiceWriteCoordinatorTest.validation failure blocks persistence side effects",
+      "evidence_path": "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoiceWriteCoordinatorTest.kt",
+      "expected_failure": "focused regression test fails if mutation is introduced",
+      "id": "M1",
+      "mutation": "ignore validation failure and allow invalid invoice input to persist",
+      "risk": "invoice validation bypass",
+      "target": "InvoiceWriteCoordinator"
+    },
+    {
+      "actual_result": "DETECTED",
+      "detected": true,
+      "detecting_test": "InvoiceWriteCoordinatorTest.authorization rejection blocks persistence and post commit effects",
+      "evidence_path": "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoiceWriteCoordinatorTest.kt",
+      "expected_failure": "focused regression test fails if mutation is introduced",
+      "id": "M2",
+      "mutation": "ignore authorization rejection and persist unauthorized invoice write",
+      "risk": "invoice authorization bypass",
+      "target": "InvoiceWriteCoordinator"
+    },
+    {
+      "actual_result": "DETECTED",
+      "detected": true,
+      "detecting_test": "InvoiceWriteCoordinatorTest.create path preserves persistence then post commit ordering",
+      "evidence_path": "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoiceWriteCoordinatorTest.kt",
+      "expected_failure": "focused regression test fails if mutation is introduced",
+      "id": "M3",
+      "mutation": "run post-commit sync before durable write succeeds",
+      "risk": "post-commit before persistence",
+      "target": "InvoiceWriteCoordinator"
+    },
+    {
+      "actual_result": "DETECTED",
+      "detected": true,
+      "detecting_test": "LogisticsV242EndToEndIntegrationTest.accepted invoice quantity reaches inventory",
+      "evidence_path": "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LogisticsV242EndToEndIntegrationTest.kt",
+      "expected_failure": "focused regression test fails if mutation is introduced",
+      "id": "M4",
+      "mutation": "complete logistics/invoice flow without required inventory posting",
+      "risk": "inventory side effect skipped",
+      "target": "LogisticsV242EndToEndIntegrationTest"
+    },
+    {
+      "actual_result": "DETECTED",
+      "detected": true,
+      "detecting_test": "PaymentCoordinatorsTest.sale payment is persisted and enters cash",
+      "evidence_path": "feature/payment/src/test/kotlin/com/verto/app/feature/payment/application/PaymentCoordinatorsTest.kt",
+      "expected_failure": "focused regression test fails if mutation is introduced",
+      "id": "M5",
+      "mutation": "persist payment record without cash/payment effect",
+      "risk": "payment side effect skipped",
+      "target": "PaymentCoordinators"
+    },
+    {
+      "actual_result": "DETECTED",
+      "detected": true,
+      "detecting_test": "SyncManagerTest.request sync persists generation before wake",
+      "evidence_path": "data/sync/src/test/kotlin/com/verto/app/data/sync/SyncManagerTest.kt",
+      "expected_failure": "focused regression test fails if mutation is introduced",
+      "id": "M6",
+      "mutation": "wake scheduler before request generation persistence",
+      "risk": "sync wake before persistence",
+      "target": "SyncManager"
+    },
+    {
+      "actual_result": "DETECTED",
+      "detected": true,
+      "detecting_test": "SyncManagerTest.continuation scheduling is routed through scheduler seam",
+      "evidence_path": "data/sync/src/test/kotlin/com/verto/app/data/sync/SyncManagerTest.kt",
+      "expected_failure": "focused regression test fails if mutation is introduced",
+      "id": "M7",
+      "mutation": "drop required continuation scheduling after recovery outcome",
+      "risk": "sync continuation dropped",
+      "target": "SyncManager"
+    },
+    {
+      "actual_result": "DETECTED",
+      "detected": true,
+      "detecting_test": "LogisticsPoliciesTest.shipment lifecycle allows only declared transitions",
+      "evidence_path": "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/domain/policy/LogisticsPoliciesTest.kt",
+      "expected_failure": "focused regression test fails if mutation is introduced",
+      "id": "M8",
+      "mutation": "allow invalid logistics lifecycle transition",
+      "risk": "invalid logistics transition accepted",
+      "target": "LogisticsLifecyclePolicy"
+    }
+  ],
+  "required_behavioral_mutations": 8,
+  "session": 332,
+  "status": "PASS",
+  "undetected_behavioral_mutations": 0
+}

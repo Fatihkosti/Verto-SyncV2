@@ -1,0 +1,16 @@
+Verto-v237-report.md
+app/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsDraftProgressDataStore.kt
+docs/logistics/v237/V237_IMPLEMENTATION_CONTRACT.md
+docs/logistics/v237/V237_SESSION_ALLOWLIST.txt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/SaveShipmentRouteUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/domain/model/LogisticsCommands.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsDraftProgressStore.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPlanningScaffold.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2OperationalWriter.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PresentationModels.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2ViewModel.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningScreen.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237Rules.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237StationStep.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237Steps.kt
+feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV237RoutePlanningTest.kt

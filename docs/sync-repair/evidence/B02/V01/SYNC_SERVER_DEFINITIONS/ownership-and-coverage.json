@@ -1,0 +1,509 @@
+{
+    "captured_at_utc": "2026-09-10T09:37:28.93732+00:00",
+    "bootstrap_coverage": [
+        {
+            "owner_session": 396,
+            "aggregate_type": "BUDGET",
+            "payload_version": 1,
+            "backfill_strategy": "V396_CURRENT_STATE_TO_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "budgets + verto_sync_snapshot_state",
+            "future_write_strategy": "UNIFIED_V2_OPTIMISTIC_CRUD_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 400,
+            "aggregate_type": "CASH_MOVEMENT",
+            "payload_version": 1,
+            "backfill_strategy": "V400_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "cash_register_movements + V400 Unified V2 command/server producer",
+            "future_write_strategy": "V400_DOMAIN_WRITE_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 400,
+            "aggregate_type": "CASH_RECONCILIATION",
+            "payload_version": 1,
+            "backfill_strategy": "V400_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "cash_reconciliation_sessions/cash_denominations + V400 state-machine",
+            "future_write_strategy": "V400_DOMAIN_WRITE_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 400,
+            "aggregate_type": "CASH_REGISTER",
+            "payload_version": 1,
+            "backfill_strategy": "V400_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "cash_register + V400 server producer/canonical snapshot",
+            "future_write_strategy": "V400_DOMAIN_WRITE_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 394,
+            "aggregate_type": "CATEGORY",
+            "payload_version": 1,
+            "backfill_strategy": "V394_CURRENT_STATE_TO_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "categories + verto_sync_snapshot_state",
+            "future_write_strategy": "UNIFIED_V2_ADAPTER_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 310,
+            "aggregate_type": "CLIENT_CREDIT",
+            "payload_version": 1,
+            "backfill_strategy": "LATEST_UNIFIED_CHANGE_THEN_DOMAIN_MATERIALIZER",
+            "stronger_semantics": true,
+            "authoritative_source": "client_credits",
+            "future_write_strategy": "APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 400,
+            "aggregate_type": "COMMISSION_PAYMENT",
+            "payload_version": 1,
+            "backfill_strategy": "V400_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "commission_payments + V400 server producer/canonical snapshot",
+            "future_write_strategy": "V400_DOMAIN_WRITE_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 399,
+            "aggregate_type": "COST_ALLOCATION",
+            "payload_version": 1,
+            "backfill_strategy": "V399_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "cost_allocations immutable + V399 canonical snapshot",
+            "future_write_strategy": "V399_STRONGER_DOMAIN_EFFECT_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 307,
+            "aggregate_type": "CUSTOMER_PROFILE",
+            "payload_version": 2,
+            "backfill_strategy": "LATEST_UNIFIED_CHANGE_THEN_DOMAIN_MATERIALIZER",
+            "stronger_semantics": false,
+            "authoritative_source": "clients/customer profile",
+            "future_write_strategy": "APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 394,
+            "aggregate_type": "EDUCATIONAL_CONTENT",
+            "payload_version": 1,
+            "backfill_strategy": "V394_CURRENT_STATE_TO_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "educational_topics/targets + verto_sync_snapshot_state",
+            "future_write_strategy": "UNIFIED_V2_ADAPTER_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 399,
+            "aggregate_type": "EXPENSE",
+            "payload_version": 1,
+            "backfill_strategy": "V399_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "expenses lifecycle + V399 canonical snapshot",
+            "future_write_strategy": "V399_STRONGER_DOMAIN_EFFECT_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 399,
+            "aggregate_type": "GOODS_RECEIPT",
+            "payload_version": 1,
+            "backfill_strategy": "V399_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "goods_receipts/goods_receipt_lines/purchase_cycle_attachments + V399 canonical payload",
+            "future_write_strategy": "V399_STRONGER_DOMAIN_EFFECT_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 399,
+            "aggregate_type": "INVENTORY_COST_REVISION",
+            "payload_version": 1,
+            "backfill_strategy": "V399_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "inventory_cost_revisions + V399 canonical snapshot",
+            "future_write_strategy": "V399_STRONGER_DOMAIN_EFFECT_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 396,
+            "aggregate_type": "INVENTORY_ITEM",
+            "payload_version": 1,
+            "backfill_strategy": "V396_CURRENT_STATE_TO_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "inventory_items metadata/archive + verto_sync_snapshot_state",
+            "future_write_strategy": "UNIFIED_V2_METADATA_ARCHIVE_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 399,
+            "aggregate_type": "INVENTORY_MOVEMENT",
+            "payload_version": 1,
+            "backfill_strategy": "V399_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "inventory_movements V2 ledger + V399 canonical snapshot",
+            "future_write_strategy": "V399_STRONGER_DOMAIN_EFFECT_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 394,
+            "aggregate_type": "INVENTORY_UNIT",
+            "payload_version": 1,
+            "backfill_strategy": "V394_CURRENT_STATE_TO_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "inventory_units + verto_sync_snapshot_state",
+            "future_write_strategy": "UNIFIED_V2_ADAPTER_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 310,
+            "aggregate_type": "INVOICE",
+            "payload_version": 1,
+            "backfill_strategy": "LATEST_UNIFIED_CHANGE_THEN_DOMAIN_MATERIALIZER",
+            "stronger_semantics": true,
+            "authoritative_source": "financial event/materialized invoice authority",
+            "future_write_strategy": "APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 394,
+            "aggregate_type": "ITEM_CATEGORY",
+            "payload_version": 1,
+            "backfill_strategy": "V394_CURRENT_STATE_TO_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "item_categories grouped by item_id + verto_sync_snapshot_state",
+            "future_write_strategy": "UNIFIED_V2_ADAPTER_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 394,
+            "aggregate_type": "NOTE",
+            "payload_version": 1,
+            "backfill_strategy": "V394_CURRENT_STATE_TO_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "notes + verto_sync_snapshot_state",
+            "future_write_strategy": "UNIFIED_V2_ADAPTER_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 398,
+            "aggregate_type": "NOTIFICATION",
+            "payload_version": 1,
+            "backfill_strategy": "V398_VISIBLE_NOTIFICATION_CURRENT_STATE_TO_PRINCIPAL_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "notifications + notification_reads -> principal-scoped verto_sync_change_log/verto_sync_snapshot_state",
+            "future_write_strategy": "V398_SERVER_TRIGGER_APPEND_CHANGE_AUTO_SNAPSHOT_PLUS_READ_RECEIPT"
+        },
+        {
+            "owner_session": 400,
+            "aggregate_type": "OPTIMAL_FOLLOW_UP",
+            "payload_version": 1,
+            "backfill_strategy": "V400_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "optimal_sync_change_log + optimal_verto_links + V400 Unified bridge",
+            "future_write_strategy": "V400_DOMAIN_WRITE_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 400,
+            "aggregate_type": "OPTIMAL_MAINTENANCE",
+            "payload_version": 1,
+            "backfill_strategy": "V400_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "optimal_sync_change_log + optimal_verto_links + V400 Unified bridge",
+            "future_write_strategy": "V400_DOMAIN_WRITE_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 400,
+            "aggregate_type": "OPTIMAL_VEHICLE",
+            "payload_version": 1,
+            "backfill_strategy": "V400_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "optimal_sync_change_log + optimal_verto_links + V400 Unified bridge",
+            "future_write_strategy": "V400_DOMAIN_WRITE_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 394,
+            "aggregate_type": "ORGANIZATION_SETTINGS",
+            "payload_version": 1,
+            "backfill_strategy": "V394_CURRENT_STATE_TO_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "organization_settings + verto_sync_snapshot_state",
+            "future_write_strategy": "UNIFIED_V2_ADAPTER_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 307,
+            "aggregate_type": "PARTY_IDENTITY",
+            "payload_version": 2,
+            "backfill_strategy": "LATEST_UNIFIED_CHANGE_THEN_DOMAIN_MATERIALIZER",
+            "stronger_semantics": false,
+            "authoritative_source": "clients",
+            "future_write_strategy": "APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 307,
+            "aggregate_type": "PARTY_ROLE",
+            "payload_version": 2,
+            "backfill_strategy": "LATEST_UNIFIED_CHANGE_THEN_DOMAIN_MATERIALIZER",
+            "stronger_semantics": false,
+            "authoritative_source": "clients/party-role contract",
+            "future_write_strategy": "APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 310,
+            "aggregate_type": "PAYMENT",
+            "payload_version": 1,
+            "backfill_strategy": "LATEST_UNIFIED_CHANGE_THEN_DOMAIN_MATERIALIZER",
+            "stronger_semantics": true,
+            "authoritative_source": "financial event/payment authority",
+            "future_write_strategy": "APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 397,
+            "aggregate_type": "PRICE_LIST",
+            "payload_version": 1,
+            "backfill_strategy": "V390_TEMPLATE_SNAPSHOT_AUTHORITY_PRESERVED",
+            "stronger_semantics": false,
+            "authoritative_source": "verto_sync_snapshot_state PRICE_LIST TEMPLATE payload",
+            "future_write_strategy": "V397_OPTIMISTIC_TEMPLATE_V2_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 399,
+            "aggregate_type": "PURCHASE_MATCH",
+            "payload_version": 1,
+            "backfill_strategy": "V399_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "purchase_invoice_matches/lines/allocations + V399 canonical payload",
+            "future_write_strategy": "V399_STRONGER_DOMAIN_EFFECT_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 396,
+            "aggregate_type": "PURCHASE_ORDER",
+            "payload_version": 1,
+            "backfill_strategy": "V396_CURRENT_STATE_TO_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "purchase_orders/purchase_order_lines + verto_sync_snapshot_state",
+            "future_write_strategy": "UNIFIED_V2_STATE_MACHINE_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 399,
+            "aggregate_type": "PURCHASE_PAYMENT_OVERRIDE",
+            "payload_version": 1,
+            "backfill_strategy": "V399_DOMAIN_FACT_TO_UNIFIED_CHANGE_SNAPSHOT",
+            "stronger_semantics": true,
+            "authoritative_source": "purchase_payment_overrides + V399 canonical payload",
+            "future_write_strategy": "V399_STRONGER_DOMAIN_EFFECT_THEN_ATOMIC_UNIFIED_CHANGE_SNAPSHOT"
+        },
+        {
+            "owner_session": 394,
+            "aggregate_type": "REMINDER",
+            "payload_version": 1,
+            "backfill_strategy": "V394_CURRENT_STATE_TO_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "client_reminders + verto_sync_snapshot_state",
+            "future_write_strategy": "UNIFIED_V2_ADAPTER_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 396,
+            "aggregate_type": "SHIPMENT",
+            "payload_version": 1,
+            "backfill_strategy": "V396_CURRENT_STATE_TO_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "logistics_shipments header/lifecycle + verto_sync_snapshot_state",
+            "future_write_strategy": "UNIFIED_V2_SERVER_STATE_MACHINE_APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 307,
+            "aggregate_type": "SUPPLIER_PROFILE",
+            "payload_version": 2,
+            "backfill_strategy": "LATEST_UNIFIED_CHANGE_THEN_DOMAIN_MATERIALIZER",
+            "stronger_semantics": false,
+            "authoritative_source": "clients/supplier profile",
+            "future_write_strategy": "APPEND_CHANGE_AUTO_SNAPSHOT"
+        },
+        {
+            "owner_session": 403,
+            "aggregate_type": "TEAM_OBSERVATION",
+            "payload_version": 1,
+            "backfill_strategy": "V403_DOMAIN_ROWS_TO_MANAGER_VISIBLE_UNIFIED_SNAPSHOT",
+            "stronger_semantics": false,
+            "authoritative_source": "team_observations",
+            "future_write_strategy": "V403_MUTATION_APPEND_CHANGE_AUTO_SNAPSHOT"
+        }
+    ],
+    "stronger_adapter_registry": [
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "CASH_MOVEMENT",
+            "conflict_policy": "APPEND_ONLY_IDEMPOTENT",
+            "local_authority": "cash movement immutable row",
+            "snapshot_policy": "NO_SNAPSHOT_LEDGER_FACT",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "write_id/movement_id",
+            "permission_authority": "trusted Verto membership",
+            "stronger_server_authority": "verto_apply_cash_movement_v310"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "CASH_RECONCILIATION",
+            "conflict_policy": "SEMANTIC_COMMAND",
+            "local_authority": "cash reconciliation state machine",
+            "snapshot_policy": "DOMAIN_MATERIALIZATION_ONLY",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "reconciliation_id/command",
+            "permission_authority": "trusted Verto membership",
+            "stronger_server_authority": "verto_apply_cash_reconciliation_v310"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "CASH_REGISTER",
+            "conflict_policy": "SERVER_AUTHORITATIVE",
+            "local_authority": "server read model",
+            "snapshot_policy": "SERVER_AUTH_CURRENT_STATE",
+            "client_push_mode": "SERVER_AUTHORITATIVE_NO_CLIENT_PUSH",
+            "business_identity": "organization_id/register_id",
+            "permission_authority": "trusted Verto membership",
+            "stronger_server_authority": "cash_register"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "CLIENT_CREDIT",
+            "conflict_policy": "APPEND_ONLY_IDEMPOTENT",
+            "local_authority": "client_credits immutable row",
+            "snapshot_policy": "IMMUTABLE_EVENT_SNAPSHOT",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "credit_id",
+            "permission_authority": "trusted Verto membership",
+            "stronger_server_authority": "verto_apply_client_credit_v310"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "COMMISSION_PAYMENT",
+            "conflict_policy": "APPEND_ONLY_IDEMPOTENT",
+            "local_authority": "server read model",
+            "snapshot_policy": "IMMUTABLE_EVENT_SNAPSHOT",
+            "client_push_mode": "SERVER_AUTHORITATIVE_NO_CLIENT_PUSH",
+            "business_identity": "client_request_id/payment_id",
+            "permission_authority": "server-owned commission authority",
+            "stronger_server_authority": "commission_payments"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "COST_ALLOCATION",
+            "conflict_policy": "IMMUTABLE_REVISION",
+            "local_authority": "cost_allocations immutable row",
+            "snapshot_policy": "IMMUTABLE_EVENT_SNAPSHOT",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "allocation_id",
+            "permission_authority": "trusted Verto membership",
+            "stronger_server_authority": "verto_apply_cost_allocation_v310"
+        },
+        {
+            "delete_policy": "VOID_OR_REVERSE",
+            "aggregate_type": "EXPENSE",
+            "conflict_policy": "SEMANTIC_COMMAND",
+            "local_authority": "expenses lifecycle row",
+            "snapshot_policy": "DOMAIN_MATERIALIZATION_ONLY",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "expense_id/reversal_write_id",
+            "permission_authority": "trusted Verto membership",
+            "stronger_server_authority": "verto_apply_expense_command_v310"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "GOODS_RECEIPT",
+            "conflict_policy": "SEMANTIC_COMMAND",
+            "local_authority": "purchase-cycle immutable fact",
+            "snapshot_policy": "IMMUTABLE_EVENT_SNAPSHOT",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "write_id/receipt_id",
+            "permission_authority": "purchase RPC auth + tenant validation",
+            "stronger_server_authority": "verto_purchase_cycle_push_pre_v253"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "INVENTORY_COST_REVISION",
+            "conflict_policy": "IMMUTABLE_REVISION",
+            "local_authority": "inventory_cost_outbox",
+            "snapshot_policy": "NO_SNAPSHOT_LEDGER_FACT",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "cost_revision_id/command_id/idempotency_key",
+            "permission_authority": "inventory RPC auth + tenant authority",
+            "stronger_server_authority": "inventory_apply_cost_revisions_v2"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "INVENTORY_MOVEMENT",
+            "conflict_policy": "APPEND_ONLY_IDEMPOTENT",
+            "local_authority": "inventory_stock_outbox",
+            "snapshot_policy": "NO_SNAPSHOT_LEDGER_FACT",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "movement_id/command_id/idempotency_key",
+            "permission_authority": "inventory RPC auth + tenant authority",
+            "stronger_server_authority": "inventory_apply_commands_v2"
+        },
+        {
+            "delete_policy": "VOID_OR_REVERSE",
+            "aggregate_type": "INVOICE",
+            "conflict_policy": "SEMANTIC_COMMAND",
+            "local_authority": "financial_outbox",
+            "snapshot_policy": "NO_SNAPSHOT_LEDGER_FACT",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "event_id/write_id",
+            "permission_authority": "financial RPC auth + Verto membership",
+            "stronger_server_authority": "financial_sync_apply_event_v1"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "OPTIMAL_FOLLOW_UP",
+            "conflict_policy": "BRIDGE_EXISTING_STRONGER_CONTRACT",
+            "local_authority": "optimal_outbox",
+            "snapshot_policy": "DOMAIN_MATERIALIZATION_ONLY",
+            "client_push_mode": "PRESERVED_EXISTING_STRONGER_RUNTIME",
+            "business_identity": "event_id/idempotency_key",
+            "permission_authority": "active Optimal member + active Verto link",
+            "stronger_server_authority": "optimal_apply_sync_operation_v2"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "OPTIMAL_MAINTENANCE",
+            "conflict_policy": "BRIDGE_EXISTING_STRONGER_CONTRACT",
+            "local_authority": "optimal_outbox",
+            "snapshot_policy": "DOMAIN_MATERIALIZATION_ONLY",
+            "client_push_mode": "PRESERVED_EXISTING_STRONGER_RUNTIME",
+            "business_identity": "event_id/idempotency_key",
+            "permission_authority": "active Optimal member + active Verto link",
+            "stronger_server_authority": "optimal_apply_sync_operation_v2"
+        },
+        {
+            "delete_policy": "SERVER_OWNED",
+            "aggregate_type": "OPTIMAL_VEHICLE",
+            "conflict_policy": "BRIDGE_EXISTING_STRONGER_CONTRACT",
+            "local_authority": "optimal_outbox",
+            "snapshot_policy": "DOMAIN_MATERIALIZATION_ONLY",
+            "client_push_mode": "PRESERVED_EXISTING_STRONGER_RUNTIME",
+            "business_identity": "event_id/idempotency_key",
+            "permission_authority": "active Optimal member + active Verto link",
+            "stronger_server_authority": "optimal_apply_sync_operation_v2"
+        },
+        {
+            "delete_policy": "VOID_OR_REVERSE",
+            "aggregate_type": "PAYMENT",
+            "conflict_policy": "APPEND_ONLY_IDEMPOTENT",
+            "local_authority": "financial_outbox",
+            "snapshot_policy": "NO_SNAPSHOT_LEDGER_FACT",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "event_id/write_id",
+            "permission_authority": "financial RPC auth + Verto membership",
+            "stronger_server_authority": "financial_sync_apply_event_v1"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "PURCHASE_MATCH",
+            "conflict_policy": "SEMANTIC_COMMAND",
+            "local_authority": "purchase-cycle immutable fact",
+            "snapshot_policy": "IMMUTABLE_EVENT_SNAPSHOT",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "write_id/match_id",
+            "permission_authority": "purchase RPC auth + tenant validation",
+            "stronger_server_authority": "verto_purchase_cycle_push_post_v253"
+        },
+        {
+            "delete_policy": "NO_CLIENT_DELETE",
+            "aggregate_type": "PURCHASE_PAYMENT_OVERRIDE",
+            "conflict_policy": "SEMANTIC_COMMAND",
+            "local_authority": "purchase-cycle immutable fact",
+            "snapshot_policy": "IMMUTABLE_EVENT_SNAPSHOT",
+            "client_push_mode": "STRONGER_BRIDGE_READY_SHADOW",
+            "business_identity": "request_id/write_id",
+            "permission_authority": "purchase RPC auth + tenant validation",
+            "stronger_server_authority": "verto_purchase_cycle_push_post_v253"
+        }
+    ]
+}

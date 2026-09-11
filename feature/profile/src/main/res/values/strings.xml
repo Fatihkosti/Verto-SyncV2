@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="ds_2729e3381153">حفظ البيانات الشخصية</string>
+    <string name="ds_2f1419b78059">الملف الشخصي</string>
+
+    <string name="ds_6fcea98fc894">تأكيد كلمة السر</string>
+    <string name="ds_77c545c8cf05">تغيير كلمة السر</string>
+    <string name="ds_a218343095f1">كلمة السر الجديدة</string>
+    <string name="ds_b9509a00a55a">6 أحرف على الأقل</string>
+    <string name="ds_c8d8277deccd">كلمة السر الحالية</string>
+    <string name="ds_cbe6963fbdf4">✓ تم حفظ البيانات الشخصية</string>
+    <string name="ds_f5768a2540ab">كلمتا السر غير متطابقتين</string>
+</resources>

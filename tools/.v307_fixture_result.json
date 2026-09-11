@@ -1,0 +1,20 @@
+{
+  "categories": {
+    "atomicity": 8,
+    "attachment": 8,
+    "coverage": 8,
+    "delete": 8,
+    "dependency": 8,
+    "identity": 8,
+    "organization_settings": 8,
+    "origins": 8,
+    "specialized_outbox": 8,
+    "tenant": 8
+  },
+  "failed": 0,
+  "failures": [],
+  "kind": "STATIC_MODEL_FIXTURES",
+  "passed": 80,
+  "session": 307,
+  "total": 80
+}

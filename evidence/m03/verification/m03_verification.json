@@ -1,0 +1,241 @@
+{
+  "status": "PASS",
+  "checks": 47,
+  "results": [
+    {
+      "check": "room_schema_96",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "migration_95_96_registered",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "all_supported_room_paths_continue_to_96",
+      "status": "PASS",
+      "detail": "missing=[]"
+    },
+    {
+      "check": "room_entities_registered",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "migration_sql_executes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "tenant_source_composite_identity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "state_tenant_principal_identity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "kill_before_commit_leaves_zero_partial_rows",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "resume_replay_is_idempotent",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fate_can_advance_without_new_identity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_financial_outbox",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_inventory_stock_outbox",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_inventory_cost_outbox",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_party_sync_outbox",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_optimal_outbox",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_party_identity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_party_role",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_customer_profile",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_supplier_profile",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_invoice",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_invoice_item",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_payment",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_client_credit",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_educational_content",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_team_observation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_organization_settings",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_inventory_item_unscoped",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_dirty_expense_unscoped",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_delete_client",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_delete_invoice",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_delete_inventory",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_delete_expense",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_delete_category",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_delete_commission",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_delete_unit",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_delete_budget",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "census_delete_reconciliation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_stronger_outbox_copy_to_generic",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "stronger_identity_preserved",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unsafe_unscoped_rows_require_review",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "missing_dirty_intent_requires_review",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "semantic_financial_delete_not_regenerated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "legacy_writes_not_fenced_in_m03",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "legacy_deletion_sources_not_cleared",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fingerprint_excludes_mutable_fate",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "m03_census_precedes_recovery",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "recovery_blocked_on_review",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+-- Run under an authenticated test principal. Replace only the p_scope_id value.
+-- Obtain a server-issued cursor for revision 419; never forge cursor text.
+-- select public.verto_encode_sync_cursor('<TEST_SCOPE_UUID>'::uuid,419);
+-- Then call the pull RPC with that returned cursor and verify revisions 420..422 are absent.
+-- select public.verto_pull_sync_changes('<TEST_SCOPE_UUID>'::uuid,'<SERVER_ISSUED_CURSOR>',200);
+-- Expected property from the executed M02 test: suppressed_seen=0 and cursor continues beyond 422.

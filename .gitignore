@@ -1,0 +1,40 @@
+# Gradle / Kotlin generated state
+.gradle/
+.kotlin/
+**/build/
+
+# Local machine configuration
+local.properties
+
+# Python generated state
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE transient state
+.idea/
+.vscode/
+*.iml
+
+# Build outputs / diagnostics
+*.apk
+*.aab
+*.apks
+*.log
+*.hprof
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Local inspection / capture artifacts
+/.inspection/
+/.inspections/
+/.screenshots/
+/.captures/
+
+# Historical/session-only generated handoff artifacts
+/Verto-v*-execution-report.md
+/CHANGED_FILES*.txt
+/*-build-report.md

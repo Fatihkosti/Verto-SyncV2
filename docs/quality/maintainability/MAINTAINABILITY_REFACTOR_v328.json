@@ -1,0 +1,86 @@
+{
+  "session": 328,
+  "status": "BLOCKED_ENVIRONMENT",
+  "input": {
+    "artifact": "Verto-v327-final-admission-blocked-environment.zip",
+    "sha256": "4df6e2c7ec45462b84d12efa58e764d8e41083cf45155000293370160fbd8186"
+  },
+  "targets": {
+    "InvoiceWriteCoordinator": {
+      "loc_before": 548,
+      "loc_after": 546,
+      "constructor_dependencies_before": 15,
+      "constructor_dependencies_after": 13,
+      "direct_tests_before": 0,
+      "direct_tests_after": 8,
+      "direct_wall_clock_calls_before": 2,
+      "direct_wall_clock_calls_after": 0,
+      "direct_random_uuid_calls_before": 2,
+      "direct_random_uuid_calls_after": 0,
+      "deterministic_seams": [
+        "InvoiceWriteIdentityFactory",
+        "InvoiceWritePreparation"
+      ]
+    },
+    "SyncManager": {
+      "loc_before": 511,
+      "loc_after": 500,
+      "constructor_dependencies_before": 10,
+      "constructor_dependencies_after": 5,
+      "direct_tests_before": 0,
+      "direct_tests_after": 9,
+      "android_context_dependency_before": 1,
+      "android_context_dependency_after": 0,
+      "direct_worker_static_calls_before": 5,
+      "direct_worker_static_calls_after": 0,
+      "direct_database_orchestration_calls_before": 6,
+      "direct_database_orchestration_calls_after": 0,
+      "direct_wall_clock_calls_before": 7,
+      "direct_wall_clock_calls_after": 0,
+      "deterministic_seams": [
+        "SyncManagerRuntimePort",
+        "SyncWakeScheduler",
+        "SyncOrchestrationStore",
+        "SyncClock",
+        "SyncRolloutAuthority",
+        "SyncV2EnginePort",
+        "SyncOrchestrationControl"
+      ]
+    }
+  },
+  "static_gates": {
+    "architecture_guard": "PASS",
+    "dependency_gate": "PASS",
+    "persistence_guard": "PASS",
+    "technical_debt_ratchet": "PASS",
+    "differential_quality": "PASS",
+    "kotlin_quality": "PASS",
+    "change_contract": "PASS",
+    "unified_gate_self_test": "PASS",
+    "documentation": "PASS",
+    "design_system": "PASS",
+    "design_system_diff": "PASS"
+  },
+  "gradle": {
+    "status": "BLOCKED_ENVIRONMENT",
+    "reason": "Gradle wrapper distribution unavailable locally and services.gradle.org cannot be resolved from the execution environment (UnknownHostException).",
+    "focused_command": "./gradlew --no-daemon :feature:invoice:testDebugUnitTest :data:sync:testDebugUnitTest"
+  },
+  "mandatory_gradle_gates": {
+    "invoice_module_tests": "BLOCKED_ENVIRONMENT",
+    "sync_module_tests": "BLOCKED_ENVIRONMENT",
+    "full_unit_tests": "BLOCKED_ENVIRONMENT",
+    "detekt": "BLOCKED_ENVIRONMENT",
+    "lint": "BLOCKED_ENVIRONMENT",
+    "assemble_debug": "BLOCKED_ENVIRONMENT",
+    "source_of_truth_admission": "BLOCKED_ENVIRONMENT"
+  },
+  "logistics_handoff": "docs/quality/maintainability/LOGISTICS_STORE_CHARACTERIZATION_v328.md",
+  "behavioral_intent": "Refactor only; no business-rule, schema, server, UI, navigation, or logistics-state-machine change.",
+  "unified_gate": {
+    "command": "bash scripts/ci/run-quality-gate.sh all 328",
+    "attempted": true,
+    "harness_result": "Execution harness timed out while repeating static stages before reaching Gradle; required static stages were rerun individually and passed.",
+    "promotion_status": "BLOCKED_ENVIRONMENT"
+  }
+}

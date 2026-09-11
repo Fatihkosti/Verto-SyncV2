@@ -1,0 +1,1229 @@
+{
+  "version": 130,
+  "policy": "no-growth baseline; later sessions must reduce counts",
+  "presentationLiterals": {
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/InvoicePrintComponents.kt": {
+      "dp": 95,
+      "sp": 12,
+      "color": 0
+    },
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/ThemesScreen.kt": {
+      "dp": 23,
+      "sp": 10,
+      "color": 0
+    },
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/InvoicePrintPreview.kt": {
+      "dp": 22,
+      "sp": 6,
+      "color": 4
+    },
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/SettingsBackupSection.kt": {
+      "dp": 22,
+      "sp": 7,
+      "color": 0
+    },
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/PriceListPreviewTemplates.kt": {
+      "dp": 26,
+      "sp": 0,
+      "color": 32
+    },
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/InvoicePreviewTemplates.kt": {
+      "dp": 44,
+      "sp": 2,
+      "color": 0
+    },
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/appearance/AppearanceSettingsViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/printing/PrintingSettingsViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/main/SettingsOperationsViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/ReportsModels.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/insights/InsightModels.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/analytics/ReportsAnalyticsModels.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/ReportCustomerModels.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/ReportsFilters.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/PasswordResetSentScreen.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/AuthViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/AuthComponents.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterValidationPolicy.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginValidationPolicy.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/ResetPasswordScreen.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgScreen.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/splash/SplashViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/splash/SplashScreen.kt": {
+      "dp": 0,
+      "sp": 2,
+      "color": 0
+    },
+    "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt": {
+      "dp": 36,
+      "sp": 17,
+      "color": 0
+    },
+    "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesDialogs.kt": {
+      "dp": 10,
+      "sp": 2,
+      "color": 0
+    },
+    "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/SyncIssuesViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompaniesScreen.kt": {
+      "dp": 10,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatScreen.kt": {
+      "dp": 9,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatAudioCoordinator.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatComponents.kt": {
+      "dp": 19,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/CompanyInvoicesViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt": {
+      "dp": 13,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsScreen.kt": {
+      "dp": 19,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompanyDetailsViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/SyncIssuesScreen.kt": {
+      "dp": 9,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalPresentationState.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceDetailsScreen.kt": {
+      "dp": 25,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalHomeViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalConversationsViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalConversationsScreen.kt": {
+      "dp": 9,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalHomeScreen.kt": {
+      "dp": 5,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalHomeSectionCard.kt": {
+      "dp": 5,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompaniesViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceDetailsViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/CompanyInvoicesScreen.kt": {
+      "dp": 17,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompanyDetailsScreen.kt": {
+      "dp": 9,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/profile/src/main/kotlin/com/verto/app/feature/profile/presentation/ProfileSettingsViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/profile/src/main/kotlin/com/verto/app/feature/profile/presentation/ProfileEditDialog.kt": {
+      "dp": 11,
+      "sp": 11,
+      "color": 0
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListComponents.kt": {
+      "dp": 15,
+      "sp": 5,
+      "color": 0
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListScreen.kt": {
+      "dp": 29,
+      "sp": 13,
+      "color": 0
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreen.kt": {
+      "dp": 4,
+      "sp": 4,
+      "color": 0
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryPermissionGate.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/CategoryManagementScreen.kt": {
+      "dp": 22,
+      "sp": 3,
+      "color": 0
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryReadState.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreenComponents.kt": {
+      "dp": 151,
+      "sp": 51,
+      "color": 22
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemScreen.kt": {
+      "dp": 50,
+      "sp": 8,
+      "color": 6
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemComponents.kt": {
+      "dp": 35,
+      "sp": 17,
+      "color": 0
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryDocumentService.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/BulkPriceEditScreen.kt": {
+      "dp": 42,
+      "sp": 17,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/OrganizationSettingsViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/OrganizationSettingsScreen.kt": {
+      "dp": 48,
+      "sp": 11,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailComponents.kt": {
+      "dp": 53,
+      "sp": 18,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/PermissionSectionCard.kt": {
+      "dp": 12,
+      "sp": 3,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/OrganizationPermissionSections.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeePermissionsScreen.kt": {
+      "dp": 23,
+      "sp": 6,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeesScreen.kt": {
+      "dp": 25,
+      "sp": 8,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/OrganizationTeamViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailScreen.kt": {
+      "dp": 4,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailModels.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/CreateInviteScreen.kt": {
+      "dp": 34,
+      "sp": 8,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientContactTopBar.kt": {
+      "dp": 2,
+      "sp": 0,
+      "color": 1
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt": {
+      "dp": 72,
+      "sp": 19,
+      "color": 1
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientStatementComponents.kt": {
+      "dp": 2,
+      "sp": 5,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientStatementScreen.kt": {
+      "dp": 27,
+      "sp": 13,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientPaymentScreen.kt": {
+      "dp": 22,
+      "sp": 7,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardComponents.kt": {
+      "dp": 12,
+      "sp": 5,
+      "color": 1
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardScreen.kt": {
+      "dp": 28,
+      "sp": 5,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientsListScreen.kt": {
+      "dp": 27,
+      "sp": 8,
+      "color": 1
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreen.kt": {
+      "dp": 39,
+      "sp": 6,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientPaymentViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientStatementViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientPaymentComponents.kt": {
+      "dp": 5,
+      "sp": 6,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientComponents.kt": {
+      "dp": 9,
+      "sp": 2,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientFormState.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientScreen.kt": {
+      "dp": 11,
+      "sp": 3,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/competitor/CompetitorScreen.kt": {
+      "dp": 16,
+      "sp": 8,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/shared/PartyDashboardComponents.kt": {
+      "dp": 15,
+      "sp": 6,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierPaymentScreen.kt": {
+      "dp": 17,
+      "sp": 8,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierStatementViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardComponents.kt": {
+      "dp": 14,
+      "sp": 4,
+      "color": 2
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierStatementComponents.kt": {
+      "dp": 6,
+      "sp": 10,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardScreen.kt": {
+      "dp": 18,
+      "sp": 3,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierStatementScreen.kt": {
+      "dp": 14,
+      "sp": 7,
+      "color": 0
+    },
+    "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionUiModels.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionManagementScreen.kt": {
+      "dp": 12,
+      "sp": 8,
+      "color": 0
+    },
+    "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionCards.kt": {
+      "dp": 12,
+      "sp": 2,
+      "color": 0
+    },
+    "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionDialogs.kt": {
+      "dp": 33,
+      "sp": 24,
+      "color": 0
+    },
+    "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/WithdrawFlowDialogs.kt": {
+      "dp": 11,
+      "sp": 7,
+      "color": 0
+    },
+    "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionSheets.kt": {
+      "dp": 36,
+      "sp": 18,
+      "color": 0
+    },
+    "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commissionreport/MarketerCommissionReportViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commissionreport/MarketerCommissionReportScreen.kt": {
+      "dp": 19,
+      "sp": 12,
+      "color": 0
+    },
+    "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementIntegrationCard.kt": {
+      "dp": 10,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementPresentationState.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementScreen.kt": {
+      "dp": 5,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsScreen.kt": {
+      "dp": 11,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/leaderboard/LeaderboardViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/leaderboard/LeaderboardScreen.kt": {
+      "dp": 11,
+      "sp": 3,
+      "color": 0
+    },
+    "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UsersDashboardViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UsersDashboardScreen.kt": {
+      "dp": 29,
+      "sp": 15,
+      "color": 0
+    },
+    "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/MarketerStatsSorter.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/MessagesScreen.kt": {
+      "dp": 18,
+      "sp": 9,
+      "color": 0
+    },
+    "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/ChatDetailScreen.kt": {
+      "dp": 36,
+      "sp": 4,
+      "color": 0
+    },
+    "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/ChatDetailViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/MessagesViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/presentation/NotificationCenterViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/presentation/NotificationsScreen.kt": {
+      "dp": 14,
+      "sp": 7,
+      "color": 0
+    },
+    "core/common/src/main/kotlin/com/verto/app/core/presentation/PresentationContract.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "core/designsystem/src/main/kotlin/com/verto/app/ui/components/AppIcons.kt": {
+      "dp": 2,
+      "sp": 0,
+      "color": 2
+    },
+    "core/designsystem/src/main/kotlin/com/verto/app/ui/components/DateRangePickerDialog.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoScreenScaffolds.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentPresentationModels.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentReceiptScreen.kt": {
+      "dp": 15,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentDetailComponents.kt": {
+      "dp": 18,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentsListScreen.kt": {
+      "dp": 21,
+      "sp": 1,
+      "color": 10
+    },
+    "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentDetailScreen.kt": {
+      "dp": 7,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentPresentationMappers.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtFormComponents.kt": {
+      "dp": 44,
+      "sp": 16,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtItemComponents.kt": {
+      "dp": 41,
+      "sp": 19,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtScreen.kt": {
+      "dp": 51,
+      "sp": 8,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/InvoiceTypePermissionPolicy.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/InvoiceMaintenanceSection.kt": {
+      "dp": 28,
+      "sp": 11,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtSections.kt": {
+      "dp": 9,
+      "sp": 1,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtFormState.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDialogs.kt": {
+      "dp": 37,
+      "sp": 29,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/InvoiceMaintenanceFormState.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt": {
+      "dp": 14,
+      "sp": 7,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/ReportsViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/ReportsScreen.kt": {
+      "dp": 13,
+      "sp": 4,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/CashCountSheet.kt": {
+      "dp": 16,
+      "sp": 14,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/BudgetEditorSheet.kt": {
+      "dp": 7,
+      "sp": 5,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/tabs/FinancialTab.kt": {
+      "dp": 13,
+      "sp": 1,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/tabs/OperationsTab.kt": {
+      "dp": 3,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/tabs/SalesTab.kt": {
+      "dp": 3,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/export/WhatsAppShareUtil.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/export/ReportsExportFab.kt": {
+      "dp": 1,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/export/UnifiedExportDialog.kt": {
+      "dp": 14,
+      "sp": 4,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/SalesHeatmap.kt": {
+      "dp": 12,
+      "sp": 4,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/TopItemsCard.kt": {
+      "dp": 9,
+      "sp": 9,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/RealMarginCard.kt": {
+      "dp": 10,
+      "sp": 7,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/ClientSegmentsCard.kt": {
+      "dp": 10,
+      "sp": 7,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/SalesForecastCard.kt": {
+      "dp": 8,
+      "sp": 4,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/sales/CategoryDonutChart.kt": {
+      "dp": 6,
+      "sp": 5,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/AgedReceivablesCard.kt": {
+      "dp": 12,
+      "sp": 9,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/ProfitLossStatement.kt": {
+      "dp": 13,
+      "sp": 9,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/BudgetVsActualCard.kt": {
+      "dp": 7,
+      "sp": 9,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/CashFlowStatement.kt": {
+      "dp": 9,
+      "sp": 7,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/SuppliersAnalysisCard.kt": {
+      "dp": 14,
+      "sp": 7,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/CashReconciliationCard.kt": {
+      "dp": 12,
+      "sp": 10,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/ReturnsAnalysisCard.kt": {
+      "dp": 10,
+      "sp": 7,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/ShrinkageReportCard.kt": {
+      "dp": 13,
+      "sp": 8,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/InventoryHealthCard.kt": {
+      "dp": 15,
+      "sp": 10,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/XReportSnapshot.kt": {
+      "dp": 9,
+      "sp": 5,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/AuditLogTodayCard.kt": {
+      "dp": 3,
+      "sp": 2,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/EmployeePerformanceCard.kt": {
+      "dp": 15,
+      "sp": 12,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/ShipmentsSummaryCard.kt": {
+      "dp": 10,
+      "sp": 6,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/PeriodSelectorPill.kt": {
+      "dp": 8,
+      "sp": 1,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/CollapsibleSection.kt": {
+      "dp": 5,
+      "sp": 2,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/AdvancedFiltersSheet.kt": {
+      "dp": 24,
+      "sp": 6,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/SmartInsightCarousel.kt": {
+      "dp": 7,
+      "sp": 5,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/HeroNetProfitCard.kt": {
+      "dp": 7,
+      "sp": 8,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/sync/presentation/SyncViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt": {
+      "dp": 40,
+      "sp": 7,
+      "color": 3
+    },
+    "app/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreenComponents.kt": {
+      "dp": 74,
+      "sp": 36,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/feature/invoice/presentation/activeinvoices/ActiveInvoicesScreen.kt": {
+      "dp": 28,
+      "sp": 10,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/components/PermissionGate.kt": {
+      "dp": 4,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/components/Components.kt": {
+      "dp": 10,
+      "sp": 4,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt": {
+      "dp": 18,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/components/ReportsFilterBar.kt": {
+      "dp": 28,
+      "sp": 5,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/components/UiMessage.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/auditlog/AuditLogScreen.kt": {
+      "dp": 31,
+      "sp": 12,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeHeaderPolicy.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeExpenseDialog.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeQuickActions.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeUiResiliencePolicy.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeReturnAdvanceTracker.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionCards.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionDetailsPolicy.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeFabPolicy.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeDialogSurface.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeScreen.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeHeader.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeActivityFeedPolicy.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeEducationalContent.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePermissionContextFactory.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingPagerPolicy.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeQuickActionEffect.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionEffect.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionDetails.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActions.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeActivityFeed.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintTabContent.kt": {
+      "dp": 30,
+      "sp": 30,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt": {
+      "dp": 31,
+      "sp": 14,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/settings/OrganizationPrintSettingsDialog.kt": {
+      "dp": 4,
+      "sp": 3,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintRouteState.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintRouteScreen.kt": {
+      "dp": 14,
+      "sp": 3,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/onboarding/SetupNameScreen.kt": {
+      "dp": 8,
+      "sp": 4,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/onboarding/OnboardingScreen.kt": {
+      "dp": 14,
+      "sp": 4,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/onboarding/ThankYouScreen.kt": {
+      "dp": 2,
+      "sp": 3,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailScreen.kt": {
+      "dp": 2,
+      "sp": 2,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailComponents.kt": {
+      "dp": 57,
+      "sp": 25,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchViewModel.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchScreen.kt": {
+      "dp": 24,
+      "sp": 8,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchUiState.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchGridLayout.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "data/operations/src/main/kotlin/com/verto/app/feature/reports/presentation/insights/SmartInsightsEngine.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "data/operations/src/main/kotlin/com/verto/app/feature/reports/presentation/analytics/ClvCalculator.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "data/operations/src/main/kotlin/com/verto/app/feature/reports/presentation/analytics/ForecastEngine.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "data/operations/src/main/kotlin/com/verto/app/feature/reports/presentation/analytics/CostAllocationEngine.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    "data/operations/src/main/kotlin/com/verto/app/feature/reports/presentation/analytics/RfmCalculator.kt": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    }
+  },
+  "paletteFiles": [
+    "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentsListScreen.kt",
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreenComponents.kt",
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt",
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientsListScreen.kt",
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/InvoicePrintPreview.kt"
+  ],
+  "semanticDefinitions": {}
+}

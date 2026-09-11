@@ -1,0 +1,38 @@
+{
+  "format": "verto-contract-test-registry-v332",
+  "session": 332,
+  "tests": [
+    {
+      "contract_id": "party.lookup.v1",
+      "contract_symbol": "PartyDirectoryGateway",
+      "test_file": "app/src/test/kotlin/com/verto/app/architecture/StableContractEvidenceTest.kt",
+      "test_symbol": "StableContractEvidenceTest",
+      "coverage_mode": "DIRECT_CONTRACT",
+      "status": "ACTIVE"
+    },
+    {
+      "contract_id": "invoice.presentation.v1",
+      "contract_symbol": "InvoicePresentationPort",
+      "test_file": "app/src/test/kotlin/com/verto/app/architecture/StableContractEvidenceTest.kt",
+      "test_symbol": "StableContractEvidenceTest",
+      "coverage_mode": "DIRECT_CONTRACT",
+      "status": "ACTIVE"
+    },
+    {
+      "contract_id": "payment.purchase-shipment.v1",
+      "contract_symbol": "PurchaseShipmentGateway",
+      "test_file": "app/src/test/kotlin/com/verto/app/architecture/StableContractEvidenceTest.kt",
+      "test_symbol": "StableContractEvidenceTest",
+      "coverage_mode": "DIRECT_CONTRACT",
+      "status": "ACTIVE"
+    },
+    {
+      "contract_id": "shipment.read.v1",
+      "contract_symbol": "LogisticsUnifiedReadPort",
+      "test_file": "app/src/test/kotlin/com/verto/app/architecture/StableContractEvidenceTest.kt",
+      "test_symbol": "StableContractEvidenceTest",
+      "coverage_mode": "DIRECT_CONTRACT",
+      "status": "ACTIVE"
+    }
+  ]
+}

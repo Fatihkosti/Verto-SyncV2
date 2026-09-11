@@ -1,0 +1,2 @@
+planner-runtime-check: PASS
+coordinator+planner stub compile: PASS

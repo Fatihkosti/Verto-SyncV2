@@ -1,0 +1,141 @@
+{
+  "format": "verto-architecture-drift-v320",
+  "baseline_version": "v319",
+  "current_session": 320,
+  "input_sha256": "cd9e22fa9803d52081c3df4de174279eb893d2c7ecd997c0d9f76523d3699b49",
+  "plan_sha256": "75f8ba5bdd0893ac82fc8cb0bd6d9e86464eef08b4f1a4c3f895386e9e4264a7",
+  "production_source_byte_drift": 0,
+  "new_architecture_violation_identities": [],
+  "removed_legacy_violation_identities": [],
+  "legacy_architecture_debt_delta": {
+    "before": 18,
+    "after": 18,
+    "delta": 0
+  },
+  "observed_dependencies": {
+    "new_project": 0,
+    "removed_project": 0,
+    "new_external": 0,
+    "removed_external": 0,
+    "undeclared_project": 0,
+    "undeclared_external": 0,
+    "new_cycles": 0
+  },
+  "complexity_delta": {
+    "source_changed": false,
+    "identity_regressions": 0,
+    "removed_debt_identities": 0,
+    "measurement_algorithm_version": "verto-kotlin-complexity-lexical-v1",
+    "baseline_counts": {
+      "classes": 2797,
+      "files": 1194,
+      "functions": 6806
+    },
+    "new_identity_budgets": {
+      "class_lines": 219,
+      "cognitive": 13,
+      "constructor_dependencies": 14,
+      "coupling_imports": 48,
+      "cyclomatic": 9,
+      "file_lines": 434,
+      "function_lines": 79,
+      "function_parameters": 6
+    }
+  },
+  "oversized_files_delta": {
+    "baseline": 28,
+    "current": 28,
+    "delta": 0
+  },
+  "quality_metric_delta": {
+    "architecture_violation_count": {
+      "baseline": 18,
+      "current": 18,
+      "delta": 0
+    },
+    "broad_catches": {
+      "baseline": 32,
+      "current": 32,
+      "delta": 0
+    },
+    "dependency_cycles": {
+      "baseline": 0,
+      "current": 0,
+      "delta": 0
+    },
+    "excessive_parameter_lists": {
+      "baseline": 654,
+      "current": 654,
+      "delta": 0
+    },
+    "exposed_mutable_state": {
+      "baseline": 2,
+      "current": 2,
+      "delta": 0
+    },
+    "global_scope": {
+      "baseline": 0,
+      "current": 0,
+      "delta": 0
+    },
+    "large_files_over_500": {
+      "baseline": 28,
+      "current": 28,
+      "delta": 0
+    },
+    "lateinit_var": {
+      "baseline": 4,
+      "current": 4,
+      "delta": 0
+    },
+    "long_functions": {
+      "baseline": 488,
+      "current": 488,
+      "delta": 0
+    },
+    "manual_coroutine_scopes": {
+      "baseline": 1,
+      "current": 1,
+      "delta": 0
+    },
+    "not_null_assertions": {
+      "baseline": 7,
+      "current": 7,
+      "delta": 0
+    },
+    "production_kotlin_files": {
+      "baseline": 1194,
+      "current": 1194,
+      "delta": 0
+    }
+  },
+  "feature_manifests": {
+    "coverage": "18/18",
+    "source_feature_delta": 0,
+    "contract_manifests_updated_for_v320_enforcement": 18,
+    "missing": 0
+  },
+  "public_api": {
+    "source_delta": 0,
+    "undeclared_drift": 0,
+    "surface_hashes_bound_to_manifests": 18
+  },
+  "data_ownership": {
+    "entities": "125/125",
+    "tables": "125/125",
+    "daos": "51/51",
+    "repositories": "97/97",
+    "missing": 0,
+    "duplicate": 0,
+    "ownership_source_delta": 0
+  },
+  "adr_changes": 0,
+  "baseline_threshold_changes": {
+    "legacy_v188_modified": false,
+    "technical_debt_ceiling_loosened": false,
+    "rule_severity_downgrade": false,
+    "new_complexity_measurement_baseline": true
+  },
+  "test_source_delta": 0,
+  "direction": "NO_NEW_PRODUCTION_OR_ARCHITECTURE_DEBT; ENFORCEMENT_HARDENED"
+}

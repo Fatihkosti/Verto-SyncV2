@@ -1,0 +1,109 @@
+{
+  "architecture": {
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "direct foreign DAO access",
+      "cross-feature Room Entity API",
+      "AppDatabase cross-feature service locator",
+      "new external Gradle dependency"
+    ],
+    "invariants": [
+      "foreign_direct_dao_access = 0",
+      "foreign_room_entity_access = 0",
+      "unclassified_persistence_access = 0",
+      "Room schema remains unchanged at version 81",
+      "No business behavior change",
+      "No baseline inflation",
+      "No broad allowlist",
+      "Cross-feature persistence access uses owner contracts only"
+    ]
+  },
+  "metadata": {
+    "historical_v325_v326_evidence_immutable": true,
+    "predecessor_handoff_authorized": true,
+    "predecessor_session": 326,
+    "zero_tolerance_target": true
+  },
+  "session": {
+    "allowed_files": [
+      "tools/persistence/**",
+      "scripts/ci/run-quality-gate.sh",
+      "scripts/ci/run-source-of-truth-admission.sh",
+      "docs/architecture/contracts/sessions/session-327.json",
+      "docs/architecture/contracts/persistence-boundary-enforcement-v327.json",
+      "docs/architecture/contracts/data-ownership.json",
+      "docs/architecture/contracts/features/**",
+      "docs/architecture/verification/SESSION_327_INPUT_SNAPSHOT.json",
+      "docs/architecture/verification/**v327**",
+      "app/src/main/kotlin/com/verto/app/feature/**/bridge/**",
+      "data/operations/src/main/kotlin/com/verto/app/data/repository/InvoiceRepository.kt",
+      "data/operations/src/main/kotlin/com/verto/app/feature/reports/**",
+      "feature/party/**",
+      "feature/inventory/**",
+      "feature/reports/**",
+      "feature/integration/optimal/**",
+      "docs/DOCUMENTATION_INVENTORY.md"
+    ],
+    "allowed_modules": [
+      ":app",
+      ":data:operations",
+      ":feature:commission",
+      ":feature:expenses",
+      ":feature:invoice",
+      ":feature:messages",
+      ":feature:payment",
+      ":feature:shipment",
+      ":feature:reports",
+      ":feature:party",
+      ":feature:inventory",
+      ":feature:integration:optimal"
+    ],
+    "baseline_snapshot": "docs/architecture/verification/SESSION_327_INPUT_SNAPSHOT.json",
+    "forbidden_files": [
+      "supabase/**",
+      "functions/**",
+      "SQL/**",
+      "sql/**",
+      "settings.gradle.kts",
+      "build-logic/**",
+      "app/schemas/**",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/**",
+      "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt"
+    ],
+    "id": 327,
+    "input_sha256": "8699e9f5b987c479807cb1dadba6b0760e60459a515875593c8762665cd9fae1",
+    "scope": "FOREIGN PERSISTENCE ACCESS ENFORCEMENT / ZERO-TOLERANCE REPAIR"
+  },
+  "verification": {
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "dependency",
+      "data-ownership",
+      "persistence-boundary",
+      "transaction-contract",
+      "migration-schema",
+      "persistence-ratchet",
+      "technical-debt-ratchet",
+      "differential-quality",
+      "kotlin-quality",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ],
+    "required_tests": [
+      "persistence guard real-classifier mutation suite A-F",
+      "production foreign-access baseline regression",
+      "architecture guard",
+      "dependency gate",
+      "technical debt ratchet",
+      "Kotlin quality current ratchet",
+      "unified gate self-test"
+    ]
+  }
+}

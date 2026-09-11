@@ -1,0 +1,163 @@
+{
+  "baseline_room_version": 81,
+  "destructive_fallbacks": [],
+  "failures": [
+    {
+      "code": "FAIL_MIGRATION_PATH_EVIDENCE",
+      "edges": [
+        {
+          "declared": true,
+          "from": 83,
+          "migration_test": false,
+          "registered": true,
+          "symbol": "MIGRATION_83_84",
+          "to": 84
+        },
+        {
+          "declared": true,
+          "from": 84,
+          "migration_test": false,
+          "registered": true,
+          "symbol": "MIGRATION_84_85",
+          "to": 85
+        },
+        {
+          "declared": true,
+          "from": 85,
+          "migration_test": false,
+          "registered": true,
+          "symbol": "MIGRATION_85_86",
+          "to": 86
+        },
+        {
+          "declared": true,
+          "from": 86,
+          "migration_test": false,
+          "registered": true,
+          "symbol": "MIGRATION_86_87",
+          "to": 87
+        }
+      ]
+    },
+    {
+      "code": "BLOCKED_SCHEMA_EXPORT_MISSING",
+      "detail": "Room compiler export is required; manual schema artifacts are not accepted.",
+      "expected_export": "app/schemas/com.verto.app.data.local.AppDatabase/88.json",
+      "room_version": 88
+    }
+  ],
+  "format": "verto-migration-schema-gate-v2",
+  "room_version": 88,
+  "schema_files": [
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/39.json",
+      "87be466781e61240f67c8b2000804418713ada5c10b2fb1106ff39249394acd1"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/40.json",
+      "a7f44896a5f1199624ed7bb62c25dc9a57392dbc4c0a01330bc7d4785c4ab2a0"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/41.json",
+      "64226323cff4ad376734e172a23efb65302958dd710706ae8026177fca772a65"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/42.json",
+      "c5d90b4d3740bcb40aa7f201db728583230b17a77ff07488ec61279568d4b408"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/43.json",
+      "cfb4a0bc277099d31d6b9eb30ac3eb0baf4a99a7b36b382cbf59167a4c6a6895"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/44.json",
+      "2047420f61f7c0e4bfd1ac527b7e1b64fcaefca070ef028fd2619545419201bc"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/45.json",
+      "d1497e1cbcd961bfd2a4217b2ef9d25ff19aff781406d000e7c15c8b1da6bf16"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/46.json",
+      "8d899a244234144c8c84b8fd3ba7a2984abbc3e11bffb0aa4a168e3551d63df8"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/47.json",
+      "f6c44200977669d0661fc77ea1bf6661185e45ccfff8b791988d26653fe1e249"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/48.json",
+      "eeec6ae62171226f1d92c75e44338c65c9a3f9e55ac170aa5ea59f8f5be2ac08"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/49.json",
+      "eddc82835264e32a27e84fd944c24fee79ff2e19da8db95a7722a13e373ee857"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/50.json",
+      "4542793d731292561a4c28f1696982714ffd1dffe82cd491dd32ac96bd2fba6d"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/51.json",
+      "001a3eca35813dc2c7461ec43da6f9117f35a26abc6b184a6f22a7c8d5ce057d"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/52.json",
+      "bf3e77e4f52e0372d0d31cf863524c845b31444169620552bd4b65ce2242cacc"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/53.json",
+      "690ce1c1f89ded765da955605de67ca92f4b59cf1b47cf027b73e3e90b0566c6"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/54.json",
+      "ba7e6d0a82207b795f5a060109e91ce3bf19d87e81cc9fa8c380a1a343d3ee35"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/55.json",
+      "b2e81027136849d828a6a385cfd3f25cb332542c68f559dc31d4c4bbd4564b05"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/60.json",
+      "c4aeb1469fb9bc5b79f2ceda57b2bf3f1a8aa3eecbe80b82f829e07d44006950"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/61.json",
+      "5e122afcdb2c363d8b888927373d2cc36b32265379795ede27f6a93bf8478d28"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/68.json",
+      "4669d15abe26a872f2a528f3fcc7dcf154cc197383bb8c078862b5798d61b29e"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/72.json",
+      "9c287b6085ceac7e47e9d67cb4d4767442e1506698d642544fe924a149f47722"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/77.json",
+      "63ec65fd1eedb9c29a585cb43d9a8afed42a429fb0ad749da85b305e5ccf8b1a"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/78.json",
+      "d0d89b1a6d8309e92c48cace4b30f934d8c83bcd3d75fcc0a2b3946a1d434557"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/79.json",
+      "ab4a24d0698914a852bf1c52498174adcd32999006a1011b6a80a438395031da"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/80.json",
+      "1d077e2539cf8ac4a2cf618c11c0a97f7de44f0c2bf15298e923f39b75988543"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/81.json",
+      "a0bd8fb6981a5b05abe180bff06b18aaf8ec8a95e0e34ebb45e8e8e21e2329c5"
+    ],
+    [
+      "app/schemas/com.verto.app.data.local.AppDatabase/87.json",
+      "fe6f0baeaa024f23d51a722b666b5795ff0269ced75d9ac890bf8e205687c82c"
+    ]
+  ],
+  "schema_fingerprint": "6f7afbde8c9dc6ec8b0176897b19355bf0a02f7eb3f67552545b0815f212b200",
+  "status": "FAIL"
+}

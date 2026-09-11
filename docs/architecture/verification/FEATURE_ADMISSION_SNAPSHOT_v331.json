@@ -1,0 +1,180 @@
+{
+  "admitted_feature_entries": 18,
+  "critical_features": 4,
+  "dependency_cycles": 0,
+  "feature_count": 18,
+  "features": [
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 0,
+      "feature_id": "auth",
+      "max_file_loc": 477,
+      "module": ":feature:auth",
+      "risk": "HIGH",
+      "test_files": 1
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 0,
+      "feature_id": "commission",
+      "max_file_loc": 462,
+      "module": ":feature:commission",
+      "risk": "LOW",
+      "test_files": 0
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 1,
+      "feature_id": "dashboard",
+      "max_file_loc": 469,
+      "module": ":feature:dashboard",
+      "risk": "LOW",
+      "test_files": 0
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 0,
+      "feature_id": "dashboard-api",
+      "max_file_loc": 424,
+      "module": ":feature:dashboard:api",
+      "risk": "LOW",
+      "test_files": 0
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 1,
+      "feature_id": "expenses",
+      "max_file_loc": 321,
+      "module": ":feature:expenses",
+      "risk": "MEDIUM",
+      "test_files": 0
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 1,
+      "feature_id": "integration-optimal",
+      "max_file_loc": 484,
+      "module": ":feature:integration:optimal",
+      "risk": "HIGH",
+      "test_files": 1
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 1,
+      "feature_id": "inventory",
+      "max_file_loc": 435,
+      "module": ":feature:inventory",
+      "risk": "CRITICAL",
+      "test_files": 4
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 1,
+      "feature_id": "invoice",
+      "max_file_loc": 546,
+      "module": ":feature:invoice",
+      "risk": "CRITICAL",
+      "test_files": 6
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 0,
+      "feature_id": "management",
+      "max_file_loc": 192,
+      "module": ":feature:management",
+      "risk": "LOW",
+      "test_files": 0
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 0,
+      "feature_id": "messages",
+      "max_file_loc": 467,
+      "module": ":feature:messages",
+      "risk": "MEDIUM",
+      "test_files": 0
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 0,
+      "feature_id": "notifications",
+      "max_file_loc": 175,
+      "module": ":feature:notifications",
+      "risk": "MEDIUM",
+      "test_files": 1
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 0,
+      "feature_id": "organization",
+      "max_file_loc": 503,
+      "module": ":feature:organization",
+      "risk": "MEDIUM",
+      "test_files": 0
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 1,
+      "feature_id": "party",
+      "max_file_loc": 506,
+      "module": ":feature:party",
+      "risk": "HIGH",
+      "test_files": 3
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 1,
+      "feature_id": "payment",
+      "max_file_loc": 487,
+      "module": ":feature:payment",
+      "risk": "CRITICAL",
+      "test_files": 2
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 0,
+      "feature_id": "profile",
+      "max_file_loc": 187,
+      "module": ":feature:profile",
+      "risk": "LOW",
+      "test_files": 0
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 0,
+      "feature_id": "reports",
+      "max_file_loc": 340,
+      "module": ":feature:reports",
+      "risk": "MEDIUM",
+      "test_files": 1
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 0,
+      "feature_id": "settings",
+      "max_file_loc": 397,
+      "module": ":feature:settings",
+      "risk": "MEDIUM",
+      "test_files": 1
+    },
+    {
+      "admission_status": "PASS",
+      "direct_feature_dependencies": 1,
+      "feature_id": "shipment",
+      "max_file_loc": 657,
+      "module": ":feature:shipment",
+      "risk": "CRITICAL",
+      "test_files": 26
+    }
+  ],
+  "foreign_persistence_accesses": 0,
+  "format": "verto-feature-admission-snapshot-v1",
+  "session": 331,
+  "status": "PASS",
+  "unknown_scalability_metadata": 0,
+  "zero_tolerance": {
+    "dependency_cycles": 0,
+    "foreign_persistence_accesses": 0,
+    "unknown_scalability_metadata": 0
+  }
+}

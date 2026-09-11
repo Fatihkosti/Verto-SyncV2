@@ -1,0 +1,62 @@
+{
+  "version": 137,
+  "sourceOfTruth": "Verto-v136-source-clean.zip",
+  "migrationStartV130": {
+    "presentationScatteredLiterals": {
+      "dp": 2622,
+      "sp": 924,
+      "color": 85,
+      "total": 3631
+    }
+  },
+  "v136StrictAuditGaps": {
+    "legacyStatusUsages": {
+      "occurrences": 141,
+      "files": 22
+    },
+    "rtlDirectionalViolations": {
+      "occurrences": 20,
+      "files": 20
+    },
+    "explicitIconButtonTargetsBelow48dp": {
+      "occurrences": 14,
+      "files": 10
+    }
+  },
+  "after": {
+    "prohibitedScatteredPresentation": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0,
+      "total": 0
+    },
+    "legacyStatusUsages": 0,
+    "rtlDirectionalViolations": 0,
+    "explicitIconButtonTargetsBelow48dp": 0,
+    "featureLocalPalettes": 0,
+    "localSemanticStateDefinitions": 0,
+    "duplicateGuardedPrimitives": 0,
+    "coreBoundaryViolations": 0,
+    "featureTokenRawColorViolations": 0
+  },
+  "documentedExceptions": {
+    "core/designsystem/src/main/kotlin/com/verto/app/ui/components/AppIcons.kt": {
+      "dp": 2,
+      "sp": 0,
+      "color": 0,
+      "reason": "ImageVector defaultWidth/defaultHeight are intrinsic vector asset dimensions, not screen layout geometry."
+    },
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/SettingsPrintTokens.kt": {
+      "rawColor": 29,
+      "reason": "Fixed invoice/price-list print-preview template colors are document assets, not runtime semantic state colors."
+    }
+  },
+  "scannerRemainingPresentationLiterals": {
+    "core/designsystem/src/main/kotlin/com/verto/app/ui/components/AppIcons.kt": {
+      "dp": 2,
+      "sp": 0,
+      "color": 0
+    }
+  },
+  "runtimeVerification": "Not executed; build/compile/emulator intentionally deferred until migration completion on laptop."
+}

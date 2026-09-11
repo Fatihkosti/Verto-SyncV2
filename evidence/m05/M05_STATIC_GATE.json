@@ -1,0 +1,187 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "name": "v2_drain_no_legacy_participant_transport",
+      "pass": true,
+      "detail": "drainOrchestration contains no legacy participant PUSH/DELETE execution"
+    },
+    {
+      "name": "v2_single_push_coordinator_boundary",
+      "pass": true,
+      "detail": "SyncManager pushes only through SyncV2EnginePort"
+    },
+    {
+      "name": "terminal_push_health_not_success",
+      "pass": true,
+      "detail": "terminal push states are recorded as failure, not success"
+    },
+    {
+      "name": "future_retry_delayed_continuation",
+      "pass": true,
+      "detail": "future eligible retry schedules exact delayed continuation"
+    },
+    {
+      "name": "manager_cancellation_passthrough",
+      "pass": true,
+      "detail": "CancellationException is not converted to generic sync failure"
+    },
+    {
+      "name": "ack_cas_fingerprint",
+      "pass": true,
+      "detail": "terminal ACK CAS requires mutation lease and sent semantic fingerprint"
+    },
+    {
+      "name": "dependency_terminalization",
+      "pass": true,
+      "detail": "failed/missing dependencies have a terminal review transition"
+    },
+    {
+      "name": "push_cancellation_passthrough",
+      "pass": true,
+      "detail": "generic push propagates coroutine cancellation"
+    },
+    {
+      "name": "dependency_failed_review",
+      "pass": true,
+      "detail": "dependency/predecessor hard failures leave runnable continuation set"
+    },
+    {
+      "name": "generic_runnable_count",
+      "pass": true,
+      "detail": "generic push continuation uses runnable rather than raw eligible count"
+    },
+    {
+      "name": "ack_calls_use_fingerprint",
+      "pass": true,
+      "detail": "generic terminal transitions carry the leased semantic fingerprint"
+    },
+    {
+      "name": "coordinator_all_lanes",
+      "pass": true,
+      "detail": "coordinator owns generic, Party, financial/inventory stronger, and specialized lanes"
+    },
+    {
+      "name": "coordinator_persistent_terminal_health",
+      "pass": true,
+      "detail": "health accounts for terminal states left from earlier runs"
+    },
+    {
+      "name": "stronger_financial_lane",
+      "pass": true,
+      "detail": "financial_outbox has explicit V2 sender"
+    },
+    {
+      "name": "stronger_inventory_stock_lane",
+      "pass": true,
+      "detail": "inventory_stock_outbox has explicit V2 sender"
+    },
+    {
+      "name": "stronger_inventory_cost_lane",
+      "pass": true,
+      "detail": "inventory_cost_outbox has explicit V2 sender"
+    },
+    {
+      "name": "stronger_cancellation_passthrough",
+      "pass": true,
+      "detail": "stronger lane does not swallow cancellation"
+    },
+    {
+      "name": "stronger_auth_separate",
+      "pass": true,
+      "detail": "authentication is separated from transient retry and permanent review"
+    },
+    {
+      "name": "owner310_materializes_client_credit",
+      "pass": true,
+      "detail": "CLIENT_CREDIT has an explicit durable materialization route"
+    },
+    {
+      "name": "owner310_materializes_cost_allocation",
+      "pass": true,
+      "detail": "COST_ALLOCATION has an explicit durable materialization route"
+    },
+    {
+      "name": "owner310_materializes_expense",
+      "pass": true,
+      "detail": "EXPENSE has an explicit durable materialization route"
+    },
+    {
+      "name": "owner310_materializes_cash_movement",
+      "pass": true,
+      "detail": "CASH_MOVEMENT has an explicit durable materialization route"
+    },
+    {
+      "name": "owner310_materializes_cash_reconciliation",
+      "pass": true,
+      "detail": "CASH_RECONCILIATION has an explicit durable materialization route"
+    },
+    {
+      "name": "owner310_materializes_goods_receipt",
+      "pass": true,
+      "detail": "GOODS_RECEIPT has an explicit durable materialization route"
+    },
+    {
+      "name": "owner310_materializes_purchase_match",
+      "pass": true,
+      "detail": "PURCHASE_MATCH has an explicit durable materialization route"
+    },
+    {
+      "name": "owner310_materializes_purchase_payment_override",
+      "pass": true,
+      "detail": "PURCHASE_PAYMENT_OVERRIDE has an explicit durable materialization route"
+    },
+    {
+      "name": "owner310_no_generic_upsert",
+      "pass": true,
+      "detail": "owner310 generic intents are normalized through stronger COMMAND policy"
+    },
+    {
+      "name": "party_cancellation_passthrough",
+      "pass": true,
+      "detail": "Party bridge propagates cancellation"
+    },
+    {
+      "name": "party_rejection_terminal",
+      "pass": true,
+      "detail": "Party permanent rejection is terminal"
+    },
+    {
+      "name": "workmanager_delayed_retry",
+      "pass": true,
+      "detail": "future retry uses a separate delayed WorkManager chain"
+    },
+    {
+      "name": "optimal_explicit_v2_bridge",
+      "pass": true,
+      "detail": "Optimal stronger outbox is invoked through V2 extension point, not SyncParticipant operations"
+    },
+    {
+      "name": "optimal_cancellation_passthrough",
+      "pass": true,
+      "detail": "Optimal participant propagates cancellation"
+    },
+    {
+      "name": "optimal_permanent_vs_retry",
+      "pass": true,
+      "detail": "Optimal contract separates retryable failure from rejection/conflict review"
+    },
+    {
+      "name": "test_delayed_retry",
+      "pass": true,
+      "detail": "future retry schedules delayed continuation"
+    },
+    {
+      "name": "test_terminal_health",
+      "pass": true,
+      "detail": "terminal push issue never records push health success"
+    },
+    {
+      "name": "test_no_legacy_participant_transport",
+      "pass": true,
+      "detail": "v2 drain does not execute legacy participant push operations"
+    }
+  ],
+  "passed": 36,
+  "failed": 0
+}

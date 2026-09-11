@@ -1,0 +1,50 @@
+{
+  "format": "verto-contract-test-registry-v333",
+  "session": 333,
+  "tests": [
+    {
+      "contract_id": "party.lookup.v1",
+      "contract_symbol": "PartyDirectoryGateway",
+      "implementation_symbol": "ClientRepository",
+      "test_file": "feature/party/src/test/kotlin/com/verto/app/feature/party/domain/repository/PartyDirectoryGatewayContractTest.kt",
+      "test_symbol": "PartyDirectoryGatewayContractTest",
+      "semantic_assertions": ["not_found", "empty_collection"],
+      "coverage_mode": "DIRECT_CONTRACT",
+      "production_adapter_conformance": "DEFERRED_ANDROID_COMPOSITION",
+      "status": "ACTIVE"
+    },
+    {
+      "contract_id": "invoice.presentation.v1",
+      "contract_symbol": "InvoicePresentationPort",
+      "implementation_symbol": "InvoicePresentationBridge",
+      "test_file": "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/port/InvoicePresentationPortContractTest.kt",
+      "test_symbol": "InvoicePresentationPortContractTest",
+      "semantic_assertions": ["not_found"],
+      "coverage_mode": "DIRECT_CONTRACT",
+      "production_adapter_conformance": "DEFERRED_ANDROID_ROOM_COMPOSITION",
+      "status": "ACTIVE"
+    },
+    {
+      "contract_id": "payment.purchase-shipment.v1",
+      "contract_symbol": "PurchaseShipmentGateway",
+      "implementation_symbol": "PaymentShipmentBridge",
+      "test_file": "feature/payment/src/test/kotlin/com/verto/app/feature/payment/application/port/PurchaseShipmentGatewayContractTest.kt",
+      "test_symbol": "PurchaseShipmentGatewayContractTest",
+      "semantic_assertions": ["stable_result_mapping", "write_forwarding"],
+      "coverage_mode": "DIRECT_CONTRACT",
+      "production_adapter_conformance": "DEFERRED_ANDROID_CONTEXT_COMPOSITION",
+      "status": "ACTIVE"
+    },
+    {
+      "contract_id": "shipment.read.v1",
+      "contract_symbol": "LogisticsUnifiedReadPort",
+      "implementation_symbol": "LogisticsUnifiedReadModelAdapter",
+      "test_file": "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/port/LogisticsUnifiedReadPortContractTest.kt",
+      "test_symbol": "LogisticsUnifiedReadPortContractTest",
+      "semantic_assertions": ["empty_collection", "not_found"],
+      "coverage_mode": "DIRECT_CONTRACT",
+      "production_adapter_conformance": "DEFERRED_ROOM_ADAPTER_COMPOSITION",
+      "status": "ACTIVE"
+    }
+  ]
+}

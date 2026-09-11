@@ -1,0 +1,7 @@
+{
+  "input_archive": "/mnt/data/Verto-425-B11-V01-WIP_NOT_RELEASE_READY.zip",
+  "input_archive_sha256": "0ae6cdbfe810c222300874d3fa3b123a670517a1cefb7fbef37ccb14c4195d27",
+  "embedded_b11_legacy_product_tree_sha256": "2af04ead841b8dc8cf8234250caa88f2785131261f422bd5266672bad6c912a9",
+  "b12_expanded_scope_baseline_product_tree_sha256": "bf610527fe6590ec0804825884e8c4baaf301d52cc736bf7a29ed3ef282c8ec4",
+  "result": "PASS_INPUT_IDENTIFIED"
+}

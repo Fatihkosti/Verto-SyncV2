@@ -1,0 +1,55 @@
+{
+  "architecture": {
+    "exposed_ports": [],
+    "external_dependencies": [
+      "api:libs.kotlinx.coroutines.core"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":feature:dashboard",
+      ":feature:expenses",
+      ":feature:integration:optimal",
+      ":feature:inventory",
+      ":feature:invoice",
+      ":feature:party",
+      ":feature:payment",
+      ":feature:shipment"
+    ],
+    "internal_packages": [],
+    "outgoing_dependencies": [],
+    "public_api": [
+      "com.verto.feature.dashboard.api"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [
+      "EducationalContentRepository"
+    ],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:dashboard:api",
+    "name": "feature/dashboard/api",
+    "owner": ":feature:dashboard:api",
+    "purpose": "Production capability implemented by :feature:dashboard:api; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [],
+    "legacy_cross_feature_debt": []
+  },
+  "provides_contracts": ["dashboard.home-search.v1"],
+  "consumes_contracts": [],
+  "deprecated_contracts": [],
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "b524477a522b6e18765dfec77bfc7ab4dbc0fb18cb5f948b2f3809a194ba0183",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v321"
+  }
+}

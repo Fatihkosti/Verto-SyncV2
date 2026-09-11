@@ -1,0 +1,180 @@
+<resources>
+    <string name="reports_v365_1_sales_filters_title">فلاتر المبيعات</string>
+    <string name="reports_ap_aging_title">الذمم الدائنة (A/P Aging)</string>
+    <string name="reports_ap_aging_total">إجمالي المتأخر: %1$s · DPO %2$d يوم</string>
+    <string name="reports_ap_oldest_due">أقدم استحقاق %1$d يوم</string>
+
+    <string name="reports_invoice_analytics_title">تحليلات الفواتير والتنبيهات</string>
+    <string name="reports_ppv_title">Purchase Price Variance</string>
+    <string name="reports_ppv_empty">لا توجد فروقات سعر شراء في الفترة</string>
+    <string name="reports_ppv_net">صافي %1$s</string>
+    <string name="reports_landed_variance_title">Landed Cost Variance</string>
+    <string name="reports_landed_variance_empty">لا توجد تكاليف شحن قابلة للمقارنة</string>
+    <string name="reports_fx_variance_title">Realized FX Gain/Loss</string>
+    <string name="reports_fx_variance_empty">لا توجد فروقات صرف محققة في الفترة</string>
+    <string name="reports_supplier_payment_average">متوسط زمن دفع الموردين: %1$d يوم</string>
+    <string name="reports_supplier_payment_row">%1$d يوم (%2$s)</string>
+    <string name="reports_operational_alerts_title">تنبيهات تشغيلية (%1$d)</string>
+    <string name="reports_operational_alerts_empty">لا توجد تنبيهات تشغيلية</string>
+    <string name="legacy_ui_3ffefcbdb7f3">%1$s بند قديم بلا تكلفة تاريخية موثوقة؛ لم تُخمن أرباحه.</string>
+    <string name="legacy_ui_b594e895c815">المصروفات التشغيلية</string>
+
+    <string name="reports_ds_01840db216d1">متوقع هذا الشهر</string>
+    <string name="reports_ds_022426d7c890">هامش: %1$s%%</string>
+    <string name="reports_ds_04e7c7e15802">مسح الكل (%1$s)</string>
+    <string name="reports_ds_1033a8451ed4">💡 قيمة المخزون الراكد: %1$s</string>
+    <string name="reports_ds_114c47b3bf91">سجل التعديلات اليوم</string>
+    <string name="reports_ds_12a9718c2702">كشف المورد الدولي</string>
+    <string name="reports_ds_15b8dd4725b4">منخفض</string>
+    <string name="reports_ds_171c0d88b69c">تم تعديل/حذف %1$s سجل اليوم</string>
+    <string name="reports_ds_18773218c025">%1$s من %2$s</string>
+    <string name="reports_ds_1bd5e624c485">لا توجد مشتريات في هذه الفترة</string>
+    <string name="reports_ds_1cd514b2e0a4">فلاتر</string>
+    <string name="reports_ds_1dd63530b50e">معاملات</string>
+    <string name="reports_ds_1e915890ae92">لا توجد بيانات كاشيرز في هذه الفترة</string>
+    <string name="reports_ds_1edd54148815">النقد المحلي %1$s · فرق الصرف %2$s</string>
+    <string name="reports_ds_213edd2539ed">→</string>
+    <string name="reports_ds_21606782c65e">=</string>
+    <string name="reports_ds_21da4e22df73">فواتير</string>
+    <string name="reports_ds_26408c080648">رصيد البداية:</string>
+    <string name="reports_ds_2a4bfa9d9d0e">الصنف</string>
+    <string name="reports_ds_2b06e354e8fe">قيمة المرتجعات</string>
+    <string name="reports_ds_2fc0fdbf702e">الذمم المدينة (Aged Receivables)</string>
+    <string name="reports_ds_3332cb35af0d">خريطة حرارة المبيعات</string>
+    <string name="reports_ds_36231274535b">نوع الهدف</string>
+    <string name="reports_ds_39a531d92bbe">arrow</string>
+    <string name="reports_ds_41523673adb8">لا توجد مرتجعات في هذه الفترة</string>
+    <string name="reports_ds_4158178741e4">المتوقع</string>
+    <string name="reports_ds_417e93188975">* التوقعات بناءً على Exponential Smoothing مع تعديل موسمي يومي</string>
+    <string name="reports_ds_41cd1ecc4519">+ هدف جديد</string>
+    <string name="reports_ds_429304df81ca">أداء الكاشيرز</string>
+    <string name="reports_ds_42cd7d14646e">الفترة</string>
+    <string name="reports_ds_4a08db34c9ec">سعر الاعتراف: %1$s</string>
+    <string name="reports_ds_4fe45f556503">مفتوح منذ: %1$s</string>
+    <string name="reports_ds_520e177fb20a">%1$s يوم تأخير</string>
+    <string name="reports_ds_52aa609cc113">صحة المخزون</string>
+    <string name="reports_ds_53bf61acb0fd">أبرز العملاء المتأخرين:</string>
+    <string name="reports_ds_54272a6c18fa">قيمة المخزون التشغيلية</string>
+    <string name="reports_ds_5876f2156395">%1$s قطعة</string>
+    <string name="reports_ds_59de6a8f17f5">الفئة</string>
+    <string name="reports_ds_5abc23950582">%1$s مرة</string>
+    <string name="reports_ds_5ac3a6ac375f">تسوية الصندوق</string>
+    <string name="reports_ds_5e9dcf2e62a8">العملة الوظيفية: %1$s</string>
+    <string name="reports_ds_60711b529299">لا توجد تعديلات اليوم ✅</string>
+    <string name="reports_ds_60b260ca1a4f">🔒 اقفل الشفت وعد الكاش</string>
+    <string name="reports_ds_60e740623144">🔒 عد الصندوق</string>
+    <string name="reports_ds_62d85520f9af">تصدير ومشاركة</string>
+    <string name="reports_ds_62e5021947c6">إجمالي المشتريات</string>
+    <string name="reports_ds_649ef4fb3817">💸 إجمالي تكاليف الشحن</string>
+    <string name="reports_ds_6aa6a8999aa7">تطبيق الفلاتر</string>
+    <string name="reports_ds_6b4b45560f86">💎 أعلى عملاء قيمة (CLV)</string>
+    <string name="reports_ds_6dc1e9f0c507">تحليل الموردين</string>
+    <string name="reports_ds_70ff5f7b99e0">المورد</string>
+    <string name="reports_ds_720c1915a124">المبلغ المستهدف (جنيه)</string>
+    <string name="reports_ds_7235d3577f80">%1$s %2$s%% مقارنة بالفترة السابقة</string>
+    <string name="reports_ds_75229fff33f1">🏷️ %1$s</string>
+    <string name="reports_ds_76d896309955">مرتفع</string>
+    <string name="reports_ds_7ce401fb5e3e">الأصل %1$s · المدفوع %2$s · المتبقي %3$s</string>
+    <string name="reports_ds_7db74e774f7c">إجمالي المبيعات</string>
+    <string name="reports_ds_7e1714000003">الأهداف مقابل الفعلي</string>
+    <string name="reports_ds_7e762c984cc7">مخزون راكد</string>
+    <string name="reports_ds_8172bd107286">التحصيلات</string>
+    <string name="reports_ds_81bed2295a10">👨‍💼 %1$s</string>
+    <string name="reports_ds_8290561bcac3">%1$s عميل</string>
+    <string name="reports_ds_85df5d551504">💎 صافي الربح الفعلي</string>
+    <string name="reports_ds_8c290852422c">محقق</string>
+    <string name="reports_ds_8c978984d72d">سبب الفرق (مطلوب)</string>
+    <string name="reports_ds_9051ae657ca8">لا توجد بيانات في هذه الفترة</string>
+    <string name="reports_ds_90c621821f6d">عدد التعديلات السلبية</string>
+    <string name="reports_ds_92fec7ad5c88">التقارير</string>
+    <string name="reports_ds_9816e2072bb7">🎉 تم تحقيق الهدف!</string>
+    <string name="reports_ds_9de968b7b29e">✅ تأكيد وقفل الشفت</string>
+    <string name="reports_ds_a07db809b51a">بعض البنود القديمة بلا تكلفة بيع تاريخية؛ لا تُخمن أرباحها.</string>
+    <string name="reports_ds_a0de7bd18afc">💳 طريقة الدفع</string>
+    <string name="reports_ds_a2a93b056454">تحتاج %1$s / يوم لتحقيق الهدف</string>
+    <string name="reports_ds_a315651d7fec">✅ لا توجد ذمم متأخرة</string>
+    <string name="reports_ds_a3ef0db469fc">%1$s صنف • %2$s وحدة</string>
+    <string name="reports_ds_a448dd0c246d">معدل المرتجعات</string>
+    <string name="reports_ds_a5507ef66683">%1$s ←</string>
+    <string name="reports_ds_a82c1974096b">العدد</string>
+    <string name="reports_ds_a8615604b55c">متوقع هذا الأسبوع</string>
+    <string name="reports_ds_ab957490736a">توقعات المبيعات</string>
+    <string name="reports_ds_adebc50ade66">#%1$s</string>
+    <string name="reports_ds_b0e2d3843f5e">لا يوجد هدف محدد بعد</string>
+    <string name="reports_ds_b5ce96d4ea4d">استبدال</string>
+    <string name="reports_ds_b6eaeafa3a21">لا يوجد شفت مفتوح</string>
+    <string name="reports_ds_b7157f8f7065">تصنيف العملاء (RFM)</string>
+    <string name="reports_ds_ba9a40fd3cb4">الرصيد المتوقع في الصندوق:</string>
+    <string name="reports_ds_bccc12bf8bc8">المتوسط</string>
+    <string name="reports_ds_bdb4433e2fbc">لا توجد شحنات</string>
+    <string name="reports_ds_bde7530b76e5">باقي %1$s يوم</string>
+    <string name="reports_ds_c1000291bdf7">تقرير المرتجعات</string>
+    <string name="reports_ds_c18a63a0e24d">👨‍💼 الكاشير / الموظف</string>
+    <string name="reports_ds_c79f71243f41">%1$s</string>
+    <string name="reports_ds_c8480ab06f6d">صافي الربح</string>
+    <string name="reports_ds_c8f9039c8176">المعدود فعلياً</string>
+    <string name="reports_ds_caabfe26a578">💤</string>
+    <string name="reports_ds_cf4c7e7f8e0f">💳 %1$s</string>
+    <string name="reports_ds_d118696f7e97">X-Report (لقطة الشفت الحالي)</string>
+    <string name="reports_ds_d2184c02dfa7">الربح المحقق مقابل هامش الاستبدال</string>
+    <string name="reports_ds_d2469281d468">تقرير الخسائر (Shrinkage)</string>
+    <string name="reports_ds_d3832b182e1f">ربح: %1$s</string>
+    <string name="reports_ds_d66f4f34a1a6">%1$s وحدة</string>
+    <string name="reports_ds_d7daab43e212">🥉</string>
+    <string name="reports_ds_d97b44e9e783">أعلى الأصناف مبيعاً</string>
+    <string name="reports_ds_db2c4d548734">الكاشير:</string>
+    <string name="reports_ds_dd4ecb9ae650">إجمالي الخسارة</string>
+    <string name="reports_ds_def78fe524d8">✏️</string>
+    <string name="reports_ds_e0cb8c698cd5">عدد المرتجعات</string>
+    <string name="reports_ds_e2ad4d762b46">أداء التصنيفات</string>
+    <string name="reports_ds_e2f83e37e972">المفضلة</string>
+    <string name="reports_ds_e30f0b31c618">الشحنات والتكاليف</string>
+    <string name="reports_ds_e7d3d458f872">الشفت مفتوح منذ:</string>
+    <string name="reports_ds_e90c6f6b4ca5">🏷️ التصنيف</string>
+    <string name="reports_ds_ea7e7ad4abad">أكثر الأصناف مرتجعة</string>
+    <string name="reports_ds_edc47290ed60">📝</string>
+    <string name="reports_ds_f002e52f1aec">%1$s%% من الإجمالي</string>
+    <string name="reports_ds_f00581141ea9">لا توجد تعديلات سلبية في هذه الفترة</string>
+    <string name="reports_ds_f16aae799706">🥇</string>
+    <string name="reports_ds_f2f1658f96b0">قيمة المخزون</string>
+    <string name="reports_ds_f44b3098ac94">متبقي: %1$s/%2$s</string>
+    <string name="reports_ds_f61a2da6307a">💸</string>
+    <string name="reports_ds_f6518a88d43d">المطابقة والتشخيص المالي</string>
+    <string name="reports_ds_fa3fbbae1e98">⚠️ يُنصح بمراجعة تقرير الـ Audit لمعرفة سبب التعديلات</string>
+    <string name="reports_ds_fada034d1e08">هامش: %1$s%% | %2$s%%</string>
+    <string name="reports_ds_fb8387b2d570">فلاتر متقدمة</string>
+    <string name="reports_ds_fc9db15ab9d2">%1$s%%</string>
+    <string name="reports_ds_fcb8c5cba3ce">🥈</string>
+    <string name="reports_ds_fd07823a6191">خطر نفاد</string>
+    <string name="reports_ds_fe12b36842ce">📂 افتح شفت جديد</string>
+
+    <!-- Session 298: owner-local hardcoded string migration. -->
+    <string name="reports_v298_17695405cae1" translatable="false">"سيتوفر هذا التقرير بعد ربط سجل الصندوق"</string>
+    <string name="reports_v298_1e7fa7d276be" translatable="false">"%1$s يوم"</string>
+    <string name="reports_v298_23659c52a66a" translatable="false">" · "</string>
+    <string name="reports_v298_23f213afaf16" translatable="false">"-%1$s"</string>
+    <string name="reports_v298_4c23b54087b5" translatable="false">"العملة الوظيفية: %1$s"</string>
+    <string name="reports_v298_5342007749c0" translatable="false">"التدفقات الداخلة ▲"</string>
+    <string name="reports_v298_6b11a0fda611" translatable="false">"—"</string>
+    <string name="reports_v298_80eff920af0d" translatable="false">"▼"</string>
+    <string name="reports_v298_857c6375f858" translatable="false">"تثبيت"</string>
+    <string name="reports_v298_857c6375f858_2" translatable="false">"إلغاء التثبيت"</string>
+    <string name="reports_v298_8d932e63b02a" translatable="false">"التدفقات الخارجة ▼"</string>
+    <string name="reports_v298_9fb5c59ce495" translatable="false">"توجد فروقات تحتاج مراجعة"</string>
+    <string name="reports_v298_9fb5c59ce495_2" translatable="false">"البيانات المالية متطابقة"</string>
+    <string name="reports_v298_b08ac30bacd0" translatable="false">"✏️ تعديل الهدف"</string>
+    <string name="reports_v298_b08ac30bacd0_2" translatable="false">"🎯 إضافة هدف جديد"</string>
+    <string name="reports_v298_d45d64e016e5" translatable="false">"%1$s"</string>
+
+    <!-- Session 298 legacy hardcoded closure. -->
+    <string name="reports_v298_cash_flow_title" translatable="false">"التدفق النقدي"</string>
+    <string name="reports_v298_profit_loss_title" translatable="false">"قائمة الأرباح والخسائر"</string>
+    <string name="reports_v298_gross_margin_format" translatable="false">"هامش مجمل الربح: %1$d%%"</string>
+    <string name="reports_v298_net_margin_format" translatable="false">"هامش صافي الربح: %1$d%%"</string>
+    <string name="reports_v298_amount_negative_format" translatable="false">"-%1$s"</string>
+    <string name="reports_v298_amount_plain_format" translatable="false">"%1$s"</string>
+    <string name="reports_v364_unavailable" translatable="false">"غير متاح"</string>
+    <string name="reports_v364_profit_unreliable" translatable="false">"لا يُعرض صافي الربح لأن البيانات أو الفلاتر لا تسمح بحسابه بثقة"</string>
+    <string name="reports_v364_segment_profit_unavailable" translatable="false">"صافي الربح والمصروفات العامة غير معروضة مع فلتر قطاعي لأنها غير موزعة على هذا القطاع"</string>
+    <string name="reports_v364_cost_incomplete" translatable="false">"تكلفة البضاعة ومجمل الربح غير معروضين حتى تكتمل التكلفة التاريخية"</string>
+</resources>

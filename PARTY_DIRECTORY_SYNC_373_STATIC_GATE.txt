@@ -1,0 +1,6 @@
+PASS: legacy Party pull hydrates normalized directory
+PASS: client cursor advances only after normalized refresh path
+PASS: pending local Party edits remain protected
+PASS: customer/supplier list excludes deleted roles
+PASS: server normalized schema mapped explicitly
+PARTY_DIRECTORY_SYNC_V373_STATIC_GATE=PASS

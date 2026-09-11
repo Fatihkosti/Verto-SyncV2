@@ -1,0 +1,179 @@
+{
+  "checkpoint": "B11-V01",
+  "input_archive_sha256": "db0eb5ae27697a72dd4ce2829128b292334e6380f2a403b3c53f1b76f8a6198f",
+  "modified": [
+    {
+      "path": "CHANGELOG.md",
+      "before_sha256": "f6c4af38f6fdd696203af053c811c572e714c4d659d4d05119618ca87e7ab70b",
+      "after_sha256": "44d3b0560453b05a1c6e020ab3c71b63b691d79bb64bede8b41c30b051a3d43f"
+    },
+    {
+      "path": "EVIDENCE_INDEX.md",
+      "before_sha256": "926d5923ab240369e374a0abce5f68d45375ddf9c2c926175ff58affaf7efb71",
+      "after_sha256": "6e9e591e9165910aeca5262df3549c81dac9c12d0854b7da0105837cb6567cee"
+    },
+    {
+      "path": "SYNC_IMPLEMENTATION_MAP.md",
+      "before_sha256": "f42e78b4b30b5ef966ceddfb13c48b9bc94aa3670af1a73346fba9aa5f3aaf85",
+      "after_sha256": "ca877bc60e7309bfe5050ce83c0e5e1774ca7b13766077fcae3e08580cb3d64a"
+    },
+    {
+      "path": "VERTO_SYNC_REPAIR_BACKLOG_AR.md",
+      "before_sha256": "b128f30b0a4d39c35fc1879b56feba3cbd16d9569eca33c3eb4172ba8f862307",
+      "after_sha256": "6055250b249541fc4eead55eeb8c409de6b2cbc612c06a4fbf0abc3f39f9d5d1"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/sync/presentation/SyncViewModel.kt",
+      "before_sha256": "3e78ab0e7dafa3813b38ae66044e4544008f4fa574089c8139275b4438bd64b9",
+      "after_sha256": "81c03919aa7057de83a07deffff190625a91ab11736ab9e3391bdff485eb17d4"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt",
+      "before_sha256": "12a222dbef3d59740db35e453120ce145a33ce79b5d778efbbce64f44933d464",
+      "after_sha256": "cac762bd488c01219fe8241c1e357dbf9ae98cd5133450e9672ecde704e476b0"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/ui/navigation/AppNavigation.kt",
+      "before_sha256": "420f51c5047b930fbc3cf2949454450f2b318b368129759c3478967da76e677f",
+      "after_sha256": "5cce65c9afd5d0364f616f50f52a208e7a935806a2ccc7d2f6c1f8beba2f38c6"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt",
+      "before_sha256": "c50184635ecf8d41951f7752efc7f840289c56a5cccdb38ee4e273999b35b024",
+      "after_sha256": "75028b38b977a41fca291ff909b684dcf402bb01bfd331d3d69dc2eeed8a5974"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt",
+      "before_sha256": "74105c6423c233c1e301842f4e2c92ed530576a4eaf88a7aec83f6df70e74aa3",
+      "after_sha256": "52953dcb22496bdc96292e984db18bfc5032b21a6984928fa1fe0e17caa77972"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRecoveryDao.kt",
+      "before_sha256": "d73d1f17c3379258a254db4a077bde31d7a067eda3560540af557bd3d6178602",
+      "after_sha256": "0d3ce393b1d9a82da173d17fd7351b748257a813cf3088ec89d57661cd3f0f7c"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRepairV2Dao.kt",
+      "before_sha256": "ccd1c6153dcb8d4f377659eea8cf123f6531a2f6b4f84ff20308887309a3add0",
+      "after_sha256": "8cff221c2054a967a463a7f6b01d16bc85866885992b0fe00f8e13eb0b05d58c"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncConflictDao.kt",
+      "before_sha256": "938648c562e9af0e745db5f409a3479a0b33fc16f43f48657b0e8e3c6a9e0b90",
+      "after_sha256": "948dee56f6fcd7aa1d5f4a68130b0c41530b44d8e906eef92a0a87df5d037a45"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncOutboxDao.kt",
+      "before_sha256": "e201ff0be1b615ac3c70e52c934fe20a55cbaec6260b05e4336f7bc2750b7146",
+      "after_sha256": "4aafe9145573bfe8371e4f110e835fe06944c5cfd6de9e426cd7404cdc87e434"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncPersistenceSupport.kt",
+      "before_sha256": "3f61a90134cfb618d11f5726c94b1830f344bc7f143b3af8c51abf329bab97b7",
+      "after_sha256": "b5b50ffc3f67578160c1f27e36c724b1996486102cb4e9f65bc1b4d4fe276fc3"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncRepairV2Entities.kt",
+      "before_sha256": "7267237c9ab8c40146b321b6fc2cd6de2b8b414cf5873cb6d9ff739a92c748c3",
+      "after_sha256": "c04043c8f2997dbe1c1ec981dacbd0bb4e113e1d0583f2eb769a4de0c28a5239"
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/entity/UnifiedSyncEntities.kt",
+      "before_sha256": "2623d13b2f924a020948e8c42a704cba8ff57586562a29be9baf99c71d08928e",
+      "after_sha256": "a7fbc94c379cbc19856fc184b3ebb2242c6a04b95a734f6a3e5320f2ac9848f0"
+    },
+    {
+      "path": "data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogM03Test.kt",
+      "before_sha256": "3d6f9daeac10b140115c4153c967c6c689b00af052623f1f66ad405ef11569f7",
+      "after_sha256": "a827a95081f0497c61a1d57260daf0a93af018aabc9b4b5f1ad79ad820e405e1"
+    },
+    {
+      "path": "data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogSyncRepairV2Test.kt",
+      "before_sha256": "1857a13044e57c903087978db41a0e45c59bee5aa7c323daf502ee321252becc",
+      "after_sha256": "1495504c093a7c9ddb4668dd5fbb39189f16907cda84fc5a6d400bbe5ae22614"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/FrozenMutationStore.kt",
+      "before_sha256": "5578d21b40321593a424114f394797a3b1221c046d87af7046081be9628c6410",
+      "after_sha256": "2ba9ea84040e6669227d243858dc9a8f089d92c4ea2f0376d69191175d5b62ce"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/ownership/SyncOwnershipRegistry.kt",
+      "before_sha256": "8a0209c4fe45529593d9e7b6c0dc563458ecb323c0a6aa12148eab7e69b8ee3b",
+      "after_sha256": "2484995ff2a46a0116db6a56031c4bbee91cc5a547aead7d0efabde6e2bba3c6"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncConflictEngine.kt",
+      "before_sha256": "453a96a34628d4fc3e0eaefb39a6ba609dd8cfcde0265a50977eeab74c9820c8",
+      "after_sha256": "37d63de4fa2c2fccb3f18894c0aab5daac264332fa28c78e75486bd0ee09fc4e"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushEngine.kt",
+      "before_sha256": "1a94afac23b45cf8f69557f23e1b2179c9af3776005a14f7667e450fee388665",
+      "after_sha256": "36ca3cc5d74ba7ca103135eb6c0b00ecc24ca09c9378b4603f784db43d97fcea"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/OutboxIdentityDigest.kt",
+      "before_sha256": "f34046af736bfa60642e7629e3c62c085e4d996f06cb29fd20a5918834584521",
+      "after_sha256": "cb2681aaebb55bdfd59efd0d89d02a61bae6b7a5019fb26d03f772c5e1f3891c"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryRegistry.kt",
+      "before_sha256": "ba2dbe040eb3ac66f7fd86c263630a1948d7b98480efcad079f54dfb3da98d10",
+      "after_sha256": "acf818f55b14fd8e32487624a343d8e99f0f18400bcac518d9dbd6919b8cd821"
+    },
+    {
+      "path": "docs/DOCUMENTATION_INVENTORY.md",
+      "before_sha256": "3651300ccd2676b7c33e58e76928c0747bee5b9fddcf11262985b12f6d9924d5",
+      "after_sha256": "4af555b49b60c5325cdeb1e09832aba851f9368a902232913a9844bc91cca184"
+    }
+  ],
+  "added": [
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/sync/di/SyncConflictReviewModule.kt",
+      "sha256": "8734093c1fb08fb03208ec92cd048448adcb081403b341c7f9e68bdf9e14f7c7",
+      "size": 1913
+    },
+    {
+      "path": "app/src/test/kotlin/com/verto/app/feature/sync/di/ConflictResolutionPermissionPolicyB11Test.kt",
+      "sha256": "863ed34bf841781567e25619fdccd89e16a302b487247dbe84c1da74d3e1cee6",
+      "size": 581
+    },
+    {
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations99To100.kt",
+      "sha256": "1ff9b64eb836a21584a805bd9c9043a0b65c8c498dd4f2411652fb4a6a0d2dda",
+      "size": 12356
+    },
+    {
+      "path": "data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogB11Test.kt",
+      "sha256": "028d9b85d7a069c165df71334ceb2f8e1d40e1c1907c9dd924b4c09e2ee726b9",
+      "size": 556
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/conflict/SyncConflictReviewService.kt",
+      "sha256": "1adf963c5d0182eb3dcc2d13a1aa0faeceda42a99fa1be8b658d52309e4da911",
+      "size": 21157
+    },
+    {
+      "path": "data/sync/src/test/kotlin/com/verto/app/data/sync/conflict/SyncConflictRedactorB11Test.kt",
+      "sha256": "13a28cd0b7fccc389544de14b1118f4032de0c8a6be0fed99e0037c8e1ae0854",
+      "size": 1024
+    },
+    {
+      "path": "data/sync/src/test/kotlin/com/verto/app/data/sync/conflict/SyncConflictResolutionPolicyB11Test.kt",
+      "sha256": "506d5c8c4c79599c97d84e752a5967d52765ea154312e5d67c214875016e9662",
+      "size": 1586
+    },
+    {
+      "path": "tools/test_sync_b11_sqlite.py",
+      "sha256": "cce4327ccb952a40dbc608a7876c40e25876c1b2afceb761ca580f3ab437ad41",
+      "size": 5257
+    },
+    {
+      "path": "tools/test_sync_b11_static.py",
+      "sha256": "87a2b506ecf99a00116dea7db9cec0b405c84d217d1e62a2365a223510c4fb82",
+      "size": 3236
+    }
+  ],
+  "deleted": []
+}

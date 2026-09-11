@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_brand_name">Verto</string>
+    <string name="login_brand_tagline">مساعدك المالي</string>
+    <string name="login_screen_title">تسجيل الدخول</string>
+    <string name="login_email_label">البريد الإلكتروني</string>
+    <string name="login_password_label">كلمة المرور</string>
+    <string name="login_email_required">أدخل البريد الإلكتروني</string>
+    <string name="login_email_invalid">أدخل بريدًا إلكترونيًا صحيحًا</string>
+    <string name="login_password_required">أدخل كلمة المرور</string>
+    <string name="login_submit">دخول</string>
+    <string name="login_forgot_password">نسيت كلمة المرور؟</string>
+    <string name="login_alternative_separator">أو</string>
+    <string name="login_register_organization">تسجيل مؤسسة جديدة</string>
+    <string name="login_join_organization">الانضمام لمؤسسة موجودة</string>
+    <string name="login_reset_title">استعادة كلمة المرور</string>
+    <string name="login_reset_description">سيتم إرسال رمز استعادة إلى بريدك الإلكتروني.</string>
+    <string name="login_reset_submit">إرسال الرمز</string>
+    <string name="login_cancel">إلغاء</string>
+
+    <string name="register_brand_name">Verto</string>
+    <string name="register_brand_tagline">سجل مؤسستك الجديدة</string>
+    <string name="register_organization_section_title">بيانات المؤسسة</string>
+    <string name="register_organization_section_description">أدخل البيانات الأساسية للمؤسسة.</string>
+    <string name="register_organization_name_label">اسم المؤسسة</string>
+    <string name="register_organization_address_label">عنوان المؤسسة</string>
+    <string name="register_next">التالي</string>
+    <string name="register_existing_account">عندك حساب بالفعل؟ سجل دخول</string>
+    <string name="register_account_section_title">المدير والحساب</string>
+    <string name="register_account_section_description">أدخل بيانات المدير وحساب الدخول.</string>
+    <string name="register_owner_name_label">اسم المدير</string>
+    <string name="register_owner_phone_label">رقم الهاتف</string>
+    <string name="register_email_label">البريد الإلكتروني</string>
+    <string name="register_password_label">كلمة المرور</string>
+    <string name="register_password_confirmation_label">تأكيد كلمة المرور</string>
+    <string name="register_password_help">ستة أحرف بالضبط</string>
+    <string name="register_submit">إنشاء المؤسسة</string>
+    <string name="register_back">السابق</string>
+    <string name="register_organization_name_required">أدخل اسم المؤسسة</string>
+    <string name="register_owner_name_required">أدخل اسم المدير</string>
+    <string name="register_phone_invalid">أدخل أرقامًا ورمز الدولة فقط</string>
+    <string name="register_email_required">أدخل البريد الإلكتروني</string>
+    <string name="register_email_invalid">أدخل بريدًا إلكترونيًا صحيحًا</string>
+    <string name="register_password_required">أدخل كلمة المرور</string>
+    <string name="register_password_too_short">كلمة المرور يجب أن تكون ستة أحرف بالضبط</string>
+    <string name="register_password_confirmation_required">أكد كلمة المرور</string>
+    <string name="register_password_mismatch">كلمتا المرور غير متطابقتين</string>
+
+    <string name="auth_have_account_prompt">لديك حساب بالفعل؟ </string>
+    <string name="auth_sign_in_action">سجل الدخول</string>
+    <string name="recovery_resend_countdown">يمكن إعادة الإرسال بعد %1$d ثانية</string>
+    <string name="recovery_code_not_received">لم يصلك الرمز؟</string>
+    <string name="recovery_resend_code">إعادة إرسال الرمز</string>
+    <string name="recovery_sending_code">جارٍ الإرسال...</string>
+
+    <string name="ds_01ea21e3c4a0">يجب التحقق من رمز OTP قبل تعيين كلمة المرور</string>
+    <string name="ds_081f6a3d6af2">recovery_stage</string>
+    <string name="ds_0915ef8ea533">البريد الإلكتروني</string>
+    <string name="ds_0ad388a336c0">أدخل بريدك الإلكتروني</string>
+
+    <string name="ds_2d2bb6a420ab">Verto</string>
+    <string name="ds_2fe5d407d642">تأكيد كلمة المرور</string>
+    <string name="ds_35b818de43fe">سنرسل لك رمز تحقق لإعادة تعيين كلمة المرور</string>
+    <string name="ds_3f21015abd16">المسمى الوظيفي: %1$s</string>
+    <string name="ds_46d3ed267d40">أدخل رمز التحقق</string>
+    <string name="ds_487251153f6f">العودة لتسجيل الدخول</string>
+    <string name="ds_537603b98a0b">تأكد من إدخال البريد المرتبط بحسابك</string>
+    <string name="ds_590e792edd47">بعد التحقق ستنتقل لإكمال بياناتك</string>
+    <string name="ds_7ba22cf7e99d">كلمة المرور</string>
+    <string name="ds_7eb09c4ae92b">تغيير البريد الإلكتروني</string>
+    <string name="ds_8a203f25f052">تم التحقق من الكود</string>
+    <string name="ds_942623106f7d">بيانات الموظف</string>
+    <string name="ds_9cf94c2677df">تاريخ الانضمام: %1$s</string>
+    <string name="ds_9ecb01a0191a">fill_alpha</string>
+    <string name="ds_a017f9996e82">أعد إدخال كلمة المرور</string>
+    <string name="ds_a29c7e9659e5">كلمة المرور الجديدة</string>
+    <string name="ds_a3a9588b092f">كود الدعوة</string>
+    <string name="ds_b9ceb1e346d4">تعيين كلمة مرور جديدة</string>
+    <string name="ds_d5036f51ad16">استعادة كلمة المرور</string>
+    <string name="ds_d526d3c546bf">اسم الموظف</string>
+    <string name="ds_d7820fac7314">أدخل رقم هاتفك</string>
+    <string name="ds_dd3fd999d25b">الرجوع لتعديل الكود</string>
+    <string name="ds_de2a1ca2bcc6">neon_stroke</string>
+    <string name="ds_dfd73d41e0a4">انضم لمؤسستك</string>
+    <string name="ds_e6ee3d3b9eeb">٢ من ٢</string>
+    <string name="ds_f0655fc4fcf9">أرسلنا رمز تحقق إلى</string>
+    <string name="ds_f639c9e070f0">مثال: VRT-4829</string>
+    <string name="ds_f9c5ce822685">اختر كلمة مرور قوية لحماية حسابك</string>
+    <string name="ds_fe369a164b86">أدخل كلمة المرور</string>
+
+    <string name="join_phone_invalid">رقم الهاتف غير صحيح</string>
+    <string name="join_invite_description">أدخل كود الدعوة الذي وصلك من المؤسسة</string>
+    <string name="join_verify_code">تحقق من الكود</string>
+    <string name="join_details_description">أكمل بياناتك للانضمام إلى المؤسسة</string>
+    <string name="join_submit">انضم الآن</string>
+
+    <string name="recovery_stage_email">البريد الإلكتروني</string>
+    <string name="recovery_stage_verification">التحقق</string>
+    <string name="recovery_stage_password">كلمة المرور</string>
+    <string name="recovery_send_code">إرسال رمز التحقق</string>
+    <string name="recovery_verify_code">تحقق</string>
+    <string name="recovery_new_password_required">أدخل كلمة المرور الجديدة</string>
+    <string name="recovery_save_password">حفظ كلمة المرور</string>
+
+</resources>

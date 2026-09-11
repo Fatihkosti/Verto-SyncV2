@@ -1,0 +1,176 @@
+{
+  "exclusions": [
+    {
+      "aggregate_id": "CASH_MOVEMENT",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-cash_movement",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "CASH_RECONCILIATION",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-cash_reconciliation",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "CASH_REGISTER",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-cash_register",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "CLIENT_CREDIT",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-client_credit",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "COMMISSION_PAYMENT",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-commission_payment",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "COST_ALLOCATION",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-cost_allocation",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "EXPENSE",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-expense",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "GOODS_RECEIPT",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-goods_receipt",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "INVENTORY_COST_REVISION",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-inventory_cost_revision",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "INVENTORY_MOVEMENT",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-inventory_movement",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "INVOICE",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-invoice",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "OPTIMAL_FOLLOW_UP",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-optimal_follow_up",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "OPTIMAL_MAINTENANCE",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-optimal_maintenance",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "OPTIMAL_VEHICLE",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-optimal_vehicle",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "PAYMENT",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-payment",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "PURCHASE_MATCH",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-purchase_match",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "PURCHASE_PAYMENT_OVERRIDE",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "owner310-purchase_payment_override",
+      "legacy_or_owner310": "owner310",
+      "proof": "migration_owner_session=310 in VERTO_SYNC_PUSH_COVERAGE_v309.csv",
+      "reason": "Session 310 stronger stream; generic Push must fail closed",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "NOTIFICATION",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "server-owned-notification",
+      "legacy_or_owner310": "server_owned",
+      "proof": "SERVER_OWNED_NO_CLIENT_PUSH",
+      "reason": "Notification is server authoritative and has no client push",
+      "symbol": "validateGenericMutation"
+    },
+    {
+      "aggregate_id": "PARTY_ROLE",
+      "file": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "id": "stronger-party-role",
+      "legacy_or_owner310": "legacy_stronger",
+      "proof": "UnifiedSyncPartyPushBridge.kt",
+      "reason": "PARTY_ROLE remains on party_sync_outbox bridge",
+      "symbol": "validateGenericMutation"
+    }
+  ],
+  "session": 309
+}

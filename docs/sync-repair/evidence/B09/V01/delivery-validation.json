@@ -1,0 +1,28 @@
+{
+  "checkpoint": "B09-V01",
+  "validated_at_utc": "2026-09-10T20:04:49.004513+00:00",
+  "embedded_and_standalone_contract": "UNCHANGED",
+  "all_original_files_preserved": true,
+  "all_historical_evidence_preserved": true,
+  "all_Room_schema_exports_preserved": true,
+  "original_SOURCE_BASELINE_preserved": true,
+  "product_manifest_matches_current_files": true,
+  "backlog_totals": {
+    "tasks": 110,
+    "closed_tasks": 28,
+    "sessions": 22,
+    "closed_sessions": 5,
+    "T_NOT_RUN": 50
+  },
+  "gate": "G-B09 BLOCKED",
+  "new_tests": {
+    "Room_methods": 31,
+    "JVM_methods": 9,
+    "actual_runtime_status": "NOT_RUN"
+  },
+  "offline_checks": {
+    "source_SQLite": 612,
+    "real_mapping_Money": 347,
+    "not_equivalent_to_Room": true
+  }
+}

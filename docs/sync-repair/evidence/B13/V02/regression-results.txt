@@ -1,0 +1,27 @@
+B06_SCHEMA_GATE=PASS defs=42 fullFinancialLists=10
+B11_STATIC_CONTRACT: PASS
+B12_STATIC_GATE=PASS checks=22
+PASS B12 mutable identity retained
+PASS B12 full before/after intent
+PASS B12 baseVersion captured
+PASS B12 expense+cash batch
+PASS B12 cash dependency
+PASS B12 formula centralized
+PASS B12 applier mutable
+PASS B12 applier minor authority
+PASS B12 local history
+PASS B12 history append-only
+PASS B12 DTOs
+PASS B12 schema defs
+PASS B12 server base version
+PASS B12 server group validator
+PASS B12 safe block before B07
+PASS B12 adapter passes baseVersion
+PASS B12 server history
+PASS B12 published server authority
+PASS B12 server actor and operation binding
+PASS T21 note delta 0
+PASS T21 10000->15000 delta -5000
+PASS T21 VOID delta +15000
+B12_SQLITE_CONTRACT=PASS
+PY_COMPILE=PASS

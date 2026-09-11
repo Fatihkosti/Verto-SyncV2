@@ -1,0 +1,190 @@
+{
+  "format": "verto-contract-usage-v1",
+  "metrics": {
+    "breaking_active_contracts": 0,
+    "contracts_discovered": 14,
+    "critical_contracts": 4,
+    "unknown_consumers": 0,
+    "unknown_providers": 0,
+    "unversioned_cross_feature_contracts": 0
+  },
+  "session": 330,
+  "usage": [
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "party.lookup.v1",
+      "owner": ":feature:party",
+      "symbol": "com.verto.app.feature.party.domain.repository.PartyDirectoryGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "invoice.presentation.v1",
+      "owner": ":feature:invoice",
+      "symbol": "com.verto.app.feature.invoice.application.port.InvoicePresentationPort",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "payment.purchase-shipment.v1",
+      "owner": ":feature:payment",
+      "symbol": "com.verto.app.feature.payment.application.port.PurchaseShipmentGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "shipment.read.v1",
+      "owner": ":feature:shipment",
+      "symbol": "com.verto.app.feature.shipment.application.port.LogisticsUnifiedReadPort",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "commission.report.v1",
+      "owner": ":feature:commission",
+      "symbol": "com.verto.app.feature.commission.application.CommissionReportGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "expenses.gateway.v1",
+      "owner": ":feature:expenses",
+      "symbol": "com.verto.app.feature.expenses.application.ExpensesGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "reports.operations.v1",
+      "owner": ":feature:reports",
+      "symbol": "com.verto.app.feature.reports.application.ReportsOperationsGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "organization.team.v1",
+      "owner": ":feature:organization",
+      "symbol": "com.verto.app.feature.organization.domain.repository.OrganizationTeamGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "profile.gateway.v1",
+      "owner": ":feature:profile",
+      "symbol": "com.verto.app.feature.profile.domain.repository.ProfileGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "settings.operations.v1",
+      "owner": ":feature:settings",
+      "symbol": "com.verto.app.feature.settings.domain.repository.SettingsOperationsGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "notifications.center.v1",
+      "owner": ":feature:notifications",
+      "symbol": "com.verto.app.feature.notifications.domain.repository.NotificationCenterGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "messages.gateway.v1",
+      "owner": ":feature:messages",
+      "symbol": "com.verto.app.feature.messages.application.MessagesGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "optimal.messaging.v1",
+      "owner": ":feature:integration:optimal",
+      "symbol": "com.verto.app.feature.integration.optimal.domain.port.OptimalMessagingPort",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app",
+        ":feature:inventory",
+        ":feature:invoice",
+        ":feature:party",
+        ":feature:payment"
+      ],
+      "declared_consumers": [
+        ":app",
+        ":feature:inventory",
+        ":feature:invoice",
+        ":feature:party",
+        ":feature:payment"
+      ],
+      "id": "dashboard.home-search.v1",
+      "owner": ":feature:dashboard:api",
+      "symbol": "com.verto.feature.dashboard.api.HomeSearchQuery",
+      "version": "1"
+    }
+  ]
+}

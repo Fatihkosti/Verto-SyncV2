@@ -1,0 +1,61 @@
+{
+  "version": "125",
+  "scope": ["login", "organizationRegistration", "home"],
+  "direction": "rtl",
+  "gridDp": 8,
+  "referenceViewportDp": { "width": 360, "height": 800 },
+  "fontFamily": "Cairo",
+  "screenHorizontalPaddingDp": 20,
+  "minimumTouchTargetDp": 48,
+  "primaryButtonHeightDp": 52,
+  "home": {
+    "quickActionsAspectRatio": "1:1",
+    "pendingCardHeightDp": 196,
+    "pendingAutoAdvanceSeconds": 30
+  },
+  "components": {
+    "authScaffold": {
+      "safeDrawingInsets": true,
+      "imePadding": true,
+      "scrollable": true,
+      "rtl": true,
+      "smallPhoneSupport": true
+    },
+    "textField": {
+      "keyboardActions": true,
+      "keyboardType": true,
+      "imeAction": true,
+      "leadingIcon": true,
+      "trailingIcon": true,
+      "requiredOptionalState": true,
+      "supportingErrorSuccessState": true,
+      "disabledReadOnlyState": true,
+      "accessibilityDescription": true
+    },
+    "passwordField": {
+      "visibilityToggle": true,
+      "dynamicTalkBackDescription": true,
+      "fixedTouchTargetDp": 48
+    },
+    "primaryButton": {
+      "loadingState": true,
+      "duplicateClickProtection": true,
+      "fixedHeightDuringLoading": true
+    },
+    "additional": [
+      "VertoSecondaryButton",
+      "VertoInlineStatus",
+      "VertoFormSectionHeader",
+      "VertoStepIndicator",
+      "VertoFormCard"
+    ]
+  },
+  "constraints": {
+    "newLibraries": false,
+    "authContractsChanged": false,
+    "homeContractsChanged": false,
+    "routesChanged": false,
+    "hardcodedScreenDimensions": false,
+    "hardcodedScreenColors": false
+  }
+}

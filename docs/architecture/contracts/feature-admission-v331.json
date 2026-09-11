@@ -1,0 +1,1681 @@
+{
+  "features": [
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:auth; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "auth",
+        "module": ":feature:auth",
+        "repositories": [
+          "ActiveProfileStatus",
+          "AuthGateway",
+          "SplashSessionGateway"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 0,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 0,
+        "transitive_feature_dependencies": 0
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "auth",
+      "module": ":feature:auth",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:auth",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "ActiveProfileStatus",
+          "AuthGateway",
+          "SplashSessionGateway"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [],
+      "public_surface_budget": {
+        "exposed_ports": 2,
+        "public_api_symbols": 15,
+        "stable_contracts_provided": 0
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "staged",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "HIGH",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "HIGH",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": true,
+        "evidence": {
+          "contract": [
+            "feature/auth/src/test/kotlin/com/verto/app/feature/auth/presentation/AuthValidationPolicyTest.kt"
+          ],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [
+            "feature/auth/src/test/kotlin/com/verto/app/feature/auth/presentation/AuthValidationPolicyTest.kt"
+          ],
+          "unit": [
+            "feature/auth/src/test/kotlin/com/verto/app/feature/auth/presentation/AuthValidationPolicyTest.kt"
+          ]
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": true,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:commission; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "commission",
+        "module": ":feature:commission",
+        "repositories": [],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 0,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "commission",
+      "module": ":feature:commission",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:commission",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [],
+        "tables": []
+      },
+      "provided_contracts": [
+        "commission.report.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 1,
+        "public_api_symbols": 7,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "full",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "LOW",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "LOW",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": false,
+        "evidence": {
+          "contract": [],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [],
+          "unit": []
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": false,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:dashboard; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "dashboard",
+        "module": ":feature:dashboard",
+        "repositories": [
+          "RoomEducationalContentRepository"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 1,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 0,
+        "transitive_feature_dependencies": 1
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "dashboard",
+      "module": ":feature:dashboard",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:dashboard",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "RoomEducationalContentRepository"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [],
+      "public_surface_budget": {
+        "exposed_ports": 1,
+        "public_api_symbols": 22,
+        "stable_contracts_provided": 0
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "full",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "LOW",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "LOW",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": false,
+        "evidence": {
+          "contract": [],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [],
+          "unit": []
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": false,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:dashboard:api; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "dashboard-api",
+        "module": ":feature:dashboard:api",
+        "repositories": [
+          "EducationalContentRepository"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 0,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "dashboard-api",
+      "module": ":feature:dashboard:api",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:dashboard:api",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "EducationalContentRepository"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [
+        "dashboard.home-search.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 0,
+        "public_api_symbols": 1,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "full",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "LOW",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "LOW",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": false,
+        "evidence": {
+          "contract": [],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [],
+          "unit": []
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": false,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:expenses; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [
+        "dashboard.home-search.v1"
+      ],
+      "data_owner": {
+        "entities": [],
+        "feature": "expenses",
+        "module": ":feature:expenses",
+        "repositories": [],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 1,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "expenses",
+      "module": ":feature:expenses",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:expenses",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [],
+        "tables": []
+      },
+      "provided_contracts": [
+        "expenses.gateway.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 1,
+        "public_api_symbols": 4,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "full",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 1,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "MEDIUM",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "MEDIUM",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": false,
+        "evidence": {
+          "contract": [],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [],
+          "unit": []
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": false,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:integration:optimal; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "INTEGRATION",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "integration-optimal",
+        "module": ":feature:integration:optimal",
+        "repositories": [
+          "BackendContractBlocked",
+          "BackendNotConfigured",
+          "CompanyAlreadyLinked",
+          "CompanyUnavailable",
+          "GuardedOptimalRegistrationRepository",
+          "MaintenanceFollowUpRepository",
+          "NetworkError",
+          "OptimalClock",
+          "OptimalCompanyInvoicesRepository",
+          "OptimalCompanyRepository",
+          "OptimalHomeAccessSource",
+          "OptimalHomeLocalCounters",
+          "OptimalMaintenanceDetailsRepository",
+          "OptimalMaintenanceRecordsRepository",
+          "OptimalMaintenanceRepository",
+          "OptimalOutboxRepository",
+          "OptimalRegistrationCode",
+          "OptimalRegistrationRepository",
+          "OptimalRegistrationResult",
+          "OptimalVehicleRepository",
+          "PermissionDenied",
+          "RemoteResponseRejected",
+          "RoomMaintenanceFollowUpRepository",
+          "RoomOptimalCompanyInvoicesRepository",
+          "RoomOptimalCompanyRepository",
+          "RoomOptimalMaintenanceRecordsRepository",
+          "RoomOptimalMaintenanceRepository",
+          "RoomOptimalOutboxRepository",
+          "RoomOptimalVehicleRepository",
+          "SessionUnavailable",
+          "Success"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 1,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "integration-optimal",
+      "module": ":feature:integration:optimal",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:integration:optimal",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "BackendContractBlocked",
+          "BackendNotConfigured",
+          "CompanyAlreadyLinked",
+          "CompanyUnavailable",
+          "GuardedOptimalRegistrationRepository",
+          "MaintenanceFollowUpRepository",
+          "NetworkError",
+          "OptimalClock",
+          "OptimalCompanyInvoicesRepository",
+          "OptimalCompanyRepository",
+          "OptimalHomeAccessSource",
+          "OptimalHomeLocalCounters",
+          "OptimalMaintenanceDetailsRepository",
+          "OptimalMaintenanceRecordsRepository",
+          "OptimalMaintenanceRepository",
+          "OptimalOutboxRepository",
+          "OptimalRegistrationCode",
+          "OptimalRegistrationRepository",
+          "OptimalRegistrationResult",
+          "OptimalVehicleRepository",
+          "PermissionDenied",
+          "RemoteResponseRejected",
+          "RoomMaintenanceFollowUpRepository",
+          "RoomOptimalCompanyInvoicesRepository",
+          "RoomOptimalCompanyRepository",
+          "RoomOptimalMaintenanceRecordsRepository",
+          "RoomOptimalMaintenanceRepository",
+          "RoomOptimalOutboxRepository",
+          "RoomOptimalVehicleRepository",
+          "SessionUnavailable",
+          "Success"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [
+        "optimal.messaging.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 1,
+        "public_api_symbols": 19,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "staged",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "HIGH",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "HIGH",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": true,
+        "evidence": {
+          "contract": [
+            "feature/integration/optimal/src/test/kotlin/com/verto/app/feature/integration/optimal/data/GuardedOptimalRegistrationRepositoryTest.kt"
+          ],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [
+            "feature/integration/optimal/src/test/kotlin/com/verto/app/feature/integration/optimal/data/GuardedOptimalRegistrationRepositoryTest.kt"
+          ],
+          "unit": [
+            "feature/integration/optimal/src/test/kotlin/com/verto/app/feature/integration/optimal/data/GuardedOptimalRegistrationRepositoryTest.kt"
+          ]
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": true,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:inventory; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "CORE_BUSINESS",
+      "consumed_contracts": [
+        "dashboard.home-search.v1"
+      ],
+      "data_owner": {
+        "entities": [],
+        "feature": "inventory",
+        "module": ":feature:inventory",
+        "repositories": [
+          "InventoryRepository"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 1,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 0,
+        "transitive_feature_dependencies": 1
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "inventory",
+      "module": ":feature:inventory",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:inventory",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "InventoryRepository"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [],
+      "public_surface_budget": {
+        "exposed_ports": 7,
+        "public_api_symbols": 25,
+        "stable_contracts_provided": 0
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "staged",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 1,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "CRITICAL",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "CRITICAL",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": true,
+        "evidence": {
+          "contract": [
+            "feature/inventory/src/test/kotlin/com/verto/app/feature/inventory/application/InventoryPriceCoordinatorTest.kt",
+            "feature/inventory/src/test/kotlin/com/verto/app/feature/inventory/data/InventoryLedgerReleaseGateV267Test.kt"
+          ],
+          "integration": [
+            "feature/inventory/src/androidTest/kotlin/com/verto/app/feature/inventory/data/InventoryStockWriterV259Test.kt"
+          ],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [
+            "feature/inventory/src/test/kotlin/com/verto/app/feature/inventory/application/InventoryPriceCoordinatorTest.kt",
+            "feature/inventory/src/test/kotlin/com/verto/app/feature/inventory/data/InventoryLedgerReleaseGateV267Test.kt"
+          ],
+          "unit": [
+            "feature/inventory/src/test/kotlin/com/verto/app/feature/inventory/application/InventoryPriceCoordinatorTest.kt",
+            "feature/inventory/src/test/kotlin/com/verto/app/feature/inventory/data/InventoryLedgerReleaseGateV267Test.kt",
+            "feature/inventory/src/test/kotlin/com/verto/app/feature/inventory/data/quickstock/RoomQuickStockRowsSourceTest.kt"
+          ]
+        },
+        "integration": true,
+        "mutation": true,
+        "negative": true,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:invoice; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "CORE_BUSINESS",
+      "consumed_contracts": [
+        "dashboard.home-search.v1"
+      ],
+      "data_owner": {
+        "entities": [],
+        "feature": "invoice",
+        "module": ":feature:invoice",
+        "repositories": [
+          "InvoiceMessageShareGateway",
+          "InvoiceSharePayload"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 1,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "invoice",
+      "module": ":feature:invoice",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:invoice",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "InvoiceMessageShareGateway",
+          "InvoiceSharePayload"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [
+        "invoice.presentation.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 19,
+        "public_api_symbols": 66,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "staged",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 1,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "CRITICAL",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "CRITICAL",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": true,
+        "evidence": {
+          "contract": [
+            "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoiceMoneyCoreTest.kt",
+            "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoicePurchaseScopeInventoryTest.kt"
+          ],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [
+            "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoiceMoneyCoreTest.kt",
+            "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoicePurchaseScopeInventoryTest.kt"
+          ],
+          "unit": [
+            "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoiceMoneyCoreTest.kt",
+            "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoicePurchaseScopeInventoryTest.kt",
+            "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoiceReturnCoordinatorTest.kt"
+          ]
+        },
+        "integration": false,
+        "mutation": true,
+        "negative": true,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:management; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "management",
+        "module": ":feature:management",
+        "repositories": [
+          "ManagementIntegrationBadgeContributor",
+          "ManagementIntegrationCatalog",
+          "ManagementIntegrationContributor"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 0,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 0,
+        "transitive_feature_dependencies": 0
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "management",
+      "module": ":feature:management",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:management",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "ManagementIntegrationBadgeContributor",
+          "ManagementIntegrationCatalog",
+          "ManagementIntegrationContributor"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [],
+      "public_surface_budget": {
+        "exposed_ports": 2,
+        "public_api_symbols": 11,
+        "stable_contracts_provided": 0
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "full",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "LOW",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "LOW",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": false,
+        "evidence": {
+          "contract": [],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [],
+          "unit": []
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": false,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:messages; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "messages",
+        "module": ":feature:messages",
+        "repositories": [],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 0,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "messages",
+      "module": ":feature:messages",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:messages",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [],
+        "tables": []
+      },
+      "provided_contracts": [
+        "messages.gateway.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 4,
+        "public_api_symbols": 24,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "full",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "MEDIUM",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "MEDIUM",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": false,
+        "evidence": {
+          "contract": [],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [],
+          "unit": []
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": false,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:notifications; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "notifications",
+        "module": ":feature:notifications",
+        "repositories": [
+          "NotificationCenterGateway"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 0,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "notifications",
+      "module": ":feature:notifications",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:notifications",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "NotificationCenterGateway"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [
+        "notifications.center.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 1,
+        "public_api_symbols": 6,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "full",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "MEDIUM",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "MEDIUM",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": true,
+        "evidence": {
+          "contract": [
+            "feature/notifications/src/test/kotlin/com/verto/app/feature/notifications/presentation/NotificationCenterViewModelTest.kt"
+          ],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [
+            "feature/notifications/src/test/kotlin/com/verto/app/feature/notifications/presentation/NotificationCenterViewModelTest.kt"
+          ],
+          "unit": [
+            "feature/notifications/src/test/kotlin/com/verto/app/feature/notifications/presentation/NotificationCenterViewModelTest.kt"
+          ]
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": true,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:organization; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "organization",
+        "module": ":feature:organization",
+        "repositories": [
+          "OrganizationSettingsGateway",
+          "OrganizationTeamGateway"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 0,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "organization",
+      "module": ":feature:organization",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:organization",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "OrganizationSettingsGateway",
+          "OrganizationTeamGateway"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [
+        "organization.team.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 2,
+        "public_api_symbols": 18,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "full",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "MEDIUM",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "MEDIUM",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": false,
+        "evidence": {
+          "contract": [],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [],
+          "unit": []
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": false,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:party; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [
+        "dashboard.home-search.v1"
+      ],
+      "data_owner": {
+        "entities": [],
+        "feature": "party",
+        "module": ":feature:party",
+        "repositories": [
+          "ClientRepository",
+          "PartyDirectoryGateway",
+          "PartyFinancialQuery",
+          "PartySyncFallbackPort"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 1,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "party",
+      "module": ":feature:party",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:party",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "ClientRepository",
+          "PartyDirectoryGateway",
+          "PartyFinancialQuery",
+          "PartySyncFallbackPort"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [
+        "party.lookup.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 5,
+        "public_api_symbols": 20,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "staged",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 1,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "HIGH",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "HIGH",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": true,
+        "evidence": {
+          "contract": [
+            "feature/party/src/test/kotlin/com/verto/app/feature/party/application/CalculateClientBalanceUseCaseTest.kt",
+            "feature/party/src/test/kotlin/com/verto/app/feature/party/application/LegacyPartyRoleMapperTest.kt"
+          ],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [
+            "feature/party/src/test/kotlin/com/verto/app/feature/party/application/CalculateClientBalanceUseCaseTest.kt",
+            "feature/party/src/test/kotlin/com/verto/app/feature/party/application/LegacyPartyRoleMapperTest.kt"
+          ],
+          "unit": [
+            "feature/party/src/test/kotlin/com/verto/app/feature/party/application/CalculateClientBalanceUseCaseTest.kt",
+            "feature/party/src/test/kotlin/com/verto/app/feature/party/application/LegacyPartyRoleMapperTest.kt",
+            "feature/party/src/test/kotlin/com/verto/app/feature/party/application/ledger/PartyLedgerEngineTest.kt"
+          ]
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": true,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:payment; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "CORE_BUSINESS",
+      "consumed_contracts": [
+        "dashboard.home-search.v1"
+      ],
+      "data_owner": {
+        "entities": [],
+        "feature": "payment",
+        "module": ":feature:payment",
+        "repositories": [],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 1,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "payment",
+      "module": ":feature:payment",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:payment",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [],
+        "tables": []
+      },
+      "provided_contracts": [
+        "payment.purchase-shipment.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 13,
+        "public_api_symbols": 31,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "staged",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 1,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "CRITICAL",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "CRITICAL",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": true,
+        "evidence": {
+          "contract": [
+            "feature/payment/src/test/kotlin/com/verto/app/feature/payment/application/PaymentCoordinatorsTest.kt",
+            "feature/payment/src/test/kotlin/com/verto/app/feature/payment/application/PaymentCurrencyCalculatorTest.kt"
+          ],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [
+            "feature/payment/src/test/kotlin/com/verto/app/feature/payment/application/PaymentCoordinatorsTest.kt",
+            "feature/payment/src/test/kotlin/com/verto/app/feature/payment/application/PaymentCurrencyCalculatorTest.kt"
+          ],
+          "unit": [
+            "feature/payment/src/test/kotlin/com/verto/app/feature/payment/application/PaymentCoordinatorsTest.kt",
+            "feature/payment/src/test/kotlin/com/verto/app/feature/payment/application/PaymentCurrencyCalculatorTest.kt"
+          ]
+        },
+        "integration": false,
+        "mutation": true,
+        "negative": true,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:profile; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "profile",
+        "module": ":feature:profile",
+        "repositories": [
+          "ProfileGateway"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 0,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "profile",
+      "module": ":feature:profile",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:profile",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "ProfileGateway"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [
+        "profile.gateway.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 1,
+        "public_api_symbols": 6,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "full",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "LOW",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "LOW",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": false,
+        "evidence": {
+          "contract": [],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [],
+          "unit": []
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": false,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:reports; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "reports",
+        "module": ":feature:reports",
+        "repositories": [],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 0,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "reports",
+      "module": ":feature:reports",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:reports",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [],
+        "tables": []
+      },
+      "provided_contracts": [
+        "reports.operations.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 5,
+        "public_api_symbols": 41,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "full",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "MEDIUM",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "MEDIUM",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": true,
+        "evidence": {
+          "contract": [
+            "feature/reports/src/test/kotlin/com/verto/app/feature/reports/application/analytics/CostAllocationEngineF250Test.kt"
+          ],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [
+            "feature/reports/src/test/kotlin/com/verto/app/feature/reports/application/analytics/CostAllocationEngineF250Test.kt"
+          ],
+          "unit": [
+            "feature/reports/src/test/kotlin/com/verto/app/feature/reports/application/analytics/CostAllocationEngineF250Test.kt"
+          ]
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": true,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:settings; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "SUPPORTING_CAPABILITY",
+      "consumed_contracts": [],
+      "data_owner": {
+        "entities": [],
+        "feature": "settings",
+        "module": ":feature:settings",
+        "repositories": [
+          "AppearanceSettingsGateway",
+          "PrintingSettingsGateway",
+          "SettingsOperationsGateway"
+        ],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 0,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 0,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 0
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "settings",
+      "module": ":feature:settings",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:settings",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [
+          "AppearanceSettingsGateway",
+          "PrintingSettingsGateway",
+          "SettingsOperationsGateway"
+        ],
+        "tables": []
+      },
+      "provided_contracts": [
+        "settings.operations.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 3,
+        "public_api_symbols": 23,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "full",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 0,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "MEDIUM",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "MEDIUM",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": true,
+        "evidence": {
+          "contract": [
+            "feature/settings/src/test/kotlin/com/verto/app/feature/settings/presentation/appearance/AppearanceSettingsViewModelTest.kt"
+          ],
+          "integration": [],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [
+            "feature/settings/src/test/kotlin/com/verto/app/feature/settings/presentation/appearance/AppearanceSettingsViewModelTest.kt"
+          ],
+          "unit": [
+            "feature/settings/src/test/kotlin/com/verto/app/feature/settings/presentation/appearance/AppearanceSettingsViewModelTest.kt"
+          ]
+        },
+        "integration": false,
+        "mutation": false,
+        "negative": true,
+        "unit": true
+      }
+    },
+    {
+      "admission_scorecard": {
+        "architecture": "PASS",
+        "compatibility": "PASS",
+        "contracts": "PASS",
+        "dependencies": "PASS",
+        "documentation": "PASS",
+        "overall": "PASS",
+        "persistence": "PASS",
+        "scalability": "PASS",
+        "testability": "PASS"
+      },
+      "admission_status": "PASS",
+      "business_purpose": "Production capability implemented by :feature:shipment; behavior remains defined by current v318 source and canonical feature documentation.",
+      "category": "CORE_BUSINESS",
+      "consumed_contracts": [
+        "dashboard.home-search.v1"
+      ],
+      "data_owner": {
+        "entities": [],
+        "feature": "shipment",
+        "module": ":feature:shipment",
+        "repositories": [],
+        "tables": []
+      },
+      "dependency_budget": {
+        "direct_feature_dependencies": 1,
+        "high_risk_dependencies": 0,
+        "stable_contracts_consumed": 1,
+        "stable_contracts_provided": 1,
+        "transitive_feature_dependencies": 1
+      },
+      "entrypoints": [
+        "existing module entrypoints and app composition bridges"
+      ],
+      "feature_id": "shipment",
+      "module": ":feature:shipment",
+      "observability": "existing error state, logs, and feature reporting",
+      "owner": ":feature:shipment",
+      "persistence_assets": {
+        "entities": [],
+        "expected_row_growth": "not forecast; bounded by existing query contracts",
+        "repositories": [],
+        "tables": []
+      },
+      "provided_contracts": [
+        "shipment.read.v1"
+      ],
+      "public_surface_budget": {
+        "exposed_ports": 16,
+        "public_api_symbols": 115,
+        "stable_contracts_provided": 1
+      },
+      "rollback_strategy": "revert release and preserve prior stable contract versions",
+      "rollout_strategy": "staged",
+      "scalability": {
+        "consumer_fan_in": 1,
+        "cross_feature_fan_out": 1,
+        "data_volume": "existing bounded local-first stores",
+        "high_volume_queries_bounded": true,
+        "risk": "CRITICAL",
+        "sync_participation": "declared by existing module contracts",
+        "write_frequency": "existing feature workload"
+      },
+      "scalability_risk": "CRITICAL",
+      "status": "ACTIVE",
+      "test_requirements": {
+        "contract": true,
+        "evidence": {
+          "contract": [
+            "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LandedCostUseCasesTest.kt",
+            "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LargestRemainderCostAllocatorTest.kt"
+          ],
+          "integration": [
+            "feature/shipment/src/androidTest/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV242UiQualityTest.kt"
+          ],
+          "mutation": [
+            "tools/architecture/verto_feature_admission_guard.py"
+          ],
+          "negative": [
+            "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LandedCostUseCasesTest.kt",
+            "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LargestRemainderCostAllocatorTest.kt"
+          ],
+          "unit": [
+            "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LandedCostUseCasesTest.kt",
+            "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LargestRemainderCostAllocatorTest.kt",
+            "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LogisticsPlanningOrchestratorTest.kt"
+          ]
+        },
+        "integration": true,
+        "mutation": true,
+        "negative": true,
+        "unit": true
+      }
+    }
+  ],
+  "format": "verto-feature-admission-registry-v1",
+  "session": 331
+}

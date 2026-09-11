@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="legacy_ui_6bc5400734c2">جنيه</string>
+
+    <string name="invoice_ds_008e2f198440">إلغاء الفاتورة؟</string>
+    <string name="invoice_ds_09c3eaebb559">هامش الربح</string>
+    <string name="invoice_ds_0fd53029cf2d">%1$s فاتورة</string>
+    <string name="invoice_ds_13401859a8f2">رسالة الشكر</string>
+    <string name="invoice_ds_17f84f2d5d1a">ستُنشأ حركة عكسية تعيد المبلغ إلى الصندوق وتُبقي الدفعة الأصلية في السجل. لا يُحذف شيء.</string>
+    <string name="invoice_ds_1eda0ec97fe6">بدون عميل</string>
+    <string name="invoice_ds_20ad9e2c962c">تعذّر إلغاء الفاتورة</string>
+    <string name="invoice_ds_20da09c47003">الهامش بعد العمولة</string>
+    <string name="invoice_ds_22a9f82efac2">تعذّرت المشاركة</string>
+    <string name="invoice_ds_22cf82b68b95">0.00</string>
+    <string name="invoice_ds_2715575a2c6f">سبب الإلغاء *</string>
+    <string name="invoice_ds_2a4bfa9d9d0e">الصنف</string>
+    <string name="invoice_ds_2a4c6e1239ec">%1$s بند</string>
+    <string name="invoice_ds_2ef6a4f3144e">تعذّر عكس الدفعة</string>
+    <string name="invoice_ds_30e483b4cc68">عكس الدفعة</string>
+    <string name="invoice_ds_387d313d27a2">timerBadgeAlpha</string>
+    <string name="invoice_ds_3dfa681200f8">أعكس الدفعات وأرد أثرها النقدي صراحةً</string>
+    <string name="invoice_ds_437c04868fa8">إرسال عبر</string>
+    <string name="invoice_ds_4652e511d2d9">عمولة الفاتورة</string>
+    <string name="invoice_ds_522d3939d8e2">لا توجد أصناف مرتبطة بهذه الفاتورة</string>
+    <string name="invoice_ds_679efdbefa22">📌 %1$s</string>
+    <string name="invoice_ds_6a33e15db096">عمولة</string>
+    <string name="invoice_ds_8439fc486bfe">pulse</string>
+    <string name="invoice_ds_8adba91e1d87">العميل</string>
+    <string name="invoice_ds_936c69955313">سيُحفظ الأصل وتُنشأ حركات عكس مترابطة للمخزون والصندوق والدفعات.</string>
+    <string name="invoice_ds_95e472e1f495">%1$s  ←  %2$s</string>
+    <string name="invoice_ds_9973dc47c1c0">أدخل رقماً صحيحاً</string>
+    <string name="invoice_ds_9b17868336fc">بنود الفاتورة</string>
+    <string name="invoice_ds_9c8f6517c12c">بزنس</string>
+    <string name="invoice_ds_9dbbc65d695e">الربح بعد العمولة</string>
+    <string name="invoice_ds_a37bb682e55c">طباعة</string>
+    <string name="invoice_ds_a3bbb0194ac6">إرسال 📤</string>
+    <string name="invoice_ds_a8436ce4b250">سداد</string>
+    <string name="invoice_ds_a95134401afe">الكمية</string>
+    <string name="invoice_ds_adebc50ade66">#%1$s</string>
+    <string name="invoice_ds_b6aa0c7d7a21">السعر</string>
+    <string name="invoice_ds_bbb65a04b568">بيانات العملة تحتاج مراجعة — مستبعدة من المجاميع المالية</string>
+    <string name="invoice_ds_bdbc530349b0">بحث باسم العميل أو رقم الفاتورة…</string>
+    <string name="invoice_ds_bea64fd0dde5">عملة الفاتورة: %1$s%2$s</string>
+    <string name="invoice_ds_c79f71243f41">%1$s</string>
+    <string name="invoice_ds_c89ae688bf37">قيمة الفاتورة</string>
+    <string name="invoice_ds_cc6b2386a9b3">مبلغ العمولة (ج)</string>
+    <string name="invoice_ds_cd565f0ee052">شكر</string>
+    <string name="invoice_ds_d96db3cf6533">ملغاة</string>
+    <string name="invoice_ds_e1ed7cb6a121">تعذّر فتح الفاتورة</string>
+    <string name="invoice_ds_e5ce6bd59016">لا توجد فواتير</string>
+    <string name="invoice_ds_e9fc420c6c41">نعم، ألغِ الفاتورة</string>
+    <string name="invoice_ds_f1159892a5cb">%1$s • سعر الصرف %2$s</string>
+    <string name="invoice_ds_f3fe66977ef0">الربح الحالي</string>
+    <string name="invoice_ds_fa374e2cb37b">عكس الدفعة؟</string>
+
+    <!-- Session 298: owner-local hardcoded string migration. -->
+    <string name="invoice_v298_049f6726b3de" translatable="false">"%.1f%%"</string>
+    <string name="invoice_v298_15deffe23699" translatable="false">"دفع"</string>
+    <string name="invoice_v298_15deffe23699_2" translatable="false">"تسجيل دفعة"</string>
+    <string name="invoice_v298_1709f4eeff0b" translatable="false">"عكس دفعة"</string>
+    <string name="invoice_v298_44a73d65c972" translatable="false">" ج"</string>
+    <string name="invoice_v298_4e8682997ed2" translatable="false">"متأخرة"</string>
+    <string name="invoice_v298_50ca84ef8c18" translatable="false">"فاتورة بيع حان سدادها"</string>
+    <string name="invoice_v298_5c2fb4140284" translatable="false">"تحويل"</string>
+    <string name="invoice_v298_67bbc644d197" translatable="false">"فاتورة مشتريات"</string>
+    <string name="invoice_v298_67bbc644d197_2" translatable="false">"فاتورة بيع"</string>
+    <string name="invoice_v298_696ac4a9186c" translatable="false">" ج"</string>
+    <string name="invoice_v298_7bdd72bb022e" translatable="false">"كاش"</string>
+    <string name="invoice_v298_8318093e209a" translatable="false">"مسددة"</string>
+    <string name="invoice_v298_927f37382b3f" translatable="false">"فاتورة بيع #%1$s"</string>
+    <string name="invoice_v298_927f37382b3f_2" translatable="false">"فاتورة شراء #%1$s"</string>
+    <string name="invoice_v298_a0bddb1a997d" translatable="false">"شيك"</string>
+    <string name="invoice_v298_ab50a49be35d" translatable="false">"جاري تحميل الفاتورة…"</string>
+    <string name="invoice_v298_ab8f80ce1095" translatable="false">"فاتورة مورد حان سدادها"</string>
+    <string name="invoice_v298_b895425a879a" translatable="false">"مستحقة"</string>
+    <string name="invoice_v298_b8b4172d2500" translatable="false">"المورد"</string>
+    <string name="invoice_v298_bdab82802377" translatable="false">" ج"</string>
+    <string name="invoice_v298_c05f1eddf597" translatable="false">"فاتورة #%1$s"</string>
+    <string name="invoice_v298_c16704a4001c" translatable="false">" ج"</string>
+    <string name="invoice_v298_d077a0ef40eb" translatable="false">"%.1f%%"</string>
+    <string name="invoice_v298_e2cf0f68a15b" translatable="false">"دفعة جزئية حان استكمالها"</string>
+    <!-- Session 369: dedicated purchase invoice details. -->
+    <string name="invoice_v369_purchase_title" translatable="false">فاتورة شراء</string>
+    <string name="invoice_v369_cash_purchase" translatable="false">شراء نقدي</string>
+    <string name="invoice_v369_items" translatable="false">البنود</string>
+    <string name="invoice_v369_payments" translatable="false">الدفعات</string>
+    <string name="invoice_v369_no_items" translatable="false">لا توجد بنود</string>
+    <string name="invoice_v369_no_payments" translatable="false">لا توجد دفعات مسجلة</string>
+    <string name="invoice_v369_partial_payment" translatable="false">دفعة جزئية</string>
+    <string name="invoice_v369_full_payment" translatable="false">سداد كامل</string>
+    <string name="invoice_v369_number" translatable="false">#%1$d</string>
+    <string name="invoice_v369_overdue_days" translatable="false">متأخرة %1$d يوم</string>
+    <string name="invoice_v369_partial" translatable="false">جزئية</string>
+    <string name="invoice_v369_credit" translatable="false">آجلة</string>
+    <string name="invoice_v369_total" translatable="false">الإجمالي</string>
+    <string name="invoice_v369_paid" translatable="false">المسدد</string>
+    <string name="invoice_v369_remaining" translatable="false">المتبقي</string>
+    <string name="invoice_v369_error_title" translatable="false">تعذّر تنفيذ العملية</string>
+    <string name="invoice_v369_payment_icon" translatable="false">💳</string>
+
+    <string name="invoice_v370_international_money" translatable="false">عملة الفاتورة %1$s • سعر الصرف %2$s • العملة الوظيفية %3$s</string>
+    <string name="invoice_v370_functional_value" translatable="false">القيمة عند الاعتراف: %1$s %2$s</string>
+    <string name="invoice_v370_due_schedule" translatable="false">جدول الاستحقاق</string>
+    <string name="invoice_v370_due_number" translatable="false">القسط %1$d</string>
+
+</resources>

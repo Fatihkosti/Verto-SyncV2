@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="commission_ds_042f5d26d592">إتمام التحويل</string>
+    <string name="commission_ds_0589dd253fa2">طلبات السحب</string>
+    <string name="commission_ds_05c742a3eb24">ربط عميل بـ AutoDrive</string>
+    <string name="commission_ds_076e4dad7c44">سحب عمولة حسب فاتورة</string>
+    <string name="commission_ds_07c4c3ae426d">لا توجد حركات بعد</string>
+    <string name="commission_ds_0c7e2fb48420">يحتاج إجراء</string>
+    <string name="commission_ds_1056082abe24">لا يمكن الموافقة: مبلغ الطلب أكبر من رصيد المسوّق</string>
+    <string name="commission_ds_12c6c4cde743">تم التحويل — إتمام</string>
+    <string name="commission_ds_1d3863672e3e">بحث...</string>
+    <string name="commission_ds_1dcbddb089c8">العمولة: %1$s</string>
+    <string name="commission_ds_1fdf0d90c37a">·</string>
+    <string name="commission_ds_201676c8d66f">طلبات السحب المفتوحة</string>
+    <string name="commission_ds_23246ca0a8a5">المعتمد: %1$s</string>
+    <string name="commission_ds_265bb529ff96">أرقام تقريبية — بانتظار المزامنة مع السيرفر</string>
+    <string name="commission_ds_269fcb70f02f">الرصيد القابل للسحب: %1$s</string>
+    <string name="commission_ds_33f370dcf73f">الإجمالي: %1$s</string>
+    <string name="commission_ds_35bea59fe995">لا توجد عمولات قيد التحصيل</string>
+    <string name="commission_ds_38bd1a4075c9">الفواتير</string>
+    <string name="commission_ds_3ec0f859c17a">قابل للسحب</string>
+    <string name="commission_ds_428c4252d88c">قابل للسحب: %1$s</string>
+    <string name="commission_ds_47115a45a0c1">سحب عمولات — %1$s</string>
+    <string name="commission_ds_4b20c54bf31d">إدارة العمولات</string>
+    <string name="commission_ds_4f4c712aa034">لا يوجد إجراء مطلوب الآن</string>
+    <string name="commission_ds_5574893f2c9e">رفض</string>
+    <string name="commission_ds_59a1d189fbc9">أدخل رقم العملية البنكية للتحويل</string>
+    <string name="commission_ds_5b9ac111a2ea">لا توجد عمولات قابلة للسحب</string>
+    <string name="commission_ds_60ecbc7f40b3">›</string>
+    <string name="commission_ds_670109c55474">اختر طريقة السحب:</string>
+    <string name="commission_ds_6cc5c27df15f">رفض الطلب</string>
+    <string name="commission_ds_6d57d7cb7cda">تأكيد الدفع</string>
+    <string name="commission_ds_6dc59976d09b">سبب الرفض (اختياري)</string>
+    <string name="commission_ds_6ee25ca44380">رقم العملية</string>
+    <string name="commission_ds_716bfc4b58fb">صالح للاستخدام مرة واحدة • يُنتهي خلال 24 ساعة</string>
+    <string name="commission_ds_796bc50ef880">لا توجد عمولات في هذه الفترة</string>
+    <string name="commission_ds_82a323b101e6">رصيد المسوّق: %1$s</string>
+    <string name="commission_ds_85826ccce798">المسدّد: %1$s</string>
+    <string name="commission_ds_8c911735d5e5">رقم العملية: %1$s</string>
+    <string name="commission_ds_8e89195c0ef6">تأكيد الموافقة</string>
+    <string name="commission_ds_90d7f76e5c34">تفاصيل العمولات</string>
+    <string name="commission_ds_9310cd4dac07">%1$s فاتورة قابلة للسحب</string>
+    <string name="commission_ds_93ee737a2a1c">إرسال للمسوّق</string>
+    <string name="commission_ds_97e50ebf9be9">ملاحظة: %1$s</string>
+    <string name="commission_ds_98df579f0487">الفترة: %1$s — %2$s</string>
+    <string name="commission_ds_9fe12146d9cc">لا يوجد عملاء من نوع مسوق أو صاحب ورشة</string>
+    <string name="commission_ds_a69f0ec7ae57">تفاصيل التحويل</string>
+    <string name="commission_ds_a8d9bb06f339">فاتورة #%1$s</string>
+    <string name="commission_ds_aabd26a57090">الفواتير (%1$s)</string>
+    <string name="commission_ds_acd162add6df">عمولة: %1$s</string>
+    <string name="commission_ds_b12fe8ef5464">ملاحظة الإدارة: %1$s</string>
+    <string name="commission_ds_b1de7fbe216a">| %1$s</string>
+    <string name="commission_ds_b57596f18b10">سجل الحركات</string>
+    <string name="commission_ds_b980b2bb4f76">صرف مبلغ حر</string>
+    <string name="commission_ds_ba2cea6ca9fa">المستحق الآن</string>
+    <string name="commission_ds_c05fd18b76b9">موافقة</string>
+    <string name="commission_ds_c1aacd9629e6">%1$s · %2$s</string>
+    <string name="commission_ds_c23bedfe66d4">تم صرف %1$s لـ %2$s</string>
+    <string name="commission_ds_c79f71243f41">%1$s</string>
+    <string name="commission_ds_cbaba37ac4f0">قابل: %1$s</string>
+    <string name="commission_ds_ce7dcf7e104e">اسم البنك</string>
+    <string name="commission_ds_d0c2dfa7496a">تأكيد الإتمام</string>
+    <string name="commission_ds_d25234661453">كود الربط — %1$s</string>
+    <string name="commission_ds_d435352a681a">المتبقي: %1$s</string>
+    <string name="commission_ds_e5ce6bd59016">لا توجد فواتير</string>
+    <string name="commission_ds_e8b6321bf63d">اختر فاتورة — %1$s</string>
+    <string name="commission_ds_eb6208cfee7d">تأكيد الصرف</string>
+    <string name="commission_ds_efb0540fb7e5">صرف</string>
+    <string name="commission_ds_f1b979b58ee9">المبلغ أكبر من الرصيد القابل للسحب</string>
+    <string name="commission_ds_f3f0b54bdbd5">صرف مبلغ حر — %1$s</string>
+    <string name="commission_ds_f70eef0ff091">تنبيه: مجموع الطلبات المعلقة لهذا المسوّق %1$s أكبر من رصيده</string>
+    <string name="commission_ds_f89222ec2548">أرصدة العملاء</string>
+    <string name="commission_ds_f8fd41b8403e">لا توجد طلبات</string>
+    <string name="commission_ds_fa57a93b4e1f">سحب كل العمولات القابلة للسحب</string>
+    <string name="commission_ds_facb5914f191">حسب</string>
+    <string name="commission_ds_fc12d76c94dc">هل تأكدت من إتمام التحويل البنكي؟</string>
+
+    <!-- Session 298: owner-local hardcoded string migration. -->
+    <string name="commission_v298_0fba5254f69b" translatable="false">"طلب سحب · معلق"</string>
+    <string name="commission_v298_2f00aa57fabb" translatable="false">"العمولات المعلقة"</string>
+    <string name="commission_v298_32ed295ad1b3" translatable="false">"العمولات القابلة للسحب"</string>
+    <string name="commission_v298_4b512302bf23" translatable="false">" — %1$s"</string>
+    <string name="commission_v298_5d9908f63dcd" translatable="false">"طلب سحب · موافق عليه"</string>
+    <string name="commission_v298_5eeb51622305" translatable="false">"إجمالي العمولات"</string>
+    <string name="commission_v298_89d566dedee2" translatable="false">"قيد التحصيل"</string>
+    <string name="commission_v298_995cd49dfd45" translatable="false">"نسخ الكود"</string>
+    <string name="commission_v298_995cd49dfd45_2" translatable="false">"تم النسخ ✓"</string>
+    <string name="commission_v298_be874c0f46aa" translatable="false">"فتح الطلب"</string>
+    <string name="commission_v298_be874c0f46aa_2" translatable="false">"مراجعة"</string>
+    <string name="commission_v298_ca3493544f14" translatable="false">"العمولات المدفوعة"</string>
+    <string name="commission_v298_d78bf81031a8" translatable="false">"تقرير العمولات"</string>
+    <string name="commission_v298_d78bf81031a8_2" translatable="false">"تقرير عمولات — %1$s"</string>
+    <string name="commission_v298_eb972489ce70" translatable="false">"طلب سحب"</string>
+    <string name="commission_v298_ff99e6679347" translatable="false">"فاتورة غير متزامنة"</string>
+    <string name="commission_v298_ff99e6679347_2" translatable="false">"فاتورة #%1$s"</string>
+
+    <!-- Session 298 legacy hardcoded closure. -->
+    <string name="commission_v298_report_ready_reminder" translatable="false">"تقرير عمولاتك جاهز للاطّلاع — اضغط لعرضه"</string>
+</resources>

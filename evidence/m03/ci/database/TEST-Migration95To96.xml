@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.verto.app.data.local.Migration95To96M03InstrumentedTest" tests="1" failures="0" errors="0" skipped="0" time="0.934" timestamp="2026-09-08T20:58:57" hostname="localhost">
+  <properties>
+    <property name="device" value="emulator-5554 - 15" />
+    <property name="flavor" value="" />
+    <property name="project" value=":data:database" />
+  </properties>
+  <testcase name="pendingIntentSurvives95To96AndJournalStartsEmpty" classname="com.verto.app.data.local.Migration95To96M03InstrumentedTest" time="0.51" />
+</testsuite>

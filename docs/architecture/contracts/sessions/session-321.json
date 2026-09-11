@@ -1,0 +1,110 @@
+{
+  "session": {
+    "id": 321,
+    "input_sha256": "ebb5d5f11b04f428c49b862ad1bbc5c48e1f34222ba1740c85cc10ded1dfeda2",
+    "plan_sha256": "fd04d47a1b03fcad0afa0aa93312396ea630cea366e3eb46ebf42a5921eb0979",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_321_INPUT_SNAPSHOT.json",
+    "scope": "DEPENDENCY REPAIR / BEHAVIOR-PRESERVING / FAIL-CLOSED",
+    "allowed_modules": [
+      ":app",
+      ":feature:integration:optimal",
+      ":feature:inventory",
+      ":feature:party"
+    ],
+    "allowed_files": [
+      "feature/integration/optimal/src/main/**",
+      "feature/integration/optimal/src/test/**",
+      "feature/integration/optimal/src/androidTest/**",
+      "feature/integration/optimal/build.gradle.kts",
+      "app/src/main/kotlin/com/verto/app/di/optimal/**",
+      "app/src/main/kotlin/com/verto/app/feature/**/bridge/**",
+      "app/src/test/**",
+      "app/build.gradle.kts",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/quickstock/**",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/data/**quickstock**",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/di/InventoryModule.kt",
+      "feature/inventory/src/test/**quickstock**",
+      "feature/inventory/build.gradle.kts",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/application/CalculateClientBalanceUseCase.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/application/model/**",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/data/**",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/domain/**",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/di/PartyModule.kt",
+      "feature/party/src/test/kotlin/com/verto/app/feature/party/application/CalculateClientBalanceUseCaseTest.kt",
+      "feature/party/build.gradle.kts",
+      "tools/architecture/verto_arch_guard.py",
+      "tools/architecture/tests/**",
+      "scripts/ci/**",
+      "docs/architecture/**",
+      "docs/quality/**",
+      "CONTRIBUTING.md",
+      "CHANGELOG.md",
+      "README.md",
+      "docs/CANONICAL_DOCUMENT_MAP.md",
+      "docs/INDEX.md",
+      "docs/DOCUMENTATION_INVENTORY.md"
+    ],
+    "forbidden_files": [
+      "app/schemas/**",
+      "data/database/src/main/**",
+      "data/database/src/test/**",
+      "supabase/**",
+      "functions/**",
+      "sql/**",
+      "SQL/**",
+      "docs/sql/**",
+      "settings.gradle.kts",
+      "gradle/**",
+      "build-logic/**"
+    ]
+  },
+  "architecture": {
+    "invariants": [
+      "VARCH-003 current findings become zero by source repair",
+      "VARCH-005 current findings become zero by layer repair",
+      "VARCH-012 current findings become zero without weakening its meaning",
+      "Optimal has zero direct dependencies/imports on invoice/management/messages/party/payment implementation modules",
+      "explicit declared API-module edges remain valid public-contract edges",
+      "dependency cycles remain zero",
+      "foreign Entity/DAO/storage access remains zero",
+      "historical v318 technical-debt baseline remains immutable",
+      "removed v321 identities may not reappear",
+      "Room version remains 81",
+      "behavior remains equivalent"
+    ],
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      ":feature:integration:optimal->:feature:invoice",
+      ":feature:integration:optimal->:feature:management",
+      ":feature:integration:optimal->:feature:messages",
+      ":feature:integration:optimal->:feature:party",
+      ":feature:integration:optimal->:feature:payment",
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "ALL_UNDECLARED_EXTERNAL_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ]
+  },
+  "verification": {
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "kotlin-quality",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ],
+    "required_tests": [
+      "tools/architecture/tests/test_architecture_guard.py",
+      "Optimal boundary adapter mapping regression tests",
+      "Quick Stock boundary regression tests",
+      "Party client balance regression tests",
+      "scripts/ci/run-quality-gate.sh self-test"
+    ]
+  }
+}

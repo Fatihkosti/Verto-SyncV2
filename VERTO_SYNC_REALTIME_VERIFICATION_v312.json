@@ -1,0 +1,191 @@
+{
+  "blockers": [],
+  "checks": [
+    {
+      "code": "SESSION_311_SHA",
+      "status": "PASS"
+    },
+    {
+      "code": "V311_VERIFICATION_SHA",
+      "status": "PASS"
+    },
+    {
+      "code": "V311_HANDOFF",
+      "status": "PASS"
+    },
+    {
+      "code": "PROTECTED_HASHES",
+      "status": "PASS"
+    },
+    {
+      "code": "TYPED_HANDLE_BOUNDARY",
+      "status": "PASS"
+    },
+    {
+      "code": "MINIMAL_HINT_SOURCE",
+      "status": "PASS"
+    },
+    {
+      "code": "DURABLE_V2_REQUEST_ONLY",
+      "status": "PASS"
+    },
+    {
+      "code": "TENANT_SESSION_GENERATION_GUARD",
+      "status": "PASS"
+    },
+    {
+      "code": "BOUNDED_COALESCER",
+      "status": "PASS"
+    },
+    {
+      "code": "NO_SOURCE_CURSOR_ROOM",
+      "status": "PASS"
+    },
+    {
+      "code": "PUBLICATION_ALLOWLIST",
+      "status": "PASS"
+    },
+    {
+      "code": "NO_BUSINESS_PAYLOAD_TABLE",
+      "status": "PASS"
+    },
+    {
+      "code": "VISIBILITY_MINIMAL_COLUMNS",
+      "status": "PASS"
+    },
+    {
+      "code": "NO_TRUNCATE",
+      "status": "PASS"
+    },
+    {
+      "code": "FLAGS_OFF",
+      "status": "PASS"
+    },
+    {
+      "code": "V312_MODELS",
+      "status": "PASS"
+    },
+    {
+      "code": "V311_325",
+      "status": "PASS"
+    },
+    {
+      "code": "V310_499",
+      "status": "PASS"
+    },
+    {
+      "code": "V309_272",
+      "status": "PASS"
+    },
+    {
+      "code": "V308_137_10K",
+      "status": "PASS"
+    }
+  ],
+  "compileStatus": "NOT_RUN_ENVIRONMENT_UNAVAILABLE_GRADLE_8_9_DISTRIBUTION_MISSING",
+  "duplicateActiveListenerCount": 0,
+  "finalVerdict": "PASS_STATIC_REALTIME_HINT_TARGETED_LIFECYCLE / INHERITED_307_EXCEPTIONS=9 / ROOM_80_UNCHANGED / V2_DISABLED / REALTIME_DEFAULT_DISABLED / BUILD_NOT_VERIFIED / POSTGRES_NOT_EXECUTED / V312_REALTIME_SQL_STATIC_ONLY",
+  "handoff313Authorized": true,
+  "historicalMigrationChangedCount": 0,
+  "inheritedExceptionCount": 9,
+  "inputArchiveEntries": 2650,
+  "inputProductionKotlinCount": 1178,
+  "inputZipName": "Verto-v311-source-of-truth.zip",
+  "inputZipSha256": "89700b20d832bf9f787d7d0139afb55315a3484be1077c85d2c50dd183c166ca",
+  "lateCallbackAcceptedCount": 0,
+  "lateStopKillsNewListenerCount": 0,
+  "new312WaiverCount": 0,
+  "planSha256": "a767087c5f1659dcd7c660c189542ef2d7774c0f647ff9321e9f53219a7dfd97",
+  "postgresExecuted": false,
+  "postgresRequiredForStaticPass": false,
+  "publicationCoverageRows": 1,
+  "publicationRuntimeVerified": false,
+  "publicationWildcardCount": 0,
+  "realtimeBurstStormCount": 0,
+  "realtimeCorrectnessDependencyCount": 0,
+  "realtimeCursorReconstructionCount": 0,
+  "realtimeCursorWriteCount": 0,
+  "realtimeDefaultEnabledCount": 0,
+  "realtimeDirectRoomMutationCount": 0,
+  "realtimeGenerationStormCount": 0,
+  "realtimeRemoteApplyEnqueueCount": 0,
+  "realtimeRevisionCursorJumpCount": 0,
+  "realtimeRuntime": "DISABLED",
+  "realtimeSourceCoverageRows": 4,
+  "realtimeSourceTypeAfter": "Flow<SyncRealtimeHint>",
+  "realtimeSourceTypeBefore": "Flow<Unit>",
+  "realtimeTargetBusyLoopCount": 0,
+  "realtimeTimestampCursorAuthorityCount": 0,
+  "realtimeV2LegacyFullSyncTriggerCount": 0,
+  "realtimeVisibilityLeakCount": 0,
+  "realtimeWatchedSurfaceCountBefore": 8,
+  "reconnectReplayAssumptionCount": 0,
+  "roomSchemaChangedCount": 0,
+  "roomVersionAfter": 80,
+  "roomVersionBefore": 80,
+  "runtimeV2": "DISABLED",
+  "runtimeV2EnabledCount": 0,
+  "schema80Sha256": "1d077e2539cf8ac4a2cf618c11c0a97f7de44f0c2bf15298e923f39b75988543",
+  "sensitiveRealtimePublicationCount": 0,
+  "serverMigrationApplied312": false,
+  "serverMigrationDefined312": true,
+  "session": 312,
+  "session311ContractSha256": "cc788ce40ba5e8fb307d11d410f4d5d364a032a1829f9d2bae478ae012d6685f",
+  "staleRealtimeEpochAcceptedCount": 0,
+  "staleRealtimeGenerationAcceptedCount": 0,
+  "staleRealtimeTenantAcceptedCount": 0,
+  "staleRealtimeUserAcceptedCount": 0,
+  "supabaseVersion": "3.0.2",
+  "truncateHandlerCount": 0,
+  "unboundedRealtimeTargetCount": 0,
+  "unitTestStatus": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+  "v308RegressionFailures": 0,
+  "v309RegressionFailures": 0,
+  "v310RegressionFailures": 0,
+  "v311FinalVerdict": "PASS_STATIC_DURABLE_DRAIN_RETRY_TENANT_ORCHESTRATION / INHERITED_307_EXCEPTIONS=9 / ROOM_80_UNCHANGED / SERVER_SQL_UNCHANGED / RUNTIME_V2_DISABLED / BUILD_NOT_VERIFIED",
+  "v311Handoff312Authorized": true,
+  "v311RegressionFailures": 0,
+  "v311VerificationSha256": "efe8faa263902eadc9f5041d3230dd0ad3e0df630b4ce6685f16ab36c200a2bb",
+  "v312FixtureStats": {
+    "MODEL_ACTIVE_DRAIN_HINT_PASS": true,
+    "MODEL_BURST_100_COALESCED_PASS": true,
+    "MODEL_DUPLICATE_HINT_DEDUPE_PASS": true,
+    "MODEL_FINAL_EXIT_HINT_RACE_PASS": true,
+    "MODEL_LATE_CALLBACK_STALE_PASS": true,
+    "MODEL_LATE_STOP_CANNOT_KILL_NEW_PASS": true,
+    "MODEL_LOGOUT_REALTIME_RACE_PASS": true,
+    "MODEL_MISSING_HINT_INFO_FALLBACK_PASS": true,
+    "MODEL_NO_REALTIME_CURSOR_JUMP_PASS": true,
+    "MODEL_NO_REALTIME_LEGACY_FULLSYNC_PASS": true,
+    "MODEL_NO_REALTIME_ROOM_MUTATION_PASS": true,
+    "MODEL_NO_TARGET_BUSY_LOOP_PASS": true,
+    "MODEL_ORG_SWITCH_REALTIME_RACE_PASS": true,
+    "MODEL_OUT_OF_ORDER_HINT_MAX_PASS": true,
+    "MODEL_PROCESS_DEATH_HINT_FALLBACK_PASS": true,
+    "MODEL_PUBLICATION_NOT_CORRECTNESS_PASS": true,
+    "MODEL_RAPID_STOP_START_PASS": true,
+    "MODEL_REALTIME_DEFAULT_OFF_PASS": true,
+    "MODEL_REALTIME_HINT_ONLY_PASS": true,
+    "MODEL_RECONNECT_CATCHUP_PASS": true,
+    "MODEL_SAME_ORG_REAUTH_REALTIME_PASS": true,
+    "MODEL_SESSION_EPOCH_REALTIME_PASS": true,
+    "MODEL_SINGLE_LISTENER_PASS": true,
+    "MODEL_STALE_TENANT_HINT_PASS": true,
+    "MODEL_TARGET_OVERFLOW_FALLBACK_PASS": true,
+    "MODEL_TARGET_REVISION_ADVISORY_PASS": true,
+    "MODEL_UNPUBLISHED_OPTIONAL_PASS": true,
+    "byCategory": {
+      "advisory": 60,
+      "burst100": 50,
+      "duplicates": 50,
+      "durable": 40,
+      "fallback": 40,
+      "lifecycle": 60
+    },
+    "failures": 0,
+    "failuresList": [],
+    "session": 312,
+    "total": 300
+  },
+  "workManagerVersion": "2.10.0"
+}

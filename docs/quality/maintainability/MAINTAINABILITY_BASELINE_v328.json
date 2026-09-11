@@ -1,0 +1,27 @@
+{
+  "session": 328,
+  "input": "Verto-v327-final-admission-blocked-environment.zip",
+  "input_sha256": "4df6e2c7ec45462b84d12efa58e764d8e41083cf45155000293370160fbd8186",
+  "targets": {
+    "InvoiceWriteCoordinator": {
+      "loc_before": 548,
+      "constructor_dependencies_before": 15,
+      "direct_tests_before": 0,
+      "direct_wall_clock_calls_before": 2,
+      "direct_random_uuid_calls_before": 2
+    },
+    "SyncManager": {
+      "loc_before": 511,
+      "constructor_dependencies_before": 10,
+      "direct_tests_before": 0,
+      "android_context_dependency_before": 1,
+      "direct_worker_static_calls_before": 5,
+      "direct_database_orchestration_calls_before": 6,
+      "direct_wall_clock_calls_before": 7
+    },
+    "RoomLogisticsV2ShipmentStoreAdapter": {
+      "file_loc_before": 897,
+      "direct_tests_before": 0
+    }
+  }
+}

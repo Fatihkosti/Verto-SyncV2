@@ -1,0 +1,73 @@
+{
+  "session": {
+    "id": 323,
+    "input_sha256": "7aad8fd5f877d835c89ab509dfc35e2f4384dc45ce2beb17bad145dea32d4c83",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_323_INPUT_SNAPSHOT.json",
+    "scope": "HIGH-RISK TECHNICAL DEBT / INVENTORY DAO / BEHAVIOR-PRESERVING",
+    "allowed_modules": [":data:database", ":feature:inventory", ":app", ":data:network", ":data:operations"],
+    "allowed_files": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/Inventory*Dao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryDaoModels.kt",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/data/**",
+      "feature/inventory/src/test/**",
+      "feature/inventory/src/androidTest/**",
+      "data/database/src/test/**",
+      "data/database/src/androidTest/**",
+      "data/network/src/test/**",
+      "app/src/test/**",
+      "docs/architecture/**",
+      "docs/quality/**",
+      "scripts/verify-kotlin-quality-static.py",
+      "scripts/ci/**",
+      "tools/architecture/**",
+      "CHANGELOG.md",
+      "docs/CANONICAL_DOCUMENT_MAP.md",
+      "docs/INDEX.md",
+      "docs/DOCUMENTATION_INVENTORY.md"
+    ],
+    "forbidden_files": [
+      "app/schemas/**",
+      "supabase/**",
+      "functions/**",
+      "SQL/**",
+      "sql/**",
+      "build-logic/**",
+      "settings.gradle.kts",
+      "gradle/**",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/**",
+      "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt",
+      "data/sync/**"
+    ]
+  },
+  "architecture": {
+    "invariants": [
+      "Room schema remains version 81",
+      "All 25 inventory transaction boundaries remain atomic",
+      "Inventory table ownership and SQL semantics remain unchanged",
+      "No new dependency or dependency cycle",
+      "InventoryDao remains the stable Room entry point"
+    ],
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": ["supabase", "functions", "sql", "new external Gradle dependency"]
+  },
+  "verification": {
+    "required_tests": [
+      "Inventory database unit tests",
+      "Inventory database android tests when environment permits",
+      "Architecture guard self-test"
+    ],
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "kotlin-quality",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ]
+  }
+}

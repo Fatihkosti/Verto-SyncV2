@@ -1,0 +1,63 @@
+{
+  "session": 308,
+  "sourceSession": 307,
+  "inheritedCount": 9,
+  "inheritedExceptions": [
+    {
+      "name": "room_version_79",
+      "touchedBy308": false,
+      "worsened": false,
+      "resolved": false
+    },
+    {
+      "name": "persisted_sequence_authority",
+      "touchedBy308": false,
+      "worsened": false,
+      "resolved": false
+    },
+    {
+      "name": "payload_bound_preserved",
+      "touchedBy308": false,
+      "worsened": false,
+      "resolved": false
+    },
+    {
+      "name": "producer_discovery_unclassified_zero",
+      "touchedBy308": false,
+      "worsened": false,
+      "resolved": false
+    },
+    {
+      "name": "stronger_outboxes_proven",
+      "touchedBy308": false,
+      "worsened": false,
+      "resolved": false
+    },
+    {
+      "name": "datastore_delete_authority_zero",
+      "touchedBy308": false,
+      "worsened": false,
+      "resolved": false
+    },
+    {
+      "name": "dirty_only_authority_zero",
+      "touchedBy308": false,
+      "worsened": false,
+      "resolved": false
+    },
+    {
+      "name": "org_settings_room_canonical",
+      "touchedBy308": false,
+      "worsened": false,
+      "resolved": false
+    },
+    {
+      "name": "attachment_intent_persisted",
+      "touchedBy308": false,
+      "worsened": false,
+      "resolved": false
+    }
+  ],
+  "new308Waivers": 0,
+  "policy": "Carry-forward debt only; no Session 308 invariant is waived."
+}

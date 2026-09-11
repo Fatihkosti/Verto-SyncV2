@@ -1,0 +1,1 @@
+B06_PRODUCER_GATE=PASS financial=full owner310=frozen inventoryPackets=2

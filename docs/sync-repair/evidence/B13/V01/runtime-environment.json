@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-09-11",
+  "python": "3.13.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "java": "openjdk version \"21.0.11\" 2026-04-21\nOpenJDK Runtime Environment (build 21.0.11+10-1-deb13u2-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.11+10-1-deb13u2-Debian, mixed mode, sharing)",
+  "kotlinc": "info: kotlinc-jvm 1.9.0 (JRE 21.0.11+10-1-deb13u2-Debian)",
+  "gradle_wrapper_distribution": "https\\://services.gradle.org/distributions/gradle-8.9-bin.zip",
+  "gradle_compile_attempt": "BLOCKED",
+  "gradle_blocker": "Gradle 8.9 wrapper distribution not cached; wrapper attempted services.gradle.org and failed UnknownHostException",
+  "room_android_runtime": "NOT_RUN",
+  "server_b13_seal_fields_checked_in": false,
+  "server_check_note": "No snapshot_digest_sha256, coverage_aggregate_types, or delta_token found in checked-in supabase/migrations.",
+  "live_server_actions": "NONE"
+}

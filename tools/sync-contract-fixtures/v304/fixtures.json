@@ -1,0 +1,440 @@
+[
+  {
+    "category": "revision/cursor",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "RC01",
+    "revisions": [
+      10,
+      11,
+      12
+    ],
+    "scenario": "revision_contiguous"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "RC02",
+    "revisions": [
+      10,
+      11,
+      15,
+      22
+    ],
+    "scenario": "revision_gaps"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "INVALID_REVISION_ORDER",
+    "expected_exit": 1,
+    "fixture_id": "RC03",
+    "revisions": [
+      22,
+      15
+    ],
+    "scenario": "revision_reversed"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "VALIDATION",
+    "expected_exit": 1,
+    "fixture_id": "RC04",
+    "revisions": [
+      0
+    ],
+    "scenario": "revision_zero"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "VALIDATION",
+    "expected_exit": 1,
+    "fixture_id": "RC05",
+    "revisions": [
+      -1
+    ],
+    "scenario": "revision_negative"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "RC06",
+    "scenario": "duplicate_identical"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "DUPLICATE_REVISION_CONTENT_MISMATCH",
+    "expected_exit": 1,
+    "fixture_id": "RC07",
+    "scenario": "duplicate_divergent"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "RC08",
+    "revisions": [
+      20,
+      21
+    ],
+    "scenario": "same_timestamp_revision_order"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "RC09",
+    "scenario": "clock_plus_24h_no_cursor_effect"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "RC10",
+    "scenario": "clock_minus_24h_no_cursor_effect"
+  },
+  {
+    "category": "revision/cursor",
+    "cursor": "opaque:A/9==",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "RC11",
+    "scenario": "opaque_cursor_preserved"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "FAIL_TIMESTAMP_CURSOR_POLICY",
+    "expected_exit": 1,
+    "fixture_id": "RC12",
+    "scenario": "timestamp_derived_cursor"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "FILTERED_GLOBAL_CURSOR_ADVANCE",
+    "expected_exit": 1,
+    "fixture_id": "RC13",
+    "scenario": "filtered_advances_global"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "SCOPE_MISMATCH",
+    "expected_exit": 1,
+    "fixture_id": "RC14",
+    "scenario": "scope_mismatch_cursor"
+  },
+  {
+    "category": "revision/cursor",
+    "expected_code": "CONTRACT_UNSUPPORTED",
+    "expected_exit": 1,
+    "fixture_id": "RC15",
+    "scenario": "contract_mismatch_cursor"
+  },
+  {
+    "category": "bootstrap/transaction",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "BT01",
+    "scenario": "bootstrap_snapshot_baseline_delta"
+  },
+  {
+    "category": "bootstrap/transaction",
+    "expected_code": "FAIL_BOOTSTRAP_HANDOFF_POLICY",
+    "expected_exit": 1,
+    "fixture_id": "BT02",
+    "scenario": "bootstrap_independent_current_max"
+  },
+  {
+    "category": "bootstrap/transaction",
+    "expected_code": "BOOTSTRAP_RESTART_REQUIRED",
+    "expected_exit": 1,
+    "fixture_id": "BT03",
+    "scenario": "bootstrap_expired"
+  },
+  {
+    "category": "bootstrap/transaction",
+    "expected_code": "BOOTSTRAP_RESTART_REQUIRED",
+    "expected_exit": 1,
+    "fixture_id": "BT04",
+    "scenario": "bootstrap_scope_changed"
+  },
+  {
+    "category": "bootstrap/transaction",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "BT05",
+    "orders": [
+      0,
+      1
+    ],
+    "scenario": "transaction_complete",
+    "size": 2
+  },
+  {
+    "category": "bootstrap/transaction",
+    "expected_code": "INCOMPLETE_TRANSACTION_GROUP",
+    "expected_exit": 1,
+    "fixture_id": "BT06",
+    "orders": [
+      0
+    ],
+    "scenario": "transaction_split_page",
+    "size": 2
+  },
+  {
+    "category": "bootstrap/transaction",
+    "expected_code": "INCOMPLETE_TRANSACTION_GROUP",
+    "expected_exit": 1,
+    "fixture_id": "BT07",
+    "orders": [
+      0,
+      2
+    ],
+    "scenario": "transaction_missing_order",
+    "size": 3
+  },
+  {
+    "category": "bootstrap/transaction",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "BT08",
+    "orders": [
+      0
+    ],
+    "scenario": "transaction_size_one",
+    "size": 1
+  },
+  {
+    "category": "bootstrap/transaction",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "BT09",
+    "revisions": [
+      10,
+      50
+    ],
+    "scenario": "unrelated_groups_revision_gaps"
+  },
+  {
+    "category": "bootstrap/transaction",
+    "dependency": {
+      "B": "A"
+    },
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "BT10",
+    "order": [
+      "A",
+      "B"
+    ],
+    "scenario": "dependency_parent_first"
+  },
+  {
+    "category": "bootstrap/transaction",
+    "dependency": {
+      "B": "A"
+    },
+    "expected_code": "DEPENDENCY_ORDER_VIOLATION",
+    "expected_exit": 1,
+    "fixture_id": "BT11",
+    "order": [
+      "B",
+      "A"
+    ],
+    "scenario": "dependency_child_first"
+  },
+  {
+    "category": "bootstrap/transaction",
+    "expected_code": "FAIL_TRANSACTION_GROUP_POLICY",
+    "expected_exit": 1,
+    "fixture_id": "BT12",
+    "scenario": "atomic_batch_partial_success"
+  },
+  {
+    "aggregate": "PARTY_IDENTITY",
+    "category": "payload/aggregate",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "PA01",
+    "scenario": "known_supported_payload",
+    "version": 2
+  },
+  {
+    "aggregate": "PARTY_IDENTITY",
+    "category": "payload/aggregate",
+    "expected_code": "CONTRACT_UNSUPPORTED",
+    "expected_exit": 1,
+    "fixture_id": "PA02",
+    "scenario": "known_unsupported_payload",
+    "version": 1
+  },
+  {
+    "aggregate": "FUTURE_UNKNOWN",
+    "category": "payload/aggregate",
+    "expected_code": "CONTRACT_UNSUPPORTED",
+    "expected_exit": 1,
+    "fixture_id": "PA03",
+    "scenario": "unknown_aggregate",
+    "version": 1
+  },
+  {
+    "category": "payload/aggregate",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "PA04",
+    "scenario": "error_enum_roundtrip",
+    "value": "TRANSIENT"
+  },
+  {
+    "category": "payload/aggregate",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "PA05",
+    "scenario": "error_enum_roundtrip",
+    "value": "AUTH"
+  },
+  {
+    "category": "payload/aggregate",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "PA06",
+    "scenario": "error_enum_roundtrip",
+    "value": "VALIDATION"
+  },
+  {
+    "category": "payload/aggregate",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "PA07",
+    "scenario": "error_enum_roundtrip",
+    "value": "CONFLICT"
+  },
+  {
+    "category": "payload/aggregate",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "PA08",
+    "scenario": "error_enum_roundtrip",
+    "value": "CURSOR_EXPIRED"
+  },
+  {
+    "category": "payload/aggregate",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "PA09",
+    "scenario": "error_enum_roundtrip",
+    "value": "CONTRACT_UNSUPPORTED"
+  },
+  {
+    "category": "payload/aggregate",
+    "expected_code": "CONTRACT_UNSUPPORTED",
+    "expected_exit": 1,
+    "fixture_id": "PA10",
+    "scenario": "unknown_error_enum",
+    "value": "FUTURE_ERROR"
+  },
+  {
+    "aggregate": "PAYMENT",
+    "category": "financial policies",
+    "expected_code": "FAIL_CONFLICT_POLICY",
+    "expected_exit": 1,
+    "fixture_id": "FP01",
+    "policy": "EXPLICIT_SCOPED_LWW",
+    "scenario": "payment_scoped_lww"
+  },
+  {
+    "aggregate": "INVENTORY_MOVEMENT",
+    "category": "financial policies",
+    "expected_code": "FAIL_CONFLICT_POLICY",
+    "expected_exit": 1,
+    "fixture_id": "FP02",
+    "policy": "EXPLICIT_SCOPED_LWW",
+    "scenario": "inventory_movement_scoped_lww"
+  },
+  {
+    "aggregate": "INVENTORY_COST_REVISION",
+    "category": "financial policies",
+    "expected_code": "FAIL_CONFLICT_POLICY",
+    "expected_exit": 1,
+    "fixture_id": "FP03",
+    "policy": "OPTIMISTIC_VERSION",
+    "scenario": "inventory_cost_mutable_overwrite"
+  },
+  {
+    "category": "attachments",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "AT01",
+    "scenario": "metadata_checksum_object_ref"
+  },
+  {
+    "category": "attachments",
+    "expected_code": "FAIL_ATTACHMENT_POLICY",
+    "expected_exit": 1,
+    "fixture_id": "AT02",
+    "scenario": "inline_base64_binary"
+  },
+  {
+    "category": "coverage",
+    "expected_code": "PASS",
+    "expected_exit": 0,
+    "fixture_id": "CV01",
+    "scenario": "all_producers_classified"
+  },
+  {
+    "category": "coverage",
+    "expected_code": "FAIL_AGGREGATE_COVERAGE",
+    "expected_exit": 1,
+    "fixture_id": "CV02",
+    "scenario": "unknown_status"
+  },
+  {
+    "category": "coverage",
+    "expected_code": "FAIL_AGGREGATE_COVERAGE",
+    "expected_exit": 1,
+    "fixture_id": "CV03",
+    "scenario": "missing_aggregate_row"
+  },
+  {
+    "category": "coverage",
+    "expected_code": "FAIL_AGGREGATE_COVERAGE",
+    "expected_exit": 1,
+    "fixture_id": "CV04",
+    "scenario": "duplicate_authority_row"
+  },
+  {
+    "category": "coverage",
+    "expected_code": "FAIL_AGGREGATE_COVERAGE",
+    "expected_exit": 1,
+    "fixture_id": "CV05",
+    "scenario": "blank_evidence_path"
+  },
+  {
+    "category": "coverage",
+    "expected_code": "FAIL_AGGREGATE_COVERAGE",
+    "expected_exit": 1,
+    "fixture_id": "CV06",
+    "scenario": "wildcard_evidence"
+  },
+  {
+    "category": "tool errors",
+    "expected_code": "TOOL_ERROR",
+    "expected_exit": 2,
+    "fixture_id": "TE01",
+    "scenario": "missing_contract_json"
+  },
+  {
+    "category": "tool errors",
+    "expected_code": "TOOL_ERROR",
+    "expected_exit": 2,
+    "fixture_id": "TE02",
+    "scenario": "malformed_contract_json"
+  },
+  {
+    "category": "tool errors",
+    "expected_code": "TOOL_ERROR",
+    "expected_exit": 2,
+    "fixture_id": "TE03",
+    "scenario": "missing_coverage_csv"
+  }
+]

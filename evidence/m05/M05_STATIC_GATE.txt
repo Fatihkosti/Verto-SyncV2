@@ -1,0 +1,37 @@
+PASS v2_drain_no_legacy_participant_transport - drainOrchestration contains no legacy participant PUSH/DELETE execution
+PASS v2_single_push_coordinator_boundary - SyncManager pushes only through SyncV2EnginePort
+PASS terminal_push_health_not_success - terminal push states are recorded as failure, not success
+PASS future_retry_delayed_continuation - future eligible retry schedules exact delayed continuation
+PASS manager_cancellation_passthrough - CancellationException is not converted to generic sync failure
+PASS ack_cas_fingerprint - terminal ACK CAS requires mutation lease and sent semantic fingerprint
+PASS dependency_terminalization - failed/missing dependencies have a terminal review transition
+PASS push_cancellation_passthrough - generic push propagates coroutine cancellation
+PASS dependency_failed_review - dependency/predecessor hard failures leave runnable continuation set
+PASS generic_runnable_count - generic push continuation uses runnable rather than raw eligible count
+PASS ack_calls_use_fingerprint - generic terminal transitions carry the leased semantic fingerprint
+PASS coordinator_all_lanes - coordinator owns generic, Party, financial/inventory stronger, and specialized lanes
+PASS coordinator_persistent_terminal_health - health accounts for terminal states left from earlier runs
+PASS stronger_financial_lane - financial_outbox has explicit V2 sender
+PASS stronger_inventory_stock_lane - inventory_stock_outbox has explicit V2 sender
+PASS stronger_inventory_cost_lane - inventory_cost_outbox has explicit V2 sender
+PASS stronger_cancellation_passthrough - stronger lane does not swallow cancellation
+PASS stronger_auth_separate - authentication is separated from transient retry and permanent review
+PASS owner310_materializes_client_credit - CLIENT_CREDIT has an explicit durable materialization route
+PASS owner310_materializes_cost_allocation - COST_ALLOCATION has an explicit durable materialization route
+PASS owner310_materializes_expense - EXPENSE has an explicit durable materialization route
+PASS owner310_materializes_cash_movement - CASH_MOVEMENT has an explicit durable materialization route
+PASS owner310_materializes_cash_reconciliation - CASH_RECONCILIATION has an explicit durable materialization route
+PASS owner310_materializes_goods_receipt - GOODS_RECEIPT has an explicit durable materialization route
+PASS owner310_materializes_purchase_match - PURCHASE_MATCH has an explicit durable materialization route
+PASS owner310_materializes_purchase_payment_override - PURCHASE_PAYMENT_OVERRIDE has an explicit durable materialization route
+PASS owner310_no_generic_upsert - owner310 generic intents are normalized through stronger COMMAND policy
+PASS party_cancellation_passthrough - Party bridge propagates cancellation
+PASS party_rejection_terminal - Party permanent rejection is terminal
+PASS workmanager_delayed_retry - future retry uses a separate delayed WorkManager chain
+PASS optimal_explicit_v2_bridge - Optimal stronger outbox is invoked through V2 extension point, not SyncParticipant operations
+PASS optimal_cancellation_passthrough - Optimal participant propagates cancellation
+PASS optimal_permanent_vs_retry - Optimal contract separates retryable failure from rejection/conflict review
+PASS test_delayed_retry - future retry schedules delayed continuation
+PASS test_terminal_health - terminal push issue never records push health success
+PASS test_no_legacy_participant_transport - v2 drain does not execute legacy participant push operations
+RESULT PASS (36/36)

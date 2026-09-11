@@ -1,0 +1,193 @@
+{
+  "session": 365,
+  "passed": 37,
+  "total": 37,
+  "status": "PASS_STATIC",
+  "checks": [
+    {
+      "name": "decision_dashboard_exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "kpi_صافي المبيعات",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "kpi_الربح والهامش",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "kpi_صافي التدفق النقدي",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "kpi_متأخرات العملاء",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "kpi_مخاطر المخزون",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "kpi_المشتريات",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "two_size_hierarchy",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_gradient_in_dashboard",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fixed_top3_attention",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_auto_carousel",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "purchase_comparison_is_neutral",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "purchase_no_fake_previous_zero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "freshness_visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drilldown_sales",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drilldown_profit",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drilldown_cash_flow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drilldown_receivables",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drilldown_inventory",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "drilldown_purchases",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "preserve_dashboard_scroll",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "custom_range_preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "filters_preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "refresh_preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "purchase_drilldown_has_suppliers",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "net_sales_separate_from_gross",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "net_sales_mapped_from_net_sales_minor",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "net_sales_previous_same_method",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "purchase_current_period_source",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "purchase_previous_period_source",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "purchase_comparison_guard",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "purchase_not_payables_in_kpi_calc",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "last_updated_state",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "last_updated_mapped",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "legacy_files_removed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_shift_write_from_reports_presentation",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "legacy_tab_navigation_removed",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

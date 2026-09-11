@@ -1,0 +1,36 @@
+{
+  "algorithm": "sha256(path\\0sha256(bytes)\\0size\\n) over sorted product-scope entries",
+  "scope_roots": [
+    "app",
+    "build-logic",
+    "core",
+    "data",
+    "domain",
+    "feature",
+    "gradle",
+    "scripts",
+    "tools",
+    "supabase"
+  ],
+  "root_files": [
+    "SYNC_CONTRACT_V2.schema.json",
+    "build.gradle.kts",
+    "gradle.properties",
+    "gradlew",
+    "gradlew.bat",
+    "settings.gradle.kts"
+  ],
+  "excluded_dirs": [
+    ".git",
+    ".gradle",
+    ".kotlin",
+    "__pycache__",
+    "build",
+    "out"
+  ],
+  "baseline_documented_b12_hash": "150e580c12b9d1609f7cb4a7b48eafe680d7bfa0488561225a46b395238e035e",
+  "baseline_recomputed_hash": "4880ac00c2789cd8515ee7d887e354a77eb37594e2f66ac33fc45c4ec26f71cb",
+  "current_hash": "158fccae5d886f47b1101453d64406522512e8666a2b5cbcf0be6cdfad5a9711",
+  "baseline_entries": 1912,
+  "current_entries": 1917
+}

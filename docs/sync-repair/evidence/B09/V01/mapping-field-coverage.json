@@ -1,0 +1,47 @@
+[
+  {
+    "entity": "InvoiceEntity",
+    "dto_fields": 41,
+    "entity_fields": 48
+  },
+  {
+    "entity": "InvoiceItemEntity",
+    "dto_fields": 21,
+    "entity_fields": 31
+  },
+  {
+    "entity": "InvoiceDueInstallmentEntity",
+    "dto_fields": 8,
+    "entity_fields": 8
+  },
+  {
+    "entity": "PaymentEntity",
+    "dto_fields": 24,
+    "entity_fields": 26
+  },
+  {
+    "entity": "PaymentAllocationEntity",
+    "dto_fields": 11,
+    "entity_fields": 11
+  },
+  {
+    "entity": "RealizedFxEventEntity",
+    "dto_fields": 13,
+    "entity_fields": 13
+  },
+  {
+    "entity": "InvoiceReturnDocumentEntity",
+    "dto_fields": 17,
+    "entity_fields": 17
+  },
+  {
+    "entity": "InvoiceReturnLineEntity",
+    "dto_fields": 13,
+    "entity_fields": 13
+  },
+  {
+    "entity": "InvoiceReturnPaymentAllocationEntity",
+    "dto_fields": 5,
+    "entity_fields": 5
+  }
+]

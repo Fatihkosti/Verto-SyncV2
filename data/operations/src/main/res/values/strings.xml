@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Session 298: owner-local hardcoded string migration. -->
+    <string name="dataops_v298_3ed5a965178f" translatable="false">"استحقاق قريب"</string>
+    <string name="dataops_v298_3ed5a965178f_2" translatable="false">"استحقاق متأخر"</string>
+</resources>

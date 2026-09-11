@@ -1,0 +1,17 @@
+{
+  "wire_sha256_without_trailing_newline": "e0e85cd439c4fde254a26e4605906c2499bfb31e8940bab8461e03984cf1ed3f",
+  "business_content_hash": "b096cf576d76a62c9a5f54450e1d666e7f6a57d47893508e9d67453a43cd8b5f",
+  "row_counts": {
+    "items": 2,
+    "dueInstallments": 2,
+    "payments": 2,
+    "paymentAllocations": 2,
+    "realizedFxEvents": 1,
+    "returnDocuments": 1,
+    "returnLines": 1,
+    "returnPaymentAllocations": 1,
+    "explicitTombstones": 0,
+    "effectReferences": 2
+  },
+  "payment_minor_sum": 8000
+}

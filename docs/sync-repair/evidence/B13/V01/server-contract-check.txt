@@ -1,0 +1,41 @@
+Checked-in server seal field search:
+
+Existing v305 bootstrap anchors:
+26:    bootstrap_session_ttl_seconds integer NOT NULL,
+66:    bootstrap_session_ttl_seconds, bootstrap_page_max_rows, bootstrap_page_max_bytes,
+199:CREATE TABLE public.verto_sync_bootstrap_sessions (
+200:    bootstrap_session_id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+217:CREATE INDEX verto_sync_bootstrap_sessions_scope_idx
+218:    ON public.verto_sync_bootstrap_sessions (scope_id, state, expires_at);
+221:    bootstrap_session_id uuid NOT NULL REFERENCES public.verto_sync_bootstrap_sessions(bootstrap_session_id) ON DELETE CASCADE,
+229:    PRIMARY KEY (bootstrap_session_id, ordinal)
+234:    bootstrap_session_id uuid NOT NULL REFERENCES public.verto_sync_bootstrap_sessions(bootstrap_session_id) ON DELETE CASCADE,
+237:    UNIQUE (bootstrap_session_id, after_ordinal)
+256:ALTER TABLE public.verto_sync_bootstrap_sessions ENABLE ROW LEVEL SECURITY;
+816:        'page_high_watermark', v_high,
+823:CREATE FUNCTION public.verto_begin_sync_bootstrap(p_scope_id uuid) RETURNS jsonb
+852:    SELECT bootstrap_session_ttl_seconds INTO v_ttl
+856:    INSERT INTO public.verto_sync_bootstrap_sessions (
+857:        bootstrap_session_id, scope_id, organization_id, principal_id,
+869:        bootstrap_session_id, ordinal, aggregate_type, aggregate_id,
+883:    UPDATE public.verto_sync_bootstrap_sessions
+885:     WHERE bootstrap_session_id = v_session;
+887:    INSERT INTO public.verto_sync_bootstrap_page_tokens (bootstrap_session_id, after_ordinal)
+895:        'bootstrap_session_id', v_session,
+906:    p_bootstrap_session_id uuid,
+914:    v_session public.verto_sync_bootstrap_sessions%ROWTYPE;
+933:    SELECT * INTO v_session FROM public.verto_sync_bootstrap_sessions s
+934:     WHERE s.bootstrap_session_id = p_bootstrap_session_id;
+945:     WHERE t.page_token = v_token AND t.bootstrap_session_id = p_bootstrap_session_id;
+957:    WHERE r.bootstrap_session_id = p_bootstrap_session_id AND r.ordinal > v_after
+971:         WHERE r.bootstrap_session_id = p_bootstrap_session_id AND r.ordinal > v_after
+996:         WHERE r.bootstrap_session_id = p_bootstrap_session_id AND r.ordinal > v_last
+1000:        INSERT INTO public.verto_sync_bootstrap_page_tokens (bootstrap_session_id, after_ordinal)
+1001:        VALUES (p_bootstrap_session_id, v_last)
+1002:        ON CONFLICT (bootstrap_session_id, after_ordinal) DO UPDATE SET after_ordinal = EXCLUDED.after_ordinal
+1005:        UPDATE public.verto_sync_bootstrap_sessions
+1007:         WHERE bootstrap_session_id = p_bootstrap_session_id;
+1011:        'bootstrap_session_id', p_bootstrap_session_id,
+1131:    public.verto_sync_bootstrap_sessions, public.verto_sync_bootstrap_rows,
+1150:REVOKE ALL ON FUNCTION public.verto_begin_sync_bootstrap(uuid) FROM PUBLIC, anon;
+1156:GRANT EXECUTE ON FUNCTION public.verto_begin_sync_bootstrap(uuid) TO authenticated;

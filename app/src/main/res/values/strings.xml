@@ -1,0 +1,283 @@
+<resources>
+    <string name="app_name">Verto</string>
+    <string name="channel_name">تنبيهات Verto</string>
+    <string name="channel_description">تنبيهات مواعيد استحقاق الديون</string>
+
+    <!-- Home v128: unified copy and accessibility labels. -->
+    <string name="home_header_open_drawer">فتح القائمة الجانبية</string>
+    <string name="home_header_greeting">%1$s، %2$s</string>
+    <string name="home_header_open_search">فتح البحث الموحد</string>
+    <string name="home_header_open_notifications">فتح التنبيهات</string>
+    <string name="home_header_open_notifications_unread">فتح التنبيهات، غير المقروءة %1$d</string>
+
+    <string name="home_quick_actions_title">أوامر سريعة</string>
+    <string name="home_quick_actions_empty_title">لا توجد إجراءات سريعة</string>
+    <string name="home_quick_actions_empty_message">تظهر الإجراءات المتاحة حسب صلاحياتك</string>
+    <string name="home_save">حفظ</string>
+    <string name="home_close">إغلاق</string>
+    <string name="home_cancel">إلغاء</string>
+
+    <string name="home_pending_title">أحداث تنتظر إجراء</string>
+    <string name="home_pending_page_count">البطاقة %1$d من %2$d</string>
+    <string name="home_pending_open">فتح الحدث</string>
+    <string name="home_pending_accessibility">%1$s، %2$s، %3$s</string>
+    <string name="home_pending_snooze">تأجيل</string>
+    <string name="home_pending_hide">إغلاق</string>
+    <string name="home_pending_read_more">عرض المزيد</string>
+    <string name="home_pending_read_more_description">عرض جميع الأحداث التي تنتظر إجراء</string>
+    <string name="home_pending_all_title">الأحداث التي تنتظر إجراء</string>
+    <string name="home_pending_tab_customers">عملاء</string>
+    <string name="home_pending_tab_suppliers">موردون</string>
+    <string name="home_pending_tab_inventory">مخزون</string>
+    <string name="home_pending_tab_count">%1$s (%2$d)</string>
+    <string name="home_pending_tab_empty">لا توجد أحداث في قسم %1$s</string>
+    <string name="home_pending_all_empty">لا توجد أحداث مفتوحة</string>
+    <string name="home_pending_more_actions">إجراءات إضافية</string>
+    <string name="home_pending_snooze_title">تأجيل التذكير</string>
+    <string name="home_pending_snooze_option">%1$s\n%2$s</string>
+    <string name="home_pending_empty_title">لا توجد أحداث منتظرة</string>
+    <string name="home_pending_empty_message">لا توجد إجراءات تحتاج متابعتك الآن</string>
+    <string name="home_priority_low">أولوية منخفضة</string>
+    <string name="home_priority_normal">أولوية عادية</string>
+    <string name="home_priority_high">أولوية عالية</string>
+    <string name="home_priority_critical">عاجل</string>
+
+    <string name="home_education_label">معلومة تعليمية</string>
+    <string name="home_education_card_description">معلومة تعليمية، %1$s، %2$s</string>
+    <string name="home_education_read_more">اقرأ المزيد</string>
+    <string name="home_education_read_more_description">اقرأ المحتوى التعليمي كاملًا</string>
+    <string name="home_education_dialog_description">تفاصيل المعلومة التعليمية</string>
+    <string name="home_education_close_description">إغلاق المحتوى التعليمي</string>
+
+    <string name="home_activity_title">آخر الأحداث</string>
+    <string name="home_activity_empty_title">لا توجد أحداث حديثة</string>
+    <string name="home_activity_empty_message">ستظهر العمليات المسجلة هنا تلقائيًا</string>
+
+    <string name="home_expense_title">إضافة مصروف</string>
+    <string name="home_expense_statement">البيان</string>
+    <string name="home_expense_statement_required">البيان مطلوب</string>
+    <string name="home_expense_amount">القيمة</string>
+    <string name="home_expense_amount_invalid">أدخل قيمة أكبر من صفر</string>
+    <string name="home_expense_date">التاريخ: %1$s</string>
+
+    <string name="home_details_dialog_description">تفاصيل الحدث</string>
+    <string name="home_details_copy_description">نسخ تفاصيل الحدث</string>
+    <string name="home_details_close_description">إغلاق تفاصيل الحدث</string>
+    <string name="home_details_copy">نسخ القائمة</string>
+    <string name="home_details_copied">تم النسخ</string>
+
+    <string name="home_status_success_title">تمت العملية</string>
+    <string name="home_status_warning_title">تنبيه</string>
+    <string name="home_status_error_title">تعذر إكمال العملية</string>
+    <string name="home_status_info_title">معلومة</string>
+    <string name="home_open_call_failed">تعذّر فتح الاتصال</string>
+    <string name="home_open_whatsapp_failed">تعذّر فتح واتساب</string>
+    <string name="home_international_purchase_action">إنشاء فاتورة مشتريات دولية</string>
+    <string name="home_international_purchase_title">فاتورة مشتريات دولية</string>
+    <string name="home_international_currency_label">اسم العملة (مثال: USD)</string>
+    <string name="home_international_currency_required">أدخل اسم العملة</string>
+    <string name="home_international_rate_label">قيمتها مقابل الجنيه السوداني</string>
+    <string name="home_international_rate_invalid">أدخل قيمة أكبر من صفر</string>
+    <string name="home_continue">متابعة</string>
+
+    <string name="legacy_ui_6c5f408664d4">فاتورة ملغاة</string>
+    <string name="legacy_ui_ff98198e3a81">صنف مخزون</string>
+    <string name="legacy_ui_62f8303c6a05">شحنة #%1$s</string>
+    <string name="legacy_ui_86a060fbf899">%1$s → %2$s</string>
+    <string name="legacy_ui_5eb7d604fe0f">الحالة الحالية</string>
+    <string name="legacy_ui_83899a6d1169">آخر محاولة</string>
+    <string name="legacy_ui_bf2d2d4e7eb1">آخر نجاح</string>
+    <string name="legacy_ui_4deed6312305">المؤسسة الحالية</string>
+    <string name="legacy_ui_e1ca559bf2ea">غير متاحة</string>
+    <string name="legacy_ui_5400d85be59a">استئناف دورة سابقة</string>
+    <string name="legacy_ui_eff7e7459d29">لا</string>
+    <string name="legacy_ui_c4830a048dff">نعم</string>
+    <string name="legacy_ui_556af01f0bc0">جاري المزامنة</string>
+    <string name="legacy_ui_d681695c97c6">مزامنة الآن</string>
+    <string name="legacy_ui_4128e8160c8c">إغلاق القسم</string>
+    <string name="legacy_ui_71b36aac53e6">فتح القسم</string>
+    <string name="legacy_ui_e367dd91fac0">الكل</string>
+    <string name="legacy_ui_ddf1ce35f4e4">—</string>
+    <string name="legacy_ui_fd33d34ebb92">ابدأ الآن</string>
+    <string name="legacy_ui_afa7f5217f26">التالي</string>
+    <string name="legacy_ui_fc76ee83af76">تفاصيل المستخدم</string>
+    <string name="legacy_ui_70b3c9ca59e9">رجوع</string>
+    <string name="legacy_ui_db4acfda86b5">فلتر التاريخ</string>
+
+    <string name="ds_02c3f5c4f837">لا توجد نتائج</string>
+    <string name="ds_05db58dea631">مسح نهائي</string>
+    <string name="ds_07d9c3a0ca99">لا توجد فواتير في هذه الفترة</string>
+    <string name="ds_093abe15c06d">لا توجد سجلات</string>
+
+    <string name="ds_0eb7129edb51">الإشعارات</string>
+    <string name="ds_1357e64f068e">اكتب حرفًا آخر</string>
+    <string name="ds_13a23a5f37c8">حجم خط التقرير</string>
+
+    <string name="ds_149e7d826a2d">حجم خط التقارير</string>
+    <string name="ds_1935dea4e7c6">المزامنة</string>
+    <string name="ds_1d45abcb326a">ابحث في كل Verto</string>
+    <string name="ds_243fc43e7380">تأكيد مسح %1$s</string>
+    <string name="ds_257f4de5065e">البحث الموحد</string>
+    <string name="ds_2682e0657f66">v%1$s</string>
+    <string name="ds_2a941f8b8570">قابل للتراجع</string>
+    <string name="ds_2b51b9ab8c68">تعذر: %1$s</string>
+    <string name="ds_2d2bb6a420ab">Verto</string>
+    <string name="ds_2d4bfb5701d0">اكتب "تأكيد" للمتابعة:</string>
+    <string name="ds_2d8ed6101d6f">مسح البحث</string>
+    <string name="ds_2f1419b78059">الملف الشخصي</string>
+    <string name="ds_321d00ab93f6">اسمك (أو اسم نشاطك)</string>
+
+    <string name="ds_32919de9ba0a">بيانات المؤسسة</string>
+    <string name="ds_34660abcfc4c">أهلاً بك في Verto 👋</string>
+    <string name="ds_34d8c8a1999e">مسح %1$s</string>
+    <string name="ds_387d313d27a2">timerBadgeAlpha</string>
+    <string name="ds_38c5ec772f99">مكتمل سابقًا: %1$s</string>
+    <string name="ds_39892370ecce">تعديل بيانات المنشأة</string>
+    <string name="ds_3f238bee44ee">سلسلة حالية: %1$s أسبوع · إجمالي الأسابيع النشطة: %2$s</string>
+    <string name="ds_40533bce0e9b">إعادة تعيين البيانات</string>
+    <string name="ds_4218f4cd8cc9">الفواتير والطباعة</string>
+    <string name="ds_43ddabfebc2b">فضلا ادخل اسمك</string>
+    <string name="ds_46af496dcc8c">العملاء والفواتير والأصناف والشاشات في مكان واحد.</string>
+    <string name="ds_472787ffb3d8">رقم الضريبة / السجل</string>
+    <string name="ds_4b56bc3ee3fb">بيانات المنشأة</string>
+    <string name="ds_4cdad7167571">بيانات المنشأة تُعدَّل من قبل مدير الحساب فقط.</string>
+    <string name="ds_4e22e5de20b1">حجم خط الفاتورة</string>
+    <string name="ds_4e4171ec12a8">الخدمات والتكاملات</string>
+    <string name="ds_5591e7e4991d">المواضيع التعليمية</string>
+
+    <string name="ds_57867f746796">هذه العمليات لا يمكن التراجع عنها.</string>
+    <string name="ds_57d2e578419e">تعذّر إكمال البحث</string>
+    <string name="ds_598f1a5c1c02">هل أنت متأكد أنك تريد تسجيل الخروج؟</string>
+    <string name="ds_59ca981f2cc4">آخر النشاط</string>
+    <string name="ds_5ad06a96052f">مزامنة</string>
+
+    <string name="ds_5de44afd6b56">النشاط الأسبوعي 🔥</string>
+    <string name="ds_5e01369fe16b">حقل البحث الموحد</string>
+    <string name="ds_60ecbc7f40b3">›</string>
+    <string name="ds_683616d50ada">الشاشة المرتبطة عند الضغط:</string>
+    <string name="ds_691773aa9290">نص الرسالة</string>
+    <string name="ds_74886f528494">جاري التحقق من الصلاحيات</string>
+    <string name="ds_78753ca38353">%1$s pt</string>
+    <string name="ds_78f2c1b26622">يبدأ البحث المحلي من حرفين لتكون النتائج أدق.</string>
+    <string name="ds_7fca33f2364e">حجم خط الكشف</string>
+    <string name="ds_80009e4f9a61">رابط الشعار (URL)</string>
+    <string name="ds_81a416d0df4d">تم إعداد كل شيء بنجاح!</string>
+    <string name="ds_83a90505bd37">%1$s سجل</string>
+    <string name="ds_8439fc486bfe">pulse</string>
+    <string name="ds_85cbe220fab7">نص التذييل</string>
+    <string name="ds_8710d64ff1ad">تسجيل الخروج</string>
+    <string name="ds_8ab80326e0b9">إلى</string>
+    <string name="ds_8d8f3ac3ea42">لا توجد تفاصيل مزامنة محفوظة لهذا الحساب.</string>
+    <string name="ds_90b6c869a171">الإعدادات</string>
+
+    <string name="ds_91032ad7bbcb">20</string>
+
+    <string name="ds_94585d763f1a">مزامنة البيانات</string>
+    <string name="ds_98d3f752d47f">✓ %1$s</string>
+    <string name="ds_98df46fbd83b">تراجع</string>
+    <string name="ds_9bc331c7a422">إدارة الموظفين</string>
+    <string name="ds_a105b801193a">%1$s/%2$s</string>
+    <string name="ds_a17018a47293">رابط التوقيع (URL)</string>
+    <string name="ds_a25392db3cd2">التقرير</string>
+    <string name="ds_a4b583d7b49d">حجم الخط</string>
+    <string name="ds_a8d9bb06f339">فاتورة #%1$s</string>
+    <string name="ds_aa7099e27834">من</string>
+    <string name="ds_aabd26a57090">الفواتير (%1$s)</string>
+    <string name="ds_acd162add6df">عمولة: %1$s</string>
+    <string name="ds_acd3fb38fb41">الوصول غير متاح</string>
+    <string name="ds_add17b0595e9">الأرقام المالية</string>
+
+    <string name="ds_b1d5781111d8">10</string>
+
+    <string name="ds_b3060271b97d">تراجع عن العملية؟</string>
+    <string name="ds_b3bc3f3e67b8">إلغاء التغييرات</string>
+    <string name="ds_b4774807554c">بعد:</string>
+    <string name="ds_b5bc47192dfb">العمولة</string>
+
+    <string name="ds_b986d8fb163c">الرئيسية</string>
+    <string name="ds_bae376f36075">مثال: محلات الأمل</string>
+    <string name="ds_bebea75c8a1e">يرجى إدخال الاسم للمتابعة</string>
+    <string name="ds_c20dbb2b07fd">🎉</string>
+    <string name="ds_c26d24cef5a2">جرّب اسمًا أو رقم فاتورة أو رقم صنف مختلفًا.</string>
+    <string name="ds_d22d8603d756">إغلاق القائمة</string>
+    <string name="ds_d467da0e5d11">تخطي</string>
+    <string name="ds_d8dfff3e6ded">الثيمات والمظهر</string>
+    <string name="ds_dac8c7a16811">المبيعات</string>
+    <string name="ds_dbf3d91b7eaa">العودة من البحث</string>
+    <string name="ds_dc5e3693f8db">نظام إدارة الأعمال</string>
+    <string name="ds_dfd309bc0912">جاهزون للانطلاق وإدارة حساباتك بذكاء</string>
+    <string name="ds_e2dcb5df8224">إرسال تذكير</string>
+    <string name="ds_e3b57a7f22ba">جاري تحميل الصلاحيات</string>
+
+    <string name="ds_e7beff0aaa34">اكتب حرفين على الأقل</string>
+    <string name="ds_e92c0a4f9874">أداء هذا الأسبوع</string>
+    <string name="ds_e94c905bb082">سجل التعديلات</string>
+    <string name="ds_eb855028da59">مقارنة بالأسبوع السابق</string>
+    <string name="ds_ecf727ea048d">•</string>
+    <string name="ds_ed9156556fce">المستخدم غير متوفر — عُد وحدّث القائمة</string>
+    <string name="ds_efb0540fb7e5">صرف</string>
+    <string name="ds_f24b9e6ef7b8">تعذّر فتح الفاتورة داخل المؤسسة الحالية</string>
+    <string name="ds_f8621d012957">قبل:</string>
+    <string name="ds_f9cfe076a5b5">دردشة</string>
+    <string name="ds_fa88c30b75df">الشعار والتوقيع يُرفعان على التخزين السحابي وتُدرج روابطهما هنا.</string>
+    <string name="ds_ff24c2cf98c7">تذكير</string>
+
+    <!-- Session 298 drawer destination labels. -->
+    <string name="app_drawer_clients" translatable="false">"العملاء"</string>
+    <string name="app_drawer_suppliers" translatable="false">"الموردون"</string>
+    <string name="app_drawer_inventory" translatable="false">"المخزون"</string>
+    <string name="app_drawer_price_list" translatable="false">"قائمة الأسعار"</string>
+    <string name="app_drawer_categories" translatable="false">"التصنيفات"</string>
+    <string name="app_drawer_reports" translatable="false">"التقارير"</string>
+    <string name="app_drawer_audit_log" translatable="false">"سجل التدقيق"</string>
+    <string name="app_drawer_notifications" translatable="false">"الإشعارات"</string>
+    <string name="app_drawer_expenses" translatable="false">"المصروفات والصندوق"</string>
+    <string name="app_drawer_shipments" translatable="false">"الشحنات"</string>
+    <string name="app_drawer_bulk_price_edit" translatable="false">"تعديل الأسعار الجماعي"</string>
+    <string name="app_drawer_management_hub" translatable="false">"مركز الإدارة"</string>
+    <string name="app_drawer_employees" translatable="false">"الموظفون والصلاحيات"</string>
+    <string name="app_drawer_employee_invite" translatable="false">"إنشاء كود موظف"</string>
+    <string name="app_drawer_educational_topics" translatable="false">"المواضيع التعليمية"</string>
+    <string name="app_drawer_optimal_home" translatable="false">"Optimal"</string>
+    <string name="app_drawer_optimal_companies" translatable="false">"شركات Optimal"</string>
+    <string name="app_drawer_optimal_messages" translatable="false">"رسائل Optimal"</string>
+    <string name="app_drawer_optimal_invoices" translatable="false">"فواتير Optimal"</string>
+    <string name="app_drawer_optimal_maintenance" translatable="false">"صيانة Optimal"</string>
+    <string name="app_drawer_optimal_sync_issues" translatable="false">"مشكلات مزامنة Optimal"</string>
+    <string name="app_drawer_settings" translatable="false">"الإعدادات"</string>
+    <string name="app_drawer_profile" translatable="false">"الملف الشخصي"</string>
+    <string name="app_drawer_organization_settings" translatable="false">"إعدادات المؤسسة"</string>
+    <string name="app_drawer_themes" translatable="false">"السمات"</string>
+    <string name="app_drawer_notification_settings" translatable="false">"إعدادات الإشعارات"</string>
+    <string name="app_drawer_invoice_print" translatable="false">"إعدادات طباعة الفاتورة"</string>
+    <string name="app_drawer_sales_invoices" translatable="false">"فواتير المبيعات"</string>
+    <string name="app_drawer_purchase_invoices" translatable="false">"فواتير المشتريات"</string>
+    <string name="app_drawer_optimal_codes" translatable="false">"كود ربط Optimal"</string>
+
+    <!-- Session 341 navigation drawer IA. -->
+    <string name="app_drawer_section_sales_customers">المبيعات والعملاء</string>
+    <string name="app_drawer_section_purchases_suppliers">المشتريات والموردون</string>
+    <string name="app_drawer_section_inventory_pricing">المخزون والأسعار</string>
+    <string name="app_drawer_section_finance_reports">المالية والتقارير</string>
+    <string name="app_drawer_section_management">الإدارة</string>
+    <string name="app_drawer_section_settings">الإعدادات</string>
+    <string name="app_drawer_local_suppliers">الموردون المحليون</string>
+    <string name="app_drawer_international_suppliers">الموردون الدوليون</string>
+    <string name="app_drawer_local_purchase_invoices">فواتير المشتريات المحلية</string>
+    <string name="app_drawer_international_purchase_invoices">فواتير المشتريات الدولية</string>
+    <string name="app_drawer_kashf">كشف</string>
+    <string name="app_drawer_benzine">بنزين</string>
+    <string name="app_drawer_organization">المؤسسة</string>
+    <string name="app_drawer_appearance">المظهر</string>
+    <string name="app_drawer_invoice_print_short">طباعة الفاتورة</string>
+    <string name="app_drawer_home">الرئيسية</string>
+    <string name="app_drawer_close">إغلاق القائمة</string>
+    <string name="app_drawer_org_fallback">المؤسسة</string>
+    <string name="app_drawer_branch_unknown">الفرع غير محدد</string>
+    <string name="app_drawer_sync_general">الحالة العامة</string>
+    <string name="app_drawer_sync_failed_count">خطأ %1$d</string>
+    <string name="app_drawer_state_expanded">مفتوح</string>
+    <string name="app_drawer_state_collapsed">مغلق</string>
+
+    <string name="app_drawer_team_observations">ملاحظات الفريق</string>
+</resources>

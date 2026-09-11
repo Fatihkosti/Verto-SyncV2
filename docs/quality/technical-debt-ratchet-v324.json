@@ -1,0 +1,21 @@
+{
+  "format": "verto-technical-debt-ratchet-v1",
+  "session": 324,
+  "input_snapshot": "docs/architecture/verification/SESSION_324_INPUT_SNAPSHOT.json",
+  "previous_accepted_source": "docs/quality/TECHNICAL_DEBT_REDUCTION_v323.json",
+  "algorithm_version": "verto-kotlin-complexity-lexical-v1",
+  "rule": "current <= previous_accepted; candidate <= previous_accepted; candidate >= current",
+  "metrics": {
+    "production_kotlin_files": {"previous_accepted": 1240, "current": 1240, "candidate_accepted": 1240},
+    "large_files_over_500": {"previous_accepted": 25, "current": 25, "candidate_accepted": 25},
+    "long_functions": {"previous_accepted": 472, "current": 472, "candidate_accepted": 472},
+    "excessive_parameter_lists": {"previous_accepted": 641, "current": 641, "candidate_accepted": 641},
+    "broad_catches": {"previous_accepted": 32, "current": 32, "candidate_accepted": 32},
+    "not_null_assertions": {"previous_accepted": 7, "current": 7, "candidate_accepted": 7},
+    "exposed_mutable_state": {"previous_accepted": 2, "current": 2, "candidate_accepted": 2},
+    "architecture_violations": {"previous_accepted": 0, "current": 0, "candidate_accepted": 0},
+    "dependency_cycles": {"previous_accepted": 0, "current": 0, "candidate_accepted": 0}
+  },
+  "status": "CANDIDATE_STATIC_ONLY",
+  "admission_note": "Candidate is not admitted as Source-of-Truth until Gradle gates are available. No threshold was raised."
+}

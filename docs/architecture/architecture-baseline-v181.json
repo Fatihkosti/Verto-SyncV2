@@ -1,0 +1,176 @@
+{
+  "contract": "VERTO_ARCH_RECOVERY_v182_v188_REV2",
+  "evidence": {
+    "cross_feature_presentation_imports": [
+      "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtScreen.kt"
+    ],
+    "data_to_feature_presentation_files": [
+      "data/operations/src/main/kotlin/com/verto/app/feature/reports/bridge/ReportsOperationsGatewayAdapter.kt",
+      "data/operations/src/main/kotlin/com/verto/app/feature/reports/bridge/ReportsReadModelBuilders.kt",
+      "data/operations/src/main/kotlin/com/verto/app/feature/reports/bridge/ReportsReadModelQueryAdapter.kt"
+    ],
+    "presentation_to_raw_data_files": [
+      "app/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt",
+      "app/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreenComponents.kt",
+      "app/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceViewModel.kt",
+      "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtViewModel.kt",
+      "app/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt",
+      "app/src/main/kotlin/com/verto/app/feature/reports/presentation/ReportsViewModel.kt",
+      "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentPresentationMappers.kt",
+      "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentPresentationModels.kt",
+      "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentViewModel.kt",
+      "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2UnifiedCenterMapper.kt",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryDocumentService.kt",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryPermissionGate.kt",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryReadState.kt",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryViewModel.kt",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListComponents.kt",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListScreen.kt",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListViewModel.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardComponents.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardScreen.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardViewModel.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientViewModel.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientsListScreen.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardComponents.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardScreen.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardViewModel.kt"
+    ]
+  },
+  "format": "verto-architecture-baseline-v1",
+  "large_production_files": [
+    {
+      "lines": 1510,
+      "path": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreenComponents.kt"
+    },
+    {
+      "lines": 1263,
+      "path": "app/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsV2AppAdapters.kt"
+    },
+    {
+      "lines": 809,
+      "path": "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionControllerAdapter.kt"
+    },
+    {
+      "lines": 762,
+      "path": "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningScreen.kt"
+    },
+    {
+      "lines": 745,
+      "path": "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailScreen.kt"
+    },
+    {
+      "lines": 737,
+      "path": "data/network/src/main/kotlin/com/verto/app/data/repository/WithdrawalRepository.kt"
+    },
+    {
+      "lines": 726,
+      "path": "data/network/src/main/kotlin/com/verto/app/data/remote/AuthRepository.kt"
+    },
+    {
+      "lines": 717,
+      "path": "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtScreen.kt"
+    },
+    {
+      "lines": 692,
+      "path": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemScreen.kt"
+    },
+    {
+      "lines": 627,
+      "path": "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActions.kt"
+    },
+    {
+      "lines": 624,
+      "path": "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/application/InvoiceWriteCoordinator.kt"
+    },
+    {
+      "lines": 622,
+      "path": "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UsersDashboardScreen.kt"
+    },
+    {
+      "lines": 608,
+      "path": "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchScreen.kt"
+    },
+    {
+      "lines": 594,
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/entity/LogisticsEntities.kt"
+    },
+    {
+      "lines": 582,
+      "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryDao.kt"
+    },
+    {
+      "lines": 578,
+      "path": "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2OperationalWriter.kt"
+    },
+    {
+      "lines": 571,
+      "path": "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeScreen.kt"
+    },
+    {
+      "lines": 555,
+      "path": "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeQuickActions.kt"
+    },
+    {
+      "lines": 536,
+      "path": "app/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtItemComponents.kt"
+    },
+    {
+      "lines": 529,
+      "path": "app/src/main/kotlin/com/verto/app/pdf/InvoicePdf.kt"
+    },
+    {
+      "lines": 512,
+      "path": "data/network/src/main/kotlin/com/verto/app/data/sync/SyncInvoices.kt"
+    },
+    {
+      "lines": 511,
+      "path": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt"
+    },
+    {
+      "lines": 510,
+      "path": "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentDetailComponents.kt"
+    },
+    {
+      "lines": 502,
+      "path": "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgScreen.kt"
+    },
+    {
+      "lines": 501,
+      "path": "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintTabContent.kt"
+    }
+  ],
+  "metrics": {
+    "app_owned_feature_kotlin_files": {
+      "invoice": 8,
+      "payment": 15,
+      "reports": 36,
+      "shipment": 30
+    },
+    "cross_feature_presentation_imports": 1,
+    "data_to_feature_presentation_files": 3,
+    "dependency_cycles": 0,
+    "large_production_files_over_500": 25,
+    "modules": 31,
+    "presentation_to_raw_data_files": 25,
+    "room": 54
+  },
+  "policy": {
+    "auto_rebaseline": false,
+    "baseline_may_only_decrease_legacy_counts": true,
+    "verify_command_writes_baseline": false
+  },
+  "rule_counts": {
+    "VARCH-003": 4,
+    "VARCH-004": 1,
+    "VARCH-005": 2,
+    "VARCH-006": 1,
+    "VARCH-007": 24,
+    "VARCH-008": 1,
+    "VARCH-009": 3,
+    "VARCH-012": 12,
+    "VARCH-021": 2
+  },
+  "source_of_truth": "verto-181.zip",
+  "source_sha256": "326496b980e08bbb8a84fed01e39c933092b3a2f0769c3a2848b6a95aeaa4027"
+}

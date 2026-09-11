@@ -1,0 +1,14 @@
+Command attempted in B13-V02 environment:
+./gradlew --version --offline
+
+Observed result:
+Downloading https://services.gradle.org/distributions/gradle-8.9-bin.zip
+java.net.UnknownHostException: services.gradle.org
+
+Cache inspection:
+/root/.gradle/wrapper/dists/gradle-8.9-bin/90cnw93cvbtalezasaz0blq0a contains only:
+- gradle-8.9-bin.zip.lck (0 bytes)
+- gradle-8.9-bin.zip.part (0 bytes)
+
+Android SDK probe found no usable SDK/adb under the standard container locations.
+Result: BLOCKED_BUILD_RUNTIME_ENVIRONMENT remains OPEN. No Kotlin/KSP/Room/Android PASS is inferred.

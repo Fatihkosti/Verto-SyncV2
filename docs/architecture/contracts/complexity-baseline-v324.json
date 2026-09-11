@@ -1,0 +1,10 @@
+{
+  "format": "verto-complexity-baseline-v324",
+  "session": 324,
+  "predecessor": "docs/architecture/contracts/complexity-baseline-v322.json",
+  "input_snapshot": "docs/architecture/verification/SESSION_324_INPUT_SNAPSHOT.json",
+  "algorithm_version": "verto-kotlin-complexity-lexical-v1",
+  "budgets": {"file_lines": 434, "class_lines": 219, "function_lines": 79, "function_parameters": 6, "cognitive": 13, "cyclomatic": 9, "true_service_dependencies": 14, "coupling_imports": 48},
+  "ratchet": "monotonic-non-increasing",
+  "status": "CANDIDATE_STATIC_ONLY"
+}

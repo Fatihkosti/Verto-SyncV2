@@ -1,0 +1,107 @@
+{
+  "architecture": {
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "generic dependency bag",
+      "service locator",
+      "global mutable test hook",
+      "new external Gradle dependency",
+      "real remote backend in critical JVM tests",
+      "InvoiceWriteCoordinator direct wall clock or random UUID",
+      "SyncManager direct Context, AppDatabase or SyncWorker orchestration"
+    ],
+    "invariants": [
+      "No Room schema or migration change",
+      "No server or SQL change",
+      "No invoice business-rule change",
+      "No sync protocol semantics change",
+      "No logistics state-machine change",
+      "InvoiceWriteCoordinator protected seams remain deterministic",
+      "SyncManager protected seams remain deterministic",
+      "Five mandatory critical flows have evidence",
+      "Eight targeted mutations are detected"
+    ]
+  },
+  "metadata": {
+    "behavioral_intent": "regression protection and maintainability gating",
+    "phase": "5/6 Maintainability & Testability",
+    "predecessor_session": 328
+  },
+  "session": {
+    "id": 329,
+    "input_sha256": "6e483fa09f279bac58e599eecd88eb326db9290a34501206b52d815ae3fcfcaf",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_329_INPUT_SNAPSHOT.json",
+    "scope": "TESTABILITY HARDENING / REGRESSION SAFETY / MAINTAINABILITY GATE",
+    "allowed_modules": [
+      ":feature:invoice",
+      ":feature:inventory",
+      ":feature:payment",
+      ":feature:shipment",
+      ":data:sync",
+      ":data:database",
+      ":app",
+      ":core:common"
+    ],
+    "allowed_files": [
+      "docs/quality/maintainability/**",
+      "docs/architecture/contracts/sessions/session-329.json",
+      "docs/architecture/verification/SESSION_329_INPUT_SNAPSHOT.json",
+      "tools/quality/**",
+      "scripts/ci/run-quality-gate.sh",
+      "scripts/ci/run-source-of-truth-admission.sh",
+      "feature/invoice/src/test/**",
+      "feature/inventory/src/test/**",
+      "feature/inventory/src/androidTest/**",
+      "feature/payment/src/test/**",
+      "feature/shipment/src/test/**",
+      "feature/shipment/src/androidTest/**",
+      "data/database/src/test/**",
+      "data/database/src/androidTest/**",
+      "data/sync/src/test/**",
+      "app/src/test/**",
+      "docs/DOCUMENTATION_INVENTORY.md"
+    ],
+    "forbidden_files": [
+      "supabase/**",
+      "functions/**",
+      "sql/**",
+      "app/schemas/**",
+      "data/database/src/main/**",
+      "feature/invoice/src/main/**",
+      "data/sync/src/main/**",
+      "app/src/main/**"
+    ]
+  },
+  "verification": {
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "dependency",
+      "data-ownership",
+      "persistence-boundary",
+      "transaction-contract",
+      "migration-schema",
+      "persistence-ratchet",
+      "technical-debt-ratchet",
+      "differential-quality",
+      "kotlin-quality",
+      "maintainability-testability",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ],
+    "required_tests": [
+      "InvoiceWriteCoordinator direct deterministic tests",
+      "SyncManager direct deterministic tests",
+      "inventory critical-effect tests",
+      "payment critical-effect tests",
+      "logistics persistence/outbox characterization regression tests",
+      "testability guard self-test"
+    ]
+  }
+}

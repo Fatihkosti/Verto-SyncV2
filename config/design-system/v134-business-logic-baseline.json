@@ -1,0 +1,24 @@
+{
+  "version": 134,
+  "sourceOfTruth": "Verto-v133-source-clean.zip",
+  "sha256": {
+    "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintRouteState.kt": "78a282537cb892431fbcd9fffda8bc98b103ccd2ab90fea646be3662e59c3272",
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/application/EmployeePerformanceQuery.kt": "b38a84e0df186a32bbe011bf2ffd375443ea55d48b588c365eec299c24200145",
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/application/GetEmployeePerformanceUseCase.kt": "b39d7be1f36265e4eb551faf61cc6acd86878697be065c54d2f7c7de04e07756",
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/domain/model/OrganizationSettings.kt": "86d3c58aa95eace52a3cc242baa94f9802e3a2df2fe44c4b58e4e1945a13508c",
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/domain/model/OrganizationTeamModels.kt": "38e0735dd26476fa278279da1c8d04cb862acab1f47662ae0466a278a21e6fc9",
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/domain/repository/OrganizationSettingsGateway.kt": "a6787518fcf0616e6ff65b1fcfeb805b1927862d06f19fe7d80aa6af3c490794",
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/domain/repository/OrganizationTeamGateway.kt": "1158720270f72c705dac212b555040a9bfefe3f5a5e0b3b16118ed4d43387023",
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/OrganizationSettingsViewModel.kt": "5d74f47edf1e32e621046f345a8e8b0d1f585879d963947e7d0b94d8e95f2aad",
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailModels.kt": "a183a9cf8dd5f2f1b218f6202acfbdab78523b4a692433d7704630b6bf3c4f0b",
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailViewModel.kt": "4388d1480e55164bbe6fd373699144a838d6bb49e3eeb8384d09fd06233e251c",
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/OrganizationTeamViewModel.kt": "bea3a00127a1ebf5a974cf833b65365d204d0f059eb12916d2dc5e7befbc85cd",
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/domain/model/SettingsOperationModels.kt": "8828f2157cc3a7e4d2adef04989bc2f055f3f095a7a87c243b0d6efe4928ba60",
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/domain/repository/AppearanceSettingsGateway.kt": "9a1e9de02335fa53ad8b097319aeba0fa9bef3d184efd1fe37f63e4553ddff1e",
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/domain/repository/PrintingSettingsGateway.kt": "4a5789d1428b20ba81e055ce6d90c93b6393bd3a8529d1c4511e18ec09580a91",
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/domain/repository/SettingsOperationsGateway.kt": "243c040e297b3b06e3e93a7aca61dc9992d3affd1061744631f78fb5e27e8745",
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/appearance/AppearanceSettingsViewModel.kt": "b0acf33d4cb318ebced62274742fd70a554dc06486b05c3c2a6d3c50bea91b7d",
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/main/SettingsOperationsViewModel.kt": "08ecbd3d90060e2aa9fd07f30e62499e0bb61ad6365956463aa6788cf908a344",
+    "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/printing/PrintingSettingsViewModel.kt": "734fab0d99b682da3903bf3ec7adc190762218651dd86a4c6fe442cff60f8853"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "format": "verto-semantic-contract-conformance-v333",
+  "session": 333,
+  "status": "BLOCKED_ENVIRONMENT",
+  "static_registry_status": "PASS",
+  "critical_contracts": 4,
+  "critical_contracts_with_semantic_test_definitions": 4,
+  "critical_contracts_with_executed_semantic_conformance": 0,
+  "invalid_contract_test_evidence": 0,
+  "symbol_only_contract_tests_counted": 0,
+  "guard_self_test": {
+    "status": "PASS",
+    "self_tests": 9,
+    "false_evidence_regression": "PASS"
+  },
+  "semantic_mutation": {
+    "id": "C1",
+    "mutation_applied": true,
+    "test_executed": false,
+    "detected": false,
+    "status": "BLOCKED_ENVIRONMENT"
+  },
+  "registry": "docs/architecture/contracts/contract-test-registry-v333.json",
+  "blocked_reason": "Gradle wrapper cannot download Gradle 8.9: java.net.UnknownHostException: services.gradle.org."
+}

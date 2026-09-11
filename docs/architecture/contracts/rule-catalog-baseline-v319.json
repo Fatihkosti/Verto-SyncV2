@@ -1,0 +1,187 @@
+{
+  "format": "verto-rule-catalog-baseline-v319-v1",
+  "rules": [
+    {
+      "id": "VARCH-001",
+      "prohibited_state": "Domain depends on Android",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Domain depends on Android"
+    },
+    {
+      "id": "VARCH-002",
+      "prohibited_state": "Domain depends on Data/Infrastructure",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Domain depends on Data/Infrastructure"
+    },
+    {
+      "id": "VARCH-003",
+      "prohibited_state": "Domain depends on another Feature implementation",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Domain depends on another Feature implementation"
+    },
+    {
+      "id": "VARCH-004",
+      "prohibited_state": "Application depends on Presentation",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Application depends on Presentation"
+    },
+    {
+      "id": "VARCH-005",
+      "prohibited_state": "Application depends directly on Room/Remote transport",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Application depends directly on Room/Remote transport"
+    },
+    {
+      "id": "VARCH-006",
+      "prohibited_state": "Presentation depends on Room Entity/DAO",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Presentation depends on Room Entity/DAO"
+    },
+    {
+      "id": "VARCH-007",
+      "prohibited_state": "Presentation depends on data.repository/data.remote",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Presentation depends on data.repository/data.remote"
+    },
+    {
+      "id": "VARCH-008",
+      "prohibited_state": "Feature Presentation depends on another Feature Presentation",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Feature Presentation depends on another Feature Presentation"
+    },
+    {
+      "id": "VARCH-009",
+      "prohibited_state": "Data module depends on Feature Presentation",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Data module depends on Feature Presentation"
+    },
+    {
+      "id": "VARCH-010",
+      "prohibited_state": "Module dependency cycle",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Module dependency cycle"
+    },
+    {
+      "id": "VARCH-011",
+      "prohibited_state": "Feature Presentation owned by app after migration",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Feature Presentation owned by app after migration"
+    },
+    {
+      "id": "VARCH-012",
+      "prohibited_state": "Unauthorized feature-to-feature implementation dependency",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Unauthorized feature-to-feature implementation dependency"
+    },
+    {
+      "id": "VARCH-013",
+      "prohibited_state": "Core contains feature-owned business type",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Core contains feature-owned business type"
+    },
+    {
+      "id": "VARCH-014",
+      "prohibited_state": "File changed outside session Allowlist",
+      "severity": "ZERO_TOLERANCE",
+      "title": "File changed outside session Allowlist"
+    },
+    {
+      "id": "VARCH-015",
+      "prohibited_state": "Baseline violation count increased (approved app bridge/wiring composition files are excluded)",
+      "severity": "RATCHET",
+      "title": "Baseline violation count increased (approved app bridge/wiring composition files are excluded)"
+    },
+    {
+      "id": "VARCH-016",
+      "prohibited_state": "Modules count changed unexpectedly",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Modules count changed unexpectedly"
+    },
+    {
+      "id": "VARCH-017",
+      "prohibited_state": "Room schema changed unexpectedly",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Room schema changed unexpectedly"
+    },
+    {
+      "id": "VARCH-018",
+      "prohibited_state": "New >500-line Production file without review",
+      "severity": "RATCHET",
+      "title": "New >500-line Production file without review"
+    },
+    {
+      "id": "VARCH-019",
+      "prohibited_state": "Feature manifest missing",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Feature manifest missing"
+    },
+    {
+      "id": "VARCH-020",
+      "prohibited_state": "Feature dependency not declared in manifest",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Feature dependency not declared in manifest"
+    },
+    {
+      "id": "VARCH-021",
+      "prohibited_state": "ViewModel bypasses UseCase/Application Service for Business/Application operation",
+      "severity": "ZERO_TOLERANCE",
+      "title": "ViewModel bypasses UseCase/Application Service for Business/Application operation"
+    },
+    {
+      "id": "VARCH-022",
+      "prohibited_state": "Public API surface missing/changed without manifest declaration",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Public API surface missing/changed without manifest declaration"
+    },
+    {
+      "id": "VARCH-023",
+      "prohibited_state": "Data owner missing or duplicated for governed Table/Entity/Repository",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Data owner missing or duplicated for governed Table/Entity/Repository"
+    },
+    {
+      "id": "VARCH-024",
+      "prohibited_state": "Cross-feature direct use of foreign Entity/DAO/storage implementation",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Cross-feature direct use of foreign Entity/DAO/storage implementation"
+    },
+    {
+      "id": "VARCH-025",
+      "prohibited_state": "Cross-feature import of provider INTERNAL implementation",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Cross-feature import of provider INTERNAL implementation"
+    },
+    {
+      "id": "VARCH-026",
+      "prohibited_state": "External/library dependency admitted without manifest/dependency declaration",
+      "severity": "ZERO_TOLERANCE",
+      "title": "External/library dependency admitted without manifest/dependency declaration"
+    },
+    {
+      "id": "VARCH-027",
+      "prohibited_state": "Stable Rule ID meaning changed or reused",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Stable Rule ID meaning changed or reused"
+    },
+    {
+      "id": "VARCH-028",
+      "prohibited_state": "Ratchet baseline/ceiling raised or bypassed without approved governance",
+      "severity": "RATCHET",
+      "title": "Ratchet baseline/ceiling raised or bypassed without approved governance"
+    },
+    {
+      "id": "VARCH-029",
+      "prohibited_state": "Rule Severity downgraded without required ADR/governance",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Rule Severity downgraded without required ADR/governance"
+    },
+    {
+      "id": "VARCH-030",
+      "prohibited_state": "Temporary exception missing owner/reason/expiry/remediation reference",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Temporary exception missing owner/reason/expiry/remediation reference"
+    }
+  ],
+  "source_version": "v319",
+  "source_zip_sha256": "cd9e22fa9803d52081c3df4de174279eb893d2c7ecd997c0d9f76523d3699b49"
+}

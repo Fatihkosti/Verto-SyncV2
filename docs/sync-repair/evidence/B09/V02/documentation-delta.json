@@ -1,0 +1,9 @@
+{
+  "status": "NO_NEW_DOCUMENTATION_ERRORS",
+  "baseline_errors": 141,
+  "current_errors": 141,
+  "new_errors": [],
+  "resolved_errors": [],
+  "full_documentation_gate": "FAIL",
+  "limits": "Baseline comparison only, never a waiver of existing errors"
+}

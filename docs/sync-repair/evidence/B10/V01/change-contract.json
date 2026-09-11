@@ -1,0 +1,101 @@
+{
+  "session": {
+    "id": 4251001,
+    "input_sha256": "5dd0bd9337b4a5cbaa970b2f8835cd082228174ce8228a4f515faa898cd0f059",
+    "baseline_snapshot": "docs/sync-repair/evidence/B10/V01/input-tree.json",
+    "scope": "B10 local implementation explicitly requested; complete durable Inbox contract, metadata migration, protection/wake integration, tests and evidence. Tooling numeric id does not renumber backlog.",
+    "allowed_modules": [
+      ":data:database",
+      ":data:network",
+      ":data:sync",
+      "docs",
+      "tools"
+    ],
+    "allowed_files": [
+      "CHANGELOG.md",
+      "EVIDENCE_INDEX.md",
+      "SYNC_IMPLEMENTATION_MAP.md",
+      "VERTO_SYNC_REPAIR_BACKLOG_AR.md",
+      "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations98To99.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/DurableSyncInboxDao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncDao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncInboxDao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncPersistenceSupport.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncDurableInboxEntities.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncRepairV2Entities.kt",
+      "data/network/src/main/kotlin/com/verto/app/data/sync/SyncInboxProtocolV2.kt",
+      "data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncContract.kt",
+      "data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncPullRemote.kt",
+      "data/sync/src/androidTest/kotlin/com/verto/app/data/sync/pull/DurableInboxApplyCoordinatorInstrumentedTest.kt",
+      "data/sync/src/androidTest/kotlin/com/verto/app/data/sync/pull/FinancialMaterializerV2InstrumentedTest.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManagerPorts.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncReliability.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorker.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/ownership/SyncPendingProtection.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/DurableInboxApplyCoordinator.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/DurableInboxEchoReconciler.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/DurableInboxPageValidator.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/DurableInboxPolicy.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/DurableInboxWakeObserver.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/InboxStorageProbe.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncChangeApplier.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncInboxMapper.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncPullEngine.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/SyncHealthSnapshot.kt",
+      "data/sync/src/test/kotlin/com/verto/app/data/sync/pull/DurableInboxPageValidatorTest.kt",
+      "data/sync/src/test/kotlin/com/verto/app/data/sync/pull/DurableInboxPolicyTest.kt",
+      "docs/DOCUMENTATION_INVENTORY.md",
+      "docs/api/idempotency.md",
+      "docs/api/rpc-reference.md",
+      "tools/test_sync_b09_materializer.py",
+      "tools/test_sync_b10_kotlin.py",
+      "tools/test_sync_b10_sqlite.py",
+      "docs/sync-repair/evidence/B10/V01/**"
+    ],
+    "forbidden_files": [
+      "VERTO_SYNC_REPAIR_EXECUTION_CONTRACT_AR.md",
+      "SYNC_CONTRACT_V2.schema.json",
+      "data/operations/**",
+      "feature/**",
+      "domain/**",
+      "gradle/**",
+      "build.gradle.kts",
+      "settings.gradle.kts",
+      "scripts/**",
+      "supabase/**",
+      "docs/sync-repair/evidence/B09/**",
+      "app/schemas/**"
+    ]
+  },
+  "architecture": {
+    "invariants": [
+      "One durable sync_inbox payload authority; no domain, pending or frozen packet deletion.",
+      "Receipt cursor is not applied authority; complete independent business groups are atomic.",
+      "No legacy fallback, invented financial origin, silent applied marker or remote deployment.",
+      "G-B09/G-B10 remain BLOCKED until real Android/Room/JSON and server contract verification."
+    ],
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "new runtime dependency",
+      "legacy manifest-less pull fallback"
+    ]
+  },
+  "verification": {
+    "required_tests": [
+      "DurableInboxPolicyTest and DurableInboxPageValidatorTest on actual Gradle serialization runtime",
+      "DurableInboxApplyCoordinatorInstrumentedTest and FinancialMaterializerV2InstrumentedTest on actual Room",
+      "Schema98→99 migration, KSP schema99 export, full Hilt/app compilation",
+      "Android process kill/replay + boundaries/quota/disk + B08/B20 wire verification",
+      "B04/B05/B06 owner/frozen and manager/worker regression suites"
+    ],
+    "required_gates": [
+      "change-contract",
+      "documentation",
+      "G-B09",
+      "G-B10"
+    ]
+  }
+}

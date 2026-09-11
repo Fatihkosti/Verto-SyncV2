@@ -1,0 +1,810 @@
+{
+  "aggregateRegistry": [
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "OPTIMISTIC_VERSION",
+      "currentRuntimeOwner": "cash / SyncCash",
+      "currentServerPaths": [
+        "budgets"
+      ],
+      "deletePolicy": "VERSIONED_DELETE",
+      "financialSensitivity": "FINANCIAL",
+      "id": "BUDGET",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "APPEND_ONLY_IDEMPOTENT",
+      "currentRuntimeOwner": "cash / SyncCash",
+      "currentServerPaths": [
+        "cash_register_movements"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "LEDGER_AFFECTING",
+      "id": "CASH_MOVEMENT",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "SEMANTIC_COMMAND",
+      "currentRuntimeOwner": "cash / SyncCash",
+      "currentServerPaths": [
+        "cash_reconciliation_sessions",
+        "cash_denominations"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "LEDGER_AFFECTING",
+      "id": "CASH_RECONCILIATION",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "SERVER_AUTHORITATIVE",
+      "currentRuntimeOwner": "cash / SyncCash",
+      "currentServerPaths": [
+        "cash_register"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "LEDGER_AFFECTING",
+      "id": "CASH_REGISTER",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "OPTIMISTIC_VERSION",
+      "currentRuntimeOwner": "inventory / SyncInventory",
+      "currentServerPaths": [
+        "categories"
+      ],
+      "deletePolicy": "VERSIONED_DELETE",
+      "financialSensitivity": "NONE",
+      "id": "CATEGORY",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "APPEND_ONLY_IDEMPOTENT",
+      "currentRuntimeOwner": "invoices / SyncClientCredits",
+      "currentServerPaths": [
+        "client_credits"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "LEDGER_AFFECTING",
+      "id": "CLIENT_CREDIT",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "APPEND_ONLY_IDEMPOTENT",
+      "currentRuntimeOwner": "cash / pullCommissions",
+      "currentServerPaths": [
+        "commission_payments"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "LEDGER_AFFECTING",
+      "id": "COMMISSION_PAYMENT",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "IMMUTABLE_REVISION",
+      "currentRuntimeOwner": "inventory / SyncCash cost allocations",
+      "currentServerPaths": [
+        "cost_allocations"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "INVENTORY_LEDGER",
+      "id": "COST_ALLOCATION",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "BRIDGE_EXISTING_STRONGER_CONTRACT",
+      "currentRuntimeOwner": "clients / Party normalized contract",
+      "currentServerPaths": [
+        "clients",
+        "verto_upsert_client_v1"
+      ],
+      "deletePolicy": "TOMBSTONE",
+      "financialSensitivity": "NONE",
+      "id": "CUSTOMER_PROFILE",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 2
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "OPTIMISTIC_VERSION",
+      "currentRuntimeOwner": "educational_content / EducationalContentSyncParticipant",
+      "currentServerPaths": [
+        "educational_topics",
+        "educational_topic_targets"
+      ],
+      "deletePolicy": "VERSIONED_DELETE",
+      "financialSensitivity": "NONE",
+      "id": "EDUCATIONAL_CONTENT",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "SEMANTIC_COMMAND",
+      "currentRuntimeOwner": "cash / SyncMisc",
+      "currentServerPaths": [
+        "expenses"
+      ],
+      "deletePolicy": "VOID_OR_REVERSE",
+      "financialSensitivity": "LEDGER_AFFECTING",
+      "id": "EXPENSE",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "METADATA_ONLY_EXTERNAL_BINARY",
+      "conflictPolicy": "SEMANTIC_COMMAND",
+      "currentRuntimeOwner": "invoices / purchase cycle",
+      "currentServerPaths": [
+        "goods_receipts",
+        "goods_receipt_lines",
+        "purchase_cycle_attachments",
+        "verto_purchase_cycle_push_pre_v253"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "INVENTORY_LEDGER",
+      "id": "GOODS_RECEIPT",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "IMMUTABLE_REVISION",
+      "currentRuntimeOwner": "inventory / inventory_cost_outbox",
+      "currentServerPaths": [
+        "inventory_apply_cost_revisions_v2",
+        "inventory_pull_cost_revisions_v2"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "INVENTORY_LEDGER",
+      "id": "INVENTORY_COST_REVISION",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "OPTIMISTIC_VERSION",
+      "currentRuntimeOwner": "inventory / SyncInventory",
+      "currentServerPaths": [
+        "inventory_items",
+        "archive_inventory_item_v2"
+      ],
+      "deletePolicy": "ARCHIVE",
+      "financialSensitivity": "NONE",
+      "id": "INVENTORY_ITEM",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "APPEND_ONLY_IDEMPOTENT",
+      "currentRuntimeOwner": "inventory / inventory_stock_outbox",
+      "currentServerPaths": [
+        "inventory_apply_commands_v2",
+        "inventory_pull_movements_v2",
+        "inventory_prepare_reconciliation_batch_v2"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "INVENTORY_LEDGER",
+      "id": "INVENTORY_MOVEMENT",
+      "modernizationSession": 310,
+      "notes": "Stock balance is derived materialization; movement identity is authoritative; reconciliation RPC is current evidence.",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "OPTIMISTIC_VERSION",
+      "currentRuntimeOwner": "inventory / SyncInventory",
+      "currentServerPaths": [
+        "inventory_units"
+      ],
+      "deletePolicy": "VERSIONED_DELETE",
+      "financialSensitivity": "NONE",
+      "id": "INVENTORY_UNIT",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "SEMANTIC_COMMAND",
+      "currentRuntimeOwner": "invoices / financial_outbox + legacy invoice sync",
+      "currentServerPaths": [
+        "invoices",
+        "invoice_items",
+        "financial_sync_apply_event_v1",
+        "financial_sync_pull_events_v1"
+      ],
+      "deletePolicy": "VOID_OR_REVERSE",
+      "financialSensitivity": "LEDGER_AFFECTING",
+      "id": "INVOICE",
+      "modernizationSession": 310,
+      "notes": "Draft optimistic; Posted/Void/Reverse semantic command. Existing financial payload v1 preserved.",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "OPTIMISTIC_VERSION",
+      "currentRuntimeOwner": "inventory / SyncInventory",
+      "currentServerPaths": [
+        "item_categories"
+      ],
+      "deletePolicy": "VERSIONED_DELETE",
+      "financialSensitivity": "NONE",
+      "id": "ITEM_CATEGORY",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "OPTIMISTIC_VERSION",
+      "currentRuntimeOwner": "clients / SyncMisc",
+      "currentServerPaths": [
+        "notes"
+      ],
+      "deletePolicy": "VERSIONED_DELETE",
+      "financialSensitivity": "NONE",
+      "id": "NOTE",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "SERVER_AUTHORITATIVE",
+      "currentRuntimeOwner": "organization / SyncNotifications",
+      "currentServerPaths": [
+        "get_my_notifications_cache"
+      ],
+      "deletePolicy": "SERVER_OWNED",
+      "financialSensitivity": "NONE",
+      "id": "NOTIFICATION",
+      "modernizationSession": 308,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "BRIDGE_EXISTING_STRONGER_CONTRACT",
+      "currentRuntimeOwner": "optimal_outbox bridge",
+      "currentServerPaths": [
+        "optimal_sync_change_log",
+        "optimal_apply_sync_operation_v2",
+        "optimal_pull_sync_changes"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "NONE",
+      "id": "OPTIMAL_FOLLOW_UP",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "METADATA_ONLY_EXTERNAL_BINARY",
+      "conflictPolicy": "BRIDGE_EXISTING_STRONGER_CONTRACT",
+      "currentRuntimeOwner": "optimal_outbox bridge",
+      "currentServerPaths": [
+        "optimal_sync_change_log",
+        "optimal_apply_sync_operation_v2",
+        "optimal_pull_sync_changes"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "NONE",
+      "id": "OPTIMAL_MAINTENANCE",
+      "modernizationSession": 310,
+      "notes": "Existing Optimal durable outbox/lease/idempotency guard remains stronger than generic dirty sync.",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "BRIDGE_EXISTING_STRONGER_CONTRACT",
+      "currentRuntimeOwner": "optimal_outbox bridge",
+      "currentServerPaths": [
+        "optimal_sync_change_log",
+        "optimal_apply_sync_operation_v2",
+        "optimal_pull_sync_changes"
+      ],
+      "deletePolicy": "SERVER_OWNED",
+      "financialSensitivity": "NONE",
+      "id": "OPTIMAL_VEHICLE",
+      "modernizationSession": 310,
+      "notes": "Server path reference only until exact dump bytes are rebound.",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "OPTIMISTIC_VERSION",
+      "currentRuntimeOwner": "organization / OrgSettingsRepository",
+      "currentServerPaths": [
+        "organization_settings"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "NONE",
+      "id": "ORGANIZATION_SETTINGS",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "BRIDGE_EXISTING_STRONGER_CONTRACT",
+      "currentRuntimeOwner": "clients / Party normalized contract",
+      "currentServerPaths": [
+        "clients",
+        "verto_upsert_client_v1"
+      ],
+      "deletePolicy": "TOMBSTONE",
+      "financialSensitivity": "NONE",
+      "id": "PARTY_IDENTITY",
+      "modernizationSession": 307,
+      "notes": "Legacy Party TOMBSTONE maps to unified DELETE semantics; Party v2 remains unchanged.",
+      "payloadVersion": 2
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "BRIDGE_EXISTING_STRONGER_CONTRACT",
+      "currentRuntimeOwner": "clients / Party normalized contract",
+      "currentServerPaths": [
+        "clients",
+        "verto_upsert_client_v1"
+      ],
+      "deletePolicy": "TOMBSTONE",
+      "financialSensitivity": "NONE",
+      "id": "PARTY_ROLE",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 2
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "APPEND_ONLY_IDEMPOTENT",
+      "currentRuntimeOwner": "invoices / financial_outbox + payment sync",
+      "currentServerPaths": [
+        "payments",
+        "payment_allocations",
+        "realized_fx_events",
+        "financial_sync_apply_event_v1"
+      ],
+      "deletePolicy": "VOID_OR_REVERSE",
+      "financialSensitivity": "LEDGER_AFFECTING",
+      "id": "PAYMENT",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "OPTIMISTIC_VERSION",
+      "currentRuntimeOwner": "organization / SyncMisc",
+      "currentServerPaths": [
+        "price_list_header",
+        "price_list_items"
+      ],
+      "deletePolicy": "VERSIONED_DELETE",
+      "financialSensitivity": "NONE",
+      "id": "PRICE_LIST",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "SEMANTIC_COMMAND",
+      "currentRuntimeOwner": "invoices / purchase cycle",
+      "currentServerPaths": [
+        "purchase_invoice_matches",
+        "purchase_invoice_match_lines",
+        "purchase_invoice_receipt_allocations",
+        "verto_purchase_cycle_push_post_v253"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "FINANCIAL",
+      "id": "PURCHASE_MATCH",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "SERVER_STATE_MACHINE",
+      "currentRuntimeOwner": "invoices / purchase cycle",
+      "currentServerPaths": [
+        "purchase_orders",
+        "purchase_order_lines",
+        "verto_purchase_cycle_push_pre_v253"
+      ],
+      "deletePolicy": "CANCEL_STATE_TRANSITION",
+      "financialSensitivity": "FINANCIAL",
+      "id": "PURCHASE_ORDER",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "SEMANTIC_COMMAND",
+      "currentRuntimeOwner": "invoices / purchase cycle",
+      "currentServerPaths": [
+        "purchase_payment_overrides",
+        "verto_purchase_cycle_push_post_v253"
+      ],
+      "deletePolicy": "NO_CLIENT_DELETE",
+      "financialSensitivity": "FINANCIAL",
+      "id": "PURCHASE_PAYMENT_OVERRIDE",
+      "modernizationSession": 310,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "OPTIMISTIC_VERSION",
+      "currentRuntimeOwner": "clients / SyncMisc",
+      "currentServerPaths": [
+        "client_reminders"
+      ],
+      "deletePolicy": "VERSIONED_DELETE",
+      "financialSensitivity": "NONE",
+      "id": "REMINDER",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "METADATA_ONLY_EXTERNAL_BINARY",
+      "conflictPolicy": "SERVER_STATE_MACHINE",
+      "currentRuntimeOwner": "logistics-v2 (hard-gated)",
+      "currentServerPaths": [
+        "logistics_shipments",
+        "logistics_shipment_sources",
+        "logistics_shipment_lines",
+        "logistics_milestones",
+        "logistics_assignments",
+        "logistics_events",
+        "logistics_partners",
+        "logistics_shipment_legs",
+        "logistics_custody_handoffs",
+        "logistics_shipment_partner_links",
+        "logistics_transport_details",
+        "logistics_documents",
+        "logistics_costs",
+        "logistics_payments",
+        "logistics_route_templates",
+        "logistics_route_template_stops",
+        "logistics_receiving_batches",
+        "logistics_receiving_lines",
+        "logistics_inventory_postings",
+        "logistics_cost_allocations",
+        "logistics_shortages",
+        "logistics_recoveries",
+        "logistics_recovery_lines",
+        "logistics_recovery_postings"
+      ],
+      "deletePolicy": "CANCEL_STATE_TRANSITION",
+      "financialSensitivity": "NONE",
+      "id": "SHIPMENT",
+      "modernizationSession": 307,
+      "notes": "V303-PARTICIPANT-KEY-DRIFT-001 required=shipments actual=logistics-v2; SERVER_CONTRACT_VERIFIED=false; record only in 304.",
+      "payloadVersion": 1
+    },
+    {
+      "attachmentPolicy": "NONE",
+      "conflictPolicy": "BRIDGE_EXISTING_STRONGER_CONTRACT",
+      "currentRuntimeOwner": "clients / Party normalized contract",
+      "currentServerPaths": [
+        "clients",
+        "verto_upsert_client_v1"
+      ],
+      "deletePolicy": "TOMBSTONE",
+      "financialSensitivity": "NONE",
+      "id": "SUPPLIER_PROFILE",
+      "modernizationSession": 307,
+      "notes": "",
+      "payloadVersion": 2
+    }
+  ],
+  "attachmentPolicies": [
+    "NONE",
+    "METADATA_ONLY_EXTERNAL_BINARY"
+  ],
+  "baselineReferences": {
+    "archiveEntries": 1651,
+    "currentTombstoneTargetDays": 90,
+    "financialPayloadVersion": 1,
+    "partyContractVersion": 2,
+    "productionKotlinCount": 1153,
+    "productionManifestSha256": "05963e2a9817f6c2aeb803212f74f09c3783d5c6fc4beef45a009a06012aaa00",
+    "roomSchemaVersion": 77,
+    "serverBaselineStatus": "SERVER_BASELINE_NOT_REPRODUCIBLE",
+    "sourceZipSha256": "6fddd8d485cdbdbe7b7331f8b342739b0543ef7e4e99057f41bb4fbb099a5e6b",
+    "syncFocusedCount": 67,
+    "syncFocusedManifestSha256": "410e5119396f99e988a917bcf1ca5e1f2ba3aa13656c230790a9735bbfd6c046"
+  },
+  "bootstrapPolicy": {
+    "expiredSessionRequiresRestart": true,
+    "gapFreeRequired": true,
+    "independentPostSnapshotMaxRevisionForbidden": true,
+    "scopeChangeRequiresRestart": true,
+    "snapshotAndBaselineSameHandshake": true,
+    "states": [
+      "NOT_STARTED",
+      "IN_PROGRESS",
+      "READY",
+      "RECOVERY_REQUIRED"
+    ]
+  },
+  "budgets": {
+    "maxBacklogBeforeDiagnosticWarning": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxMutationPayloadBytes": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxPullPageBytes": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxPullPageChanges": {
+      "baselineObservedValues": {
+        "OptimalPull.planReferenceMax": 200,
+        "SyncV2Coordinator.pageSize": 500
+      },
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxPushBatchBytes": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxPushBatchMutations": {
+      "baselineObservedValues": {
+        "FinancialOutbox.batchSize": 100,
+        "OptimalOutbox.defaultBatchSize": 50,
+        "OptimalOutbox.maxBatchSize": 500
+      },
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxTransactionGroupBytes": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxWorkerOperationsPerRun": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxWorkerRuntimeMillis": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    }
+  },
+  "conflictPolicies": [
+    "OPTIMISTIC_VERSION",
+    "APPEND_ONLY_IDEMPOTENT",
+    "SEMANTIC_COMMAND",
+    "SERVER_STATE_MACHINE",
+    "IMMUTABLE_REVISION",
+    "SERVER_AUTHORITATIVE",
+    "EXPLICIT_SCOPED_LWW",
+    "BRIDGE_EXISTING_STRONGER_CONTRACT"
+  ],
+  "contractFamily": "verto-unified-sync",
+  "contractVersion": 1,
+  "cursorPolicy": {
+    "clientArithmeticForbidden": true,
+    "filteredPullAdvancesGlobalCursor": false,
+    "maxRevisionDerivedCursorForbidden": true,
+    "representation": "OPAQUE_NONBLANK_STRING",
+    "serverOwned": true,
+    "timestampCursorForbidden": true
+  },
+  "deletePolicies": [
+    "VERSIONED_DELETE",
+    "TOMBSTONE",
+    "ARCHIVE",
+    "VOID_OR_REVERSE",
+    "CANCEL_STATE_TRANSITION",
+    "NO_CLIENT_DELETE",
+    "SERVER_OWNED"
+  ],
+  "errorTypes": [
+    "TRANSIENT",
+    "AUTH",
+    "VALIDATION",
+    "CONFLICT",
+    "CURSOR_EXPIRED",
+    "CONTRACT_UNSUPPORTED"
+  ],
+  "evidenceStatus": {
+    "budgets": "RETENTION_BUDGET_EVIDENCE_BLOCKED",
+    "retention": "RETENTION_BUDGET_EVIDENCE_BLOCKED",
+    "server": "SERVER_BASELINE_NOT_REPRODUCIBLE"
+  },
+  "idempotencyPolicy": {
+    "dependenciesMustBeAckedOrAtomicBatch": true,
+    "financialSemanticIdentityMustSurviveReceiptPruning": true,
+    "mutationIdStableAcrossRetryAndProcessDeath": true,
+    "runIdDerivedMutationIdForbidden": true,
+    "sameIdDifferentContent": "IDEMPOTENCY_CONFLICT"
+  },
+  "realtimePolicy": {
+    "authoritativePayloadApplyForbidden": true,
+    "correctnessIndependentOfRealtime": true,
+    "hintOnly": true
+  },
+  "receiptStatuses": [
+    "APPLIED",
+    "REPLAYED",
+    "NO_OP",
+    "CONFLICT",
+    "REJECTED",
+    "RETRYABLE"
+  ],
+  "reconciliation": {
+    "canonicalization": [
+      "stable field ordering",
+      "stable row ordering",
+      "stable numeric representation",
+      "stable null handling",
+      "no locale-dependent formatting",
+      "no wall-clock fields unless authoritative"
+    ],
+    "manifestFields": [
+      "aggregateType",
+      "partitionKey",
+      "rowCount",
+      "contentHashOrVersionDigest",
+      "manifestRevision",
+      "scopeId"
+    ],
+    "repairFlow": [
+      "detect mismatch",
+      "scoped authoritative repair",
+      "preserve unacked local mutations",
+      "rerun manifest",
+      "record convergence evidence"
+    ],
+    "role": "ANTI_ENTROPY_ONLY_NOT_PRIMARY_FEED"
+  },
+  "retention": {
+    "changeLogRetentionDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "deviceInactiveAfterDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "localAckedOutboxDiagnosticRetentionDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "localInboxDiagnosticRetentionDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "receiptRetentionDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "supportedOfflineWindowDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "supportedOldClientWindowDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "tombstoneRetentionDays": {
+      "baselineObservedValue": 90,
+      "evidence": "Parent-plan server reference reports current sync_tombstones target=90 days; exact dump bytes absent",
+      "rationale": "90 days is baseline evidence only, not final unified retention",
+      "safetyRelation": "Must be >= max(supportedOfflineWindowDays,supportedOldClientWindowDays)+measured safety margin",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    }
+  },
+  "revisionPolicy": {
+    "allocator": "GLOBAL_MONOTONIC_SERVER_SEQUENCE_OR_HIGH_WATERMARK",
+    "gaplessRequired": false,
+    "gapsAllowed": true,
+    "orderingField": "revision",
+    "serverOwned": true,
+    "timeFieldsAreMetadataOnly": true
+  },
+  "schemaVersion": 1,
+  "scopePolicy": {
+    "dynamicHintScopesForbidden": true,
+    "filteredScopesRequireOwnCursorBootstrapRetention": true,
+    "identityFields": [
+      "organizationId",
+      "syncPrincipalId",
+      "scopeId",
+      "contractFamily",
+      "contractVersion",
+      "scopeDefinitionVersion"
+    ],
+    "principalServerValidated": true
+  },
+  "serverAuthorityPolicy": {
+    "organizationIdFromClientIsNotAuthority": true,
+    "serverMustResolveAndValidateMembership": true
+  },
+  "transactionPolicy": {
+    "overHardByteCeiling": "CONTRACT_PAYLOAD_TOO_LARGE",
+    "oversizedWithinHardCeilingMayReturnAlone": true,
+    "pageSplitForbidden": true,
+    "roomCommitSplitForbidden": true,
+    "transactionGroupRequired": true
+  }
+}

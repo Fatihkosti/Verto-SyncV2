@@ -1,0 +1,12 @@
+{
+  "checkpoint": "B12-V01",
+  "gradle_required": "8.9",
+  "gradle_wrapper_cached": false,
+  "gradle_attempt": "BLOCKED_BEFORE_BUILD",
+  "gradle_failure": "java.net.UnknownHostException: services.gradle.org",
+  "room_runtime": "NOT_RUN",
+  "android_runtime": "NOT_RUN",
+  "postgresql_b12_sql": "NOT_RUN",
+  "b07_atomic_server_batch": "UNAVAILABLE_OR_UNPROVEN",
+  "live_server_changes": false
+}

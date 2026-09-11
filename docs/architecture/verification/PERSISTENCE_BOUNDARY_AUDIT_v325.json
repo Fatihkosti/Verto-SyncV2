@@ -1,0 +1,216 @@
+{
+  "format": "verto-persistence-boundary-audit-v325",
+  "session": 325,
+  "input_sha256": "296508ee973b818c6868ce065f409e20a51831c1d644fb878b5add427668c3ca",
+  "room_schema_version_before": 81,
+  "room_schema_version_after": 81,
+  "application_to_dao": 0,
+  "application_to_room_entity": 0,
+  "presentation_to_dao": 0,
+  "domain_to_dao": 0,
+  "room_entity_public_contract_leaks": 0,
+  "repository_implementation_leaks": 0,
+  "unowned_assets": 0,
+  "duplicate_owners": 0,
+  "foreign_semantic_dao_access": 0,
+  "audit_scope": "public application/domain/presentation contracts and stable DAO entry points",
+  "deferred_data_adapter_storage_review": [
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/di/PartyModule.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/data/RoomPartyLedgerEventSource.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/data/RoomPartyLedgerEventSource.kt",
+      "dao": "PaymentDao"
+    },
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/data/PartyFinancialQueryAdapter.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/data/PartyFinancialQueryAdapter.kt",
+      "dao": "PaymentDao"
+    },
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/data/SupabasePartySyncFallbackAdapter.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/data/SupabasePartySyncFallbackAdapter.kt",
+      "dao": "PaymentDao"
+    },
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/data/SupabasePartySyncFallbackAdapter.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/data/search/RoomPartyHomeSearchSource.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/data/pendingaction/RoomInactiveCustomerPendingActionSource.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/data/activityevent/RoomPartyActivityEventSource.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "feature/party/src/main/kotlin/com/verto/app/data/repository/ClientRepository.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "feature/payment/src/main/kotlin/com/verto/app/feature/payment/data/search/RoomPaymentHomeSearchSource.kt",
+      "dao": "PaymentDao"
+    },
+    {
+      "path": "feature/payment/src/main/kotlin/com/verto/app/feature/payment/data/activityevent/RoomPaymentActivityEventSource.kt",
+      "dao": "PaymentDao"
+    },
+    {
+      "path": "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/data/search/RoomInvoiceHomeSearchSource.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/data/pendingaction/RoomFinancialPendingActionSource.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/data/activityevent/RoomInvoiceActivityEventSource.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/data/pendingaction/RoomShipmentReceiptIssuePendingActionSource.kt",
+      "dao": "LogisticsDao"
+    },
+    {
+      "path": "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/OptimalCompaniesRemoteRefresher.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/di/InventoryModule.kt",
+      "dao": "InventoryDao"
+    },
+    {
+      "path": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/data/InventoryStockWriter.kt",
+      "dao": "InventoryDao"
+    },
+    {
+      "path": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/data/InventoryRoomAdapters.kt",
+      "dao": "InventoryDao"
+    },
+    {
+      "path": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/data/search/RoomInventoryHomeSearchSource.kt",
+      "dao": "InventoryDao"
+    },
+    {
+      "path": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/data/pendingaction/RoomInventoryPendingActionSource.kt",
+      "dao": "InventoryDao"
+    },
+    {
+      "path": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/data/activityevent/RoomInventoryActivityEventSource.kt",
+      "dao": "InventoryDao"
+    },
+    {
+      "path": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/data/quickstock/RoomQuickStockRowsSource.kt",
+      "dao": "InventoryDao"
+    },
+    {
+      "path": "feature/inventory/src/main/kotlin/com/verto/app/data/repository/InventoryRepository.kt",
+      "dao": "InventoryDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/expenses/bridge/ExpensesOperationsAdapter.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/expenses/bridge/ExpensesOperationsAdapter.kt",
+      "dao": "InventoryDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/messages/bridge/SupabaseMessagesGateway.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/payment/bridge/PaymentPresentationBridge.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/payment/bridge/RoomPaymentCompanyTimelineAdapter.kt",
+      "dao": "PaymentDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/invoice/bridge/InvoicePresentationBridge.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/invoice/bridge/InvoicePresentationBridge.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/invoice/bridge/RoomInvoiceCompanyTimelineAdapter.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsUnifiedReadModelAdapter.kt",
+      "dao": "LogisticsDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsV2AppAdapters.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionControllerAdapter.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionControllerAdapter.kt",
+      "dao": "PaymentDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionControllerAdapter.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionQueryAdapter.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionQueryAdapter.kt",
+      "dao": "PaymentDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionQueryAdapter.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionReportGatewayAdapter.kt",
+      "dao": "ClientDao"
+    },
+    {
+      "path": "data/operations/src/main/kotlin/com/verto/app/feature/reports/bridge/ReportsReadModelQueryAdapter.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "data/operations/src/main/kotlin/com/verto/app/feature/reports/bridge/ReportsReadModelQueryAdapter.kt",
+      "dao": "LogisticsDao"
+    },
+    {
+      "path": "data/operations/src/main/kotlin/com/verto/app/feature/reports/bridge/ReportsReadModelQueryAdapter.kt",
+      "dao": "PaymentDao"
+    },
+    {
+      "path": "data/operations/src/main/kotlin/com/verto/app/data/repository/InvoiceRepository.kt",
+      "dao": "InvoiceDao"
+    },
+    {
+      "path": "data/operations/src/main/kotlin/com/verto/app/data/repository/InvoiceRepository.kt",
+      "dao": "PaymentDao"
+    }
+  ],
+  "status": "PASS_STATIC_WITH_DEFERRED_ADAPTER_REVIEW"
+}

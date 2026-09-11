@@ -1,0 +1,40 @@
+{
+  "planId": "VERTO-SYNC-REPAIR-BACKLOG-01",
+  "checkpointId": "B01-V02",
+  "capturedAt": "2026-09-10T11:08:52+02:00",
+  "acceptedAt": "2026-09-10",
+  "workspaceRoot": "/home/aboalftooh/app/1/Verto-project-6ddbafc5",
+  "requiredSourceArchive": {
+    "name": "Verto-425.zip",
+    "expectedSha256": "cb0a1956952376d75bfeb2d3ec71b0e06700024d5b95cd44f6b09db96855e1a0",
+    "located": false,
+    "actualSha256": null,
+    "verificationStatus": "ARCHIVE_CONTAINER_HASH_NOT_REPRODUCIBLE_USER_CONFIRMED_EXTRACTED_TREE"
+  },
+  "candidateWorkspace": {
+    "provenance": "USER_CONFIRMED_EXTRACTED_VERTO_425",
+    "gitRepository": false,
+    "branch": null,
+    "commit": null,
+    "preExecutionTreeFingerprint": "4c5fa594f4a4c7c122013dee1fa2184238583ddce2f4ecbbc7666d94e26e13a0",
+    "fingerprintFileCount": 2574,
+    "fingerprintAlgorithm": "SHA-256 of newline-joined sorted path\\0fileSha256\\0byteSize rows",
+    "fingerprintExclusions": {
+      "directories": [".git", ".gradle", ".idea", ".kotlin", "build", "out", "__pycache__"],
+      "suffixes": [".zip", ".apk", ".aab", ".class", ".pyc", ".log", ".tmp"]
+    }
+  },
+  "observedProjectIdentity": {
+    "rootProjectName": "Verto",
+    "declaredModules": 30,
+    "readmeClaims": "31-module modular monolith; README baseline v318",
+    "v425ReconstructionWorkflowPresent": true,
+    "contractReferencePathsPresent": 23,
+    "contractReferencePathsExpected": 24,
+    "missingContractReferencePath": "data/sync/src/main/kotlin/com/verto/app/data/sync/migration/LegacySyncV2IntentRepairCoordinator.kt"
+  },
+  "baselineDecision": "ACCEPTED_CURRENT_FOLDER_AS_EXECUTION_SOURCE",
+  "decisionAuthority": "User clarification: Verto-425.zip is the current project folder",
+  "decisionReason": "The user designated the current directory as the already-extracted Verto-425 source. The initial pre-execution tree fingerprint identifies that source. The ZIP-container SHA-256 remains non-reproducible because the container is absent; this limitation and the missing P04 reference path are preserved rather than treated as checksum matches.",
+  "sourceDiffReport": "SOURCE_DIFF.md"
+}

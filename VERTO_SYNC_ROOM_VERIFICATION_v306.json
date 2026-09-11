@@ -1,0 +1,116 @@
+{
+  "atomicityInstrumentationStatus": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+  "blockers": [],
+  "buildExecuted": false,
+  "changedPaths": [
+    "VERTO_SYNC_ROOM_VERIFICATION_v306.json",
+    "VERTO_SYNC_ROOM_VERIFICATION_v306.md",
+    "Verto-v306-report.md",
+    "app/schemas/com.verto.app.data.local.AppDatabase/78.json",
+    "data/database/src/androidTest/kotlin/com/verto/app/data/local/UnifiedSyncRoomAtomicityV306Test.kt",
+    "data/database/src/androidTest/kotlin/com/verto/app/data/local/UnifiedSyncRoomMigrationV306Test.kt",
+    "data/database/src/androidTest/kotlin/com/verto/app/data/local/UnifiedSyncRoomProcessDeathV306Test.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations77To78.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/entity/UnifiedSyncEntities.kt",
+    "data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogV278Test.kt",
+    "data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogV306Test.kt",
+    "scripts/verify-v306-sync-room.sh",
+    "tools/test_sync_room_verification_v306.py",
+    "tools/verify_sync_room_v306.py"
+  ],
+  "compileStatus": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+  "contractRevision": "SESSION_306_FINAL_REVISED",
+  "contractSha256": "dd24ebaaeffb6ada4e5445997a99007fcbe25b4ebda27925a0d6326a3a786b38",
+  "cursorInvariantStatus": "PASS_STATIC",
+  "effectiveV305Handoff": "PASS_STATIC_ACCEPTED",
+  "finalVerdict": "PASS_STATIC_ROOM_STATE_FOUNDATION / RUNTIME_DISABLED / BUILD_NOT_VERIFIED",
+  "gradleFilesChangedCount": 0,
+  "handoff307Authorized": true,
+  "handoff308Authorized": true,
+  "inboxInvariantStatus": "PASS_STATIC",
+  "inputArchiveEntries": 2553,
+  "inputZipName": "Verto-v305-server-static.zip",
+  "inputZipSha256": "6144c6273dd8c5e4d6ecd211ea753f9aff29231c1fabce12009852a4586769a5",
+  "instrumentationExecuted": false,
+  "legacyBackfillCount": 0,
+  "legacySyncTablesPreserved": true,
+  "migrationInstrumentationStatus": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+  "newMigrationFile": "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations77To78.kt",
+  "newMigrationSha256": "c6ebef781c7343f967acb9b14ce3918de242653d9fabb3171f34c064b98f8eb8",
+  "newRoomTables": [
+    "sync_cursor",
+    "sync_inbox",
+    "sync_outbox",
+    "sync_sequence_state"
+  ],
+  "outboxInvariantStatus": "PASS_STATIC",
+  "outputZipSha256": "COMPUTED_AFTER_PACKAGING_IN_EXTERNAL_DELIVERY_METADATA",
+  "ownerDecisionId": "VERTO_SYNC_306_STATIC_ACCEPTANCE_2026_08_21",
+  "preferencesProtocolMigrationCount": 0,
+  "processDeathTestStatus": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+  "productionChangedCount": 5,
+  "rawV305FinalVerdict": "SERVER_STATIC_COMPLETE / DATABASE_EXECUTION_BLOCKED",
+  "rawV305Handoff306Authorized": false,
+  "roomVersionAfter": 78,
+  "roomVersionBefore": 77,
+  "runtimeV2": "DISABLED",
+  "runtimeVerificationRequired": false,
+  "schema77Sha256": "63ec65fd1eedb9c29a585cb43d9a8afed42a429fb0ad749da85b305e5ccf8b1a",
+  "schema78GenerationStatus": "STATIC_DERIVED_AND_VALIDATED / KSP_NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+  "schema78Sha256": "d0d89b1a6d8309e92c48cace4b30f934d8c83bcd3d75fcc0a2b3946a1d434557",
+  "sequenceInvariantStatus": "PASS_STATIC",
+  "serverChangedCount": 0,
+  "serverRuntimeChanged": false,
+  "session": 306,
+  "sqliteStaticMigrationValidation": "ok",
+  "staticAtomicityStatus": "PASS_STATIC_DESIGN_ONLY",
+  "staticFixtureStats": {
+    "byCategory": {
+      "atomicity structure": {
+        "failed": 0,
+        "passed": 8,
+        "total": 8
+      },
+      "cursor/scope/CAS": {
+        "failed": 0,
+        "passed": 10,
+        "total": 10
+      },
+      "inbox dedup/immutability": {
+        "failed": 0,
+        "passed": 8,
+        "total": 8
+      },
+      "migration/schema": {
+        "failed": 0,
+        "passed": 9,
+        "total": 9
+      },
+      "outbox identity/sequence": {
+        "failed": 0,
+        "passed": 12,
+        "total": 12
+      },
+      "scope/runtime isolation": {
+        "failed": 0,
+        "passed": 5,
+        "total": 5
+      },
+      "source/authority": {
+        "failed": 0,
+        "passed": 10,
+        "total": 10
+      }
+    },
+    "failed": 0,
+    "passed": 62,
+    "total": 62
+  },
+  "staticGateStatus": "PASS",
+  "staticVerifierNormalizedHash": "292f2c777bac6fa61bcda07c5fc071377c62927efe4efccb4eebe79ada6bb229",
+  "testChangedCount": 5,
+  "unitTestStatus": "NOT_RUN_ENVIRONMENT_UNAVAILABLE"
+}

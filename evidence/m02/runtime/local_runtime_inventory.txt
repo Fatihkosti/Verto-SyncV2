@@ -1,0 +1,7 @@
+psql=MISSING
+postgres=MISSING
+initdb=MISSING
+supabase=MISSING
+docker=MISSING
+podman=MISSING
+kotlinc=/root/.sdkman/candidates/kotlin/current/bin/kotlinc

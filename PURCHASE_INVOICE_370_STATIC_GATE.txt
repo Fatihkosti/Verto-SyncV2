@@ -1,0 +1,10 @@
+PASS: local/international editor routing and international edit recovery
+PASS: contractual installment schedule persisted with exact outstanding guard
+PASS: first installment due date is explicit and user-selected
+PASS: posted purchase edits use reversal/repost path
+PASS: international invoice -> logistics boundary is currency-safe
+PASS: purchase detail shows international money context and installments
+PASS: paid installments advance the next effective due date
+PASS: schema migration and durable financial outbox snapshot
+PASS: installment schedule round-trips through financial sync inbox
+PURCHASE_INVOICE_370_STATIC_GATE=PASS

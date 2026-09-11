@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="legacy_ui_53d71ebbfa2a">متوقف</string>
+    <string name="legacy_ui_906952c584a3">مفعل</string>
+    <string name="legacy_ui_fabcb7d23962">إضافة موضوع</string>
+    <string name="legacy_ui_aa97c6d8ed4d">تعديل الموضوع</string>
+    <string name="legacy_ui_3bbe16c24462">جارٍ الحفظ</string>
+    <string name="legacy_ui_a8da1ce7ba20">حفظ</string>
+    <string name="legacy_ui_f72ef6676c0e">تم حفظ الموضوع</string>
+    <string name="legacy_ui_5f981ab92ee2">تم حذف الموضوع</string>
+    <string name="legacy_ui_915fec531227">تعذّر حذف الموضوع</string>
+    <string name="legacy_ui_8e424ec9da81">تعذّر تغيير حالة الموضوع</string>
+    <string name="legacy_ui_ecdd43425fc2">رجوع</string>
+    <string name="legacy_ui_83abfa4cbd09">أسبوع %1$s</string>
+    <string name="legacy_ui_a9e814af23a3">هذا الأسبوع</string>
+    <string name="legacy_ui_cbb5cb25be2a">لوحة الصدارة</string>
+    <string name="legacy_ui_a104abed28c6">عن الأسبوع السابق: ${row.salesTrendLabel ?: "—"}</string>
+    <string name="legacy_ui_28437c4fab50">—</string>
+    <string name="dashboard_previous_week_trend">عن الأسبوع السابق: %1$s</string>
+
+    <string name="ds_0fd53029cf2d">%1$s فاتورة</string>
+    <string name="ds_11f680bb0eb5">إدارة المواضيع التعليمية متاحة للمدير فقط</string>
+    <string name="ds_1b388b1d5c9d">مفعل</string>
+    <string name="ds_21aaad4505ef">إضافة موضوع</string>
+
+
+    <string name="ds_30b7ee6e9489">لوحة الصدارة</string>
+    <string name="ds_31e5b64d196a">الجمهور</string>
+
+    <string name="ds_3d2867839ae7">آخر شراء: %1$s</string>
+    <string name="ds_459613725333">أدوار محددة</string>
+    <string name="ds_5591e7e4991d">المواضيع التعليمية</string>
+    <string name="ds_55f61c6aea62">موظفون محددون</string>
+    <string name="ds_5b03d394e527">لا يوجد مسوّقون بعد</string>
+
+
+    <string name="ds_7f080fc4f5c1">المسوقون والورش</string>
+    <string name="ds_9628f1d90ccd">لا توجد مواضيع تعليمية</string>
+    <string name="ds_9b9154145494">تُعرض آخر بيانات ناجحة — تعذّر تحديثها الآن</string>
+    <string name="ds_a87fc68492c1">الجميع</string>
+    <string name="ds_ab2d471ac6ae">سيُحذف الموضوع من جميع الموظفين بعد المزامنة. هل تريد المتابعة؟</string>
+    <string name="ds_b05e63f979d0">النشطون</string>
+
+    <string name="ds_b8db01ca3908">الملخص</string>
+    <string name="ds_b917a3a61139">مبيعات الأسبوع</string>
+    <string name="ds_baffa49c77ea">العنوان</string>
+    <string name="ds_c1180316c19a">عمولات الأسبوع</string>
+    <string name="ds_c2b1f1f1d267">جاري تحميل الأداء الأسبوعي… يمكنك متابعة بيانات المسوقين الآن</string>
+    <string name="ds_c492f97ccfeb">حذف الموضوع</string>
+    <string name="ds_d2fa0db645b9">أضف أول موضوع وحدد الموظفين أو الأدوار التي تراه.</string>
+    <string name="ds_d36294e5abb3">عرض الكل</string>
+    <string name="ds_e1a8b141bf41">يحتاج متابعة</string>
+
+    <string name="ds_e97122cea669">هذا الأسبوع</string>
+    <string name="ds_f64ad45c4ee4">المحتوى الكامل</string>
+
+
+
+    <string name="team_observations_title">ملاحظات الفريق</string>
+    <string name="team_observations_back">رجوع</string>
+    <string name="team_observations_admin_only">هذه الشاشة متاحة للمدير فقط</string>
+    <string name="team_observations_empty">لا توجد ملاحظات من الفريق حتى الآن</string>
+    <string name="team_observation_important">مهمة</string>
+    <string name="team_observation_normal">عادية</string>
+    <string name="team_observation_status_new">جديدة</string>
+    <string name="team_observation_status_reviewed">تمت المراجعة</string>
+    <string name="team_observation_status_closed">مغلقة</string>
+</resources>

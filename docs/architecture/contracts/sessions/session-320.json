@@ -1,0 +1,72 @@
+{
+  "architecture": {
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "ALL_UNDECLARED_EXTERNAL_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION"
+    ],
+    "invariants": [
+      "VARCH-001..030 meanings preserved",
+      "legacy debt exact identity set may only decrease",
+      "dependency cycles remain zero",
+      "Room version remains 81",
+      "production/test/Gradle/server surfaces immutable"
+    ]
+  },
+  "session": {
+    "allowed_files": [
+      "tools/architecture/**",
+      "scripts/ci/run-quality-gate.sh",
+      "scripts/ci/run-source-of-truth-admission.sh",
+      "scripts/ci/verify-change-contract.py",
+      "scripts/verify-kotlin-quality-static.py",
+      "scripts/package-source.sh",
+      "docs/architecture/**",
+      "docs/kotlin/KOTLIN_QUALITY_CONTRACT.md",
+      "CONTRIBUTING.md",
+      "CHANGELOG.md",
+      "docs/CANONICAL_DOCUMENT_MAP.md",
+      "docs/INDEX.md",
+      "docs/DOCUMENTATION_INVENTORY.md"
+    ],
+    "allowed_modules": [],
+    "baseline_snapshot": "docs/architecture/verification/SESSION_320_INPUT_SNAPSHOT.json",
+    "forbidden_files": [
+      "**/src/main/**/*.kt",
+      "**/src/test/**/*.kt",
+      "**/src/androidTest/**/*.kt",
+      "settings.gradle.kts",
+      "**/build.gradle.kts",
+      "gradle/**",
+      "build-logic/**",
+      "app/schemas/**",
+      "supabase/**",
+      "functions/**",
+      "SQL/**",
+      "**/AndroidManifest.xml"
+    ],
+    "id": 320,
+    "input_sha256": "cd9e22fa9803d52081c3df4de174279eb893d2c7ecd997c0d9f76523d3699b49",
+    "scope": "ENFORCEMENT ONLY / FAIL-CLOSED / NO PRODUCTION-BEHAVIOR CHANGE"
+  },
+  "verification": {
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "kotlin-quality",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ],
+    "required_tests": [
+      "tools/architecture/tests/test_architecture_guard.py",
+      "scripts/ci/run-quality-gate.sh self-test"
+    ]
+  }
+}

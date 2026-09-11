@@ -1,0 +1,32 @@
+LIMITATION: collaborator stubs; not a Gradle/KSP/Room/JSON runtime build.
+data/sync/src/main/kotlin/com/verto/app/data/sync/pull/FinancialEffectVerifierV2.kt:52:101: warning: unnecessary non-null assertion (!!) on a non-null receiver of type Long
+            requireContract(authority.appliedServerVersion != null && authority.appliedServerVersion!! > 0 &&
+                                                                                                    ^
+/tmp/b09-signature-smoke-1s8qhdcz/Dtos.kt:120:25: warning: parameter 's' is never used
+    fun decodeFinancial(s:String):FinancialAggregateSnapshotV2 = error("signature-only")
+                        ^
+/tmp/b09-signature-smoke-1s8qhdcz/Dtos.kt:121:22: warning: parameter 's' is never used
+    fun requireValid(s:FinancialAggregateSnapshotV2) = Unit
+                     ^
+/tmp/b09-signature-smoke-1s8qhdcz/Dtos.kt:122:31: warning: parameter 's' is never used
+    fun financialBusinessHash(s:FinancialAggregateSnapshotV2):String = error("signature-only")
+                              ^
+/tmp/b09-signature-smoke-1s8qhdcz/Dtos.kt:123:20: warning: parameter 'value' is never used
+    fun <T> encode(value:T):String = error("signature-only")
+                   ^
+/tmp/b09-signature-smoke-1s8qhdcz/Protection.kt:3:55: warning: parameter 'organizationId' is never used
+class SyncPendingProtection { suspend fun isProtected(organizationId:String,key:ProtectedSyncKey,financialRootId:String?=null):Boolean = error("signature-only") }
+                                                      ^
+/tmp/b09-signature-smoke-1s8qhdcz/Protection.kt:3:77: warning: parameter 'key' is never used
+class SyncPendingProtection { suspend fun isProtected(organizationId:String,key:ProtectedSyncKey,financialRootId:String?=null):Boolean = error("signature-only") }
+                                                                            ^
+/tmp/b09-signature-smoke-1s8qhdcz/Protection.kt:3:98: warning: parameter 'financialRootId' is never used
+class SyncPendingProtection { suspend fun isProtected(organizationId:String,key:ProtectedSyncKey,financialRootId:String?=null):Boolean = error("signature-only") }
+                                                                                                 ^
+/tmp/b09-signature-smoke-1s8qhdcz/Room.kt:6:70: warning: parameter 'block' is never used
+suspend fun <T> com.verto.app.data.local.AppDatabase.withTransaction(block:suspend ()->T):T = error("signature-only; not Room")
+                                                                     ^
+REGRESSION: two different reversals sharing one legal writeId must be accepted
+SHARED_WRITE_ID_SEMANTIC_REGRESSION=PASS; IDENTITY_RULE_ASSERTIONS=3; CODEC_STUBBED=true; ROOM=NOT_RUN
+REAL_MAPPING_MONEY_ASSERTIONS=347; NINE_DTOS=PASS; SIGNATURE_SMOKE=PASS; ROOM=NOT_RUN; JSON_RUNTIME=NOT_RUN
+ACTUAL_SOURCES_SHA256=6102ceb7ae6328cd995f48ecd3f365429c0c7c16c74f1dea970d05538c017423

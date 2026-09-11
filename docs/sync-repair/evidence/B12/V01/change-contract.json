@@ -1,0 +1,82 @@
+{
+  "session": {
+    "id": 4251201,
+    "input_sha256": "0ae6cdbfe810c222300874d3fa3b123a670517a1cefb7fbef37ccb14c4195d27",
+    "baseline_snapshot": "docs/sync-repair/evidence/B12/V01/input-tree.json",
+    "scope": "B12 local implementation explicitly requested: stable expense identity, mutable/versioned expense history, frozen revision intent, exact cash delta and batch linkage, receive validation/materialization, B12 DTO/schema, and server SQL prepared fail-closed until B07. No live SQL, B13, APK or release action.",
+    "allowed_modules": [
+      ":app",
+      ":data:database",
+      ":data:network",
+      ":data:operations",
+      ":data:sync",
+      "docs",
+      "tools",
+      "supabase"
+    ],
+    "allowed_files": [
+      "CHANGELOG.md",
+      "EVIDENCE_INDEX.md",
+      "SYNC_IMPLEMENTATION_MAP.md",
+      "VERTO_SYNC_REPAIR_BACKLOG_AR.md",
+      "SYNC_CONTRACT_V2.schema.json",
+      "app/src/main/kotlin/com/verto/app/di/RepositoryModule.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseB12ExpenseGuards.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRepairV2Dao.kt",
+      "data/network/src/main/kotlin/com/verto/app/data/sync/FinancialSyncContractV2.kt",
+      "data/operations/src/main/kotlin/com/verto/app/data/repository/ExpenseRepository.kt",
+      "data/operations/src/main/kotlin/com/verto/app/utils/CashMovementSyncWriter.kt",
+      "data/operations/src/main/kotlin/com/verto/app/utils/CashRegisterManager.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/expense/ExpenseRevisionContractB12.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedStrongerSyncChangeApplier.kt",
+      "data/sync/src/test/kotlin/com/verto/app/data/sync/expense/ExpenseRevisionContractB12Test.kt",
+      "supabase/migrations/20260911001500_b12_expense_versioned_history.sql",
+      "tools/verify_b12_expense_revision.py",
+      "tools/test_sync_b12_sqlite.py",
+      "docs/DOCUMENTATION_INVENTORY.md",
+      "docs/sync-repair/evidence/B12/V01/**"
+    ],
+    "forbidden_files": [
+      "VERTO_SYNC_REPAIR_EXECUTION_CONTRACT_AR.md",
+      "docs/sync-repair/evidence/B11/**",
+      "docs/sync-repair/evidence/B10/**",
+      "domain/**",
+      "feature/**",
+      "gradle/**"
+    ]
+  },
+  "architecture": {
+    "invariants": [
+      "Expense update and VOID retain the same expenseId.",
+      "Producer captures immutable before/after revision intent and is sole owner of the cash delta effect.",
+      "Cash delta is -(E_new-E_old) using minor units; receiver never applies it a second time.",
+      "Expense revision history is append-only and version/write replay mismatches fail closed.",
+      "Non-zero server expense cash changes cannot partially apply before B07 atomic batching is proven."
+    ],
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "new runtime dependency",
+      "immutable expense replacement identity",
+      "receive-side duplicate cash effect",
+      "partial non-atomic expense/cash server apply"
+    ]
+  },
+  "verification": {
+    "required_tests": [
+      "B12 static contract probe",
+      "B12 native SQLite append-only history probe",
+      "B12 schema and pure Kotlin cash formula probe",
+      "Gradle/KSP/Hilt/Room B12 tests",
+      "T21 and T27 application+Room scenarios",
+      "PostgreSQL B12 migration/RPC plus B07 atomic expense+cash group"
+    ],
+    "required_gates": [
+      "change-contract",
+      "documentation",
+      "G-B09",
+      "G-B11",
+      "G-B12"
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+build:
+  maxIssues: 0
+
+config:
+  validation: true
+  warningsAsErrors: true
+
+comments:
+  active: false
+
+complexity:
+  active: true
+  LongMethod:
+    active: true
+    threshold: 500
+  LongParameterList:
+    active: true
+    functionThreshold: 40
+    constructorThreshold: 50
+    ignoreDefaultParameters: false
+    ignoreDataClasses: true
+
+coroutines:
+  active: true
+  GlobalCoroutineUsage:
+    active: true
+
+exceptions:
+  active: true
+  TooGenericExceptionCaught:
+    active: true
+    exceptionNames:
+      - Throwable
+
+naming:
+  active: true
+  ClassNaming:
+    active: true
+    classPattern: '[A-Z][a-zA-Z0-9]*'
+  FunctionNaming:
+    active: true
+    # Compose functions intentionally start with an upper-case letter; both Kotlin forms are valid here.
+    functionPattern: '[a-zA-Z][a-zA-Z0-9]*'
+
+performance:
+  active: true
+  ForEachOnRange:
+    active: true
+
+potential-bugs:
+  active: true
+  MapGetWithNotNullAssertionOperator:
+    active: true
+  UnsafeCallOnNullableType:
+    active: true
+
+style:
+  active: true
+  ForbiddenSuppress:
+    active: true
+    rules:
+      - LongMethod
+      - LongParameterList
+      - TooGenericExceptionCaught
+      - GlobalCoroutineUsage
+      - MapGetWithNotNullAssertionOperator
+      - UnsafeCallOnNullableType
+      - ForEachOnRange

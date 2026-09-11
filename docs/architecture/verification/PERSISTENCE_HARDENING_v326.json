@@ -1,0 +1,44 @@
+{
+  "format": "verto-persistence-hardening-v326",
+  "session": 326,
+  "execution_input_zip": "Verto-v325-static-implementation-blocked-environment.zip",
+  "execution_input_sha256": "73b59b241791f0cf336309817257c3fc1003d5b2afd035d91b7e7ae139d1bbae",
+  "plan_sha256": "41fd0eacb9e4ed3cf5203baa2675a6a1031517ca51fe45b0a6b2f3a53d661a2d",
+  "input_tree_fingerprint": "3a6dd84806d3f4cc672ff0c42fd748dba4d4f728cba12bda72b1385f33abd4a5",
+  "source_tree_fingerprint": "720f13c50454ca9cdf632a1e3f82da7b9aedaefe79c68110179aebb2c53458e2",
+  "fingerprint_scope": "all source and governance files excluding build outputs and this report pair",
+  "schema": {
+    "room_version_before": 81,
+    "room_version_after": 81,
+    "schema_changed": false,
+    "migration_added": false,
+    "sql_or_server_changed": false,
+    "schema_fingerprint": "9854f9c68b1d7338edf3a47d090e77a0cee27eb6d99c0ca06e2e1dbf82293d26"
+  },
+  "static_gates": {
+    "change-contract": "PASS",
+    "architecture": "PASS",
+    "dependency": "PASS",
+    "data-ownership": "PASS",
+    "persistence-boundary": "PASS",
+    "transaction-contract": "PASS",
+    "migration-schema": "PASS",
+    "persistence-ratchet": "PASS",
+    "technical-debt-ratchet": "PASS",
+    "differential-quality": "PASS",
+    "kotlin-quality": "PASS",
+    "documentation": "PASS",
+    "design-system": "PASS",
+    "design-system-diff": "PASS",
+    "unified-gate-self-test": "PASS"
+  },
+  "gradle": {
+    "status": "BLOCKED_ENVIRONMENT",
+    "reason": "Gradle wrapper could not create its lock file under /root/.gradle",
+    "unexecuted": ["detekt", "lint", "testDebugUnitTest", "assembleDebug"]
+  },
+  "final_admission": "BLOCKED_ENVIRONMENT",
+  "source_of_truth_admission": "FAIL",
+  "handoff327Authorized": true,
+  "handoffMode": "STATIC_PERSISTENCE_HARDENING_ONLY"
+}

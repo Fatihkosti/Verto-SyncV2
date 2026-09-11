@@ -1,0 +1,26 @@
+# v240 allowed delta from v239
+Verto-v240-report.md
+docs/logistics/v240/V240_IMPLEMENTATION_CONTRACT.md
+docs/logistics/v240/V240_SESSION_ALLOWLIST.txt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/CompleteLogisticsCustomsUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/CorrectLogisticsActualTimeUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/EvaluateLogisticsDelayUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/InsertUnplannedLogisticsMilestoneUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/RecordLogisticsMilestoneArrivalUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/RecordLogisticsMilestoneDepartureUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/ResolveLogisticsOperationalStatusUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/StartLogisticsCustomsUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/UpdateFutureShipmentLegUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/UpdateMilestoneHandlingUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/UpdateShipmentEtaUseCase.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/domain/policy/LogisticsV240ExecutionPolicy.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/domain/validation/LogisticsValidation.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailContent.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailDialogs.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailScreen.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2OperationalComponents.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2OperationalWriter.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PresentationMappers.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2ViewModel.kt
+feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LogisticsV240StationCustomsExecutionTest.kt
+feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV240StationReceiptTest.kt

@@ -1,0 +1,78 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.management.domain.repository.ManagementIntegrationBadgeContributor",
+      "com.verto.app.feature.management.domain.repository.ManagementIntegrationContributor"
+    ],
+    "external_dependencies": [
+      "implementation:libs.androidx.compose.foundation",
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app"
+    ],
+    "internal_packages": [
+      "com.verto.app.feature.management.data",
+      "com.verto.app.feature.management.di",
+      "com.verto.app.feature.management.domain.model",
+      "com.verto.app.feature.management.domain.repository",
+      "com.verto.app.feature.management.navigation",
+      "com.verto.app.feature.management.presentation"
+    ],
+    "outgoing_dependencies": [
+      ":core:common",
+      ":core:designsystem"
+    ],
+    "public_api": [
+      "com.verto.app.feature.management.domain.model.ManagementIntegration",
+      "com.verto.app.feature.management.domain.model.ManagementIntegrationBadge",
+      "com.verto.app.feature.management.domain.model.ManagementIntegrationBadgeTone",
+      "com.verto.app.feature.management.domain.model.ManagementIntegrationIcon",
+      "com.verto.app.feature.management.domain.model.ManagementIntegrationId",
+      "com.verto.app.feature.management.domain.repository.ManagementIntegrationBadgeContributor",
+      "com.verto.app.feature.management.domain.repository.ManagementIntegrationContributor",
+      "com.verto.app.feature.management.navigation.BenzineNavigation",
+      "com.verto.app.feature.management.navigation.ManagementNavigation",
+      "com.verto.app.feature.management.presentation.BenzineManagementScreen",
+      "com.verto.app.feature.management.presentation.ManagementScreen"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [
+      "ManagementIntegrationBadgeContributor",
+      "ManagementIntegrationCatalog",
+      "ManagementIntegrationContributor"
+    ],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:management",
+    "name": "feature/management",
+    "owner": ":feature:management",
+    "purpose": "Production capability implemented by :feature:management; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [],
+    "legacy_cross_feature_debt": []
+  },
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "5eb496713dcfc21b4f8f2f9a4839006a50f83c48673cf0126d79b2819ef450df",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v318"
+  }
+}

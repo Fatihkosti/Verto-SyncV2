@@ -1,0 +1,458 @@
+{
+  "cycles": [],
+  "evidence": {
+    "cross_feature_presentation_imports": [],
+    "data_to_feature_presentation_files": [],
+    "large_production_files_over_500": [
+      {
+        "lines": 1877,
+        "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryDao.kt"
+      },
+      {
+        "lines": 1487,
+        "path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2OperationalWriter.kt"
+      },
+      {
+        "lines": 1325,
+        "path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2ViewModel.kt"
+      },
+      {
+        "lines": 1189,
+        "path": "data/database/src/main/kotlin/com/verto/app/data/local/entity/LogisticsEntities.kt"
+      },
+      {
+        "lines": 790,
+        "path": "app/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsShipmentStoreAdapters.kt"
+      },
+      {
+        "lines": 760,
+        "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/InvoiceDao.kt"
+      },
+      {
+        "lines": 719,
+        "path": "app/src/main/kotlin/com/verto/app/feature/invoice/bridge/InvoiceAppAdapters.kt"
+      },
+      {
+        "lines": 657,
+        "path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PresentationModels.kt"
+      },
+      {
+        "lines": 655,
+        "path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailDialogs.kt"
+      },
+      {
+        "lines": 599,
+        "path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/domain/validation/LogisticsValidation.kt"
+      },
+      {
+        "lines": 577,
+        "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/LogisticsDao.kt"
+      },
+      {
+        "lines": 566,
+        "path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailSections.kt"
+      },
+      {
+        "lines": 548,
+        "path": "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/application/InvoiceWriteCoordinator.kt"
+      },
+      {
+        "lines": 540,
+        "path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailContent.kt"
+      },
+      {
+        "lines": 538,
+        "path": "app/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsDraftProgressDataStore.kt"
+      },
+      {
+        "lines": 527,
+        "path": "data/database/src/main/kotlin/com/verto/app/data/local/entity/InvoicePaymentEntities.kt"
+      },
+      {
+        "lines": 518,
+        "path": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/domain/model/LogisticsModels.kt"
+      },
+      {
+        "lines": 512,
+        "path": "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt"
+      },
+      {
+        "lines": 511,
+        "path": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt"
+      },
+      {
+        "lines": 506,
+        "path": "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations69To70.kt"
+      },
+      {
+        "lines": 503,
+        "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierPaymentScreen.kt"
+      }
+    ],
+    "presentation_to_raw_data_files": []
+  },
+  "format": "verto-architecture-scan-v1",
+  "metrics": {
+    "app_composition_files": {
+      "invoice": 5,
+      "payment": 6,
+      "reports": 2,
+      "shipment": 16
+    },
+    "app_feature_implementation_files": {
+      "invoice": 0,
+      "payment": 0,
+      "reports": 0,
+      "shipment": 0
+    },
+    "app_owned_feature_kotlin_files": {
+      "invoice": 0,
+      "payment": 0,
+      "reports": 0,
+      "shipment": 0
+    },
+    "cross_feature_presentation_imports": 0,
+    "data_to_feature_presentation_files": 0,
+    "dependency_cycles": 0,
+    "large_production_files_over_500": 21,
+    "modules": 31,
+    "presentation_to_raw_data_files": 0,
+    "room": 76
+  },
+  "module_graph": {
+    ":app": [
+      ":core:audit",
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:export",
+      ":core:notification",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":data:operations",
+      ":data:preferences",
+      ":data:sync",
+      ":feature:auth",
+      ":feature:commission",
+      ":feature:dashboard",
+      ":feature:expenses",
+      ":feature:integration:optimal",
+      ":feature:inventory",
+      ":feature:invoice",
+      ":feature:management",
+      ":feature:messages",
+      ":feature:notifications",
+      ":feature:organization",
+      ":feature:party",
+      ":feature:payment",
+      ":feature:profile",
+      ":feature:reports",
+      ":feature:settings",
+      ":feature:shipment"
+    ],
+    ":core:audit": [
+      ":core:session"
+    ],
+    ":core:common": [],
+    ":core:crash": [
+      ":core:common"
+    ],
+    ":core:designsystem": [
+      ":core:common"
+    ],
+    ":core:export": [],
+    ":core:notification": [],
+    ":core:session": [],
+    ":data:database": [
+      ":core:audit",
+      ":core:common"
+    ],
+    ":data:network": [
+      ":core:common",
+      ":core:session",
+      ":data:database",
+      ":data:preferences"
+    ],
+    ":data:operations": [
+      ":core:audit",
+      ":core:common",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":data:preferences",
+      ":data:sync",
+      ":feature:inventory",
+      ":feature:invoice",
+      ":feature:organization",
+      ":feature:party",
+      ":feature:payment",
+      ":feature:reports"
+    ],
+    ":data:preferences": [
+      ":core:common"
+    ],
+    ":data:sync": [
+      ":core:common",
+      ":core:notification",
+      ":data:database",
+      ":data:network"
+    ],
+    ":feature:auth": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem"
+    ],
+    ":feature:commission": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:export"
+    ],
+    ":feature:dashboard": [
+      ":core:audit",
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ],
+    ":feature:dashboard:api": [],
+    ":feature:expenses": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":feature:dashboard:api"
+    ],
+    ":feature:integration:optimal": [
+      ":core:audit",
+      ":core:common",
+      ":core:designsystem",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":feature:dashboard:api",
+      ":feature:invoice",
+      ":feature:management",
+      ":feature:messages",
+      ":feature:party",
+      ":feature:payment"
+    ],
+    ":feature:inventory": [
+      ":core:audit",
+      ":core:common",
+      ":core:designsystem",
+      ":core:export",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":data:preferences",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ],
+    ":feature:invoice": [
+      ":core:audit",
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:export",
+      ":core:notification",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ],
+    ":feature:management": [
+      ":core:common",
+      ":core:designsystem"
+    ],
+    ":feature:messages": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":data:database"
+    ],
+    ":feature:notifications": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:notification"
+    ],
+    ":feature:organization": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem"
+    ],
+    ":feature:party": [
+      ":core:audit",
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":data:preferences",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ],
+    ":feature:payment": [
+      ":core:audit",
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:notification",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ],
+    ":feature:profile": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem"
+    ],
+    ":feature:reports": [
+      ":core:audit",
+      ":core:common",
+      ":core:designsystem",
+      ":core:export",
+      ":core:session"
+    ],
+    ":feature:settings": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem"
+    ],
+    ":feature:shipment": [
+      ":core:audit",
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:notification",
+      ":core:session",
+      ":data:database",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ]
+  },
+  "rule_counts": {
+    "VARCH-003": 4,
+    "VARCH-005": 2,
+    "VARCH-012": 12
+  },
+  "violations": [
+    {
+      "detail": "Domain imports another feature: messages",
+      "path": "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/domain/model/OptimalAttachment.kt",
+      "rule_id": "VARCH-003",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Domain imports another feature: messages",
+      "path": "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/domain/model/OptimalChat.kt",
+      "rule_id": "VARCH-003",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Domain imports another feature: messages",
+      "path": "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/domain/port/OptimalMessagingPort.kt",
+      "rule_id": "VARCH-003",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Domain imports another feature: invoice",
+      "path": "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/domain/port/OptimalOwnerPorts.kt",
+      "rule_id": "VARCH-003",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Application imports Room/local/remote infrastructure",
+      "path": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/quickstock/QuickStockCountPdfGenerator.kt",
+      "rule_id": "VARCH-005",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Application imports Room/local/remote infrastructure",
+      "path": "feature/party/src/main/kotlin/com/verto/app/feature/party/application/CalculateClientBalanceUseCase.kt",
+      "rule_id": "VARCH-005",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:dashboard:api",
+      "path": ":feature:expenses",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:dashboard:api",
+      "path": ":feature:integration:optimal",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:invoice",
+      "path": ":feature:integration:optimal",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:management",
+      "path": ":feature:integration:optimal",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:messages",
+      "path": ":feature:integration:optimal",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:party",
+      "path": ":feature:integration:optimal",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:payment",
+      "path": ":feature:integration:optimal",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:dashboard:api",
+      "path": ":feature:inventory",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:dashboard:api",
+      "path": ":feature:invoice",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:dashboard:api",
+      "path": ":feature:party",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:dashboard:api",
+      "path": ":feature:payment",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    },
+    {
+      "detail": "Unauthorized feature module dependency -> :feature:dashboard:api",
+      "path": ":feature:shipment",
+      "rule_id": "VARCH-012",
+      "severity": "ERROR"
+    }
+  ]
+}

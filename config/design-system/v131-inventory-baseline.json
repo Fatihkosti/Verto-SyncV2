@@ -1,0 +1,97 @@
+{
+  "version": 131,
+  "scope": "feature/inventory presentation",
+  "policy": "No scattered dp/sp/raw Color literals outside InventoryDesignTokens.kt; no local palette or business-state color definitions.",
+  "scatteredPresentationLiterals": {
+    "dp": 0,
+    "sp": 0,
+    "color": 0
+  },
+  "inventoryTokenFile": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryDesignTokens.kt",
+  "tokenFileLiterals": {
+    "dp": 43,
+    "sp": 10,
+    "color": 0
+  },
+  "localPaletteNames": [],
+  "files": [
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemComponents.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemScreen.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/BulkPriceEditScreen.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/CategoryManagementScreen.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryDocumentService.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryPermissionGate.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryReadState.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreen.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreenComponents.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryViewModel.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListComponents.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListScreen.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    },
+    {
+      "file": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListViewModel.kt",
+      "dp": 0,
+      "sp": 0,
+      "color": 0
+    }
+  ]
+}

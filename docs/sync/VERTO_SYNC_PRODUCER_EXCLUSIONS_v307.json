@@ -1,0 +1,96 @@
+{
+  "session": 307,
+  "wildcardsAllowed": false,
+  "exclusions": [
+    {
+      "id": "V307-EX-001",
+      "file": "app/src/main/kotlin/com/verto/app/feature/settings/bridge/SettingsOperationsGatewayAdapter.kt",
+      "symbol": "resetData",
+      "reason": "Explicit device-local destructive reset; not a server mutation command. Server data is intentionally not deleted and may rehydrate later.",
+      "origin": "LOCAL_ONLY_NON_SYNCED",
+      "aggregate_id": null,
+      "evidence": "SettingsDataScope reset switch"
+    },
+    {
+      "id": "V307-EX-002",
+      "file": "app/src/main/kotlin/com/verto/app/feature/payment/bridge/PaymentPresentationBridge.kt",
+      "symbol": "saveInvoiceDraft/deleteDraft",
+      "reason": "Editor draft cache only; canonical posted invoice producer is the financial transaction coordinator.",
+      "origin": "LOCAL_ONLY_NON_SYNCED",
+      "aggregate_id": "INVOICE",
+      "evidence": "invoiceDraftDao local editor state"
+    },
+    {
+      "id": "V307-EX-003",
+      "file": "app/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsDraftProgressDataStore.kt",
+      "symbol": "draft progress writes",
+      "reason": "Per-user presentation progress cache; not shipment domain state.",
+      "origin": "LOCAL_ONLY_NON_SYNCED",
+      "aggregate_id": "SHIPMENT",
+      "evidence": "DataStore draft cursor/progress"
+    },
+    {
+      "id": "V307-EX-004",
+      "file": "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionControllerAdapter.kt",
+      "symbol": "deleteCommissionPayment",
+      "reason": "Not a producer: COMMISSION_PAYMENT is NO_CLIENT_DELETE and the action now fails closed before any DAO/DataStore mutation.",
+      "origin": "LOCAL_ONLY_NON_SYNCED",
+      "aggregate_id": "COMMISSION_PAYMENT",
+      "evidence": "FAIL_DELETE_POLICY"
+    },
+    {
+      "id": "V307-EX-005",
+      "file": "data/operations/src/main/kotlin/com/verto/app/data/repository/CashReconciliationRepository.kt",
+      "symbol": "deleteSession",
+      "reason": "Not a producer: CASH_RECONCILIATION is NO_CLIENT_DELETE and the action fails closed before mutation.",
+      "origin": "LOCAL_ONLY_NON_SYNCED",
+      "aggregate_id": "CASH_RECONCILIATION",
+      "evidence": "FAIL_DELETE_POLICY"
+    },
+    {
+      "id": "V307-EX-006",
+      "file": "data/operations/src/main/kotlin/com/verto/app/data/repository/CostAllocationRepository.kt",
+      "symbol": "saveAllocation/saveAllocations/deleteBySourceId",
+      "reason": "No production callsite in v307; retained compatibility API, server semantics remain owner 310.",
+      "origin": "LOCAL_ONLY_NON_SYNCED",
+      "aggregate_id": "COST_ALLOCATION",
+      "evidence": "repository methods have no production callers"
+    },
+    {
+      "id": "V307-EX-007",
+      "file": "data/network/src/main/kotlin/com/verto/app/data/sync/SyncClients.kt",
+      "symbol": "pullClients",
+      "reason": "Legacy remote apply consumer; must not enqueue a producer mutation.",
+      "origin": "REMOTE_APPLY",
+      "aggregate_id": "PARTY_IDENTITY",
+      "evidence": "pull participant"
+    },
+    {
+      "id": "V307-EX-008",
+      "file": "data/network/src/main/kotlin/com/verto/app/data/sync/SyncMisc.kt",
+      "symbol": "pullNotes/pullReminders/pullCommissions",
+      "reason": "Legacy remote apply consumers; echo enqueue is forbidden.",
+      "origin": "REMOTE_APPLY",
+      "aggregate_id": null,
+      "evidence": "pull participants"
+    },
+    {
+      "id": "V307-EX-009",
+      "file": "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/data/education/EducationalContentSyncParticipant.kt",
+      "symbol": "pullTopics",
+      "reason": "Remote apply consumer; producer capture lives in RoomEducationalContentRepository.",
+      "origin": "REMOTE_APPLY",
+      "aggregate_id": "EDUCATIONAL_CONTENT",
+      "evidence": "pullTopics"
+    },
+    {
+      "id": "V307-EX-010",
+      "file": "data/operations/src/main/kotlin/com/verto/app/data/repository/Orgsettingsrepository.kt",
+      "symbol": "hydrateLegacyCacheIfMissing",
+      "reason": "One-time DataStore-to-Room cache hydration after migration 78→79; explicitly no outbox.",
+      "origin": "CACHE_HYDRATION",
+      "aggregate_id": "ORGANIZATION_SETTINGS",
+      "evidence": "dao upsert without outbox inside hydration method"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+format: verto-technical-debt-registry-v1
+session: 323
+source: v322
+entries:
+  - id: TD-323-INV-DAO-GOD
+    location: data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryDao.kt
+    identity: InventoryDao
+    category: oversized-multi-responsibility-dao
+    severity: CRITICAL
+    risk_score: 58
+    owner: data-database
+    baseline: 1881
+    target: thin-room-entry-point-with-cohesive-contracts
+    status: RESOLVED_323
+    remediation_session: 323
+  - id: TD-323-INV-TRANSACTION-MAP
+    location: data/database/src/main/kotlin/com/verto/app/data/local/dao
+    identity: inventory-transaction-boundaries
+    category: transaction-boundary-risk
+    severity: CRITICAL
+    risk_score: 55
+    owner: data-database
+    baseline: 25
+    target: 25
+    status: RESOLVED_323
+    remediation_session: 323
+  - id: TD-323-CONSUMER-NARROWING
+    location: feature/inventory and data/network consumers
+    identity: legacy-inventory-dao-consumer-surfaces
+    category: dependency-surface
+    severity: HIGH
+    risk_score: 34
+    owner: feature-inventory
+    baseline: compatibility facade consumers remain
+    target: narrow ports by consumer
+    status: DEFERRED_324
+    remediation_session: 324
+  - id: TD-323-RESIDUAL-LONG-FUNCTIONS
+    location: inventory transaction operation contracts
+    identity: high-risk-transaction-helper-complexity
+    category: long-function-complexity
+    severity: HIGH
+    risk_score: 42
+    owner: data-database
+    baseline: mandatory high-risk functions
+    target: further helper decomposition
+    status: DEFERRED_324
+    remediation_session: 324

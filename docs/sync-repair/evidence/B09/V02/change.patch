@@ -1,0 +1,481 @@
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,3 +1,11 @@
++## Verto sync repair B09-V02 — shared payment-write false conflict repaired; runtime gate still blocked — 2026-09-10
++- Resumed the uploaded B09-V01 tree at its explicit B09.01 NEXT_ACTION; all 1,851 prior product-manifest entries matched. No B10 work or server change.
++- Reproduced a receive-side false conflict: InvoiceVoidCoordinator emits distinct payment reversals with the same request/write ID, while the validator incorrectly required unique PAYMENT businessIdentity. Preserve paymentId/hash uniqueness, permit shared payment write correlation, and retain non-payment business-key uniqueness.
++- Added three JVM and two Room regression methods for shared reversals, replay, duplicate identities and immutable-content protection (totals: 12 JVM / 33 Room; NOT_RUN).
++- Re-ran 347 actual Kotlin mapping/Money assertions and three actual semantic-validator identity checks (codec stubbed), plus 612 source/SQLite-model checks and B06 schema/producer static gates. The prior regression failed before the fix and passed afterwards.
++- Updated canonical idempotency documentation, Backlog and evidence. DTOs, golden fixture, schema98, frozen packets, domain rules and external services are unchanged. Gradle8.9/Android runtime prerequisites remain missing; G-B09 remains BLOCKED and NEXT remains B09.01 validation, not B10.
++- Documentation baseline comparison: existing gate failures remain; the two new evidence documents are inventoried. No full quality or release admission claimed.
++
+ ## Verto sync repair B09-V01 — full financial remote materializer implemented; validation blocked — 2026-09-10
+ - Replaced the INVOICE/PAYMENT FinancialInbox-only receive route with `FinancialMaterializerV2`: strict v2 DTO/envelope/scope/hash/version validation; proven party/inventory references; all nine financial tables and 153 DTO fields.
+ - Added lossless shared producer/receiver mappers, ABORT inserts, selective mutable updates, immutable equality, explicit child tombstones, return/purchase-match protection, and dependency-ordered reversals. Minor values remain Long; compatibility doubles are one-way projections.
+--- a/EVIDENCE_INDEX.md
++++ b/EVIDENCE_INDEX.md
+@@ -101,6 +101,18 @@
+ - `change.patch`, `changed-files.json`, `artifact-hashes.sha256` preserve current provenance. All filenames in this section resolve under `docs/sync-repair/evidence/B09/V01/` unless explicitly rooted.
+ - Historical B04/B05/B06/app compile results need recheck for the touched code. No Txx, live server, device case, signing or release status was advanced.
+ 
++## B09-V02
++
++- Resume/audit report: `docs/sync-repair/evidence/B09/V02/session-report.md`.
++- Input ZIP hash and matching B09-V01 product manifest: `input-validation.json`; immutable archive snapshot: `input-tree.json`.
++- Observed false conflict and fixed result: `shared-write-before.log`, `kotlin-smoke-after.log`. The semantic validator is real Kotlin, but its codec collaborator is stubbed; NOT a JSON/JVM/Room acceptance run.
++- Source/Room98-schema SQLite model: `sqlite-static.log`, `sqlite-static-results.json`; 612 checks.
++- Offline environment preflight: `runtime-preflight.py`, `runtime-preflight.log`, `runtime-environment.json`; no network or wrapper download attempted.
++- Scope/documentation checks: `change-contract.json`, `change-contract-result.json`, `documentation-gate.json`; documentation FAIL compared to `documentation-baseline.json` via `documentation-delta.json` (no new errors). Integrated documentation permission failure is recorded, not waived.
++- Product/archive lineage: `product-tree.json`, `changed-files.json`, `change.patch`, `artifact-hashes.sha256`.
++- Three new JVM and two new Room regression methods: total 12 JVM / 33 Room supplied, NOT_RUN. NEXT B09.01; G-B09 BLOCKED; B10 untouched.
++- Filenames in this section are under `docs/sync-repair/evidence/B09/V02/` unless fully rooted.
++
+ ## Verified command map from project files
+ 
+ | Layer | Command supplied by the project | Current B01 environment status |
+--- a/SYNC_IMPLEMENTATION_MAP.md
++++ b/SYNC_IMPLEMENTATION_MAP.md
+@@ -1,6 +1,6 @@
+ # Verto sync repair implementation map
+ 
+-This map is current through `B09-V01` implementation. The new Room materializer is wired in production source, but G-B09 validation is BLOCKED. Earlier verification cells are historical B06 evidence, not current full-build/Room PASS.
++This map is current through `B09-V02` implementation. The new Room materializer is wired in production source, but G-B09 validation is BLOCKED. Earlier verification cells are historical B06 evidence, not current full-build/Room PASS.
+ 
+ | Contract area | Production implementation | Verification |
+ |---|---|---|
+@@ -19,7 +19,7 @@
+ 
+ | Contract area | Actual source | Current evidence |
+ |---|---|---|
+-| Exact DTO shape, required nullable/default fields, strict enum/rate/version/ref rules | `data/sync/.../pull/FinancialMaterializationContractV2.kt` | 9 JVM + 31 Room methods supplied; NOT_RUN. Selected Kotlin signature smoke only. |
++| Exact DTO shape, required nullable/default fields, strict enum/rate/version/ref rules | `data/sync/.../pull/FinancialMaterializationContractV2.kt` | 12 JVM + 33 Room methods supplied; NOT_RUN. Selected Kotlin signature smoke only. |
+ | Nine tables / 153 business fields; Minor-to-compatibility one-way mapping | `data/network/.../FinancialEntityMappingsV2.kt`; producer `FinancialSnapshotFactoryV2.kt` | 347 actual Kotlin mapping assertions PASS; no JSON runtime in smoke. |
+ | Selective insertion/update, explicit child deletion, protected references | `data/database/.../dao/FinancialMaterializationDao.kt`; inherited by `InvoiceDao` | 25 SQL statements prepared on real schema98; Python-model rollback/roundtrip checks; actual Room tests NOT_RUN. |
+ | Financial transaction / authority / cross-scope checks | `FinancialMaterializerV2.kt`; `SyncPendingProtection.kt` | Source and schema checks; actual Room failure injection and child protection tests supplied. |
+@@ -28,3 +28,18 @@
+ | Snapshot cutover reuse | `recovery/UnifiedSyncSnapshotApplier.kt` | Financial baseline must be actual positive server baseline; no synthetic financial version/revision; full B13 bootstrap/pruning remains deferred. |
+ 
+ See `docs/sync-repair/evidence/B09/V01/materialization-map.md` for full paths, signature trace and owner boundaries. Session resumes at B09.01 verification; B10 is not started.
++
++## B09-V02 identity correction
++
++`FinancialMaterializationContractV2.validate` now distinguishes immutable payment fact ID
++from shared write correlation. It permits distinct reversals emitted by one invoice-void
++write without changing B06 DTOs/hashes or frozen packets. Duplicate fact IDs and non-payment
++business identities still fail. Existing immutable payment content is still compared by the
++unchanged materializer/effect verifier.
++
++Evidence: `docs/sync-repair/evidence/B09/V02/shared-write-before.log` reproduces the prior
++false conflict in the real Kotlin semantic validator with a stubbed codec. The after-run
++passes three identity assertions and 347 mapping/Money assertions. The 612 source/SQLite
++model checks pass separately. These are not JSON/Room/KSP/Hilt execution. Added 3 JVM and
++2 Room regression methods; totals 12/33 remain NOT_RUN. G-B09 is BLOCKED, NEXT is B09.01,
++and B10 has not been started. Full detail: `docs/sync-repair/evidence/B09/V02/session-report.md`.
+--- a/VERTO_SYNC_REPAIR_BACKLOG_AR.md
++++ b/VERTO_SYNC_REPAIR_BACKLOG_AR.md
+@@ -34,20 +34,20 @@
+ EXECUTION_BRANCH: NO_GIT_TREE_HASH_MODE
+ LAST_WORKING_PRODUCT_COMMIT: null
+ LAST_VERIFIED_PRODUCT_COMMIT: null
+-LAST_PRODUCT_TREE_SHA256: 65aacd59b1c71ae3b5f8353841c999ab536770dd13f818147bf3dd84632344c9
+-WORKTREE_CHECKPOINT: B09-V01
++LAST_PRODUCT_TREE_SHA256: 2aa1a4e16d9ea9d1d37fd9b33fc0bc730616a288634da78c7aa56fc3ad97bbc7
++WORKTREE_CHECKPOINT: B09-V02
+ OVERALL_STATUS: IN_PROGRESS_WITH_BLOCKERS
+ EXECUTION_MODE: EXECUTION_TREE_HASH_MODE
+ CURRENT_SESSION: B09
+-CURRENT_TASK: B09.05
+-CURRENT_VISIT: 1
++CURRENT_TASK: B09.04
++CURRENT_VISIT: 2
+ LAST_COMPLETED_SESSION: B06
+-LAST_CHECKPOINT_ID: B09-V01
++LAST_CHECKPOINT_ID: B09-V02
+ NEXT_SESSION: B09
+ NEXT_TASK: B09.01
+-NEXT_ACTION: 'B09.01: شغل الاختبارات الفعلية المرفقة FinancialMaterializationContractV2Test وFinancialMaterializerV2InstrumentedTest ثم compileDebugKotlin؛ أصلح أي فشل وحدّث أدلة B09.01–B09.05؛ لا تعِد تنفيذ المطبق ولا تبدأ B10 قبل G-B09.'
+-NEXT_ACTION_PRECONDITIONS: 'بيئة Gradle 8.9/اعتماديات Android متاحة وجهاز أو محاكي؛ ابدأ من B09-V01 المرفقة لا من Verto-425 الأصلية؛ لا SQL حي ولا استبدال Room بنموذج SQLite لإغلاق البوابة.'
+-RESUME_FROM: 'كود الأقسام الخمسة منفذ في B09-V01؛ 31 اختبار Room و9 JVM مرفقة وغير مشغلة؛ 612 فحص مصدر/SQLite و347 تحقق Kotlin mapping نجحت ضمن حدودها. B09-BLK-01 يمنع اعتماد G-B09؛ B07/B08 محجوبتان كما سابقًا.'
++NEXT_ACTION: 'B09.01: شغل 12 اختبار JVM في FinancialMaterializationContractV2Test و33 Room في FinancialMaterializerV2InstrumentedTest ثم compileDebugKotlin؛ أصلح الفشل وحدّث B09.01–B09.05؛ لا تبدأ B10 قبل G-B09.'
++NEXT_ACTION_PRECONDITIONS: 'Gradle 8.9 واعتماديات Android وSDK وجهاز أو محاكي متاحة؛ ابدأ من B09-V02؛ أوامر التشغيل في evidence/B09/V02/commands-and-results.md؛ لا SQL حي ولا بديل SQLite لإغلاق Room.'
++RESUME_FROM: 'B09-V02 أصلحت رفض دفعات عكس مختلفة تشترك في writeId وأبقت منع تكرار factId؛ 3 JVM و2 Room أضيفت: الإجمالي 12/33 NOT_RUN؛ 347 mapping و3 semantic مع codec stub و612 source/SQLite نجحت ضمن حدودها؛ G-B09 BLOCKED.'
+ COMPLETED_SESSIONS: 5
+ TOTAL_SESSIONS: 22
+ COMPLETED_TASKS: 28
+@@ -69,7 +69,7 @@
+ USER_DEVICE_CASE_STATUS: NOT_VERIFIED
+ PRODUCTION_DEPLOYMENT_STATUS: NOT_STARTED
+ LAST_UPDATED_AT: '2026-09-10'
+-LAST_UPDATED_BY: 'B09-V01؛ تنفيذ التطبيق المالي والربط والاختبارات كاملًا على مستوى الكود؛ الإغلاق BLOCKED لغياب Gradle/Android؛ لا إعفاء أو PASS مفترض'
++LAST_UPDATED_BY: 'B09-V02؛ تصحيح هوية أثر PAYMENT واختبارات رجعية؛ البيئة محجوبة دون محاولة شبكة؛ لا PASS مفترض ولا B10'
+ ```
+ <!-- BACKLOG_STATE_END -->
+ 
+@@ -165,7 +165,7 @@
+ | [B06](#b06) | E2 | DTO v2 ومصانع اللقطة الكاملة وربط المنتجين | B05 | DONE | 5/5 | PASS | B06-V01؛ schema/producer PASS؛ JVM 195/195؛ Room 2/2؛ app compile PASS |
+ | [B07](#b07) | E2 | خادم المجموعات والإيصالات وعدم تكرار الأثر | B02، B05، B06 | TODO | 0/5 | NOT_EVALUATED | — |
+ | [B08](#b08) | E2 | قراءة الخادم القانونية وDelta وBootstrap | B07 | TODO | 0/5 | NOT_EVALUATED | — |
+-| [B09](#b09) | E3 | التطبيق المالي الفعلي داخل Room | B03، B04، B06 | BLOCKED | 0/5 | BLOCKED | B09-V01: تنفيذ الأقسام الخمسة موجود؛ اعتمادها ينتظر 31 Room و9 JVM وGradle؛ B09-BLK-01 |
++| [B09](#b09) | E3 | التطبيق المالي الفعلي داخل Room | B03، B04، B06 | BLOCKED | 0/5 | BLOCKED | B09-V02: إصلاح shared writeId مع حفظ factId؛ 33 Room و12 JVM تنتظر التشغيل؛ G-B09 BLOCKED |
+ | [B10](#b10) | E3 | Inbox الدائم والتبعيات والصفحات الكبيرة | B05، B09 | TODO | 0/5 | NOT_EVALUATED | — |
+ | [B11](#b11) | E3 | واجهة حل التعارض والتدقيق | B10 | TODO | 0/5 | NOT_EVALUATED | — |
+ | [B12](#b12) | E3 | المصروف القابل للتحديث وتاريخ النقد | B06، B09، B11 | TODO | 0/5 | NOT_EVALUATED | — |
+@@ -187,7 +187,7 @@
+ | E0 | B01–B02 | المصدر والنسخ والتعريفات مثبتة، أو BLOCKED صريح لا PASS. | BLOCKED | B01 PASS؛ B02 نسخة الجهاز/البيئة المعزولة BLOCKED مع تجاوز الفرع المدفوع |
+ | E1 | B03–B05 | اختبارات الهجرة وCAS وثبات المحتوى والحماية تجتاز. | PASS | B03–B05 PASS محليًا؛ B05 JVM 95/95 وAndroid 12/12 وapp compile؛ لا يرقّي Txx أو بوابة E2 |
+ | E2 | B06–B08 | round-trip PostgreSQL وإسقاط الرد ومنع ازدواج الأثر تجتاز. | NOT_EVALUATED | — |
+-| E3 | B09–B13 | استعادة مالية كاملة فوق قاعدة نظيفة وفوق pending محمي، مع تكرار آمن. | BLOCKED | B09-V01 كود محلي؛ G-B09/Room وB07/B08 غير متحققة؛ لا تكامل جهازين |
++| E3 | B09–B13 | استعادة مالية كاملة فوق قاعدة نظيفة وفوق pending محمي، مع تكرار آمن. | BLOCKED | B09-V02 كود محلي مصحح؛ G-B09/Room وB07/B08 غير متحققة؛ لا تكامل جهازين |
+ | E4 | B14–B16 | لا مصدر مجهول مخفي؛ نتائج dry-run ثم اختبارات قاعدة الحالة متطابقة. | NOT_EVALUATED | — |
+ | E5 | B17–B19 | لا pending مع COMPLETED، وملف حقيقي موثق بعد انقطاع وتشغيل. | NOT_EVALUATED | — |
+ | E6 | B20–B22 | كل معايير القسم 21 مثبتة؛ التقرير لا يرقّي اختبارات لم تُنفذ. | NOT_EVALUATED | — |
+@@ -464,16 +464,19 @@
+ 
+ | المهمة | التنفيذ المحدد | دليل اكتمال المهمة | الحالة | الدليل/commit |
+ |---|---|---|---|---|
+-| B09.01 | نفذ التحقق من scope/DTO/hash/financialStreamVersion والمراجع؛ مصدر بيانات العميل/المورد/الصنف يجب أن يكون مرجعًا مثبتًا لا اسم snapshot ينشئ بديلًا. | إدخال عقد ناقص لا يصبح APPLIED؛ الفاتورة بلا عميل تتبع تمثيل المشروع لا سجلًا مخترعًا. | BLOCKED | B09-V01: strict shape/scope/hash/version ومراجع مثبتة؛ كود واختبارات مرفقة؛ التحقق الفعلي محجوب |
+-| B09.02 | نفذ معاملة تطبيق الرأس والبنود والأقساط ثم الدفعات الأصلية والعكس والتخصيصات وFX ثم مستندات/سطور المرتجع وتخصيصاتها وفق التبعيات. | اختبارات Room فعلية لكل جدول وحقل وFK؛ لا نصف مجموعة عند قتل/فشل المعاملة. | BLOCKED | B09-V01: 9 جداول/153 حقل و31 Room test ومنها 13 حد rollback؛ Room NOT_RUN |
+-| B09.03 | نفذ selective insert/update، وإثبات tombstone وحماية المراجع؛ قارن immutable facts بالهوية/hash وmutable entities بالنسخة. | لا REPLACE لجذر يمسح أبناءه؛ لا حذف غائب من partial/FULL بلا شروطه؛ المطابق no-op والمختلف conflict. | BLOCKED | B09-V01: ABORT/selective + tombstones + return/purchase-match guards؛ 25 SQL statement تفحصت على schema98؛ Room NOT_RUN |
+-| B09.04 | اربط الآثار بأصحابها داخل المجموعة دون إنشاء نقد أو مخزون أو عمولة ثانية؛ snapshot تتضمن دفعة ورسالة دفع لنفس الحقيقة لا تضاعفها. | assertions على مفاتيح الحقائق ومجاميع Minor/المخزون؛ لا استدعاء منتجي الأعمال المحليين في REMOTE_APPLY. | BLOCKED | B09-V01: owner facts/payment dedup/Minor، لا منتج آثار؛ اختبارات المالك والتكرار موجودة؛ runtime NOT_RUN |
+-| B09.05 | حدث applied versions/APPLIED/checkpoint بعد نجاح الأعمال في المعاملة نفسها؛ اربط المطبق الحقيقي في مسار الاستقبال وHilt. | G-B09 يختبر Room ومنطق الإنتاج؛ T11–T13/T31 عبر جهازين تنتظر B20 إن لم تتوفر المنظومة بعد. | BLOCKED | B09-V01: مسار Pull/Hilt وAPPLIED/authority/checkpoint ذري؛ 9 JVM و31 Room تحتاج تشغيلًا؛ G-B09 BLOCKED |
++| B09.01 | نفذ التحقق من scope/DTO/hash/financialStreamVersion والمراجع؛ مصدر بيانات العميل/المورد/الصنف يجب أن يكون مرجعًا مثبتًا لا اسم snapshot ينشئ بديلًا. | إدخال عقد ناقص لا يصبح APPLIED؛ الفاتورة بلا عميل تتبع تمثيل المشروع لا سجلًا مخترعًا. | BLOCKED | B09-V02: strict scope/DTO/hash/version محفوظ؛ corrected PAYMENT writeId correlation؛ 12 JVM NOT_RUN؛ evidence/B09/V02/session-report.md |
++| B09.02 | نفذ معاملة تطبيق الرأس والبنود والأقساط ثم الدفعات الأصلية والعكس والتخصيصات وFX ثم مستندات/سطور المرتجع وتخصيصاتها وفق التبعيات. | اختبارات Room فعلية لكل جدول وحقل وFK؛ لا نصف مجموعة عند قتل/فشل المعاملة. | BLOCKED | B09-V02: المطبق السابق محفوظ؛ 33 Room test تشمل عكسًا متعددًا لنفس write؛ Room NOT_RUN؛ 612 source/SQLite PASS ليست Room |
++| B09.03 | نفذ selective insert/update، وإثبات tombstone وحماية المراجع؛ قارن immutable facts بالهوية/hash وmutable entities بالنسخة. | لا REPLACE لجذر يمسح أبناءه؛ لا حذف غائب من partial/FULL بلا شروطه؛ المطابق no-op والمختلف conflict. | BLOCKED | B09-V02: ABORT/selective وimmutable guards محفوظة؛ اختبار تغيير حقيقة مشتركة writeId أضيف؛ schema98 لم يتغير؛ Room NOT_RUN |
++| B09.04 | اربط الآثار بأصحابها داخل المجموعة دون إنشاء نقد أو مخزون أو عمولة ثانية؛ snapshot تتضمن دفعة ورسالة دفع لنفس الحقيقة لا تضاعفها. | assertions على مفاتيح الحقائق ومجاميع Minor/المخزون؛ لا استدعاء منتجي الأعمال المحليين في REMOTE_APPLY. | BLOCKED | B09-V02: fact identity فريد؛ PAYMENT writeId قد يتكرر لحقائق مختلفة؛ 3 semantic checks مع codec stub PASS؛ Room/JSON NOT_RUN |
++| B09.05 | حدث applied versions/APPLIED/checkpoint بعد نجاح الأعمال في المعاملة نفسها؛ اربط المطبق الحقيقي في مسار الاستقبال وHilt. | G-B09 يختبر Room ومنطق الإنتاج؛ T11–T13/T31 عبر جهازين تنتظر B20 إن لم تتوفر المنظومة بعد. | BLOCKED | B09-V02: ربط Pull/Hilt والمعاملة السابق محفوظ؛ 12 JVM و33 Room وapp/KSP/Hilt NOT_RUN؛ G-B09 BLOCKED |
+ 
+ **بوابة الجلسة:** G-B09: جميع مكونات اللقطة تطبق فعليًا في Room ذريًا، وتنجح اختبارات الحقول/المراجع/منع التكرار. التخزين في FinancialInbox وحده FAIL.
+ 
+ 
+ **زيارة B09-V01:** نفذت أقسام B09.01–B09.05 في الشجرة المرفقة، وأُزيل مسار حفظ FinancialInbox فقط من استقبال INVOICE/PAYMENT. لم تُغلق المهام لأن دليل Room المطلوب لم يعمل في هذه البيئة. `31` اختبار Room و`9` JVM موجودة؛ فحوص المصدر/SQLite (`612`) وKotlin mapping/Money (`347`) ليست بديلًا عن G-B09. تفاصيل الربط والحدود والأوامر في `docs/sync-repair/evidence/B09/V01/session-report.md`. لا تفويض مسجل لتجاوز هذه البوابة، ولا B10 منفذة ضمن هذه الزيارة.
++
++
++**زيارة B09-V02:** المصدر مطابق لـB09-V01 (1851 ملف منتج). كشف التحقق رفضًا خاطئًا عند اشتراك دفعات عكس مختلفة في `writeId`، وأُصلح مع بقاء `factId` وhash مستقلين. أضيفت 3 اختبارات JVM و2 Room؛ الإجمالي 12/33 غير مشغلة. أُعيد إنتاج الخطأ قبل التصحيح ونجح فحص Kotlin الدلالي بعده مع codec stub صريح، وليس تشغيل JSON/Room. بوابة G-B09 والمهام الخمس BLOCKED؛ لا B10 ولا تغيير سيرفر. الأدلة: `docs/sync-repair/evidence/B09/V02/session-report.md`.
+ 
+ **اختبارات العقد المرتبطة:** T11، T12، T13، T26، T29، T31
+ 
+@@ -868,9 +871,9 @@
+ | T08 | ACK قديم للفاتورة N مع تعديل N+1 | B05 | NOT_RUN | NONE | — | — |
+ | T09 | تعديل بند مع نفس الإجمالي وعدد البنود | B06 | NOT_RUN | PARTIAL_LOCAL_NOT_TXX | B06-V01 item-only hash precursor PASS | لا PostgreSQL/جهازين؛ السيناريو الكامل لاحق |
+ | T10 | صف بلا مؤسسة مثبتة أو أصل دفع مفقود | B14 | NOT_RUN | NONE | — | — |
+-| T11 | بيع A ببندين ودفعة، ثم سحب B | B09 | NOT_RUN | NONE | B09-V01: source/SQLite/Kotlin precursors فقط؛ 31 Room و9 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
+-| T12 | شراء محلي وآخر دولي بعملات/FX مسجلة | B09 | NOT_RUN | NONE | B09-V01: source/SQLite/Kotlin precursors فقط؛ 31 Room و9 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
+-| T13 | إنشاء/تعديل/دفعة/عكس/مرتجع/إبطال | B09 | NOT_RUN | NONE | B09-V01: source/SQLite/Kotlin precursors فقط؛ 31 Room و9 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
++| T11 | بيع A ببندين ودفعة، ثم سحب B | B09 | NOT_RUN | NONE | B09-V02: source/SQLite/Kotlin precursors فقط؛ 33 Room و12 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
++| T12 | شراء محلي وآخر دولي بعملات/FX مسجلة | B09 | NOT_RUN | NONE | B09-V02: source/SQLite/Kotlin precursors فقط؛ 33 Room و12 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
++| T13 | إنشاء/تعديل/دفعة/عكس/مرتجع/إبطال | B09 | NOT_RUN | NONE | B09-V02: source/SQLite/Kotlin precursors فقط؛ 33 Room و12 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
+ | T14 | نفس batch عشر مرات، وإرسالان متزامنان | B07 | NOT_RUN | NONE | — | — |
+ | T15 | يقبل السيرفر الطلب وتسقط الاستجابة ثم يعدّل A السجل | B07 | NOT_RUN | NONE | — | — |
+ | T16 | نفس mutationId مع body أو baseVersion مختلف | B07 | NOT_RUN | NONE | — | — |
+@@ -883,12 +886,12 @@
+ | T23 | bytes قديمة مفقودة وإيصال غير قابل للتحقق | B14 | NOT_RUN | NONE | — | — |
+ | T24 | نقص البنود في كل المصادر | B16 | NOT_RUN | NONE | — | — |
+ | T25 | قتل التطبيق بعد حفظ Inbox وقبل apply | B10 | NOT_RUN | NONE | — | — |
+-| T26 | قتل التطبيق داخل معاملة materialization | B09 | NOT_RUN | NONE | B09-V01: source/SQLite/Kotlin precursors فقط؛ 31 Room و9 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
++| T26 | قتل التطبيق داخل معاملة materialization | B09 | NOT_RUN | NONE | B09-V02: source/SQLite/Kotlin precursors فقط؛ 33 Room و12 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
+ | T27 | مجموعة X متعارضة ومجموعة Y مستقلة | B10 | NOT_RUN | NONE | — | — |
+ | T28 | مجموعة لاحقة تمس X أو تعتمد عليها | B10 | NOT_RUN | NONE | — | — |
+-| T29 | دفعة قبل أصلها، وعكس قبل الدفع الأصلي | B10 | NOT_RUN | NONE | B09-V01: source/SQLite/Kotlin precursors فقط؛ 31 Room و9 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
++| T29 | دفعة قبل أصلها، وعكس قبل الدفع الأصلي | B10 | NOT_RUN | NONE | B09-V02: source/SQLite/Kotlin precursors فقط؛ 33 Room و12 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
+ | T30 | مستخدم يحسم mutable conflict بخياري القسم 13.4 | B11 | NOT_RUN | NONE | — | — |
+-| T31 | Bootstrap B نظيفة من حالة مالية متعددة العمليات | B13 | NOT_RUN | NONE | B09-V01: source/SQLite/Kotlin precursors فقط؛ 31 Room و9 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
++| T31 | Bootstrap B نظيفة من حالة مالية متعددة العمليات | B13 | NOT_RUN | NONE | B09-V02: source/SQLite/Kotlin precursors فقط؛ 33 Room و12 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
+ | T32 | Bootstrap فوق جرد 200/CLOSED محلي و100/OPEN بعيدة | B13 | NOT_RUN | NONE | — | — |
+ | T33 | Bootstrap مع pending في كل owner وبمرفق | B13 | NOT_RUN | NONE | — | — |
+ | T34 | Snapshot فارغة/منتهية/ناقصة أو scope تغير | B13 | NOT_RUN | NONE | — | — |
+@@ -911,6 +914,8 @@
+ 
+ **صلاحية الأدلة بعد B09-V01:** نتائج B03–B06 القديمة محفوظة كتاريخ تنفيذ، وليست Gradle/Room PASS لهذه الشجرة. تغيرت DAOs/cursor/pending protection وربط المطبق وproducer mapper؛ لذلك إعادة تشغيل حزم B04–B06 المتأثرة وapp/Hilt مطلوبة مع B09. هذا لا يحول أي Txx قديم من NOT_RUN إلى PASS.
+ 
++**صلاحية الأدلة بعد B09-V02:** فحوص 612 source/SQLite و347 mapping و3 semantic checks أعيد تشغيلها ضمن حدودها. الـ3 الدلالية تستخدم validator الحقيقي وcodec stub؛ ليست JSON runtime. اختبارات 12 JVM/33 Room والبناء/حزم B04–B06 المطلوبة تظل NOT_RUN/RECHECK_REQUIRED، ولا Txx أُغلق.
++
+ ### 6.1 سجل كل تشغيل
+ 
+ يحفظ دليل كل تشغيل في مسار موحد داخل فرع التنفيذ مثل:
+@@ -961,7 +966,7 @@
+ | B02-BLK-02 | B02.04 | `BLOCKED_TEST_ENVIRONMENT_UNAVAILABLE` + `BLOCKED_CLEAN_REBUILD_SOURCE_MISSING` | `TEST_ENVIRONMENT_AND_FENCE.md` و`SERVER_SOURCE_DRIFT.md`؛ تكلفة branch = 0.01344 USD/hour، لا postgres/initdb، 214 live مقابل 30 ملفات محلية | يمنع clean rebuild واختبار SQL/تكامل ونشر أي migration | كود واختبارات محلية مستقلة فقط؛ لا SQL حي | المستخدم تجاوز الفرع المدفوع بسبب الخطة المجانية؛ لا يعاد عرضه ما لم يغير المستخدم القرار أو تتوفر بيئة مجانية معزولة | OPEN؛ قرار المستخدم 2026-09-10 |
+ | B02-BLK-03 | B02.05 | `BLOCKED_SIGNING_INSTALLED_PACKAGE_UNAVAILABLE`؛ APK المحلي متحقق لكن لا جهاز لمقارنة المثبت | `TEST_ENVIRONMENT_AND_FENCE.md`؛ apksigner PASS وشهادة SHA-256 محفوظة | كان يمنع إثبات تطابق/ترقية النسخة المثبتة | لا قيود بعد المقارنة | وُصل الجهاز وسُحب base APK إلى مساحة مؤقتة خاصة وقورن signer | CLOSED؛ B02-V02، signer المثبت يطابق المحلي |
+ 
+-| B09-BLK-01 | B09.01–B09.05 | `BLOCKED_BUILD_RUNTIME_ENVIRONMENT` عائق بيئة اختبار، لا رمز مزامنة جديد؛ Gradle 8.9 غير مخزن وUnknownHostException، لا Android SDK/adb/emulator | `docs/sync-repair/evidence/B09/V01/gradle-offline.log` و`environment.json` | يمنع Gradle/KSP/Hilt و31 Room و9 JVM وإغلاق G-B09، وليس كتابة الكود | تنفيذ محلي وفحوص Kotlin جزئية/SQL على مخطط98 مع بيان أنها ليست Room | تشغيل أوامر `commands-and-results.md` على بيئة Codex/CI المجهزة؛ المنفذ التالي يوثق النتائج ويغلق العائق بالدليل فقط | OPEN؛ أعيد فحص البيئة في B09-V01 بتاريخ 2026-09-10 |
++| B09-BLK-01 | B09.01–B09.05 | `BLOCKED_BUILD_RUNTIME_ENVIRONMENT`؛ Gradle 8.9 غير مخزن، ولا Android SDK/adb/emulator؛ UnknownHostException محفوظ تاريخيًا في V01 فقط | `docs/sync-repair/evidence/B09/V02/runtime-environment.json` و`runtime-preflight.log`؛ لا شبكة أو wrapper شُغّل في V02 | يمنع Gradle/KSP/Hilt و33 Room و12 JVM وإغلاق G-B09 | تنفيذ محلي وفحوص Kotlin جزئية/SQL على مخطط98 لا تعادل Room | تشغيل أوامر V02/commands-and-results.md في بيئة مجهزة؛ إغلاق بالدليل لا بإعادة المحاولة نفسها | OPEN؛ أعيد فحص البيئة في B09-V02 بتاريخ 2026-09-10 |
+ 
+ **قواعد التسجيل:** استخدم رموز العقد حيث تنطبق، مثل BLOCKED_BACKUP_UNVERIFIED وBLOCKED_LIVE_CONTRACT_UNVERIFIED وBLOCKED_OWNER_UNPROVEN وM03_ORG_SCOPE_UNPROVEN وSOURCE_DATA_MISSING وOUTCOME_UNKNOWN وBLOCKED_SIGNING. عائق سير عمل جديد يسمى بوضوح عائقًا تنظيميًا، لا رمز خطأ مزامنة مزعوم في التطبيق.
+ 
+@@ -978,6 +983,8 @@
+ | اعتماد المجلد الحالي بدل إعادة فك حاوية ZIP غير المتوفرة | C§4.1 وB01.01/B01.03 | المستخدم أكد أن `Verto-425.zip` هو مجلد المشروع الحالي؛ بصمة ما قبل التنفيذ محفوظة؛ P01–P24 = 23/24 وP04 غائب | يثبت مصدر التنفيذ ببصمة شجرة لا hash الحاوية؛ يجب ألا تفترض الجلسات اللاحقة وجود P04 | توضيح المستخدم في زيارة B01-V02؛ `SOURCE_BASELINE.json` و`SOURCE_DIFF.md` | ACCEPTED_FOR_EXECUTION؛ hash حاوية ZIP غير مدعى |
+ | عدم إنشاء Supabase branch أثناء B02 | C§4.3 وB02.04 | المتاح هو default production branch فقط؛ إنشاء فرع تغيير خارجي قد يترتب عليه تكلفة ولا يوجد baseline/fixture كامل | تبقى بيئة الاختبار محجوبة ولا يجري أي SQL حي؛ يسمح بالعمل المحلي المستقل فقط | حدود التفويض الحالية وقاعدة عدم توسيع الأثر؛ `TEST_ENVIRONMENT_AND_FENCE.md` | ACCEPTED_SAFETY_STOP؛ يحتاج مدخلات/تفويضًا جديدًا |
+ | تجاوز Supabase development branch المدفوع | B02.04 وC§4.3 | السعر المكتشف 0.01344 USD/hour والمستخدم على الخطة المجانية | B02.04/G-B02 تبقيان BLOCKED؛ اختيار أول جلسة محلية مؤهلة B03 | توجيه المستخدم الصريح في 2026-09-10 | ACCEPTED؛ لا تعِد طلب الفرع دون تغير المعطيات |
++
++| مواءمة validator مع هوية الدفع التي ينتجها B06 | C§10 وC§13.2؛ B09.01/B09.04 | InvoiceVoidCoordinator يولد factId مختلفًا لكل عكس مع writeId مشترك، وFinancialSnapshotFactoryV2 يصدره بالفعل؛ خطأ duplicate effect business identity أُعيد إنتاجه | يسمح بقبول الحقائق المختلفة دون دمجها؛ factId وimmutable hash لا يتغيران | إصلاح عدم اتساق تنفيذ محلي لا سياسة مالية أو schema جديدة؛ before/after evidence في B09/V02 | IMPLEMENTED؛ قبول Room/JSON BLOCKED |
+ 
+ الحقل/العمود/نوع operation غير المثبت ليس مساحة للاجتهاد. اكتب المشكلة والبدائل إن لزم لتوضيحها فقط، ولا تختر سياسة مالية/أمنية/معمارية جديدة دون الملحق المعتمد الذي يشترطه C§1.3. يجوز مواءمة أسماء الملفات التنظيمية وأسلوب الكود ضمن ما سمح به العقد، مع بقاء القرار والعقد وschema ثابتة.
+ 
+@@ -998,6 +1005,8 @@
+ | B06-V01 | B06 / الزيارة 1 | 2026-09-10 / 2026-09-10 (Africa/Khartoum) | لا Git؛ `e2efa886...8e421` / expanded product-scope `6b69c2c5...45090` | B06.01–B06.05 | G-B06 PASS محليًا؛ JVM 195/195؛ Room 2/2؛ schema/producer وapp compile PASS؛ T09/T12/T19/T20 NOT_RUN | B02-BLK-01/02؛ feature:invoice tests لها عائق classpath سابق غير متعلق | B09.01 |
+ 
+ | B09-V01 | B09 / الزيارة 1 | 2026-09-10 / 2026-09-10 (UTC؛ وقت الالتقاط في environment.json) | لا Git؛ مصدر ZIP بعد B06 / expanded product `65aacd59b1c7...` | لا إغلاق رسمي؛ تنفيذ B09.01–B09.05 قائم | G-B09 BLOCKED؛ 612 source/SQLite و347 mapping PASS ضمن حدودهما؛ 31 Room و9 JVM NOT_RUN | B09-BLK-01؛ B02-BLK-01/02 مستمران | B09.01 |
++
++| B09-V02 | B09 / الزيارة 2 | 2026-09-10 / 2026-09-10 (UTC؛ أوقات البيئة والسجلات) | لا Git؛ `65aacd59b1c7...` / `2aa1a4e16d9e...` | لا إغلاق؛ تصحيح validator وإضافة 5 اختبارات | G-B09 BLOCKED؛ before FAIL/after semantic PASS مع stubs؛ 347 mapping و612 model PASS؛ 12 JVM/33 Room NOT_RUN | B09-BLK-01؛ B02-BLK-01/02 محفوظان | B09.01 |
+ 
+ سطر الحالة الابتدائية أعلاه محفوظ تاريخيًا في نص الوثيقة، وأول زيارة تنفيذ فعلية هي B01-V01 المسجلة هنا.
+ 
+@@ -1296,6 +1305,33 @@
+ RESUME_FROM: docs/sync-repair/evidence/B09/V01؛ هذه الشجرة؛ المطبق وربطه موجودان بالفعل
+ SESSION_FINAL_STATE: BLOCKED_VALIDATION (حالة جدول الجلسة BLOCKED)
+ DOCUMENTS_UPDATED: Backlog؛ Changelog؛ EVIDENCE_INDEX؛ SYNC_IMPLEMENTATION_MAP؛ B09 report/commands/parity/ownership/runtime map/hash/diff
++```
++
++### 9.12 سجل B09-V02 — إصلاح رفض writeId المشترك
++
++```text
++CHECKPOINT_ID: B09-V02
++SESSION_ID / VISIT: B09 / 2
++DATE / TIMEZONE: 2026-09-10 / UTC؛ لا ادعاء أوقات بداية/نهاية دقيقة غير مسجلة
++INPUT_ARCHIVE: Verto-425-B09-WIP_NOT_RELEASE_READY(1).zip
++INPUT_ARCHIVE_SHA256: 33c67ceab661921e0fb0e64e3f3025a195894fba36f503fe4ee0ccd0ee2f122b
++INPUT_PRODUCT_SHA256: 65aacd59b1c71ae3b5f8353841c999ab536770dd13f818147bf3dd84632344c9
++OUTPUT_PRODUCT_SHA256: 2aa1a4e16d9ea9d1d37fd9b33fc0bc730616a288634da78c7aa56fc3ad97bbc7
++SOURCE_VALIDATION: 1851/1851 input manifest rows match؛ العقد المضمن والمستقل دون تغيير
++IMPLEMENTED: unique effect fact identity؛ استثناء PAYMENT فقط من uniqueness على businessIdentity=writeId؛ لا دمج/تغيير fact/hash
++NEW_TEST_METHODS: 3 JVM + 2 Room؛ الإجمالي 12 JVM و33 Room NOT_RUN
++OBSERVED_REGRESSION: actual Kotlin validator rejected shared writeId before fix؛ after fix semantic 3 PASS مع codec stub
++OTHER_ACTUAL_CHECKS: 347 mapping/Money PASS؛ 612 source/SQLite-model PASS؛ B06 schema/producers static PASS
++NOT_RUN: actual Gradle/JVM JSON/Room/KSP/Hilt/app؛ PostgreSQL؛ T01–T50؛ جهازان
++LIVE_OR_DATA_ACTIONS: NONE؛ لا وصول شبكة أو تعديل سيرفر أو بيانات مستخدم
++BLOCKERS: B09-BLK-01 OPEN؛ B02-BLK-01/B02-BLK-02 دون تغيير
++SESSION_FINAL_STATE: BLOCKED؛ G-B09 BLOCKED؛ B09.01–B09.05 BLOCKED
++NEXT_SESSION / NEXT_TASK: B09 / B09.01
++NEXT_ACTION: تشغيل 12 JVM و33 Room وcompileDebugKotlin والحزم المتأثرة في بيئة مجهزة؛ إصلاح الفشل ثم توثيق البوابة؛ لا B10 قبل النجاح
++DO_NOT_REPEAT: لا ترجع إلى المصدر الأصلي؛ لا تعيد كتابة producer packets؛ لا تحول source/SQLite/stub smoke إلى Room PASS
++EVIDENCE: docs/sync-repair/evidence/B09/V02/session-report.md؛ commands-and-results.md؛ tree/hash/patch
++LOCAL_GATES: scope PASS؛ documentation FAIL تاريخي مثبت بمقارنة ZIP الأصل؛ integrated documentation exit126 لصلاحية سكربت سابقة؛ لا قبول جودة شامل
++DELIVERY: WIP_NOT_RELEASE_READY ZIP؛ ليس APK أو Source-of-Truth admission
+ ```
+ 
+ ### 9.2 قالب سجل نهاية الجلسة
+--- a/data/sync/src/androidTest/kotlin/com/verto/app/data/sync/pull/FinancialMaterializerV2InstrumentedTest.kt
++++ b/data/sync/src/androidTest/kotlin/com/verto/app/data/sync/pull/FinancialMaterializerV2InstrumentedTest.kt
+@@ -67,6 +67,40 @@
+         assertEquals(2L, count("payments"))
+         assertEquals(8000L, queryLong("SELECT SUM(amount_minor) FROM payments"))
+         assertNoProducedEffects()
++    }
++
++    @Test fun multipleReversalsFromOneWriteApplyAndReplayAsDistinctFacts() = runBlocking {
++        val s = withSharedReversalWrite()
++        materializer.materialize(context(s))
++        materializer.materialize(context(s, revision = 2, type = "PAYMENT", paymentId = "second-reversal"))
++        assertEquals(s, materializer.readPersisted(s))
++        assertEquals(4L, count("payments"))
++        assertEquals(2L, queryLong("SELECT COUNT(*) FROM payments WHERE write_id='shared-void-write'"))
++        assertEquals(FinancialMaterializationContractV2.minorTotals(s),
++            FinancialMaterializationContractV2.minorTotals(materializer.readPersisted(s)))
++        assertEquals(1L, authority()!!.appliedServerVersion)
++        assertNoProducedEffects()
++    }
++
++    @Test fun sharedWriteDoesNotPermitChangingAnExistingPaymentFact() = runBlocking {
++        val s = withSharedReversalWrite()
++        materializer.materialize(context(s))
++        val invalid = seal(s.copy(financialStreamVersion = 2, expectedFinancialStreamVersion = 1,
++            payments = s.payments.map { if (it.id == "second-reversal") it.copy(note = "conflicting immutable fact") else it }))
++        expectFailure("IMMUTABLE_FACT_CONFLICT") { materializer.materialize(context(invalid, revision = 2)) }
++        assertEquals(s, materializer.readPersisted(s))
++        assertEquals(4L, count("payments"))
++        assertEquals(1L, authority()!!.appliedServerVersion)
++        assertNoProducedEffects()
++    }
++
++    private fun withSharedReversalWrite(): FinancialAggregateSnapshotV2 {
++        val s = fixture()
++        val original = s.payments.single { it.reversedPaymentId == null }
++        val reversal = s.payments.single { it.reversedPaymentId != null }.copy(writeId = "shared-void-write")
++        return seal(s.copy(payments = listOf(original, reversal,
++            original.copy(id = "second-original", writeId = "original-write-2"),
++            reversal.copy(id = "second-reversal", reversedPaymentId = "second-original"))))
+     }
+ 
+     @Test fun reversalOrderingUsesOriginalDependencyNotIdOrPaidAt() = runBlocking {
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/pull/FinancialMaterializationContractV2.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/pull/FinancialMaterializationContractV2.kt
+@@ -137,7 +137,12 @@
+                 else snapshot.dueInstallments.any { row -> row.id == it.id }
+             requireContract(!present, "CONTRACT_FIELD_INVALID", "live row and tombstone share identity")
+         }
+-        unique(snapshot.effectReferences.map { Triple(it.owner, it.factType, it.businessIdentity) }, "effect business identity")
++        unique(snapshot.effectReferences.map { Triple(it.owner, it.factType, it.factId) }, "effect fact identity")
++        // A financial write may reverse several payments (InvoiceVoidCoordinator). PAYMENT's
++        // businessIdentity is the existing writeId correlation, not a unique payment key. Keep
++        // every paymentId and its immutable hash; never deduplicate distinct facts by writeId.
++        unique(snapshot.effectReferences.filterNot { it.factType == "PAYMENT" }
++            .map { Triple(it.owner, it.factType, it.businessIdentity) }, "effect business identity")
+         requireContract(snapshot.effectReferences == snapshot.effectReferences.sortedWith(compareBy<EffectReferenceV2> { it.owner }.thenBy { it.factType }.thenBy { it.factId }),
+             "CONTRACT_FIELD_INVALID", "effect order")
+         snapshot.effectReferences.forEach {
+--- a/data/sync/src/test/kotlin/com/verto/app/data/sync/pull/FinancialMaterializationContractV2Test.kt
++++ b/data/sync/src/test/kotlin/com/verto/app/data/sync/pull/FinancialMaterializationContractV2Test.kt
+@@ -27,6 +27,45 @@
+         assertEquals(7, snapshot.header.lifecycleVersion)
+         assertEquals(1L, snapshot.financialStreamVersion)
+     }
++
++    @Test fun distinctPaymentReversalsCanShareOneWriteWithoutCollapsingFactIdentity() {
++        val s = withSharedReversalWrite()
++        assertEquals(4, s.payments.size)
++        assertEquals(2, s.effectReferences.count { it.businessIdentity == "shared-void-write" })
++        assertEquals(s, FinancialMaterializationContractV2.decode(context(s)))
++    }
++
++    @Test fun sharedWriteDoesNotAllowDuplicatePaymentFactIds() {
++        val s = withSharedReversalWrite()
++        val invalid = hashed(s.copy(effectReferences = s.effectReferences + s.effectReferences.first()))
++        fails { FinancialMaterializationContractV2.decode(context(invalid)) }
++    }
++
++    @Test fun nonPaymentIdempotencyKeysRemainUniqueAcrossDistinctFacts() {
++        val s = withSharedReversalWrite()
++        val refs = s.effectReferences + listOf(
++            EffectReferenceV2("inventory_stock_outbox", "INVENTORY_MOVEMENT", "movement-a", "same-movement-key", "a".repeat(64)),
++            EffectReferenceV2("inventory_stock_outbox", "INVENTORY_MOVEMENT", "movement-b", "same-movement-key", "b".repeat(64)),
++        )
++        val invalid = hashed(s.copy(effectReferences = refs.sortedWith(
++            compareBy<EffectReferenceV2> { it.owner }.thenBy { it.factType }.thenBy { it.factId })))
++        fails { FinancialMaterializationContractV2.decode(context(invalid)) }
++    }
++
++    private fun withSharedReversalWrite(): FinancialAggregateSnapshotV2 {
++        val s = fixture()
++        val original = s.payments.single { it.reversedPaymentId == null }
++        val reversal = s.payments.single { it.reversedPaymentId != null }.copy(writeId = "shared-void-write")
++        val payments = listOf(original, reversal,
++            original.copy(id = "second-original", writeId = "original-write-2"),
++            reversal.copy(id = "second-reversal", reversedPaymentId = "second-original")).sortedBy { it.id }
++        val refs = payments.map { EffectReferenceV2("financial_outbox", "PAYMENT", it.id,
++            it.writeId.ifBlank { it.id }, FinancialMaterializationContractV2.sha256(SyncContractV2Codec.encode(it))) }
++        return hashed(s.copy(payments = payments, effectReferences = refs))
++    }
++
++    private fun hashed(s: FinancialAggregateSnapshotV2) =
++        s.copy(businessContentHash = SyncContractV2Codec.financialBusinessHash(s))
+ 
+     @Test fun nineSharedMappingsPreserveEveryBusinessField() {
+         val s = fixture()
+--- a/docs/CANONICAL_DOCUMENT_MAP.md
++++ b/docs/CANONICAL_DOCUMENT_MAP.md
+@@ -36,7 +36,7 @@
+ | Production RPC reference | `docs/api/rpc-reference.md` | production RPC call sites + repository SQL | system | data:network | v315 | current v315 source | none |
+ | Authentication transport/session API contract | `docs/api/auth.md` | Auth source + app deep-link/session code | system | feature:auth + data:network | v315 | current v315 source | none |
+ | API/application error taxonomy | `docs/api/errors.md` | validation/network/sync/security source | system | data:network + application | v315 | current v315 source | none |
+-| Idempotency and retry contract | `docs/api/idempotency.md` | outbox/request/retry source + SQL | system | data:sync + data:network | v315 | current v315 source | none |
++| Idempotency and retry contract | `docs/api/idempotency.md` | outbox/request/retry source + SQL | system | data:sync + data:network | v315 baseline; B09-V02 payment identity source-only | B09-V02 evidence; runtime BLOCKED | none |
+ | Authentication feature behavior | `docs/features/authentication.md` | owning feature/application/data source | feature | feature:auth | v315 | current v315 source | none |
+ | Inventory feature behavior | `docs/features/inventory.md` | owning feature/application/data source | feature | feature:inventory | v315 | current v315 source | none |
+ | Invoices feature behavior | `docs/features/invoices.md` | owning feature/application/data source | feature | feature:invoice | v315 | current v315 source | none |
+--- a/docs/DOCUMENTATION_INVENTORY.md
++++ b/docs/DOCUMENTATION_INVENTORY.md
+@@ -11,6 +11,8 @@
+ 
+ | Current path | Original v314 path | Classification | Responsibility/domain | Canonical? | Current/historical | Path-coupled? | Referenced by executable tool? | Referenced by source? | Indexed? | Move decision | Archive destination | Superseded by | Duplicate of | Last verified against | Pre-v315 SHA-256 | Notes |
+ |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
++| `docs/sync-repair/evidence/B09/V02/session-report.md` | NEW_IN_B09_V02 | Supporting evidence | Sync financial materialization | no | Current | no | no | no | yes | NEW_SESSION_EVIDENCE | — | — | — | B09-V02 source/smoke only | NEW | B09-V02 shared-write identity repair, evidence limits and blocked acceptance. |
++| `docs/sync-repair/evidence/B09/V02/commands-and-results.md` | NEW_IN_B09_V02 | Supporting evidence | Sync financial materialization | no | Current | no | no | no | yes | NEW_SESSION_EVIDENCE | — | — | — | B09-V02 source/smoke only | NEW | B09-V02 observed offline commands and NOT_RUN Gradle/Room handoff. |
+ | `CHANGELOG.md` | NEW_IN_V315 | Canonical | Repository | yes | Current | no | no | no | yes | MODIFIED_CANONICAL_V316 | — | — | — | v315 | NEW | Updated in Session 316; documentation-only. |
+ | `CONTRIBUTING.md` | NEW_IN_V315 | Canonical | Repository | yes | Current | no | no | no | yes | NEW_CANONICAL | — | — | — | v314 | NEW | — |
+ | `README.md` | NEW_IN_V315 | Canonical | Repository | yes | Current | no | no | no | yes | NEW_CANONICAL | — | — | — | v314 | NEW | — |
+--- a/docs/api/idempotency.md
++++ b/docs/api/idempotency.md
+@@ -2,7 +2,7 @@
+ status: canonical
+ scope: system
+ owner: "data:sync + data:network"
+-last_verified_against: v315
++last_verified_against: 'v315 baseline; B09-V02 financial identity source review'
+ ---
+ # Idempotency and Retry Contract
+ 
+@@ -20,6 +20,24 @@
+ | Direct table upsert | PARTIAL/feature-specific | `onConflict` is sometimes explicit; this does not prove full business idempotency |
+ | Direct insert/update/delete | NOT VERIFIED by default | must not be blindly retried unless the owning feature supplies an identity/reconciliation rule |
+ 
++## Financial V2 payment effect identity — B09-V02
++
++For incoming financial snapshots, a fact is identified by `(owner, factType, factId)`.
++For `PAYMENT`, `factId` is the original `paymentId` or the distinct reversal's ID. The
++existing B06 `businessIdentity` is `writeId` (falling back to the payment ID when blank).
++It is a correlation value: one invoice-void write can reverse several different payments.
++Do not reject or collapse those different facts merely because their `writeId` matches.
++
++Duplicate fact IDs still fail validation, and an existing payment with different DTO/hash
++still conflicts. Non-payment owners retain unique business/idempotency identities.
++No packet bytes, owner hash scheme, financial rule, or server contract changes here.
++
++Source: `FinancialMaterializationContractV2.validate`, `FinancialEffectVerifierV2.verify`,
++`FinancialSnapshotFactoryV2.capture`, and `InvoiceVoidCoordinator.createPaymentReversal`.
++The focused Kotlin identity regression passed with an explicitly stubbed codec; actual
++JSON/JVM and Room acceptance remain **NOT_RUN**, so G-B09 remains **BLOCKED**. See the
++[B09-V02 evidence](../sync-repair/evidence/B09/V02/session-report.md).
++
+ ## Definitions
+ 
+ - `VERIFIED`: source and repository evidence support the stated identity/order rule.
+--- a/tools/test_sync_b09_kotlin_smoke.py
++++ b/tools/test_sync_b09_kotlin_smoke.py
+@@ -1,9 +1,10 @@
+ #!/usr/bin/env python3
+-"""Offline B09 Kotlin check: REAL mapping/Money execution + selected source signature smoke.
++"""Offline B09 Kotlin check: REAL mapping/Money + semantic identity execution + selected signature smoke.
+ 
+ NOT Gradle, KSP, Android, Room, JSON-runtime or a release/acceptance gate. Android/Room/
+ serialization collaborators are explicitly signature-only stubs in a temporary directory.
+ DTO/entity constructor signatures and enum declarations are extracted from this source tree.
++The identity regression executes the real validator with a stubbed codec; it does not validate JSON/hash.
+ No stub code is installed in the application. Requires kotlinc and java; never downloads.
+ """
+ from pathlib import Path
+@@ -155,6 +156,46 @@
+                     main.append(f'for (value in listOf(Long.MIN_VALUE,Long.MAX_VALUE,9_007_199_254_740_993L,-1L,0L)) {{ val edge=dto{i}.copy({k}=value); check(edge.toRemoteEntityV2().toDtoV2()==edge); checks++ }}')
+                 if t == 'String?':
+                     main.append(f'for (value in listOf(null,"")) {{ val edge=dto{i}.copy({k}=value); check(edge.toRemoteEntityV2().toDtoV2()==edge); checks++ }}')
++        # Execute the actual receive-side semantic validator as a supplementary regression.
++        # Codec/serializer collaborators above remain signature stubs: this is NOT a JSON gate.
++        def kotlin_value(value, typ):
++            if value is None:
++                return 'null'
++            typ = typ.rstrip('?')
++            if typ.startswith('List<'):
++                child = typ[5:-1]
++                return 'listOf(' + ','.join(kotlin_value(item, child) for item in value) + ')'
++            if typ == 'String':
++                return json.dumps(value, ensure_ascii=False).replace('$', '\\$')
++            if typ == 'Long':
++                return str(value) + 'L'
++            if typ == 'Int':
++                return str(value)
++            if typ == 'Boolean':
++                return str(value).lower()
++            if typ == 'SnapshotKindV2':
++                return 'SnapshotKindV2.' + value
++            return typ + '(' + ','.join(key + '=' + kotlin_value(value[key], child)
++                for key, child in props(DTO_SOURCE, typ)) + ')'
++        main.append('val baseline = ' + kotlin_value(fixture, 'FinancialAggregateSnapshotV2'))
++        main += [
++            'com.verto.app.data.sync.pull.FinancialMaterializationContractV2.validate(baseline)',
++            'val original = baseline.payments.single { it.reversedPaymentId == null }',
++            'val reversal = baseline.payments.single { it.reversedPaymentId != null }',
++            'val sharedWritePayments = (baseline.payments + original.copy(id="second-original", writeId="original-write-2") + reversal.copy(id="second-reversal", reversedPaymentId="second-original")).sortedBy { it.id }',
++            'val sharedWriteRefs = sharedWritePayments.map { EffectReferenceV2("financial_outbox", "PAYMENT", it.id, it.writeId.ifBlank { it.id }, "a".repeat(64)) }.sortedWith(compareBy<EffectReferenceV2> { it.owner }.thenBy { it.factType }.thenBy { it.factId })',
++            'val sharedWrite = baseline.copy(payments=sharedWritePayments, effectReferences=sharedWriteRefs)',
++            'check(sharedWrite.payments.count { it.writeId == reversal.writeId } == 2)',
++            'println("REGRESSION: two different reversals sharing one legal writeId must be accepted")',
++            'com.verto.app.data.sync.pull.FinancialMaterializationContractV2.validate(sharedWrite)',
++            'var identityChecks = 1',
++            'val duplicate = sharedWrite.copy(effectReferences=sharedWrite.effectReferences + sharedWrite.effectReferences.first())',
++            'try { com.verto.app.data.sync.pull.FinancialMaterializationContractV2.validate(duplicate); error("duplicate payment fact accepted") } catch (failure:com.verto.app.data.sync.pull.UnifiedSyncPullFailure) { check(failure.code == "CONTRACT_FIELD_INVALID"); identityChecks++ }',
++            'val nonPaymentRefs = sharedWrite.effectReferences + listOf(EffectReferenceV2("inventory_stock_outbox", "INVENTORY_MOVEMENT", "movement-a", "same-key", "a".repeat(64)), EffectReferenceV2("inventory_stock_outbox", "INVENTORY_MOVEMENT", "movement-b", "same-key", "b".repeat(64)))',
++            'val nonPaymentDuplicate = sharedWrite.copy(effectReferences=nonPaymentRefs.sortedWith(compareBy<EffectReferenceV2> { it.owner }.thenBy { it.factType }.thenBy { it.factId }))',
++            'try { com.verto.app.data.sync.pull.FinancialMaterializationContractV2.validate(nonPaymentDuplicate); error("duplicate stock business identity accepted") } catch (failure:com.verto.app.data.sync.pull.UnifiedSyncPullFailure) { check(failure.code == "CONTRACT_FIELD_INVALID"); identityChecks++ }',
++            'println("SHARED_WRITE_ID_SEMANTIC_REGRESSION=PASS; IDENTITY_RULE_ASSERTIONS=$identityChecks; CODEC_STUBBED=true; ROOM=NOT_RUN")',
++        ]
+         main += ['check(normalizeSupplierInvoiceReference(" Ab-١٢ ")=="ab١٢");checks++',
+                  'try { dto0.copy(category="NOT_A_CATEGORY").toRemoteEntityV2(); error("enum accepted") } catch (_:IllegalArgumentException) { checks++ }',
+                  'println("REAL_MAPPING_MONEY_ASSERTIONS=$checks; NINE_DTOS=PASS; SIGNATURE_SMOKE=PASS; ROOM=NOT_RUN; JSON_RUNTIME=NOT_RUN")','}']

@@ -1,0 +1,1246 @@
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/SYNC_V2_EXECUTION_LOG_M03.md /mnt/data/verto_m03_work/Verto-m02-updated/SYNC_V2_EXECUTION_LOG_M03.md
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/SYNC_V2_EXECUTION_LOG_M03.md	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/SYNC_V2_EXECUTION_LOG_M03.md	2026-09-08 18:48:43.715530121 +0000
+@@ -0,0 +1,34 @@
++# SYNC V2 — M03 Execution Log
++
++- Date: 2026-09-08
++- Input: `Verto-m02-updated-50b097c4.zip`
++- Input SHA-256: `267d58b480f8b033189d7b4d4af08590a825eae08cc15383e7ab4fec21beb853`
++- Room before: 95
++- Room after: 96
++- Product-wide V2 activation: NO
++- Legacy deletion: NO
++- Legacy writer fence: PREPARED, NOT ACTIVATED (`legacy_writes_fenced=false`)
++
++## Executed
++
++- Added 95→96 Room migration and durable M03 journal/state.
++- Added tenant-bound census coordinator.
++- Preserved stronger outbox authority; no stronger→generic outbox copying.
++- Added Dirty/deletion census and review-safe handling.
++- Moved M03 preparation before V2 Recovery.
++- Added fail-closed recovery guard when local migration review is required.
++- Added JUnit tests and deterministic verification script.
++
++## Verification
++
++- M03 verifier: PASS 47/47.
++- SQLite migration/rollback/idempotent replay proof: PASS.
++- Kotlin isolated planner runtime: PASS.
++- Kotlin coordinator syntax/type surface with boundary stubs: PASS.
++- Full Gradle tests: BLOCKED (`UnknownHostException: services.gradle.org`).
++
++## Gate
++
++`M03_IMPLEMENTATION = PASS`
++
++`M03_FULL_CLOSE = NOT PROVEN` until Gradle/Room upgrade/process-death tests run in a capable environment.
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/SYNC_V2_M03_FINAL_STATUS.md /mnt/data/verto_m03_work/Verto-m02-updated/SYNC_V2_M03_FINAL_STATUS.md
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/SYNC_V2_M03_FINAL_STATUS.md	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/SYNC_V2_M03_FINAL_STATUS.md	2026-09-08 18:48:43.716436876 +0000
+@@ -0,0 +1,11 @@
++# Sync V2 M03 — Final Status
++
++**Implementation:** PASS  
++**Static/deterministic verification:** PASS (47/47)  
++**Full Room/Gradle gate:** BLOCKED BY ENVIRONMENT  
++**Legacy removed:** NO  
++**V2 globally enabled:** NO
++
++M03 now records every known pending authority/Dirty/delete source with one durable fate, preserves stronger operation identities, is resumable, and runs before V2 Recovery. Unsafe or unscoped legacy rows are preserved as `REQUIRES_REVIEW` rather than guessed or deleted.
++
++Full CLOSED cannot be claimed because Gradle 8.9 could not be downloaded in this offline environment, so the required Android Room upgrade/process-death tests were not executable here.
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/SYNC_V2_M03_LOCAL_MIGRATION_AUDIT.md /mnt/data/verto_m03_work/Verto-m02-updated/SYNC_V2_M03_LOCAL_MIGRATION_AUDIT.md
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/SYNC_V2_M03_LOCAL_MIGRATION_AUDIT.md	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/SYNC_V2_M03_LOCAL_MIGRATION_AUDIT.md	2026-09-08 18:48:43.714756543 +0000
+@@ -0,0 +1,77 @@
++# Sync V2 — M03 Local Migration Audit
++
++التاريخ: 2026-09-08  
++المصدر المفحوص: `Verto-m02-updated-50b097c4.zip`  
++SHA-256 للمصدر المرفق: `267d58b480f8b033189d7b4d4af08590a825eae08cc15383e7ab4fec21beb853`
++
++## النتيجة
++
++تم تنفيذ كود M03 على المصدر المرفق دون تفعيل V2 عالميًا أو حذف Legacy. أضيفت مهاجرة Room `95→96` وسجل دائم tenant/account-bound لجرد مصير العمليات القديمة قبل أي Recovery في مسار V2.
++
++حالة بوابة M03: **IMPLEMENTED / FULL CLOSE NOT PROVEN**. السبب الوحيد لعدم إعلان CLOSED هو عدم إمكان تشغيل Gradle/Room Android tests في البيئة الحالية لأن Gradle 8.9 غير موجود محليًا والشبكة لا تصل إلى `services.gradle.org`.
++
++## ما تم تنفيذه
++
++1. `sync_legacy_migration_entry`: سجل دائم لكل مصدر قديم بهوية `(organization, source_kind, source_id)`، ويحفظ principal، aggregate، business identity، الترتيب/التبعية، الهدف، والمصير.
++2. `sync_legacy_migration_state`: marker ذري لكل `(organization, principal)` يتضمن digest والعدادات وحالة fence.
++3. مصائر صريحة فقط: `MIGRATED` أو `RECEIPT_CONFIRMED` أو `REQUIRES_REVIEW`.
++4. جرد stronger authorities دون نسخها إلى `sync_outbox`: `financial_outbox`، `inventory_stock_outbox`، `inventory_cost_outbox`، `party_sync_outbox`، `optimal_outbox`.
++5. حفظ mutation identity الحالية: المالية/المخزون/Optimal تستخدم نفس `UnifiedStrongerBridgeRegistry.stableMutationId`، وParty Role يحتفظ بـ`operation_id` نفسه.
++6. جرد جميع Dirty markers الموجودة فعليًا في كيانات Room، بما فيها invoice lines، مع رفض اختلاق tenant للـ`inventory_items` و`expenses` القديمة غير scoped؛ تدخل `REQUIRES_REVIEW` بدل إعادة توليد أمر خاطئ.
++7. جرد قوائم الحذف التسع الموجودة في `SyncDeletionSnapshot`. إذا لم يوجد intent دائم مطابق، لا يتم اختراع DELETE مالي أو دلالي جديد.
++8. لا تُمسح Dirty flags ولا deletion preferences في M03، ولا تُحذف source outboxes.
++9. إعادة التشغيل آمنة: insert idempotent بالـPK، والـfingerprint يمثل هوية المصدر الثابتة بينما يمكن للمصير أن يتقدم من pending إلى receipt دون تغيير الهوية.
++10. تحضير M03 أصبح يسبق `requiredRecoveryReason()` داخل V2. إذا وُجد Recovery مطلوب وسجلات `REQUIRES_REVIEW`، يُمنع Recovery قبل أي إعادة بناء قد تعرض العمل المحلي للخطر.
++11. `legacy_writes_fenced=false` عمدًا في M03؛ إيقاف المنتج القديم لا يتم قبل M04/M05 حتى لا يتوقف التطبيق عن إنتاج عمليات قابلة للنقل.
++
++## التغطية
++
++### Durable authorities
++
++| المصدر | المعالجة |
++|---|---|
++| `financial_outbox` | هوية العمل + sequence + stable V2 mutation |
++| `inventory_stock_outbox` | idempotency identity + posting group + stable V2 mutation |
++| `inventory_cost_outbox` | idempotency identity + cost sequence + stable V2 mutation |
++| `party_sync_outbox` ROLE | إثبات org من `party_roles` + الحفاظ على `operation_id` |
++| `optimal_outbox` | aggregate mapping + idempotency key + sequence |
++| `sync_outbox` | يُستخدم كهدف موجود فقط؛ لا نسخ duplicate إليه |
++
++### Dirty markers المجردة
++
++تم جرد: Party identity/role/customer/supplier، invoice header/line/payment، client credit، inventory item، expense، educational content، team observation، organization settings.
++
++أي Dirty row بلا intent دائم مثبت يدخل `REQUIRES_REVIEW`. هذا قرار مقصود لتجنب اختلاق أمر مالي/مخزني أو tenant identity.
++
++### Pending deletions
++
++تم جرد: client، invoice، inventory، expense، category، commission، unit، budget، reconciliation. القوائم الأصلية تبقى كما هي حتى مرحلة تحويل المنتج/النقل.
++
++## اختبارات وأدلة
++
++- `scripts/verify-sync-v2-m03.py`: **47/47 PASS**.
++- SQL الفعلي من Migration 95→96 نُفذ على SQLite in-memory: PASS.
++- rollback قبل commit يترك صفر journal rows: PASS.
++- replay بعد commit لا يكرر نفس المصدر: PASS.
++- تقدم المصير إلى `RECEIPT_CONFIRMED` دون هوية جديدة: PASS.
++- مسار MigrationCatalog من كل إصدار Room مدعوم إلى 96: PASS ثابتًا، مع اختبار JUnit مضاف.
++- `LegacySyncMigrationPlanner.kt`: Kotlin compile + runtime check معزول: PASS.
++- `LegacySyncV2MigrationCoordinator.kt` + planner: Kotlin compile مع stubs للحدود Android/Room: PASS.
++- Gradle unit tests: **NOT RUN / ENVIRONMENT BLOCKED**؛ wrapper حاول تنزيل `gradle-8.9-bin.zip` وفشل بـ`UnknownHostException`.
++
++## الملفات الأساسية المعدلة/المضافة
++
++- `data/database/.../AppDatabase.kt`
++- `data/database/.../MigrationCatalog.kt`
++- `data/database/.../AppDatabaseMigrations95To96.kt`
++- `data/database/.../entity/SyncLegacyMigrationEntities.kt`
++- `data/database/.../dao/SyncLegacyMigrationDao.kt`
++- `data/sync/.../migration/LegacySyncMigrationPlanner.kt`
++- `data/sync/.../migration/LegacySyncV2MigrationCoordinator.kt`
++- `data/sync/.../SyncManager.kt`
++- `data/sync/.../SyncManagerPorts.kt`
++- اختبارات M03 و`verify-sync-v2-m03.py`.
++
++## المتبقي لإعلان M03 CLOSED
++
++تشغيل الاختبارات المضافة عبر Gradle/Room في بيئة فيها Gradle 8.9 أو شبكة متاحة، ويفضل اختبار instrumentation على DB v95 حقيقية/fixture تحتوي pending + delete + dependency مع قتل العملية والاستئناف. لا يوجد في الفحص الحالي دليل يسمح بتحويل ذلك إلى PASS اصطناعيًا.
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt	2026-09-08 10:44:34.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt	2026-09-08 18:42:34.034542131 +0000
+@@ -137,9 +137,11 @@
+         SyncRecoveryStateEntity::class,
+         SyncBootstrapStageEntity::class,
+         SyncHealthStateEntity::class,
++        SyncLegacyMigrationEntryEntity::class,
++        SyncLegacyMigrationStateEntity::class,
+         RetiredShipmentArchiveEntity::class,
+     ],
+-    version = ROOM_SCHEMA_VERSION, // version = 49; المصدر الثابت في MigrationCatalog
++    version = ROOM_SCHEMA_VERSION, // single source of truth: MigrationCatalog
+     exportSchema = true   // الجلسة 9: تصدير schema لاختبارات الـ migration (إلى app/schemas)
+ )
+ abstract class AppDatabase : RoomDatabase() {
+@@ -195,6 +197,7 @@
+     abstract fun unifiedSyncDao(): UnifiedSyncDao
+     abstract fun unifiedSyncProducerV307Dao(): UnifiedSyncProducerV307Dao
+     abstract fun syncRecoveryDao(): SyncRecoveryDao
++    abstract fun syncLegacyMigrationDao(): SyncLegacyMigrationDao
+ 
+     companion object {
+         @Volatile private var INSTANCE: AppDatabase? = null
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations95To96.kt /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations95To96.kt
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations95To96.kt	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations95To96.kt	2026-09-08 18:35:13.068991918 +0000
+@@ -0,0 +1,62 @@
++package com.verto.app.data.local
++
++import androidx.room.migration.Migration
++import androidx.sqlite.db.SupportSQLiteDatabase
++
++/**
++ * M03 adds only cutover bookkeeping. Source intents are deliberately not copied by raw schema
++ * migration because schema migration has no trusted account/session identity. Runtime preparation
++ * performs the tenant-bound census transactionally before V2 cutover.
++ */
++val MIGRATION_95_96 = object : Migration(95, 96) {
++    override fun migrate(db: SupportSQLiteDatabase) {
++        db.execSQL(
++            """
++            CREATE TABLE IF NOT EXISTS `sync_legacy_migration_entry` (
++                `organization_id` TEXT NOT NULL,
++                `source_kind` TEXT NOT NULL,
++                `source_id` TEXT NOT NULL,
++                `sync_principal_id` TEXT NOT NULL,
++                `aggregate_type` TEXT NOT NULL,
++                `aggregate_id` TEXT NOT NULL,
++                `source_state` TEXT NOT NULL,
++                `business_identity` TEXT NOT NULL,
++                `source_sequence` INTEGER,
++                `command_batch_id` TEXT,
++                `command_order` INTEGER,
++                `depends_on_source_id` TEXT,
++                `target_kind` TEXT NOT NULL,
++                `target_mutation_id` TEXT,
++                `disposition` TEXT NOT NULL,
++                `reason_code` TEXT,
++                `source_fingerprint` TEXT NOT NULL,
++                `created_at` INTEGER NOT NULL,
++                `updated_at` INTEGER NOT NULL,
++                PRIMARY KEY(`organization_id`, `source_kind`, `source_id`)
++            )
++            """.trimIndent()
++        )
++        db.execSQL("CREATE INDEX IF NOT EXISTS `index_sync_legacy_migration_disposition` ON `sync_legacy_migration_entry` (`organization_id`, `disposition`, `created_at`)")
++        db.execSQL("CREATE INDEX IF NOT EXISTS `index_sync_legacy_migration_aggregate` ON `sync_legacy_migration_entry` (`organization_id`, `aggregate_type`, `aggregate_id`)")
++        db.execSQL("CREATE INDEX IF NOT EXISTS `index_sync_legacy_migration_target_mutation` ON `sync_legacy_migration_entry` (`target_mutation_id`)")
++        db.execSQL(
++            """
++            CREATE TABLE IF NOT EXISTS `sync_legacy_migration_state` (
++                `organization_id` TEXT NOT NULL,
++                `sync_principal_id` TEXT NOT NULL,
++                `phase` TEXT NOT NULL,
++                `source_count` INTEGER NOT NULL,
++                `migrated_count` INTEGER NOT NULL,
++                `receipt_confirmed_count` INTEGER NOT NULL,
++                `review_count` INTEGER NOT NULL,
++                `source_digest` TEXT NOT NULL,
++                `legacy_writes_fenced` INTEGER NOT NULL,
++                `started_at` INTEGER NOT NULL,
++                `updated_at` INTEGER NOT NULL,
++                `completed_at` INTEGER,
++                PRIMARY KEY(`organization_id`, `sync_principal_id`)
++            )
++            """.trimIndent()
++        )
++    }
++}
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt	2026-09-08 10:44:34.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt	2026-09-08 18:35:13.567800756 +0000
+@@ -3,7 +3,7 @@
+ import androidx.room.migration.Migration
+ 
+ /** المصدر الوحيد لتسلسل Room المدعوم. */
+-const val ROOM_SCHEMA_VERSION: Int = 95
++const val ROOM_SCHEMA_VERSION: Int = 96
+ 
+ val ALL_MIGRATIONS: Array<Migration> = arrayOf(
+     MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5,
+@@ -16,7 +16,7 @@
+     MIGRATION_29_30, MIGRATION_30_31, MIGRATION_31_32, MIGRATION_32_33,
+     MIGRATION_33_34, MIGRATION_34_35, MIGRATION_35_36, MIGRATION_36_37,
+     MIGRATION_37_38, MIGRATION_38_39, MIGRATION_39_40, MIGRATION_40_41,
+-    MIGRATION_41_42, MIGRATION_42_43, MIGRATION_43_44, MIGRATION_44_45, MIGRATION_45_46, MIGRATION_46_47, MIGRATION_47_48, MIGRATION_48_49, MIGRATION_49_50, MIGRATION_50_51, MIGRATION_51_52, MIGRATION_52_53, MIGRATION_53_54, MIGRATION_54_55, MIGRATION_55_56, MIGRATION_56_57, MIGRATION_57_58, MIGRATION_58_59, MIGRATION_59_60, MIGRATION_60_61, MIGRATION_61_62, MIGRATION_62_63, MIGRATION_63_64, MIGRATION_64_65, MIGRATION_65_66, MIGRATION_66_67, MIGRATION_67_68, MIGRATION_68_69, MIGRATION_69_70, MIGRATION_70_71, MIGRATION_71_72, MIGRATION_72_73, MIGRATION_73_74, MIGRATION_74_75, MIGRATION_75_76, MIGRATION_76_77, MIGRATION_77_78, MIGRATION_78_79, MIGRATION_79_80, MIGRATION_80_81, MIGRATION_81_82, MIGRATION_82_83, MIGRATION_83_84, MIGRATION_84_85, MIGRATION_85_86, MIGRATION_86_87, MIGRATION_87_88, MIGRATION_88_89, MIGRATION_89_90, MIGRATION_90_91, MIGRATION_91_92, MIGRATION_92_93, MIGRATION_93_94, MIGRATION_94_95
++    MIGRATION_41_42, MIGRATION_42_43, MIGRATION_43_44, MIGRATION_44_45, MIGRATION_45_46, MIGRATION_46_47, MIGRATION_47_48, MIGRATION_48_49, MIGRATION_49_50, MIGRATION_50_51, MIGRATION_51_52, MIGRATION_52_53, MIGRATION_53_54, MIGRATION_54_55, MIGRATION_55_56, MIGRATION_56_57, MIGRATION_57_58, MIGRATION_58_59, MIGRATION_59_60, MIGRATION_60_61, MIGRATION_61_62, MIGRATION_62_63, MIGRATION_63_64, MIGRATION_64_65, MIGRATION_65_66, MIGRATION_66_67, MIGRATION_67_68, MIGRATION_68_69, MIGRATION_69_70, MIGRATION_70_71, MIGRATION_71_72, MIGRATION_72_73, MIGRATION_73_74, MIGRATION_74_75, MIGRATION_75_76, MIGRATION_76_77, MIGRATION_77_78, MIGRATION_78_79, MIGRATION_79_80, MIGRATION_80_81, MIGRATION_81_82, MIGRATION_82_83, MIGRATION_83_84, MIGRATION_84_85, MIGRATION_85_86, MIGRATION_86_87, MIGRATION_87_88, MIGRATION_88_89, MIGRATION_89_90, MIGRATION_90_91, MIGRATION_91_92, MIGRATION_92_93, MIGRATION_93_94, MIGRATION_94_95, MIGRATION_95_96
+ )
+ 
+ /** يعيد المسار المتصل فقط، ويفشل مغلقًا إذا ظهرت فجوة أو تكرار. */
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncLegacyMigrationDao.kt /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncLegacyMigrationDao.kt
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncLegacyMigrationDao.kt	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncLegacyMigrationDao.kt	2026-09-08 18:44:01.775554454 +0000
+@@ -0,0 +1,87 @@
++package com.verto.app.data.local.dao
++
++import androidx.room.Dao
++import androidx.room.Insert
++import androidx.room.OnConflictStrategy
++import androidx.room.Query
++import com.verto.app.data.local.entity.SyncLegacyMigrationEntryEntity
++import com.verto.app.data.local.entity.SyncLegacyMigrationStateEntity
++
++@Dao
++interface SyncLegacyMigrationDao {
++    @Insert(onConflict = OnConflictStrategy.IGNORE)
++    suspend fun insertEntry(entry: SyncLegacyMigrationEntryEntity): Long
++
++    @Query(
++        """
++        SELECT * FROM sync_legacy_migration_entry
++        WHERE organization_id = :organizationId AND source_kind = :sourceKind AND source_id = :sourceId
++        LIMIT 1
++        """
++    )
++    suspend fun getEntry(organizationId: String, sourceKind: String, sourceId: String): SyncLegacyMigrationEntryEntity?
++
++    @Query(
++        """
++        UPDATE sync_legacy_migration_entry
++        SET source_state = :sourceState,
++            source_sequence = :sourceSequence,
++            command_batch_id = :commandBatchId,
++            command_order = :commandOrder,
++            depends_on_source_id = :dependsOnSourceId,
++            target_kind = :targetKind,
++            target_mutation_id = :targetMutationId,
++            disposition = :disposition,
++            reason_code = :reasonCode,
++            updated_at = :updatedAt
++        WHERE organization_id = :organizationId AND source_kind = :sourceKind AND source_id = :sourceId
++        """
++    )
++    suspend fun updateOutcome(
++        organizationId: String,
++        sourceKind: String,
++        sourceId: String,
++        sourceState: String,
++        sourceSequence: Long?,
++        commandBatchId: String?,
++        commandOrder: Int?,
++        dependsOnSourceId: String?,
++        targetKind: String,
++        targetMutationId: String?,
++        disposition: String,
++        reasonCode: String?,
++        updatedAt: Long,
++    ): Int
++
++    @Query(
++        """
++        SELECT * FROM sync_legacy_migration_entry
++        WHERE organization_id = :organizationId
++        ORDER BY source_kind, source_sequence, source_id
++        """
++    )
++    suspend fun listEntries(organizationId: String): List<SyncLegacyMigrationEntryEntity>
++
++    @Query("SELECT COUNT(*) FROM sync_legacy_migration_entry WHERE organization_id = :organizationId")
++    suspend fun countEntries(organizationId: String): Int
++
++    @Query(
++        """
++        SELECT COUNT(*) FROM sync_legacy_migration_entry
++        WHERE organization_id = :organizationId AND disposition = :disposition
++        """
++    )
++    suspend fun countDisposition(organizationId: String, disposition: String): Int
++
++    @Insert(onConflict = OnConflictStrategy.REPLACE)
++    suspend fun upsertState(state: SyncLegacyMigrationStateEntity)
++
++    @Query(
++        """
++        SELECT * FROM sync_legacy_migration_state
++        WHERE organization_id = :organizationId AND sync_principal_id = :syncPrincipalId
++        LIMIT 1
++        """
++    )
++    suspend fun getState(organizationId: String, syncPrincipalId: String): SyncLegacyMigrationStateEntity?
++}
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncLegacyMigrationEntities.kt /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncLegacyMigrationEntities.kt
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncLegacyMigrationEntities.kt	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncLegacyMigrationEntities.kt	2026-09-08 18:35:13.066766380 +0000
+@@ -0,0 +1,60 @@
++package com.verto.app.data.local.entity
++
++import androidx.room.ColumnInfo
++import androidx.room.Entity
++import androidx.room.Index
++
++/**
++ * M03 durable cutover journal. It records the fate of every legacy pending intent without deleting
++ * the source row. Stronger outboxes remain the single delivery authority until their M05 bridge is retired.
++ */
++@Entity(
++    tableName = "sync_legacy_migration_entry",
++    primaryKeys = ["organization_id", "source_kind", "source_id"],
++    indices = [
++        Index(value = ["organization_id", "disposition", "created_at"], name = "index_sync_legacy_migration_disposition"),
++        Index(value = ["organization_id", "aggregate_type", "aggregate_id"], name = "index_sync_legacy_migration_aggregate"),
++        Index(value = ["target_mutation_id"], name = "index_sync_legacy_migration_target_mutation"),
++    ],
++)
++data class SyncLegacyMigrationEntryEntity(
++    @ColumnInfo(name = "organization_id") val organizationId: String,
++    @ColumnInfo(name = "source_kind") val sourceKind: String,
++    @ColumnInfo(name = "source_id") val sourceId: String,
++    @ColumnInfo(name = "sync_principal_id") val syncPrincipalId: String,
++    @ColumnInfo(name = "aggregate_type") val aggregateType: String,
++    @ColumnInfo(name = "aggregate_id") val aggregateId: String,
++    @ColumnInfo(name = "source_state") val sourceState: String,
++    @ColumnInfo(name = "business_identity") val businessIdentity: String,
++    @ColumnInfo(name = "source_sequence") val sourceSequence: Long?,
++    @ColumnInfo(name = "command_batch_id") val commandBatchId: String?,
++    @ColumnInfo(name = "command_order") val commandOrder: Int?,
++    @ColumnInfo(name = "depends_on_source_id") val dependsOnSourceId: String?,
++    @ColumnInfo(name = "target_kind") val targetKind: String,
++    @ColumnInfo(name = "target_mutation_id") val targetMutationId: String?,
++    val disposition: String,
++    @ColumnInfo(name = "reason_code") val reasonCode: String?,
++    @ColumnInfo(name = "source_fingerprint") val sourceFingerprint: String,
++    @ColumnInfo(name = "created_at") val createdAt: Long,
++    @ColumnInfo(name = "updated_at") val updatedAt: Long,
++)
++
++/** Per trusted account/tenant progress marker. No wall-clock value is an ordering authority. */
++@Entity(
++    tableName = "sync_legacy_migration_state",
++    primaryKeys = ["organization_id", "sync_principal_id"],
++)
++data class SyncLegacyMigrationStateEntity(
++    @ColumnInfo(name = "organization_id") val organizationId: String,
++    @ColumnInfo(name = "sync_principal_id") val syncPrincipalId: String,
++    val phase: String,
++    @ColumnInfo(name = "source_count") val sourceCount: Int,
++    @ColumnInfo(name = "migrated_count") val migratedCount: Int,
++    @ColumnInfo(name = "receipt_confirmed_count") val receiptConfirmedCount: Int,
++    @ColumnInfo(name = "review_count") val reviewCount: Int,
++    @ColumnInfo(name = "source_digest") val sourceDigest: String,
++    @ColumnInfo(name = "legacy_writes_fenced") val legacyWritesFenced: Boolean,
++    @ColumnInfo(name = "started_at") val startedAt: Long,
++    @ColumnInfo(name = "updated_at") val updatedAt: Long,
++    @ColumnInfo(name = "completed_at") val completedAt: Long?,
++)
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogM03Test.kt /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogM03Test.kt
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogM03Test.kt	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogM03Test.kt	2026-09-08 18:44:19.197343893 +0000
+@@ -0,0 +1,25 @@
++package com.verto.app.data.local
++
++import org.junit.Assert.assertEquals
++import org.junit.Assert.assertTrue
++import org.junit.Test
++
++class MigrationCatalogM03Test {
++    @Test
++    fun `M03 advances Room schema exactly once`() {
++        assertEquals(96, ROOM_SCHEMA_VERSION)
++        assertEquals(95, MIGRATION_95_96.startVersion)
++        assertEquals(96, MIGRATION_95_96.endVersion)
++    }
++
++    @Test
++    fun `every previously supported Room version reaches M03 schema`() {
++        for (from in 1 until ROOM_SCHEMA_VERSION) {
++            val path = migrationPath(from)
++            assertTrue("missing migration path from $from", path.isNotEmpty())
++            assertEquals(from, path.first().startVersion)
++            assertEquals(ROOM_SCHEMA_VERSION, path.last().endVersion)
++            path.zipWithNext().forEach { (a, b) -> assertEquals(a.endVersion, b.startVersion) }
++        }
++    }
++}
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt /mnt/data/verto_m03_work/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt	2026-09-08 10:44:34.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt	2026-09-08 18:43:32.040880027 +0000
+@@ -126,7 +126,18 @@
+     suspend fun drainOrchestration(scope: SyncWorkScope): SyncDrainResult = syncMutex.withLock {
+         _syncInProgress.value = true
+         try {
++            validateScope(scope)
++            val migrationDeletions = runtime.captureDeletionSnapshot()
++            val migrationReviewCount = runtime.prepareLegacyV2Migration(
++                scope,
++                migrationDeletions,
++                orchestration.nowMillis(),
++            )
++            validateScope(scope)
+             val preflightRecovery = v2Engine.requiredRecoveryReason(scope.organizationId) { validateScope(scope) }
++            check(preflightRecovery == null || migrationReviewCount == 0) {
++                "M03_LOCAL_MIGRATION_REVIEW_REQUIRED:$migrationReviewCount"
++            }
+             if (preflightRecovery != null) {
+                 when (v2Engine.runRecovery(scope.organizationId, preflightRecovery, scopeGuard = { validateScope(scope) })) {
+                     RecoveryRunOutcome.READY -> Unit
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManagerPorts.kt /mnt/data/verto_m03_work/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManagerPorts.kt
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManagerPorts.kt	2026-09-08 10:44:34.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManagerPorts.kt	2026-09-08 18:43:32.040648278 +0000
+@@ -11,6 +11,7 @@
+ import com.verto.app.data.sync.recovery.RecoveryRunOutcome
+ import com.verto.app.data.sync.recovery.SyncHealthMonitor
+ import com.verto.app.data.sync.recovery.UnifiedSyncRecoveryEngine
++import com.verto.app.data.sync.migration.LegacySyncV2MigrationCoordinator
+ import com.verto.app.data.sync.rollout.SyncRolloutPolicy
+ import dagger.hilt.android.qualifiers.ApplicationContext
+ import javax.inject.Inject
+@@ -27,6 +28,7 @@
+     suspend fun sessionEpoch(): Long
+     suspend fun isLocalDatabaseEmpty(): Boolean
+     suspend fun captureDeletionSnapshot(): SyncDeletionSnapshot
++    suspend fun prepareLegacyV2Migration(scope: SyncWorkScope, deletions: SyncDeletionSnapshot, now: Long): Int = 0
+     suspend fun getPersistedSyncReport(organizationId: String, userId: String): String?
+     suspend fun setPersistedSyncReport(organizationId: String, userId: String, reportJson: String)
+     suspend fun clearLocalData()
+@@ -47,6 +49,7 @@
+ class DefaultSyncManagerRuntimePort @Inject constructor(
+     private val authRepository: AuthRepository,
+     private val runtime: SyncRuntime,
++    private val legacyMigration: LegacySyncV2MigrationCoordinator,
+ ) : SyncManagerRuntimePort {
+     override suspend fun currentPrincipal(): SyncManagerPrincipal? = authRepository.getMyProfile()?.let {
+         SyncManagerPrincipal(organizationId = it.organizationId, userId = it.id)
+@@ -55,6 +58,8 @@
+     override suspend fun sessionEpoch(): Long = runtime.getSessionEpoch()
+     override suspend fun isLocalDatabaseEmpty(): Boolean = runtime.isLocalDatabaseEmpty()
+     override suspend fun captureDeletionSnapshot(): SyncDeletionSnapshot = runtime.captureDeletionSnapshot()
++    override suspend fun prepareLegacyV2Migration(scope: SyncWorkScope, deletions: SyncDeletionSnapshot, now: Long): Int =
++        legacyMigration.prepare(scope, deletions, now).reviewCount
+     override suspend fun getPersistedSyncReport(organizationId: String, userId: String): String? =
+         runtime.getPersistedSyncReport(organizationId, userId)
+ 
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/migration/LegacySyncMigrationPlanner.kt /mnt/data/verto_m03_work/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/migration/LegacySyncMigrationPlanner.kt
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/migration/LegacySyncMigrationPlanner.kt	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/migration/LegacySyncMigrationPlanner.kt	2026-09-08 18:44:01.775422796 +0000
+@@ -0,0 +1,79 @@
++package com.verto.app.data.sync.migration
++
++import java.security.MessageDigest
++
++internal object LegacySyncMigrationDisposition {
++    const val MIGRATED = "MIGRATED"
++    const val RECEIPT_CONFIRMED = "RECEIPT_CONFIRMED"
++    const val REQUIRES_REVIEW = "REQUIRES_REVIEW"
++}
++
++internal object LegacySyncMigrationTarget {
++    const val UNIFIED_OUTBOX = "UNIFIED_OUTBOX"
++    const val STRONGER_SOURCE = "STRONGER_SOURCE"
++    const val NONE = "NONE"
++}
++
++internal data class LegacySyncMigrationCandidate(
++    val sourceKind: String,
++    val sourceId: String,
++    val aggregateType: String,
++    val aggregateId: String,
++    val sourceState: String,
++    val businessIdentity: String,
++    val sourceSequence: Long? = null,
++    val commandBatchId: String? = null,
++    val commandOrder: Int? = null,
++    val dependsOnSourceId: String? = null,
++    val targetKind: String,
++    val targetMutationId: String? = null,
++    val disposition: String,
++    val reasonCode: String? = null,
++    val createdAt: Long,
++) {
++    val fingerprint: String
++        get() = LegacySyncMigrationPlanner.fingerprint(this)
++}
++
++internal object LegacySyncMigrationPlanner {
++    private val receiptStates = setOf("ACKNOWLEDGED", "SYNCED")
++    private val reviewStates = setOf("REQUIRES_REVIEW", "REJECTED", "BLOCKED")
++
++    fun dispositionForState(state: String): String = when (state.trim().uppercase()) {
++        in receiptStates -> LegacySyncMigrationDisposition.RECEIPT_CONFIRMED
++        in reviewStates -> LegacySyncMigrationDisposition.REQUIRES_REVIEW
++        else -> LegacySyncMigrationDisposition.MIGRATED
++    }
++
++    fun fingerprint(candidate: LegacySyncMigrationCandidate): String = sha256(
++        listOf(
++            "m03-v1",
++            candidate.sourceKind,
++            candidate.sourceId,
++            candidate.aggregateType,
++            candidate.aggregateId,
++            candidate.businessIdentity,
++        )
++    )
++
++    fun sourceDigest(candidates: Collection<LegacySyncMigrationCandidate>): String = sha256(
++        candidates
++            .sortedWith(compareBy(LegacySyncMigrationCandidate::sourceKind, LegacySyncMigrationCandidate::sourceId))
++            .map { it.fingerprint }
++    )
++
++    private fun sha256(fields: List<String?>): String {
++        val digest = MessageDigest.getInstance("SHA-256")
++        fields.forEach { value ->
++            val bytes = value?.toByteArray(Charsets.UTF_8) ?: byteArrayOf()
++            digest.update(byteArrayOf(
++                (bytes.size ushr 24).toByte(),
++                (bytes.size ushr 16).toByte(),
++                (bytes.size ushr 8).toByte(),
++                bytes.size.toByte(),
++            ))
++            digest.update(bytes)
++        }
++        return digest.digest().joinToString("") { "%02x".format(it) }
++    }
++}
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/migration/LegacySyncV2MigrationCoordinator.kt /mnt/data/verto_m03_work/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/migration/LegacySyncV2MigrationCoordinator.kt
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/migration/LegacySyncV2MigrationCoordinator.kt	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/data/sync/src/main/kotlin/com/verto/app/data/sync/migration/LegacySyncV2MigrationCoordinator.kt	2026-09-08 18:44:01.775649056 +0000
+@@ -0,0 +1,513 @@
++package com.verto.app.data.sync.migration
++
++import android.database.Cursor
++import androidx.room.withTransaction
++import androidx.sqlite.db.SimpleSQLiteQuery
++import com.verto.app.data.local.AppDatabase
++import com.verto.app.data.local.entity.SyncLegacyMigrationEntryEntity
++import com.verto.app.data.local.entity.SyncLegacyMigrationStateEntity
++import com.verto.app.data.sync.SyncDeletionSnapshot
++import com.verto.app.data.sync.SyncWorkScope
++import com.verto.app.data.sync.UnifiedStrongerBridgeRegistry
++import kotlinx.serialization.json.Json
++import kotlinx.serialization.json.jsonObject
++import kotlinx.serialization.json.jsonPrimitive
++import javax.inject.Inject
++import javax.inject.Singleton
++
++/**
++ * M03 tenant-bound, resumable census of all known pre-cutover pending authorities.
++ *
++ * It intentionally never clears dirty flags/deletion preferences and never copies a stronger durable
++ * outbox row into sync_outbox. M04/M05 may fence legacy writers only after every producer/transport
++ * authority has a verified V2 replacement.
++ */
++@Singleton
++class LegacySyncV2MigrationCoordinator @Inject constructor(
++    private val database: AppDatabase,
++) {
++    private val json = Json { ignoreUnknownKeys = true }
++
++    suspend fun prepare(
++        scope: SyncWorkScope,
++        deletions: SyncDeletionSnapshot,
++        now: Long,
++    ): LegacySyncMigrationSummary {
++        val candidates = buildCandidates(scope, deletions)
++            .distinctBy { it.sourceKind to it.sourceId }
++            .sortedWith(compareBy(LegacySyncMigrationCandidate::sourceKind, LegacySyncMigrationCandidate::sourceId))
++        val digest = LegacySyncMigrationPlanner.sourceDigest(candidates)
++        val dao = database.syncLegacyMigrationDao()
++
++        database.withTransaction {
++            val previousState = dao.getState(scope.organizationId, scope.userId)
++            candidates.forEach { candidate ->
++                val entity = candidate.toEntity(scope, now)
++                val inserted = dao.insertEntry(entity)
++                if (inserted == -1L) {
++                    val existing = requireNotNull(
++                        dao.getEntry(scope.organizationId, candidate.sourceKind, candidate.sourceId)
++                    ) { "M03 journal identity disappeared after conflict" }
++                    check(existing.sourceFingerprint == entity.sourceFingerprint &&
++                        existing.syncPrincipalId == scope.userId &&
++                        existing.aggregateType == entity.aggregateType &&
++                        existing.aggregateId == entity.aggregateId
++                    ) {
++                        "M03_SOURCE_IDENTITY_CONFLICT:${candidate.sourceKind}:${candidate.sourceId}"
++                    }
++                    check(dao.updateOutcome(
++                        organizationId = scope.organizationId,
++                        sourceKind = candidate.sourceKind,
++                        sourceId = candidate.sourceId,
++                        sourceState = candidate.sourceState,
++                        sourceSequence = candidate.sourceSequence,
++                        commandBatchId = candidate.commandBatchId,
++                        commandOrder = candidate.commandOrder,
++                        dependsOnSourceId = candidate.dependsOnSourceId,
++                        targetKind = candidate.targetKind,
++                        targetMutationId = candidate.targetMutationId,
++                        disposition = candidate.disposition,
++                        reasonCode = candidate.reasonCode,
++                        updatedAt = now,
++                    ) == 1) { "M03 journal outcome update failed" }
++                }
++            }
++
++            val migrated = candidates.count { it.disposition == LegacySyncMigrationDisposition.MIGRATED }
++            val receipts = candidates.count { it.disposition == LegacySyncMigrationDisposition.RECEIPT_CONFIRMED }
++            val reviews = candidates.count { it.disposition == LegacySyncMigrationDisposition.REQUIRES_REVIEW }
++            dao.upsertState(
++                SyncLegacyMigrationStateEntity(
++                    organizationId = scope.organizationId,
++                    syncPrincipalId = scope.userId,
++                    phase = if (reviews == 0) "PREPARED" else "REQUIRES_REVIEW",
++                    sourceCount = candidates.size,
++                    migratedCount = migrated,
++                    receiptConfirmedCount = receipts,
++                    reviewCount = reviews,
++                    sourceDigest = digest,
++                    // M03 does not claim M04/M05 producer/transport cutover.
++                    legacyWritesFenced = false,
++                    startedAt = previousState?.startedAt ?: now,
++                    updatedAt = now,
++                    completedAt = now,
++                )
++            )
++        }
++
++        return LegacySyncMigrationSummary(
++            sourceCount = candidates.size,
++            migratedCount = candidates.count { it.disposition == LegacySyncMigrationDisposition.MIGRATED },
++            receiptConfirmedCount = candidates.count { it.disposition == LegacySyncMigrationDisposition.RECEIPT_CONFIRMED },
++            reviewCount = candidates.count { it.disposition == LegacySyncMigrationDisposition.REQUIRES_REVIEW },
++            sourceDigest = digest,
++            legacyWritesFenced = false,
++        )
++    }
++
++    private fun buildCandidates(
++        scope: SyncWorkScope,
++        deletions: SyncDeletionSnapshot,
++    ): List<LegacySyncMigrationCandidate> = buildList {
++        addAll(financialCandidates(scope.organizationId))
++        addAll(inventoryMovementCandidates(scope.organizationId))
++        addAll(inventoryCostCandidates(scope.organizationId))
++        addAll(partyRoleOutboxCandidates(scope.organizationId))
++        addAll(optimalCandidates(scope.organizationId))
++        addAll(dirtyRowCandidates(scope.organizationId))
++        addAll(deletionCandidates(scope.organizationId, deletions))
++    }
++
++    private fun financialCandidates(org: String): List<LegacySyncMigrationCandidate> = query(
++        """
++        SELECT event_id, write_id, aggregate_id, sequence, operation_type, sync_state, created_at
++        FROM financial_outbox WHERE organization_id = ?
++        """.trimIndent(), arrayOf(org)
++    ) { c ->
++        val operation = c.string("operation_type")
++        val aggregate = if (operation.startsWith("PAYMENT_")) "PAYMENT" else "INVOICE"
++        val identity = "$operation:${c.string("write_id")}" 
++        strongerCandidate(
++            sourceKind = "FINANCIAL_OUTBOX",
++            sourceId = c.string("event_id"),
++            aggregateType = aggregate,
++            aggregateId = c.string("aggregate_id"),
++            sourceState = c.string("sync_state"),
++            businessIdentity = identity,
++            sourceSequence = c.longOrNull("sequence"),
++            createdAt = c.long("created_at"),
++        )
++    }
++
++    private fun inventoryMovementCandidates(org: String): List<LegacySyncMigrationCandidate> = query(
++        """
++        SELECT o.id, o.command_id, o.idempotency_key, o.movement_id, o.sync_state, o.created_at,
++               m.idempotency_key AS movement_idempotency_key, m.posting_group_id
++        FROM inventory_stock_outbox o
++        LEFT JOIN inventory_movements m ON m.id = o.movement_id
++        WHERE o.organization_id = ?
++        """.trimIndent(), arrayOf(org)
++    ) { c ->
++        val identity = c.stringOrNull("movement_idempotency_key")?.takeIf(String::isNotBlank)
++            ?: c.stringOrNull("idempotency_key")?.takeIf(String::isNotBlank)
++        if (identity == null) {
++            reviewCandidate(
++                "INVENTORY_STOCK_OUTBOX", c.string("id"), "INVENTORY_MOVEMENT", c.string("movement_id"),
++                c.string("sync_state"), c.string("command_id"), c.long("created_at"),
++                reason = "M03_STRONGER_IDENTITY_MISSING",
++            )
++        } else {
++            strongerCandidate(
++                sourceKind = "INVENTORY_STOCK_OUTBOX",
++                sourceId = c.string("id"),
++                aggregateType = "INVENTORY_MOVEMENT",
++                aggregateId = c.string("movement_id"),
++                sourceState = c.string("sync_state"),
++                businessIdentity = identity,
++                sourceSequence = c.long("created_at").coerceAtLeast(1L),
++                commandBatchId = c.stringOrNull("posting_group_id"),
++                createdAt = c.long("created_at"),
++            )
++        }
++    }
++
++    private fun inventoryCostCandidates(org: String): List<LegacySyncMigrationCandidate> = query(
++        """
++        SELECT o.id, o.command_id, o.cost_revision_id, o.sync_state, o.created_at,
++               r.idempotency_key, r.cost_sequence
++        FROM inventory_cost_outbox o
++        LEFT JOIN inventory_cost_revisions r
++          ON r.cost_revision_id = o.cost_revision_id AND r.organization_id = o.organization_id
++        WHERE o.organization_id = ?
++        """.trimIndent(), arrayOf(org)
++    ) { c ->
++        val identity = c.stringOrNull("idempotency_key")?.takeIf(String::isNotBlank)
++        if (identity == null) {
++            reviewCandidate(
++                "INVENTORY_COST_OUTBOX", c.string("id"), "INVENTORY_COST_REVISION", c.string("cost_revision_id"),
++                c.string("sync_state"), c.string("command_id"), c.long("created_at"),
++                reason = "M03_STRONGER_IDENTITY_MISSING",
++            )
++        } else {
++            strongerCandidate(
++                sourceKind = "INVENTORY_COST_OUTBOX",
++                sourceId = c.string("id"),
++                aggregateType = "INVENTORY_COST_REVISION",
++                aggregateId = c.string("cost_revision_id"),
++                sourceState = c.string("sync_state"),
++                businessIdentity = identity,
++                sourceSequence = c.longOrNull("cost_sequence") ?: c.long("created_at").coerceAtLeast(1L),
++                createdAt = c.long("created_at"),
++            )
++        }
++    }
++
++    private fun partyRoleOutboxCandidates(org: String): List<LegacySyncMigrationCandidate> = query(
++        """
++        SELECT id, operation_id, aggregate_type, aggregate_id, payload_json, state, created_at
++        FROM party_sync_outbox WHERE aggregate_type = 'ROLE'
++        """.trimIndent(), emptyArray()
++    ) { c ->
++        val partyId = c.string("aggregate_id")
++        val role = runCatching {
++            json.parseToJsonElement(c.string("payload_json")).jsonObject["role"]?.jsonPrimitive?.content
++        }.getOrNull()?.takeIf(String::isNotBlank)
++        val belongsToOrg = role != null && scalarLong(
++            "SELECT COUNT(*) FROM party_roles WHERE organization_id = ? AND party_id = ? AND role = ?",
++            arrayOf(org, partyId, role),
++        ) > 0L
++        if (!belongsToOrg || role == null) return@query null
++        val state = c.string("state")
++        LegacySyncMigrationCandidate(
++            sourceKind = "PARTY_SYNC_OUTBOX",
++            sourceId = c.string("id"),
++            aggregateType = "PARTY_ROLE",
++            aggregateId = "$partyId:$role",
++            sourceState = state,
++            businessIdentity = c.string("operation_id"),
++            sourceSequence = c.long("created_at").coerceAtLeast(1L),
++            targetKind = LegacySyncMigrationTarget.STRONGER_SOURCE,
++            targetMutationId = c.string("operation_id"),
++            disposition = LegacySyncMigrationPlanner.dispositionForState(state),
++            reasonCode = stateReason(state),
++            createdAt = c.long("created_at"),
++        )
++    }.filterNotNull()
++
++    private fun optimalCandidates(org: String): List<LegacySyncMigrationCandidate> = query(
++        """
++        SELECT event_id, aggregate_type, aggregate_id, idempotency_key, sequence, status, created_at
++        FROM optimal_outbox WHERE organization_id = ?
++        """.trimIndent(), arrayOf(org)
++    ) { c ->
++        val aggregate = when (c.string("aggregate_type").uppercase()) {
++            "VEHICLE" -> "OPTIMAL_VEHICLE"
++            "MAINTENANCE" -> "OPTIMAL_MAINTENANCE"
++            "FOLLOW_UP" -> "OPTIMAL_FOLLOW_UP"
++            else -> null
++        }
++        val identity = c.stringOrNull("idempotency_key")?.takeIf(String::isNotBlank)
++        if (aggregate == null || identity == null) {
++            reviewCandidate(
++                "OPTIMAL_OUTBOX", c.string("event_id"), aggregate ?: "OPTIMAL_UNKNOWN",
++                c.string("aggregate_id"), c.string("status"), identity.orEmpty(), c.long("created_at"),
++                reason = if (aggregate == null) "M03_OPTIMAL_AGGREGATE_UNKNOWN" else "M03_STRONGER_IDENTITY_MISSING",
++                sourceSequence = c.longOrNull("sequence"),
++            )
++        } else {
++            strongerCandidate(
++                "OPTIMAL_OUTBOX", c.string("event_id"), aggregate, c.string("aggregate_id"),
++                c.string("status"), identity, c.longOrNull("sequence"), createdAt = c.long("created_at"),
++            )
++        }
++    }
++
++    private fun dirtyRowCandidates(org: String): List<LegacySyncMigrationCandidate> = buildList {
++        addAll(dirtyWithOrg("DIRTY_PARTY_IDENTITY", "PARTY_IDENTITY",
++            "SELECT DISTINCT c.id AS source_id, c.id AS aggregate_id, c.createdAt AS created_at FROM clients c JOIN party_roles r ON r.party_id=c.id WHERE c.isDirty=1 AND r.organization_id=?", org))
++        addAll(dirtyWithOrg("DIRTY_PARTY_ROLE", "PARTY_ROLE",
++            "SELECT id AS source_id, party_id || ':' || role AS aggregate_id, created_at FROM party_roles WHERE dirty=1 AND organization_id=?", org))
++        addAll(dirtyWithOrg("DIRTY_CUSTOMER_PROFILE", "CUSTOMER_PROFILE",
++            "SELECT party_id AS source_id, party_id AS aggregate_id, updated_at AS created_at FROM customer_profiles WHERE dirty=1 AND organization_id=?", org))
++        addAll(dirtyWithOrg("DIRTY_SUPPLIER_PROFILE", "SUPPLIER_PROFILE",
++            "SELECT party_id AS source_id, party_id AS aggregate_id, updated_at AS created_at FROM supplier_profiles WHERE dirty=1 AND organization_id=?", org))
++        addAll(dirtyWithOrg("DIRTY_INVOICE", "INVOICE",
++            "SELECT id AS source_id, id AS aggregate_id, createdAt AS created_at FROM invoices WHERE isDirty=1 AND organization_id=?", org))
++        addAll(dirtyWithOrg("DIRTY_INVOICE_ITEM", "INVOICE",
++            "SELECT li.id AS source_id, li.invoiceId AS aggregate_id, i.createdAt AS created_at FROM invoice_items li JOIN invoices i ON i.id=li.invoiceId WHERE li.isDirty=1 AND i.organization_id=?", org))
++        addAll(dirtyWithOrg("DIRTY_PAYMENT", "PAYMENT",
++            "SELECT p.id AS source_id, p.id AS aggregate_id, p.paidAt AS created_at FROM payments p JOIN invoices i ON i.id=p.invoiceId WHERE p.isDirty=1 AND i.organization_id=?", org))
++        addAll(dirtyWithOrg("DIRTY_CLIENT_CREDIT", "CLIENT_CREDIT",
++            "SELECT DISTINCT cc.id AS source_id, cc.id AS aggregate_id, cc.createdAt AS created_at FROM client_credits cc JOIN party_roles r ON r.party_id=cc.clientId WHERE cc.isDirty=1 AND r.organization_id=?", org))
++        addAll(dirtyWithOrg("DIRTY_EDUCATIONAL_CONTENT", "EDUCATIONAL_CONTENT",
++            "SELECT topic_id AS source_id, topic_id AS aggregate_id, updated_at AS created_at FROM educational_topics WHERE is_dirty=1 AND organization_id=?", org))
++        addAll(dirtyWithOrg("DIRTY_TEAM_OBSERVATION", "TEAM_OBSERVATION",
++            "SELECT observation_id AS source_id, observation_id AS aggregate_id, updated_at AS created_at FROM team_observations WHERE is_dirty=1 AND organization_id=?", org))
++        addAll(dirtyWithOrg("DIRTY_ORGANIZATION_SETTINGS", "ORGANIZATION_SETTINGS",
++            "SELECT organization_id AS source_id, organization_id AS aggregate_id, updated_at AS created_at FROM organization_settings_local WHERE is_dirty=1 AND organization_id=?", org))
++
++        // These historical tables have no tenant column. Preserve them, but do not guess tenant identity.
++        addAll(unscopedDirty("DIRTY_INVENTORY_ITEM_UNSCOPED", "INVENTORY_ITEM",
++            "SELECT id AS source_id, id AS aggregate_id, createdAt AS created_at FROM inventory_items WHERE isDirty=1"))
++        addAll(unscopedDirty("DIRTY_EXPENSE_UNSCOPED", "EXPENSE",
++            "SELECT id AS source_id, id AS aggregate_id, date AS created_at FROM expenses WHERE isDirty=1"))
++    }
++
++    private fun dirtyWithOrg(sourceKind: String, aggregateType: String, sql: String, org: String) =
++        query(sql, arrayOf(org)) { c ->
++            resolveGenericCandidate(
++                org = org,
++                sourceKind = sourceKind,
++                sourceId = c.string("source_id"),
++                aggregateType = aggregateType,
++                aggregateId = c.string("aggregate_id"),
++                sourceState = "DIRTY",
++                createdAt = c.long("created_at"),
++                missingReason = "M03_DIRTY_WITHOUT_DURABLE_INTENT",
++            )
++        }
++
++    private fun unscopedDirty(sourceKind: String, aggregateType: String, sql: String) =
++        query(sql, emptyArray()) { c ->
++            reviewCandidate(
++                sourceKind, c.string("source_id"), aggregateType, c.string("aggregate_id"),
++                "DIRTY", c.string("source_id"), c.long("created_at"), "M03_ORG_SCOPE_UNPROVEN",
++            )
++        }
++
++    private fun deletionCandidates(org: String, deletions: SyncDeletionSnapshot): List<LegacySyncMigrationCandidate> {
++        val specs = listOf(
++            Triple("DELETION_PREF_CLIENT", "PARTY_IDENTITY", deletions.clientIds),
++            Triple("DELETION_PREF_INVOICE", "INVOICE", deletions.invoiceIds),
++            Triple("DELETION_PREF_INVENTORY", "INVENTORY_ITEM", deletions.inventoryIds),
++            Triple("DELETION_PREF_EXPENSE", "EXPENSE", deletions.expenseIds),
++            Triple("DELETION_PREF_CATEGORY", "CATEGORY", deletions.categoryIds),
++            Triple("DELETION_PREF_COMMISSION", "COMMISSION_PAYMENT", deletions.commissionIds),
++            Triple("DELETION_PREF_UNIT", "INVENTORY_UNIT", deletions.unitIds),
++            Triple("DELETION_PREF_BUDGET", "BUDGET", deletions.budgetIds),
++            Triple("DELETION_PREF_RECONCILIATION", "CASH_RECONCILIATION", deletions.reconciliationIds),
++        )
++        return specs.flatMap { (kind, aggregate, ids) ->
++            ids.map { id ->
++                resolveGenericCandidate(
++                    org, kind, id, aggregate, id, "PENDING_DELETE", 0L,
++                    missingReason = if (aggregate in setOf("INVOICE", "EXPENSE", "COMMISSION_PAYMENT", "CASH_RECONCILIATION")) {
++                        "M03_DELETE_REQUIRES_DOMAIN_COMMAND"
++                    } else {
++                        "M03_DELETE_WITHOUT_DURABLE_INTENT"
++                    },
++                )
++            }
++        }
++    }
++
++    private fun resolveGenericCandidate(
++        org: String,
++        sourceKind: String,
++        sourceId: String,
++        aggregateType: String,
++        aggregateId: String,
++        sourceState: String,
++        createdAt: Long,
++        missingReason: String,
++    ): LegacySyncMigrationCandidate {
++        val target = queryOne(
++            """
++            SELECT mutation_id, state, local_sequence, command_batch_id, command_order, depends_on_mutation_id
++            FROM sync_outbox
++            WHERE organization_id=? AND aggregate_type=? AND aggregate_id=?
++            ORDER BY local_sequence DESC LIMIT 1
++            """.trimIndent(), arrayOf(org, aggregateType, aggregateId)
++        ) { c ->
++            UnifiedTarget(
++                mutationId = c.string("mutation_id"),
++                state = c.string("state"),
++                localSequence = c.longOrNull("local_sequence"),
++                commandBatchId = c.stringOrNull("command_batch_id"),
++                commandOrder = c.intOrNull("command_order"),
++                dependsOn = c.stringOrNull("depends_on_mutation_id"),
++            )
++        }
++        if (target == null) {
++            return reviewCandidate(
++                sourceKind, sourceId, aggregateType, aggregateId, sourceState, sourceId, createdAt,
++                reason = missingReason,
++            )
++        }
++        val disposition = LegacySyncMigrationPlanner.dispositionForState(target.state)
++        return LegacySyncMigrationCandidate(
++            sourceKind = sourceKind,
++            sourceId = sourceId,
++            aggregateType = aggregateType,
++            aggregateId = aggregateId,
++            sourceState = sourceState,
++            businessIdentity = sourceId,
++            sourceSequence = target.localSequence,
++            commandBatchId = target.commandBatchId,
++            commandOrder = target.commandOrder,
++            dependsOnSourceId = target.dependsOn,
++            targetKind = LegacySyncMigrationTarget.UNIFIED_OUTBOX,
++            targetMutationId = target.mutationId,
++            disposition = disposition,
++            reasonCode = if (disposition == LegacySyncMigrationDisposition.REQUIRES_REVIEW) "M03_TARGET_REQUIRES_REVIEW" else null,
++            createdAt = createdAt,
++        )
++    }
++
++    private fun strongerCandidate(
++        sourceKind: String,
++        sourceId: String,
++        aggregateType: String,
++        aggregateId: String,
++        sourceState: String,
++        businessIdentity: String,
++        sourceSequence: Long? = null,
++        commandBatchId: String? = null,
++        commandOrder: Int? = null,
++        dependsOnSourceId: String? = null,
++        createdAt: Long,
++    ): LegacySyncMigrationCandidate {
++        val disposition = LegacySyncMigrationPlanner.dispositionForState(sourceState)
++        return LegacySyncMigrationCandidate(
++            sourceKind, sourceId, aggregateType, aggregateId, sourceState, businessIdentity,
++            sourceSequence, commandBatchId, commandOrder, dependsOnSourceId,
++            LegacySyncMigrationTarget.STRONGER_SOURCE,
++            UnifiedStrongerBridgeRegistry.stableMutationId(aggregateType, businessIdentity),
++            disposition,
++            stateReason(sourceState),
++            createdAt,
++        )
++    }
++
++    private fun reviewCandidate(
++        sourceKind: String,
++        sourceId: String,
++        aggregateType: String,
++        aggregateId: String,
++        sourceState: String,
++        businessIdentity: String,
++        createdAt: Long,
++        reason: String,
++        sourceSequence: Long? = null,
++    ) = LegacySyncMigrationCandidate(
++        sourceKind = sourceKind,
++        sourceId = sourceId,
++        aggregateType = aggregateType,
++        aggregateId = aggregateId,
++        sourceState = sourceState,
++        businessIdentity = businessIdentity,
++        sourceSequence = sourceSequence,
++        targetKind = LegacySyncMigrationTarget.NONE,
++        disposition = LegacySyncMigrationDisposition.REQUIRES_REVIEW,
++        reasonCode = reason,
++        createdAt = createdAt,
++    )
++
++    private fun stateReason(state: String): String? = when (state.trim().uppercase()) {
++        "REQUIRES_REVIEW", "REJECTED", "BLOCKED" -> "M03_SOURCE_${state.trim().uppercase()}"
++        else -> null
++    }
++
++    private fun <T> query(sql: String, args: Array<Any?>, mapper: (Cursor) -> T): List<T> {
++        val db = database.openHelper.readableDatabase
++        return db.query(SimpleSQLiteQuery(sql, args)).use { cursor ->
++            buildList {
++                while (cursor.moveToNext()) add(mapper(cursor))
++            }
++        }
++    }
++
++    private fun <T> queryOne(sql: String, args: Array<Any?>, mapper: (Cursor) -> T): T? =
++        query(sql, args, mapper).firstOrNull()
++
++    private fun scalarLong(sql: String, args: Array<Any?>): Long =
++        queryOne(sql, args) { it.getLong(0) } ?: 0L
++
++    private fun Cursor.index(name: String): Int = getColumnIndexOrThrow(name)
++    private fun Cursor.string(name: String): String = getString(index(name)) ?: ""
++    private fun Cursor.stringOrNull(name: String): String? = index(name).let { i -> if (isNull(i)) null else getString(i) }
++    private fun Cursor.long(name: String): Long = getLong(index(name))
++    private fun Cursor.longOrNull(name: String): Long? = index(name).let { i -> if (isNull(i)) null else getLong(i) }
++    private fun Cursor.intOrNull(name: String): Int? = index(name).let { i -> if (isNull(i)) null else getInt(i) }
++
++    private fun LegacySyncMigrationCandidate.toEntity(scope: SyncWorkScope, now: Long) =
++        SyncLegacyMigrationEntryEntity(
++            organizationId = scope.organizationId,
++            sourceKind = sourceKind,
++            sourceId = sourceId,
++            syncPrincipalId = scope.userId,
++            aggregateType = aggregateType,
++            aggregateId = aggregateId,
++            sourceState = sourceState,
++            businessIdentity = businessIdentity,
++            sourceSequence = sourceSequence,
++            commandBatchId = commandBatchId,
++            commandOrder = commandOrder,
++            dependsOnSourceId = dependsOnSourceId,
++            targetKind = targetKind,
++            targetMutationId = targetMutationId,
++            disposition = disposition,
++            reasonCode = reasonCode,
++            sourceFingerprint = fingerprint,
++            createdAt = createdAt.takeIf { it > 0L } ?: now,
++            updatedAt = now,
++        )
++
++    private data class UnifiedTarget(
++        val mutationId: String,
++        val state: String,
++        val localSequence: Long?,
++        val commandBatchId: String?,
++        val commandOrder: Int?,
++        val dependsOn: String?,
++    )
++}
++
++data class LegacySyncMigrationSummary(
++    val sourceCount: Int,
++    val migratedCount: Int,
++    val receiptConfirmedCount: Int,
++    val reviewCount: Int,
++    val sourceDigest: String,
++    val legacyWritesFenced: Boolean,
++)
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/data/sync/src/test/kotlin/com/verto/app/data/sync/migration/LegacySyncMigrationPlannerTest.kt /mnt/data/verto_m03_work/Verto-m02-updated/data/sync/src/test/kotlin/com/verto/app/data/sync/migration/LegacySyncMigrationPlannerTest.kt
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/data/sync/src/test/kotlin/com/verto/app/data/sync/migration/LegacySyncMigrationPlannerTest.kt	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/data/sync/src/test/kotlin/com/verto/app/data/sync/migration/LegacySyncMigrationPlannerTest.kt	2026-09-08 18:44:19.196441505 +0000
+@@ -0,0 +1,63 @@
++package com.verto.app.data.sync.migration
++
++import org.junit.Assert.assertEquals
++import org.junit.Assert.assertNotEquals
++import org.junit.Test
++
++class LegacySyncMigrationPlannerTest {
++    private fun candidate(
++        state: String = "PENDING",
++        targetMutationId: String? = "m1",
++        disposition: String = LegacySyncMigrationDisposition.MIGRATED,
++        reason: String? = null,
++    ) = LegacySyncMigrationCandidate(
++        sourceKind = "FINANCIAL_OUTBOX",
++        sourceId = "event-1",
++        aggregateType = "INVOICE",
++        aggregateId = "invoice-1",
++        sourceState = state,
++        businessIdentity = "INVOICE_POSTED:write-1",
++        sourceSequence = 7,
++        targetKind = LegacySyncMigrationTarget.STRONGER_SOURCE,
++        targetMutationId = targetMutationId,
++        disposition = disposition,
++        reasonCode = reason,
++        createdAt = 100,
++    )
++
++    @Test
++    fun `source fingerprint is stable when delivery fate changes`() {
++        val pending = candidate()
++        val acked = candidate(
++            state = "ACKNOWLEDGED",
++            disposition = LegacySyncMigrationDisposition.RECEIPT_CONFIRMED,
++        )
++        assertEquals(pending.fingerprint, acked.fingerprint)
++    }
++
++    @Test
++    fun `source fingerprint changes when immutable business identity changes`() {
++        val original = candidate()
++        val changed = original.copy(businessIdentity = "INVOICE_POSTED:write-2")
++        assertNotEquals(original.fingerprint, changed.fingerprint)
++    }
++
++    @Test
++    fun `source digest is order independent`() {
++        val first = candidate()
++        val second = candidate().copy(sourceId = "event-2", aggregateId = "invoice-2")
++        assertEquals(
++            LegacySyncMigrationPlanner.sourceDigest(listOf(first, second)),
++            LegacySyncMigrationPlanner.sourceDigest(listOf(second, first)),
++        )
++    }
++
++    @Test
++    fun `delivery states map to one documented fate`() {
++        assertEquals(LegacySyncMigrationDisposition.MIGRATED, LegacySyncMigrationPlanner.dispositionForState("PENDING"))
++        assertEquals(LegacySyncMigrationDisposition.RECEIPT_CONFIRMED, LegacySyncMigrationPlanner.dispositionForState("ACKNOWLEDGED"))
++        assertEquals(LegacySyncMigrationDisposition.RECEIPT_CONFIRMED, LegacySyncMigrationPlanner.dispositionForState("SYNCED"))
++        assertEquals(LegacySyncMigrationDisposition.REQUIRES_REVIEW, LegacySyncMigrationPlanner.dispositionForState("REJECTED"))
++        assertEquals(LegacySyncMigrationDisposition.REQUIRES_REVIEW, LegacySyncMigrationPlanner.dispositionForState("BLOCKED"))
++    }
++}
+diff -ruN '--exclude=evidence' /mnt/data/verto_m03_baseline/Verto-m02-updated/scripts/verify-sync-v2-m03.py /mnt/data/verto_m03_work/Verto-m02-updated/scripts/verify-sync-v2-m03.py
+--- /mnt/data/verto_m03_baseline/Verto-m02-updated/scripts/verify-sync-v2-m03.py	1970-01-01 00:00:00.000000000 +0000
++++ /mnt/data/verto_m03_work/Verto-m02-updated/scripts/verify-sync-v2-m03.py	2026-09-08 18:46:00.598534702 +0000
+@@ -0,0 +1,88 @@
++#!/usr/bin/env python3
++import json
++import re
++import sqlite3
++from pathlib import Path
++
++ROOT = Path(__file__).resolve().parents[1]
++results = []
++
++def check(name, ok, detail=""):
++    results.append({"check": name, "status": "PASS" if ok else "FAIL", "detail": detail})
++    if not ok:
++        raise AssertionError(f"{name}: {detail}")
++
++catalog = (ROOT / "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt").read_text()
++appdb = (ROOT / "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt").read_text()
++migration = (ROOT / "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations95To96.kt").read_text()
++coordinator = (ROOT / "data/sync/src/main/kotlin/com/verto/app/data/sync/migration/LegacySyncV2MigrationCoordinator.kt").read_text()
++planner = (ROOT / "data/sync/src/main/kotlin/com/verto/app/data/sync/migration/LegacySyncMigrationPlanner.kt").read_text()
++manager = (ROOT / "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt").read_text()
++
++check("room_schema_96", "ROOM_SCHEMA_VERSION: Int = 96" in catalog)
++check("migration_95_96_registered", "MIGRATION_95_96" in catalog and "Migration(95, 96)" in migration)
++starts = [(int(a), int(b)) for a,b in re.findall(r"MIGRATION_(\d+)_(\d+)", catalog)]
++unique = sorted(set(starts))
++missing = [n for n in range(1,96) if (n,n+1) not in unique]
++check("all_supported_room_paths_continue_to_96", not missing, f"missing={missing}")
++check("room_entities_registered", all(x in appdb for x in ["SyncLegacyMigrationEntryEntity::class", "SyncLegacyMigrationStateEntity::class", "syncLegacyMigrationDao()"]))
++
++# Execute the actual CREATE TABLE/INDEX SQL strings from the Kotlin migration on SQLite.
++sql_blocks = re.findall(r'db\.execSQL\(\s*(?:"""(.*?)"""\.trimIndent\(\)|"([^\"]*(?:\\.[^\"]*)*)")\s*\)', migration, flags=re.S)
++conn = sqlite3.connect(":memory:")
++for triple, quoted in sql_blocks:
++    sql = triple if triple else bytes(quoted, "utf-8").decode("unicode_escape")
++    conn.execute(sql)
++entry_cols = {r[1] for r in conn.execute("PRAGMA table_info(sync_legacy_migration_entry)")}
++state_cols = {r[1] for r in conn.execute("PRAGMA table_info(sync_legacy_migration_state)")}
++check("migration_sql_executes", len(entry_cols) >= 18 and len(state_cols) >= 11)
++check("tenant_source_composite_identity", [r[1] for r in conn.execute("PRAGMA table_info(sync_legacy_migration_entry)") if r[5] > 0] == ["organization_id", "source_kind", "source_id"])
++check("state_tenant_principal_identity", [r[1] for r in conn.execute("PRAGMA table_info(sync_legacy_migration_state)") if r[5] > 0] == ["organization_id", "sync_principal_id"])
++
++# Process-kill/transaction proof: rollback cannot leave half a journal; replay is idempotent by PK.
++row = ("org","FINANCIAL_OUTBOX","event","user","INVOICE","inv","PENDING","POST:w",7,None,None,None,"STRONGER_SOURCE","mut","MIGRATED",None,"fp",1,1)
++insert = "INSERT OR IGNORE INTO sync_legacy_migration_entry VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
++conn.execute("BEGIN")
++conn.execute(insert, row)
++conn.rollback()
++check("kill_before_commit_leaves_zero_partial_rows", conn.execute("SELECT COUNT(*) FROM sync_legacy_migration_entry").fetchone()[0] == 0)
++conn.execute(insert, row)
++conn.commit()
++conn.execute(insert, row)
++conn.commit()
++check("resume_replay_is_idempotent", conn.execute("SELECT COUNT(*) FROM sync_legacy_migration_entry").fetchone()[0] == 1)
++conn.execute("UPDATE sync_legacy_migration_entry SET source_state='ACKNOWLEDGED', disposition='RECEIPT_CONFIRMED' WHERE organization_id='org' AND source_kind='FINANCIAL_OUTBOX' AND source_id='event'")
++conn.commit()
++check("fate_can_advance_without_new_identity", conn.execute("SELECT disposition FROM sync_legacy_migration_entry").fetchone()[0] == "RECEIPT_CONFIRMED")
++
++for source in ["financial_outbox","inventory_stock_outbox","inventory_cost_outbox","party_sync_outbox","optimal_outbox"]:
++    check(f"census_{source}", source in coordinator)
++for source_kind in [
++    "DIRTY_PARTY_IDENTITY", "DIRTY_PARTY_ROLE", "DIRTY_CUSTOMER_PROFILE", "DIRTY_SUPPLIER_PROFILE",
++    "DIRTY_INVOICE", "DIRTY_INVOICE_ITEM", "DIRTY_PAYMENT", "DIRTY_CLIENT_CREDIT",
++    "DIRTY_EDUCATIONAL_CONTENT", "DIRTY_TEAM_OBSERVATION", "DIRTY_ORGANIZATION_SETTINGS",
++    "DIRTY_INVENTORY_ITEM_UNSCOPED", "DIRTY_EXPENSE_UNSCOPED",
++]:
++    check(f"census_{source_kind.lower()}", source_kind in coordinator)
++for delete_kind in ["CLIENT","INVOICE","INVENTORY","EXPENSE","CATEGORY","COMMISSION","UNIT","BUDGET","RECONCILIATION"]:
++    check(f"census_delete_{delete_kind.lower()}", f"DELETION_PREF_{delete_kind}" in coordinator)
++
++check("no_stronger_outbox_copy_to_generic", "INSERT INTO sync_outbox" not in coordinator and "syncOutboxDao" not in coordinator)
++check("stronger_identity_preserved", "UnifiedStrongerBridgeRegistry.stableMutationId" in coordinator and 'targetMutationId = c.string("operation_id")' in coordinator)
++check("unsafe_unscoped_rows_require_review", "M03_ORG_SCOPE_UNPROVEN" in coordinator and "DIRTY_INVENTORY_ITEM_UNSCOPED" in coordinator and "DIRTY_EXPENSE_UNSCOPED" in coordinator)
++check("missing_dirty_intent_requires_review", "M03_DIRTY_WITHOUT_DURABLE_INTENT" in coordinator)
++check("semantic_financial_delete_not_regenerated", "M03_DELETE_REQUIRES_DOMAIN_COMMAND" in coordinator)
++check("legacy_writes_not_fenced_in_m03", "legacyWritesFenced = false" in coordinator)
++check("legacy_deletion_sources_not_cleared", all(token not in coordinator for token in ["removePending", "clearPending", "deletePendingDeletion"]))
++
++# Mutable delivery fate/target is excluded from immutable source fingerprint.
++fingerprint_body = re.search(r"fun fingerprint\(candidate: LegacySyncMigrationCandidate\): String = sha256\((.*?)\n\s*\)\n", planner, flags=re.S).group(1)
++check("fingerprint_excludes_mutable_fate", all(x not in fingerprint_body for x in ["sourceState", "targetMutationId", "disposition", "reasonCode"]))
++
++prep = manager.find("prepareLegacyV2Migration")
++recovery = manager.find("requiredRecoveryReason", prep)
++check("m03_census_precedes_recovery", prep >= 0 and recovery > prep)
++check("recovery_blocked_on_review", "M03_LOCAL_MIGRATION_REVIEW_REQUIRED" in manager and manager.find("M03_LOCAL_MIGRATION_REVIEW_REQUIRED") < manager.find("runRecovery", prep))
++
++summary = {"status": "PASS", "checks": len(results), "results": results}
++print(json.dumps(summary, ensure_ascii=False, indent=2))

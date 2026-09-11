@@ -1,0 +1,13 @@
+{
+  "format": "verto-technical-debt-hotspot-ranking-v1",
+  "session": 323,
+  "algorithm_version": "risk-first-v1",
+  "normalization": "Each component is normalized to 0..10 from v322 measurements; score is the documented sum.",
+  "weights": {"complexity": 1, "change_surface": 1, "dependency_fan_in_out": 1, "business_criticality": 1, "file_class_size": 1, "testability_penalty": 1},
+  "hotspots": [
+    {"rank": 1, "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryDao.kt", "module": ":data:database", "file_lines": 1881, "risk_score": 58, "classification": "P0", "business_criticality": "inventory, invoices, cost, shipment, sync", "change_surface": "high", "testability_penalty": "high", "recommended_session": 323, "decision": "PRIMARY_MUST_FIX"},
+    {"rank": 2, "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncDao.kt", "module": ":data:database", "file_lines": 872, "risk_score": 47, "classification": "P1", "recommended_session": 324},
+    {"rank": 3, "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/InvoiceDao.kt", "module": ":data:database", "file_lines": 760, "risk_score": 45, "classification": "P1", "recommended_session": 324},
+    {"rank": 4, "path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/LogisticsDao.kt", "module": ":data:database", "file_lines": 577, "risk_score": 39, "classification": "P1", "recommended_session": 324}
+  ]
+}

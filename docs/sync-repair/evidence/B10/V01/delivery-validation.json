@@ -1,0 +1,22 @@
+{
+  "checkpoint": "B10-V01",
+  "input_zip_integrity": "PASS",
+  "source_baseline_matches": 1851,
+  "embedded_contract_sha256": "34963f943ecc8d359711aaf1f2c4fc3805085dd61c988107edd2c2875a7609e0",
+  "standalone_contract_unchanged": true,
+  "financial_schema_contract_unchanged": true,
+  "previous_B09_evidence_unchanged": true,
+  "supabase_files_unchanged": true,
+  "product_file_count": 1866,
+  "product_tree_sha256": "2c9379972d1d9db3f52d96f0a2dbe2325f77558e53bf3ef97265e1f3ee90eda0",
+  "source_modified": 26,
+  "source_new": 15,
+  "source_deleted": 0,
+  "gate": "LOCAL_DELIVERY_CONTENT_PASS_NOT_RELEASE_ADMISSION",
+  "G-B09": "BLOCKED",
+  "G-B10": "BLOCKED",
+  "Txx_promoted_to_PASS": 0,
+  "next_task": "B10.01",
+  "no_generated_schema99_claim": true,
+  "no_production_stubs": true
+}

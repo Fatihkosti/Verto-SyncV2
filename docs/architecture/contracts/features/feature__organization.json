@@ -1,0 +1,90 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.organization.domain.repository.OrganizationSettingsGateway",
+      "com.verto.app.feature.organization.domain.repository.OrganizationTeamGateway"
+    ],
+    "external_dependencies": [
+      "implementation:libs.androidx.activity.compose",
+      "implementation:libs.androidx.compose.foundation",
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.coil.compose",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app",
+      ":data:operations"
+    ],
+    "internal_packages": [
+      "com.verto.app.feature.organization.application",
+      "com.verto.app.feature.organization.domain.model",
+      "com.verto.app.feature.organization.domain.repository",
+      "com.verto.app.feature.organization.presentation",
+      "com.verto.app.feature.organization.presentation.team"
+    ],
+    "outgoing_dependencies": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem"
+    ],
+    "public_api": [
+      "com.verto.app.feature.organization.application.EmployeePerformanceQuery",
+      "com.verto.app.feature.organization.application.EmployeePerformanceSnapshot",
+      "com.verto.app.feature.organization.bridge.OrganizationSettingsGatewayAdapter",
+      "com.verto.app.feature.organization.bridge.OrganizationTeamGatewayAdapter",
+      "com.verto.app.feature.organization.domain.model.CreateOrganizationInviteRequest",
+      "com.verto.app.feature.organization.domain.model.EmployeePermissions",
+      "com.verto.app.feature.organization.domain.model.OrganizationEmployee",
+      "com.verto.app.feature.organization.domain.model.OrganizationSettings",
+      "com.verto.app.feature.organization.domain.repository.OrganizationSettingsGateway",
+      "com.verto.app.feature.organization.domain.repository.OrganizationTeamGateway",
+      "com.verto.app.feature.organization.presentation.OrganizationSaveState",
+      "com.verto.app.feature.organization.presentation.OrganizationSettingsScreen",
+      "com.verto.app.feature.organization.presentation.OrganizationSettingsViewModel",
+      "com.verto.app.feature.organization.presentation.team.CreateInviteScreen",
+      "com.verto.app.feature.organization.presentation.team.EmployeeDetailScreen",
+      "com.verto.app.feature.organization.presentation.team.EmployeePermissionsScreen",
+      "com.verto.app.feature.organization.presentation.team.EmployeesScreen",
+      "com.verto.app.feature.organization.presentation.team.OrganizationTeamViewModel"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [
+      "OrganizationSettingsGateway",
+      "OrganizationTeamGateway"
+    ],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:organization",
+    "name": "feature/organization",
+    "owner": ":feature:organization",
+    "purpose": "Production capability implemented by :feature:organization; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [],
+    "legacy_cross_feature_debt": []
+  },
+  "provides_contracts": ["organization.team.v1"],
+  "consumes_contracts": [],
+  "deprecated_contracts": [],
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "dd9400014bc15e41fba4c074fcae60170d732640011ba5fb932c5b3acca4fac1",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v318"
+  }
+}

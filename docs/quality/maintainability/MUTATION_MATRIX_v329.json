@@ -1,0 +1,15 @@
+{
+  "format": "verto-testability-mutation-matrix-v1",
+  "session": 329,
+  "required_mutations": 8,
+  "mutations": [
+    {"id": "T1", "target": "InvoiceWriteCoordinator", "mutation": "add direct wall-clock call", "expected_test": "protected seam scan", "detected": true},
+    {"id": "T2", "target": "InvoiceWriteCoordinator", "mutation": "add random UUID generation", "expected_test": "protected seam scan", "detected": true},
+    {"id": "T3", "target": "SyncManager", "mutation": "add Android Context dependency", "expected_test": "protected seam scan", "detected": true},
+    {"id": "T4", "target": "SyncManager", "mutation": "call SyncWorker statically", "expected_test": "protected seam scan", "detected": true},
+    {"id": "T5", "target": "SyncManager", "mutation": "add direct AppDatabase orchestration", "expected_test": "protected seam scan", "detected": true},
+    {"id": "T6", "target": "protected unit test", "mutation": "add Thread.sleep", "expected_test": "determinism scan", "detected": true},
+    {"id": "T7", "target": "production", "mutation": "introduce ServiceLocator", "expected_test": "production testability scan", "detected": true},
+    {"id": "T8", "target": "production", "mutation": "introduce global mutable test hook", "expected_test": "production testability scan", "detected": true}
+  ]
+}

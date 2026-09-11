@@ -1,0 +1,19 @@
+{
+  "format": "verto-architecture-drift-v1",
+  "session": 323,
+  "status": "PASS",
+  "input_sha256": "7aad8fd5f877d835c89ab509dfc35e2f4384dc45ce2beb17bad145dea32d4c83",
+  "architecture_violations_before": 0,
+  "architecture_violations_after": 0,
+  "dependency_cycles_before": 0,
+  "dependency_cycles_after": 0,
+  "inventory_dao_before_lines": 1881,
+  "inventory_dao_after_lines": 28,
+  "largest_extracted_dao_lines": 214,
+  "room_version_before": 81,
+  "room_version_after": 81,
+  "schema_changed_files": [],
+  "new_dependencies": 0,
+  "transaction_boundaries": {"before": 25, "mapped": 25, "unmapped": 0, "weakened": 0},
+  "verdict": "PASS_HIGH_RISK_DEBT_REDUCTION_V323_STATIC"
+}

@@ -1,0 +1,52 @@
+{
+  "version": 132,
+  "sourceOfTruth": "Verto-v131-source-clean.zip",
+  "before": {
+    "invoice": {
+      "dp": 142,
+      "sp": 53,
+      "rawColor": 3,
+      "total": 198
+    },
+    "payment": {
+      "dp": 224,
+      "sp": 91,
+      "rawColor": 0,
+      "total": 315
+    },
+    "expenses": {
+      "dp": 46,
+      "sp": 19,
+      "rawColor": 0,
+      "total": 65
+    },
+    "total": {
+      "dp": 412,
+      "sp": 163,
+      "rawColor": 3,
+      "total": 578
+    }
+  },
+  "after": {
+    "invoice": {
+      "scatteredDp": 0,
+      "scatteredSp": 0,
+      "rawColor": 0
+    },
+    "payment": {
+      "scatteredDp": 0,
+      "scatteredSp": 0,
+      "rawColor": 0
+    },
+    "expenses": {
+      "scatteredDp": 0,
+      "scatteredSp": 0,
+      "rawColor": 0
+    }
+  },
+  "featureTokenFiles": [
+    "app/src/main/kotlin/com/verto/app/feature/invoice/presentation/InvoiceDesignTokens.kt",
+    "app/src/main/kotlin/com/verto/app/feature/payment/presentation/PaymentDesignTokens.kt",
+    "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesDesignTokens.kt"
+  ]
+}

@@ -1,0 +1,565 @@
+{
+  "changes": [
+    {
+      "classification": "UNCHANGED",
+      "id": "commission.report.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "dashboard.home-search.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "expenses.gateway.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "invoice.presentation.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "messages.gateway.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "notifications.center.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "optimal.messaging.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "organization.team.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "party.lookup.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "payment.purchase-shipment.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "profile.gateway.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "reports.operations.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "settings.operations.v1"
+    },
+    {
+      "classification": "UNCHANGED",
+      "id": "shipment.read.v1"
+    }
+  ],
+  "current_snapshot": {
+    "contracts": {
+      "commission.report.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "commission.report.v1",
+        "methods": [
+          "suspend fun buildMarketerCommissionReport(",
+          "suspend fun sendAdminReminder("
+        ],
+        "owner_module": ":feature:commission",
+        "source": "feature/commission/src/main/kotlin/com/verto/app/feature/commission/application/CommissionReportContract.kt",
+        "source_sha256": "a48e27b89e886d482d9a1d05bd2d99128c6344db93122fdd56be90f0d51954a6",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.commission.application.CommissionReportGateway",
+        "version": "1"
+      },
+      "dashboard.home-search.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "data class",
+        "fields": [
+          "limit",
+          "text"
+        ],
+        "found": true,
+        "id": "dashboard.home-search.v1",
+        "methods": [],
+        "owner_module": ":feature:dashboard:api",
+        "source": "feature/dashboard/api/src/main/kotlin/com/verto/feature/dashboard/api/HomeContracts.kt",
+        "source_sha256": "3037206ce2c40b3cdadfd3048499648d7e3735e274b303602db9b4dd21bbc2db",
+        "status": "ACTIVE",
+        "symbol": "com.verto.feature.dashboard.api.HomeSearchQuery",
+        "version": "1"
+      },
+      "expenses.gateway.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "expenses.gateway.v1",
+        "methods": [
+          "fun observeCashBalance(): Flow<Double>",
+          "fun observeExpenses(from:Long,to:Long): Flow<List<ExpenseItem>>",
+          "fun observeRecentMovements(limit:Int): Flow<List<CashMovementItem>>",
+          "fun observeRecentPurchaseInvoices(from:Long,to:Long): Flow<List<PurchaseInvoiceOption>>",
+          "fun observeTotalExpenses(from:Long,to:Long): Flow<Double>",
+          "fun refreshRole()",
+          "suspend fun addExpense(command:AddExpenseCommand)",
+          "suspend fun adjustCash(command:CashAdjustmentCommand)",
+          "suspend fun deleteExpense(id:String)",
+          "suspend fun pendingWithdrawalRequestsCount(): Result<Int>"
+        ],
+        "owner_module": ":feature:expenses",
+        "source": "feature/expenses/src/main/kotlin/com/verto/app/feature/expenses/application/ExpensesContract.kt",
+        "source_sha256": "df3972120b24a16e8e8903b0024b562f6dfab973303ba4306603a54528a08723",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.expenses.application.ExpensesGateway",
+        "version": "1"
+      },
+      "invoice.presentation.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "invoice.presentation.v1",
+        "methods": [
+          "fun observeClient(clientId: String): Flow<ClientItem?>",
+          "fun observeClients(): Flow<List<ClientItem>>",
+          "fun observeInvoiceItems(invoiceId: String): Flow<List<InvoiceLineView>>",
+          "fun observeOrganizationSettings(): Flow<InvoiceOrgSettings>",
+          "fun observePagedInvoices(",
+          "fun observePrintSettings(): Flow<InvoicePrintSettings>",
+          "fun observeSummary(invoiceId: String): Flow<InvoiceSummary?>",
+          "suspend fun canExport(category: InvoiceCategory): Boolean",
+          "suspend fun canManageCommission(): Boolean",
+          "suspend fun createInvoicePdf(request: InvoicePdfRequest): File",
+          "suspend fun fullSync(): Result<Unit>",
+          "suspend fun reversePayment(paymentId: String): InvoicePaymentReversalResult",
+          "suspend fun updateCommission(invoiceId: String, commission: Double)"
+        ],
+        "owner_module": ":feature:invoice",
+        "source": "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/application/port/InvoicePresentationPort.kt",
+        "source_sha256": "6120faee7d0d13e7f46ff78b2fe549ce8c99fc6dada6aeef96ae4d7f454743b9",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.invoice.application.port.InvoicePresentationPort",
+        "version": "1"
+      },
+      "messages.gateway.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "messages.gateway.v1",
+        "methods": [
+          "fun observeConversationListChanges(): Flow<Unit>",
+          "fun observeMessages(conversationId: String): Flow<MessageItem>",
+          "suspend fun deleteConversation(conversationId: String): Result<Unit>",
+          "suspend fun deleteMessage(messageId: String): Result<Unit>",
+          "suspend fun getConversations(): Result<List<ConversationListItem>>",
+          "suspend fun getMessages(conversationId: String): Result<List<MessageItem>>",
+          "suspend fun getRegisteredMarketers(): Result<List<RegisteredMarketerItem>>",
+          "suspend fun markConversationRead(conversationId: String): Result<Unit>",
+          "suspend fun openConversation(clientId: String): Result<String>",
+          "suspend fun sendMessage(command: SendMessageCommand): Result<MessageItem>"
+        ],
+        "owner_module": ":feature:messages",
+        "source": "feature/messages/src/main/kotlin/com/verto/app/feature/messages/application/MessagesContract.kt",
+        "source_sha256": "d31914dcbe1ee0c4c01b3d88c6537049f62aaef56a15b210b61e306f05ebf45a",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.messages.application.MessagesGateway",
+        "version": "1"
+      },
+      "notifications.center.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "notifications.center.v1",
+        "methods": [
+          "suspend fun createTestDirectToCurrentUser(): Result<Unit>",
+          "suspend fun createTestForAllEmployees(): Result<Unit>",
+          "suspend fun createTestForManager(): Result<Unit>",
+          "suspend fun markAllAsRead()",
+          "suspend fun markAsRead(id: String)",
+          "suspend fun observeCurrentUserNotifications(): Flow<List<AppNotification>>",
+          "suspend fun sync(): Result<Unit>"
+        ],
+        "owner_module": ":feature:notifications",
+        "source": "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/domain/repository/NotificationCenterGateway.kt",
+        "source_sha256": "76c2b5569b47144c73b87794e33abc37096921ef21afb76e4dafd27cb8fb6a11",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.notifications.domain.repository.NotificationCenterGateway",
+        "version": "1"
+      },
+      "optimal.messaging.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "INTEGRATION_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "optimal.messaging.v1",
+        "methods": [
+          "fun observeMessages(organizationId: String, conversationId: String): Flow<List<OptimalMessage>>",
+          "suspend fun getConversation(clientId: String): Result<OptimalConversationState?>",
+          "suspend fun getOrCreateConversation(clientId: String, companyName: String): Result<OptimalConversationState>",
+          "suspend fun markConversationRead(clientId: String): Result<Int>",
+          "suspend fun saveOutgoingMessage(draft: OptimalOutgoingMessageDraft): Result<OptimalMessage>",
+          "suspend fun setConversationArchived(clientId: String, archived: Boolean): Result<OptimalConversationState>"
+        ],
+        "owner_module": ":feature:integration:optimal",
+        "source": "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/domain/port/OptimalMessagingPort.kt",
+        "source_sha256": "c2a8386c91ffbab29b3f99a6fad6d54d8ad6e02e274a7ea49a9343f9fa93b228",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.integration.optimal.domain.port.OptimalMessagingPort",
+        "version": "1"
+      },
+      "organization.team.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "organization.team.v1",
+        "methods": [
+          "suspend fun generateInviteCode(request: CreateOrganizationInviteRequest): Result<String>",
+          "suspend fun getEmployeePermissions(employeeId: String): Result<EmployeePermissions>",
+          "suspend fun getEmployees(): Result<List<OrganizationEmployee>>",
+          "suspend fun removeEmployee(employeeId: String): Result<Unit>",
+          "suspend fun saveEmployeePermissions(permissions: EmployeePermissions): Result<Unit>"
+        ],
+        "owner_module": ":feature:organization",
+        "source": "feature/organization/src/main/kotlin/com/verto/app/feature/organization/domain/repository/OrganizationTeamGateway.kt",
+        "source_sha256": "1158720270f72c705dac212b555040a9bfefe3f5a5e0b3b16118ed4d43387023",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.organization.domain.repository.OrganizationTeamGateway",
+        "version": "1"
+      },
+      "party.lookup.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "party.lookup.v1",
+        "methods": [
+          "fun getAllClientSummaries(): Flow<List<PartyClientSummary>>",
+          "fun getAllClients(): Flow<List<PartyClient>>",
+          "fun getClientById(id: String): Flow<PartyClient?>",
+          "fun searchClientSummaries(query: String): Flow<List<PartyClientSummary>>",
+          "suspend fun deleteClient(id: String)",
+          "suspend fun deleteClientPermanently(id: String): Result<Unit>",
+          "suspend fun getAllClientsSync(): List<PartyClient>",
+          "suspend fun getClientByIdSync(id: String): PartyClient?",
+          "suspend fun insertClient(client: PartyClient): Result<Unit>",
+          "suspend fun updateClient(client: PartyClient): Result<Unit>"
+        ],
+        "owner_module": ":feature:party",
+        "source": "feature/party/src/main/kotlin/com/verto/app/feature/party/domain/repository/PartyDirectoryGateway.kt",
+        "source_sha256": "8470a08a38ba99239e576e75c6c0000ade9b5ce10f0de55ce470f9f6cef36b21",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.party.domain.repository.PartyDirectoryGateway",
+        "version": "1"
+      },
+      "payment.purchase-shipment.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "payment.purchase-shipment.v1",
+        "methods": [
+          "fun observeActiveShipments(): Flow<List<PurchaseShipmentOption>>",
+          "suspend fun createShipment(command: PurchaseShipmentCreateCommand)"
+        ],
+        "owner_module": ":feature:payment",
+        "source": "feature/payment/src/main/kotlin/com/verto/app/feature/payment/application/port/PurchaseShipmentGateway.kt",
+        "source_sha256": "a7d8b9119f0151dd4fb90fa9a2e9f6443f5bc25d0008a7d8ee3bd0e3df567b53",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.payment.application.port.PurchaseShipmentGateway",
+        "version": "1"
+      },
+      "profile.gateway.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "profile.gateway.v1",
+        "methods": [
+          "suspend fun canEditName(): Boolean",
+          "suspend fun changePassword(currentPassword: String, newPassword: String): Result<Unit>",
+          "suspend fun updateName(name: String)",
+          "suspend fun updatePhone(phone: String)"
+        ],
+        "owner_module": ":feature:profile",
+        "source": "feature/profile/src/main/kotlin/com/verto/app/feature/profile/domain/repository/ProfileGateway.kt",
+        "source_sha256": "e750c280a3280d3aa09dfa0fe243b655badfa39022a96bb11a2572b8167f041c",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.profile.domain.repository.ProfileGateway",
+        "version": "1"
+      },
+      "reports.operations.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "reports.operations.v1",
+        "methods": [
+          "suspend fun closeShift(command: CloseReportShiftCommand)",
+          "suspend fun deleteBudget(command: DeleteReportBudgetCommand)",
+          "suspend fun recalculateRfm()",
+          "suspend fun saveBudget(command: SaveReportBudgetCommand)",
+          "suspend fun startShift(command: StartReportShiftCommand)"
+        ],
+        "owner_module": ":feature:reports",
+        "source": "feature/reports/src/main/kotlin/com/verto/app/feature/reports/application/ReportsOperationsGateway.kt",
+        "source_sha256": "78df15d3de49c0bf6cef943ad06fa758b953441e4d49277cac9382a2b67f2dfb",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.reports.application.ReportsOperationsGateway",
+        "version": "1"
+      },
+      "settings.operations.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "settings.operations.v1",
+        "methods": [
+          "fun observeLastSuccessfulSyncAt(): Flow<Long?> = flowOf(null)",
+          "suspend fun currentUserCanViewManagement(): Boolean",
+          "suspend fun currentUserIsAdmin(): Boolean",
+          "suspend fun exportBackup(target: SettingsBackupTarget): Result<Unit>",
+          "suspend fun importBackup(uri: String): Result<String>",
+          "suspend fun logout(): Result<Unit>",
+          "suspend fun resetData(scope: SettingsDataScope): Result<Unit>",
+          "suspend fun syncNow(): Result<Unit>"
+        ],
+        "owner_module": ":feature:settings",
+        "source": "feature/settings/src/main/kotlin/com/verto/app/feature/settings/domain/repository/SettingsOperationsGateway.kt",
+        "source_sha256": "243c040e297b3b06e3e93a7aca61dc9992d3affd1061744631f78fb5e27e8745",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.settings.domain.repository.SettingsOperationsGateway",
+        "version": "1"
+      },
+      "shipment.read.v1": {
+        "compatibility": "BACKWARD_COMPATIBLE",
+        "contract_type": "CROSS_FEATURE_STABLE",
+        "declaration_kind": "interface",
+        "fields": [],
+        "found": true,
+        "id": "shipment.read.v1",
+        "methods": [
+          "fun observe(organizationId: String): Flow<List<LogisticsUnifiedReadRecord>>",
+          "suspend fun events(organizationId: String, shipmentId: String): List<ShipmentEventReadRecord> = emptyList()"
+        ],
+        "owner_module": ":feature:shipment",
+        "source": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/port/ShipmentPresentationPorts.kt",
+        "source_sha256": "9d0c7ba8dad6e65a425e4629e57f0820dafa44e149db47d2487b4b26d245610d",
+        "status": "ACTIVE",
+        "symbol": "com.verto.app.feature.shipment.application.port.LogisticsUnifiedReadPort",
+        "version": "1"
+      }
+    },
+    "format": "verto-contract-api-snapshot-v1",
+    "session": 330
+  },
+  "failures": [],
+  "format": "verto-contract-compatibility-v1",
+  "metrics": {
+    "breaking_active_contracts": 0,
+    "contracts_discovered": 14,
+    "critical_contracts": 4,
+    "unknown_consumers": 0,
+    "unknown_providers": 0,
+    "unversioned_cross_feature_contracts": 0
+  },
+  "status": "PASS",
+  "usage": [
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "party.lookup.v1",
+      "owner": ":feature:party",
+      "symbol": "com.verto.app.feature.party.domain.repository.PartyDirectoryGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "invoice.presentation.v1",
+      "owner": ":feature:invoice",
+      "symbol": "com.verto.app.feature.invoice.application.port.InvoicePresentationPort",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "payment.purchase-shipment.v1",
+      "owner": ":feature:payment",
+      "symbol": "com.verto.app.feature.payment.application.port.PurchaseShipmentGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "shipment.read.v1",
+      "owner": ":feature:shipment",
+      "symbol": "com.verto.app.feature.shipment.application.port.LogisticsUnifiedReadPort",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "commission.report.v1",
+      "owner": ":feature:commission",
+      "symbol": "com.verto.app.feature.commission.application.CommissionReportGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "expenses.gateway.v1",
+      "owner": ":feature:expenses",
+      "symbol": "com.verto.app.feature.expenses.application.ExpensesGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "reports.operations.v1",
+      "owner": ":feature:reports",
+      "symbol": "com.verto.app.feature.reports.application.ReportsOperationsGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "organization.team.v1",
+      "owner": ":feature:organization",
+      "symbol": "com.verto.app.feature.organization.domain.repository.OrganizationTeamGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "profile.gateway.v1",
+      "owner": ":feature:profile",
+      "symbol": "com.verto.app.feature.profile.domain.repository.ProfileGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "settings.operations.v1",
+      "owner": ":feature:settings",
+      "symbol": "com.verto.app.feature.settings.domain.repository.SettingsOperationsGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "notifications.center.v1",
+      "owner": ":feature:notifications",
+      "symbol": "com.verto.app.feature.notifications.domain.repository.NotificationCenterGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "messages.gateway.v1",
+      "owner": ":feature:messages",
+      "symbol": "com.verto.app.feature.messages.application.MessagesGateway",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app"
+      ],
+      "declared_consumers": [
+        ":app"
+      ],
+      "id": "optimal.messaging.v1",
+      "owner": ":feature:integration:optimal",
+      "symbol": "com.verto.app.feature.integration.optimal.domain.port.OptimalMessagingPort",
+      "version": "1"
+    },
+    {
+      "consumers": [
+        ":app",
+        ":feature:inventory",
+        ":feature:invoice",
+        ":feature:party",
+        ":feature:payment"
+      ],
+      "declared_consumers": [
+        ":app",
+        ":feature:inventory",
+        ":feature:invoice",
+        ":feature:party",
+        ":feature:payment"
+      ],
+      "id": "dashboard.home-search.v1",
+      "owner": ":feature:dashboard:api",
+      "symbol": "com.verto.feature.dashboard.api.HomeSearchQuery",
+      "version": "1"
+    }
+  ]
+}

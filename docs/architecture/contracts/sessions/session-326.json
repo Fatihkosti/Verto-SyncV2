@@ -1,0 +1,99 @@
+{
+  "session": {
+    "id": 326,
+    "input_sha256": "73b59b241791f0cf336309817257c3fc1003d5b2afd035d91b7e7ae139d1bbae",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_326_INPUT_SNAPSHOT.json",
+    "scope": "PERSISTENCE HARDENING / CONSISTENCY / PERMANENT GATES",
+    "allowed_modules": [
+      ":data:database",
+      ":data:operations",
+      ":data:sync",
+      ":data:network",
+      ":app",
+      ":feature:invoice",
+      ":feature:shipment",
+      ":feature:inventory",
+      ":feature:payment",
+      ":feature:party",
+      ":feature:reports"
+    ],
+    "allowed_files": [
+      "tools/persistence/**",
+      "scripts/ci/run-quality-gate.sh",
+      "scripts/ci/run-source-of-truth-admission.sh",
+      "scripts/ci/verify-change-contract.py",
+      "scripts/verify-kotlin-quality-static.py",
+      "docs/architecture/contracts/sessions/session-326.json",
+      "docs/architecture/contracts/persistence-boundaries-v325.json",
+      "docs/architecture/contracts/persistence-migration-policy.json",
+      "docs/architecture/verification/SESSION_326_INPUT_SNAPSHOT.json",
+      "docs/architecture/verification/**v326**",
+      "docs/data/**v326**",
+      "docs/quality/persistence**",
+      "docs/DOCUMENTATION_INVENTORY.md"
+    ],
+    "forbidden_files": [
+      "supabase/**",
+      "functions/**",
+      "SQL/**",
+      "sql/**",
+      "settings.gradle.kts",
+      "build-logic/**",
+      "app/schemas/**",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/**",
+      "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt"
+    ]
+  },
+  "architecture": {
+    "invariants": [
+      "Room schema remains unchanged at input version 81",
+      "No new project or external dependency",
+      "No server/SQL/Supabase change",
+      "All persistence gates are permanent for sessions >=326"
+    ],
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "supabase",
+      "functions",
+      "sql",
+      "new external Gradle dependency"
+    ]
+  },
+  "verification": {
+    "required_tests": [
+      "persistence boundary guard",
+      "ownership guard",
+      "transaction contract guard",
+      "migration schema guard",
+      "ratchet guard",
+      "unified gate self-test",
+      "mutation tests"
+    ],
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "dependency",
+      "data-ownership",
+      "persistence-boundary",
+      "transaction-contract",
+      "migration-schema",
+      "persistence-ratchet",
+      "technical-debt-ratchet",
+      "differential-quality",
+      "kotlin-quality",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ]
+  },
+  "metadata": {
+    "plan_sha256": "41fd0eacb9e4ed3cf5203baa2675a6a1031517ca51fe45b0a6b2f3a53d661a2d",
+    "predecessor_session": 325,
+    "predecessor_handoff_authorized": true
+  }
+}

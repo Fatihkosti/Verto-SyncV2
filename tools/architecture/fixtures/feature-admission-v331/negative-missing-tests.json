@@ -1,0 +1,15 @@
+{
+  "fixture": "negative-missing-tests",
+  "feature_id": "fixture",
+  "module": ":feature:fixture",
+  "owner": "fixture-owner",
+  "status": "ACTIVE",
+  "risk": "CRITICAL",
+  "provided_contracts": ["fixture.read.v1"],
+  "consumed_contracts": [],
+  "data_owner": {"feature": "fixture"},
+  "test_requirements": {},
+  "metrics": {"has_unit_or_integration_tests": false},
+  "expected": "FAIL",
+  "expected_failure": "MISSING_REQUIRED_TESTS"
+}

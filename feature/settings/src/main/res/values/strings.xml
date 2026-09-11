@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="legacy_ui_13bd8b6d3a76">حفظ محلي / مشاركة</string>
+    <string name="legacy_ui_ad3a174b36ba">واتساب</string>
+    <string name="legacy_ui_855dd95e9e00">تيليجرام</string>
+
+    <string name="ds_0cfd78e2fe5c">رقم: 0001 | 04/04/2026</string>
+    <string name="ds_11da4f18dd02">كبير</string>
+    <string name="ds_13ac16b30e80">التاريخ: 04/04/2026</string>
+    <string name="ds_15e308e6cd25">%1$s · %2$s pt</string>
+    <string name="ds_1dccac8503d2">فاتح</string>
+
+    <string name="ds_20f8c0e15895">رقم: 0001</string>
+    <string name="ds_22e22d02c082">الاستيراد سيحذف البيانات الحالية ويستبدلها بالنسخة المحفوظة</string>
+    <string name="ds_2a4bfa9d9d0e">الصنف</string>
+    <string name="ds_2fa8ba8357cd">معاينة: %1$s</string>
+    <string name="ds_31c6db6de638">بعض التغييرات تُطبَّق فور الاختيار، وبعضها قد يحتاج إعادة تشغيل.</string>
+    <string name="ds_356a192b7913">1</string>
+    <string name="ds_3a2205ac11c5">الهاتف: 05xxxxxxxx</string>
+    <string name="ds_3a4ffd0856f9">الرقم</string>
+    <string name="ds_3c173a2971d9">يؤثر على النصوص في جميع أنحاء التطبيق</string>
+    <string name="ds_3fb3e7012797">110.00</string>
+
+    <string name="ds_43afc69a3c52">بيانات العميل</string>
+    <string name="ds_4b56bc3ee3fb">بيانات المنشأة</string>
+    <string name="ds_5b4621538771">رقم: 0001 · 04/04/2026</string>
+    <string name="ds_5e029fef2ea5">استيراد</string>
+    <string name="ds_66dcc319bde3">ك</string>
+    <string name="ds_7325af6f8e49">- - - - - - - - - - - - - - - - - - -</string>
+    <string name="ds_74734c95fb59">العميل: عميل تجريبي</string>
+    <string name="ds_7766dcbe8f61">داكن</string>
+    <string name="ds_7781a1476e71">المعاينة تعرض شكل كشف الأسعار الفعلي بقالب %1$s</string>
+    <string name="ds_7ce64e47fa4a">الإجمالي: </string>
+    <string name="ds_7fe18368ad1e">تاريخ: 04/04/2026</string>
+    <string name="ds_80151b526402">فاتورة مبيعات</string>
+    <string name="ds_91fa23bdc1fb">متوسط</string>
+    <string name="ds_9f3fcc0a5cd5">📌 تأكد من وجود ملفات TTF في res/font/ لعرض الخطوط بشكل صحيح</string>
+    <string name="ds_a95134401afe">الكمية</string>
+    <string name="ds_ab4b3ec7bdd2">توقيع / ختم</string>
+    <string name="ds_b6aa0c7d7a21">السعر</string>
+    <string name="ds_b6ec333ca6e7">حجم خط التطبيق</string>
+    <string name="ds_b9af71e5dd05">✗ %1$s</string>
+    <string name="ds_bafd0c38d6a7">ض.ق.م: %1$s</string>
+    <string name="ds_bbf6d1ebddd6">تلقائي</string>
+    <string name="ds_c25cca87f6aa">رقم ض.ق.م: %1$s</string>
+    <string name="ds_c9122a52fd6b">حفظ النسخة الاحتياطية</string>
+    <string name="ds_d14f6a42eb1c">الإجمالي:</string>
+    <string name="ds_d7d9343e7bd1">الاسم: عميل تجريبي</string>
+    <string name="ds_d8dfff3e6ded">الثيمات والمظهر</string>
+    <string name="ds_e476741781b2">صغير</string>
+    <string name="ds_e485c0db44f7">المعاينة تعرض بيانات مؤسستك الفعلية — الفاتورة الحقيقية تشمل بنود المبيعات والإجماليات</string>
+
+    <string name="ds_fc6ea67b8134">تصدير</string>
+    <string name="ds_fe80d85fe94a">جارٍ المعالجة...</string>
+</resources>

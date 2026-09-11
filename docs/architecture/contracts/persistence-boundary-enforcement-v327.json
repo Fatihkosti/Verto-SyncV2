@@ -1,0 +1,58 @@
+{
+  "format": "verto-persistence-boundary-enforcement-v327",
+  "session": 327,
+  "ownership_contract": "docs/architecture/contracts/persistence-boundaries-v325.json",
+  "stable_entry_points": {
+    "source": "docs/architecture/verification/PERSISTENCE_BOUNDARY_AUDIT_v325.json#deferred_data_adapter_storage_review",
+    "symbols": [
+      "ClientDao",
+      "InventoryDao",
+      "InvoiceDao",
+      "LogisticsDao",
+      "PaymentDao"
+    ],
+    "policy": "ZERO_TOLERANCE_FOREIGN_DIRECT_ACCESS"
+  },
+  "consumer_resolution": [
+    "feature/<feature>/...",
+    "feature/integration/<feature>/...",
+    "app/.../feature/<feature>/...",
+    "data/operations/.../feature/<feature>/..."
+  ],
+  "infrastructure_exceptions": [
+    {
+      "path": "data/operations/src/main/kotlin/com/verto/app/data/repository/InvoiceRepository.kt",
+      "symbols": ["InvoiceDao", "PaymentDao"],
+      "classification": "physical_infrastructure_repository",
+      "reason": "Repository implementation owns the physical Room composition for Invoice and Payment persistence; it is not a feature consumer."
+    }
+  ],
+  "zero_tolerance_findings": [
+    "FOREIGN_DIRECT_DAO_ACCESS",
+    "FOREIGN_ROOM_ENTITY_ACCESS",
+    "UNCLASSIFIED_PERSISTENCE_CONSUMER"
+  ],
+  "historical_offender_files": [
+    "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionControllerAdapter.kt",
+    "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionQueryAdapter.kt",
+    "app/src/main/kotlin/com/verto/app/feature/commission/bridge/CommissionReportGatewayAdapter.kt",
+    "app/src/main/kotlin/com/verto/app/feature/expenses/bridge/ExpensesOperationsAdapter.kt",
+    "app/src/main/kotlin/com/verto/app/feature/invoice/bridge/InvoicePresentationBridge.kt",
+    "app/src/main/kotlin/com/verto/app/feature/messages/bridge/SupabaseMessagesGateway.kt",
+    "app/src/main/kotlin/com/verto/app/feature/payment/bridge/PaymentPresentationBridge.kt",
+    "app/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsV2AppAdapters.kt",
+    "data/operations/src/main/kotlin/com/verto/app/feature/reports/bridge/ReportsReadModelQueryAdapter.kt",
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/OptimalCompaniesRemoteRefresher.kt",
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/data/PartyFinancialQueryAdapter.kt",
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/data/RoomPartyLedgerEventSource.kt",
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/data/SupabasePartySyncFallbackAdapter.kt"
+  ],
+  "forbidden_shortcuts": [
+    "file_allowlist_for_foreign_access",
+    "bridge_allowlist",
+    "data_directory_allowlist",
+    "foreign_access_baseline_or_ratchet",
+    "dao_provider_or_service_locator",
+    "app_database_as_cross_feature_facade"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "changes": [
+    {
+      "revision": 1,
+      "organizationId": "test-org",
+      "syncScopeId": "test-scope",
+      "aggregateType": "CATEGORY",
+      "aggregateId": "test-category",
+      "operationType": "UPSERT",
+      "entityVersion": 1,
+      "payloadVersion": 1,
+      "payload": {
+        "name": "تصنيف تجريبي"
+      },
+      "originMutationId": null,
+      "transactionId": "test-transaction",
+      "transactionOrder": 0,
+      "transactionSize": 1,
+      "deletedAtEpochMillis": null,
+      "changedAtEpochMillis": 1
+    }
+  ],
+  "nextCursor": "server-issued-opaque-next",
+  "hasMore": false,
+  "minAvailableRevision": 0,
+  "contractFamily": "verto-unified-sync",
+  "contractVersion": 1,
+  "pageHighWatermark": 100,
+  "endsAtTransactionBoundary": true,
+  "scopeIdentity": {
+    "organizationId": "test-org",
+    "syncPrincipalId": "test-principal",
+    "scopeId": "test-scope",
+    "contractFamily": "verto-unified-sync",
+    "contractVersion": 1,
+    "scopeDefinitionVersion": 1
+  },
+  "coverage": "GLOBAL_SCOPE",
+  "advancesGlobalCursor": true,
+  "fromCursor": "server-issued-opaque-start",
+  "coveredThroughRevision": 1,
+  "groups": [
+    {
+      "transactionId": "test-transaction",
+      "memberCount": 1,
+      "firstRevision": 1,
+      "lastRevision": 1,
+      "contentSha256": "9145f76971009144586f03c79550d368c157655c712c2a5cfd4d8df9a46582f3",
+      "serializedBytes": 521,
+      "touchedKeys": [
+        {
+          "type": "CATEGORY",
+          "id": "test-category"
+        }
+      ],
+      "dependsOnTransactionIds": []
+    }
+  ]
+}

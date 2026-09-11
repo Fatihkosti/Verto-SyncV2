@@ -1,0 +1,138 @@
+{
+  "allowed_module_dependencies": [
+    [
+      ":feature:dashboard",
+      ":feature:dashboard:api"
+    ]
+  ],
+  "baseline_monotonic_metrics": [
+    "data_to_feature_presentation_files",
+    "cross_feature_presentation_imports",
+    "presentation_to_raw_data_files",
+    "large_production_files_over_500",
+    "app_owned_feature_kotlin_files.reports",
+    "app_owned_feature_kotlin_files.payment",
+    "app_owned_feature_kotlin_files.shipment",
+    "app_owned_feature_kotlin_files.invoice"
+  ],
+  "baseline_policy": {
+    "auto_rebaseline": false,
+    "new_count_must_not_exceed_previous": true,
+    "verify_can_write_baseline": false
+  },
+  "contract": "VERTO_ARCH_RECOVERY_v182_v188_REV3",
+  "invariants": {
+    "dependency_cycles": 0,
+    "modules": 31,
+    "room": 56
+  },
+  "rule_ids": {
+    "VARCH-001": "Domain depends on Android",
+    "VARCH-002": "Domain depends on Data/Infrastructure",
+    "VARCH-003": "Domain depends on another Feature implementation",
+    "VARCH-004": "Application depends on Presentation",
+    "VARCH-005": "Application depends directly on Room/Remote transport",
+    "VARCH-006": "Presentation depends on Room Entity/DAO",
+    "VARCH-007": "Presentation depends on data.repository/data.remote",
+    "VARCH-008": "Feature Presentation depends on another Feature Presentation",
+    "VARCH-009": "Data module depends on Feature Presentation",
+    "VARCH-010": "Module dependency cycle",
+    "VARCH-011": "Feature Presentation owned by app after migration",
+    "VARCH-012": "Unauthorized feature-to-feature implementation dependency",
+    "VARCH-013": "Core contains feature-owned business type",
+    "VARCH-014": "File changed outside session Allowlist",
+    "VARCH-015": "Baseline violation count increased (approved app bridge/wiring composition files are excluded)",
+    "VARCH-016": "Modules count changed unexpectedly",
+    "VARCH-017": "Room schema changed unexpectedly",
+    "VARCH-018": "New >500-line Production file without review",
+    "VARCH-019": "Feature manifest missing",
+    "VARCH-020": "Feature dependency not declared in manifest",
+    "VARCH-021": "ViewModel bypasses UseCase/Application Service for Business/Application operation"
+  },
+  "session_targets": {
+    "v182": {
+      "metrics": {
+        "app_owned_feature_kotlin_files.invoice": 8,
+        "app_owned_feature_kotlin_files.payment": 15,
+        "app_owned_feature_kotlin_files.reports": 36,
+        "app_owned_feature_kotlin_files.shipment": 30,
+        "cross_feature_presentation_imports": 1,
+        "data_to_feature_presentation_files": 3,
+        "dependency_cycles": 0,
+        "large_production_files_over_500": 25,
+        "modules": 31,
+        "presentation_to_raw_data_files": 25,
+        "room": 54
+      }
+    },
+    "v183": {
+      "metrics": {
+        "data_to_feature_presentation_files": 0,
+        "dependency_cycles": 0,
+        "modules": 31,
+        "room": 54
+      }
+    },
+    "v184": {
+      "metrics": {
+        "cross_feature_presentation_imports": 0,
+        "dependency_cycles": 0,
+        "modules": 31,
+        "room": 54
+      }
+    },
+    "v185": {
+      "metrics": {
+        "app_owned_feature_kotlin_files.invoice": 0,
+        "app_owned_feature_kotlin_files.payment": 0,
+        "app_owned_feature_kotlin_files.reports": 0,
+        "cross_feature_presentation_imports": 0,
+        "data_to_feature_presentation_files": 0,
+        "dependency_cycles": 0,
+        "modules": 31,
+        "room": 54
+      }
+    },
+    "v186": {
+      "metrics": {
+        "app_owned_feature_kotlin_files.shipment": 0,
+        "cross_feature_presentation_imports": 0,
+        "data_to_feature_presentation_files": 0,
+        "dependency_cycles": 0,
+        "modules": 31,
+        "room": 54
+      }
+    },
+    "v187": {
+      "metrics": {
+        "cross_feature_presentation_imports": 0,
+        "data_to_feature_presentation_files": 0,
+        "dependency_cycles": 0,
+        "modules": 31,
+        "presentation_to_raw_data_files": 0,
+        "room": 54
+      }
+    },
+    "v188": {
+      "metrics": {
+        "app_owned_feature_kotlin_files.invoice": 0,
+        "app_owned_feature_kotlin_files.payment": 0,
+        "app_owned_feature_kotlin_files.reports": 0,
+        "app_owned_feature_kotlin_files.shipment": 0,
+        "cross_feature_presentation_imports": 0,
+        "data_to_feature_presentation_files": 0,
+        "dependency_cycles": 0,
+        "modules": 31,
+        "presentation_to_raw_data_files": 0,
+        "room": 54
+      }
+    }
+  },
+  "tracked_app_owned_features": [
+    "reports",
+    "payment",
+    "shipment",
+    "invoice"
+  ],
+  "verification_mode": "STATIC_ONLY"
+}

@@ -1,0 +1,587 @@
+{
+  "adopted_in": "v319",
+  "canonical_owner": "docs/architecture/ARCHITECTURE_CONTRACT.md",
+  "enforcement_activation": "v320",
+  "format": "verto-architecture-contracts-v1",
+  "legacy_debt_policy": "current debt is frozen as pre-existing debt; new debt is forbidden; existing debt may only decrease",
+  "legacy_guard_input": {
+    "path": "docs/architecture/architecture-rules.json",
+    "status": "HISTORICAL_COMPATIBILITY_ONLY_V320_CANONICAL_GUARD_MIGRATED"
+  },
+  "reserved_measurements_v320": {
+    "class_size": {
+      "expected_source": "v320 complexity scanner",
+      "status": "MEASUREMENT_REQUIRED_IN_320",
+      "unit": "lines/declaration"
+    },
+    "cognitive_complexity": {
+      "expected_source": "v320 complexity scanner",
+      "status": "MEASUREMENT_REQUIRED_IN_320",
+      "unit": "cognitive complexity"
+    },
+    "constructor_dependencies": {
+      "expected_source": "v320 complexity scanner",
+      "status": "MEASUREMENT_REQUIRED_IN_320",
+      "unit": "constructor dependency count"
+    },
+    "coupling": {
+      "expected_source": "v320 complexity scanner",
+      "status": "MEASUREMENT_REQUIRED_IN_320",
+      "unit": "module/type coupling metric"
+    },
+    "cyclomatic_complexity": {
+      "expected_source": "v320 complexity scanner",
+      "status": "MEASUREMENT_REQUIRED_IN_320",
+      "unit": "cyclomatic complexity"
+    }
+  },
+  "rules": [
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_001",
+      "id": "VARCH-001",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "count production domain Kotlin imports whose FQCN starts android. or androidx.; admitted value 0",
+      "owner": "architecture",
+      "prohibited_state": "Domain depends on Android",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Domain depends on Android"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_002",
+      "id": "VARCH-002",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "count production domain Kotlin imports starting com.verto.app.data.; admitted value 0",
+      "owner": "architecture",
+      "prohibited_state": "Domain depends on Data/Infrastructure",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Domain depends on Data/Infrastructure"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_003",
+      "id": "VARCH-003",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "EXACT_IDENTITY_RATCHET",
+      "measurement": "set of path+foreign-feature-import identities in domain; future set must be subset of v318 legacy set and no new identity",
+      "owner": "architecture",
+      "prohibited_state": "Domain depends on another Feature implementation",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Domain depends on another Feature implementation"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_004",
+      "id": "VARCH-004",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "count production application Kotlin imports containing .presentation.; admitted value 0",
+      "owner": "architecture",
+      "prohibited_state": "Application depends on Presentation",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Application depends on Presentation"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_005",
+      "id": "VARCH-005",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "EXACT_IDENTITY_RATCHET",
+      "measurement": "set of path+Room/local/remote import identities in application; future set must be subset of v318 legacy set and no new identity",
+      "owner": "architecture",
+      "prohibited_state": "Application depends directly on Room/Remote transport",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Application depends directly on Room/Remote transport"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_006",
+      "id": "VARCH-006",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "count presentation files importing com.verto.app.data.local.entity or .dao; admitted new count 0",
+      "owner": "architecture",
+      "prohibited_state": "Presentation depends on Room Entity/DAO",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Presentation depends on Room Entity/DAO"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_007",
+      "id": "VARCH-007",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "count presentation files importing com.verto.app.data.repository or .remote; admitted new count 0",
+      "owner": "architecture",
+      "prohibited_state": "Presentation depends on data.repository/data.remote",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Presentation depends on data.repository/data.remote"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_008",
+      "id": "VARCH-008",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "count presentation files importing another feature presentation package; admitted new count 0",
+      "owner": "architecture",
+      "prohibited_state": "Feature Presentation depends on another Feature Presentation",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Feature Presentation depends on another Feature Presentation"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_009",
+      "id": "VARCH-009",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "count data-module files importing feature presentation; admitted new count 0",
+      "owner": "architecture",
+      "prohibited_state": "Data module depends on Feature Presentation",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Data module depends on Feature Presentation"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_010",
+      "id": "VARCH-010",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "directed Gradle project dependency graph cycle count; admitted value 0",
+      "owner": "architecture",
+      "prohibited_state": "Module dependency cycle",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Module dependency cycle"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_011",
+      "id": "VARCH-011",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "count app feature implementation files excluding approved bridge/wiring composition selectors; admitted value 0 for tracked migrated features",
+      "owner": "architecture",
+      "prohibited_state": "Feature Presentation owned by app after migration",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Feature Presentation owned by app after migration"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_012",
+      "id": "VARCH-012",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "EXACT_IDENTITY_RATCHET",
+      "measurement": "set of feature->feature Gradle edges not explicitly admitted; future set must be subset of v318 legacy edge identities and no new identity",
+      "owner": "architecture",
+      "prohibited_state": "Unauthorized feature-to-feature implementation dependency",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Unauthorized feature-to-feature implementation dependency"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_013",
+      "id": "VARCH-013",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "count core production business types matching feature-owned ownership selectors defined by architecture contract; admitted new count 0",
+      "owner": "architecture",
+      "prohibited_state": "Core contains feature-owned business type",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Core contains feature-owned business type"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_UNAUTHORIZED_SOURCE_MUTATION",
+      "id": "VARCH-014",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "compare changed file SHA set against session allowlist; out-of-scope changed paths must equal 0",
+      "owner": "architecture",
+      "prohibited_state": "File changed outside session Allowlist",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "File changed outside session Allowlist"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_015",
+      "id": "VARCH-015",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "EXACT_IDENTITY_RATCHET",
+      "measurement": "for each governed baseline metric compare current <= previous admitted metric; set metrics use identity subset",
+      "owner": "architecture",
+      "prohibited_state": "Baseline violation count increased (approved app bridge/wiring composition files are excluded)",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "RATCHET",
+      "title": "Baseline violation count increased (approved app bridge/wiring composition files are excluded)"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_016",
+      "id": "VARCH-016",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "count Gradle modules from settings.gradle.kts and compare with session/change contract expected value; unexpected delta must equal 0",
+      "owner": "architecture",
+      "prohibited_state": "Modules count changed unexpectedly",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Modules count changed unexpectedly"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_017",
+      "id": "VARCH-017",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "read ROOM_SCHEMA_VERSION and exported Room schema identity; unexpected schema/version delta must equal 0",
+      "owner": "architecture",
+      "prohibited_state": "Room schema changed unexpectedly",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Room schema changed unexpectedly"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_018",
+      "id": "VARCH-018",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "EXACT_IDENTITY_RATCHET",
+      "measurement": "set of production Kotlin files >500 lines; newly introduced identity requires explicit review and debt set may not grow silently",
+      "owner": "architecture",
+      "prohibited_state": "New >500-line Production file without review",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "RATCHET",
+      "title": "New >500-line Production file without review"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_MISSING_FEATURE_MANIFEST",
+      "id": "VARCH-019",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "set difference settings :feature:* modules minus feature manifests; size must equal 0",
+      "owner": "architecture",
+      "prohibited_state": "Feature manifest missing",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Feature manifest missing"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_MANIFEST_DEPENDENCY_DRIFT",
+      "id": "VARCH-020",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "set difference direct feature project dependencies minus manifest outgoing_dependencies; size must equal 0",
+      "owner": "architecture",
+      "prohibited_state": "Feature dependency not declared in manifest",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Feature dependency not declared in manifest"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_021",
+      "id": "VARCH-021",
+      "introduced_or_adopted": "pre-v319-preserved",
+      "legacy_policy": "NONE",
+      "measurement": "count ViewModel business/application operations that directly invoke low-level Port instead of declared UseCase/Application Service using v320 executable selector; admitted new count 0",
+      "owner": "architecture",
+      "prohibited_state": "ViewModel bypasses UseCase/Application Service for Business/Application operation",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "ViewModel bypasses UseCase/Application Service for Business/Application operation"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_PUBLIC_API_UNDECLARED",
+      "id": "VARCH-022",
+      "introduced_or_adopted": "v319",
+      "legacy_policy": "NONE",
+      "measurement": "diff externally consumed/public API symbol/package set against provider manifest public_api; undeclared additions/removals must equal 0",
+      "owner": "architecture",
+      "prohibited_state": "Public API surface missing/changed without manifest declaration",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Public API surface missing/changed without manifest declaration"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_DATA_OWNERSHIP_UNRESOLVED",
+      "id": "VARCH-023",
+      "introduced_or_adopted": "v319",
+      "legacy_policy": "NONE",
+      "measurement": "for each governed Room table/entity/DAO/repository count owner records; required cardinality exactly 1",
+      "owner": "architecture",
+      "prohibited_state": "Data owner missing or duplicated for governed Table/Entity/Repository",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Data owner missing or duplicated for governed Table/Entity/Repository"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_024",
+      "id": "VARCH-024",
+      "introduced_or_adopted": "v319",
+      "legacy_policy": "NONE",
+      "measurement": "count cross-feature imports/usages resolving to foreign Entity, DAO, database or storage implementation; admitted new count 0",
+      "owner": "architecture",
+      "prohibited_state": "Cross-feature direct use of foreign Entity/DAO/storage implementation",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Cross-feature direct use of foreign Entity/DAO/storage implementation"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_025",
+      "id": "VARCH-025",
+      "introduced_or_adopted": "v319",
+      "legacy_policy": "NONE",
+      "measurement": "count cross-feature imports outside provider manifest public_api/exposed_ports/approved api module; admitted new count 0",
+      "owner": "architecture",
+      "prohibited_state": "Cross-feature import of provider INTERNAL implementation",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Cross-feature import of provider INTERNAL implementation"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_026",
+      "id": "VARCH-026",
+      "introduced_or_adopted": "v319",
+      "legacy_policy": "NONE",
+      "measurement": "set difference Gradle external/library dependencies minus declared dependency contract/manifest admissions; size must equal 0 after v320 enforcement activation",
+      "owner": "architecture",
+      "prohibited_state": "External/library dependency admitted without manifest/dependency declaration",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "External/library dependency admitted without manifest/dependency declaration"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_RULE_ID_REUSE",
+      "id": "VARCH-027",
+      "introduced_or_adopted": "v319",
+      "legacy_policy": "NONE",
+      "measurement": "compare canonical mapping Rule ID -> prohibited meaning against prior admitted catalog; changed/reused IDs must equal 0",
+      "owner": "architecture",
+      "prohibited_state": "Stable Rule ID meaning changed or reused",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Stable Rule ID meaning changed or reused"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_BASELINE_LOOSENING",
+      "id": "VARCH-028",
+      "introduced_or_adopted": "v319",
+      "legacy_policy": "EXACT_IDENTITY_RATCHET",
+      "measurement": "baseline metric/set may tighten only; any numeric increase or identity-set expansion without governance approval must equal 0",
+      "owner": "architecture",
+      "prohibited_state": "Ratchet baseline/ceiling raised or bypassed without approved governance",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "RATCHET",
+      "title": "Ratchet baseline/ceiling raised or bypassed without approved governance"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_VARCH_029",
+      "id": "VARCH-029",
+      "introduced_or_adopted": "v319",
+      "legacy_policy": "NONE",
+      "measurement": "compare Rule ID severity ordinal against prior admitted catalog; downgrade without required ADR/governance must equal 0",
+      "owner": "architecture",
+      "prohibited_state": "Rule Severity downgraded without required ADR/governance",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Rule Severity downgraded without required ADR/governance"
+    },
+    {
+      "evidence_source": [
+        "settings.gradle.kts",
+        "*/build.gradle.kts",
+        "**/src/main/**/*.kt",
+        "docs/architecture/contracts/*"
+      ],
+      "failure_code": "FAIL_EXCEPTION_GOVERNANCE",
+      "id": "VARCH-030",
+      "introduced_or_adopted": "v319",
+      "legacy_policy": "NONE",
+      "measurement": "for each temporary exception validate non-empty rule_id, identity/path, owner, reason, created_at, expiry, remediation_issue, approval; invalid count 0",
+      "owner": "architecture",
+      "prohibited_state": "Temporary exception missing owner/reason/expiry/remediation reference",
+      "scope": "production source/module/dependency/documentation governance as defined by this rule",
+      "severity": "ZERO_TOLERANCE",
+      "title": "Temporary exception missing owner/reason/expiry/remediation reference"
+    }
+  ],
+  "severity_model": {
+    "RATCHET": "numeric metric cannot increase; stable identity set must be subset of previous admitted set",
+    "WARNING": "measured evidence only; does not substitute for stricter rules",
+    "ZERO_TOLERANCE": "no new unregistered identity; clean rules remain exactly zero"
+  },
+  "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+  "source_version": "v318"
+}

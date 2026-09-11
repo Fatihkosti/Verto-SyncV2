@@ -1,0 +1,333 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "name": "aggregate_registry_35",
+      "pass": true,
+      "detail": "live registry has 35 aggregate types"
+    },
+    {
+      "name": "team_observation_in_live_registry",
+      "pass": true,
+      "detail": "M02 live contract extension is included"
+    },
+    {
+      "name": "pull_partition_18_17",
+      "pass": true,
+      "detail": "direct=18, owner310=17"
+    },
+    {
+      "name": "pull_registry_exact_coverage",
+      "pass": true,
+      "detail": "pull covers 35/35"
+    },
+    {
+      "name": "recovery_registry_exact_coverage",
+      "pass": true,
+      "detail": "recovery covers 35/35"
+    },
+    {
+      "name": "direct_applier_budget",
+      "pass": true,
+      "detail": "BUDGET has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_category",
+      "pass": true,
+      "detail": "CATEGORY has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_customer_profile",
+      "pass": true,
+      "detail": "CUSTOMER_PROFILE has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_educational_content",
+      "pass": true,
+      "detail": "EDUCATIONAL_CONTENT has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_inventory_item",
+      "pass": true,
+      "detail": "INVENTORY_ITEM has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_inventory_unit",
+      "pass": true,
+      "detail": "INVENTORY_UNIT has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_item_category",
+      "pass": true,
+      "detail": "ITEM_CATEGORY has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_note",
+      "pass": true,
+      "detail": "NOTE has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_notification",
+      "pass": true,
+      "detail": "NOTIFICATION has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_organization_settings",
+      "pass": true,
+      "detail": "ORGANIZATION_SETTINGS has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_party_identity",
+      "pass": true,
+      "detail": "PARTY_IDENTITY has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_party_role",
+      "pass": true,
+      "detail": "PARTY_ROLE has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_price_list",
+      "pass": true,
+      "detail": "PRICE_LIST has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_purchase_order",
+      "pass": true,
+      "detail": "PURCHASE_ORDER has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_reminder",
+      "pass": true,
+      "detail": "REMINDER has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_shipment",
+      "pass": true,
+      "detail": "SHIPMENT has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_supplier_profile",
+      "pass": true,
+      "detail": "SUPPLIER_PROFILE has an explicit direct pull route"
+    },
+    {
+      "name": "direct_applier_team_observation",
+      "pass": true,
+      "detail": "TEAM_OBSERVATION has an explicit direct pull route"
+    },
+    {
+      "name": "stronger_route_cash_movement",
+      "pass": true,
+      "detail": "CASH_MOVEMENT is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_cash_reconciliation",
+      "pass": true,
+      "detail": "CASH_RECONCILIATION is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_cash_register",
+      "pass": true,
+      "detail": "CASH_REGISTER is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_client_credit",
+      "pass": true,
+      "detail": "CLIENT_CREDIT is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_commission_payment",
+      "pass": true,
+      "detail": "COMMISSION_PAYMENT is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_cost_allocation",
+      "pass": true,
+      "detail": "COST_ALLOCATION is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_expense",
+      "pass": true,
+      "detail": "EXPENSE is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_goods_receipt",
+      "pass": true,
+      "detail": "GOODS_RECEIPT is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_inventory_cost_revision",
+      "pass": true,
+      "detail": "INVENTORY_COST_REVISION is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_inventory_movement",
+      "pass": true,
+      "detail": "INVENTORY_MOVEMENT is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_invoice",
+      "pass": true,
+      "detail": "INVOICE is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_optimal_follow_up",
+      "pass": true,
+      "detail": "OPTIMAL_FOLLOW_UP is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_optimal_maintenance",
+      "pass": true,
+      "detail": "OPTIMAL_MAINTENANCE is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_optimal_vehicle",
+      "pass": true,
+      "detail": "OPTIMAL_VEHICLE is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_payment",
+      "pass": true,
+      "detail": "PAYMENT is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_purchase_match",
+      "pass": true,
+      "detail": "PURCHASE_MATCH is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "stronger_route_purchase_payment_override",
+      "pass": true,
+      "detail": "PURCHASE_PAYMENT_OVERRIDE is delegated and materialized by stronger applier"
+    },
+    {
+      "name": "whole_page_contract",
+      "pass": true,
+      "detail": "client validates the complete server page contract before commit"
+    },
+    {
+      "name": "transaction_boundary_contract",
+      "pass": true,
+      "detail": "contract requires complete transaction groups and page boundary"
+    },
+    {
+      "name": "nonempty_cursor_must_advance",
+      "pass": true,
+      "detail": "every non-empty global page must advance the opaque server cursor"
+    },
+    {
+      "name": "empty_page_cannot_advance",
+      "pass": true,
+      "detail": "empty page cannot move cursor"
+    },
+    {
+      "name": "cursor_expiry_forces_recovery",
+      "pass": true,
+      "detail": "expired cursor becomes durable recovery obligation"
+    },
+    {
+      "name": "inbox_anchor_required",
+      "pass": true,
+      "detail": "cursor anchor is checked against APPLIED inbox state"
+    },
+    {
+      "name": "page_commit_atomic",
+      "pass": true,
+      "detail": "domain apply + inbox + cursor commit share one Room transaction"
+    },
+    {
+      "name": "apply_before_cursor_advance",
+      "pass": true,
+      "detail": "domain materialization completes before cursor CAS"
+    },
+    {
+      "name": "pending_local_blocks_page",
+      "pass": true,
+      "detail": "remote page cannot overwrite unresolved local intent"
+    },
+    {
+      "name": "review_state_counts_as_active",
+      "pass": true,
+      "detail": "REQUIRES_REVIEW is represented in active outbox semantics"
+    },
+    {
+      "name": "financial_hard_delete_guard",
+      "pass": true,
+      "detail": "pull has a central defense-in-depth guard against hard financial delete"
+    },
+    {
+      "name": "bootstrap_scope_guard",
+      "pass": true,
+      "detail": "scope is revalidated around bootstrap network/commit boundaries"
+    },
+    {
+      "name": "bootstrap_pages_durable",
+      "pass": true,
+      "detail": "snapshot pages are staged durably and atomically"
+    },
+    {
+      "name": "bootstrap_cutover_atomic",
+      "pass": true,
+      "detail": "snapshot materialization and baseline cursor install share one Room transaction"
+    },
+    {
+      "name": "bootstrap_restart_supported",
+      "pass": true,
+      "detail": "expired/invalid bootstrap can restart safely"
+    },
+    {
+      "name": "outbox_digest_guard",
+      "pass": true,
+      "detail": "recovery asserts pending outbox identity is unchanged by cutover"
+    },
+    {
+      "name": "pending_snapshot_rows_preserved",
+      "pass": true,
+      "detail": "snapshot does not overwrite locally pending aggregate state"
+    },
+    {
+      "name": "price_list_authoritative_absence_prune",
+      "pass": true,
+      "detail": "bootstrap absence removes stale deleted price-list templates"
+    },
+    {
+      "name": "price_list_prune_preserves_pending",
+      "pass": true,
+      "detail": "price-list prune excludes all active/review local intents"
+    },
+    {
+      "name": "price_list_prune_sqlite_semantics",
+      "pass": true,
+      "detail": "absent_deleted=True, authoritative_present_preserved=True, pending_preserved=True"
+    },
+    {
+      "name": "server_pull_transaction_order",
+      "pass": true,
+      "detail": "server page exports complete transaction membership metadata"
+    },
+    {
+      "name": "server_page_boundary_true",
+      "pass": true,
+      "detail": "server explicitly certifies page transaction boundary"
+    },
+    {
+      "name": "server_bootstrap_revision_lock",
+      "pass": true,
+      "detail": "bootstrap baseline is serialized with unified revision authority"
+    },
+    {
+      "name": "server_snapshot_fixed_baseline",
+      "pass": true,
+      "detail": "bootstrap snapshot is fixed at baseline revision"
+    },
+    {
+      "name": "no_updated_at_cursor_authority",
+      "pass": true,
+      "detail": "pull/recovery cursor authority is opaque server cursor, not device updated_at"
+    }
+  ],
+  "passed": 65,
+  "failed": 0,
+  "aggregateCount": 35
+}

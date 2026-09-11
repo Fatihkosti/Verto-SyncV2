@@ -1,0 +1,110 @@
+{
+  "architecture": {
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "Room schema or migration",
+      "server SQL/API redesign",
+      "business-rule change",
+      "sync protocol semantic change",
+      "UI/navigation redesign",
+      "plugin framework",
+      "service locator",
+      "foreign DAO/entity/repository implementation",
+      "unadmitted production external Gradle dependency"
+    ],
+    "invariants": [
+      "behavioral mutations M1-M8 are counted DETECTED only after isolated real mutation + executed failing focused test",
+      "BLOCKED_ENVIRONMENT is never promoted to DETECTED",
+      "critical contract-test evidence executes contract behavior and contains semantic assertions",
+      "symbol-only or reflection-only critical contract evidence is rejected",
+      "at least one critical contract semantic mutation is exercised when Gradle can execute",
+      "feature admission self-tests remain >= 10",
+      "scalability self-tests remain >= 6",
+      "dependency cycles remain zero",
+      "foreign persistence access remains zero",
+      "no baseline inflation",
+      "no production business behavior change"
+    ]
+  },
+  "session": {
+    "id": 333,
+    "input_sha256": "92d306a25cca4c1e1da78473a6c628b1f1f71dab68c6921ce1539c5ab110951a",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_333_INPUT_SNAPSHOT.json",
+    "scope": "BEHAVIORAL MUTATION EXECUTION + SEMANTIC CONTRACT CONFORMANCE / ROADMAP CLOSEOUT",
+    "allowed_modules": [
+      ":app",
+      ":feature:party",
+      ":feature:invoice",
+      ":feature:payment",
+      ":feature:shipment"
+    ],
+    "allowed_files": [
+      "SESSION_333_FINAL.md",
+      "app/src/test/**",
+      "feature/party/src/test/**",
+      "feature/invoice/src/test/**",
+      "feature/payment/src/test/**",
+      "feature/shipment/src/test/**",
+      "docs/DOCUMENTATION_INVENTORY.md",
+      "docs/architecture/contracts/contract-test-registry-v333.json",
+      "docs/architecture/contracts/sessions/session-333.json",
+      "docs/architecture/verification/SESSION_333_INPUT_SNAPSHOT.json",
+      "docs/architecture/verification/SEMANTIC_CONTRACT_CONFORMANCE_v333.*",
+      "docs/architecture/verification/PHASE_5_REVERIFICATION_v333.*",
+      "docs/architecture/verification/PHASE_6_REVERIFICATION_v333.*",
+      "docs/architecture/verification/ARCHITECTURE_ROADMAP_CLOSEOUT_v333.*",
+      "docs/quality/maintainability/BEHAVIORAL_MUTATION_MATRIX_v333.*",
+      "tools/architecture/verto_contract_compatibility_guard.py",
+      "tools/quality/verto_behavioral_mutation_runner.py"
+    ],
+    "forbidden_files": [
+      "supabase/**",
+      "functions/**",
+      "sql/**",
+      "app/schemas/**",
+      "data/database/src/main/**",
+      "feature/*/src/main/**",
+      "data/sync/src/main/**",
+      "app/src/main/**",
+      "settings.gradle.kts",
+      "build.gradle.kts",
+      "gradle/libs.versions.toml"
+    ]
+  },
+  "verification": {
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "dependency",
+      "contract-compatibility",
+      "feature-scalability-admission",
+      "data-ownership",
+      "persistence-boundary",
+      "transaction-contract",
+      "migration-schema",
+      "persistence-ratchet",
+      "technical-debt-ratchet",
+      "differential-quality",
+      "kotlin-quality",
+      "maintainability-testability",
+      "behavioral-mutations",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ],
+    "required_tests": [
+      "contract compatibility guard self-test including symbol-only false evidence",
+      "feature admission guard self-test >=10",
+      "scalability admission self-test >=6",
+      "behavioral mutation runner self-test",
+      "behavioral mutations M1-M8",
+      "critical semantic contract mutation",
+      "testability guard self-test"
+    ]
+  }
+}

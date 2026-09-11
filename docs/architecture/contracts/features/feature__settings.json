@@ -1,0 +1,98 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.settings.domain.repository.AppearanceSettingsGateway",
+      "com.verto.app.feature.settings.domain.repository.PrintingSettingsGateway",
+      "com.verto.app.feature.settings.domain.repository.SettingsOperationsGateway"
+    ],
+    "external_dependencies": [
+      "implementation:libs.androidx.activity.compose",
+      "implementation:libs.androidx.compose.foundation",
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core",
+      "testImplementation:libs.junit",
+      "testImplementation:libs.kotlinx.coroutines.test"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app"
+    ],
+    "internal_packages": [
+      "com.verto.app.feature.settings.domain.model",
+      "com.verto.app.feature.settings.domain.repository",
+      "com.verto.app.feature.settings.presentation",
+      "com.verto.app.feature.settings.presentation.appearance",
+      "com.verto.app.feature.settings.presentation.main",
+      "com.verto.app.feature.settings.presentation.printing"
+    ],
+    "outgoing_dependencies": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem"
+    ],
+    "public_api": [
+      "com.verto.app.feature.settings.bridge.*",
+      "com.verto.app.feature.settings.domain.model.SettingsBackupTarget",
+      "com.verto.app.feature.settings.domain.model.SettingsDataScope",
+      "com.verto.app.feature.settings.domain.repository.*",
+      "com.verto.app.feature.settings.domain.repository.AppearanceSettingsGateway",
+      "com.verto.app.feature.settings.domain.repository.PrintingSettingsGateway",
+      "com.verto.app.feature.settings.domain.repository.SettingsOperationsGateway",
+      "com.verto.app.feature.settings.presentation.BackupSection",
+      "com.verto.app.feature.settings.presentation.BackupShareDialog",
+      "com.verto.app.feature.settings.presentation.FontSelector",
+      "com.verto.app.feature.settings.presentation.InvoicePreviewCard",
+      "com.verto.app.feature.settings.presentation.OrgDataRow",
+      "com.verto.app.feature.settings.presentation.PriceListPreviewCard",
+      "com.verto.app.feature.settings.presentation.SettingsDimensions",
+      "com.verto.app.feature.settings.presentation.SettingsTextScale",
+      "com.verto.app.feature.settings.presentation.TemplateSelector",
+      "com.verto.app.feature.settings.presentation.ThemesScreen",
+      "com.verto.app.feature.settings.presentation.appearance.AppearanceSettingsViewModel",
+      "com.verto.app.feature.settings.presentation.main.SectionState",
+      "com.verto.app.feature.settings.presentation.main.SettingsOperationsViewModel",
+      "com.verto.app.feature.settings.presentation.printing.PrintDocumentStyle",
+      "com.verto.app.feature.settings.presentation.printing.PrintingSettingsUiState",
+      "com.verto.app.feature.settings.presentation.printing.PrintingSettingsViewModel"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [
+      "AppearanceSettingsGateway",
+      "PrintingSettingsGateway",
+      "SettingsOperationsGateway"
+    ],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:settings",
+    "name": "feature/settings",
+    "owner": ":feature:settings",
+    "purpose": "Production capability implemented by :feature:settings; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [],
+    "legacy_cross_feature_debt": []
+  },
+  "provides_contracts": ["settings.operations.v1"],
+  "consumes_contracts": [],
+  "deprecated_contracts": [],
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "8ef7e77c39af3ab8ee7fee77bb75816562f50e0f1977700c481a6c2d07b4abc9",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v318"
+  }
+}

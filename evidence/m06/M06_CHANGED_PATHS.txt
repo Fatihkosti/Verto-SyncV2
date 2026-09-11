@@ -1,0 +1,9 @@
+data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncPullEngine.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncPullRegistry.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryRegistry.kt
+tools/m06/verify_m06.py
+evidence/m06/M06_SOURCE_PATCH.diff
+evidence/m06/M06_CHANGED_PATHS.txt
+evidence/m06/verification/M06_STATIC_GATE.json
+evidence/m06/verification/M06_STATIC_GATE.txt
+evidence/m06/runtime/M06_GRADLE_ATTEMPT.txt

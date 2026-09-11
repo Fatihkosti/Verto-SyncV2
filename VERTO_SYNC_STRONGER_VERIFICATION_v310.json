@@ -1,0 +1,459 @@
+{
+  "MODEL_10K_PASS": true,
+  "MODEL_FINANCIAL_DUPLICATE_PASS": true,
+  "MODEL_FINANCIAL_EVENT_ORDERING_PASS": true,
+  "MODEL_INVENTORY_NEGATIVE_POLICY_PASS": true,
+  "MODEL_INVOICE_VOID_TWICE_PASS": true,
+  "MODEL_LANDED_COST_RETRY_PASS": true,
+  "MODEL_OPTIMAL_BRIDGE_IDEMPOTENCY_PASS": true,
+  "MODEL_OWNER310_CURSOR_AUTHORITY_PASS": true,
+  "MODEL_OWNER310_PULL_NO_ECHO_PASS": true,
+  "MODEL_POSTED_IMMUTABILITY_PASS": true,
+  "MODEL_STOCK_MOVEMENT_DUPLICATE_PASS": true,
+  "MODEL_STRONGER_CHANGE_ONCE_PASS": true,
+  "MODEL_STRONGER_RECEIPT_ATOMICITY_PASS": true,
+  "aggregateRegistryCount": 34,
+  "blockers": [
+    "v309_handoff310_authorized",
+    "v309_blockers_empty",
+    "protected_appdb_unchanged",
+    "protected_catalog_unchanged",
+    "protected_unifiedDao_unchanged",
+    "protected_contract_unchanged",
+    "protected_pushEngine_unchanged",
+    "protected_pullEngine_unchanged",
+    "room_version_80",
+    "owner310_remote_apply_dispatch"
+  ],
+  "checks": [
+    {
+      "detail": "e45f32c009ae605d010361cf12da188230ef3bf8eed0650bba81bb35dc21817d",
+      "name": "input_zip_sha",
+      "status": "PASS"
+    },
+    {
+      "detail": "2622",
+      "name": "input_archive_entries",
+      "status": "PASS"
+    },
+    {
+      "detail": "1175",
+      "name": "input_production_kotlin",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "v309_verification_sha",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "v309_handoff310_authorized",
+      "status": "FAIL"
+    },
+    {
+      "detail": "",
+      "name": "v309_blockers_empty",
+      "status": "FAIL"
+    },
+    {
+      "detail": "",
+      "name": "inherited_exceptions_exactly_9",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "new310_waivers_zero",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "inherited_worsened_zero",
+      "status": "PASS"
+    },
+    {
+      "detail": "1d077e2539cf8ac4a2cf618c11c0a97f7de44f0c2bf15298e923f39b75988543",
+      "name": "schema80_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "a2daf28b3a05b35907267bfc766fc6919ba5c28613854c0c0d68ee186313e908",
+      "name": "v305_migration_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "c453748be91151702d08e67200556fdd0ab66fbe7d905eff8b9357d8ca8c9bdf",
+      "name": "v309_migration_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_appdb_unchanged",
+      "status": "FAIL"
+    },
+    {
+      "detail": "",
+      "name": "protected_catalog_unchanged",
+      "status": "FAIL"
+    },
+    {
+      "detail": "",
+      "name": "protected_mig7980_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_unifiedEntities_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_unifiedDao_unchanged",
+      "status": "FAIL"
+    },
+    {
+      "detail": "",
+      "name": "protected_invoiceEntities_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_invoiceDao_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_inventoryEntities_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_inventoryDao_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_contract_unchanged",
+      "status": "FAIL"
+    },
+    {
+      "detail": "",
+      "name": "protected_registry_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_pushRemote_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_financial_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_inventorySync_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_pushEngine_unchanged",
+      "status": "FAIL"
+    },
+    {
+      "detail": "",
+      "name": "protected_pullEngine_unchanged",
+      "status": "FAIL"
+    },
+    {
+      "detail": "",
+      "name": "protected_optimalRepo_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_optimalParticipant_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "room_version_80",
+      "status": "FAIL"
+    },
+    {
+      "detail": "",
+      "name": "runtime_v2_disabled",
+      "status": "PASS"
+    },
+    {
+      "detail": "17",
+      "name": "owner310_coverage_17_of_17",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_adapter_coverage_17_of_17",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "producer_coverage_17_of_17",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "owner310_no_unknown",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "owner310_no_lww",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "no_duplicate_generic_durable_intent",
+      "status": "PASS"
+    },
+    {
+      "detail": "17",
+      "name": "kotlin_bridge_records_17",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "kotlin_lww_fail_closed",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "stronger_source_no_generic_outbox",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "push_registry_stronger_policy",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "pull_registry_owner310_ready",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "financial_outbox_inbox_preserved",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "inventory_outboxes_preserved",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "optimal_outbox_lease_preserved",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "stable_business_identity_mapping",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "stronger_hard_delete_rejected",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "derived_balance_not_authoritative",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "owner310_remote_apply_dispatch",
+      "status": "FAIL"
+    },
+    {
+      "detail": "",
+      "name": "remote_apply_no_generic_outbox_call",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "owner310_pull_no_delete_call",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "v310_migration_present",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "v310_no_destructive_table_drop",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "no_anon_execute_grant",
+      "status": "PASS"
+    },
+    {
+      "detail": "17",
+      "name": "sql_owner310_dispatch_registry_17",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "sql_inventory_apply_commands_v2_has_body_signature",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "sql_inventory_apply_cost_revisions_v2_has_body_signature",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "sql_inventory_pull_cost_revisions_v2_has_body_signature",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "sql_inventory_pull_movements_v2_has_body_signature",
+      "status": "PASS"
+    },
+    {
+      "detail": "86",
+      "name": "sql_dollar_quotes_balanced",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_bridge_effect_change_receipt_path",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "replay_before_business_dispatch",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "business_change_receipt_order",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "tenant_scope_guard_preserved",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_owner310_generic_upsert_delete_rejected",
+      "status": "PASS"
+    },
+    {
+      "detail": "unified pull cursor/revision only; timestamps may remain operational metadata",
+      "name": "owner310_no_timestamp_cursor_authority",
+      "status": "PASS"
+    },
+    {
+      "detail": "499/0",
+      "name": "v310_fixtures_pass",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "v310_required_model_passes",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "v309_regression_272_of_272",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "v308_regression_137_of_137_model10k",
+      "status": "PASS"
+    }
+  ],
+  "compileStatus": "NOT_RUN_USER_AUTHORIZED_STATIC_ONLY",
+  "duplicateFinancialEffectViolationCount": 0,
+  "duplicateInventoryEffectViolationCount": 0,
+  "duplicateOptimalEffectViolationCount": 0,
+  "finalVerdict": "FAIL_STATIC_V310",
+  "financialHardDeleteV2Count": 0,
+  "handoff311Authorized": false,
+  "handoff312Authorized": false,
+  "historicalServerMigrationChangedCount": 0,
+  "inheritedExceptionCount": 9,
+  "inputArchiveEntries": 2622,
+  "inputProductionKotlinCount": 1175,
+  "inputZipName": "Verto-v309-source-of-truth.zip",
+  "inputZipSha256": "e45f32c009ae605d010361cf12da188230ef3bf8eed0650bba81bb35dc21817d",
+  "inventoryCostMutableRewriteCount": 0,
+  "inventoryMovementDeleteV2Count": 0,
+  "new310WaiverCount": 0,
+  "owner310AggregateCount": 17,
+  "owner310BlockedCount": 0,
+  "owner310BridgeReadyCount": 17,
+  "owner310CoverageRows": 17,
+  "owner310LwwFallbackCount": 0,
+  "postedInvoiceOverwriteCount": 0,
+  "postgresExecuted": false,
+  "postgresStatus": "NOT_EXECUTED_USER_AUTHORIZED_STATIC_ONLY",
+  "remoteApplyEnqueueCount": 0,
+  "roomSchemaChangedCount": 0,
+  "roomVersionAfter": 80,
+  "roomVersionBefore": 80,
+  "runtimeBypassDocumentation": "User explicitly authorized bypassing runtime/build/PostgreSQL execution and requested completion on static evidence. This is execution status, not a new waiver.",
+  "runtimeV2": "DISABLED",
+  "runtimeV2EnabledCount": 0,
+  "schema80Sha256": "1d077e2539cf8ac4a2cf618c11c0a97f7de44f0c2bf15298e923f39b75988543",
+  "serverMigrationV305Sha256": "a2daf28b3a05b35907267bfc766fc6919ba5c28613854c0c0d68ee186313e908",
+  "serverMigrationV309Sha256": "c453748be91151702d08e67200556fdd0ab66fbe7d905eff8b9357d8ca8c9bdf",
+  "serverMigrationV310Path": "supabase/migrations/20260821150000_v310_verto_stronger_stream_bridge.sql",
+  "serverMigrationV310Sha256": "43b2db6d6300bc5a59caffdffef071bd894a3356783dffc5de0a9afa2e13f1ce",
+  "session": 310,
+  "session309ContractSha256": "66f172a35abd976df8a6b443aa55c2c652945a38cad76f8b425eb6b8e51accea",
+  "session310ContractSha256": "6b26c6de0cc3bd500ddc15fee830f5fcea1fd84c937d4667584c268e49384094",
+  "strongerChangeAppendViolationCount": 0,
+  "strongerIdentityRetryMutationCount": 0,
+  "strongerReceiptAtomicityViolationCount": 0,
+  "timestampOwner310CursorAuthorityCount": 0,
+  "unclassifiedOwner310Count": 0,
+  "unitTestStatus": "NOT_RUN_USER_AUTHORIZED_STATIC_ONLY",
+  "v308RegressionFailures": 0,
+  "v308RegressionFixtureCount": 137,
+  "v309FinalVerdict": "FAIL_STATIC_V309",
+  "v309Handoff310Authorized": false,
+  "v309RegressionFailures": 0,
+  "v309RegressionFixtureCount": 272,
+  "v309VerificationSha256": "60bfccdfaef3905862065825d415d18cb763a1eb90653bc3ca1cfb74ba24955d",
+  "v310FixtureStats": {
+    "byCategory": {
+      "atomicity": 36,
+      "coverage": 17,
+      "cursor": 39,
+      "financial_idempotency": 85,
+      "financial_ordering": 49,
+      "identity": 17,
+      "inventory_movement": 45,
+      "inventory_negative": 20,
+      "inventory_reversal": 20,
+      "invoice_void": 24,
+      "landed_cost": 45,
+      "optimal": 50,
+      "pull_no_echo": 25,
+      "transaction_group": 27
+    },
+    "failures": 0,
+    "total": 499
+  },
+  "verifierNormalizedHash": "b1dd497ff5d31d3056aac5bcf804adf0f2269639fc76ad643140e45a9bed3d0e"
+}

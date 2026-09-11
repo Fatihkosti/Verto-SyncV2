@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "98670284103",
+    "project_id": "verto-13506",
+    "storage_bucket": "verto-13506.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98670284103:android:78c0cdadc6a95bcb691062",
+        "android_client_info": {
+          "package_name": "com.autodrive.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxwgx5OzEQiv_PG_a9angHTbTOsbkLMz8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98670284103:android:3a6482ed8f28c0be691062",
+        "android_client_info": {
+          "package_name": "com.verto.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxwgx5OzEQiv_PG_a9angHTbTOsbkLMz8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

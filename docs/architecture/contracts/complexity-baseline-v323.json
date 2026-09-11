@@ -1,0 +1,12 @@
+{
+  "format": "verto-complexity-baseline-v1",
+  "source_version": "v323",
+  "predecessor_baseline": "docs/architecture/contracts/complexity-baseline-v322.json",
+  "input_sha256": "7aad8fd5f877d835c89ab509dfc35e2f4384dc45ce2beb17bad145dea32d4c83",
+  "measurement_algorithm_version": "verto-kotlin-complexity-lexical-v1",
+  "new_identity_budgets": {"file_lines": 434, "class_lines": 219, "function_lines": 79, "function_parameters": 6, "constructor_dependencies": 14, "coupling_imports": 48, "cyclomatic": 9, "cognitive": 13},
+  "resolved_identities": ["InventoryDao legacy God DAO", "25 inventory transaction boundaries"],
+  "old_to_new_identity_map": "docs/quality/technical-debt/identity-map-v323.json",
+  "remaining_identities": ["TD-323-RESIDUAL-LONG-FUNCTIONS", "TD-323-CONSUMER-NARROWING"],
+  "no_baseline_inflation": true
+}

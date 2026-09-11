@@ -1,0 +1,85 @@
+{
+  "baseline_zip_sha256": "7932ef4c2a0ec2f4909cd6fd2ecdfadd3011340e1b44be868304546b56d31257",
+  "baseline_git_commit": "50b097c439a0b5cc5cf5153b8fd3cfe2bd9a6a89",
+  "modified": [
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryRegistry.kt",
+      "sha256": "4df3a51cbb75db46a14dc3fa3fbfba3f2c09ce17cfc1b8f774be4abd37aac3b3",
+      "bytes": 11034,
+      "baseline_sha256": "d55deebafde460cf2ded4dfe91ee04910473e901ac284009a133a32b76759dec"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncSnapshotApplier.kt",
+      "sha256": "e07a1ce4c431f794642ccbbd82006b40c235b9597fd2af1fa232236f4cc5acda",
+      "bytes": 5714,
+      "baseline_sha256": "3683f02c2b5ced903ef10559eea0eea2be3185a9fea99adf547189012387940b"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPartyPushBridge.kt",
+      "sha256": "ac53605c8b9c8783eea9f5bf24dc5ed67f4975ce63ade4dcb014ad452df4ac4f",
+      "bytes": 6396,
+      "baseline_sha256": "1b315afe84250729f855796a17d3ab8a6f780c8471fe573312b7ce32340b0532"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt",
+      "sha256": "7cec296644f9a84f6ed71acab0eba60ea9c6f7ac5cd7a5e3332da9bd34ceafad",
+      "bytes": 6432,
+      "baseline_sha256": "5a0083da2dd25f3947c22e9b083b0fb0fb7fad30aaac4c6aaf20d3914ee99c51"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncChangeApplier.kt",
+      "sha256": "b1051204b3a103ae6c93869ffb5baf4cd26d4c7d02d3685ada4b7449103b8962",
+      "bytes": 32592,
+      "baseline_sha256": "a55ecec1129d444488841d5cb265364bf7a4e9d4c3cdb743da52be90c8a9cbdc"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncPullRegistry.kt",
+      "sha256": "8c481cb591d20f873db7d57b692a89383ebbea618c2aa3c6e025f77eeb0729c4",
+      "bytes": 4229,
+      "baseline_sha256": "04ca782471581ef7948564c93b18ef4a1e919e7c118611b957895547c1bbf250"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncPullEngine.kt",
+      "sha256": "58a6c7781c7c30c3eaca63e3084b297c114f2badfef05f4418217293a5eb687e",
+      "bytes": 19898,
+      "baseline_sha256": "7ea4a31a305a4b6dd587aa1b655b6dc3d0f9ab1aaab6ac998769f9458c26060a"
+    },
+    {
+      "path": "data/network/src/test/kotlin/com/verto/app/data/sync/UnifiedSyncAggregateRegistryV304Test.kt",
+      "sha256": "0903e042204f29c5307b5b66bd262f9b9b98c31008c99921d3a2139b60e1b62c",
+      "bytes": 4926,
+      "baseline_sha256": "9661d7625a628b2175c8d8d52fa2a827e5d4cc5d7f297164dffc0fbc0ca02822"
+    },
+    {
+      "path": "data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncAggregateRegistry.kt",
+      "sha256": "0c4ba3378cb7872cd3300acf1e7fc7684b66956d439c243ecee453a2e7c353d1",
+      "bytes": 16258,
+      "baseline_sha256": "b4f90a40468cffd4e470af0d465145d76e2746996398b8f931b7681bd9800331"
+    },
+    {
+      "path": "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/data/observation/RoomTeamObservationRepository.kt",
+      "sha256": "d9237de495691b5dd75fa8881a02e920a37e1b89b9ca6c9b03be57b9ce2cbbd8",
+      "bytes": 9262,
+      "baseline_sha256": "342a18b305dd967380dab9f69c86d9d2c5b0158b07db3143f2c923df24f12100"
+    },
+    {
+      "path": "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/data/observation/TeamObservationSyncParticipant.kt",
+      "sha256": "b11f132cfca270d4ab8ece595bfb41bd8713893e8057d0a3806eb9999467a6f6",
+      "bytes": 2524,
+      "baseline_sha256": "72d8b3d02964d377e240f21b3aeb2a69a205a403e2b326da29ada37c4acbe5a2"
+    }
+  ],
+  "added": [
+    {
+      "path": "supabase/migrations/20260908154626_m02_team_observation_visibility_alignment.sql",
+      "sha256": "8846d741e448c4df6dce73a83320033896a3a61e42aa7a57933cd9cac6e16bd4",
+      "bytes": 16421
+    },
+    {
+      "path": "supabase/migrations/20260908153803_m02_sync_contract_closeout.sql",
+      "sha256": "507bfee756eb654ce9a8fad2e7ad947f9fab64ac30388e70bae1aa0d7f21f80b",
+      "bytes": 12901
+    }
+  ],
+  "deleted": []
+}

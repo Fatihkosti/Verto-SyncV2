@@ -1,0 +1,31 @@
+{
+  "behavioral_mutations": {
+    "detected": 8,
+    "evidence": "docs/quality/maintainability/BEHAVIORAL_MUTATION_MATRIX_v332.json",
+    "required": 8,
+    "undetected": 0
+  },
+  "blocked_reason": "Gradle wrapper distribution download failed: network is unreachable; default /root/.gradle lock path also unavailable.",
+  "contract_tests_valid": true,
+  "critical_flows": {
+    "ids": [
+      "invoice-write",
+      "inventory-effect",
+      "payment-effect",
+      "logistics-persistence-outbox",
+      "sync-orchestration"
+    ],
+    "passed": 5,
+    "required": 5
+  },
+  "format": "verto-phase-5-reverification-v332",
+  "gradle_status": "BLOCKED_ENVIRONMENT",
+  "limitations": [
+    "Gradle execution is reported separately.",
+    "Runtime device/backend behavior is outside static proof."
+  ],
+  "session": 332,
+  "status": "BLOCKED_ENVIRONMENT",
+  "structural_status": "PASS_STATIC",
+  "testability_guard": "PASS"
+}

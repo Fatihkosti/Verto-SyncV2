@@ -1,0 +1,25 @@
+{
+  "captured_at_utc": "2026-09-10T19:58:13.504452+00:00",
+  "gradle": null,
+  "kotlinc": "/root/.sdkman/candidates/kotlin/current/bin/kotlinc",
+  "java": "/usr/bin/java",
+  "adb": null,
+  "emulator": null,
+  "postgres": null,
+  "gradle_distribution_cached": false,
+  "new_test_method_counts": {
+    "data/sync/src/androidTest/kotlin/com/verto/app/data/sync/pull/FinancialMaterializerV2InstrumentedTest.kt": 31,
+    "data/sync/src/test/kotlin/com/verto/app/data/sync/pull/FinancialMaterializationContractV2Test.kt": 9
+  },
+  "gradle_and_room_status": "BLOCKED_ENVIRONMENT; new actual tests supplied, NOT_RUN",
+  "android_sdk_env": {
+    "ANDROID_HOME": null,
+    "ANDROID_SDK_ROOT": null
+  },
+  "standard_android_sdk_paths": {
+    "/opt/android-sdk": false,
+    "/opt/android": false,
+    "/root/Android/Sdk": false,
+    "/home/oai/Android/Sdk": false
+  }
+}

@@ -1,0 +1,4 @@
+-- Run with an authenticated test scope and a cursor immediately before an existing multi-change transaction.
+-- select public.verto_pull_sync_changes('<TEST_SCOPE_UUID>'::uuid,'<SERVER_ISSUED_CURSOR>',1);
+-- Executed M02 evidence used a 3-change transaction and returned all 3 rows despite p_limit=1.
+-- Required assertions: one transaction_id, transaction_size=3 for every row, ends_at_transaction_boundary=true.

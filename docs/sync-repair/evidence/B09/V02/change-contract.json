@@ -1,0 +1,68 @@
+{
+  "session": {
+    "id": 4250902,
+    "input_sha256": "33c67ceab661921e0fb0e64e3f3025a195894fba36f503fe4ee0ccd0ee2f122b",
+    "baseline_snapshot": "docs/sync-repair/evidence/B09/V02/input-tree.json",
+    "scope": "B09-V02 validation continuation only: PAYMENT writeId correlation false conflict, regression tests and evidence. Numeric ID is tooling-only, not backlog renumbering.",
+    "allowed_modules": [
+      ":data:sync",
+      "tools",
+      "docs"
+    ],
+    "allowed_files": [
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/FinancialMaterializationContractV2.kt",
+      "data/sync/src/test/kotlin/com/verto/app/data/sync/pull/FinancialMaterializationContractV2Test.kt",
+      "data/sync/src/androidTest/kotlin/com/verto/app/data/sync/pull/FinancialMaterializerV2InstrumentedTest.kt",
+      "tools/test_sync_b09_kotlin_smoke.py",
+      "VERTO_SYNC_REPAIR_BACKLOG_AR.md",
+      "CHANGELOG.md",
+      "EVIDENCE_INDEX.md",
+      "SYNC_IMPLEMENTATION_MAP.md",
+      "docs/api/idempotency.md",
+      "docs/CANONICAL_DOCUMENT_MAP.md",
+      "docs/sync-repair/evidence/B09/V02/**",
+      "docs/DOCUMENTATION_INVENTORY.md"
+    ],
+    "forbidden_files": [
+      "VERTO_SYNC_REPAIR_EXECUTION_CONTRACT_AR.md",
+      "SYNC_CONTRACT_V2.schema.json",
+      "data/database/**",
+      "data/network/**",
+      "data/operations/**",
+      "feature/**",
+      "domain/**",
+      "gradle/**",
+      "build.gradle.kts",
+      "settings.gradle.kts",
+      "scripts/**",
+      "supabase/**",
+      "docs/sync-repair/evidence/B09/V01/**"
+    ]
+  },
+  "architecture": {
+    "invariants": [
+      "One immutable payment fact per paymentId, not per correlated writeId.",
+      "Existing owner/content hashes, wire format and producer packet bytes stay unchanged.",
+      "No schema migration, remote write, live user data operation, B10 implementation or acceptance waiver.",
+      "All five B09 tasks and G-B09 remain blocked until real Room/Gradle checks pass."
+    ],
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "new runtime dependency",
+      "legacy financial transport fallback"
+    ]
+  },
+  "verification": {
+    "required_tests": [
+      "FinancialMaterializationContractV2Test: 12 actual JVM methods",
+      "FinancialMaterializerV2InstrumentedTest: 33 actual Room methods",
+      ":app:compileDebugKotlin with real KSP/Hilt",
+      "Affected B04-B06 regression suites; no promotion of old results"
+    ],
+    "required_gates": [
+      "change-contract",
+      "documentation",
+      "G-B09"
+    ]
+  }
+}

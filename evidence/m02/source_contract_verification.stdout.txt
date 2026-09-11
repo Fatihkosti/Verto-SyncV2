@@ -1,0 +1,85 @@
+{
+  "verdict": "PASS",
+  "checks": [
+    {
+      "name": "aggregate_registry_exact_35",
+      "status": "PASS",
+      "detail": "count=35 unique=35"
+    },
+    {
+      "name": "team_registry_contract",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "team_pull_registered",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "team_pull_materializer",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "team_recovery_registered",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "party_role_recovery_canonical_id",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "team_recovery_prune_binding",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "team_domain_outbox_atomic",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "team_rollout_owner_fence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "team_legacy_transport_fenced_when_v2_owns",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "team_push_ready",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "party_role_push_canonical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "party_role_echo_canonical",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "migration_present_20260908153803_m02_sync_contract_closeout",
+      "status": "PASS",
+      "detail": "507bfee756eb654ce9a8fad2e7ad947f9fab64ac30388e70bae1aa0d7f21f80b"
+    },
+    {
+      "name": "migration_present_20260908154626_m02_team_observation_visibility_alignment",
+      "status": "PASS",
+      "detail": "8846d741e448c4df6dce73a83320033896a3a61e42aa7a57933cd9cac6e16bd4"
+    },
+    {
+      "name": "no_global_v2_activation_in_m02_migrations",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

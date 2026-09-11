@@ -1,0 +1,259 @@
+{
+  "format": "verto-persistence-transaction-matrix-v326",
+  "session": 326,
+  "execution_input_sha256": "73b59b241791f0cf336309817257c3fc1003d5b2afd035d91b7e7ae139d1bbae",
+  "workflows": [
+    {
+      "workflow": "invoice-posting",
+      "owner_feature": "invoice",
+      "entry_contract": "InvoiceRepository.postInvoice",
+      "reads": [
+        "InvoiceDao/InventoryDao/PaymentDao"
+      ],
+      "writes": [
+        "InvoiceDao/InventoryDao/PaymentDao"
+      ],
+      "transaction_owner": "Invoice posting coordinator",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_REQUEST_KEY",
+      "failure_behavior": "rollback on any write failure",
+      "rollback_behavior": "all writes rollback",
+      "characterization_test": "feature/invoice/src/test",
+      "regression_test": "feature/invoice/src/test"
+    },
+    {
+      "workflow": "inventory-movement",
+      "owner_feature": "inventory",
+      "entry_contract": "InventoryStockWriter",
+      "reads": [
+        "InventoryDao"
+      ],
+      "writes": [
+        "InventoryDao"
+      ],
+      "transaction_owner": "Inventory stock transaction coordinator",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_REQUEST_KEY",
+      "failure_behavior": "rollback on constraint/validation failure",
+      "rollback_behavior": "no partial stock or movement",
+      "characterization_test": "feature/inventory/src/test",
+      "regression_test": "feature/inventory/src/test"
+    },
+    {
+      "workflow": "payment-posting",
+      "owner_feature": "payment",
+      "entry_contract": "PaymentRepository",
+      "reads": [
+        "PaymentDao/InvoiceDao"
+      ],
+      "writes": [
+        "PaymentDao/InvoiceDao"
+      ],
+      "transaction_owner": "Payment transaction coordinator",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_REQUEST_KEY",
+      "failure_behavior": "rollback on allocation failure",
+      "rollback_behavior": "no partial allocation",
+      "characterization_test": "feature/payment/src/test",
+      "regression_test": "feature/payment/src/test"
+    },
+    {
+      "workflow": "logistics-state-transition",
+      "owner_feature": "shipment",
+      "entry_contract": "LogisticsJourneyAdapter",
+      "reads": [
+        "LogisticsDao"
+      ],
+      "writes": [
+        "LogisticsDao"
+      ],
+      "transaction_owner": "Outer AppDatabase.withTransaction",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_REQUEST_KEY",
+      "failure_behavior": "rollback on stale transition",
+      "rollback_behavior": "state/event remain consistent",
+      "characterization_test": "feature/shipment/src/test",
+      "regression_test": "feature/shipment/src/test"
+    },
+    {
+      "workflow": "logistics-receiving",
+      "owner_feature": "shipment",
+      "entry_contract": "LogisticsReceivingAdapter",
+      "reads": [
+        "LogisticsDao/InventoryDao"
+      ],
+      "writes": [
+        "LogisticsDao/InventoryDao"
+      ],
+      "transaction_owner": "Outer AppDatabase.withTransaction",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_REQUEST_KEY",
+      "failure_behavior": "rollback on posting failure",
+      "rollback_behavior": "no partial receipt",
+      "characterization_test": "feature/shipment/src/test",
+      "regression_test": "feature/shipment/src/test"
+    },
+    {
+      "workflow": "logistics-cost-posting",
+      "owner_feature": "shipment",
+      "entry_contract": "LogisticsCostAdapter",
+      "reads": [
+        "LogisticsDao/PaymentDao"
+      ],
+      "writes": [
+        "LogisticsDao/PaymentDao"
+      ],
+      "transaction_owner": "Outer AppDatabase.withTransaction",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_REQUEST_KEY",
+      "failure_behavior": "rollback on payment failure",
+      "rollback_behavior": "no partial cost/payment",
+      "characterization_test": "feature/shipment/src/test",
+      "regression_test": "feature/shipment/src/test"
+    },
+    {
+      "workflow": "sync-local-write",
+      "owner_feature": "sync",
+      "entry_contract": "UnifiedSyncProducer",
+      "reads": [
+        "domain DAO + UnifiedSyncDao"
+      ],
+      "writes": [
+        "domain DAO + UnifiedSyncDao"
+      ],
+      "transaction_owner": "AppDatabase.withTransaction",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_IDENTITY",
+      "failure_behavior": "rollback before outbox enqueue completes",
+      "rollback_behavior": "domain write and outbox commit together",
+      "characterization_test": "data/sync/src/test",
+      "regression_test": "data/sync/src/test"
+    },
+    {
+      "workflow": "sync-outbox",
+      "owner_feature": "sync",
+      "entry_contract": "UnifiedOutboxWriter.enqueueMutation",
+      "reads": [
+        "UnifiedSyncDao/UnifiedSyncOutboxDao"
+      ],
+      "writes": [
+        "UnifiedSyncDao/UnifiedSyncOutboxDao"
+      ],
+      "transaction_owner": "Room @Transaction",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_IDENTITY",
+      "failure_behavior": "duplicate identity is no-op; divergence fails",
+      "rollback_behavior": "no duplicate logical mutation",
+      "characterization_test": "data/sync/src/test",
+      "regression_test": "data/sync/src/test"
+    },
+    {
+      "workflow": "sync-inbox",
+      "owner_feature": "sync",
+      "entry_contract": "UnifiedSyncPullEngine",
+      "reads": [
+        "UnifiedSyncInboxDao"
+      ],
+      "writes": [
+        "UnifiedSyncInboxDao"
+      ],
+      "transaction_owner": "AppDatabase.withTransaction",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_IDENTITY",
+      "failure_behavior": "duplicate content is no-op; divergence fails",
+      "rollback_behavior": "inbox and domain apply commit together",
+      "characterization_test": "data/sync/src/test",
+      "regression_test": "data/sync/src/test"
+    },
+    {
+      "workflow": "sync-cursor",
+      "owner_feature": "sync",
+      "entry_contract": "UnifiedSyncPullEngine.advanceCursorOrThrow",
+      "reads": [
+        "UnifiedSyncCursorDao"
+      ],
+      "writes": [
+        "UnifiedSyncCursorDao"
+      ],
+      "transaction_owner": "AppDatabase.withTransaction",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_IDENTITY",
+      "failure_behavior": "stale cursor fails closed",
+      "rollback_behavior": "cursor cannot advance without apply",
+      "characterization_test": "data/sync/src/test",
+      "regression_test": "data/sync/src/test"
+    },
+    {
+      "workflow": "sync-conflict",
+      "owner_feature": "sync",
+      "entry_contract": "UnifiedSyncConflictEngine",
+      "reads": [
+        "UnifiedSyncConflictDao"
+      ],
+      "writes": [
+        "UnifiedSyncConflictDao"
+      ],
+      "transaction_owner": "Room @Transaction",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_IDENTITY",
+      "failure_behavior": "divergent replay fails closed",
+      "rollback_behavior": "one conflict identity only",
+      "characterization_test": "data/sync/src/test",
+      "regression_test": "data/sync/src/test"
+    },
+    {
+      "workflow": "invoice-update-with-items",
+      "owner_feature": "invoice",
+      "entry_contract": "InvoiceAggregateTransactionDao.updateInvoiceWithItemsAtomic",
+      "reads": [
+        "InvoiceWriteDao/InvoiceItemDao"
+      ],
+      "writes": [
+        "InvoiceWriteDao/InvoiceItemDao"
+      ],
+      "transaction_owner": "Room @Transaction",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_IDENTITY",
+      "failure_behavior": "item replacement rolls back with header",
+      "rollback_behavior": "header/items remain atomic",
+      "characterization_test": "feature/invoice/src/test",
+      "regression_test": "feature/invoice/src/test"
+    },
+    {
+      "workflow": "inventory-receiving",
+      "owner_feature": "inventory",
+      "entry_contract": "InventoryShipmentReceiptOperationsDao",
+      "reads": [
+        "InventoryDao"
+      ],
+      "writes": [
+        "InventoryDao"
+      ],
+      "transaction_owner": "Room @Transaction/outer transaction",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_REQUEST_KEY",
+      "failure_behavior": "duplicate receipt is ignored",
+      "rollback_behavior": "no partial receipt ledger",
+      "characterization_test": "feature/inventory/src/test",
+      "regression_test": "feature/inventory/src/test"
+    },
+    {
+      "workflow": "payment-allocation",
+      "owner_feature": "payment",
+      "entry_contract": "PaymentAllocationPort",
+      "reads": [
+        "PaymentDao"
+      ],
+      "writes": [
+        "PaymentDao"
+      ],
+      "transaction_owner": "Payment transaction coordinator",
+      "atomicity_required": "required",
+      "idempotency": "IDEMPOTENT_BY_REQUEST_KEY",
+      "failure_behavior": "duplicate allocation is ignored",
+      "rollback_behavior": "allocation and balance remain consistent",
+      "characterization_test": "feature/payment/src/test",
+      "regression_test": "feature/payment/src/test"
+    }
+  ]
+}

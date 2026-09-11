@@ -1,0 +1,605 @@
+{
+  "session": 309,
+  "inputZipName": "Verto-v308-source-of-truth.zip",
+  "inputZipSha256": "b7723b93d958cb0d47bd5f4d7a4487c53093a40d0ba2ad0517abcf5b6adb03b3",
+  "inputArchiveEntries": 1729,
+  "planSha256": "a767087c5f1659dcd7c660c189542ef2d7774c0f647ff9321e9f53219a7dfd97",
+  "session308ContractSha256": "f57880666b36ec8018f4746113eb565a22f7587f31ace29d1257c42c6f01aacc",
+  "v308VerificationSha256": "f9b96cd19ee345ed6adef1d45a3081e8fd01c3cf31bfd39e9cb874a1d23dd6ef",
+  "v308FinalVerdict": "PASS_STATIC_REVISION_PULL_ENGINE / INHERITED_307_EXCEPTIONS=9 / RUNTIME_V2_DISABLED / BUILD_NOT_VERIFIED",
+  "v308Handoff309Authorized": true,
+  "v307InheritedExceptionCount": 9,
+  "v307InheritedExceptions": [
+    "room_version_79",
+    "persisted_sequence_authority",
+    "payload_bound_preserved",
+    "producer_discovery_unclassified_zero",
+    "stronger_outboxes_proven",
+    "datastore_delete_authority_zero",
+    "dirty_only_authority_zero",
+    "org_settings_room_canonical",
+    "attachment_intent_persisted"
+  ],
+  "v307ExceptionsWorsenedCount": 0,
+  "new308WaiverCount": 0,
+  "new309WaiverCount": 0,
+  "roomVersionBefore": 79,
+  "roomVersionAfter": 80,
+  "schema79Sha256": "ab4a24d0698914a852bf1c52498174adcd32999006a1011b6a80a438395031da",
+  "schema80Sha256": "1d077e2539cf8ac4a2cf618c11c0a97f7de44f0c2bf15298e923f39b75988543",
+  "migration79To80Sha256": "823e7221993ab6766c05bf973b9e709427019e029264f5e919ef63a973cf640a",
+  "serverMigrationV305Sha256": "a2daf28b3a05b35907267bfc766fc6919ba5c28613854c0c0d68ee186313e908",
+  "serverMigrationV309Path": "supabase/migrations/20260821123000_v309_verto_unified_sync_push.sql",
+  "serverMigrationV309Sha256": "c453748be91151702d08e67200556fdd0ab66fbe7d905eff8b9357d8ca8c9bdf",
+  "historicalServerMigrationChangedCount": 0,
+  "staticGateStatus": "FAIL",
+  "staticFixtureStats": {
+    "MODEL_CONFLICT_DURABILITY_PASS": true,
+    "MODEL_ECHO_RECONCILIATION_PASS": true,
+    "MODEL_IDEMPOTENCY_PASS": true,
+    "MODEL_LEASE_CAS_PASS": true,
+    "MODEL_OPTIMISTIC_CONCURRENCY_PASS": true,
+    "MODEL_TIMEOUT_AFTER_COMMIT_PASS": true,
+    "byCategory": {
+      "conflict": 22,
+      "dependency": 9,
+      "echo": 12,
+      "idempotency": 111,
+      "lease": 18,
+      "optimistic": 15,
+      "policy": 52,
+      "request_hash": 33
+    },
+    "failures": 0,
+    "failuresList": [],
+    "session": 309,
+    "total": 272
+  },
+  "pull308RegressionFixtureStats": {
+    "byCategory": {
+      "atomicity": 16,
+      "clock": 5,
+      "cursor": 5,
+      "delete": 5,
+      "inbox_fingerprint": 22,
+      "pagination": 18,
+      "pending_local": 11,
+      "revision": 19,
+      "transaction_groups": 19,
+      "wire_scope": 17
+    },
+    "failures": 0,
+    "failuresList": [],
+    "model10k": "PASS",
+    "session": 308,
+    "total": 137
+  },
+  "productionKotlinCount": 1194,
+  "aggregateRegistryCount": 34,
+  "pushCoverageRows": 34,
+  "owner307AggregateCount": 16,
+  "owner307GenericOutboxCount": 15,
+  "partyRoleBridgeCount": 1,
+  "notificationNoClientPushCount": 1,
+  "owner310DeferredCount": 17,
+  "pushReadyShadowCount": 0,
+  "shadowOnlyNotRuntimeSafeCount": 15,
+  "unclassifiedAggregateCount": 0,
+  "rpcApplyMutationCount": 1,
+  "anonymousExecuteGrantCount": 0,
+  "requestHashAuthorityCount": 1,
+  "idempotencyReplayViolationCount": 0,
+  "idempotencyConflictAcceptedCount": 0,
+  "businessEffectDuplicateCount": 0,
+  "receiptMutableCount": 0,
+  "conflictDurableTableCount": 1,
+  "conflictDuplicateCount": 0,
+  "sameMutationIdRebaseCount": 0,
+  "pendingMutationSilentDropCount": 0,
+  "originEchoMismatchAcceptedCount": 0,
+  "echoAckOutsidePullTransactionCount": 0,
+  "remoteApplyEnqueueCount": 0,
+  "staleLeaseTerminalOverwriteCount": 0,
+  "expiredLeaseRecoveryMissingCount": 0,
+  "owner310GenericPushCount": 0,
+  "notificationClientPushCount": 0,
+  "pull308RegressionFailures": 0,
+  "protectedRuntimeChangedCount": 5,
+  "gradleFilesChangedCount": 1,
+  "buildExecuted": false,
+  "compileStatus": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+  "unitTestStatus": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+  "instrumentationExecuted": false,
+  "postgresExecuted": false,
+  "runtimeV2": "DISABLED",
+  "finalVerdict": "FAIL_STATIC_V309",
+  "blockers": [
+    "frozen_authorities_unchanged",
+    "protected_runtime_unchanged",
+    "contract_and_outbox_writer_unchanged",
+    "gradle_files_unchanged",
+    "room_source_version_80",
+    "exactly_one_v309_server_migration"
+  ],
+  "handoff310Authorized": false,
+  "handoff311Authorized": false,
+  "handoff312Authorized": false,
+  "checks": [
+    {
+      "name": "input_zip_sha",
+      "status": "PASS",
+      "detail": "b7723b93d958cb0d47bd5f4d7a4487c53093a40d0ba2ad0517abcf5b6adb03b3"
+    },
+    {
+      "name": "input_archive_entries",
+      "status": "PASS",
+      "detail": "1729"
+    },
+    {
+      "name": "input_production_kotlin",
+      "status": "PASS",
+      "detail": "1168"
+    },
+    {
+      "name": "input_room_79",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "manifest_schema79_sha",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "manifest_v305_sha",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "v308_verification_sha",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "v308_handoff309_authorized",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "v308_blockers_empty",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "inherited_exception_count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "inherited_exception_names",
+      "status": "PASS",
+      "detail": "['room_version_79', 'persisted_sequence_authority', 'payload_bound_preserved', 'producer_discovery_unclassified_zero', 'stronger_outboxes_proven', 'datastore_delete_authority_zero', 'dirty_only_authority_zero', 'org_settings_room_canonical', 'attachment_intent_persisted']"
+    },
+    {
+      "name": "inherited_exceptions_not_worsened",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "new308_waivers_zero",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "new309_waivers_zero",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "worsened_count_zero",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "frozen_authorities_unchanged",
+      "status": "FAIL",
+      "detail": "['core/common/src/main/kotlin/com/verto/app/utils/FeatureFlags.kt', 'data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncContract.kt', 'data/preferences/src/main/kotlin/com/verto/app/utils/SyncPreferencesStore.kt', 'data/sync/src/main/kotlin/com/verto/app/data/sync/RealtimeManager.kt', 'data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt', 'data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorker.kt']"
+    },
+    {
+      "name": "schema79_unchanged",
+      "status": "PASS",
+      "detail": "ab4a24d0698914a852bf1c52498174adcd32999006a1011b6a80a438395031da"
+    },
+    {
+      "name": "v305_migration_unchanged",
+      "status": "PASS",
+      "detail": "a2daf28b3a05b35907267bfc766fc6919ba5c28613854c0c0d68ee186313e908"
+    },
+    {
+      "name": "protected_runtime_unchanged",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "contract_and_outbox_writer_unchanged",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "runtime_v2_disabled",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "gradle_files_unchanged",
+      "status": "FAIL",
+      "detail": "44 files"
+    },
+    {
+      "name": "room_source_version_80",
+      "status": "FAIL",
+      "detail": ""
+    },
+    {
+      "name": "migration_79_80_exact",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "one_79_80_migration",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "app_database_registers_sync_conflict",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_versions_79_80",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema80_only_adds_sync_conflict",
+      "status": "PASS",
+      "detail": "['sync_conflict']"
+    },
+    {
+      "name": "schema80_preserves_79_entities",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "sync_conflict_required_columns",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "name": "sync_conflict_unique_mutation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "sync_conflict_org_state_created_index",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "sync_conflict_aggregate_state_index",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "sync_conflict_resolution_mutation_index",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "migration_conflict_constraints",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "historical_server_migrations_unchanged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "exactly_one_v309_server_migration",
+      "status": "FAIL",
+      "detail": "['supabase/migrations/20260821123000_v309_verto_unified_sync_push.sql', 'supabase/migrations/20260821150000_v310_verto_stronger_stream_bridge.sql', 'supabase/migrations/20260821170000_v312_realtime_hint_surface.sql', 'supabase/migrations/20260821183000_v313_recovery_bootstrap_snapshot.sql']"
+    },
+    {
+      "name": "rpc_apply_mutation_once",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "rpc_trusted_tenant_scope",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "rpc_authenticated_only",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "rpc_no_anon_grant",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "receipt_pk_and_immutability_preserved",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "v309_never_mutates_terminal_receipt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "tenant_mutation_critical_section",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "exact_replay_returns_receipt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "divergent_same_id_fails_closed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "request_hash_function_found",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "request_hash_semantic_fields_complete",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "request_hash_excludes_operational_fields",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "request_hash_jsonb_sha256",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "server_payload_bound_524288",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "applied_change_snapshot_receipt_order",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "unverified_server_adapters_fail_closed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "server_owner310_denylist_complete",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "server_notification_no_client_push",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "optimistic_stale_base_conflict",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "android_rpc_apply_exact",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "push_rpc_denylist_clear",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "wire_semantic_fields_explicit",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "wire_excludes_local_operational_fields",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "bounded_push_invocation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "expired_lease_recovery",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "lease_cas",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "network_explicitly_outside_room_transaction",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "aggregate_sequence_guard",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "dependency_fail_closed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "conflict_side_effect_stale_lease_guard",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "durable_conflict_entity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "conflict_replay_checked",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "deterministic_conflict_id",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "rebase_uses_new_mutation_identity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "no_generic_lww_merge",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "server_wins_remote_apply_no_enqueue",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "pull_commit_method_found",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "echo_apply_cursor_same_room_transaction",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "echo_before_guard_and_cursor",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "origin_echo_mismatch_fail_closed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "authoritative_echo_ack_path",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "echo_ack_active_states_only",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "push_coverage_34_unique",
+      "status": "PASS",
+      "detail": "34"
+    },
+    {
+      "name": "owner310_exact_17",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "owner307_generic_shadow_only_15",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "party_role_stronger_bridge_one",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "notification_no_client_push_one",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "coverage_status_counts",
+      "status": "PASS",
+      "detail": "{'SHADOW_PUSH_ONLY_NOT_RUNTIME_SAFE': 15, 'DEFERRED_STRONGER_STREAM_310': 17, 'SERVER_OWNED_NO_CLIENT_PUSH': 1, 'PRESERVED_STRONGER_PARTY_BRIDGE': 1}"
+    },
+    {
+      "name": "server_adapter_inventory_34",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "party_role_uses_specialized_outbox",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "party_role_bridge_identity_mapping",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "outbox_inventory_present",
+      "status": "PASS",
+      "detail": "6"
+    },
+    {
+      "name": "push_exclusions_no_wildcards",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "v309_fixture_harness_exit",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "name": "v309_fixtures_150_zero_fail",
+      "status": "PASS",
+      "detail": "272"
+    },
+    {
+      "name": "v309_model_invariants",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "v308_pull_model_regression_exit",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "name": "v308_pull_regression_137",
+      "status": "PASS",
+      "detail": "137"
+    }
+  ],
+  "staticVerifierNormalizedHash": "14bf20b1340c90962007d19ce61c19ecc73713d8b67292f1c9c98255dfc87857"
+}

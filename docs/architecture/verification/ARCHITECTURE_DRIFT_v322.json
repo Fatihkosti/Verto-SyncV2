@@ -1,0 +1,50 @@
+{
+  "architecture_guard": "PASS",
+  "dependency_cycles_after": 0,
+  "dependency_cycles_before": 0,
+  "final_status": "PASS_STATIC_ARCHITECTURE",
+  "forbidden_surface_changes": [],
+  "format": "verto-architecture-drift-v322",
+  "input_sha256": "3ecd256c1909ff2e474f4812a885770708488bf2cdec145884675f3303cdae07",
+  "legacy_debt_after": 0,
+  "legacy_debt_input_active": 0,
+  "new_architecture_violation_identities": [],
+  "new_external_dependencies": [],
+  "new_project_dependencies": [],
+  "new_public_data_implementation_symbols": [],
+  "operational_writer_after": "RETIRED",
+  "session_id": 322,
+  "shipment_public_api_after": {
+    "application": 9,
+    "data": 1,
+    "domain": 93,
+    "presentation": 12,
+    "total": 115
+  },
+  "shipment_public_api_before": {
+    "application": 9,
+    "data": 1,
+    "domain": 93,
+    "presentation": 27,
+    "total": 130
+  },
+  "undeclared_dependencies": {
+    "manifest_external": [],
+    "manifest_project": [],
+    "phantom_project": [],
+    "undeclared_external": [],
+    "undeclared_project": []
+  },
+  "viewmodel_after": {
+    "class_lines": 332,
+    "constructor_dependencies": 6,
+    "coupling_imports": 11,
+    "file_lines": 348
+  },
+  "viewmodel_before": {
+    "class_lines": 1249,
+    "constructor_dependencies": 54,
+    "coupling_imports": 71,
+    "file_lines": 1325
+  }
+}

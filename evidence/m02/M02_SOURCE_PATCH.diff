@@ -1,0 +1,417 @@
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryRegistry.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryRegistry.kt
+@@ -20,7 +20,7 @@
+ )
+ 
+ /**
+- * Explicit 34/34 bootstrap registry. pruneSql only touches recoverable mirrors and always derives
++ * Explicit 35/35 bootstrap registry. pruneSql only touches recoverable mirrors and always derives
+  * authoritative presence from sync_bootstrap_stage for the current scope+session.
+  */
+ object UnifiedSyncRecoveryRegistry {
+@@ -33,7 +33,7 @@
+     val all = listOf(
+         r("PARTY_IDENTITY", 10, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "party-v2"),
+         r("PARTY_ROLE", 11, PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE, "party_sync_outbox", "party-v2",
+-            "DELETE FROM party_roles WHERE organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='PARTY_ROLE' AND s.aggregate_id=party_roles.party_id) AND NOT EXISTS (SELECT 1 FROM party_sync_outbox o WHERE o.aggregate_id=party_roles.party_id AND o.state IN ('PENDING','RETRY'))"),
++            "DELETE FROM party_roles WHERE organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='PARTY_ROLE' AND s.aggregate_id=(party_roles.party_id || ':' || party_roles.role)) AND NOT EXISTS (SELECT 1 FROM party_sync_outbox o WHERE o.aggregate_id=party_roles.party_id AND o.state IN ('PENDING','RETRY'))"),
+         r("CUSTOMER_PROFILE", 12, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "party-v2",
+             "DELETE FROM customer_profiles WHERE customer_profiles.organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='CUSTOMER_PROFILE' AND s.aggregate_id=customer_profiles.party_id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='CUSTOMER_PROFILE' AND o.aggregate_id=customer_profiles.party_id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
+         r("SUPPLIER_PROFILE", 13, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "party-v2",
+@@ -64,6 +64,8 @@
+         r("ORGANIZATION_SETTINGS", 63, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX),
+         r("EDUCATIONAL_CONTENT", 64, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM educational_topics WHERE organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='EDUCATIONAL_CONTENT' AND s.aggregate_id=educational_topics.topic_id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='EDUCATIONAL_CONTENT' AND o.aggregate_id=educational_topics.topic_id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
+         r("NOTIFICATION", 65, PendingLocalRecoveryStrategy.SERVER_READ_ONLY_NO_LOCAL_PENDING, "none", "server", "DELETE FROM notifications WHERE organizationId=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='NOTIFICATION' AND s.aggregate_id=notifications.id)"),
++        r("TEAM_OBSERVATION", 66, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner403",
++            "DELETE FROM team_observations WHERE organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='TEAM_OBSERVATION' AND s.aggregate_id=team_observations.observation_id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='TEAM_OBSERVATION' AND o.aggregate_id=team_observations.observation_id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
+         r("SHIPMENT", 70, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX),
+         r("OPTIMAL_VEHICLE", 80, PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE, "optimal_outbox", "owner310", "DELETE FROM optimal_vehicles WHERE organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='OPTIMAL_VEHICLE' AND s.aggregate_id=optimal_vehicles.remote_vehicle_id) AND NOT EXISTS (SELECT 1 FROM optimal_outbox o WHERE o.organization_id=? AND o.aggregate_type='VEHICLE' AND o.aggregate_id=optimal_vehicles.remote_vehicle_id AND o.status NOT IN ('SYNCED','ACKNOWLEDGED'))"),
+         r("OPTIMAL_MAINTENANCE", 81, PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE, "optimal_outbox", "owner310"),
+@@ -73,7 +75,7 @@
+     val byId = all.associateBy { it.aggregateType }
+ 
+     init {
+-        require(all.size == 34) { "FAIL_BOOTSTRAP_SNAPSHOT_COVERAGE: recovery registry must be exactly 34" }
++        require(all.size == 35) { "FAIL_BOOTSTRAP_SNAPSHOT_COVERAGE: recovery registry must be exactly 35" }
+         require(byId.keys == UnifiedSyncAggregateRegistry.byId.keys) { "FAIL_BOOTSTRAP_SNAPSHOT_COVERAGE: registry set mismatch" }
+     }
+ }
+
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncSnapshotApplier.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncSnapshotApplier.kt
+@@ -53,7 +53,7 @@
+             rule.pruneSql.forEach { sql ->
+                 val args: Array<Any?> = when (rule.aggregateType) {
+                     "PARTY_ROLE", "NOTIFICATION" -> arrayOf(scope.organizationId, scope.scopeId, sessionId)
+-                    "CUSTOMER_PROFILE", "SUPPLIER_PROFILE", "EDUCATIONAL_CONTENT", "OPTIMAL_VEHICLE" ->
++                    "CUSTOMER_PROFILE", "SUPPLIER_PROFILE", "EDUCATIONAL_CONTENT", "OPTIMAL_VEHICLE", "TEAM_OBSERVATION" ->
+                         arrayOf(scope.organizationId, scope.scopeId, sessionId, scope.organizationId)
+                     else -> arrayOf(scope.scopeId, sessionId, scope.organizationId)
+                 }
+@@ -75,7 +75,8 @@
+             PendingLocalRecoveryStrategy.BLOCK_REVIEW_IF_PENDING ->
+                 database.unifiedSyncDao().hasActiveMutationForAggregate(scope.organizationId, row.aggregateType, row.aggregateId)
+             PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE -> when (row.aggregateType) {
+-                "PARTY_IDENTITY", "PARTY_ROLE", "CUSTOMER_PROFILE", "SUPPLIER_PROFILE" -> dao.hasActivePartyMutation(row.aggregateId)
++                "PARTY_IDENTITY", "CUSTOMER_PROFILE", "SUPPLIER_PROFILE" -> dao.hasActivePartyMutation(row.aggregateId)
++                "PARTY_ROLE" -> dao.hasActivePartyMutation(row.payloadPartyId())
+                 "INVOICE", "PAYMENT", "CLIENT_CREDIT", "PURCHASE_MATCH", "PURCHASE_PAYMENT_OVERRIDE", "EXPENSE", "CASH_REGISTER", "CASH_MOVEMENT", "CASH_RECONCILIATION", "COMMISSION_PAYMENT" -> dao.hasActiveFinancialMutation(scope.organizationId, row.aggregateId)
+                 "GOODS_RECEIPT", "INVENTORY_MOVEMENT" -> dao.hasActiveInventoryStockMutation(scope.organizationId, row.aggregateId)
+                 "INVENTORY_COST_REVISION", "COST_ALLOCATION" -> dao.hasActiveInventoryCostMutation(scope.organizationId, row.aggregateId)
+@@ -84,4 +85,9 @@
+             }
+         }
+     }
++
++    private fun SyncBootstrapStageEntity.payloadPartyId(): String = runCatching {
++        json.parseToJsonElement(payloadJson).jsonObject["partyId"]?.toString()?.trim('"')
++    }.getOrNull()?.takeIf { it.isNotBlank() } ?: aggregateId.substringBefore(':')
++
+ }
+
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPartyPushBridge.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPartyPushBridge.kt
+@@ -107,8 +107,8 @@
+             mutationId = row.operationId,
+             organizationId = organizationId,
+             aggregateType = "PARTY_ROLE",
+-            aggregateId = row.aggregateId,
+-            operationType = SyncMutationOperation.COMMAND,
++            aggregateId = "${row.aggregateId}:$role",
++            operationType = SyncMutationOperation.UPSERT,
+             baseVersion = row.baseRevision,
+             localSequence = localDiagnosticSequence,
+             aggregateSequence = localDiagnosticSequence,
+
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushRegistry.kt
+@@ -42,6 +42,7 @@
+             }
+             aggregateType == "NOTIFICATION" -> UnifiedSyncPushCoverageStatus.SERVER_OWNED_NO_CLIENT_PUSH
+             aggregateType == "PARTY_ROLE" -> UnifiedSyncPushCoverageStatus.PRESERVED_STRONGER_PARTY_BRIDGE
++            aggregateType == "TEAM_OBSERVATION" -> UnifiedSyncPushCoverageStatus.PUSH_READY_SHADOW
+             record.modernizationSession == 307 -> UnifiedSyncPushCoverageStatus.SHADOW_PUSH_ONLY_NOT_RUNTIME_SAFE
+             else -> UnifiedSyncPushCoverageStatus.BLOCKED_WITH_EVIDENCE
+         }
+
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncChangeApplier.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncChangeApplier.kt
+@@ -25,6 +25,7 @@
+ import com.verto.app.data.local.entity.PurchaseOrderEntity
+ import com.verto.app.data.local.entity.PurchaseOrderLineEntity
+ import com.verto.app.data.local.entity.SupplierProfileEntity
++import com.verto.app.data.local.entity.TeamObservationEntity
+ import com.verto.app.data.local.entity.UnitType
+ import com.verto.app.data.sync.SyncChange
+ import com.verto.app.data.sync.SyncMutationOperation
+@@ -71,6 +72,7 @@
+             "SHIPMENT" -> applyShipment(change)
+             "EDUCATIONAL_CONTENT" -> applyEducationalContent(change)
+             "NOTIFICATION" -> applyNotification(change)
++            "TEAM_OBSERVATION" -> applyTeamObservation(change)
+             "INVOICE", "PAYMENT", "CLIENT_CREDIT", "GOODS_RECEIPT", "PURCHASE_MATCH",
+             "PURCHASE_PAYMENT_OVERRIDE", "INVENTORY_MOVEMENT", "INVENTORY_COST_REVISION",
+             "COST_ALLOCATION", "EXPENSE", "CASH_REGISTER", "CASH_MOVEMENT",
+@@ -446,6 +448,28 @@
+         else -> unsupported(c)
+     }
+ 
++    private suspend fun applyTeamObservation(c: UnifiedRemoteMaterialization) {
++        if (c.operationType != SyncMutationOperation.UPSERT) unsupported(c)
++        database.teamObservationDao().upsertRemote(
++            listOf(
++                TeamObservationEntity(
++                    organizationId = c.organizationId,
++                    observationId = c.payload.string("observationId", c.aggregateId),
++                    text = c.payload.reqString("text"),
++                    category = c.payload.reqString("category"),
++                    authorUserId = c.payload.reqString("authorUserId"),
++                    authorName = c.payload.reqString("authorName"),
++                    status = c.payload.reqString("status"),
++                    isImportant = c.payload.bool("isImportant", false),
++                    createdAt = c.payload.reqLong("createdAt"),
++                    updatedAt = c.payload.reqLong("updatedAt"),
++                    updatedByUserId = c.payload.reqString("updatedByUserId"),
++                    isDirty = false,
++                )
++            )
++        )
++    }
++
+     private suspend fun applyShipment(c: UnifiedRemoteMaterialization) {
+         val dao = database.logisticsDao()
+         val old = dao.getShipment(c.organizationId, c.aggregateId)
+
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncPullRegistry.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncPullRegistry.kt
+@@ -22,7 +22,7 @@
+         "PARTY_IDENTITY", "PARTY_ROLE", "CUSTOMER_PROFILE", "SUPPLIER_PROFILE",
+         "NOTE", "REMINDER", "PURCHASE_ORDER", "INVENTORY_ITEM", "INVENTORY_UNIT",
+         "CATEGORY", "ITEM_CATEGORY", "BUDGET", "PRICE_LIST", "ORGANIZATION_SETTINGS",
+-        "SHIPMENT", "EDUCATIONAL_CONTENT", "NOTIFICATION",
++        "SHIPMENT", "EDUCATIONAL_CONTENT", "NOTIFICATION", "TEAM_OBSERVATION",
+     )
+ 
+     private val owner310 = setOf(
+@@ -34,8 +34,8 @@
+     )
+ 
+     init {
+-        check(UnifiedSyncAggregateRegistry.all.size == 34) { "registry must remain exactly 34 aggregates for v308" }
+-        check(directTargets.size == 17 && owner310.size == 17 && directTargets.intersect(owner310).isEmpty())
++        check(UnifiedSyncAggregateRegistry.all.size == 35) { "registry must match the 35-aggregate live M02 contract" }
++        check(directTargets.size == 18 && owner310.size == 17 && directTargets.intersect(owner310).isEmpty())
+         check(directTargets + owner310 == UnifiedSyncAggregateRegistry.byId.keys) {
+             "v308 pull classification must cover all registry aggregates"
+         }
+
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncPullEngine.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncPullEngine.kt
+@@ -13,6 +13,7 @@
+ import com.verto.app.data.sync.UnifiedSyncPullRemote
+ import javax.inject.Inject
+ import javax.inject.Singleton
++import kotlinx.serialization.json.jsonPrimitive
+ 
+ enum class UnifiedSyncPullOutcome {
+     CAUGHT_UP,
+@@ -300,11 +301,14 @@
+             return
+         }
+ 
+-        // PARTY_ROLE preserves its stronger party_sync_outbox. Reconcile only an exact stronger identity.
++        // PARTY_ROLE stronger outbox stores partyId, while the unified server identity is partyId:ROLE.
+         if (change.aggregateType == "PARTY_ROLE") {
+             val party = database.partyRoleDao().getSyncOperationByOperationId(origin) ?: return
+-            if (party.aggregateType != "ROLE" || party.aggregateId != change.aggregateId) {
+-                throw UnifiedSyncPullFailure("ORIGIN_MUTATION_MISMATCH", "Party origin points to different aggregate")
++            val partyId = change.payload["partyId"]?.jsonPrimitive?.content.orEmpty()
++            val role = change.payload["role"]?.jsonPrimitive?.content.orEmpty()
++            val canonicalAggregateId = if (partyId.isNotBlank() && role.isNotBlank()) "$partyId:$role" else ""
++            if (party.aggregateType != "ROLE" || party.aggregateId != partyId || change.aggregateId != canonicalAggregateId) {
++                throw UnifiedSyncPullFailure("ORIGIN_MUTATION_MISMATCH", "Party origin points to different canonical aggregate")
+             }
+             when (party.state) {
+                 "PENDING", "RETRY" -> check(database.partyRoleDao().markPartyRoleTerminal(origin, "ACKNOWLEDGED") == 1) {
+@@ -331,7 +335,11 @@
+                 "SUPPLIER_PROFILE" -> "SUPPLIER_PROFILE"
+                 else -> change.aggregateType
+             }
+-            if (database.partyRoleDao().hasActivePartyMutation(partyType, change.aggregateId)) {
++            val strongerAggregateId = if (change.aggregateType == "PARTY_ROLE") {
++                change.payload["partyId"]?.jsonPrimitive?.content?.takeIf { it.isNotBlank() }
++                    ?: change.aggregateId.substringBefore(':')
++            } else change.aggregateId
++            if (database.partyRoleDao().hasActivePartyMutation(partyType, strongerAggregateId)) {
+                 throw UnifiedSyncPullFailure("PENDING_LOCAL_MUTATION", "Party stronger outbox blocks remote overwrite")
+             }
+         }
+
+--- a/data/network/src/test/kotlin/com/verto/app/data/sync/UnifiedSyncAggregateRegistryV304Test.kt
++++ b/data/network/src/test/kotlin/com/verto/app/data/sync/UnifiedSyncAggregateRegistryV304Test.kt
+@@ -13,7 +13,7 @@
+         "INVENTORY_MOVEMENT", "INVENTORY_COST_REVISION", "COST_ALLOCATION", "EXPENSE", "BUDGET",
+         "CASH_REGISTER", "CASH_MOVEMENT", "CASH_RECONCILIATION", "COMMISSION_PAYMENT", "PRICE_LIST",
+         "NOTIFICATION", "ORGANIZATION_SETTINGS", "SHIPMENT", "EDUCATIONAL_CONTENT", "OPTIMAL_VEHICLE",
+-        "OPTIMAL_MAINTENANCE", "OPTIMAL_FOLLOW_UP",
++        "OPTIMAL_MAINTENANCE", "OPTIMAL_FOLLOW_UP", "TEAM_OBSERVATION",
+     )
+ 
+     @Test fun `registry contains the complete official v304 aggregate set exactly once`() {
+@@ -60,6 +60,14 @@
+         assertEquals(UnifiedSyncAttachmentPolicy.METADATA_ONLY_EXTERNAL_BINARY, shipment.attachmentPolicy)
+     }
+ 
++    @Test fun `team observation matches live server state machine contract`() {
++        val team = UnifiedSyncAggregateRegistry.requireById("TEAM_OBSERVATION")
++        assertEquals(1, team.payloadVersion)
++        assertEquals(UnifiedSyncConflictPolicy.SERVER_STATE_MACHINE, team.conflictPolicy)
++        assertEquals(UnifiedSyncDeletePolicy.NO_CLIENT_DELETE, team.deletePolicy)
++        assertTrue("verto_apply_team_observation_v403" in team.currentServerPaths)
++    }
++
+     @Test fun `binary attachment aggregates synchronize metadata only`() {
+         val binaryAggregates = UnifiedSyncAggregateRegistry.all.filter {
+             it.attachmentPolicy == UnifiedSyncAttachmentPolicy.METADATA_ONLY_EXTERNAL_BINARY
+
+--- a/data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncAggregateRegistry.kt
++++ b/data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncAggregateRegistry.kt
+@@ -139,6 +139,10 @@
+             notes = "Runtime participant key is logistics-v2 while SyncManager currently requires shipments; recorded, not fixed in 304."),
+         record("EDUCATIONAL_CONTENT", 1, UnifiedSyncConflictPolicy.OPTIMISTIC_VERSION, UnifiedSyncDeletePolicy.VERSIONED_DELETE,
+             runtime = "educational_content / EducationalContentSyncParticipant", server = listOf("educational_topics", "educational_topic_targets"), session = 307),
++        record("TEAM_OBSERVATION", 1, UnifiedSyncConflictPolicy.SERVER_STATE_MACHINE, UnifiedSyncDeletePolicy.NO_CLIENT_DELETE,
++            runtime = "team_observations / unified outbox + legacy fallback",
++            server = listOf("team_observations", "verto_apply_team_observation_v403", "verto_apply_sync_mutation"), session = 403,
++            notes = "Submit/update is durable in sync_outbox; legacy participant remains available until later cutover stages."),
+         record("OPTIMAL_VEHICLE", 1, UnifiedSyncConflictPolicy.BRIDGE_EXISTING_STRONGER_CONTRACT, UnifiedSyncDeletePolicy.SERVER_OWNED,
+             runtime = "optimal_outbox", server = listOf("optimal_sync_change_log", "optimal_apply_sync_operation_v2", "optimal_pull_sync_changes"), session = 310,
+             notes = "Server evidence is reference-only until exact dump bytes are rebound."),
+@@ -154,7 +158,7 @@
+     val byId: Map<String, UnifiedSyncAggregateRecord> = all.associateBy { it.id }
+ 
+     init {
+-        require(all.size >= 34) { "Unified sync registry must contain at least 34 aggregates" }
++        require(all.size == 35) { "Unified sync registry must contain exactly 35 aggregates for the M02 server contract" }
+         require(byId.size == all.size) { "Unified sync aggregate ids must be unique" }
+         require(all.all { it.id.matches(Regex("[A-Z][A-Z0-9_]*")) }) { "Aggregate ids must be UPPER_SNAKE_CASE" }
+         require(all.all { it.payloadVersion > 0 }) { "Payload versions must be positive" }
+
+--- a/feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/data/observation/RoomTeamObservationRepository.kt
++++ b/feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/data/observation/RoomTeamObservationRepository.kt
+@@ -1,9 +1,14 @@
+ package com.verto.app.feature.dashboard.data.observation
+ 
++import androidx.room.withTransaction
+ import com.verto.app.core.session.domain.SessionReader
++import com.verto.app.data.local.AppDatabase
+ import com.verto.app.data.local.dao.TeamObservationDao
+ import com.verto.app.data.local.entity.TeamObservationEntity
+ import com.verto.app.data.remote.VertoSupabase
++import com.verto.app.data.sync.UnifiedOutboxWriter
++import com.verto.app.data.sync.rollout.SyncAggregateOwnership
++import com.verto.app.data.sync.rollout.SyncRolloutPolicy
+ import com.verto.app.utils.SupabaseDateParser
+ import com.verto.feature.dashboard.api.TeamObservation
+ import com.verto.feature.dashboard.api.TeamObservationRepository
+@@ -23,7 +28,9 @@
+ @Singleton
+ @OptIn(ExperimentalCoroutinesApi::class)
+ class RoomTeamObservationRepository @Inject constructor(
++    private val database: AppDatabase,
+     private val dao: TeamObservationDao,
++    private val outboxWriter: UnifiedOutboxWriter,
+     private val sessionReader: SessionReader,
+ ) : TeamObservationRepository {
+ 
+@@ -53,7 +60,7 @@
+             updatedByUserId = session.user.id,
+             isDirty = true,
+         )
+-        dao.upsert(entity)
++        persistWithUnifiedOutbox(entity)
+         return entity.toModel()
+     }
+ 
+@@ -94,7 +101,39 @@
+         require(organizationId.isNotBlank()) { "organization id is required" }
+         val current = dao.getById(organizationId, observationId)
+             ?: error("team observation not found")
+-        dao.upsert(transform(current, session.user.id, System.currentTimeMillis()))
++        persistWithUnifiedOutbox(transform(current, session.user.id, System.currentTimeMillis()))
++    }
++
++    private suspend fun persistWithUnifiedOutbox(entity: TeamObservationEntity) {
++        val ownership = SyncRolloutPolicy.ownership(
++            snapshot = SyncRolloutPolicy.snapshot(entity.organizationId),
++            aggregateType = "TEAM_OBSERVATION",
++        ).ownership
++        val v2OwnsTransport = ownership in setOf(
++            SyncAggregateOwnership.V2_AUTHORITATIVE,
++            SyncAggregateOwnership.V2_PAUSED_SAFE,
++            SyncAggregateOwnership.RETIRED_LEGACY,
++        )
++
++        if (!v2OwnsTransport) {
++            dao.upsert(entity.copy(isDirty = true))
++            return
++        }
++
++        database.withTransaction {
++            // Unified outbox is the durable pending authority. Do not leave the legacy dirty bit set,
++            // otherwise a later legacy pass could replay an already-committed V2 observation.
++            val unifiedEntity = entity.copy(isDirty = false)
++            dao.upsert(unifiedEntity)
++            outboxWriter.enqueue(
++                organizationId = unifiedEntity.organizationId,
++                aggregateType = "TEAM_OBSERVATION",
++                aggregateId = unifiedEntity.observationId,
++                operationType = "UPSERT",
++                payload = unifiedEntity.toUnifiedPayload(),
++                createdAt = unifiedEntity.updatedAt,
++            )
++        }
+     }
+ 
+     internal suspend fun pushDirty(organizationId: String) {
+@@ -121,6 +160,20 @@
+     }
+ }
+ 
++private fun TeamObservationEntity.toUnifiedPayload(): Map<String, String?> = mapOf(
++    "organizationId" to organizationId,
++    "observationId" to observationId,
++    "text" to text,
++    "category" to category,
++    "authorUserId" to authorUserId,
++    "authorName" to authorName,
++    "status" to status,
++    "isImportant" to isImportant.toString(),
++    "createdAt" to createdAt.toString(),
++    "updatedAt" to updatedAt.toString(),
++    "updatedByUserId" to updatedByUserId,
++)
++
+ private fun TeamObservationEntity.toModel(): TeamObservation = TeamObservation(
+     id = observationId,
+     text = text,
+
+--- a/feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/data/observation/TeamObservationSyncParticipant.kt
++++ b/feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/data/observation/TeamObservationSyncParticipant.kt
+@@ -5,6 +5,8 @@
+ import com.verto.app.data.sync.SyncParticipant
+ import com.verto.app.data.sync.SyncRunContext
+ import com.verto.app.data.sync.SyncOperationSlot
++import com.verto.app.data.sync.rollout.SyncAggregateOwnership
++import com.verto.app.data.sync.rollout.SyncRolloutPolicy
+ import javax.inject.Inject
+ import kotlinx.coroutines.CancellationException
+ 
+@@ -13,20 +15,33 @@
+ ) : SyncParticipant {
+     override val key: String = "team_observations"
+ 
+-    override fun operations(context: SyncRunContext): List<SyncOperation> = listOf(
+-        SyncOperation(
+-            slot = SyncOperationSlot.PUSH_TEAM_OBSERVATIONS,
+-            label = "رفع ملاحظات الفريق",
+-            failureMode = SyncFailureMode.COLLECT,
+-            execute = { skipWhenTableUnavailable { repository.pushDirty(context.organizationId) } },
+-        ),
+-        SyncOperation(
+-            slot = SyncOperationSlot.PULL_TEAM_OBSERVATIONS,
+-            label = "تنزيل ملاحظات الفريق",
+-            failureMode = SyncFailureMode.COLLECT,
+-            execute = { skipWhenTableUnavailable { repository.pullRemote(context.organizationId) } },
+-        ),
+-    )
++    override fun operations(context: SyncRunContext): List<SyncOperation> {
++        val ownership = SyncRolloutPolicy.ownership(
++            snapshot = SyncRolloutPolicy.snapshot(context.organizationId),
++            aggregateType = "TEAM_OBSERVATION",
++        ).ownership
++        val v2OwnsTransport = ownership in setOf(
++            SyncAggregateOwnership.V2_AUTHORITATIVE,
++            SyncAggregateOwnership.V2_PAUSED_SAFE,
++            SyncAggregateOwnership.RETIRED_LEGACY,
++        )
++        if (v2OwnsTransport) return emptyList()
++
++        return listOf(
++            SyncOperation(
++                slot = SyncOperationSlot.PUSH_TEAM_OBSERVATIONS,
++                label = "رفع ملاحظات الفريق",
++                failureMode = SyncFailureMode.COLLECT,
++                execute = { skipWhenTableUnavailable { repository.pushDirty(context.organizationId) } },
++            ),
++            SyncOperation(
++                slot = SyncOperationSlot.PULL_TEAM_OBSERVATIONS,
++                label = "تنزيل ملاحظات الفريق",
++                failureMode = SyncFailureMode.COLLECT,
++                execute = { skipWhenTableUnavailable { repository.pullRemote(context.organizationId) } },
++            ),
++        )
++    }
+ 
+     private suspend fun skipWhenTableUnavailable(block: suspend () -> Unit) {
+         try {

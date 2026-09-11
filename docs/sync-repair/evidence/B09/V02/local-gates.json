@@ -1,0 +1,49 @@
+[
+  {
+    "name": "documentation-direct",
+    "command": [
+      "bash",
+      "scripts/run-documentation-gate.sh"
+    ],
+    "exit_code": 1,
+    "log": "documentation-direct.log",
+    "limits": "local documentation/scope check only; no Gradle/Room acceptance",
+    "observed_errors": 141,
+    "new_errors_vs_original": 0
+  },
+  {
+    "name": "documentation-integrated",
+    "command": [
+      "bash",
+      "scripts/ci/run-quality-gate.sh",
+      "documentation",
+      "4250902"
+    ],
+    "exit_code": 126,
+    "log": "documentation-integrated.log",
+    "limits": "local documentation/scope check only; no Gradle/Room acceptance"
+  },
+  {
+    "name": "change-contract",
+    "command": [
+      "python",
+      "scripts/ci/verify-change-contract.py",
+      "--root",
+      ".",
+      "--contract",
+      "/mnt/data/verto_b09_work/docs/sync-repair/evidence/B09/V02/change-contract.json",
+      "--output",
+      "/mnt/data/verto_b09_work/docs/sync-repair/evidence/B09/V02/change-contract-result.json"
+    ],
+    "exit_code": 0,
+    "log": "change-contract.log",
+    "limits": "local documentation/scope check only; no Gradle/Room acceptance"
+  },
+  {
+    "name": "documentation-baseline",
+    "exit_code": 1,
+    "log": "documentation-baseline.log",
+    "observed_errors": 141,
+    "limits": "actual original ZIP tree comparison; full documentation gate FAIL"
+  }
+]

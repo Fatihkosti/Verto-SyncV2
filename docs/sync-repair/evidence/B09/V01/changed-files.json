@@ -1,0 +1,38 @@
+{
+  "checkpoint": "B09-V01",
+  "source_archive": "Verto-425(3).zip",
+  "original_files": 2629,
+  "modified_original_files": [
+    "CHANGELOG.md",
+    "EVIDENCE_INDEX.md",
+    "SYNC_IMPLEMENTATION_MAP.md",
+    "VERTO_SYNC_REPAIR_BACKLOG_AR.md",
+    "app/src/main/kotlin/com/verto/app/feature/invoice/bridge/InvoiceAppAdapters.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InvoiceDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncCursorDao.kt",
+    "data/operations/src/main/kotlin/com/verto/app/data/operations/transaction/FinancialSnapshotFactoryV2.kt",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/ownership/SyncPendingProtection.kt",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedRemoteMaterialization.kt",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedStrongerSyncChangeApplier.kt",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncChangeApplier.kt",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedSyncPullEngine.kt",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncSnapshotApplier.kt"
+  ],
+  "new_source_and_governance_files": [
+    "core/common/src/main/kotlin/com/verto/app/utils/SupplierInvoiceReferenceNormalizer.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/FinancialMaterializationDao.kt",
+    "data/network/src/main/kotlin/com/verto/app/data/sync/FinancialEntityMappingsV2.kt",
+    "data/sync/src/androidTest/assets/sync/b09/financial-full-v2.json",
+    "data/sync/src/androidTest/kotlin/com/verto/app/data/sync/pull/FinancialMaterializerV2InstrumentedTest.kt",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/FinancialEffectVerifierV2.kt",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/FinancialMaterializationContractV2.kt",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/FinancialMaterializerV2.kt",
+    "data/sync/src/test/kotlin/com/verto/app/data/sync/pull/FinancialMaterializationContractV2Test.kt",
+    "data/sync/src/test/resources/sync/b09/financial-full-v2.json",
+    "tools/test_sync_b09_kotlin_smoke.py",
+    "tools/test_sync_b09_materializer.py"
+  ],
+  "new_evidence_directory": "docs/sync-repair/evidence/B09/V01",
+  "deleted_original_files": [],
+  "note": "Historical B01-B06 evidence and original source not deleted. Output remains WIP; no G-B09/Room release PASS."
+}

@@ -1,0 +1,91 @@
+{
+  "session": {
+    "id": 322,
+    "input_sha256": "3ecd256c1909ff2e474f4812a885770708488bf2cdec145884675f3303cdae07",
+    "plan_sha256": "fd04d47a1b03fcad0afa0aa93312396ea630cea366e3eb46ebf42a5921eb0979",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_322_INPUT_SNAPSHOT.json",
+    "scope": "LOGISTICS MODULARITY HARDENING / BEHAVIOR-PRESERVING / FAIL-CLOSED",
+    "allowed_modules": [
+      ":app",
+      ":feature:shipment"
+    ],
+    "allowed_files": [
+      "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/**",
+      "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/**",
+      "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/domain/**",
+      "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/di/ShipmentModule.kt",
+      "feature/shipment/src/test/**",
+      "feature/shipment/src/androidTest/**",
+      "app/src/main/kotlin/com/verto/app/ui/navigation/InventoryShipmentsNavGraph.kt",
+      "app/src/main/kotlin/com/verto/app/feature/shipment/bridge/**",
+      "tools/architecture/**",
+      "scripts/ci/**",
+      "docs/architecture/**",
+      "docs/quality/**",
+      "CHANGELOG.md",
+      "docs/DOCUMENTATION_INVENTORY.md"
+    ],
+    "forbidden_files": [
+      "app/schemas/**",
+      "supabase/**",
+      "functions/**",
+      "SQL/**",
+      "sql/**",
+      "docs/sql/**",
+      "data/database/**",
+      "data/network/**",
+      "data/sync/**",
+      "gradle/**",
+      "build-logic/**",
+      "settings.gradle.kts"
+    ]
+  },
+  "architecture": {
+    "invariants": [
+      "LogisticsV2ViewModel constructor dependencies <= 14, coupling imports <= 48, file lines <= 500",
+      "LogisticsV2OperationalWriter is retired or stays <= 14 dependencies, <= 48 imports, <= 500 lines",
+      "new identities obey unchanged v319 complexity budgets",
+      "Presentation owns UI state only; workflow orchestration is application-owned",
+      "Application never imports Presentation or DAO/Room/data implementations",
+      "Shipment public presentation surface decreases from predecessor",
+      "No new shipment public data implementation symbols; inherited v321 data symbol may remain unchanged because data/** is forbidden in Session 322",
+      "dependency cycles and undeclared dependencies remain zero",
+      "Room remains 81 and shipment behavior remains equivalent",
+      "no new external/project dependencies and no new waivers"
+    ],
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "ALL_UNDECLARED_EXTERNAL_DEPENDENCIES",
+      "NEW_FEATURE_MODULE_CYCLE",
+      "PRESENTATION_TO_DAO_ROOM_OR_DATA_IMPLEMENTATION",
+      "APPLICATION_TO_PRESENTATION",
+      "APPLICATION_TO_DAO_ROOM_OR_DATA_IMPLEMENTATION",
+      "SHIPMENT_PUBLIC_DATA_IMPLEMENTATION"
+    ]
+  },
+  "verification": {
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "kotlin-quality",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ],
+    "required_tests": [
+      "tools/architecture/tests/test_architecture_guard.py",
+      "Logistics planning/execution/customs characterization tests",
+      "Logistics receiving/shortage/recovery characterization tests",
+      "Logistics cost/settlement characterization tests",
+      "Logistics partner/document/correction/cancel characterization tests",
+      "LogisticsPlanningOrchestratorTest",
+      "scripts/ci/run-quality-gate.sh self-test"
+    ]
+  }
+}

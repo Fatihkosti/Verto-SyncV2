@@ -1,0 +1,48 @@
+{
+  "session": 336,
+  "input": "Verto-v335-final-admission-blocked-environment.zip",
+  "input_sha256": "9e343c3df0165a27ef40bf31e09c900eef2996539f668315679f8cc6faf30c76",
+  "room_schema_before": 83,
+  "room_schema_after": 83,
+  "p0_a": {
+    "multi_device_convergence": "PASS",
+    "semantic_conflict": "PASS",
+    "host_behavioral_cases": "34/34 PASS",
+    "two_device_runtime": "BLOCKED_ENVIRONMENT"
+  },
+  "p0_b": {
+    "update_decrease_dependency": "PASS",
+    "void_dependency": "PASS",
+    "dependency_state_matrix": "PASS"
+  },
+  "mutation_evidence": {
+    "M1": "DETECTED",
+    "M2": "DETECTED",
+    "M3": "DETECTED",
+    "M4": "DETECTED",
+    "M5": "DETECTED",
+    "M6": "DETECTED",
+    "M7": "DETECTED",
+    "M8": "DETECTED",
+    "M9": "DETECTED",
+    "M10": "DETECTED",
+    "M11": "DETECTED",
+    "M12": "DETECTED",
+    "M13": "DETECTED",
+    "M14": "DETECTED"
+  },
+  "regressions": {
+    "session_334": "BLOCKED_ENVIRONMENT",
+    "session_334_detail": "source-extracted v334 Kotlin mutation runner exceeded the execution timeout on repeated attempts; no PASS is claimed",
+    "session_335": "PASS",
+    "session_335_detail": "tools/quality/verto_finance_sync_v335.py = 53/53 PASS"
+  },
+  "schema": {
+    "room_migration": "NOT_REQUIRED",
+    "server_sql_change": "NOT_REQUIRED"
+  },
+  "gradle": {
+    "status": "BLOCKED_ENVIRONMENT",
+    "detail": "Gradle 8.9 wrapper bootstrap failed with java.net.UnknownHostException: services.gradle.org"
+  }
+}

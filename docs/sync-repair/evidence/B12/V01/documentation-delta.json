@@ -1,0 +1,9 @@
+{
+  "baseline": "B11/V01/documentation-gate.json",
+  "current": "B12/V01/documentation-gate.json",
+  "baseline_error_count": 141,
+  "current_error_count": 141,
+  "new_errors": [],
+  "resolved_errors": [],
+  "result": "NO_NEW_ERRORS"
+}

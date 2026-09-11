@@ -1,0 +1,11 @@
+d63ee9da999b20a07fbf2602f7c710cd651e66136ea9e3ffa2f31dbf0fcbc3af  docs/sync-repair/evidence/B03/V01/session-report.md
+2c7819d123b55495a032ba246b7ab82a260129eb9f93603c13ac91b2fe279a65  docs/sync-repair/evidence/B03/V01/commands-and-results.md
+294178fa8e37a59a2c3974b6f6d09198f7307279c978e5679ae5ebcfbcd768d6  docs/sync-repair/evidence/B03/V01/schema-and-invariants.md
+f04dc3256faf8a8891968dd7f61daa8b4f4c657100acb8e6aee8cb5870687bba  CHANGELOG.md
+88b4a19cdf703d0e22c635b30d76f67e7201fcc3817d7a9f09f00e9cf68eed5a  VERTO_SYNC_REPAIR_BACKLOG_AR.md
+f0966a1a27fc6b102cd9f4482181e9986d6e89a44b3dca90b937c452b3e2cab4  app/schemas/com.verto.app.data.local.AppDatabase/97.json
+34f6b3504c8b19b776b188c51b350b81cc4998cc984243ab27818f4b1c1412a2  data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations96To97.kt
+ec8977140b69a2127d74f3401ef9d839fe17a055002d3681508cfe3f43ded2fe  data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRepairV2Dao.kt
+9461f499a5eac68b50dbad9706ccebad453b9c177e25c3777a30a7cc00ce36b0  data/database/src/androidTest/kotlin/com/verto/app/data/local/Migration96To97SyncRepairInstrumentedTest.kt
+79211b1bf0e81aa9ad2d98e3778011b63797e329a24576b373db83d68075b739  data/database/src/androidTest/kotlin/com/verto/app/data/local/SyncRepairV2DaoInstrumentedTest.kt
+626846c5b3632f57bf7c7e01c49d47269e8ecd3cf27b58f41b9a3f463a15490e  data/database/build/outputs/androidTest-results/connected/debug/TEST-Pixel_8(AVD) - 17-_data_database-.xml

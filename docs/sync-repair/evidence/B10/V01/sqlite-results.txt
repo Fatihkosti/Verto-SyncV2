@@ -1,0 +1,21 @@
+Native SQLite 3.46.1; 20 actual migration statements; 25 actual DAO queries parsed. NOT Room/Android/G-B10.
+test_all_actual_dao_queries_prepare_against_migrated_schema (__main__.B10SqliteTests.test_all_actual_dao_queries_prepare_against_migrated_schema) ... ok
+test_all_six_states_two_mib_event_guard_and_immutability (__main__.B10SqliteTests.test_all_six_states_two_mib_event_guard_and_immutability) ... ok
+test_committed_receipt_survives_sqlite_close_reopen (__main__.B10SqliteTests.test_committed_receipt_survives_sqlite_close_reopen) ... ok
+test_dependency_is_scope_bound_and_transitive_cycles_terminate (__main__.B10SqliteTests.test_dependency_is_scope_bound_and_transitive_cycles_terminate) ... ok
+test_exact_duplicate_revision_rejects_replace (__main__.B10SqliteTests.test_exact_duplicate_revision_rejects_replace) ... ok
+test_generation_prevents_wait_polling_and_stale_drain_cannot_lose_wake (__main__.B10SqliteTests.test_generation_prevents_wait_polling_and_stale_drain_cannot_lose_wake) ... ok
+test_group_apply_status_and_cursor_are_atomic_sql_harness (__main__.B10SqliteTests.test_group_apply_status_and_cursor_are_atomic_sql_harness) ... ok
+test_migration_preserves_every_immutable_event_column_and_indexes (__main__.B10SqliteTests.test_migration_preserves_every_immutable_event_column_and_indexes) ... ok
+test_old_server_watermark_is_not_treated_as_received_coverage (__main__.B10SqliteTests.test_old_server_watermark_is_not_treated_as_received_coverage) ... ok
+test_quota_counts_all_unapplied_states_not_applied_or_other_scope (__main__.B10SqliteTests.test_quota_counts_all_unapplied_states_not_applied_or_other_scope) ... ok
+test_real_sqlite_full_error_rolls_back_receipt_transaction (__main__.B10SqliteTests.test_real_sqlite_full_error_rolls_back_receipt_transaction) ... ok
+test_receive_cursor_cas_never_writes_applied_checkpoint (__main__.B10SqliteTests.test_receive_cursor_cas_never_writes_applied_checkpoint) ... ok
+test_receive_transaction_failure_does_not_leave_rows_or_token (__main__.B10SqliteTests.test_receive_transaction_failure_does_not_leave_rows_or_token) ... ok
+test_terminal_wake_update_is_transactional_and_tenant_scoped (__main__.B10SqliteTests.test_terminal_wake_update_is_transactional_and_tenant_scoped) ... ok
+test_touch_order_blocks_x_not_independent_y_or_proven_origin (__main__.B10SqliteTests.test_touch_order_blocks_x_not_independent_y_or_proven_origin) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.673s
+
+OK

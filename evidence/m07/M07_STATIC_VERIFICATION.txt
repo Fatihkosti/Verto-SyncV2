@@ -1,0 +1,19 @@
+PASS M07_DURABLE_REQUEST_CONTRACT: public request persists generation before wake
+PASS M07_NO_LEGACY_ROUTER: ambiguous runtime router removed
+PASS M07_WORKER_V2_ONLY: worker always enters V2 coordinator
+PASS M07_PERIODIC_DURABLE_INTENT: periodic invocation records a generation
+PASS M07_REALTIME_V2: realtime is an accelerator into durable V2 request
+PASS M07_FOREGROUND_V2: application foreground transition records V2 request
+PASS M07_HOME_V2: home startup/refresh route to V2 request contract
+PASS M07_UI_ACCEPTANCE_NOT_COMPLETION: UI distinguishes request acceptance from completion
+PASS M07_INVOICE_V2: invoice compatibility trigger routes to V2 durable request
+PASS M07_PARTY_V2: party compatibility trigger routes to V2 durable request
+PASS M07_SETTINGS_AND_LOGOUT: settings uses V2 and logout checks unconfirmed work
+PASS M07_SESSION_START: auth start/restore routes into scoped V2 coordinator
+PASS M07_SCOPE_SWITCH_FAIL_CLOSED: organization switch preserves unconfirmed old-scope work
+PASS M07_LOGOUT_FAIL_CLOSED: session end cannot silently clear unconfirmed V2 work
+PASS M07_REPORT_CONTRACT: persisted report exposes real coordinator phase and queues
+PASS M07_HEALTH_COUNTS: health separates pending/review/rejected
+PASS M07_CLOSURE_TESTS_PRESENT: race and stale-scope closure tests are present
+PASS M07_ZERO_PRODUCTION_LEGACY_ENTRY: legacy production callers=[]
+SUMMARY: 18/18 PASS

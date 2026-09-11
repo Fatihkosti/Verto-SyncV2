@@ -1,0 +1,24 @@
+{
+  "budget_baseline": "v330 current manifests and source scan",
+  "budget_count": 18,
+  "contract_registry_session": 330,
+  "critical_features": 4,
+  "dependency_cycles": 0,
+  "dependency_edges": 8,
+  "external_dependency_references": 204,
+  "feature_count": 18,
+  "format": "verto-scalability-snapshot-v1",
+  "high_risk_contracts": 4,
+  "largest_feature_file_loc": 657,
+  "largest_production_file_count": 150,
+  "module_count": 18,
+  "session": 331,
+  "stable_contracts": 14,
+  "status": "PASS",
+  "zero_tolerance": {
+    "active_breaking_contracts": 0,
+    "dependency_cycles": 0,
+    "foreign_persistence_accesses": 0,
+    "unknown_contracts": 0
+  }
+}

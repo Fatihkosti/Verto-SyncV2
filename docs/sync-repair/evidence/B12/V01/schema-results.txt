@@ -1,0 +1,1 @@
+B06_SCHEMA_GATE=PASS defs=42 fullFinancialLists=10

@@ -1,0 +1,241 @@
+{
+  "version": 136,
+  "sourceOfTruth": "Verto-v135-source-clean.zip",
+  "policy": "all long-tail Presentation literals must be migrated; only documented intrinsic vector geometry may remain",
+  "before": {
+    "totals": {
+      "dp": 619,
+      "sp": 163,
+      "color": 12,
+      "total": 794
+    },
+    "files": {
+      "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/splash/SplashScreen.kt": {
+        "dp": 0,
+        "sp": 2,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompaniesScreen.kt": {
+        "dp": 10,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatScreen.kt": {
+        "dp": 9,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatComponents.kt": {
+        "dp": 19,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt": {
+        "dp": 13,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsScreen.kt": {
+        "dp": 19,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/SyncIssuesScreen.kt": {
+        "dp": 9,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceDetailsScreen.kt": {
+        "dp": 25,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalConversationsScreen.kt": {
+        "dp": 9,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalHomeScreen.kt": {
+        "dp": 5,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalHomeSectionCard.kt": {
+        "dp": 5,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/CompanyInvoicesScreen.kt": {
+        "dp": 17,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompanyDetailsScreen.kt": {
+        "dp": 9,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/profile/src/main/kotlin/com/verto/app/feature/profile/presentation/ProfileEditDialog.kt": {
+        "dp": 11,
+        "sp": 11,
+        "color": 0
+      },
+      "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionManagementScreen.kt": {
+        "dp": 12,
+        "sp": 8,
+        "color": 0
+      },
+      "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionCards.kt": {
+        "dp": 12,
+        "sp": 2,
+        "color": 0
+      },
+      "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionDialogs.kt": {
+        "dp": 33,
+        "sp": 24,
+        "color": 0
+      },
+      "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/WithdrawFlowDialogs.kt": {
+        "dp": 11,
+        "sp": 7,
+        "color": 0
+      },
+      "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionSheets.kt": {
+        "dp": 36,
+        "sp": 18,
+        "color": 0
+      },
+      "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commissionreport/MarketerCommissionReportScreen.kt": {
+        "dp": 19,
+        "sp": 12,
+        "color": 0
+      },
+      "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementIntegrationCard.kt": {
+        "dp": 10,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementScreen.kt": {
+        "dp": 5,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsScreen.kt": {
+        "dp": 11,
+        "sp": 0,
+        "color": 0
+      },
+      "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/leaderboard/LeaderboardScreen.kt": {
+        "dp": 11,
+        "sp": 3,
+        "color": 0
+      },
+      "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UsersDashboardScreen.kt": {
+        "dp": 29,
+        "sp": 15,
+        "color": 0
+      },
+      "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/MessagesScreen.kt": {
+        "dp": 18,
+        "sp": 9,
+        "color": 0
+      },
+      "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/ChatDetailScreen.kt": {
+        "dp": 36,
+        "sp": 4,
+        "color": 0
+      },
+      "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/presentation/NotificationsScreen.kt": {
+        "dp": 14,
+        "sp": 7,
+        "color": 0
+      },
+      "core/designsystem/src/main/kotlin/com/verto/app/ui/components/AppIcons.kt": {
+        "dp": 2,
+        "sp": 0,
+        "color": 2
+      },
+      "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentReceiptScreen.kt": {
+        "dp": 15,
+        "sp": 0,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentDetailComponents.kt": {
+        "dp": 18,
+        "sp": 0,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentsListScreen.kt": {
+        "dp": 21,
+        "sp": 1,
+        "color": 10
+      },
+      "app/src/main/kotlin/com/verto/app/feature/shipment/presentation/ShipmentDetailScreen.kt": {
+        "dp": 7,
+        "sp": 0,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/ui/components/PermissionGate.kt": {
+        "dp": 4,
+        "sp": 0,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/ui/components/Components.kt": {
+        "dp": 10,
+        "sp": 4,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt": {
+        "dp": 18,
+        "sp": 0,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/ui/components/ReportsFilterBar.kt": {
+        "dp": 28,
+        "sp": 5,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/ui/screens/auditlog/AuditLogScreen.kt": {
+        "dp": 31,
+        "sp": 12,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/ui/screens/onboarding/SetupNameScreen.kt": {
+        "dp": 8,
+        "sp": 4,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/ui/screens/onboarding/OnboardingScreen.kt": {
+        "dp": 14,
+        "sp": 4,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/ui/screens/onboarding/ThankYouScreen.kt": {
+        "dp": 2,
+        "sp": 3,
+        "color": 0
+      },
+      "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchScreen.kt": {
+        "dp": 24,
+        "sp": 8,
+        "color": 0
+      }
+    }
+  },
+  "after": {
+    "prohibitedScattered": {
+      "dp": 0,
+      "sp": 0,
+      "color": 0,
+      "total": 0
+    },
+    "documentedExceptions": {
+      "core/designsystem/src/main/kotlin/com/verto/app/ui/components/AppIcons.kt": {
+        "dp": 2,
+        "sp": 0,
+        "color": 0,
+        "reason": "ImageVector defaultWidth/defaultHeight are intrinsic vector asset dimensions; viewport path geometry remains float asset data. WhatsApp fill now consumes central WhatsAppBrand."
+      }
+    }
+  }
+}

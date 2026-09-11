@@ -1,0 +1,32 @@
+{
+  "session": 308,
+  "entries": [
+    {
+      "id": "legacy_timestamp_readers",
+      "file": "data/network/src/main/kotlin/com/verto/app/data/sync/SyncCash.kt",
+      "symbol": "legacy pull functions",
+      "reason": "Legacy compatibility path remains default; forbidden only as V2 cursor authority.",
+      "legacy_or_non_sync": "LEGACY",
+      "aggregate_id": null,
+      "evidence": "VERTO_SYNC_LEGACY_PULL_INVENTORY_v308.csv"
+    },
+    {
+      "id": "legacy_numeric_v2_scaffold",
+      "file": "data/network/src/main/kotlin/com/verto/app/data/sync/SyncProtocolV2.kt",
+      "symbol": "SyncV2Coordinator",
+      "reason": "Dead compatibility scaffold retained to Session 314; SyncManager production orchestration has zero references.",
+      "legacy_or_non_sync": "LEGACY_DEAD",
+      "aggregate_id": null,
+      "evidence": "SyncManager.kt has no SyncV2Coordinator/getSyncCursor/setSyncCursor reference"
+    },
+    {
+      "id": "legacy_preferences_cursor",
+      "file": "data/preferences/src/main/kotlin/com/verto/app/utils/SyncPreferencesStore.kt",
+      "symbol": "getSyncV2Cursor/setSyncV2Cursor",
+      "reason": "Protected compatibility API; new UnifiedSyncPullEngine never references it.",
+      "legacy_or_non_sync": "LEGACY_DEAD",
+      "aggregate_id": null,
+      "evidence": "protected byte-identical hash"
+    }
+  ]
+}

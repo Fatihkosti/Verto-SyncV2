@@ -1,0 +1,995 @@
+{
+  "aggregateCoverageSummary": {
+    "participants": [
+      "cash",
+      "clients",
+      "educational_content",
+      "inventory",
+      "invoices",
+      "logistics-v2",
+      "optimal_outbox",
+      "organization"
+    ],
+    "registryRows": 34,
+    "rows": 34,
+    "statusCounts": {
+      "DEFERRED_WITH_OWNER": 17,
+      "INERT_BEHIND_GATE": 1,
+      "LEGACY_DIRTY_PATH": 3,
+      "READ_ONLY": 2,
+      "SERVER_REFERENCE_ONLY": 2,
+      "VERIFIED_STRONGER_EXISTING_CONTRACT": 9
+    },
+    "uncoveredCount": 0,
+    "unknownCount": 0
+  },
+  "archiveEntries": 1651,
+  "baselineFingerprints": {
+    "productionKotlinCount": 1153,
+    "productionManifestSha256": "05963e2a9817f6c2aeb803212f74f09c3783d5c6fc4beef45a009a06012aaa00",
+    "roomSchemaVersion": 77,
+    "sqlFileCount": 32,
+    "syncFocusedCount": 67,
+    "syncFocusedManifestSha256": "410e5119396f99e988a917bcf1ca5e1f2ba3aa13656c230790a9735bbfd6c046"
+  },
+  "budgetEvidence": {
+    "maxBacklogBeforeDiagnosticWarning": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxMutationPayloadBytes": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxPullPageBytes": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxPullPageChanges": {
+      "baselineObservedValues": {
+        "OptimalPull.planReferenceMax": 200,
+        "SyncV2Coordinator.pageSize": 500
+      },
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxPushBatchBytes": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxPushBatchMutations": {
+      "baselineObservedValues": {
+        "FinancialOutbox.batchSize": 100,
+        "OptimalOutbox.defaultBatchSize": 50,
+        "OptimalOutbox.maxBatchSize": 500
+      },
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxTransactionGroupBytes": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxWorkerOperationsPerRun": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "maxWorkerRuntimeMillis": {
+      "evidence": "No representative payload-size/worker-runtime measurement set supplied to Session 304",
+      "rationale": "Final budget cannot be chosen from existing constants alone",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    }
+  },
+  "budgetEvidenceStatus": "RETENTION_BUDGET_EVIDENCE_BLOCKED",
+  "contractSummary": {
+    "aggregateCount": 34,
+    "aggregateIds": [
+      "BUDGET",
+      "CASH_MOVEMENT",
+      "CASH_RECONCILIATION",
+      "CASH_REGISTER",
+      "CATEGORY",
+      "CLIENT_CREDIT",
+      "COMMISSION_PAYMENT",
+      "COST_ALLOCATION",
+      "CUSTOMER_PROFILE",
+      "EDUCATIONAL_CONTENT",
+      "EXPENSE",
+      "GOODS_RECEIPT",
+      "INVENTORY_COST_REVISION",
+      "INVENTORY_ITEM",
+      "INVENTORY_MOVEMENT",
+      "INVENTORY_UNIT",
+      "INVOICE",
+      "ITEM_CATEGORY",
+      "NOTE",
+      "NOTIFICATION",
+      "OPTIMAL_FOLLOW_UP",
+      "OPTIMAL_MAINTENANCE",
+      "OPTIMAL_VEHICLE",
+      "ORGANIZATION_SETTINGS",
+      "PARTY_IDENTITY",
+      "PARTY_ROLE",
+      "PAYMENT",
+      "PRICE_LIST",
+      "PURCHASE_MATCH",
+      "PURCHASE_ORDER",
+      "PURCHASE_PAYMENT_OVERRIDE",
+      "REMINDER",
+      "SHIPMENT",
+      "SUPPLIER_PROFILE"
+    ],
+    "attachmentPolicyCounts": {
+      "METADATA_ONLY_EXTERNAL_BINARY": 3,
+      "NONE": 31
+    },
+    "bootstrapGapFreeRequired": true,
+    "conflictPolicyCounts": {
+      "APPEND_ONLY_IDEMPOTENT": 5,
+      "BRIDGE_EXISTING_STRONGER_CONTRACT": 7,
+      "IMMUTABLE_REVISION": 2,
+      "OPTIMISTIC_VERSION": 10,
+      "SEMANTIC_COMMAND": 6,
+      "SERVER_AUTHORITATIVE": 2,
+      "SERVER_STATE_MACHINE": 2
+    },
+    "deletePolicyCounts": {
+      "ARCHIVE": 1,
+      "CANCEL_STATE_TRANSITION": 2,
+      "NO_CLIENT_DELETE": 14,
+      "SERVER_OWNED": 2,
+      "TOMBSTONE": 4,
+      "VERSIONED_DELETE": 8,
+      "VOID_OR_REVERSE": 3
+    },
+    "errorTypes": [
+      "TRANSIENT",
+      "AUTH",
+      "VALIDATION",
+      "CONFLICT",
+      "CURSOR_EXPIRED",
+      "CONTRACT_UNSUPPORTED"
+    ],
+    "family": "verto-unified-sync",
+    "filteredPullAdvancesGlobalCursor": false,
+    "revisionGapsAllowed": true,
+    "timestampCursorForbidden": true,
+    "transactionPageSplitForbidden": true,
+    "version": 1
+  },
+  "currentBaseline": {
+    "existingContractVersions": {
+      "FinancialOutbox.payloadVersion": 1,
+      "FinancialOutbox.schemaVersion": 1,
+      "PARTY_SYNC_CONTRACT_VERSION": 2,
+      "SyncV2Page.protocolVersion": 2
+    },
+    "existingOutboxFamilies": [
+      "party_sync_outbox",
+      "financial_outbox",
+      "financial_inbox",
+      "inventory_stock_outbox",
+      "inventory_cost_outbox",
+      "optimal_outbox"
+    ],
+    "featureFlags": {
+      "isRealtimeSyncEnabled": false,
+      "isVersionedSyncEnabled": false
+    },
+    "legacyCursorEvidence": {
+      "kind": "updated_at + System.currentTimeMillis lastPulledAt for multiple legacy readers",
+      "store": "DataStore / SyncPreferencesStore",
+      "syncV2Cursor": "DataStore Long revision scoped only by organization"
+    },
+    "participantDiscrepancy": [
+      {
+        "actual": "logistics-v2",
+        "evidence": "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt + feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/data/sync/LogisticsV2SyncParticipant.kt",
+        "id": "V303-PARTICIPANT-KEY-DRIFT-001",
+        "ownerSession": 312,
+        "required": "shipments",
+        "runtime": "INERT_BEHIND_GATE"
+      }
+    ],
+    "participantKeys": [
+      "cash",
+      "clients",
+      "educational_content",
+      "invoices",
+      "inventory",
+      "logistics-v2",
+      "optimal_outbox",
+      "organization"
+    ],
+    "realtimeBehavior": "disabled by feature flag; current RealtimeManager triggers fullSync via triggerPull baseline only",
+    "requiredParticipantKeys": [
+      "cash",
+      "clients",
+      "educational_content",
+      "invoices",
+      "inventory",
+      "optimal_outbox",
+      "organization",
+      "shipments"
+    ],
+    "workManagerBehavior": "ExistingWorkPolicy.KEEP baseline preserved; not changed in 304"
+  },
+  "determinism": {
+    "contractOutputSha256": "422d1322c268a6fca600976a1f0bb9764a8f900dcc757581c8027e643c9e3d71",
+    "fixtureHarness": "PASS",
+    "fixtureOutputSha256": "fc826e79525e86188bc3264066da90f62d7bcbae58b0aeefd977a147995e5e1a",
+    "staticVerifier": "PASS"
+  },
+  "evidenceContractStatus": "STATIC_CONTRACT_COMPLETE / RETENTION_BUDGET_EVIDENCE_BLOCKED",
+  "finalVerdict": "TOOL_ERROR",
+  "finalVerdictReason": "Session 304 static contract, coverage, fixtures and integrity gates pass, but Gradle targeted tests cannot execute in this environment; exact server dump plus numeric retention/budget evidence are also absent, so Full PASS/source-of-truth is forbidden.",
+  "fixtureOutcomes": [
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "attachments",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "AT01",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_ATTACHMENT_POLICY",
+      "actual_exit": 1,
+      "category": "attachments",
+      "expected_code": "FAIL_ATTACHMENT_POLICY",
+      "expected_exit": 1,
+      "fixture_id": "AT02",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "bootstrap/transaction",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "BT01",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_BOOTSTRAP_HANDOFF_POLICY",
+      "actual_exit": 1,
+      "category": "bootstrap/transaction",
+      "expected_code": "FAIL_BOOTSTRAP_HANDOFF_POLICY",
+      "expected_exit": 1,
+      "fixture_id": "BT02",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "BOOTSTRAP_RESTART_REQUIRED",
+      "actual_exit": 1,
+      "category": "bootstrap/transaction",
+      "expected_code": "BOOTSTRAP_RESTART_REQUIRED",
+      "expected_exit": 1,
+      "fixture_id": "BT03",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "BOOTSTRAP_RESTART_REQUIRED",
+      "actual_exit": 1,
+      "category": "bootstrap/transaction",
+      "expected_code": "BOOTSTRAP_RESTART_REQUIRED",
+      "expected_exit": 1,
+      "fixture_id": "BT04",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "bootstrap/transaction",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "BT05",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "INCOMPLETE_TRANSACTION_GROUP",
+      "actual_exit": 1,
+      "category": "bootstrap/transaction",
+      "expected_code": "INCOMPLETE_TRANSACTION_GROUP",
+      "expected_exit": 1,
+      "fixture_id": "BT06",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "INCOMPLETE_TRANSACTION_GROUP",
+      "actual_exit": 1,
+      "category": "bootstrap/transaction",
+      "expected_code": "INCOMPLETE_TRANSACTION_GROUP",
+      "expected_exit": 1,
+      "fixture_id": "BT07",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "bootstrap/transaction",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "BT08",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "bootstrap/transaction",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "BT09",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "bootstrap/transaction",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "BT10",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "DEPENDENCY_ORDER_VIOLATION",
+      "actual_exit": 1,
+      "category": "bootstrap/transaction",
+      "expected_code": "DEPENDENCY_ORDER_VIOLATION",
+      "expected_exit": 1,
+      "fixture_id": "BT11",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_TRANSACTION_GROUP_POLICY",
+      "actual_exit": 1,
+      "category": "bootstrap/transaction",
+      "expected_code": "FAIL_TRANSACTION_GROUP_POLICY",
+      "expected_exit": 1,
+      "fixture_id": "BT12",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "coverage",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "CV01",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_AGGREGATE_COVERAGE",
+      "actual_exit": 1,
+      "category": "coverage",
+      "expected_code": "FAIL_AGGREGATE_COVERAGE",
+      "expected_exit": 1,
+      "fixture_id": "CV02",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_AGGREGATE_COVERAGE",
+      "actual_exit": 1,
+      "category": "coverage",
+      "expected_code": "FAIL_AGGREGATE_COVERAGE",
+      "expected_exit": 1,
+      "fixture_id": "CV03",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_AGGREGATE_COVERAGE",
+      "actual_exit": 1,
+      "category": "coverage",
+      "expected_code": "FAIL_AGGREGATE_COVERAGE",
+      "expected_exit": 1,
+      "fixture_id": "CV04",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_AGGREGATE_COVERAGE",
+      "actual_exit": 1,
+      "category": "coverage",
+      "expected_code": "FAIL_AGGREGATE_COVERAGE",
+      "expected_exit": 1,
+      "fixture_id": "CV05",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_AGGREGATE_COVERAGE",
+      "actual_exit": 1,
+      "category": "coverage",
+      "expected_code": "FAIL_AGGREGATE_COVERAGE",
+      "expected_exit": 1,
+      "fixture_id": "CV06",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_CONFLICT_POLICY",
+      "actual_exit": 1,
+      "category": "financial policies",
+      "expected_code": "FAIL_CONFLICT_POLICY",
+      "expected_exit": 1,
+      "fixture_id": "FP01",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_CONFLICT_POLICY",
+      "actual_exit": 1,
+      "category": "financial policies",
+      "expected_code": "FAIL_CONFLICT_POLICY",
+      "expected_exit": 1,
+      "fixture_id": "FP02",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_CONFLICT_POLICY",
+      "actual_exit": 1,
+      "category": "financial policies",
+      "expected_code": "FAIL_CONFLICT_POLICY",
+      "expected_exit": 1,
+      "fixture_id": "FP03",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "payload/aggregate",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "PA01",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "CONTRACT_UNSUPPORTED",
+      "actual_exit": 1,
+      "category": "payload/aggregate",
+      "expected_code": "CONTRACT_UNSUPPORTED",
+      "expected_exit": 1,
+      "fixture_id": "PA02",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "CONTRACT_UNSUPPORTED",
+      "actual_exit": 1,
+      "category": "payload/aggregate",
+      "expected_code": "CONTRACT_UNSUPPORTED",
+      "expected_exit": 1,
+      "fixture_id": "PA03",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "payload/aggregate",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "PA04",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "payload/aggregate",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "PA05",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "payload/aggregate",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "PA06",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "payload/aggregate",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "PA07",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "payload/aggregate",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "PA08",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "payload/aggregate",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "PA09",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "CONTRACT_UNSUPPORTED",
+      "actual_exit": 1,
+      "category": "payload/aggregate",
+      "expected_code": "CONTRACT_UNSUPPORTED",
+      "expected_exit": 1,
+      "fixture_id": "PA10",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "revision/cursor",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "RC01",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "revision/cursor",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "RC02",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "INVALID_REVISION_ORDER",
+      "actual_exit": 1,
+      "category": "revision/cursor",
+      "expected_code": "INVALID_REVISION_ORDER",
+      "expected_exit": 1,
+      "fixture_id": "RC03",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "VALIDATION",
+      "actual_exit": 1,
+      "category": "revision/cursor",
+      "expected_code": "VALIDATION",
+      "expected_exit": 1,
+      "fixture_id": "RC04",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "VALIDATION",
+      "actual_exit": 1,
+      "category": "revision/cursor",
+      "expected_code": "VALIDATION",
+      "expected_exit": 1,
+      "fixture_id": "RC05",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "revision/cursor",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "RC06",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "DUPLICATE_REVISION_CONTENT_MISMATCH",
+      "actual_exit": 1,
+      "category": "revision/cursor",
+      "expected_code": "DUPLICATE_REVISION_CONTENT_MISMATCH",
+      "expected_exit": 1,
+      "fixture_id": "RC07",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "revision/cursor",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "RC08",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "revision/cursor",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "RC09",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "revision/cursor",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "RC10",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "PASS",
+      "actual_exit": 0,
+      "category": "revision/cursor",
+      "expected_code": "PASS",
+      "expected_exit": 0,
+      "fixture_id": "RC11",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FAIL_TIMESTAMP_CURSOR_POLICY",
+      "actual_exit": 1,
+      "category": "revision/cursor",
+      "expected_code": "FAIL_TIMESTAMP_CURSOR_POLICY",
+      "expected_exit": 1,
+      "fixture_id": "RC12",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "FILTERED_GLOBAL_CURSOR_ADVANCE",
+      "actual_exit": 1,
+      "category": "revision/cursor",
+      "expected_code": "FILTERED_GLOBAL_CURSOR_ADVANCE",
+      "expected_exit": 1,
+      "fixture_id": "RC13",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "SCOPE_MISMATCH",
+      "actual_exit": 1,
+      "category": "revision/cursor",
+      "expected_code": "SCOPE_MISMATCH",
+      "expected_exit": 1,
+      "fixture_id": "RC14",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "CONTRACT_UNSUPPORTED",
+      "actual_exit": 1,
+      "category": "revision/cursor",
+      "expected_code": "CONTRACT_UNSUPPORTED",
+      "expected_exit": 1,
+      "fixture_id": "RC15",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "TOOL_ERROR",
+      "actual_exit": 2,
+      "category": "tool errors",
+      "expected_code": "TOOL_ERROR",
+      "expected_exit": 2,
+      "fixture_id": "TE01",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "TOOL_ERROR",
+      "actual_exit": 2,
+      "category": "tool errors",
+      "expected_code": "TOOL_ERROR",
+      "expected_exit": 2,
+      "fixture_id": "TE02",
+      "status": "PASS"
+    },
+    {
+      "actual_code": "TOOL_ERROR",
+      "actual_exit": 2,
+      "category": "tool errors",
+      "expected_code": "TOOL_ERROR",
+      "expected_exit": 2,
+      "fixture_id": "TE03",
+      "status": "PASS"
+    }
+  ],
+  "fixtureSummary": {
+    "categoryCounts": {
+      "attachments": 2,
+      "bootstrap/transaction": 12,
+      "coverage": 6,
+      "financial policies": 3,
+      "payload/aggregate": 10,
+      "revision/cursor": 15,
+      "tool errors": 3
+    },
+    "failed": 0,
+    "minimumsSatisfied": true,
+    "passed": 51,
+    "status": "PASS",
+    "total": 51
+  },
+  "generalGate": {
+    "normalizedExitCode": 2,
+    "reason": "Gradle 8.9 distribution is not cached and network access is unavailable; both targeted Gradle tests could not start.",
+    "status": "TOOL_ERROR"
+  },
+  "historicalV303BuildEvidence": {
+    "assembleReleaseOffline": "PASS",
+    "evidenceFile": "Verto-v303-report.md",
+    "failures": 0,
+    "instrumentedTests": "NOT_RUN",
+    "unitTests": 468
+  },
+  "inputSource": "Verto-v303.zip",
+  "kotlinStaticCompile": {
+    "method": "kotlinc 1.9.0 with temporary serialization/json type stubs; syntax/type sanity only, not a replacement for Gradle unit tests",
+    "status": "PASS"
+  },
+  "newProductionFiles": [
+    "data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncAggregateRegistry.kt",
+    "data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncContract.kt"
+  ],
+  "newTestFiles": [
+    "data/network/src/test/kotlin/com/verto/app/data/sync/UnifiedSyncAggregateRegistryV304Test.kt",
+    "data/network/src/test/kotlin/com/verto/app/data/sync/UnifiedSyncContractV304Test.kt"
+  ],
+  "productionMutationSummary": {
+    "approvedProductionAdditions": 2,
+    "preExistingProductionModified": 0,
+    "preExistingProductionTotal": 1153,
+    "roomSchemaVersionAfter": 77,
+    "roomSchemaVersionBefore": 77,
+    "sqlModified": 0
+  },
+  "protectedFileDrift": {
+    "count": 0,
+    "featureFlagDrift": 0,
+    "files": {
+      "core/common/src/main/kotlin/com/verto/app/utils/FeatureFlags.kt": {
+        "after": "ad159d5e9f91e406127a5220c4e6729a51f659577ea4e673f9cce98f0de57203",
+        "before": "ad159d5e9f91e406127a5220c4e6729a51f659577ea4e673f9cce98f0de57203",
+        "drift": false
+      },
+      "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt": {
+        "after": "ae381e916d9dcdfdaace7cba1c797f71525728a1e439051da5a3c23f1e06be0a",
+        "before": "ae381e916d9dcdfdaace7cba1c797f71525728a1e439051da5a3c23f1e06be0a",
+        "drift": false
+      },
+      "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt": {
+        "after": "362c80b35b620fd75c8d28e888d36e5a4e2b083dab7fd0a8b76e85f3bfe93865",
+        "before": "362c80b35b620fd75c8d28e888d36e5a4e2b083dab7fd0a8b76e85f3bfe93865",
+        "drift": false
+      },
+      "data/network/src/main/kotlin/com/verto/app/data/remote/dto/LogisticsV2Dtos.kt": {
+        "after": "9bef3f8e56be89fee6859ecdba8def9a8490fa356e5da0aa4bd43b5af4ac72f5",
+        "before": "9bef3f8e56be89fee6859ecdba8def9a8490fa356e5da0aa4bd43b5af4ac72f5",
+        "drift": false
+      },
+      "data/network/src/main/kotlin/com/verto/app/data/sync/PartySyncV2Contract.kt": {
+        "after": "ac54d44bf1afe28b17956085a0dda2508a614d72169fe246c7e5e010263d6f3b",
+        "before": "ac54d44bf1afe28b17956085a0dda2508a614d72169fe246c7e5e010263d6f3b",
+        "drift": false
+      },
+      "data/network/src/main/kotlin/com/verto/app/data/sync/SyncProtocolV2.kt": {
+        "after": "aa52ce57139a4cee46e9fe3a702c518bb9c8708625480e33cbd05e7031608412",
+        "before": "aa52ce57139a4cee46e9fe3a702c518bb9c8708625480e33cbd05e7031608412",
+        "drift": false
+      },
+      "data/network/src/main/kotlin/com/verto/app/data/sync/SyncProtocolV2Remote.kt": {
+        "after": "48046bca02b768efc4d889bae5ebae0968ae3d8ffee3bde4ff758bf6c3d6f94f",
+        "before": "48046bca02b768efc4d889bae5ebae0968ae3d8ffee3bde4ff758bf6c3d6f94f",
+        "drift": false
+      },
+      "data/network/src/main/kotlin/com/verto/app/data/sync/SyncRuntime.kt": {
+        "after": "98f14f00426bb51e0efd406786c9089709da0c37fc66a33c789d177e6a0b22b1",
+        "before": "98f14f00426bb51e0efd406786c9089709da0c37fc66a33c789d177e6a0b22b1",
+        "drift": false
+      },
+      "data/preferences/src/main/kotlin/com/verto/app/utils/SyncPreferencesStore.kt": {
+        "after": "3cd5bb3b019e094ee4209860bd3796620477861b55cd5aac8c54140e32234f48",
+        "before": "3cd5bb3b019e094ee4209860bd3796620477861b55cd5aac8c54140e32234f48",
+        "drift": false
+      },
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/RealtimeManager.kt": {
+        "after": "f5671b96b17c3f562391f97e7c9562f83c246f08d5f4921186ba4282a78270b6",
+        "before": "f5671b96b17c3f562391f97e7c9562f83c246f08d5f4921186ba4282a78270b6",
+        "drift": false
+      },
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt": {
+        "after": "48da86c2e5e558eddaf6b07f89f6474013ddc66a85a132e8a01bf8e64afae233",
+        "before": "48da86c2e5e558eddaf6b07f89f6474013ddc66a85a132e8a01bf8e64afae233",
+        "drift": false
+      },
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncParticipant.kt": {
+        "after": "e379981a990e56d3faee62a73fcc4278d03d9d5a53d03604285afbeb287f0fe6",
+        "before": "e379981a990e56d3faee62a73fcc4278d03d9d5a53d03604285afbeb287f0fe6",
+        "drift": false
+      },
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncReliability.kt": {
+        "after": "a0f0f60c290524114f0ac0477383394ce494febce418986c9e8646ec63cf98a2",
+        "before": "a0f0f60c290524114f0ac0477383394ce494febce418986c9e8646ec63cf98a2",
+        "drift": false
+      },
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorkScope.kt": {
+        "after": "e9f7e0a050bf16995c82d1c9177c4656af2ad0fb3b4e9f859181ba59d2374697",
+        "before": "e9f7e0a050bf16995c82d1c9177c4656af2ad0fb3b4e9f859181ba59d2374697",
+        "drift": false
+      },
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorker.kt": {
+        "after": "16eab4a5533bf791e860281c08c142c2fa8d0f618471a1b54b7189f2f6c03a43",
+        "before": "16eab4a5533bf791e860281c08c142c2fa8d0f618471a1b54b7189f2f6c03a43",
+        "drift": false
+      }
+    },
+    "gradleDrift": 0,
+    "roomExportedSchemaDrift": 0,
+    "sqlManifestDrift": 0
+  },
+  "retentionEvidence": {
+    "changeLogRetentionDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "deviceInactiveAfterDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "localAckedOutboxDiagnosticRetentionDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "localInboxDiagnosticRetentionDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "receiptRetentionDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "supportedOfflineWindowDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "supportedOldClientWindowDays": {
+      "evidence": "No measured production offline/support window supplied to Session 304",
+      "rationale": "Final numeric retention cannot be invented",
+      "safetyRelation": "Must satisfy Session 304 retention safety equations before Full PASS",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    },
+    "tombstoneRetentionDays": {
+      "baselineObservedValue": 90,
+      "evidence": "Parent-plan server reference reports current sync_tombstones target=90 days; exact dump bytes absent",
+      "rationale": "90 days is baseline evidence only, not final unified retention",
+      "safetyRelation": "Must be >= max(supportedOfflineWindowDays,supportedOldClientWindowDays)+measured safety margin",
+      "status": "EVIDENCE_BLOCKED",
+      "value": null
+    }
+  },
+  "retentionEvidenceStatus": "RETENTION_BUDGET_EVIDENCE_BLOCKED",
+  "serverBaselineEvidence": {
+    "declaredTombstoneTargetDays": 90,
+    "exactDumpBytesAvailable": false,
+    "knownFromParentPlan": [
+      "optimal_sync_change_log",
+      "optimal_sync_receipts",
+      "optimal_apply_sync_operation_v2",
+      "optimal_pull_sync_changes",
+      "sync_tombstones"
+    ],
+    "status": "SERVER_BASELINE_NOT_REPRODUCIBLE"
+  },
+  "serverBaselineStatus": "SERVER_BASELINE_NOT_REPRODUCIBLE",
+  "session": 304,
+  "session305Handoff": {
+    "authorized": false,
+    "blockers": [
+      "exact current server dump identity not reproducible",
+      "numeric retention evidence missing",
+      "numeric operational budget evidence missing",
+      "targeted Gradle unit tests not executed because Gradle 8.9 distribution is unavailable offline"
+    ]
+  },
+  "sourceSha256": "6fddd8d485cdbdbe7b7331f8b342739b0543ef7e4e99057f41bb4fbb099a5e6b",
+  "staticContractStatus": "STATIC_ANDROID_CONTRACT_COMPLETE / SERVER_BASELINE_NOT_REPRODUCIBLE",
+  "subgates": [
+    {
+      "command": "python3 tools/verify_sync_contract_v304.py --identity-only --source-zip /mnt/data/Verto-v303.zip",
+      "errorKind": "NONE",
+      "exitCode": 0,
+      "rawExitCode": 0,
+      "status": "PASS",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutSha256": "1f851a1bdc772e2e48fb0310eef6a93d8e6352f05d17e13e25168a0b73b12a94",
+      "tool": "identity"
+    },
+    {
+      "command": "python3 tools/verify_sync_contract_v304.py --contract",
+      "errorKind": "NONE",
+      "exitCode": 0,
+      "rawExitCode": 0,
+      "status": "PASS",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutSha256": "422d1322c268a6fca600976a1f0bb9764a8f900dcc757581c8027e643c9e3d71",
+      "tool": "contract"
+    },
+    {
+      "command": "python3 tools/verify_sync_contract_v304.py --coverage",
+      "errorKind": "NONE",
+      "exitCode": 0,
+      "rawExitCode": 0,
+      "status": "PASS",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutSha256": "18fe3d13c1e4094b2bc703e23f7febc33ffc06715ce5040a504faa4465f02645",
+      "tool": "coverage"
+    },
+    {
+      "command": "python3 tools/test_sync_contract_verification_v304.py",
+      "errorKind": "NONE",
+      "exitCode": 0,
+      "rawExitCode": 0,
+      "status": "PASS",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutSha256": "fc826e79525e86188bc3264066da90f62d7bcbae58b0aeefd977a147995e5e1a",
+      "tool": "fixtures"
+    },
+    {
+      "command": "./gradlew :data:network:testDebugUnitTest --tests com.verto.app.data.sync.UnifiedSyncContractV304Test --offline --no-daemon",
+      "errorKind": "TOOL_ERROR",
+      "exitCode": 2,
+      "rawExitCode": 1,
+      "status": "TOOL_ERROR",
+      "stderrSha256": "1ddb39a92f699d2dffcec4436a41953d41958038a5d76b3d61e6571776a99b34",
+      "stdoutSha256": "b015bad94021c46e84ee7fc5a9a99a842598a678369fbd51be611fa5781fec22",
+      "tool": "gradle-contract"
+    },
+    {
+      "command": "./gradlew :data:network:testDebugUnitTest --tests com.verto.app.data.sync.UnifiedSyncAggregateRegistryV304Test --offline --no-daemon",
+      "errorKind": "TOOL_ERROR",
+      "exitCode": 2,
+      "rawExitCode": 1,
+      "status": "TOOL_ERROR",
+      "stderrSha256": "1ddb39a92f699d2dffcec4436a41953d41958038a5d76b3d61e6571776a99b34",
+      "stdoutSha256": "b015bad94021c46e84ee7fc5a9a99a842598a678369fbd51be611fa5781fec22",
+      "tool": "gradle-registry"
+    },
+    {
+      "command": "python3 tools/verify_sync_contract_v304.py --integrity-after --source-zip /mnt/data/Verto-v303.zip",
+      "errorKind": "NONE",
+      "exitCode": 0,
+      "rawExitCode": 0,
+      "status": "PASS",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutSha256": "277485179afc61adf037a3e0fac5f88b85ca4a8dbe3e571eac0570e72583685d",
+      "tool": "integrity-after"
+    }
+  ],
+  "unitTestStatus": "TOOL_ERROR"
+}

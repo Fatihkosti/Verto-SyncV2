@@ -1,0 +1,152 @@
+D1_CANONICAL_REGISTRY FAIL canonical_documents=42 duplicate_responsibilities=0 orphan_canonical=0 registry_rows=43
+  ERROR canonical map target is not status=canonical: CHANGELOG.md
+  ERROR mapped canonical not discoverable by metadata: CHANGELOG.md
+D2_METADATA PASS governed_documents=87 statuses={"canonical": 42, "deprecated": 1, "supporting": 44}
+D3_INTERNAL_LINKS PASS broken_internal_links=0 internal_links_checked=138
+D4_DEPRECATED_REFERENCES PASS archived_current_authorities=0 deprecated_active_references=0
+D5_RPC_DRIFT FAIL documented_active_rpc_names=48 rpc_call_sites=53 rpc_documentation_coverage="43/52" stale_active_rpc=5 unique_production_rpc_names=52 unknown_rpc=9 unsupported_invocations=0
+  ERROR documented active RPC absent from production: create_system_all_employees_notification
+  ERROR documented active RPC absent from production: get_my_notifications_cache
+  ERROR documented active RPC absent from production: mark_all_notifications_read
+  ERROR documented active RPC absent from production: verto_issue_optimal_company_join_code
+  ERROR documented active RPC absent from production: verto_upsert_client_v1
+  ERROR production RPC missing documentation: get_my_notifications_page_v1
+  ERROR production RPC missing documentation: verto_auth_session_status
+  ERROR production RPC missing documentation: verto_autodrive_errors_v1
+  ERROR production RPC missing documentation: verto_autodrive_health_v1
+  ERROR production RPC missing documentation: verto_autodrive_join_code_candidates_v2
+  ERROR production RPC missing documentation: verto_issue_optimal_registration_code
+  ERROR production RPC missing documentation: verto_list_optimal_links
+  ERROR production RPC missing documentation: verto_optimal_company_parties_v2
+  ERROR production RPC missing documentation: verto_upsert_party_v2
+D6_MODULE_MAP_DRIFT FAIL module_map_drift=1 module_map_modules=31 settings_modules=30
+  ERROR module documented active but absent from settings: :core:notification
+D7_FEATURE_COVERAGE PASS critical_feature_coverage="100%" critical_features=16 feature_pages=16
+D8_CANONICAL_NAMING PASS canonical_naming_violations=0
+D9_INDEX_INTEGRITY PASS index_integrity="PASS" unreachable_canonical_docs=0
+INVENTORY_COVERAGE FAIL documentation_inventory_coverage="292/416" inventory_rows=292 markdown_files=416
+  ERROR Markdown missing from documentation inventory: BUILD_REPORT_v375.md
+  ERROR Markdown missing from documentation inventory: CUSTOMER_CLOSEOUT_REPORT_V388.md
+  ERROR Markdown missing from documentation inventory: CUSTOMER_TEST_REPORT_V387.md
+  ERROR Markdown missing from documentation inventory: EVIDENCE_INDEX.md
+  ERROR Markdown missing from documentation inventory: LEGACY_INVOICE_CLEANUP_371_REPORT.md
+  ERROR Markdown missing from documentation inventory: LOGIN_UNEXPECTED_ERROR_LOGCAT_REPORT_2026-08-24.md
+  ERROR Markdown missing from documentation inventory: PRICE_LIST_DISCOVERY.md
+  ERROR Markdown missing from documentation inventory: PRICE_LIST_V376_CUTOVER_REPORT.md
+  ERROR Markdown missing from documentation inventory: PURCHASE_INVOICE_370_REPORT.md
+  ERROR Markdown missing from documentation inventory: SESSION_338_FINAL.md
+  ERROR Markdown missing from documentation inventory: SESSION_349_FINAL.md
+  ERROR Markdown missing from documentation inventory: SESSION_350_FINAL.md
+  ERROR Markdown missing from documentation inventory: SESSION_351_FINAL.md
+  ERROR Markdown missing from documentation inventory: SESSION_354_FINAL.md
+  ERROR Markdown missing from documentation inventory: SESSION_356_SYNC_ORDER_REPAIR.md
+  ERROR Markdown missing from documentation inventory: SESSION_357_INVOICE_FLOW_REPAIR.md
+  ERROR Markdown missing from documentation inventory: SESSION_358_HOME_ACTIONS_PENDING.md
+  ERROR Markdown missing from documentation inventory: SESSION_359_HOME_CAPTURE_EDUCATION.md
+  ERROR Markdown missing from documentation inventory: SESSION_360_HOME_RECENT_ACTIVITY.md
+  ERROR Markdown missing from documentation inventory: SESSION_361_ERROR_CLASSIFICATION_FOUNDATION.md
+  ERROR Markdown missing from documentation inventory: SESSION_362_ERROR_MIGRATION.md
+  ERROR Markdown missing from documentation inventory: SESSION_363_ERROR_PRESENTATION_CLOSEOUT.md
+  ERROR Markdown missing from documentation inventory: SESSION_364_FINAL.md
+  ERROR Markdown missing from documentation inventory: SESSION_365_1_FINAL.md
+  ERROR Markdown missing from documentation inventory: SESSION_365_FINAL.md
+  ERROR Markdown missing from documentation inventory: SESSION_366_AUTH_ERROR_CUTOVER.md
+  ERROR Markdown missing from documentation inventory: SESSION_367_PURCHASE_INVOICE_INPUT.md
+  ERROR Markdown missing from documentation inventory: SESSION_368_SALE_CREDIT_FIX.md
+  ERROR Markdown missing from documentation inventory: SESSION_369_FINAL.md
+  ERROR Markdown missing from documentation inventory: SESSION_370_FINAL.md
+  ERROR Markdown missing from documentation inventory: SESSION_371_FINAL.md
+  ERROR Markdown missing from documentation inventory: SESSION_372_INVOICE_FLOW_REPAIR.md
+  ERROR Markdown missing from documentation inventory: SESSION_373_PARTY_DIRECTORY_SYNC_REPAIR.md
+  ERROR Markdown missing from documentation inventory: SESSION_374_OPTIMAL_ORGANIZATION_LINK_REPAIR.md
+  ERROR Markdown missing from documentation inventory: SESSION_375_OPTIMAL_COMPANY_SELECTION_REPAIR.md
+  ERROR Markdown missing from documentation inventory: SESSION_378_OPTIMAL_LIVE_COMPANY_SELECTION_REPAIR.md
+  ERROR Markdown missing from documentation inventory: SESSION_379_HOME_IDEA_SEND_BUTTON_REPAIR.md
+  ERROR Markdown missing from documentation inventory: SESSION_380_PRICE_LIST_UX_REPAIR.md
+  ERROR Markdown missing from documentation inventory: SESSION_381_OPTIMAL_COMPANY_VISIBILITY_REPAIR.md
+  ERROR Markdown missing from documentation inventory: SESSION_382_AUTH_CUTOVER_CLEANUP.md
+  ERROR Markdown missing from documentation inventory: SESSION_383_RECOVERY_OTP_8_DIGIT_AUTOFILL.md
+  ERROR Markdown missing from documentation inventory: SESSION_384_AUTH_TEST_REPORT.md
+  ERROR Markdown missing from documentation inventory: SESSION_385_PARTY_V2_CUSTOMER_CUTOVER.md
+  ERROR Markdown missing from documentation inventory: SESSION_386_PARTY_V2_TENANT_SCOPE.md
+  ERROR Markdown missing from documentation inventory: SOURCE_DIFF.md
+  ERROR Markdown missing from documentation inventory: SYNC_IMPLEMENTATION_MAP.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_EXECUTION_LOG_M03.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_EXECUTION_LOG_M04.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_M02_FINAL_STATUS.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_M02_M03_CLOSEOUT.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_M03_FINAL_STATUS.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_M03_LOCAL_MIGRATION_AUDIT.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_M04_FINAL_STATUS.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_M04_PRODUCER_COVERAGE.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_M05_FINAL_STATUS.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_M06_EXECUTION_REPORT_AR.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_M07_EXECUTION_REPORT_AR.md
+  ERROR Markdown missing from documentation inventory: SYNC_V2_M08_EXECUTION_REPORT_AR.md
+  ERROR Markdown missing from documentation inventory: VERTO_AUTH_INTEGRATION_VERIFICATION.md
+  ERROR Markdown missing from documentation inventory: VERTO_AUTODRIVE_CONTROL_PLANE_VERIFICATION_v343.md
+  ERROR Markdown missing from documentation inventory: VERTO_AUTODRIVE_LINK_FLOW_V377.md
+  ERROR Markdown missing from documentation inventory: VERTO_NOTIFICATION_REPAIR_VERIFICATION_v355.md
+  ERROR Markdown missing from documentation inventory: VERTO_SESSION_337_VERIFICATION.md
+  ERROR Markdown missing from documentation inventory: VERTO_SESSION_338_VERIFICATION.md
+  ERROR Markdown missing from documentation inventory: VERTO_SESSION_339_VERIFICATION.md
+  ERROR Markdown missing from documentation inventory: VERTO_SESSION_340_VERIFICATION.md
+  ERROR Markdown missing from documentation inventory: VERTO_SESSION_341_VERIFICATION.md
+  ERROR Markdown missing from documentation inventory: VERTO_SYNC_REPAIR_BACKLOG_AR.md
+  ERROR Markdown missing from documentation inventory: VERTO_SYNC_REPAIR_EXECUTION_CONTRACT_AR.md
+  ERROR Markdown missing from documentation inventory: VERTO_V387_PARTY_V2_CUTOVER_REPORT.md
+  ERROR Markdown missing from documentation inventory: Verto-1.0-report.md
+  ERROR Markdown missing from documentation inventory: Verto-v356-report.md
+  ERROR Markdown missing from documentation inventory: Verto-v366-report.md
+  ERROR Markdown missing from documentation inventory: Verto-v367-report.md
+  ERROR Markdown missing from documentation inventory: Verto-v373-report.md
+  ERROR Markdown missing from documentation inventory: Verto-v374-report.md
+  ERROR Markdown missing from documentation inventory: Verto-v380-report.md
+  ERROR Markdown missing from documentation inventory: docs/home/SESSION_352_DATA_SYNC_REPAIR.md
+  ERROR Markdown missing from documentation inventory: docs/home/SESSION_353_PENDING_ACTIONS_REDESIGN.md
+  ERROR Markdown missing from documentation inventory: docs/party/SESSION_344_PARTY_INTELLIGENCE_FOUNDATION.md
+  ERROR Markdown missing from documentation inventory: docs/party/SESSION_345_CUSTOMER_DECISION_ENGINE.md
+  ERROR Markdown missing from documentation inventory: docs/party/SESSION_346_SUPPLIER_INTELLIGENCE_ENGINE.md
+  ERROR Markdown missing from documentation inventory: docs/party/SESSION_347_PARTY_DECISION_UI_WORKFLOW.md
+  ERROR Markdown missing from documentation inventory: docs/party/SESSION_348_PARTY_INTELLIGENCE_FINAL_VERIFICATION.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B01/V01/commands-and-exit-codes.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B01/V01/session-report.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B01/V01/source-and-project-discovery.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B01/V02/commands-and-exit-codes.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B01/V02/session-report.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B02/V01/BACKUP_VERIFICATION.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B02/V01/SERVER_SOURCE_DRIFT.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B02/V01/SYNC_SERVER_DEFINITIONS/README.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B02/V01/TEST_ENVIRONMENT_AND_FENCE.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B02/V01/commands-and-results.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B02/V01/session-report.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B03/V01/commands-and-results.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B03/V01/schema-and-invariants.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B03/V01/session-report.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B04/V01/call-map.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B04/V01/commands-and-results.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B04/V01/session-report.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B05/V01/commands-and-results.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B05/V01/golden-fixtures.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B05/V01/packet-and-ownership-map.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B05/V01/session-report.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B06/V01/commands-and-results.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B06/V01/ownership-matrix-delta.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B06/V01/producer-transaction-map.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B06/V01/schema-and-golden.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B06/V01/session-report.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B09/V01/commands-and-results.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B09/V01/materialization-map.md
+  ERROR Markdown missing from documentation inventory: docs/sync-repair/evidence/B09/V01/session-report.md
+  ERROR Markdown missing from documentation inventory: evidence/logcat/VERTO_SYNC_DIAGNOSTIC_REPORT_2026-09-09.md
+  ERROR Markdown missing from documentation inventory: evidence/logcat/VERTO_SYNC_FAILURE_REPORT_2026-09-09.md
+  ERROR Markdown missing from documentation inventory: evidence/m02/README.md
+  ERROR Markdown missing from documentation inventory: evidence/m02/RESULTS_ACTUAL.md
+  ERROR Markdown missing from documentation inventory: evidence/m02/reports/SYNC_V2_COVERAGE_M02.md
+  ERROR Markdown missing from documentation inventory: evidence/m02/reports/SYNC_V2_EXECUTION_LOG_M02.md
+  ERROR Markdown missing from documentation inventory: evidence/m02/reports/SYNC_V2_LEGACY_REMOVAL_MANIFEST_M02.md
+  ERROR Markdown missing from documentation inventory: evidence/m02/reports/SYNC_V2_M02_FINAL_STATUS.md
+  ERROR Markdown missing from documentation inventory: evidence/m02/reports/SYNC_V2_M02_SERVER_CONTRACT_AUDIT.md
+  ERROR Markdown missing from documentation inventory: evidence/m02/runtime/GITHUB_ACTIONS_GRADLE_GATE.md
+  ERROR Markdown missing from documentation inventory: evidence/m03/ci/GITHUB_ACTIONS_M03_GATE.md
+DOCUMENTATION_GATE FAIL

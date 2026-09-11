@@ -1,0 +1,130 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.inventory.application.quickstock.QuickStockCountDocumentGateway",
+      "com.verto.app.feature.inventory.domain.port.ApplyShipmentLandedCostPort",
+      "com.verto.app.feature.inventory.domain.port.InventoryLandedCostAdjustmentPort",
+      "com.verto.app.feature.inventory.domain.port.InventoryLinePostingStockPort",
+      "com.verto.app.feature.inventory.domain.port.InventoryOrganizationSettingsPort",
+      "com.verto.app.feature.inventory.domain.port.InventoryStockPort",
+      "com.verto.app.feature.inventory.domain.port.ReceiveShipmentStockPort"
+    ],
+    "external_dependencies": [
+      "androidTestImplementation:libs.androidx.test.core.ktx",
+      "androidTestImplementation:libs.androidx.test.ext.junit",
+      "androidTestImplementation:libs.kotlinx.coroutines.test",
+      "implementation:libs.androidx.activity.compose",
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.androidx.paging.compose",
+      "implementation:libs.androidx.paging.runtime.ktx",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core",
+      "testImplementation:libs.junit",
+      "testImplementation:libs.kotlinx.coroutines.test"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app",
+      ":data:operations"
+    ],
+    "internal_packages": [
+      "com.verto.app.data.repository",
+      "com.verto.app.feature.inventory.application",
+      "com.verto.app.feature.inventory.application.activityevent",
+      "com.verto.app.feature.inventory.application.model",
+      "com.verto.app.feature.inventory.application.pendingaction",
+      "com.verto.app.feature.inventory.application.port",
+      "com.verto.app.feature.inventory.application.quickaction",
+      "com.verto.app.feature.inventory.application.quickstock",
+      "com.verto.app.feature.inventory.application.search",
+      "com.verto.app.feature.inventory.data",
+      "com.verto.app.feature.inventory.data.activityevent",
+      "com.verto.app.feature.inventory.data.pendingaction",
+      "com.verto.app.feature.inventory.data.search",
+      "com.verto.app.feature.inventory.data.sync",
+      "com.verto.app.feature.inventory.di",
+      "com.verto.app.feature.inventory.domain.model",
+      "com.verto.app.feature.inventory.domain.port",
+      "com.verto.app.feature.inventory.presentation.inventory",
+      "com.verto.app.feature.inventory.presentation.pricelist",
+      "com.verto.app.pdf"
+    ],
+    "outgoing_dependencies": [
+      ":core:audit",
+      ":core:common",
+      ":core:designsystem",
+      ":core:export",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":data:preferences",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ],
+    "public_api": [
+      "com.verto.app.feature.inventory.application.quickstock.QuickStockCountDocumentGateway",
+      "com.verto.app.feature.inventory.data.InventoryStockWriter",
+      "com.verto.app.feature.inventory.data.InventoryWriteActor",
+      "com.verto.app.feature.inventory.data.InventoryWriteTiming",
+      "com.verto.app.feature.inventory.data.PurchaseReturnPolicy",
+      "com.verto.app.feature.inventory.data.PurchaseReturnSource",
+      "com.verto.app.feature.inventory.data.PurchaseReturnStockTarget",
+      "com.verto.app.feature.inventory.data.SalesReturnStockRequest",
+      "com.verto.app.feature.inventory.domain.model.InventoryItem",
+      "com.verto.app.feature.inventory.domain.model.InventoryPostingIdentity",
+      "com.verto.app.feature.inventory.domain.model.InventoryPurchaseReceiptCommand",
+      "com.verto.app.feature.inventory.domain.model.InventorySaleStockMutation",
+      "com.verto.app.feature.inventory.domain.port.ApplyShipmentLandedCostPort",
+      "com.verto.app.feature.inventory.domain.port.InventoryLandedCostAdjustment",
+      "com.verto.app.feature.inventory.domain.port.InventoryLandedCostAdjustmentPort",
+      "com.verto.app.feature.inventory.domain.port.InventoryLinePostingStockPort",
+      "com.verto.app.feature.inventory.domain.port.InventoryOrganizationSettingsPort",
+      "com.verto.app.feature.inventory.domain.port.InventoryShopSettings",
+      "com.verto.app.feature.inventory.domain.port.InventoryStockPort",
+      "com.verto.app.feature.inventory.domain.port.ReceiveShipmentStockPort",
+      "com.verto.app.feature.inventory.presentation.inventory.AddEditItemScreen",
+      "com.verto.app.feature.inventory.presentation.inventory.BulkPriceEditScreen",
+      "com.verto.app.feature.inventory.presentation.inventory.CategoryManagementScreen",
+      "com.verto.app.feature.inventory.presentation.inventory.InventoryScreen",
+      "com.verto.app.feature.inventory.presentation.pricelist.PriceListScreen"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [
+      "InventoryRepository"
+    ],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:inventory",
+    "name": "feature/inventory",
+    "owner": ":feature:inventory",
+    "purpose": "Production capability implemented by :feature:inventory; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [
+      ":feature:dashboard:api"
+    ],
+    "legacy_cross_feature_debt": []
+  },
+  "provides_contracts": [],
+  "consumes_contracts": ["dashboard.home-search.v1"],
+  "deprecated_contracts": [],
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "b4b2c1d0784e1062239d36ff42a8b8c4d417f5ec8fe41e33faae338f276541d8",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v327"
+  }
+}

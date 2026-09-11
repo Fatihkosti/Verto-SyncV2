@@ -1,0 +1,21 @@
+Only in /mnt/data/verto_m07_work/Verto-sync-v2-m06-final/evidence: m07
+Only in /mnt/data/verto_m07_work/Verto-sync-v2-m06-final/tools: verify_sync_m07.py
+app/src/main/kotlin/com/verto/app/VertoApplication.kt
+app/src/main/kotlin/com/verto/app/di/optimal/OptimalSyncBridge.kt
+app/src/main/kotlin/com/verto/app/feature/auth/integration/DefaultAuthSessionCoordinator.kt
+app/src/main/kotlin/com/verto/app/feature/invoice/bridge/InvoicePresentationBridge.kt
+app/src/main/kotlin/com/verto/app/feature/settings/bridge/SettingsOperationsGatewayAdapter.kt
+app/src/main/kotlin/com/verto/app/feature/sync/presentation/SyncViewModel.kt
+app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt
+app/src/main/kotlin/com/verto/app/ui/screens/home/HomeViewModel.kt
+core/crash/src/main/kotlin/com/verto/app/utils/ErrorHumanizer.kt
+data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRecoveryDao.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManagerPorts.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/SyncOperations.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/SyncReliability.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorker.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/SyncHealthSnapshot.kt
+data/sync/src/test/kotlin/com/verto/app/data/sync/SyncManagerTest.kt
+feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/observation/TeamObservationsViewModel.kt
+feature/party/src/main/kotlin/com/verto/app/feature/party/data/PartyPresentationAdapter.kt

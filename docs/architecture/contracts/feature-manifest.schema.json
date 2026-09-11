@@ -1,0 +1,203 @@
+{
+  "$id": "verto-feature-manifest-v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "provides_contracts": {
+      "items": {"type": "string"},
+      "type": "array",
+      "uniqueItems": true
+    },
+    "consumes_contracts": {
+      "items": {"type": "string"},
+      "type": "array",
+      "uniqueItems": true
+    },
+    "deprecated_contracts": {
+      "items": {"type": "string"},
+      "type": "array",
+      "uniqueItems": true
+    },
+    "architecture": {
+      "additionalProperties": false,
+      "properties": {
+        "exposed_ports": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "external_dependencies": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "forbidden_dependencies": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "incoming_dependencies": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "internal_packages": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "outgoing_dependencies": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "public_api": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "public_api",
+        "internal_packages",
+        "exposed_ports",
+        "incoming_dependencies",
+        "outgoing_dependencies",
+        "forbidden_dependencies",
+        "external_dependencies"
+      ],
+      "type": "object"
+    },
+    "data": {
+      "additionalProperties": false,
+      "properties": {
+        "owned_entities": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "owned_repositories": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "owned_tables": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "owned_entities",
+        "owned_tables",
+        "owned_repositories"
+      ],
+      "type": "object"
+    },
+    "feature": {
+      "additionalProperties": false,
+      "properties": {
+        "module": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "owner": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "purpose": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "module",
+        "owner",
+        "purpose"
+      ],
+      "type": "object"
+    },
+    "integration": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_cross_feature_ports": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "allowed_public_api_dependencies": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "legacy_cross_feature_debt": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "allowed_cross_feature_ports",
+        "allowed_public_api_dependencies",
+        "legacy_cross_feature_debt"
+      ],
+      "type": "object"
+    },
+    "verification": {
+      "additionalProperties": false,
+      "properties": {
+        "public_api_surface_algorithm": {
+          "const": "verto-top-level-public-surface-v1",
+          "type": "string"
+        },
+        "public_api_surface_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "source_sha256": {
+          "const": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+          "type": "string"
+        },
+        "verified_against": {
+          "const": "v318",
+          "type": "string"
+        }
+      },
+      "required": [
+        "verified_against",
+        "source_sha256",
+        "public_api_surface_hash",
+        "public_api_surface_algorithm"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "feature",
+    "architecture",
+    "data",
+    "integration",
+    "verification"
+  ],
+  "title": "Verto Feature Manifest",
+  "type": "object"
+}

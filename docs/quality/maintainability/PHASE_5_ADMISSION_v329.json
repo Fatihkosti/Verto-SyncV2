@@ -1,0 +1,27 @@
+{
+  "format": "verto-phase-admission-v1",
+  "phase": "5/6",
+  "session": 329,
+  "status": "PASS_STATIC",
+  "gates": {
+    "critical_flow_registry": "PASS",
+    "contract_tests": "PASS",
+    "negative_tests": "PASS",
+    "mutation_tests": "PASS",
+    "testability_guard": "PASS",
+    "architecture": "PASS",
+    "dependency": "PASS",
+    "persistence": "PASS",
+    "gradle": "BLOCKED_ENVIRONMENT_UNVERIFIED"
+  },
+  "acceptance": {
+    "critical_flows": 5,
+    "critical_flows_covered": 5,
+    "required_mutations": 8,
+    "mutations_detected": 8,
+    "undetected_mutations": 0,
+    "production_test_hooks": 0,
+    "sleep_based_protected_tests": 0
+  },
+  "admission_note": "Static evidence is complete; full source-of-truth admission remains blocked until environment-dependent Gradle gates execute."
+}

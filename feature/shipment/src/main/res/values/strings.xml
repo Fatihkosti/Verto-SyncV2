@@ -1,0 +1,397 @@
+<resources>
+    <string name="logistics_v230_next">التالي</string>
+    <string name="logistics_v230_approve">اعتماد التخطيط</string>
+    <string name="logistics_v230_definition">تعريف الشحنة</string>
+    <string name="logistics_v230_shipment_number">رقم الشحنة</string>
+    <string name="logistics_v230_from">من</string>
+    <string name="logistics_v230_to">إلى</string>
+    <string name="logistics_v230_city">المدينة</string>
+    <string name="logistics_v230_employee">الموظف المتابع</string>
+    <string name="logistics_v230_no_active_employee">لا يوجد موظف نشط متاح.</string>
+    <string name="logistics_v230_saving_draft">جارٍ حفظ المسودة…</string>
+    <string name="logistics_v230_sources">مصادر الشحن</string>
+    <string name="logistics_v230_sources_summary">%1$d مورد • %2$d فاتورة</string>
+    <string name="logistics_v230_suppliers_invoices">الموردون والفواتير</string>
+    <string name="logistics_v230_add_supplier">إضافة مورد</string>
+    <string name="logistics_v230_no_international_invoices">لا توجد فواتير شراء دولية متاحة</string>
+    <string name="logistics_v230_supplier_invoices">فواتير %1$s</string>
+    <string name="logistics_v230_add_supplier_hint">أضف موردًا ثم اختر فاتورة واحدة على الأقل.</string>
+    <string name="logistics_v230_remove_supplier">إزالة المورد</string>
+    <string name="logistics_v230_route_stations">محطات الرحلة</string>
+    <string name="logistics_v230_stations_summary">%1$d محطات</string>
+    <string name="logistics_v230_incomplete">غير مكتمل</string>
+    <string name="logistics_v230_shipping_type">نوع الشحن</string>
+    <string name="logistics_v230_unified">موحد</string>
+    <string name="logistics_v230_mixed">مختلط</string>
+    <string name="logistics_v230_road">بري</string>
+    <string name="logistics_v230_sea">بحري</string>
+    <string name="logistics_v230_air">جوي</string>
+    <string name="logistics_v230_at_execution">يُحدد عند التشغيل</string>
+    <string name="logistics_v230_route">المسار</string>
+    <string name="logistics_v230_departure">المغادرة</string>
+    <string name="logistics_v230_arrival">الوصول</string>
+    <string name="logistics_v230_station_number">محطة %1$d</string>
+    <string name="logistics_v230_remove">إزالة</string>
+    <string name="logistics_v230_add_station">إضافة محطة</string>
+    <string name="logistics_v230_add_station_action">إضافة المحطة</string>
+    <string name="logistics_v230_expected_durations">المدد المتوقعة</string>
+    <string name="logistics_v230_leg_days">%1$s → %2$s (أيام)</string>
+    <string name="logistics_v230_customs">الجمارك</string>
+    <string name="logistics_v230_where_customs">أين الجمارك؟</string>
+    <string name="logistics_v230_no_customs">لا توجد جمارك</string>
+    <string name="logistics_v230_customs_days">مدة الجمارك المتوقعة (أيام)</string>
+    <string name="logistics_v230_route_templates">قوالب المسار</string>
+    <string name="logistics_v230_use_template">استخدام قالب</string>
+    <string name="logistics_v230_no_templates">لا توجد قوالب محفوظة</string>
+    <string name="logistics_v230_template_name">اسم القالب</string>
+    <string name="logistics_v230_save_template">حفظ المسار كقالب</string>
+    <string name="logistics_v230_open">فتح</string>
+    <string name="logistics_v230_hide">إخفاء</string>
+    <string name="logistics_v230_opened">مفتوح</string>
+    <string name="logistics_v230_from_to">من → إلى</string>
+    <string name="logistics_v230_employee_short">الموظف</string>
+    <string name="logistics_v230_edit_definition">تعديل التعريف</string>
+    <string name="logistics_v230_route_stops">المحطات</string>
+    <string name="logistics_v230_shipping_type_unified">موحد — %1$s</string>
+    <string name="logistics_v230_leg_duration_days">%1$d يوم</string>
+    <string name="logistics_v230_customs_duration">مدة الجمارك</string>
+    <string name="logistics_v230_edit_plan">تعديل التخطيط</string>
+    <string name="logistics_contact_title">الجهات اللوجستية</string>
+    <string name="logistics_contact_subtitle">دليل شركات النقل والمخلصين</string>
+    <string name="logistics_contact_directory">الدليل</string>
+    <string name="logistics_contact_empty">لا توجد جهات محفوظة بعد.</string>
+    <string name="logistics_contact_add">إضافة جهة</string>
+    <string name="logistics_contact_name">الاسم</string>
+    <string name="logistics_contact_phone">هاتف الجهة</string>
+    <string name="logistics_contact_representative">المسؤول الأساسي</string>
+    <string name="logistics_contact_representative_phone">هاتف المسؤول</string>
+    <string name="logistics_contact_notes">ملاحظات</string>
+    <string name="logistics_contact_save">حفظ الجهة</string>
+    <string name="logistics_contact_carrier">ناقل</string>
+    <string name="logistics_contact_forwarder">وكيل شحن</string>
+    <string name="logistics_contact_broker">مخلص جمركي</string>
+    <string name="logistics_contact_inspector">مفتش</string>
+    <string name="logistics_contact_insurer">تأمين</string>
+    <string name="logistics_contact_other">أخرى</string>
+    <string name="logistics_v230_planning_title">تخطيط الشحنة</string>
+    <string name="logistics_v230_sources_route">المصادر والمسار</string>
+    <string name="logistics_v230_review">المراجعة</string>
+    <string name="logistics_v230_step_1_of_2">الخطوة 1 من 2</string>
+    <string name="logistics_v230_step_2_of_2">الخطوة 2 من 2</string>
+    <string name="logistics_v230_back">رجوع</string>
+    <string name="logistics_v230_header_a11y">رقم الشحنة %1$s. %2$s. %3$s</string>
+    <string name="logistics_v235_country_label">الدولة</string>
+    <string name="logistics_v235_country_hint">اكتب الدولة</string>
+    <string name="logistics_v235_city_hint">اكتب المدينة</string>
+    <string name="logistics_v235_definition_progress">1 من 2</string>
+    <string name="logistics_v235_details_progress">%1$d من 6</string>
+    <string name="logistics_v235_details_title">تفاصيل الشحنة</string>
+    <string name="logistics_v231_start_customs">تسليم للمخلص وبدء الجمارك</string>
+    <string name="logistics_v231_complete_customs">إكمال الجمارك</string>
+    <string name="logistics_v231_customs_pickup_title">استلام المخلص الجمركي</string>
+    <string name="logistics_v231_customs_broker">المخلص الجمركي</string>
+    <string name="logistics_v231_confirm_customs_pickup">تأكيد استلام المخلص</string>
+    <string name="logistics_v231_opened_packages">كراتين مفتوحة</string>
+    <string name="logistics_v231_damaged_packages">كراتين تالفة</string>
+
+    <!-- v232 final receiving / shortage / late cost / permanent delete -->
+    <string name="logistics_v232_receiving_title">استلام الشحنة</string>
+    <string name="logistics_v232_receiving_empty">لا توجد أصناف متاحة للاستلام.</string>
+    <string name="logistics_v232_receiving_confirm">تأكيد الاستلام النهائي</string>
+    <string name="logistics_v232_receiving_complete_hint">استلام كامل: ستدخل كل الكميات المتبقية إلى المخزون.</string>
+    <string name="logistics_v232_receiving_shortage_hint">أدخل الكمية الناقصة فقط لكل صنف. المستلم يُحسب تلقائيًا.</string>
+    <string name="logistics_v232_expected">المتوقع</string>
+    <string name="logistics_v232_received_before">مستلم سابقًا</string>
+    <string name="logistics_v232_remaining">متبقي %1$d</string>
+    <string name="logistics_v232_missing">الناقص</string>
+    <string name="logistics_v232_received_now">سيُستلم الآن</string>
+    <string name="logistics_v232_missing_error">الكمية الناقصة يجب أن تكون بين صفر والكمية المتبقية.</string>
+    <string name="logistics_v232_late_cost_add">+ تكلفة متأخرة بعد الإغلاق</string>
+    <string name="logistics_v232_late_cost_title">إضافة تكلفة متأخرة</string>
+    <string name="logistics_v232_shortage_quantity">الكمية الناقصة</string>
+    <string name="logistics_v232_shortage_found">تم العثور على البضاعة</string>
+    <string name="logistics_v232_shortage_compensate">تعويض</string>
+    <string name="logistics_v232_shortage_final_loss">فقد نهائي</string>
+    <string name="logistics_v232_delete_draft">حذف المسودة نهائيًا</string>
+    <string name="logistics_v232_delete_executed">حذف الشحنة نهائيًا (استثنائي)</string>
+    <string name="logistics_v232_delete_exception_title">حذف استثنائي نهائي</string>
+    <string name="logistics_v232_delete_draft_message">ستُحذف المسودة وكل روابطها نهائيًا.</string>
+    <string name="logistics_v232_delete_executed_message">سيتم عكس المخزون والمدفوعات قبل الحذف. لا يمكن التراجع.</string>
+    <string name="logistics_v232_delete_reason">سبب الحذف *</string>
+    <string name="logistics_v232_delete_confirm_number">اكتب رقم الشحنة: %1$s</string>
+    <string name="logistics_v232_delete_confirm">حذف نهائي</string>
+    <string name="logistics_v232_compensation_title">تعويض عن النقص</string>
+    <string name="logistics_v232_final_loss_title">اعتماد فقد نهائي</string>
+    <string name="logistics_v232_shortage_item_remaining">%1$s — %2$d</string>
+    <string name="logistics_v232_quantity_required">الكمية *</string>
+    <string name="logistics_v232_compensation_amount">قيمة التعويض *</string>
+    <string name="logistics_v232_currency">العملة</string>
+    <string name="logistics_v232_exchange_rate">سعر الصرف</string>
+    <string name="logistics_v232_note">ملاحظة</string>
+    <string name="logistics_v232_confirm">تأكيد</string>
+
+    <string name="shipment_ds_00604056d35b">شركة الشحن</string>
+    <string name="shipment_ds_0270cbee0fa9">تسليم للناقل %1$s</string>
+    <string name="shipment_ds_0272ebd3fd61">تسليم المسؤولية</string>
+    <string name="shipment_ds_068b74354fab">الشحنة</string>
+    <string name="shipment_ds_07c86de27d58">+ تكلفة فعلية</string>
+    <string name="shipment_ds_0880750b7114">نوع النقل: %1$s</string>
+    <string name="shipment_ds_0a260bafebc2">حذف المحطة</string>
+    <string name="shipment_ds_0a6889cb3f9b">حفظ التصحيح</string>
+    <string name="shipment_ds_0ac01876821e">أدخل رقم هاتف صحيح</string>
+    <string name="shipment_ds_0b6066a53cf1">الاستلام النهائي</string>
+    <string name="shipment_ds_0e94e9e0a5ad">إزالة المورد</string>
+    <string name="shipment_ds_0ef2f3260962">اقتراح من نوع الرحلة السابق: %1$s</string>
+    <string name="shipment_ds_0fd0048ad712">الوزن الفعلي (كجم)</string>
+    <string name="shipment_ds_109984e3f8cf">وسيلة النقل بعد المحطة</string>
+    <string name="shipment_ds_110df7f7d999">العدد الجديد</string>
+    <string name="shipment_ds_11610ccbba9a">تعديل تكلفة مدفوعة</string>
+    <string name="shipment_ds_1288e07cf491">تعديل المحطة</string>
+    <string name="shipment_ds_133fd7c79b46">جارٍ تجهيز %1$s…</string>
+    <string name="shipment_ds_13a7778ab392">بدء الاستلام</string>
+    <string name="shipment_ds_169fef970f7c">التكلفة الفعلية</string>
+    <string name="shipment_ds_1861e329f963">لا توجد صلاحية</string>
+    <string name="shipment_ds_1d4e3efaadfd">التكلفة</string>
+    <string name="shipment_ds_1df31d7f7c8c">الموردون والفواتير</string>
+    <string name="shipment_ds_205ed3834fae">المسؤول / الممثل</string>
+    <string name="shipment_ds_219025144d39">المثبت بالصندوق: %1$s</string>
+    <string name="shipment_ds_221cc76f1c8b">النطاق</string>
+    <string name="shipment_ds_24c851c415d5">تسوية التكلفة</string>
+    <string name="shipment_ds_250ed6ae1961">لا توجد تكاليف إضافية — إغلاق الشحنة</string>
+    <string name="shipment_ds_2567b12394b5">بيانات المحطة %1$s</string>
+    <string name="shipment_ds_25d0fc1376ad">آخر تحديث تشغيلي: %1$s</string>
+    <string name="shipment_ds_27c41cd45093">تم الدفع من الصندوق — منفصل عن تسجيل التكلفة</string>
+    <string name="shipment_ds_299b4fce2cc4">الكراتين</string>
+    <string name="shipment_ds_2c23e6e852fc">إعادة تعبئة / تغيير عدد الكراتين</string>
+    <string name="shipment_ds_2e48595d179a">الناقل بعد المحطة</string>
+    <string name="shipment_ds_2fbc0d175aa9">مرفق تخطيطي فقط؛ لا يعني تسجيل دفع فعلي.</string>
+    <string name="shipment_ds_354353e3f91c">مراجعة التخطيط</string>
+    <string name="shipment_ds_356405ee8120">شحنة جديدة</string>
+    <string name="shipment_ds_36fd37a8839a">تكاليف خاصة بالاسترجاع — اختيارية</string>
+    <string name="shipment_ds_370f5d2c2b04">اختر نعم إذا وصلت كل الكميات المتبقية، أو لا لتسجيل النقص لكل صنف.</string>
+    <string name="shipment_ds_386141eaafe7">مرحلة %1$s</string>
+    <string name="shipment_ds_387cca30ac74">اكتب اسم المحطة</string>
+    <string name="shipment_ds_38890dc3d4cc">سيتم تأكيد نفس العدد افتراضيًا.</string>
+    <string name="shipment_ds_38b7f99dc6e1">جارٍ تحميل البيانات…</string>
+    <string name="shipment_ds_38bd1a4075c9">الفواتير</string>
+    <string name="shipment_ds_394d02919c4d">تصحيح وقت منفذ</string>
+    <string name="shipment_ds_39b6242a7188">التجهيز لا يبدأ الحركة ولا يبدأ حساب الزمن.</string>
+    <string name="shipment_ds_3b21889bf821">اسم هذه المحطة مطابق للمحطة السابقة. أكّد فقط إذا كان التكرار مقصودًا.</string>
+    <string name="shipment_ds_3cf4bf454788">حفظ المسودة والخروج؟</string>
+    <string name="shipment_ds_3f0911893f60">إزالة المورد؟</string>
+    <string name="shipment_ds_445014919981">الوحدة</string>
+    <string name="shipment_ds_451760f65fa3">تسجيل الوصول</string>
+    <string name="shipment_ds_46aba4246448">المسؤولية الحالية: %1$s</string>
+    <string name="shipment_ds_4a551b767474">تأكيد التحميل</string>
+    <string name="shipment_ds_4aec1d4bc481">اسم المحطة</string>
+    <string name="shipment_ds_4b67ad725b05">شركة النقل الفعلية</string>
+    <string name="shipment_ds_4c69f6c2650d">نوع الرحلة</string>
+    <string name="shipment_ds_4e86737bd0c2">الوزن الجديد كجم — اختياري</string>
+    <string name="shipment_ds_4e8f34a69755">من المحطة السابقة</string>
+    <string name="shipment_ds_4ed9ad8ff4ed">نوع النقل من المحطة السابقة</string>
+    <string name="shipment_ds_5014ba36d0c1">أضف فاتورة واحدة على الأقل</string>
+    <string name="shipment_ds_507477d79706">المحطة %1$s من %2$s</string>
+    <string name="shipment_ds_512f2bd5111f">حذف المحطة؟</string>
+    <string name="shipment_ds_525f2b8f5eca">ستُزال الفاتورة وبيانات الكراتين والوزن والجاهزية من هذه المسودة فقط.</string>
+    <string name="shipment_ds_5390fb830b4b">سيُعاد ربط الحركات المجاورة وستحتاج مراجعة بيانات الحركة الجديدة.</string>
+    <string name="shipment_ds_5abb0960548f">تأكيد التفريغ</string>
+    <string name="shipment_ds_5af808e995c1">سيتم اقتراح المواقع المستخدمة سابقًا</string>
+    <string name="shipment_ds_5b328473c1b6">تحديد نقطة الجمارك</string>
+    <string name="shipment_ds_5bd564d75b0b">إضافة تكلفة الجمارك</string>
+    <string name="shipment_ds_5c528d9fa396">لا</string>
+    <string name="shipment_ds_5e2be18983e9">العدد المؤكد الحالي: %1$s</string>
+    <string name="shipment_ds_5face4fd9479">لم تُنشأ أي شحنة لوجستية بعد.</string>
+    <string name="shipment_ds_62e4ae2a295b">تجهيز الحركة</string>
+    <string name="shipment_ds_63bc0aba83c3">تم العثور على بضاعة ناقصة</string>
+    <string name="shipment_ds_63cb9f260029">عدد الكراتين الذي أكده المستلم</string>
+    <string name="shipment_ds_6428d80e04c5">متابعة الشحنة %1$s: تأخير %2$s يوم — %3$s</string>
+    <string name="shipment_ds_642903c1008c">لا تملك صلاحية عرض الشحنات.</string>
+    <string name="shipment_ds_64f7b98137d5">اكتب الكمية الناقصة فقط للأصناف المتأثرة. اترك غير المتأثر فارغًا.</string>
+    <string name="shipment_ds_650af3955cfb">خيارات المحطة</string>
+    <string name="shipment_ds_6737a33bcd5f">الكراتين الفعلية</string>
+    <string name="shipment_ds_68382ae08fc5">إضافة إثبات دفع</string>
+    <string name="shipment_ds_6b34031537e4">رحلة ثابتة</string>
+    <string name="shipment_ds_6da975bbd210">نوع النقل</string>
+    <string name="shipment_ds_6dbb0644cff4">بناء المسار</string>
+    <string name="shipment_ds_6e77e390de58">إضافة مورد آخر</string>
+    <string name="shipment_ds_706120a63dfd">تسجيل التغيير</string>
+    <string name="shipment_ds_70ff5f7b99e0">المورد</string>
+    <string name="shipment_ds_75fbcc858dc5">الزمن المتوقع</string>
+    <string name="shipment_ds_769b801ced6c">حفظ وتسوية الفرق</string>
+    <string name="shipment_ds_76ecc72fdfeb">جارٍ حفظ بيانات الموردين والفواتير</string>
+    <string name="shipment_ds_785a2e3466dc">تخطيط جديد</string>
+    <string name="shipment_ds_78dfddd410bc">تأكيد الاستلام</string>
+    <string name="shipment_ds_79a20305a242">تسوية تكلفة الشحنة</string>
+    <string name="shipment_ds_79e5243b31d8">سبب وتفاصيل إعادة التعبئة</string>
+    <string name="shipment_ds_79efbefd8692">جارٍ حفظ التغييرات…</string>
+    <string name="shipment_ds_7bf98db3e882">+ تكلفة جمارك</string>
+    <string name="shipment_ds_7c288ea25807">محطة %1$s</string>
+    <string name="shipment_ds_7cf320709614">لديك تخطيط غير مكتمل</string>
+    <string name="shipment_ds_7d492bbf6f42">اختر الفواتير</string>
+    <string name="shipment_ds_7e9a9265a782">%1$s %2$s × %3$s = %4$s • %5$s</string>
+    <string name="shipment_ds_7ef1c7c2c011">مستندات التخطيط منفصلة عن مستندات التخليص والتنفيذ الفعلية.</string>
+    <string name="shipment_ds_8032a57fef6c">تأكيد التسليم والاستلام</string>
+    <string name="shipment_ds_80770297e283">إضافة محطة غير مخططة</string>
+    <string name="shipment_ds_80aec57db0a7">سبب/ملاحظة فرق العدد — مطلوب</string>
+    <string name="shipment_ds_8275b9e73947">سيُضاف كامل المتبقي إلى المخزون، ثم تُوزع التكلفة الواصلة وتُغلق الشحنة.</string>
+    <string name="shipment_ds_835dc6169e2d">إلغاء الشحنة</string>
+    <string name="shipment_ds_876323dc365e">الكمية الناقصة</string>
+    <string name="shipment_ds_88511a0322c3">الحركة التالية • %1$s • %2$s</string>
+    <string name="shipment_ds_8cf065da5561">نقل لأعلى</string>
+    <string name="shipment_ds_8e7ef1e3998d">هاتف السائق</string>
+    <string name="shipment_ds_8ee60f07fb55">تعديل المرحلة المستقبلية</string>
+    <string name="shipment_ds_90a321619232">مسؤول المتابعة</string>
+    <string name="shipment_ds_91d61fffe1d0">الوصول</string>
+    <string name="shipment_ds_923281913301">فاتورة %1$s محددة. أزل التحديد لإزالة الفاتورة</string>
+    <string name="shipment_ds_935d8234319a">سبب الإلغاء</string>
+    <string name="shipment_ds_94264ea5b813">%1$s • %2$s%3$s</string>
+    <string name="shipment_ds_951f2657209c">المدة المتوقعة</string>
+    <string name="shipment_ds_95dc80ac3ca3">بعد المحطة</string>
+    <string name="shipment_ds_9600b88abcbd">تعديل المرحلة %1$s</string>
+    <string name="shipment_ds_962e6507f23c">إضافة التكلفة</string>
+    <string name="shipment_ds_9e822fac2834">المبلغ — اختياري</string>
+    <string name="shipment_ds_a10eed993005">اختر أو اكتب اسم الشركة</string>
+    <string name="shipment_ds_a25d61e7f2dc">رحلة مختلطة</string>
+    <string name="shipment_ds_a3879c146f2f">إرفاق المستندات المتوقعة</string>
+    <string name="shipment_ds_a806c7bffac1">إغلاق الشحنة</string>
+    <string name="shipment_ds_a833a0e172c8">إضافة محطة</string>
+    <string name="shipment_ds_a8476b3530ba">حفظ التجهيز</string>
+    <string name="shipment_ds_a8b128ee39c6">الجمعة مستبعدة من مدة الجمارك.</string>
+    <string name="shipment_ds_a8d9bb06f339">فاتورة #%1$s</string>
+    <string name="shipment_ds_a94b33228bad">جمارك: %1$s • %2$s</string>
+    <string name="shipment_ds_a995059cc2f2">عدد الكراتين التي سلّمها المرسل</string>
+    <string name="shipment_ds_ab82ad3d39a2">إرفاق إثبات التحويل</string>
+    <string name="shipment_ds_adebc50ade66">#%1$s</string>
+    <string name="shipment_ds_adfd3b712643">إزالة الفاتورة؟</string>
+    <string name="shipment_ds_ae31208e7d7a">حدد هل تم استلام البضاعة كاملة.</string>
+    <string name="shipment_ds_ae4c8f56a1b8">هل تم استلام الشحنة بالكامل؟</string>
+    <string name="shipment_ds_b2c702e73c91">غير محدد</string>
+    <string name="shipment_ds_b4bc83adff68">تأكيد الاسترجاع</string>
+    <string name="shipment_ds_b5530de57c4a">حفظ والخروج</string>
+    <string name="shipment_ds_b583ce1365a6">التواصل: %1$s • %2$s</string>
+    <string name="shipment_ds_b7fb114667a6">حدد الكمية المسترجعة من البنود المفتوحة</string>
+    <string name="shipment_ds_b7fc3eb05891">الوزن المستلم كجم — اختياري</string>
+    <string name="shipment_ds_b876c476ab60">تفاصيل الشحنة</string>
+    <string name="shipment_ds_ba37faa90e95">يمكنك متابعة الشحنة %1$s من آخر خطوة، أو بدء تخطيط جديد.</string>
+    <string name="shipment_ds_bb767596ef7b">عند من؟</string>
+    <string name="shipment_ds_bc87057601c5">نقل لأسفل</string>
+    <string name="shipment_ds_bc90229d3de5">تحديث ETA</string>
+    <string name="shipment_ds_c1e234b3a0ff">ماذا حدث؟</string>
+    <string name="shipment_ds_c26ba57fd52b">التأخير: %1$s يوم • المرحلة: %2$s</string>
+    <string name="shipment_ds_c2b61c89d4e4">تعديل %1$s</string>
+    <string name="shipment_ds_c443a6158b22">%1$s → %2$s</string>
+    <string name="shipment_ds_c9e978b9a8bd">اعتماد التخطيط؟</string>
+    <string name="shipment_ds_d02c1412a0f8">تسجيل متابعة</string>
+    <string name="shipment_ds_d045bef8e536">نعم</string>
+    <string name="shipment_ds_d3090c013c42">اضغط مطولًا واسحب لإعادة ترتيب المحطة</string>
+    <string name="shipment_ds_d47e7bd6fb64">تكرار المحطة؟</string>
+    <string name="shipment_ds_d4885d543550">راجع قبل الاعتماد</string>
+    <string name="shipment_ds_d5a0baea91ff">المورد %1$s</string>
+    <string name="shipment_ds_d766a1345ad3">سيتم حفظ ما أدخلته ويمكنك متابعة التخطيط لاحقًا من نفس الخطوة.</string>
+    <string name="shipment_ds_dbe41b824e07">ستُزال فواتير هذا المورد من المسودة فقط، ويمكن إضافتها مجددًا لاحقًا.</string>
+    <string name="shipment_ds_de47b0201b49">إدارة الجهات وربطها</string>
+    <string name="shipment_ds_dec33e573a83">اكتب الموقع</string>
+    <string name="shipment_ds_defdd0902183">سيصبح التخطيط جاهزًا للتنفيذ. يمكن تعديل المراحل المستقبلية فقط مع حفظ سجل التغييرات.</string>
+    <string name="shipment_ds_df38fc90f7f4">المغادرة</string>
+    <string name="shipment_ds_e0465a89fde9">تعذر تحميل البيانات</string>
+    <string name="shipment_ds_e13063f4777f">اختر موردًا</string>
+    <string name="shipment_ds_e4641409a1fc">المسؤول</string>
+    <string name="shipment_ds_e4b4486abca0">الوزن (كجم)</string>
+    <string name="shipment_ds_e5cad11bed05">تأخير شديد يحتاج متابعة</string>
+    <string name="shipment_ds_e631f1fa765e">إضافة مستند</string>
+    <string name="shipment_ds_e6a6454fa04e">مركز اللوجستيات</string>
+    <string name="shipment_ds_ea6d5ad33a0f">القيم المخططة تظهر كافتراضات. الحفظ يسجل القيم الفعلية ولا يبدأ الحركة.</string>
+    <string name="shipment_ds_eafaff1b0154">إعادة تعبئة / تغيير العدد المؤكد</string>
+    <string name="shipment_ds_eea522667a22">القيمة المحلية: %1$s %2$s</string>
+    <string name="shipment_ds_f026e08b371f">اختر أو اكتب اسم المسؤول</string>
+    <string name="shipment_ds_f5ab61d3d55b">بدأ التحرك</string>
+    <string name="shipment_ds_f5e929cf77ed">+ مستند جمركي</string>
+    <string name="shipment_ds_f854023162ce">العدد المؤكد: %1$s كرتونة</string>
+    <string name="shipment_ds_f8ad8d2321d3">اعتماد</string>
+    <string name="shipment_ds_f95389f389af">نقطة الجمارك</string>
+    <string name="shipment_ds_fa480611e83e">تأكيد التكرار</string>
+    <string name="shipment_ds_fbd816bd4cfb">المدة</string>
+    <string name="shipment_ds_fd5861131c7e">أين البضاعة؟</string>
+    <string name="shipment_ds_fd829449a723">سعر الصرف</string>
+    <string name="shipment_ds_fef51c6aa0cc">الجمارك</string>
+    <string name="shipment_ds_ffc655bf3309">+249 9...</string>
+
+    <!-- Session 298: owner-local hardcoded string migration. -->
+    <string name="shipment_v298_01fc2358fa74" translatable="false">"هناك محطتان متتاليتان بالاسم نفسه. أكّد التكرار المقصود من بيانات المحطة."</string>
+    <string name="shipment_v298_02c61ef39207" translatable="false">"يمكن تعديل المراحل المستقبلية مع حفظ سجل التغييرات"</string>
+    <string name="shipment_v298_0382f116d927" translatable="false">"سبب التصحيح *"</string>
+    <string name="shipment_v298_075ded8e5c71" translatable="false">"عبور"</string>
+    <string name="shipment_v298_075ded8e5c71_2" translatable="false">"جمارك"</string>
+    <string name="shipment_v298_08f1a20cffc0" translatable="false">"سبب التعديل"</string>
+    <string name="shipment_v298_0e5d2d8b3d72" translatable="false">"رقم المركبة"</string>
+    <string name="shipment_v298_12f546366adb" translatable="false">"لا توجد فاتورة مختارة لهذا المورد."</string>
+    <string name="shipment_v298_14869537231a" translatable="false">"مكان العثور / ملاحظة الاسترجاع *"</string>
+    <string name="shipment_v298_15280af43914" translatable="false">"ستحدد نوع النقل لكل حركة عند إدخال بيانات المحطات"</string>
+    <string name="shipment_v298_1a6e22fc0cdd" translatable="false">"تأكيد الدفع"</string>
+    <string name="shipment_v298_1a6e22fc0cdd_2" translatable="false">"استئناف الدفع"</string>
+    <string name="shipment_v298_1e384352aa21" translatable="false">"تقديري"</string>
+    <string name="shipment_v298_1e384352aa21_2" translatable="false">"فعلي"</string>
+    <string name="shipment_v298_1f1c9321f939" translatable="false">"استبدال المرفق"</string>
+    <string name="shipment_v298_1f1c9321f939_2" translatable="false">"اختر ملفًا أو صورة"</string>
+    <string name="shipment_v298_203650e7399a" translatable="false">"شحنة"</string>
+    <string name="shipment_v298_2fd73883bd2b" translatable="false">"رقم الحاوية"</string>
+    <string name="shipment_v298_38413cd52f46" translatable="false">"—"</string>
+    <string name="shipment_v298_3dcb67169929" translatable="false">"المغادرة المخططة"</string>
+    <string name="shipment_v298_3f6720733931" translatable="false">"تأخير شديد %1$s يوم"</string>
+    <string name="shipment_v298_415aa4e2c3b4" translatable="false">"الوصف"</string>
+    <string name="shipment_v298_424406d06bce" translatable="false">"—"</string>
+    <string name="shipment_v298_424406d06bce_2" translatable="false">"%1$s • %2$s"</string>
+    <string name="shipment_v298_448b33771932" translatable="false">"بدأت الحركة — بانتظار تسليم المسؤولية"</string>
+    <string name="shipment_v298_448b33771932_2" translatable="false">"بدأت الحركة"</string>
+    <string name="shipment_v298_44c40fe79792" translatable="false">"غير مؤكدة الدفع"</string>
+    <string name="shipment_v298_44c40fe79792_2" translatable="false">"مدفوعة — تخصم من الصندوق"</string>
+    <string name="shipment_v298_469961810e3c" translatable="false">"Air Waybill"</string>
+    <string name="shipment_v298_4d37988cbaa4" translatable="false">"Bill of Lading"</string>
+    <string name="shipment_v298_5681b5571444" translatable="false">"ملاحظة التعديل"</string>
+    <string name="shipment_v298_5b7ffdd86ab1" translatable="false">"النقل الجديد"</string>
+    <string name="shipment_v298_5b7ffdd86ab1_2" translatable="false">"العثور / الاسترداد"</string>
+    <string name="shipment_v298_5c241b9d45d0" translatable="false">"اسم السائق"</string>
+    <string name="shipment_v298_5f4487c3e837" translatable="false">"سبب الانحراف عن المسار"</string>
+    <string name="shipment_v298_5f8c576edfcd" translatable="false">"CARTONS"</string>
+    <string name="shipment_v298_64a8adadb431" translatable="false">"صنف"</string>
+    <string name="shipment_v298_64a8adadb431_2" translatable="false">"%1$s — المتبقي %2$s"</string>
+    <string name="shipment_v298_6653953efb36" translatable="false">"إنشاء شحنة"</string>
+    <string name="shipment_v298_6d492abc2abf" translatable="false">"غير مسجل"</string>
+    <string name="shipment_v298_6d492abc2abf_2" translatable="false">"الوزن المؤكد السابق: %1$s كجم"</string>
+    <string name="shipment_v298_7764d85c4b04" translatable="false">"محطة جديدة"</string>
+    <string name="shipment_v298_799fb5e38493" translatable="false">"اختر %1$s"</string>
+    <string name="shipment_v298_7bf258c9aa82" translatable="false">" • "</string>
+    <string name="shipment_v298_7ceda9df539d" translatable="false">"—"</string>
+    <string name="shipment_v298_7f68e27edb59" translatable="false">"—"</string>
+    <string name="shipment_v298_7fbf36801303" translatable="false">"يوم الجمعة لا يدخل ضمن مدة الجمارك"</string>
+    <string name="shipment_v298_81505bdb02dc" translatable="false">"أكمل بيانات كل حركة قبل الانتقال للجمارك."</string>
+    <string name="shipment_v298_88f8434a0116" translatable="false">"—"</string>
+    <string name="shipment_v298_88f8434a0116_2" translatable="false">"المبلغ المثبت بالصندوق: %1$s"</string>
+    <string name="shipment_v298_92c0910ef0f4" translatable="false">"اختر"</string>
+    <string name="shipment_v298_973761a6404f" translatable="false">"إثبات التحويل: %1$s"</string>
+    <string name="shipment_v298_9b5bbad38da7" translatable="false">"في الموعد"</string>
+    <string name="shipment_v298_a3e9281b95c2" translatable="false">"أدخل عدد الكراتين"</string>
+    <string name="shipment_v298_a3e9281b95c2_2" translatable="false">"أدخل الوزن"</string>
+    <string name="shipment_v298_abb8310187fd" translatable="false">"الجاهزية المتوقعة"</string>
+    <string name="shipment_v298_b3555351dc47" translatable="false">"—"</string>
+    <string name="shipment_v298_b41f4ef156cc" translatable="false">"شحنة"</string>
+    <string name="shipment_v298_b41f4ef156cc_2" translatable="false">"شحنة #%1$s"</string>
+    <string name="shipment_v298_b62b9c6862c3" translatable="false">"تعديل المدفوع"</string>
+    <string name="shipment_v298_b62b9c6862c3_2" translatable="false">"استئناف التسوية"</string>
+    <string name="shipment_v298_ba1f43e1448d" translatable="false">"مرجع السفينة"</string>
+    <string name="shipment_v298_c7991b610401" translatable="false">"التاريخ المصحح"</string>
+    <string name="shipment_v298_ca3bd3fc29ed" translatable="false">"%1$s. %2$s"</string>
+    <string name="shipment_v298_cd1659aa012d" translatable="false">"—"</string>
+    <string name="shipment_v298_cdee73211c04" translatable="false">"اسم المحطة / الموقع"</string>
+    <string name="shipment_v298_d2922d052404" translatable="false">"الوصف"</string>
+    <string name="shipment_v298_d2922d052404_2" translatable="false">"وصف بند الجمارك *"</string>
+    <string name="shipment_v298_d473acba9867" translatable="false">"إضافة صورة — اختياري"</string>
+    <string name="shipment_v298_d473acba9867_2" translatable="false">"الصورة: %1$s"</string>
+    <string name="shipment_v298_dc4a2fa77ad7" translatable="false">"يوجد فرق في الاستلام"</string>
+    <string name="shipment_v298_dc4a2fa77ad7_2" translatable="false">"إخفاء تفاصيل الفرق"</string>
+    <string name="shipment_v298_dc74787d3f03" translatable="false">"ETA / الوصول المخطط"</string>
+    <string name="shipment_v298_df16f58349f5" translatable="false">"مرجع الرحلة"</string>
+    <string name="shipment_v298_f077baf57b99" translatable="false">"إثبات دفع تكلفة"</string>
+    <string name="shipment_v298_fb0ea839ba23" translatable="false">"الجاهزية المتوقعة: %1$s"</string>
+    <string name="shipment_v298_ff24c9e9f587" translatable="false">"متأخرة %1$s يوم"</string>
+</resources>

@@ -1,0 +1,31 @@
+{
+  "checkpoint": "B10-V01",
+  "checked_at_utc": "2026-09-10T21:51:11.558129+00:00",
+  "status": "BLOCKED",
+  "tools": {
+    "java": {
+      "path": "/usr/bin/java",
+      "exit_code": 0,
+      "version": "openjdk version \"21.0.11\" 2026-04-21\nOpenJDK Runtime Environment (build 21.0.11+10-1-deb13u2-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.11+10-1-deb13u2-Debian, mixed mode, sharing)"
+    },
+    "kotlinc": {
+      "path": "/root/.sdkman/candidates/kotlin/current/bin/kotlinc",
+      "exit_code": 0,
+      "version": "info: kotlinc-jvm 1.9.0 (JRE 21.0.11+10-1-deb13u2-Debian)"
+    }
+  },
+  "required_gradle": "8.9",
+  "project_kotlin": "2.1.0",
+  "smoke_kotlin_not_project_compiler": "1.9.0",
+  "gradle_distributions": [],
+  "sdk_paths": [],
+  "adb": null,
+  "emulator": null,
+  "gradle_wrapper_launched": false,
+  "network_attempted": false,
+  "reason_not_launched": "Uncached wrapper downloads distribution before --offline applies. No Android SDK or device runtime available.",
+  "ksp_hilt_android_build": "NOT_RUN",
+  "real_room_execution": "NOT_RUN",
+  "real_json_runtime": "NOT_RUN",
+  "server_wire_contract_roundtrip": "NOT_RUN"
+}

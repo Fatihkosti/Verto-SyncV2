@@ -1,0 +1,66 @@
+{
+  "format": "verto-session-359-static-gate-v1",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "category_idea",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "category_market_info",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "category_complaint",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "five_minute_rotation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "no_placeholder",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "prominent_submit",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "category_persisted_room_sync",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "education_summary_not_repeated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "home_order",
+      "status": "PASS",
+      "detail": "[7339, 8195, 8863, 9374]"
+    },
+    {
+      "name": "room_87_88",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "room_migration_test",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "server_sql_artifact",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

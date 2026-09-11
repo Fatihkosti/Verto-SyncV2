@@ -1,0 +1,4117 @@
+{
+    "tables": [
+        {
+            "owner": "postgres",
+            "table": "financial_sync_events",
+            "grants": [
+                {
+                    "grantee": "authenticated",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "event_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "organization_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "write_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_version",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_sequence",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "operation_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "payload_version",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 8,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "schema_version",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 9,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "payload",
+                    "type": "jsonb",
+                    "default": null,
+                    "ordinal": 10,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "occurred_at",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 11,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "recorded_at",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 12,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "server_recorded_at",
+                    "type": "bigint",
+                    "default": "((EXTRACT(epoch FROM clock_timestamp()) * (1000)::numeric))::bigint",
+                    "ordinal": 13,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "server_revision",
+                    "type": "bigint",
+                    "default": "nextval('financial_sync_server_revision_seq'::regclass)",
+                    "ordinal": 14,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "created_by",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 15,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "financial_sync_events_pkey",
+                    "definition": "CREATE UNIQUE INDEX financial_sync_events_pkey ON public.financial_sync_events USING btree (event_id)"
+                },
+                {
+                    "name": "ix_financial_sync_org_aggregate_version",
+                    "definition": "CREATE INDEX ix_financial_sync_org_aggregate_version ON public.financial_sync_events USING btree (organization_id, aggregate_id, aggregate_version)"
+                },
+                {
+                    "name": "ix_financial_sync_org_revision",
+                    "definition": "CREATE INDEX ix_financial_sync_org_revision ON public.financial_sync_events USING btree (organization_id, server_revision)"
+                },
+                {
+                    "name": "uq_financial_sync_aggregate_sequence",
+                    "definition": "CREATE UNIQUE INDEX uq_financial_sync_aggregate_sequence ON public.financial_sync_events USING btree (organization_id, aggregate_id, aggregate_sequence)"
+                },
+                {
+                    "name": "uq_financial_sync_operation_write",
+                    "definition": "CREATE UNIQUE INDEX uq_financial_sync_operation_write ON public.financial_sync_events USING btree (organization_id, operation_type, write_id)"
+                },
+                {
+                    "name": "uq_financial_sync_server_revision",
+                    "definition": "CREATE UNIQUE INDEX uq_financial_sync_server_revision ON public.financial_sync_events USING btree (server_revision)"
+                }
+            ],
+            "policies": [
+                {
+                    "name": "financial_sync_events_select_own_org",
+                    "check": null,
+                    "roles": [
+                        "authenticated"
+                    ],
+                    "using": "(organization_id = ( SELECT au.organization_id\n   FROM app_users au\n  WHERE ((au.id = auth.uid()) AND COALESCE(au.is_active, true))\n LIMIT 1))",
+                    "command": "r",
+                    "permissive": true
+                }
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "ck_financial_sync_operation_type",
+                    "type": "c",
+                    "definition": "CHECK (operation_type = ANY (ARRAY['INVOICE_CREATED'::text, 'INVOICE_UPDATED'::text, 'INVOICE_VOIDED'::text, 'PAYMENT_RECORDED'::text, 'PAYMENT_REVERSED'::text, 'INVOICE_RETURN_POSTED'::text]))"
+                },
+                {
+                    "name": "financial_sync_events_aggregate_sequence_check",
+                    "type": "c",
+                    "definition": "CHECK (aggregate_sequence >= 1)"
+                },
+                {
+                    "name": "financial_sync_events_aggregate_version_check",
+                    "type": "c",
+                    "definition": "CHECK (aggregate_version >= 1)"
+                },
+                {
+                    "name": "financial_sync_events_payload_version_check",
+                    "type": "c",
+                    "definition": "CHECK (payload_version >= 1)"
+                },
+                {
+                    "name": "financial_sync_events_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (event_id)"
+                },
+                {
+                    "name": "financial_sync_events_schema_version_check",
+                    "type": "c",
+                    "definition": "CHECK (schema_version = 1)"
+                },
+                {
+                    "name": "uq_financial_sync_aggregate_sequence",
+                    "type": "u",
+                    "definition": "UNIQUE (organization_id, aggregate_id, aggregate_sequence)"
+                },
+                {
+                    "name": "uq_financial_sync_operation_write",
+                    "type": "u",
+                    "definition": "UNIQUE (organization_id, operation_type, write_id)"
+                },
+                {
+                    "name": "uq_financial_sync_server_revision",
+                    "type": "u",
+                    "definition": "UNIQUE (server_revision)"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "inventory_cost_revisions",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "cost_revision_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "organization_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "item_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "source_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "source_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "source_line_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "revision_kind",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "direct_purchase_cost_minor",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 8,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "landed_cost_per_base_unit_minor",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 9,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "approved_inventory_cost_minor",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 10,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "currency_code",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 11,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "exchange_rate_snapshot",
+                    "type": "numeric",
+                    "default": null,
+                    "ordinal": 12,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "allocation_basis",
+                    "type": "text",
+                    "default": "''::text",
+                    "ordinal": 13,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "allocation_residual_minor",
+                    "type": "bigint",
+                    "default": "0",
+                    "ordinal": 14,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "is_provisional",
+                    "type": "boolean",
+                    "default": "false",
+                    "ordinal": 15,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "reverses_cost_revision_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 16,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "command_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 17,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "idempotency_key",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 18,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "cost_sequence",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 19,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "approved_at",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 20,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "recorded_at",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 21,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "created_by",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 22,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "device_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 23,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "contract_version",
+                    "type": "integer",
+                    "default": "2",
+                    "ordinal": 24,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "inventory_cost_revisions_org_idempotency",
+                    "definition": "CREATE UNIQUE INDEX inventory_cost_revisions_org_idempotency ON public.inventory_cost_revisions USING btree (organization_id, idempotency_key)"
+                },
+                {
+                    "name": "inventory_cost_revisions_org_item_sequence",
+                    "definition": "CREATE INDEX inventory_cost_revisions_org_item_sequence ON public.inventory_cost_revisions USING btree (organization_id, item_id, cost_sequence)"
+                },
+                {
+                    "name": "inventory_cost_revisions_org_reversal",
+                    "definition": "CREATE UNIQUE INDEX inventory_cost_revisions_org_reversal ON public.inventory_cost_revisions USING btree (organization_id, reverses_cost_revision_id) WHERE (reverses_cost_revision_id IS NOT NULL)"
+                },
+                {
+                    "name": "inventory_cost_revisions_org_source",
+                    "definition": "CREATE INDEX inventory_cost_revisions_org_source ON public.inventory_cost_revisions USING btree (organization_id, source_type, source_id, source_line_id)"
+                },
+                {
+                    "name": "inventory_cost_revisions_pkey",
+                    "definition": "CREATE UNIQUE INDEX inventory_cost_revisions_pkey ON public.inventory_cost_revisions USING btree (cost_revision_id)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "inventory_cost_revisions_approved_inventory_cost_minor_check",
+                    "type": "c",
+                    "definition": "CHECK (approved_inventory_cost_minor >= 0)"
+                },
+                {
+                    "name": "inventory_cost_revisions_contract_version_check",
+                    "type": "c",
+                    "definition": "CHECK (contract_version >= 2)"
+                },
+                {
+                    "name": "inventory_cost_revisions_direct_purchase_cost_minor_check",
+                    "type": "c",
+                    "definition": "CHECK (direct_purchase_cost_minor >= 0)"
+                },
+                {
+                    "name": "inventory_cost_revisions_exchange_rate_snapshot_check",
+                    "type": "c",
+                    "definition": "CHECK (exchange_rate_snapshot > 0::numeric)"
+                },
+                {
+                    "name": "inventory_cost_revisions_landed_cost_per_base_unit_minor_check",
+                    "type": "c",
+                    "definition": "CHECK (landed_cost_per_base_unit_minor >= 0)"
+                },
+                {
+                    "name": "inventory_cost_revisions_org_item_fk",
+                    "type": "f",
+                    "definition": "FOREIGN KEY (organization_id, item_id) REFERENCES inventory_items(organization_id, id) ON DELETE RESTRICT"
+                },
+                {
+                    "name": "inventory_cost_revisions_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (cost_revision_id)"
+                },
+                {
+                    "name": "inventory_cost_revisions_reversal_shape",
+                    "type": "c",
+                    "definition": "CHECK (revision_kind = 'REVERSAL'::text AND reverses_cost_revision_id IS NOT NULL OR revision_kind <> 'REVERSAL'::text AND reverses_cost_revision_id IS NULL)"
+                },
+                {
+                    "name": "inventory_cost_revisions_revision_kind_check",
+                    "type": "c",
+                    "definition": "CHECK (revision_kind = ANY (ARRAY['LOCAL_PURCHASE_APPROVED'::text, 'LANDED_COST_PROVISIONAL'::text, 'LANDED_COST_APPROVED'::text, 'PURCHASE_CANCELLATION'::text, 'COST_CORRECTION'::text, 'REVERSAL'::text, 'MIGRATION_BASELINE'::text]))"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "inventory_movements",
+            "grants": [
+                {
+                    "grantee": "anon",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "anon",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "anon",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "anon",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "anon",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "anon",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "anon",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "authenticated",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "authenticated",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "authenticated",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "authenticated",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "authenticated",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "authenticated",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "authenticated",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "uuid",
+                    "default": "gen_random_uuid()",
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "organization_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "item_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "movement_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "quantity",
+                    "type": "integer",
+                    "default": "0",
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "invoice_id",
+                    "type": "text",
+                    "default": "''::text",
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "client_id",
+                    "type": "text",
+                    "default": "''::text",
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "unit_price",
+                    "type": "double precision",
+                    "default": "0",
+                    "ordinal": 8,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 9,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "note",
+                    "type": "text",
+                    "default": "''::text",
+                    "ordinal": 10,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "quantity_before",
+                    "type": "integer",
+                    "default": "0",
+                    "ordinal": 11,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "quantity_after",
+                    "type": "integer",
+                    "default": "0",
+                    "ordinal": 12,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "movement_kind",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 13,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "signed_base_quantity",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 14,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "source_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 15,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "source_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 16,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "source_line_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 17,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "command_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 18,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "idempotency_key",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 19,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "posting_group_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 20,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "reverses_movement_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 21,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "conversion_factor_snapshot",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 22,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "occurred_at",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 23,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "recorded_at",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 24,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "server_accepted_at",
+                    "type": "timestamp with time zone",
+                    "default": null,
+                    "ordinal": 25,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "server_sequence",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 26,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "created_by",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 27,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "device_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 28,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "contract_version",
+                    "type": "integer",
+                    "default": "1",
+                    "ordinal": 29,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "inventory_movements_org_idempotency",
+                    "definition": "CREATE UNIQUE INDEX inventory_movements_org_idempotency ON public.inventory_movements USING btree (organization_id, idempotency_key) WHERE (idempotency_key IS NOT NULL)"
+                },
+                {
+                    "name": "inventory_movements_org_item_kind_occurred",
+                    "definition": "CREATE INDEX inventory_movements_org_item_kind_occurred ON public.inventory_movements USING btree (organization_id, item_id, movement_kind, occurred_at)"
+                },
+                {
+                    "name": "inventory_movements_org_item_sequence",
+                    "definition": "CREATE INDEX inventory_movements_org_item_sequence ON public.inventory_movements USING btree (organization_id, item_id, server_sequence)"
+                },
+                {
+                    "name": "inventory_movements_org_reversal",
+                    "definition": "CREATE UNIQUE INDEX inventory_movements_org_reversal ON public.inventory_movements USING btree (organization_id, reverses_movement_id) WHERE (reverses_movement_id IS NOT NULL)"
+                },
+                {
+                    "name": "inventory_movements_org_source",
+                    "definition": "CREATE INDEX inventory_movements_org_source ON public.inventory_movements USING btree (organization_id, source_type, source_id, source_line_id)"
+                },
+                {
+                    "name": "inventory_movements_pkey",
+                    "definition": "CREATE UNIQUE INDEX inventory_movements_pkey ON public.inventory_movements USING btree (id)"
+                }
+            ],
+            "policies": [
+                {
+                    "name": "inventory_movements_delete",
+                    "check": null,
+                    "roles": [
+                        "authenticated"
+                    ],
+                    "using": "((organization_id = get_my_org_id()) AND has_perm('inventory_edit'::text))",
+                    "command": "d",
+                    "permissive": true
+                },
+                {
+                    "name": "inventory_movements_insert",
+                    "check": "((organization_id = get_my_org_id()) AND has_perm('inventory_edit'::text))",
+                    "roles": [
+                        "authenticated"
+                    ],
+                    "using": null,
+                    "command": "a",
+                    "permissive": true
+                },
+                {
+                    "name": "inventory_movements_select",
+                    "check": null,
+                    "roles": [
+                        "authenticated"
+                    ],
+                    "using": "((organization_id = get_my_org_id()) AND has_perm('inventory_view'::text))",
+                    "command": "r",
+                    "permissive": true
+                },
+                {
+                    "name": "inventory_movements_update",
+                    "check": "((organization_id = get_my_org_id()) AND has_perm('inventory_edit'::text))",
+                    "roles": [
+                        "authenticated"
+                    ],
+                    "using": "((organization_id = get_my_org_id()) AND has_perm('inventory_edit'::text))",
+                    "command": "w",
+                    "permissive": true
+                }
+            ],
+            "triggers": [
+                {
+                    "name": "inventory_reconciliation_movement_guard_v2",
+                    "definition": "CREATE TRIGGER inventory_reconciliation_movement_guard_v2 BEFORE INSERT OR DELETE OR UPDATE ON inventory_movements FOR EACH ROW EXECUTE FUNCTION inventory_reconciliation_movement_guard_v2()"
+                }
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "inventory_movements_item_id_fkey",
+                    "type": "f",
+                    "definition": "FOREIGN KEY (item_id) REFERENCES inventory_items(id) ON DELETE CASCADE"
+                },
+                {
+                    "name": "inventory_movements_org_item_fk",
+                    "type": "f",
+                    "definition": "FOREIGN KEY (organization_id, item_id) REFERENCES inventory_items(organization_id, id) ON DELETE RESTRICT NOT VALID"
+                },
+                {
+                    "name": "inventory_movements_organization_id_fkey",
+                    "type": "f",
+                    "definition": "FOREIGN KEY (organization_id) REFERENCES organizations(id)"
+                },
+                {
+                    "name": "inventory_movements_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (id)"
+                },
+                {
+                    "name": "inventory_movements_v2_contract_check",
+                    "type": "c",
+                    "definition": "CHECK (contract_version < 2 OR organization_id IS NOT NULL AND (movement_kind = ANY (ARRAY['OPENING_BALANCE'::text, 'PURCHASE'::text, 'SALE'::text, 'SALES_RETURN'::text, 'PURCHASE_RETURN'::text, 'MANUAL_ADJUSTMENT'::text, 'SHIPMENT_RECEIPT'::text, 'REVERSAL'::text, 'MIGRATION_RECONCILIATION'::text])) AND signed_base_quantity IS NOT NULL AND signed_base_quantity <> 0 AND NULLIF(btrim(source_type), ''::text) IS NOT NULL AND NULLIF(btrim(source_id), ''::text) IS NOT NULL AND NULLIF(btrim(command_id), ''::text) IS NOT NULL AND NULLIF(btrim(idempotency_key), ''::text) IS NOT NULL AND occurred_at IS NOT NULL AND recorded_at IS NOT NULL AND created_by IS NOT NULL AND NULLIF(btrim(device_id), ''::text) IS NOT NULL AND (movement_kind = 'REVERSAL'::text AND reverses_movement_id IS NOT NULL OR movement_kind <> 'REVERSAL'::text AND reverses_movement_id IS NULL) AND ((movement_kind <> ALL (ARRAY['PURCHASE'::text, 'SALES_RETURN'::text, 'SHIPMENT_RECEIPT'::text])) OR signed_base_quantity > 0) AND ((movement_kind <> ALL (ARRAY['SALE'::text, 'PURCHASE_RETURN'::text])) OR signed_base_quantity < 0)) NOT VALID"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_bootstrap_coverage_v313",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "aggregate_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "payload_version",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "owner_session",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "authoritative_source",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "backfill_strategy",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "future_write_strategy",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "stronger_semantics",
+                    "type": "boolean",
+                    "default": null,
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_bootstrap_coverage_v313_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_bootstrap_coverage_v313_pkey ON public.verto_sync_bootstrap_coverage_v313 USING btree (aggregate_type)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_bootstrap_coverage_v313_aggregate_type_check",
+                    "type": "c",
+                    "definition": "CHECK (aggregate_type <> ''::text)"
+                },
+                {
+                    "name": "verto_sync_bootstrap_coverage_v313_authoritative_source_check",
+                    "type": "c",
+                    "definition": "CHECK (authoritative_source <> ''::text)"
+                },
+                {
+                    "name": "verto_sync_bootstrap_coverage_v313_backfill_strategy_check",
+                    "type": "c",
+                    "definition": "CHECK (backfill_strategy <> ''::text)"
+                },
+                {
+                    "name": "verto_sync_bootstrap_coverage_v313_future_write_strategy_check",
+                    "type": "c",
+                    "definition": "CHECK (future_write_strategy <> ''::text)"
+                },
+                {
+                    "name": "verto_sync_bootstrap_coverage_v313_payload_version_check",
+                    "type": "c",
+                    "definition": "CHECK (payload_version > 0)"
+                },
+                {
+                    "name": "verto_sync_bootstrap_coverage_v313_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (aggregate_type)"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_bootstrap_page_tokens",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "page_token",
+                    "type": "uuid",
+                    "default": "gen_random_uuid()",
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "bootstrap_session_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "after_ordinal",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_bootstrap_page_tok_bootstrap_session_id_after_or_key",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_bootstrap_page_tok_bootstrap_session_id_after_or_key ON public.verto_sync_bootstrap_page_tokens USING btree (bootstrap_session_id, after_ordinal)"
+                },
+                {
+                    "name": "verto_sync_bootstrap_page_tokens_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_bootstrap_page_tokens_pkey ON public.verto_sync_bootstrap_page_tokens USING btree (page_token)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_bootstrap_page_tok_bootstrap_session_id_after_or_key",
+                    "type": "u",
+                    "definition": "UNIQUE (bootstrap_session_id, after_ordinal)"
+                },
+                {
+                    "name": "verto_sync_bootstrap_page_tokens_bootstrap_session_id_fkey",
+                    "type": "f",
+                    "definition": "FOREIGN KEY (bootstrap_session_id) REFERENCES verto_sync_bootstrap_sessions(bootstrap_session_id) ON DELETE CASCADE"
+                },
+                {
+                    "name": "verto_sync_bootstrap_page_tokens_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (page_token)"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_bootstrap_rows",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "bootstrap_session_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "ordinal",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "entity_version",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "payload_version",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "payload",
+                    "type": "jsonb",
+                    "default": null,
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "partition_key",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 8,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_bootstrap_rows_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_bootstrap_rows_pkey ON public.verto_sync_bootstrap_rows USING btree (bootstrap_session_id, ordinal)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_bootstrap_rows_bootstrap_session_id_fkey",
+                    "type": "f",
+                    "definition": "FOREIGN KEY (bootstrap_session_id) REFERENCES verto_sync_bootstrap_sessions(bootstrap_session_id) ON DELETE CASCADE"
+                },
+                {
+                    "name": "verto_sync_bootstrap_rows_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (bootstrap_session_id, ordinal)"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_bootstrap_sessions",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "bootstrap_session_id",
+                    "type": "uuid",
+                    "default": "gen_random_uuid()",
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "scope_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "organization_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "principal_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "contract_family",
+                    "type": "text",
+                    "default": "'verto-unified-sync'::text",
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "contract_version",
+                    "type": "integer",
+                    "default": "1",
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "scope_definition_version",
+                    "type": "integer",
+                    "default": "1",
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "baseline_revision",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 8,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "baseline_cursor",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 9,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "snapshot_row_count",
+                    "type": "bigint",
+                    "default": "0",
+                    "ordinal": 10,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 11,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "expires_at",
+                    "type": "timestamp with time zone",
+                    "default": null,
+                    "ordinal": 12,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "completed_at",
+                    "type": "timestamp with time zone",
+                    "default": null,
+                    "ordinal": 13,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "state",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 14,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_bootstrap_sessions_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_bootstrap_sessions_pkey ON public.verto_sync_bootstrap_sessions USING btree (bootstrap_session_id)"
+                },
+                {
+                    "name": "verto_sync_bootstrap_sessions_scope_idx",
+                    "definition": "CREATE INDEX verto_sync_bootstrap_sessions_scope_idx ON public.verto_sync_bootstrap_sessions USING btree (scope_id, state, expires_at)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_bootstrap_contract",
+                    "type": "c",
+                    "definition": "CHECK (contract_family = 'verto-unified-sync'::text AND contract_version = 1 AND scope_definition_version = 1)"
+                },
+                {
+                    "name": "verto_sync_bootstrap_sessions_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (bootstrap_session_id)"
+                },
+                {
+                    "name": "verto_sync_bootstrap_sessions_scope_id_fkey",
+                    "type": "f",
+                    "definition": "FOREIGN KEY (scope_id) REFERENCES verto_sync_scopes(scope_id) ON DELETE CASCADE"
+                },
+                {
+                    "name": "verto_sync_bootstrap_state",
+                    "type": "c",
+                    "definition": "CHECK (state = ANY (ARRAY['IN_PROGRESS'::text, 'READY'::text, 'COMPLETED'::text, 'EXPIRED'::text, 'INVALIDATED'::text]))"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_change_log",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "revision",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "organization_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "operation_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "entity_version",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "payload_version",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "payload",
+                    "type": "jsonb",
+                    "default": null,
+                    "ordinal": 8,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "origin_mutation_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 9,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "transaction_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 10,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "actor_user_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 11,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "source_kind",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 12,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "contract_family",
+                    "type": "text",
+                    "default": "'verto-unified-sync'::text",
+                    "ordinal": 13,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "contract_version",
+                    "type": "integer",
+                    "default": "1",
+                    "ordinal": 14,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "scope_definition_version",
+                    "type": "integer",
+                    "default": "1",
+                    "ordinal": 15,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "visibility_principal_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 16,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "required_permission",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 17,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "deleted_at",
+                    "type": "timestamp with time zone",
+                    "default": null,
+                    "ordinal": 18,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "changed_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 19,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_change_log_entity_revision_idx",
+                    "definition": "CREATE INDEX verto_sync_change_log_entity_revision_idx ON public.verto_sync_change_log USING btree (organization_id, aggregate_type, aggregate_id, revision DESC)"
+                },
+                {
+                    "name": "verto_sync_change_log_org_revision_idx",
+                    "definition": "CREATE INDEX verto_sync_change_log_org_revision_idx ON public.verto_sync_change_log USING btree (organization_id, revision)"
+                },
+                {
+                    "name": "verto_sync_change_log_org_tx_revision_idx",
+                    "definition": "CREATE INDEX verto_sync_change_log_org_tx_revision_idx ON public.verto_sync_change_log USING btree (organization_id, transaction_id, revision)"
+                },
+                {
+                    "name": "verto_sync_change_log_origin_mutation_idx",
+                    "definition": "CREATE INDEX verto_sync_change_log_origin_mutation_idx ON public.verto_sync_change_log USING btree (origin_mutation_id) WHERE (origin_mutation_id IS NOT NULL)"
+                },
+                {
+                    "name": "verto_sync_change_log_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_change_log_pkey ON public.verto_sync_change_log USING btree (revision)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+                {
+                    "name": "verto_sync_change_assign_revision",
+                    "definition": "CREATE TRIGGER verto_sync_change_assign_revision BEFORE INSERT ON verto_sync_change_log FOR EACH ROW EXECUTE FUNCTION verto_assign_sync_change_revision()"
+                },
+                {
+                    "name": "verto_sync_change_immutable",
+                    "definition": "CREATE TRIGGER verto_sync_change_immutable BEFORE DELETE OR UPDATE ON verto_sync_change_log FOR EACH ROW EXECUTE FUNCTION verto_reject_sync_change_log_mutation()"
+                },
+                {
+                    "name": "verto_sync_change_realtime_hint_after_insert",
+                    "definition": "CREATE TRIGGER verto_sync_change_realtime_hint_after_insert AFTER INSERT ON verto_sync_change_log FOR EACH ROW EXECUTE FUNCTION verto_publish_sync_realtime_hint()"
+                }
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_change_aggregate",
+                    "type": "c",
+                    "definition": "CHECK (aggregate_type = ANY (ARRAY['BUDGET'::text, 'CASH_MOVEMENT'::text, 'CASH_RECONCILIATION'::text, 'CASH_REGISTER'::text, 'CATEGORY'::text, 'CLIENT_CREDIT'::text, 'COMMISSION_PAYMENT'::text, 'COST_ALLOCATION'::text, 'CUSTOMER_PROFILE'::text, 'EDUCATIONAL_CONTENT'::text, 'EXPENSE'::text, 'GOODS_RECEIPT'::text, 'INVENTORY_COST_REVISION'::text, 'INVENTORY_ITEM'::text, 'INVENTORY_MOVEMENT'::text, 'INVENTORY_UNIT'::text, 'INVOICE'::text, 'ITEM_CATEGORY'::text, 'NOTE'::text, 'NOTIFICATION'::text, 'OPTIMAL_FOLLOW_UP'::text, 'OPTIMAL_MAINTENANCE'::text, 'OPTIMAL_VEHICLE'::text, 'ORGANIZATION_SETTINGS'::text, 'PARTY_IDENTITY'::text, 'PARTY_ROLE'::text, 'PAYMENT'::text, 'PRICE_LIST'::text, 'PURCHASE_MATCH'::text, 'PURCHASE_ORDER'::text, 'PURCHASE_PAYMENT_OVERRIDE'::text, 'REMINDER'::text, 'SHIPMENT'::text, 'SUPPLIER_PROFILE'::text, 'TEAM_OBSERVATION'::text]))"
+                },
+                {
+                    "name": "verto_sync_change_contract",
+                    "type": "c",
+                    "definition": "CHECK (contract_family = 'verto-unified-sync'::text AND contract_version = 1 AND scope_definition_version = 1)"
+                },
+                {
+                    "name": "verto_sync_change_log_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (revision)"
+                },
+                {
+                    "name": "verto_sync_change_operation",
+                    "type": "c",
+                    "definition": "CHECK (operation_type = ANY (ARRAY['UPSERT'::text, 'DELETE'::text, 'COMMAND'::text, 'ARCHIVE'::text, 'VOID'::text, 'REVERSE'::text, 'CANCEL'::text]))"
+                },
+                {
+                    "name": "verto_sync_change_payload_version_positive",
+                    "type": "c",
+                    "definition": "CHECK (payload_version > 0)"
+                },
+                {
+                    "name": "verto_sync_change_revision_positive",
+                    "type": "c",
+                    "definition": "CHECK (revision > 0)"
+                },
+                {
+                    "name": "verto_sync_change_source",
+                    "type": "c",
+                    "definition": "CHECK (source_kind = ANY (ARRAY['USER_RPC'::text, 'LEGACY_TABLE_WRITE'::text, 'SERVER_TRIGGER'::text, 'SYSTEM_JOB'::text, 'SERVICE_COMMAND'::text, 'BRIDGE'::text, 'MIGRATION'::text]))"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_change_suppressions",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "revision",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "reason",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_change_suppressions_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_change_suppressions_pkey ON public.verto_sync_change_suppressions USING btree (revision)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_change_suppressions_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (revision)"
+                },
+                {
+                    "name": "verto_sync_change_suppressions_reason_not_blank",
+                    "type": "c",
+                    "definition": "CHECK (btrim(reason) <> ''::text)"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_contract",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "contract_family",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "contract_version",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "schema_version",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "scope_definition_version",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "status",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "min_available_revision",
+                    "type": "bigint",
+                    "default": "0",
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "default_pull_page_changes",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "pull_limit_max",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 8,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "max_pull_page_bytes",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 9,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "max_transaction_group_bytes",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 10,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "max_mutation_payload_bytes",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 11,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "max_push_batch_mutations",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 12,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "max_push_batch_bytes",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 13,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "max_worker_operations_per_run",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 14,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "max_worker_runtime_millis",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 15,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "max_backlog_before_diagnostic_warning",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 16,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "bootstrap_session_ttl_seconds",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 17,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "bootstrap_page_max_rows",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 18,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "bootstrap_page_max_bytes",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 19,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "supported_offline_window_days",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 20,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "supported_old_client_window_days",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 21,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "retention_safety_margin_days",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 22,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "change_log_retention_days",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 23,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "tombstone_retention_days",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 24,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "receipt_retention_days",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 25,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "device_inactive_after_days",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 26,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "local_acked_outbox_diagnostic_retention_days",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 27,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "local_inbox_diagnostic_retention_days",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 28,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "production_pruning_enabled",
+                    "type": "boolean",
+                    "default": "false",
+                    "ordinal": 29,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 30,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 31,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_contract_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_contract_pkey ON public.verto_sync_contract USING btree (contract_family, contract_version)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_contract_family_v1",
+                    "type": "c",
+                    "definition": "CHECK (contract_family = 'verto-unified-sync'::text)"
+                },
+                {
+                    "name": "verto_sync_contract_limits",
+                    "type": "c",
+                    "definition": "CHECK (default_pull_page_changes > 0 AND default_pull_page_changes <= pull_limit_max AND max_mutation_payload_bytes <= max_pull_page_bytes AND max_pull_page_bytes <= max_transaction_group_bytes AND bootstrap_page_max_rows <= pull_limit_max AND bootstrap_page_max_bytes <= max_pull_page_bytes)"
+                },
+                {
+                    "name": "verto_sync_contract_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (contract_family, contract_version)"
+                },
+                {
+                    "name": "verto_sync_contract_retention",
+                    "type": "c",
+                    "definition": "CHECK (tombstone_retention_days >= (GREATEST(supported_offline_window_days, supported_old_client_window_days) + retention_safety_margin_days) AND change_log_retention_days >= (supported_offline_window_days + retention_safety_margin_days))"
+                },
+                {
+                    "name": "verto_sync_contract_status_expand",
+                    "type": "c",
+                    "definition": "CHECK (status = 'EXPAND_ONLY'::text)"
+                },
+                {
+                    "name": "verto_sync_contract_version_v1",
+                    "type": "c",
+                    "definition": "CHECK (contract_version = 1)"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_cursor_tokens",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "cursor_token",
+                    "type": "uuid",
+                    "default": "gen_random_uuid()",
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "scope_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "revision",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_cursor_tokens_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_cursor_tokens_pkey ON public.verto_sync_cursor_tokens USING btree (cursor_token)"
+                },
+                {
+                    "name": "verto_sync_cursor_tokens_scope_id_revision_key",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_cursor_tokens_scope_id_revision_key ON public.verto_sync_cursor_tokens USING btree (scope_id, revision)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_cursor_revision_nonnegative",
+                    "type": "c",
+                    "definition": "CHECK (revision >= 0)"
+                },
+                {
+                    "name": "verto_sync_cursor_tokens_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (cursor_token)"
+                },
+                {
+                    "name": "verto_sync_cursor_tokens_scope_id_fkey",
+                    "type": "f",
+                    "definition": "FOREIGN KEY (scope_id) REFERENCES verto_sync_scopes(scope_id) ON DELETE CASCADE"
+                },
+                {
+                    "name": "verto_sync_cursor_tokens_scope_id_revision_key",
+                    "type": "u",
+                    "definition": "UNIQUE (scope_id, revision)"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_manifest_partition_tokens",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "partition_token",
+                    "type": "uuid",
+                    "default": "gen_random_uuid()",
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "scope_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "partition_key",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_manifest_partition_scope_id_aggregate_type_parti_key",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_manifest_partition_scope_id_aggregate_type_parti_key ON public.verto_sync_manifest_partition_tokens USING btree (scope_id, aggregate_type, partition_key)"
+                },
+                {
+                    "name": "verto_sync_manifest_partition_tokens_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_manifest_partition_tokens_pkey ON public.verto_sync_manifest_partition_tokens USING btree (partition_token)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_manifest_partition_scope_id_aggregate_type_parti_key",
+                    "type": "u",
+                    "definition": "UNIQUE (scope_id, aggregate_type, partition_key)"
+                },
+                {
+                    "name": "verto_sync_manifest_partition_tokens_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (partition_token)"
+                },
+                {
+                    "name": "verto_sync_manifest_partition_tokens_scope_id_fkey",
+                    "type": "f",
+                    "definition": "FOREIGN KEY (scope_id) REFERENCES verto_sync_scopes(scope_id) ON DELETE CASCADE"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_realtime_hints",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "revision",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "organization_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_realtime_hints_org_revision_idx",
+                    "definition": "CREATE INDEX verto_sync_realtime_hints_org_revision_idx ON public.verto_sync_realtime_hints USING btree (organization_id, revision)"
+                },
+                {
+                    "name": "verto_sync_realtime_hints_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_realtime_hints_pkey ON public.verto_sync_realtime_hints USING btree (revision)"
+                }
+            ],
+            "policies": [
+                {
+                    "name": "verto_sync_realtime_hints_select",
+                    "check": null,
+                    "roles": [
+                        "authenticated"
+                    ],
+                    "using": "verto_can_read_sync_realtime_hint(revision, organization_id)",
+                    "command": "r",
+                    "permissive": true
+                }
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_realtime_hint_revision_positive",
+                    "type": "c",
+                    "definition": "CHECK (revision > 0)"
+                },
+                {
+                    "name": "verto_sync_realtime_hints_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (revision)"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_receipts",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "organization_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "mutation_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "request_hash",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "operation_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "status",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "server_revision",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 8,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "server_version",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 9,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "transaction_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 10,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "authoritative_payload",
+                    "type": "jsonb",
+                    "default": null,
+                    "ordinal": 11,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "conflict_code",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 12,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "validation_code",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 13,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 14,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "resolution_requirement",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 15,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_receipts_org_created_v309_idx",
+                    "definition": "CREATE INDEX verto_sync_receipts_org_created_v309_idx ON public.verto_sync_receipts USING btree (organization_id, created_at)"
+                },
+                {
+                    "name": "verto_sync_receipts_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_receipts_pkey ON public.verto_sync_receipts USING btree (organization_id, mutation_id)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+                {
+                    "name": "trg_capture_first_v2_write_m08",
+                    "definition": "CREATE TRIGGER trg_capture_first_v2_write_m08 AFTER INSERT ON verto_sync_receipts FOR EACH ROW EXECUTE FUNCTION verto_internal.capture_first_v2_write_m08()"
+                },
+                {
+                    "name": "verto_sync_receipt_immutable",
+                    "definition": "CREATE TRIGGER verto_sync_receipt_immutable BEFORE DELETE OR UPDATE ON verto_sync_receipts FOR EACH ROW EXECUTE FUNCTION verto_reject_sync_receipt_mutation()"
+                }
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_receipt_resolution_requirement_v309",
+                    "type": "c",
+                    "definition": "CHECK (resolution_requirement IS NULL OR (resolution_requirement = ANY (ARRAY['AUTO_REBASE_SAFE'::text, 'SERVER_WINS_SAFE'::text, 'LOCAL_RETRY_WITH_NEW_BASE'::text, 'REQUIRES_REVIEW'::text, 'REJECTED'::text]))) NOT VALID"
+                },
+                {
+                    "name": "verto_sync_receipts_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (organization_id, mutation_id)"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_scopes",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "scope_id",
+                    "type": "uuid",
+                    "default": "gen_random_uuid()",
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "organization_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "principal_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "contract_family",
+                    "type": "text",
+                    "default": "'verto-unified-sync'::text",
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "contract_version",
+                    "type": "integer",
+                    "default": "1",
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "scope_definition_version",
+                    "type": "integer",
+                    "default": "1",
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "visibility_fingerprint",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "created_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 8,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "invalidated_at",
+                    "type": "timestamp with time zone",
+                    "default": null,
+                    "ordinal": 9,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_scopes_active_identity_uq",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_scopes_active_identity_uq ON public.verto_sync_scopes USING btree (organization_id, principal_id, contract_family, contract_version, scope_definition_version, visibility_fingerprint) WHERE (invalidated_at IS NULL)"
+                },
+                {
+                    "name": "verto_sync_scopes_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_scopes_pkey ON public.verto_sync_scopes USING btree (scope_id)"
+                },
+                {
+                    "name": "verto_sync_scopes_principal_idx",
+                    "definition": "CREATE INDEX verto_sync_scopes_principal_idx ON public.verto_sync_scopes USING btree (principal_id, organization_id, invalidated_at)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_scope_contract",
+                    "type": "c",
+                    "definition": "CHECK (contract_family = 'verto-unified-sync'::text AND contract_version = 1 AND scope_definition_version = 1)"
+                },
+                {
+                    "name": "verto_sync_scopes_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (scope_id)"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_snapshot_state",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "organization_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "aggregate_id",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "entity_version",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "payload_version",
+                    "type": "integer",
+                    "default": null,
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "payload",
+                    "type": "jsonb",
+                    "default": null,
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "partition_key",
+                    "type": "text",
+                    "default": "'default'::text",
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "visibility_principal_id",
+                    "type": "uuid",
+                    "default": null,
+                    "ordinal": 8,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "required_permission",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 9,
+                    "identity": "",
+                    "not_null": false,
+                    "generated": ""
+                },
+                {
+                    "name": "updated_revision",
+                    "type": "bigint",
+                    "default": null,
+                    "ordinal": 10,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "updated_at",
+                    "type": "timestamp with time zone",
+                    "default": "now()",
+                    "ordinal": 11,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_snapshot_partition_idx",
+                    "definition": "CREATE INDEX verto_sync_snapshot_partition_idx ON public.verto_sync_snapshot_state USING btree (organization_id, aggregate_type, partition_key, aggregate_id)"
+                },
+                {
+                    "name": "verto_sync_snapshot_state_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_snapshot_state_pkey ON public.verto_sync_snapshot_state USING btree (organization_id, aggregate_type, aggregate_id)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_snapshot_payload_version_positive",
+                    "type": "c",
+                    "definition": "CHECK (payload_version > 0)"
+                },
+                {
+                    "name": "verto_sync_snapshot_revision_positive",
+                    "type": "c",
+                    "definition": "CHECK (updated_revision > 0)"
+                },
+                {
+                    "name": "verto_sync_snapshot_state_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (organization_id, aggregate_type, aggregate_id)"
+                }
+            ],
+            "rls_enabled": true
+        },
+        {
+            "owner": "postgres",
+            "table": "verto_sync_stronger_adapter_registry_v310",
+            "grants": [
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "postgres",
+                    "grantable": "YES",
+                    "privilege": "UPDATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "DELETE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "INSERT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "REFERENCES"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "SELECT"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRIGGER"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "TRUNCATE"
+                },
+                {
+                    "grantee": "service_role",
+                    "grantable": "NO",
+                    "privilege": "UPDATE"
+                }
+            ],
+            "schema": "public",
+            "columns": [
+                {
+                    "name": "aggregate_type",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 1,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "conflict_policy",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 2,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "delete_policy",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 3,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "local_authority",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 4,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "business_identity",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 5,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "stronger_server_authority",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 6,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "permission_authority",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 7,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "snapshot_policy",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 8,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                },
+                {
+                    "name": "client_push_mode",
+                    "type": "text",
+                    "default": null,
+                    "ordinal": 9,
+                    "identity": "",
+                    "not_null": true,
+                    "generated": ""
+                }
+            ],
+            "indexes": [
+                {
+                    "name": "verto_sync_stronger_adapter_registry_v310_pkey",
+                    "definition": "CREATE UNIQUE INDEX verto_sync_stronger_adapter_registry_v310_pkey ON public.verto_sync_stronger_adapter_registry_v310 USING btree (aggregate_type)"
+                }
+            ],
+            "policies": [
+            ],
+            "triggers": [
+            ],
+            "rls_forced": false,
+            "constraints": [
+                {
+                    "name": "verto_sync_stronger_adapter_push_mode_v310",
+                    "type": "c",
+                    "definition": "CHECK (client_push_mode = ANY (ARRAY['STRONGER_BRIDGE_READY_SHADOW'::text, 'SERVER_AUTHORITATIVE_NO_CLIENT_PUSH'::text, 'PRESERVED_EXISTING_STRONGER_RUNTIME'::text]))"
+                },
+                {
+                    "name": "verto_sync_stronger_adapter_registry_v310_pkey",
+                    "type": "p",
+                    "definition": "PRIMARY KEY (aggregate_type)"
+                }
+            ],
+            "rls_enabled": true
+        }
+    ],
+    "project_ref": "madkfvggyolmdberzmtb",
+    "captured_at_utc": "2026-09-10T09:36:22.850456+00:00"
+}

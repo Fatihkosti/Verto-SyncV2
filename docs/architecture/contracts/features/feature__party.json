@@ -1,0 +1,130 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.party.application.port.PartyCashBalancePort",
+      "com.verto.app.feature.party.application.port.PartyInvoiceVoidPort",
+      "com.verto.app.feature.party.domain.repository.PartyDirectoryGateway",
+      "com.verto.app.feature.party.domain.repository.PartyRemoteMirrorGateway",
+      "com.verto.app.feature.party.domain.repository.PartyRoleProjectionGateway"
+    ],
+    "external_dependencies": [
+      "implementation:libs.androidx.activity.compose",
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.androidx.paging.compose",
+      "implementation:libs.androidx.paging.runtime.ktx",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core",
+      "testImplementation:libs.junit"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app",
+      ":data:operations"
+    ],
+    "internal_packages": [
+      "com.verto.app.data.repository",
+      "com.verto.app.feature.party.application",
+      "com.verto.app.feature.party.application.activityevent",
+      "com.verto.app.feature.party.application.ledger",
+      "com.verto.app.feature.party.application.model",
+      "com.verto.app.feature.party.application.pendingaction",
+      "com.verto.app.feature.party.application.port",
+      "com.verto.app.feature.party.application.query",
+      "com.verto.app.feature.party.application.quickaction",
+      "com.verto.app.feature.party.application.search",
+      "com.verto.app.feature.party.data",
+      "com.verto.app.feature.party.data.activityevent",
+      "com.verto.app.feature.party.data.pendingaction",
+      "com.verto.app.feature.party.data.search",
+      "com.verto.app.feature.party.data.sync",
+      "com.verto.app.feature.party.di",
+      "com.verto.app.feature.party.domain.ledger",
+      "com.verto.app.feature.party.domain.model",
+      "com.verto.app.feature.party.domain.repository",
+      "com.verto.app.feature.party.presentation.addclient",
+      "com.verto.app.feature.party.presentation.client",
+      "com.verto.app.feature.party.presentation.competitor",
+      "com.verto.app.feature.party.presentation.shared",
+      "com.verto.app.feature.party.presentation.supplier"
+    ],
+    "outgoing_dependencies": [
+      ":core:audit",
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":data:preferences",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ],
+    "public_api": [
+      "com.verto.app.feature.party.application.model.PartyPaymentAllocationResult",
+      "com.verto.app.feature.party.application.port.PartyCashBalancePort",
+      "com.verto.app.feature.party.application.port.PartyInvoiceVoidPort",
+      "com.verto.app.feature.party.application.port.PartyPaymentAllocator",
+      "com.verto.app.feature.party.application.port.PartyPaymentTarget",
+      "com.verto.app.feature.party.domain.model.PartyClient",
+      "com.verto.app.feature.party.domain.repository.PartyDirectoryGateway",
+      "com.verto.app.feature.party.domain.repository.PartyRemoteMirrorGateway",
+      "com.verto.app.feature.party.domain.repository.PartyRoleProjection",
+      "com.verto.app.feature.party.domain.repository.PartyRoleProjectionGateway",
+      "com.verto.app.feature.party.presentation.addclient.AddEditClientScreen",
+      "com.verto.app.feature.party.presentation.client.ClientDashboardScreen",
+      "com.verto.app.feature.party.presentation.client.ClientPaymentScreen",
+      "com.verto.app.feature.party.presentation.client.ClientScreen",
+      "com.verto.app.feature.party.presentation.client.ClientStatementScreen",
+      "com.verto.app.feature.party.presentation.client.ClientsListScreen",
+      "com.verto.app.feature.party.presentation.competitor.CompetitorScreen",
+      "com.verto.app.feature.party.presentation.supplier.SupplierDashboardScreen",
+      "com.verto.app.feature.party.presentation.supplier.SupplierPaymentScreen",
+      "com.verto.app.feature.party.presentation.supplier.SupplierStatementScreen"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [
+      "ClientRepository",
+      "PartyDirectoryGateway",
+      "PartyFinancialQuery",
+      "PartySyncFallbackPort"
+    ],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:party",
+    "name": "feature/party",
+    "owner": ":feature:party",
+    "purpose": "Production capability implemented by :feature:party; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [
+      ":feature:dashboard:api"
+    ],
+    "legacy_cross_feature_debt": []
+  },
+  "provides_contracts": [
+    "party.lookup.v1"
+  ],
+  "consumes_contracts": [
+    "dashboard.home-search.v1"
+  ],
+  "deprecated_contracts": [],
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "43707c2b542e17da2c57586cbe9cc4c4525832a8352a9bbbf4a8015b4f803140",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v344"
+  }
+}

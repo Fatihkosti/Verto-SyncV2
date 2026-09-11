@@ -1,0 +1,89 @@
+{
+  "gate": "M04_SYNC_V2_PRODUCERS",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "writer_typed_payload",
+      "status": "PASS",
+      "detail": "UnifiedOutboxWriter accepts typed scalar payloads"
+    },
+    {
+      "name": "writer_transaction_guard",
+      "status": "PASS",
+      "detail": "enqueue + attachment enqueue require an open Room transaction"
+    },
+    {
+      "name": "canonical_boolean_number",
+      "status": "PASS",
+      "detail": "Boolean/Number are emitted as native JSON scalars"
+    },
+    {
+      "name": "canonical_nested",
+      "status": "PASS",
+      "detail": "nested payload values are canonicalized deterministically"
+    },
+    {
+      "name": "client_credit_atomic",
+      "status": "PASS",
+      "detail": "CLIENT_CREDIT row and V2 intent share one Room transaction"
+    },
+    {
+      "name": "client_credit_native_amount",
+      "status": "PASS",
+      "detail": "CLIENT_CREDIT amountMinor is numeric JSON"
+    },
+    {
+      "name": "team_observation_always_captured",
+      "status": "PASS",
+      "detail": "TEAM_OBSERVATION always captures durable V2 intent"
+    },
+    {
+      "name": "team_observation_legacy_transport_only",
+      "status": "PASS",
+      "detail": "legacy dirty marker is compatibility mirror until transport cutover"
+    },
+    {
+      "name": "registry_35",
+      "status": "PASS",
+      "detail": "35 unique aggregates"
+    },
+    {
+      "name": "team_observation_registry",
+      "status": "PASS",
+      "detail": "M04 audits the current 35-aggregate registry, not stale 34-aggregate evidence"
+    },
+    {
+      "name": "stronger_17",
+      "status": "PASS",
+      "detail": "17 stronger-domain bridge aggregates retained"
+    },
+    {
+      "name": "stronger_no_generic_duplicate",
+      "status": "PASS",
+      "detail": "specialized stronger outboxes remain single transport authorities"
+    },
+    {
+      "name": "no_global_cutover",
+      "status": "PASS",
+      "detail": "M04 does not prematurely enable global V2 or remove legacy fallback"
+    },
+    {
+      "name": "legacy_fence_deferred",
+      "status": "PASS",
+      "detail": "legacy producer fence remains deferred until transport replacement in M05"
+    },
+    {
+      "name": "no_scalar_stringification",
+      "status": "PASS",
+      "detail": "no typed scalar payload field is stringified"
+    },
+    {
+      "name": "known_generic_producer_transactions",
+      "status": "PASS",
+      "detail": "19/19 producer files expose their required transaction boundary"
+    }
+  ],
+  "registry_aggregate_count": 35,
+  "stronger_bridge_count": 17,
+  "build_status": "BLOCKED_OFFLINE_GRADLE_DISTRIBUTION"
+}

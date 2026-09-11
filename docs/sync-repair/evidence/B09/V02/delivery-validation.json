@@ -1,0 +1,24 @@
+{
+  "status": "PASS_FOR_ARCHIVE_INTEGRITY_ONLY",
+  "product_files": 1851,
+  "current_product_tree_sha256": "2aa1a4e16d9ea9d1d37fd9b33fc0bc730616a288634da78c7aa56fc3ad97bbc7",
+  "original_files_preserved": 2659,
+  "modified_existing_files": 11,
+  "deleted_original_files": 0,
+  "contract_standalone_exact_unchanged": true,
+  "contract_embedded_exact_unchanged": true,
+  "historical_evidence_unchanged": true,
+  "original_tests_preserved": true,
+  "actual_test_method_counts": {
+    "JVM": 12,
+    "Room": 33
+  },
+  "actual_Gradle_JVM_Room_status": "NOT_RUN",
+  "G-B09": "BLOCKED",
+  "B10": "NOT_STARTED",
+  "release_ready": false,
+  "documentation_gate": "FAIL; no new errors versus source ZIP",
+  "integrated_documentation_gate": "FAIL exit126; original script permission",
+  "remote_actions": "NONE",
+  "pending_operations": "NONE"
+}

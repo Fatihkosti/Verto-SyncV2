@@ -1,0 +1,5 @@
+OPTIMAL_COMPANY_VISIBILITY_381_STATIC_GATE=PASS
+- live clients read uses server RLS authority
+- direct optimal_verto_links client read removed
+- verto_list_optimal_links RPC path present
+- cached organization id repaired from live tenant rows

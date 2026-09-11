@@ -1,0 +1,18 @@
+{
+  "inheritedCount": 9,
+  "inheritedExceptions": [
+    "room_version_79",
+    "persisted_sequence_authority",
+    "payload_bound_preserved",
+    "producer_discovery_unclassified_zero",
+    "stronger_outboxes_proven",
+    "datastore_delete_authority_zero",
+    "dirty_only_authority_zero",
+    "org_settings_room_canonical",
+    "attachment_intent_persisted"
+  ],
+  "session": 312,
+  "source": "VERTO_SYNC_307_EXCEPTION_CARRYFORWARD_v311.json",
+  "worsenedCount": 0,
+  "new312Waivers": 0
+}

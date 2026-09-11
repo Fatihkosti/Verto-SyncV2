@@ -1,0 +1,41 @@
+{
+  "session": {
+    "id": 324,
+    "input_sha256": "c9487a46904b138b9c77bc498a1b37e3073619d9d1be8fe09f7110313e7e909f",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_324_INPUT_SNAPSHOT.json",
+    "scope": "TECHNICAL DEBT GOVERNANCE / NON-GIT DIFFERENTIAL / BEHAVIOR-PRESERVING",
+    "allowed_modules": [":data:database", ":feature:inventory", ":app", ":data:network", ":data:operations"],
+    "allowed_files": [
+      "tools/technical_debt/**",
+      "tools/architecture/**",
+      "tools/architecture/tests/**",
+      "scripts/verify-kotlin-quality-static.py",
+      "scripts/ci/run-quality-gate.sh",
+      "scripts/ci/run-source-of-truth-admission.sh",
+      "scripts/ci/verify-change-contract.py",
+      "docs/architecture/contracts/sessions/session-324.json",
+      "docs/architecture/contracts/complexity-baseline-v324.json",
+      "docs/architecture/verification/SESSION_324_INPUT_SNAPSHOT.json",
+      "docs/architecture/verification/**v324**",
+      "docs/quality/**",
+      "docs/kotlin/**",
+      "docs/DOCUMENTATION_INVENTORY.md",
+      "docs/CANONICAL_DOCUMENT_MAP.md",
+      "docs/INDEX.md",
+      "CHANGELOG.md"
+    ],
+    "forbidden_files": [
+      "app/schemas/**", "supabase/**", "functions/**", "SQL/**", "sql/**", "gradle/**", "gradle/wrapper/**", "build-logic/**", "settings.gradle.kts",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/**", "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt", "data/sync/**"
+    ]
+  },
+  "architecture": {
+    "invariants": ["Room schema remains version 81", "No new dependency or dependency cycle", "Inventory behavior and transaction boundaries remain unchanged", "No new external dependency"],
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": ["supabase", "functions", "sql", "new external Gradle dependency"]
+  },
+  "verification": {
+    "required_tests": ["Technical Debt Registry verifier tests", "Ratchet regression tests", "Differential gate regression tests", "Architecture guard self-test"],
+    "required_gates": ["change-contract", "architecture", "dependency", "technical-debt-ratchet", "differential-quality", "kotlin-quality", "documentation", "design-system", "design-system-diff", "detekt", "lint", "tests", "debug-build", "source-of-truth-admission"]
+  }
+}

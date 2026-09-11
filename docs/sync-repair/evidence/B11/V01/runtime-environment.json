@@ -1,0 +1,36 @@
+{
+  "checkpoint": "B11-V01",
+  "checked_at_utc": "2026-09-10T22:56:56.397659+00:00",
+  "status": "BLOCKED",
+  "tools": {
+    "java": {
+      "path": "/usr/bin/java",
+      "result": {
+        "exit_code": 0,
+        "output": "openjdk version \"21.0.11\" 2026-04-21\nOpenJDK Runtime Environment (build 21.0.11+10-1-deb13u2-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.11+10-1-deb13u2-Debian, mixed mode, sharing)"
+      }
+    },
+    "kotlinc": {
+      "path": "/root/.sdkman/candidates/kotlin/current/bin/kotlinc",
+      "result": {
+        "exit_code": 0,
+        "output": "info: kotlinc-jvm 1.9.0 (JRE 21.0.11+10-1-deb13u2-Debian)"
+      }
+    }
+  },
+  "required_gradle": "8.9",
+  "project_kotlin": "2.1.0",
+  "gradle_distributions": [],
+  "sdk_paths": [],
+  "adb": null,
+  "emulator": null,
+  "gradle_wrapper_launched": true,
+  "network_attempted_by_wrapper": true,
+  "gradle_command": "./gradlew :data:database:compileDebugKotlin :data:sync:compileDebugKotlin :app:compileDebugKotlin --offline --stacktrace",
+  "gradle_exit_code": 1,
+  "gradle_failure": "java.net.UnknownHostException: services.gradle.org while uncached Gradle 8.9 wrapper attempted distribution download",
+  "ksp_hilt_android_build": "NOT_RUN",
+  "real_room_execution": "NOT_RUN",
+  "compose_ui_runtime": "NOT_RUN",
+  "server_receipt_echo_roundtrip": "NOT_RUN"
+}

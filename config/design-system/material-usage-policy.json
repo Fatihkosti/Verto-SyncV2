@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 290,
+  "components": [
+    {
+      "component": "Button",
+      "classification": "MUST_WRAP",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "core/designsystem",
+      "reason": "Verto visual contract requires canonical wrapper outside core/designsystem.",
+      "replacement": "VertoButton",
+      "migrationStatus": "ENFORCED_CLEAN",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "OutlinedButton",
+      "classification": "MUST_WRAP",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "core/designsystem",
+      "reason": "Verto visual contract requires canonical wrapper outside core/designsystem.",
+      "replacement": "VertoOutlinedButton",
+      "migrationStatus": "ENFORCED_CLEAN",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "TextField",
+      "classification": "MUST_WRAP",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "core/designsystem",
+      "reason": "Verto visual contract requires canonical wrapper outside core/designsystem.",
+      "replacement": "VertoTextField",
+      "migrationStatus": "ENFORCED_CLEAN",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "OutlinedTextField",
+      "classification": "MUST_WRAP",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "core/designsystem",
+      "reason": "Verto visual contract requires canonical wrapper outside core/designsystem.",
+      "replacement": "VertoOutlinedTextField",
+      "migrationStatus": "ENFORCED_CLEAN",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "IconButton",
+      "classification": "MUST_WRAP",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "core/designsystem",
+      "reason": "Verto visual contract requires canonical wrapper outside core/designsystem.",
+      "replacement": "VertoIconButton",
+      "migrationStatus": "LEGACY_PENDING",
+      "enforceFromSession": 301
+    },
+    {
+      "component": "Card",
+      "classification": "MUST_WRAP",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "core/designsystem",
+      "reason": "Verto visual contract requires canonical wrapper outside core/designsystem.",
+      "replacement": "VertoCard",
+      "migrationStatus": "LEGACY_PENDING",
+      "enforceFromSession": 299
+    },
+    {
+      "component": "ModalBottomSheet",
+      "classification": "MUST_WRAP",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "core/designsystem",
+      "reason": "Verto visual contract requires canonical wrapper outside core/designsystem.",
+      "replacement": "VertoBottomSheet",
+      "migrationStatus": "LEGACY_PENDING",
+      "enforceFromSession": 299
+    },
+    {
+      "component": "TabRow",
+      "classification": "MUST_WRAP",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "core/designsystem",
+      "reason": "Verto visual contract requires canonical wrapper outside core/designsystem.",
+      "replacement": "VertoTabRow",
+      "migrationStatus": "LEGACY_PENDING",
+      "enforceFromSession": 299
+    },
+    {
+      "component": "ScrollableTabRow",
+      "classification": "MUST_WRAP",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "core/designsystem",
+      "reason": "Verto visual contract requires canonical wrapper outside core/designsystem.",
+      "replacement": "VertoScrollableTabRow",
+      "migrationStatus": "LEGACY_PENDING",
+      "enforceFromSession": 299
+    },
+    {
+      "component": "TopAppBar",
+      "classification": "MUST_WRAP",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "core/designsystem",
+      "reason": "Verto visual contract requires canonical wrapper outside core/designsystem.",
+      "replacement": "VertoTopAppBar",
+      "migrationStatus": "LEGACY_PENDING",
+      "enforceFromSession": 301
+    },
+    {
+      "component": "Text",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "direct use with Theme/Tokens",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "Icon",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "direct use with Theme/Tokens",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "Surface",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "direct use with Theme/Tokens",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "TextButton",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "direct text action",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "AlertDialog",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "non-confirmation only; confirmation uses VertoConfirmationDialog",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "Checkbox",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "direct tokenized use",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "RadioButton",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "direct tokenized use",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "Switch",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "direct tokenized use",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "LinearProgressIndicator",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "inline progress only",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "CircularProgressIndicator",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "inline progress only",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "FilterChip",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "direct use when no stable wrapper contract exists",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "DropdownMenu",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "platform menu primitive",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "ExposedDropdownMenuBox",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "platform selection primitive",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "SnackbarHost",
+      "classification": "DIRECT_USE_ALLOWED",
+      "scope": "SRC_MAIN_OUTSIDE_CORE_DESIGNSYSTEM",
+      "owner": "androidx.compose.material3",
+      "reason": "Direct Material3 use is allowed when Theme/Tokens are respected and no duplicate visual contract is created.",
+      "replacement": "host primitive",
+      "migrationStatus": "DIRECT_ALLOWED",
+      "enforceFromSession": 290
+    },
+    {
+      "component": "androidx.compose.material.*",
+      "classification": "FORBIDDEN",
+      "scope": "ALL_SRC_MAIN_EXCEPT_ANDROIDX_COMPOSE_MATERIAL_ICONS",
+      "owner": "forbidden",
+      "reason": "Material2 UI is forbidden; Material3 is the supported UI foundation.",
+      "replacement": "androidx.compose.material3.*",
+      "migrationStatus": "FORBIDDEN_ACTIVE",
+      "enforceFromSession": 290
+    }
+  ]
+}

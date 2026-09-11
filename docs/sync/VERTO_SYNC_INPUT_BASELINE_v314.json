@@ -1,0 +1,13 @@
+{
+  "aggregateRegistryCount": 34,
+  "inheritedExceptionCount": 9,
+  "inputArchiveEntries": 1820,
+  "inputProductionKotlinCount": 1191,
+  "inputZipName": "Verto-v313-source-of-truth.zip",
+  "inputZipSha256": "a853781617dfb24b4ffb013afce994a9863825a4a4509582acaea17eefafe21e",
+  "owner310AggregateCount": 17,
+  "planSha256ViaV313Verification": "a767087c5f1659dcd7c660c189542ef2d7774c0f647ff9321e9f53219a7dfd97",
+  "room": 81,
+  "session313Sha256": "7a420fab0082b3fce37340727ae010b457b485567bbd7a46541c8fc6b05a7bd9",
+  "v313VerificationSha256": "2cd5814dfcd7cc3680fa9b435559c7eaef830b27c308c2a236b11ab9c8cc4529"
+}

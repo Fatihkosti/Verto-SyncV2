@@ -1,0 +1,252 @@
+{
+  "baseline_kind": "documented_live_contract_baseline",
+  "source": {
+    "zip": "Verto-latest-main-50b097c4.zip",
+    "zip_sha256": "7932ef4c2a0ec2f4909cd6fd2ecdfadd3011340e1b44be868304546b56d31257",
+    "git_commit": "50b097c439a0b5cc5cf5153b8fd3cfe2bd9a6a89",
+    "local_migration_head_before_m02": "20260830113005_v390_price_list_template_sync_runtime"
+  },
+  "live": {
+    "project": "Verto-app",
+    "postgres_major": 17,
+    "migration_head": {
+      "version": "20260908154626",
+      "name": "m02_team_observation_visibility_alignment"
+    },
+    "contract_family": "verto-unified-sync",
+    "contract_version": 1,
+    "status": "EXPAND_ONLY",
+    "min_available_revision": 0,
+    "aggregate_coverage": 35,
+    "m02_function_surface_md5": "862ae50f015f920da7aaf0361a8d952b",
+    "m02_function_surface_entries": 20
+  },
+  "post_v390_live_migration_history": [
+    {
+      "version": "20260830200718",
+      "name": "v391_auth_tenant_security_closeout"
+    },
+    {
+      "version": "20260830201332",
+      "name": "v391_employee_permission_default_backfill"
+    },
+    {
+      "version": "20260831033809",
+      "name": "v392_party_payload_contract_v2"
+    },
+    {
+      "version": "20260831033847",
+      "name": "v392_party_unified_adapter"
+    },
+    {
+      "version": "20260831033908",
+      "name": "v392_party_snapshot_backfill"
+    },
+    {
+      "version": "20260831040842",
+      "name": "v393_financial_unified_v2_materialization"
+    },
+    {
+      "version": "20260831041626",
+      "name": "v393_financial_v2_snapshot_backfill"
+    },
+    {
+      "version": "20260831043021",
+      "name": "v393_invoice_draft_delete_v2"
+    },
+    {
+      "version": "20260831051235",
+      "name": "v394_light_crud_unified_adapter"
+    },
+    {
+      "version": "20260831051409",
+      "name": "v394_light_crud_snapshot_backfill"
+    },
+    {
+      "version": "20260831051952",
+      "name": "v394_inventory_unit_integer_factor_hardening"
+    },
+    {
+      "version": "20260831082751",
+      "name": "v399_group1_unified_v2"
+    },
+    {
+      "version": "20260831085520",
+      "name": "v400_group2_unified_v2"
+    },
+    {
+      "version": "20260831085802",
+      "name": "v400_cash_movement_current_schema_hotfix"
+    },
+    {
+      "version": "20260901051134",
+      "name": "v403_team_observation_unified_v2"
+    },
+    {
+      "version": "20260901052213",
+      "name": "v403_team_observation_legacy_fallback_restore"
+    },
+    {
+      "version": "20260901052529",
+      "name": "v404_team_observation_rollout_fallback"
+    },
+    {
+      "version": "20260901054857",
+      "name": "v405_b11a_purchase_order_contract_restore"
+    },
+    {
+      "version": "20260901054933",
+      "name": "v405_b11a_inventory_item_contract_restore"
+    },
+    {
+      "version": "20260901054957",
+      "name": "v405_b11a_budget_contract_restore"
+    },
+    {
+      "version": "20260901055033",
+      "name": "v405_b11a_shipment_contract_restore"
+    },
+    {
+      "version": "20260901055153",
+      "name": "v405_b11a_price_list_contract_restore"
+    },
+    {
+      "version": "20260901055310",
+      "name": "v405_b11a_notification_contract_restore"
+    },
+    {
+      "version": "20260901114315",
+      "name": "v407_b04_sync_rollout_runtime_config"
+    },
+    {
+      "version": "20260901154032",
+      "name": "autodrive_pre_release_contract_reconcile_phase1"
+    },
+    {
+      "version": "20260901154105",
+      "name": "autodrive_pre_release_chat_recovery_contract_v71"
+    },
+    {
+      "version": "20260902115517",
+      "name": "v419_b13_controlled_authoritative_cutover"
+    },
+    {
+      "version": "20260902115736",
+      "name": "v419_b13_rollout_audit_fk_indexes"
+    },
+    {
+      "version": "20260903065255",
+      "name": "autodrive_v77_invite_code_auth_cutover"
+    },
+    {
+      "version": "20260903070029",
+      "name": "autodrive_v77_drop_join_request_runtime"
+    },
+    {
+      "version": "20260903070456",
+      "name": "autodrive_v77_fix_join_code_activation"
+    },
+    {
+      "version": "20260903072136",
+      "name": "autodrive_v77_clean_phone_entry_contract"
+    },
+    {
+      "version": "20260903072249",
+      "name": "autodrive_v77_fix_balance_conflict"
+    },
+    {
+      "version": "20260904080238",
+      "name": "autodrive_revoke_single_push_token_v2"
+    },
+    {
+      "version": "20260904170532",
+      "name": "autodrive_prelaunch_financial_snapshot_20260904"
+    },
+    {
+      "version": "20260904170810",
+      "name": "autodrive_wallet_canonical_v1"
+    },
+    {
+      "version": "20260904171026",
+      "name": "autodrive_wallet_security_v1"
+    },
+    {
+      "version": "20260904171052",
+      "name": "autodrive_prelaunch_financial_reconcile_20260904"
+    },
+    {
+      "version": "20260904171651",
+      "name": "autodrive_financial_anon_lockdown_v1"
+    },
+    {
+      "version": "20260904174046",
+      "name": "commission_canonical_v1"
+    },
+    {
+      "version": "20260904174524",
+      "name": "commission_eligibility_rls_v1"
+    },
+    {
+      "version": "20260904184754",
+      "name": "autodrive_all_commissions_paging_v1"
+    },
+    {
+      "version": "20260904194642",
+      "name": "autodrive_balance_activity_paging_v1"
+    },
+    {
+      "version": "20260904202828",
+      "name": "autodrive_pending_commissions_v1"
+    },
+    {
+      "version": "20260904202907",
+      "name": "autodrive_commission_view_runtime_permissions"
+    },
+    {
+      "version": "20260905064646",
+      "name": "autodrive_weekly_performance_v1"
+    },
+    {
+      "version": "20260905065901",
+      "name": "autodrive_weekly_target_initialization_v1"
+    },
+    {
+      "version": "20260908153803",
+      "name": "m02_sync_contract_closeout"
+    },
+    {
+      "version": "20260908154626",
+      "name": "m02_team_observation_visibility_alignment"
+    }
+  ],
+  "m02_data_consistency": {
+    "latest_identities": 1683,
+    "exact_consistent": 1625,
+    "superseded_party_aliases": 58,
+    "suppressed_synthetic_changes": 3,
+    "unresolved": 0
+  },
+  "reproduction_gate": {
+    "status": "NOT_RUN",
+    "reason": "No local PostgreSQL/Supabase CLI/Docker runtime and no existing Supabase development branch. Exact post-v390 historical SQL files are not present in the supplied source, so a clean reset cannot be truthfully claimed. Creating a hosted branch has cost and requires separate confirmation."
+  },
+  "note": "This manifest fingerprints the verified live M02 surface and migration history. It is evidence of current-state parity targets, not a substitute for a clean rebuild.",
+  "m02_local_vs_live_migration_text": {
+    "status": "DIFFERENT_RAW_TEXT_NOT_A_GATE_PASS",
+    "local_files": [
+      {
+        "version": "20260908153803",
+        "sha256": "507bfee756eb654ce9a8fad2e7ad947f9fab64ac30388e70bae1aa0d7f21f80b",
+        "local_normalized_md5": "12b95ff36526558a1108c0b8e519f19d",
+        "live_normalized_md5": "a29407343de906236eb119ae3bcbe1d4"
+      },
+      {
+        "version": "20260908154626",
+        "sha256": "8846d741e448c4df6dce73a83320033896a3a61e42aa7a57933cd9cac6e16bd4",
+        "local_normalized_md5": "c003ca63748c0085041e19d009f599f1",
+        "live_normalized_md5": "427f0d2a4cefb48421db137fd071fc5b"
+      }
+    ],
+    "meaning": "The local M02 migrations are reconstructed source files with the exact live history versions/names, but their stored SQL text is not byte/whitespace-normalized identical to schema_migrations. Clean rebuild must validate resulting schema fingerprints before this becomes PASS."
+  }
+}

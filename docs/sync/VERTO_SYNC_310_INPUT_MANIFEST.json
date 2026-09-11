@@ -1,0 +1,28 @@
+{
+  "aggregateRegistryCount": 34,
+  "frozenPaths": {
+    "app/schemas/com.verto.app.data.local.AppDatabase/80.json": "1d077e2539cf8ac4a2cf618c11c0a97f7de44f0c2bf15298e923f39b75988543",
+    "core/common/src/main/kotlin/com/verto/app/utils/FeatureFlags.kt": "ad159d5e9f91e406127a5220c4e6729a51f659577ea4e673f9cce98f0de57203",
+    "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt": "9ff0dc54abaa87591bfdf294ce1d8888fd3993b0fbdfcf5d105ae1d3693c5bbb",
+    "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations79To80.kt": "823e7221993ab6766c05bf973b9e709427019e029264f5e919ef63a973cf640a",
+    "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt": "0a7f2b7263dd19723b9b68da6988f1b3e649b420325cf50b8694505d28c880c7",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/RealtimeManager.kt": "f5671b96b17c3f562391f97e7c9562f83c246f08d5f4921186ba4282a78270b6",
+    "data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorker.kt": "16eab4a5533bf791e860281c08c142c2fa8d0f618471a1b54b7189f2f6c03a43",
+    "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql": "a2daf28b3a05b35907267bfc766fc6919ba5c28613854c0c0d68ee186313e908",
+    "supabase/migrations/20260821123000_v309_verto_unified_sync_push.sql": "c453748be91151702d08e67200556fdd0ab66fbe7d905eff8b9357d8ca8c9bdf"
+  },
+  "inputArchiveEntries": 2622,
+  "inputProductionKotlinCount": 1175,
+  "inputZipName": "Verto-v309-source-of-truth.zip",
+  "inputZipSha256": "e45f32c009ae605d010361cf12da188230ef3bf8eed0650bba81bb35dc21817d",
+  "owner310AggregateCount": 17,
+  "roomVersion": 80,
+  "runtimeExecutionPolicy": "USER_AUTHORIZED_STATIC_ONLY; build/unit/PostgreSQL runtime not executed; this is not a waiver",
+  "session": 310,
+  "session309ContractSha256": "66f172a35abd976df8a6b443aa55c2c652945a38cad76f8b425eb6b8e51accea",
+  "session310ContractSha256": "6b26c6de0cc3bd500ddc15fee830f5fcea1fd84c937d4667584c268e49384094",
+  "v309Blockers": [],
+  "v309FinalVerdict": "PASS_STATIC_IDEMPOTENT_PUSH_CONFLICT_ENGINE / INHERITED_307_EXCEPTIONS=9 / RUNTIME_V2_DISABLED / BUILD_NOT_VERIFIED / POSTGRES_NOT_EXECUTED",
+  "v309Handoff310Authorized": true,
+  "v309VerificationSha256": "60bfccdfaef3905862065825d415d18cb763a1eb90653bc3ca1cfb74ba24955d"
+}

@@ -1,0 +1,2803 @@
+{
+  "counts": {
+    "direct_external_dependency_refs": 285,
+    "direct_project_edges": 153,
+    "feature_modules": 18,
+    "legacy_cross_feature_edges": 0,
+    "settings_modules": 30
+  },
+  "default_policy": "DENY_UNDECLARED",
+  "enforcement": "V320_DEFAULT_DENY_UNDECLARED_PROJECT_AND_EXTERNAL",
+  "format": "verto-dependency-contract-v1",
+  "modules": [
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:audit"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:export"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:network"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:operations"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:preferences"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:sync"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:auth"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:commission"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:dashboard"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:expenses"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:integration:optimal"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:inventory"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:invoice"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:management"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:messages"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:notifications"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:organization"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:party"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:payment"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:profile"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:reports"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:settings"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:shipment"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.androidx.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.androidx.paging.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.androidx.paging.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.coil.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.firebase.bom",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.firebase.crashlytics.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.firebase.messaging.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.serialization.json",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.vico.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "app/build.gradle.kts",
+          "identity": "implementation:libs.vico.compose.m3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":app"
+    },
+    {
+      "direct_project_dependencies": [],
+      "external_dependencies": [
+        {
+          "evidence_path": "core/common/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/common/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":core:common"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "core/crash/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "core/crash/build.gradle.kts",
+          "identity": "implementation:libs.firebase.bom",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/crash/build.gradle.kts",
+          "identity": "implementation:libs.firebase.crashlytics.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":core:crash"
+    },
+    {
+      "direct_project_dependencies": [],
+      "external_dependencies": [
+        {
+          "evidence_path": "core/session/build.gradle.kts",
+          "identity": "api:libs.kotlinx.serialization.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/session/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":core:session"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "core/audit/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "core/audit/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/audit/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.serialization.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":core:audit"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "core/export/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "core/export/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "core/export/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":core:export"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "core/designsystem/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "core/designsystem/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.androidx.compose.bom",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/designsystem/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.androidx.test.ext.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/designsystem/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.androidx.ui.test.junit4",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/designsystem/build.gradle.kts",
+          "identity": "debugImplementation:libs.androidx.ui.test.manifest",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/designsystem/build.gradle.kts",
+          "identity": "implementation:libs.androidx.compose.foundation",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/designsystem/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/designsystem/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/designsystem/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "core/designsystem/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":core:designsystem"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/auth/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:auth"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:audit"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.androidx.room.testing",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.androidx.test.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.androidx.test.ext.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.kotlinx.coroutines.test",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "api:libs.androidx.room.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "api:libs.androidx.room.paging",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "api:libs.androidx.room.runtime",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "api:libs.kotlinx.serialization.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "implementation:libs.androidx.paging.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "ksp:libs.androidx.room.compiler",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/database/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":data:database"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "data/preferences/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "data/preferences/build.gradle.kts",
+          "identity": "api:libs.androidx.datastore.preferences",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/preferences/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":data:preferences"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:preferences"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "api:libs.kotlinx.serialization.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "implementation:libs.ktor.client.android",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "implementation:libs.ktor.client.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "implementation:libs.ktor.utils",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "implementation:libs.supabase.auth",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "implementation:libs.supabase.bom",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "implementation:libs.supabase.functions",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "implementation:libs.supabase.postgrest",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "implementation:libs.supabase.realtime",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "implementation:libs.supabase.storage",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/network/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":data:network"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "data/sync/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "data/sync/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        },
+        {
+          "evidence_path": "data/sync/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:network"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "data/sync/build.gradle.kts",
+          "identity": "implementation:libs.androidx.work.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/sync/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/sync/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.serialization.json",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/sync/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "Session 328 direct isolated SyncManager unit tests; alias already existed in the version catalog.",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/sync/build.gradle.kts",
+          "identity": "testImplementation:libs.kotlinx.coroutines.test",
+          "rationale": "Session 328 deterministic coroutine orchestration tests; alias already existed in the version catalog.",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":data:sync"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:audit"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:export"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:network"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:preferences"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:sync"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "rationale": "explicit API-only module edge admitted by consumer manifest and provider public contract; not implementation debt",
+          "status": "ALLOWED_PUBLIC_API",
+          "target": ":feature:dashboard:api"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.androidx.test.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.androidx.test.ext.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.kotlinx.coroutines.test",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "implementation:libs.androidx.paging.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "implementation:libs.androidx.paging.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/inventory/build.gradle.kts",
+          "identity": "testImplementation:libs.kotlinx.coroutines.test",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:inventory"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:audit"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:network"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:preferences"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:sync"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "rationale": "explicit API-only module edge admitted by consumer manifest and provider public contract; not implementation debt",
+          "status": "ALLOWED_PUBLIC_API",
+          "target": ":feature:dashboard:api"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "implementation:libs.androidx.paging.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "implementation:libs.androidx.paging.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/party/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:party"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:audit"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:export"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:network"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:sync"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "rationale": "explicit API-only module edge admitted by consumer manifest and provider public contract; not implementation debt",
+          "status": "ALLOWED_PUBLIC_API",
+          "target": ":feature:dashboard:api"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "implementation:libs.androidx.paging.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "implementation:libs.androidx.paging.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.serialization.json",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/invoice/build.gradle.kts",
+          "identity": "testImplementation:libs.kotlinx.coroutines.test",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:invoice"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:audit"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:network"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:sync"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "rationale": "explicit API-only module edge admitted by consumer manifest and provider public contract; not implementation debt",
+          "status": "ALLOWED_PUBLIC_API",
+          "target": ":feature:dashboard:api"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/payment/build.gradle.kts",
+          "identity": "testImplementation:libs.kotlinx.coroutines.test",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:payment"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:audit"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:sync"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "rationale": "explicit API-only module edge admitted by consumer manifest and provider public contract; not implementation debt",
+          "status": "ALLOWED_PUBLIC_API",
+          "target": ":feature:dashboard:api"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.androidx.compose.bom",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.androidx.test.ext.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "androidTestImplementation:libs.androidx.ui.test.junit4",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "debugImplementation:libs.androidx.ui.test.manifest",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "implementation:libs.coil.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/shipment/build.gradle.kts",
+          "identity": "testImplementation:libs.kotlinx.coroutines.test",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:shipment"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:audit"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:export"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "identity": "implementation:libs.vico.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "identity": "implementation:libs.vico.compose.m3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/reports/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:reports"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "identity": "implementation:libs.androidx.compose.foundation",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "identity": "implementation:libs.coil.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/organization/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:organization"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "identity": "implementation:libs.androidx.compose.foundation",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/profile/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:profile"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "implementation:libs.androidx.compose.foundation",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/settings/build.gradle.kts",
+          "identity": "testImplementation:libs.kotlinx.coroutines.test",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:settings"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "implementation:libs.androidx.compose.foundation",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/notifications/build.gradle.kts",
+          "identity": "testImplementation:libs.kotlinx.coroutines.test",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:notifications"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:export"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "identity": "implementation:libs.androidx.compose.foundation",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/commission/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:commission"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "identity": "implementation:libs.androidx.compose.foundation",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "identity": "implementation:libs.coil.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/messages/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:messages"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:audit"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:network"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:sync"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "rationale": "explicit API-only module edge admitted by consumer manifest and provider public contract; not implementation debt",
+          "status": "ALLOWED_PUBLIC_API",
+          "target": ":feature:dashboard:api"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.androidx.compose.foundation",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.serialization.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.supabase.bom",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/dashboard/build.gradle.kts",
+          "identity": "implementation:libs.supabase.postgrest",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:dashboard"
+    },
+    {
+      "direct_project_dependencies": [],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/dashboard/api/build.gradle.kts",
+          "identity": "api:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:dashboard:api"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:crash"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "rationale": "explicit API-only module edge admitted by consumer manifest and provider public contract; not implementation debt",
+          "status": "ALLOWED_PUBLIC_API",
+          "target": ":feature:dashboard:api"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "identity": "implementation:libs.androidx.compose.foundation",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/expenses/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:expenses"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/management/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/management/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/management/build.gradle.kts",
+          "identity": "implementation:libs.androidx.compose.foundation",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/management/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/management/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/management/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/management/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/management/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/management/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/management/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/management/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:management"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:audit"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:designsystem"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:network"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "rationale": "explicit API-only module edge admitted by consumer manifest and provider public contract; not implementation debt",
+          "status": "ALLOWED_PUBLIC_API",
+          "target": ":feature:dashboard:api"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.androidx.activity.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.androidx.compose.foundation",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.androidx.lifecycle.viewmodel.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material.icons.extended",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.androidx.material3",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.coil.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.hilt.navigation.compose",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.serialization.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.supabase.bom",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "implementation:libs.supabase.postgrest",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "feature/integration/optimal/build.gradle.kts",
+          "identity": "testImplementation:libs.kotlinx.coroutines.test",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":feature:integration:optimal"
+    },
+    {
+      "direct_project_dependencies": [
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:audit"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:common"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":core:session"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:database"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:network"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:preferences"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":data:sync"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:inventory"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:invoice"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:organization"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:party"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:payment"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "rationale": "current direct project dependency declared in Gradle",
+          "status": "ALLOWED_DECLARED",
+          "target": ":feature:reports"
+        }
+      ],
+      "external_dependencies": [
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "identity": "implementation:libs.androidx.core.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "identity": "implementation:libs.androidx.paging.runtime.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "identity": "implementation:libs.androidx.room.ktx",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "identity": "implementation:libs.kotlinx.coroutines.core",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        },
+        {
+          "evidence_path": "data/operations/build.gradle.kts",
+          "identity": "testImplementation:libs.junit",
+          "rationale": "v319 observed Gradle external/library dependency; future additions require dependency contract + feature manifest admission",
+          "status": "ALLOWED_DECLARED"
+        }
+      ],
+      "module": ":data:operations"
+    }
+  ],
+  "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+  "source_version": "v318"
+}

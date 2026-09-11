@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="verto_field_required">مطلوب</string>
+    <string name="verto_field_optional">اختياري</string>
+    <string name="verto_password_show">إظهار كلمة المرور</string>
+    <string name="verto_password_hide">إخفاء كلمة المرور</string>
+    <string name="verto_loading">جارٍ التحميل</string>
+    <string name="verto_step_count">%1$d من %2$d</string>
+    <string name="verto_navigate_back">رجوع</string>
+    <string name="verto_action_next">التالي</string>
+    <string name="verto_action_confirm">تأكيد</string>
+    <string name="verto_action_cancel">إلغاء</string>
+    <string name="verto_date_start">تاريخ البداية</string>
+    <string name="verto_date_end">تاريخ النهاية</string>
+</resources>

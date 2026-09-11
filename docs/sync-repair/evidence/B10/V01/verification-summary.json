@@ -1,0 +1,49 @@
+{
+  "checkpoint": "B10-V01",
+  "source_validation": "PASS_1851_OF_1851",
+  "product_tree_sha256": "2c9379972d1d9db3f52d96f0a2dbe2325f77558e53bf3ef97265e1f3ee90eda0",
+  "product_file_count": 1866,
+  "local_checks": {
+    "b10_sqlite_methods": 15,
+    "b10_policy_actual_methods_assertion_shim": 12,
+    "b10_selected_signature_compile": "PASS_EXPLICIT_STUBS",
+    "b09_source_sqlite_checks": 612,
+    "b09_mapping_assertions": 347,
+    "b09_semantic_codec_stub_assertions": 3,
+    "b06_schema_static": "PASS",
+    "b06_producers_static": "PASS"
+  },
+  "supplied_methods": {
+    "b10_jvm_policy": 12,
+    "b10_jvm_validator": 12,
+    "b10_room_inbox": 14,
+    "b09_jvm_financial": 12,
+    "b09_room_financial_now": 34
+  },
+  "not_run": [
+    "Gradle8.9/Kotlin2.1 actual JVM/JSON",
+    "Room Android instrumentation",
+    "KSP/Hilt and generated schema99",
+    "whole-app build",
+    "Android process force-stop/kill",
+    "B08/B20 server RPC round-trip",
+    "two-device parity",
+    "T01-T50"
+  ],
+  "gates": {
+    "G-B09": "BLOCKED",
+    "G-B10": "BLOCKED"
+  },
+  "tasks": {
+    "B10.01": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B10.02": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B10.03": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B10.04": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B10.05": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED"
+  },
+  "next_task": "B10.01",
+  "live_mutations": false,
+  "apk_built": false,
+  "b11_started": false,
+  "no_stub_deployed_into_app": true
+}

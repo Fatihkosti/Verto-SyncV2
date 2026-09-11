@@ -1,0 +1,106 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.dashboard.application.DashboardAdminGateway"
+    ],
+    "external_dependencies": [
+      "implementation:libs.androidx.activity.compose",
+      "implementation:libs.androidx.compose.foundation",
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core",
+      "implementation:libs.kotlinx.serialization.core",
+      "implementation:libs.supabase.bom",
+      "implementation:libs.supabase.postgrest"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app"
+    ],
+    "internal_packages": [
+      "com.verto.app.feature.dashboard.application",
+      "com.verto.app.feature.dashboard.application.activityevent",
+      "com.verto.app.feature.dashboard.application.education",
+      "com.verto.app.feature.dashboard.application.pendingaction",
+      "com.verto.app.feature.dashboard.application.quickaction",
+      "com.verto.app.feature.dashboard.application.search",
+      "com.verto.app.feature.dashboard.data.education",
+      "com.verto.app.feature.dashboard.presentation",
+      "com.verto.app.feature.dashboard.presentation.education",
+      "com.verto.app.ui.screens.leaderboard",
+      "com.verto.app.ui.screens.usersdashboard",
+      "com.verto.feature.dashboard.api",
+      "com.verto.feature.dashboard.di"
+    ],
+    "outgoing_dependencies": [
+      ":core:audit",
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ],
+    "public_api": [
+      "com.verto.app.feature.dashboard.application.*",
+      "com.verto.app.feature.dashboard.application.BenzinePerformanceStatus",
+      "com.verto.app.feature.dashboard.application.BenzineWeeklyPerformance",
+      "com.verto.app.feature.dashboard.application.CommissionEligibilityItem",
+      "com.verto.app.feature.dashboard.application.DashboardAdminGateway",
+      "com.verto.app.feature.dashboard.application.HomeNotificationBadgeQuery",
+      "com.verto.app.feature.dashboard.application.MarketerStatsItem",
+      "com.verto.app.feature.dashboard.application.activityevent.ObserveActivityEventsUseCase",
+      "com.verto.app.feature.dashboard.application.education.SelectEducationalContentUseCase",
+      "com.verto.app.feature.dashboard.application.pendingaction.DispatchPendingActionUseCase",
+      "com.verto.app.feature.dashboard.application.pendingaction.ManagePendingActionStateUseCase",
+      "com.verto.app.feature.dashboard.application.pendingaction.ObservePendingActionsUseCase",
+      "com.verto.app.feature.dashboard.application.pendingaction.PendingActionDispatchResult",
+      "com.verto.app.feature.dashboard.application.pendingaction.SystemPendingActionClock",
+      "com.verto.app.feature.dashboard.application.pendingaction.pendingActionSnoozeOptions",
+      "com.verto.app.feature.dashboard.application.quickaction.ObserveOrderedQuickActionsUseCase",
+      "com.verto.app.feature.dashboard.application.search.UnifiedHomeSearchUseCase",
+      "com.verto.app.feature.dashboard.bridge.DashboardAdminGatewayAdapter",
+      "com.verto.app.feature.dashboard.bridge.RoomHomeEventStateStore",
+      "com.verto.app.feature.dashboard.bridge.RoomHomeNotificationBadgeQuery",
+      "com.verto.app.feature.dashboard.bridge.RoomQuickActionOrderStore",
+      "com.verto.app.feature.dashboard.presentation.education.EducationalTopicsRoute"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [
+      "RoomEducationalContentRepository"
+    ],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:dashboard",
+    "name": "feature/dashboard",
+    "owner": ":feature:dashboard",
+    "purpose": "Production capability implemented by :feature:dashboard; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [
+      ":feature:dashboard:api"
+    ],
+    "legacy_cross_feature_debt": []
+  },
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "687e863954031ffdd221ac5456cdb1b03a8275434d3fa75a7cbb27d405f0564e",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v318"
+  }
+}

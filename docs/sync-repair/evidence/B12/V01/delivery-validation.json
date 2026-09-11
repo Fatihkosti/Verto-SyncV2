@@ -1,0 +1,16 @@
+{
+  "checkpoint": "B12-V01",
+  "input_zip_integrity": "PASS_SHA256_RECORDED",
+  "product_file_count": 1912,
+  "product_tree_sha256": "150e580c12b9d1609f7cb4a7b48eafe680d7bfa0488561225a46b395238e035e",
+  "product_changed_files": 15,
+  "gate": "LOCAL_DELIVERY_CONTENT_PASS_NOT_RELEASE_ADMISSION",
+  "G-B12": "BLOCKED",
+  "R08": "OPEN",
+  "Txx_promoted_to_PASS": 0,
+  "next_task": "B12.01",
+  "no_live_write": true,
+  "change_contract": "PASS",
+  "documentation_gate": "FAIL_141_PREEXISTING_NO_NEW_B12_ERROR",
+  "release_ready": false
+}

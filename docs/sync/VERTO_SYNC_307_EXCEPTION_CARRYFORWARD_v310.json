@@ -1,0 +1,22 @@
+{
+  "inheritedCount": 9,
+  "inheritedExceptions": [
+    "room_version_79",
+    "persisted_sequence_authority",
+    "payload_bound_preserved",
+    "producer_discovery_unclassified_zero",
+    "stronger_outboxes_proven",
+    "datastore_delete_authority_zero",
+    "dirty_only_authority_zero",
+    "org_settings_room_canonical",
+    "attachment_intent_persisted"
+  ],
+  "new308Waivers": 0,
+  "new309Waivers": 0,
+  "new310Waivers": 0,
+  "note": "Session 310 preserves exactly the nine documented 307 exceptions. User-authorized runtime omission is documented as execution status, not a correctness waiver.",
+  "runtimeV2": "DISABLED",
+  "session": 310,
+  "source": "VERTO_SYNC_307_EXCEPTION_CARRYFORWARD_v309.json",
+  "worsenedCount": 0
+}

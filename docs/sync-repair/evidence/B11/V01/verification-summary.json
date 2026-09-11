@@ -1,0 +1,39 @@
+{
+  "checkpoint": "B11-V01",
+  "source_validation": "PASS_1866_OF_1866",
+  "input_product_tree_sha256": "2c9379972d1d9db3f52d96f0a2dbe2325f77558e53bf3ef97265e1f3ee90eda0",
+  "product_tree_sha256": "2af04ead841b8dc8cf8234250caa88f2785131261f422bd5266672bad6c912a9",
+  "product_file_count": 1875,
+  "local_checks": {
+    "b11_static_contract": "PASS",
+    "b11_native_sqlite_contract": "PASS",
+    "python_py_compile": "PASS",
+    "gradle_compile": "BLOCKED_BEFORE_BUILD"
+  },
+  "not_run": [
+    "Kotlin2.1/Gradle compile",
+    "KSP/Hilt",
+    "Room MigrationTestHelper 99→100 and fresh100",
+    "Compose UI runtime",
+    "Android/device",
+    "authoritative server receipt/echo integration",
+    "T30"
+  ],
+  "gates": {
+    "G-B10": "BLOCKED",
+    "G-B11": "BLOCKED",
+    "change-contract": "PASS",
+    "documentation": "FAIL_141_PREEXISTING_NO_B11_PATH_ERROR"
+  },
+  "tasks": {
+    "B11.01": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B11.02": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B11.03": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B11.04": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED",
+    "B11.05": "BLOCKED_ACCEPTANCE_CODE_IMPLEMENTED"
+  },
+  "next_task": "B11.01",
+  "live_mutations": false,
+  "apk_built": false,
+  "b12_started": false
+}

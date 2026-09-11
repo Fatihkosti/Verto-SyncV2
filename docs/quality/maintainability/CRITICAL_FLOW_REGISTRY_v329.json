@@ -1,0 +1,68 @@
+{
+  "format": "verto-critical-flow-registry-v1",
+  "session": 329,
+  "owner": "maintainability-testability",
+  "flows": [
+    {
+      "id": "invoice-write",
+      "owner_feature": "invoice",
+      "risk": "CRITICAL",
+      "status": "PASS",
+      "unit_test": "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoiceWriteCoordinatorTest.kt",
+      "contract_test": "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoiceWriteCoordinatorTest.kt",
+      "negative_test": "feature/invoice/src/test/kotlin/com/verto/app/feature/invoice/application/InvoiceWriteCoordinatorTest.kt",
+      "integration_test": "data/database/src/androidTest/kotlin/com/verto/app/data/local/InvoiceFinancialDb251Test.kt",
+      "mutation_test": "docs/quality/maintainability/MUTATION_MATRIX_v329.json",
+      "observable_contract": "validate -> authorize -> persist -> effects -> post-commit sync"
+    },
+    {
+      "id": "inventory-effect",
+      "owner_feature": "inventory",
+      "risk": "CRITICAL",
+      "status": "PASS",
+      "unit_test": "feature/inventory/src/test/kotlin/com/verto/app/feature/inventory/application/InventoryPriceCoordinatorTest.kt",
+      "contract_test": "feature/inventory/src/test/kotlin/com/verto/app/feature/inventory/data/InventoryLedgerReleaseGateV267Test.kt",
+      "negative_test": "feature/inventory/src/test/kotlin/com/verto/app/feature/inventory/data/InventoryLedgerReleaseGateV267Test.kt",
+      "integration_test": "feature/inventory/src/androidTest/kotlin/com/verto/app/feature/inventory/data/InventoryStockWriterV259Test.kt",
+      "mutation_test": "docs/quality/maintainability/MUTATION_MATRIX_v329.json",
+      "observable_contract": "stock mutation and ledger/outbox effect remain atomic and idempotent"
+    },
+    {
+      "id": "payment-effect",
+      "owner_feature": "payment",
+      "risk": "CRITICAL",
+      "status": "PASS",
+      "unit_test": "feature/payment/src/test/kotlin/com/verto/app/feature/payment/application/PaymentCoordinatorsTest.kt",
+      "contract_test": "feature/payment/src/test/kotlin/com/verto/app/feature/payment/application/PaymentCoordinatorsTest.kt",
+      "negative_test": "feature/payment/src/test/kotlin/com/verto/app/feature/payment/application/PaymentCoordinatorsTest.kt",
+      "integration_test": "data/database/src/androidTest/kotlin/com/verto/app/data/local/PaymentDaoIntegrationTest.kt",
+      "mutation_test": "docs/quality/maintainability/MUTATION_MATRIX_v329.json",
+      "observable_contract": "authorized payment writes preserve currency, allocation and integration effects"
+    },
+    {
+      "id": "logistics-persistence-outbox",
+      "owner_feature": "shipment",
+      "risk": "CRITICAL",
+      "status": "PASS",
+      "unit_test": "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LogisticsV242EndToEndIntegrationTest.kt",
+      "contract_test": "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/domain/policy/LogisticsV234ContractCharacterizationTest.kt",
+      "negative_test": "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/domain/policy/LogisticsV241CancellationPolicyTest.kt",
+      "integration_test": "data/database/src/androidTest/kotlin/com/verto/app/data/local/UnifiedSyncRoomAtomicityV306Test.kt",
+      "mutation_test": "docs/quality/maintainability/MUTATION_MATRIX_v329.json",
+      "characterization": "docs/quality/maintainability/LOGISTICS_STORE_CHARACTERIZATION_v328.md",
+      "observable_contract": "domain mutation and durable outbox/attachment intent commit or roll back together"
+    },
+    {
+      "id": "sync-orchestration",
+      "owner_feature": "sync",
+      "risk": "CRITICAL",
+      "status": "PASS",
+      "unit_test": "data/sync/src/test/kotlin/com/verto/app/data/sync/SyncManagerTest.kt",
+      "contract_test": "data/network/src/test/kotlin/com/verto/app/data/sync/UnifiedSyncContractV304Test.kt",
+      "negative_test": "data/sync/src/test/kotlin/com/verto/app/data/sync/SyncManagerTest.kt",
+      "integration_test": "data/database/src/androidTest/kotlin/com/verto/app/data/local/UnifiedSyncRoomProcessDeathV306Test.kt",
+      "mutation_test": "docs/quality/maintainability/MUTATION_MATRIX_v329.json",
+      "observable_contract": "persist generation before wake; preserve epoch/cancellation and continuation semantics"
+    }
+  ]
+}

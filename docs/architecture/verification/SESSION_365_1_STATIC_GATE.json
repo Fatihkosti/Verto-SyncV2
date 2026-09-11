@@ -1,0 +1,52 @@
+{
+  "session": "365-1",
+  "passed": 11,
+  "total": 11,
+  "status": "PASS_STATIC",
+  "checks": [
+    {
+      "name": "viewing_temporarily_full_for_all",
+      "pass": true
+    },
+    {
+      "name": "legacy_permission_drilldown_gate_removed",
+      "pass": true
+    },
+    {
+      "name": "all_detail_targets_open_directly",
+      "pass": true
+    },
+    {
+      "name": "sales_filter_button_scoped",
+      "pass": true
+    },
+    {
+      "name": "sales_filter_chips_scoped",
+      "pass": true
+    },
+    {
+      "name": "sales_filter_sheet_scoped",
+      "pass": true
+    },
+    {
+      "name": "filters_clear_on_leave_sales",
+      "pass": true
+    },
+    {
+      "name": "filters_clear_on_back",
+      "pass": true
+    },
+    {
+      "name": "period_remains_global",
+      "pass": true
+    },
+    {
+      "name": "filter_contract_documented",
+      "pass": true
+    },
+    {
+      "name": "sales_filter_title_resource",
+      "pass": true
+    }
+  ]
+}

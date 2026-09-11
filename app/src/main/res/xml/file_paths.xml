@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Scoped app directories only; never expose shared external storage. -->
+    <cache-path name="shared_cache" path="." />
+    <external-files-path name="shared_external_files" path="." />
+    <files-path name="shared_internal_files" path="." />
+</paths>

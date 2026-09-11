@@ -1,0 +1,13 @@
+{
+  "fixture": "positive",
+  "feature_id": "fixture",
+  "module": ":feature:fixture",
+  "owner": "fixture-owner",
+  "status": "ACTIVE",
+  "risk": "LOW",
+  "provided_contracts": ["fixture.read.v1"],
+  "consumed_contracts": [],
+  "data_owner": {"feature": "fixture"},
+  "budget": {"direct_feature_dependencies": 0, "stable_contracts_provided": 1, "external_dependencies": 0},
+  "expected": "PASS"
+}

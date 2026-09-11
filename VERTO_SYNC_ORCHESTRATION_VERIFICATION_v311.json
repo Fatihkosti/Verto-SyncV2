@@ -1,0 +1,335 @@
+{
+  "MODEL_10K_PASS": true,
+  "authAsNetworkRetryCount": 0,
+  "authMutationPermanentRejectCount": 0,
+  "blockers": [],
+  "bootstrapImplementedIn311Count": 0,
+  "checks": [
+    {
+      "code": "INPUT_SHA",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "INPUT_ENTRIES",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "INPUT_PRODUCTION_KOTLIN",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "V310_VERIFICATION_SHA",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "V310_HANDOFF",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "INHERITED_EXCEPTIONS_9",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "ROOM_SCHEMA_80_UNCHANGED",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "APP_DATABASE_UNCHANGED",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "MIGRATION_CATALOG_UNCHANGED",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "HISTORICAL_SERVER_SQL_UNCHANGED",
+      "detail": "0",
+      "status": "PASS"
+    },
+    {
+      "code": "ROOM_VERSION_80",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "DURABLE_GENERATION_KEYS",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "GENERATION_TRANSACTIONS",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "REQUEST_BEFORE_WAKE",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "SUCCESSOR_SAFE_POLICY",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "NO_IMMEDIATE_KEEP",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "PERIODIC_KEEP_ALLOWED",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "GENERATION_INVARIANT",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "IDLE_CAS_PROOF",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "BOUNDED_CONTINUATION",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "SESSION_EPOCH_SCOPE",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "SESSION_EPOCH_PERSISTED",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "CLEAR_BEFORE_NEW_ORG_COMMIT",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "STALE_EPOCH_GUARD",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "OLD_WORK_CANCEL",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "OLD_REALTIME_STOP",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "REALTIME_NO_ACTIVE_DRAIN_DROP",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "SYNC_SKIPPED_NOT_TRANSIENT",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "RATE_LIMIT_429",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "AUTH_CATEGORY",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "CONFLICT_CATEGORY",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "RECOVERY_CATEGORY",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "AUTH_INTENT_PRESERVED",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "DELAYED_RETRY_NO_SPIN",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "BOOTSTRAP_DEFERRED_313",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "RUNTIME_V2_OFF",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "REALTIME_DEFAULT_OFF",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "NO_DIRECT_V2_UI_DATAPLANE_BYPASS",
+      "detail": "[]",
+      "status": "PASS"
+    },
+    {
+      "code": "REQUEST_SOURCE_COVERAGE",
+      "detail": "13",
+      "status": "PASS"
+    },
+    {
+      "code": "RETRY_MATRIX",
+      "detail": "10",
+      "status": "PASS"
+    },
+    {
+      "code": "TENANT_TRANSITIONS",
+      "detail": "9",
+      "status": "PASS"
+    },
+    {
+      "code": "V311_MODELS",
+      "detail": "325",
+      "status": "PASS"
+    },
+    {
+      "code": "V310_REGRESSION_499",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "V309_REGRESSION_272",
+      "detail": "",
+      "status": "PASS"
+    },
+    {
+      "code": "V308_REGRESSION_137_MODEL10K",
+      "detail": "",
+      "status": "PASS"
+    }
+  ],
+  "compileStatus": "NOT_RUN_USER_AUTHORIZED_STATIC_ONLY",
+  "conflictAsNetworkRetryCount": 0,
+  "cursorAuthorityBypassCount": 0,
+  "delayedRetryBusyLoopCount": 0,
+  "directV2UiDataPlaneBypassCount": 0,
+  "drainedAheadOfRequestedCount": 0,
+  "drainedGenerationAuthority": "Room.sync_sequence_state/ORCHESTRATION_DRAINED_GENERATION",
+  "earlyNewOrgCommitCount": 0,
+  "finalExitRaceLossCount": 0,
+  "finalVerdict": "PASS_STATIC_DURABLE_DRAIN_RETRY_TENANT_ORCHESTRATION / INHERITED_307_EXCEPTIONS=9 / ROOM_80_UNCHANGED / SERVER_SQL_UNCHANGED / RUNTIME_V2_DISABLED / BUILD_NOT_VERIFIED",
+  "generationRegressionCount": 0,
+  "handoff312Authorized": true,
+  "historicalMigrationChangedCount": 0,
+  "idleCasViolationCount": 0,
+  "immediateKeepCorrectnessCount": 0,
+  "immediateWorkPolicyAfter": "APPEND_OR_REPLACE",
+  "immediateWorkPolicyBefore": "KEEP",
+  "inheritedExceptionCount": 9,
+  "inputArchiveEntries": 1765,
+  "inputProductionKotlinCount": 1178,
+  "inputZipName": "Verto-v310-source-of-truth.zip",
+  "inputZipSha256": "7b9a7070e389e0ec047c9252fde03f1891c2ffeaef406f97c3f9f30d15275b30",
+  "lostSyncIntentCount": 0,
+  "new311WaiverCount": 0,
+  "oldRealtimeCrossTenantRequestCount": 0,
+  "oldWorkerCrossTenantWriteCount": 0,
+  "periodicWorkPolicy": "KEEP",
+  "permanentAsRetryCount": 0,
+  "planSha256": "a767087c5f1659dcd7c660c189542ef2d7774c0f647ff9321e9f53219a7dfd97",
+  "postgresExecuted": false,
+  "postgresRequired": false,
+  "requestSourceCoverageRows": 13,
+  "requestWakeBeforePersistCount": 0,
+  "requestedGenerationAuthority": "Room.sync_sequence_state/ORCHESTRATION_REQUESTED_GENERATION",
+  "retryMatrixRows": 10,
+  "roomSchemaChangedCount": 0,
+  "roomVersionAfter": 80,
+  "roomVersionBefore": 80,
+  "runtimeV2": "DISABLED",
+  "runtimeV2EnabledCount": 0,
+  "schema80Sha256": "1d077e2539cf8ac4a2cf618c11c0a97f7de44f0c2bf15298e923f39b75988543",
+  "serverSqlChanged": false,
+  "serverSqlChangedCount": 0,
+  "session": 311,
+  "session310ContractSha256": "6b26c6de0cc3bd500ddc15fee830f5fcea1fd84c937d4667584c268e49384094",
+  "sessionEpochAuthority": "DataStore sync_session_epoch_v311 (opaque monotonic; survives session clear)",
+  "staleScopeExecutionCount": 0,
+  "staleSessionEpochExecutionCount": 0,
+  "syncSkippedAsTransientCount": 0,
+  "tenantTransitionCoverageRows": 9,
+  "unitTestStatus": "NOT_RUN_USER_AUTHORIZED_STATIC_ONLY",
+  "v308RegressionFailures": 0,
+  "v308RegressionFixtureCount": 137,
+  "v309RegressionFailures": 0,
+  "v309RegressionFixtureCount": 272,
+  "v310FinalVerdict": "PASS_STATIC_STRONGER_FINANCIAL_INVENTORY_OPTIMAL_BRIDGE / INHERITED_307_EXCEPTIONS=9 / ROOM_80_UNCHANGED / RUNTIME_V2_DISABLED / BUILD_NOT_VERIFIED / POSTGRES_NOT_EXECUTED / RUNTIME_EXECUTION_BYPASSED_BY_USER",
+  "v310Handoff311Authorized": true,
+  "v310RegressionFailures": 0,
+  "v310RegressionFixtureCount": 499,
+  "v310VerificationSha256": "0872e3f81b8b1a6968f19e0c305fcf5e92e6a7d9d15d0673ce17e98055a8211f",
+  "v311FixtureStats": {
+    "MODEL_429_RETRY_PASS": true,
+    "MODEL_AUTH_NOT_BUSINESS_REJECTION_PASS": true,
+    "MODEL_AUTH_NOT_NETWORK_RETRY_PASS": true,
+    "MODEL_BOUNDED_CONTINUATION_PASS": true,
+    "MODEL_CLEAR_FAILURE_NO_NEW_ORG_COMMIT_PASS": true,
+    "MODEL_CONFLICT_NOT_NETWORK_RETRY_PASS": true,
+    "MODEL_DELAYED_RETRY_NO_SPIN_PASS": true,
+    "MODEL_FINAL_EXIT_RACE_PASS": true,
+    "MODEL_IDLE_CAS_RACE_PASS": true,
+    "MODEL_LOGOUT_DURING_PUSH_PASS": true,
+    "MODEL_ORG_SWITCH_DURING_PULL_PASS": true,
+    "MODEL_PERMANENT_VALIDATION_FAIL_CLOSED_PASS": true,
+    "MODEL_PROCESS_DEATH_PENDING_INTENT_PASS": true,
+    "MODEL_PROCESS_DEATH_UNKNOWN_COMMIT_PASS": true,
+    "MODEL_REALTIME_DURING_WORKER_PASS": true,
+    "MODEL_RECOVERY_DEFERRED_313_PASS": true,
+    "MODEL_REQUEST_GENERATION_MONOTONIC_PASS": true,
+    "MODEL_SESSION_EPOCH_PASS": true,
+    "MODEL_STALE_WORK_SCOPE_PASS": true,
+    "MODEL_SUCCESSOR_SAFE_WAKE_PASS": true,
+    "MODEL_SYNCNOW_DURING_WORKER_PASS": true,
+    "MODEL_TIMEOUT_RETRY_PASS": true,
+    "byCategory": {
+      "active_worker": 30,
+      "continuation": 15,
+      "generation": 40,
+      "idle_cas": 25,
+      "process_death": 30,
+      "realtime": 25,
+      "retry_delay": 15,
+      "taxonomy": 60,
+      "tenant": 55,
+      "transition": 30
+    },
+    "failures": 0,
+    "failuresList": [],
+    "session": 311,
+    "total": 325
+  },
+  "workManagerVersion": "2.10.0"
+}

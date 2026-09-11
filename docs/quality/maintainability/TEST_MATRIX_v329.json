@@ -1,0 +1,11 @@
+{
+  "format": "verto-test-matrix-v1",
+  "session": 329,
+  "flows": [
+    {"flow": "invoice-write", "unit": "PASS", "contract": "PASS", "negative": "PASS", "integration": "PASS", "mutation": "PASS", "status": "PASS"},
+    {"flow": "inventory-effect", "unit": "PASS", "contract": "PASS", "negative": "PASS", "integration": "PASS", "mutation": "PASS", "status": "PASS"},
+    {"flow": "payment-effect", "unit": "PASS", "contract": "PASS", "negative": "PASS", "integration": "PASS", "mutation": "PASS", "status": "PASS"},
+    {"flow": "logistics-persistence-outbox", "unit": "PASS", "contract": "PASS", "negative": "PASS", "integration": "PASS", "mutation": "PASS", "status": "PASS"},
+    {"flow": "sync-orchestration", "unit": "PASS", "contract": "PASS", "negative": "PASS", "integration": "PASS", "mutation": "PASS", "status": "PASS"}
+  ]
+}

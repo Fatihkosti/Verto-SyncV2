@@ -1,0 +1,22 @@
+{
+  "format": "verto-technical-debt-identity-map-v1",
+  "session": 323,
+  "legacy_path": "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryDao.kt",
+  "moved_paths": [
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryCatalogReadDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryCostDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryCostSourceDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryItemLifecycleDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryMaintenanceDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryMovementDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryPurchaseReturnOperationsDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventorySalesReturnOperationsDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryPurchasePostingOperationsDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryShipmentOperationsDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryShipmentReceiptOperationsDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryStockCoreOperationsDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryStockTargetDao.kt",
+    "data/database/src/main/kotlin/com/verto/app/data/local/dao/InventorySyncDao.kt"
+  ],
+  "policy": "Moved identities are compared against their v322 InventoryDao identity; new helpers remain independently ratcheted."
+}

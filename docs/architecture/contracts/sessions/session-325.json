@@ -1,0 +1,99 @@
+{
+  "session": {
+    "id": 325,
+    "input_sha256": "296508ee973b818c6868ce065f409e20a51831c1d644fb878b5add427668c3ca",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_325_INPUT_SNAPSHOT.json",
+    "scope": "DATA LAYER / PERSISTENCE BOUNDARY / DAO OWNERSHIP / BEHAVIOR-PRESERVING",
+    "allowed_modules": [
+      ":data:database",
+      ":data:sync",
+      ":data:network",
+      ":data:operations",
+      ":app",
+      ":feature:invoice",
+      ":feature:shipment",
+      ":feature:party",
+      ":feature:payment",
+      ":feature:commission",
+      ":feature:expenses",
+      ":feature:inventory",
+      ":feature:reports"
+    ],
+    "allowed_files": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncDao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSync*Dao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncPersistenceSupport.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncModels.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/InvoiceDao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/Invoice*Dao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/LogisticsDao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/Logistics*Dao.kt",
+      "scripts/ci/run-quality-gate.sh",
+      "scripts/ci/run-source-of-truth-admission.sh",
+      "scripts/verify-kotlin-quality-static.py",
+      "tools/architecture/complexity_guard.py",
+      "tools/technical_debt/verify.py",
+      "docs/architecture/contracts/sessions/session-325.json",
+      "docs/architecture/contracts/persistence-boundaries-v325.json",
+      "docs/architecture/verification/SESSION_325_INPUT_SNAPSHOT.json",
+      "docs/architecture/verification/**v325**",
+      "docs/DOCUMENTATION_INVENTORY.md",
+      "docs/quality/**v325**"
+    ],
+    "forbidden_files": [
+      "app/schemas/**",
+      "supabase/**",
+      "functions/**",
+      "SQL/**",
+      "sql/**",
+      "gradle/**",
+      "gradle/wrapper/**",
+      "build-logic/**",
+      "settings.gradle.kts",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/**",
+      "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt",
+      "data/sync/**"
+    ]
+  },
+  "architecture": {
+    "invariants": [
+      "Room schema remains version 81",
+      "No entity or migration changes",
+      "No new project or external dependency",
+      "Preserve critical transaction identities and outer transaction boundaries",
+      "No foreign semantic DAO access or public persistence leaks"
+    ],
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "supabase",
+      "functions",
+      "sql",
+      "new external Gradle dependency"
+    ]
+  },
+  "verification": {
+    "required_tests": [
+      "DAO facade surface parity",
+      "persistence ownership completeness",
+      "transaction boundary evidence",
+      "foreign DAO scan",
+      "Room Entity public contract scan"
+    ],
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "dependency",
+      "technical-debt-ratchet",
+      "differential-quality",
+      "kotlin-quality",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ]
+  }
+}

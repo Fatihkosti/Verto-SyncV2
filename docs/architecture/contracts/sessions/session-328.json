@@ -1,0 +1,124 @@
+{
+  "architecture": {
+    "allowed_new_dependencies": [
+      "existing version-catalog junit test dependency in :data:sync",
+      "existing version-catalog kotlinx-coroutines-test dependency in :data:sync"
+    ],
+    "forbidden_dependencies": [
+      "generic dependency bag",
+      "service locator",
+      "global mutable test hook",
+      "new external Gradle dependency",
+      "SyncManager -> android.content.Context",
+      "SyncManager -> AppDatabase",
+      "SyncManager -> SyncWorker static orchestration calls",
+      "InvoiceWriteCoordinator -> wall clock",
+      "InvoiceWriteCoordinator -> random UUID generation"
+    ],
+    "invariants": [
+      "No Room schema or migration change",
+      "No server or SQL change",
+      "No invoice business-rule change",
+      "No sync protocol semantics change",
+      "No logistics state-machine change",
+      "No baseline inflation",
+      "InvoiceWriteCoordinator direct wall-clock calls = 0",
+      "InvoiceWriteCoordinator direct random UUID calls = 0",
+      "SyncManager Context dependency = 0",
+      "SyncManager direct SyncWorker calls = 0",
+      "SyncManager direct orchestration AppDatabase access = 0",
+      "SyncManager direct wall-clock calls = 0",
+      "Architecture, dependency and persistence zero-tolerance baselines remain green"
+    ]
+  },
+  "metadata": {
+    "behavioral_intent": "refactor only",
+    "logistics_boundary_characterization_only": true,
+    "phase": "5/6 Maintainability & Testability",
+    "predecessor_session": 327
+  },
+  "session": {
+    "allowed_files": [
+      "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/application/**",
+      "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/domain/port/**",
+      "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/data/**",
+      "feature/invoice/src/test/**",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/**",
+      "data/sync/src/main/kotlin/com/verto/data/sync/di/**",
+      "data/sync/src/test/**",
+      "data/sync/build.gradle.kts",
+      "core/common/**",
+      "app/**/di/**",
+      "docs/quality/maintainability/**",
+      "docs/architecture/contracts/sessions/session-328.json",
+      "docs/architecture/verification/SESSION_328_INPUT_SNAPSHOT.json",
+      "docs/architecture/verification/**v328**",
+      "docs/DOCUMENTATION_INVENTORY.md",
+      "docs/architecture/contracts/dependency-contract.json"
+    ],
+    "allowed_modules": [
+      ":feature:invoice",
+      ":data:sync",
+      ":core:common",
+      ":app"
+    ],
+    "baseline_snapshot": "docs/architecture/verification/SESSION_328_INPUT_SNAPSHOT.json",
+    "forbidden_files": [
+      "supabase/**",
+      "functions/**",
+      "SQL/**",
+      "sql/**",
+      "settings.gradle.kts",
+      "build-logic/**",
+      "app/schemas/**",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/**",
+      "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt",
+      "app/src/main/kotlin/com/verto/app/feature/shipment/bridge/LogisticsShipmentStoreAdapters.kt"
+    ],
+    "id": 328,
+    "input_sha256": "4df6e2c7ec45462b84d12efa58e764d8e41083cf45155000293370160fbd8186",
+    "scope": "MAINTAINABILITY REFACTORING / DETERMINISTIC TEST SEAMS"
+  },
+  "verification": {
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "dependency",
+      "data-ownership",
+      "persistence-boundary",
+      "transaction-contract",
+      "migration-schema",
+      "persistence-ratchet",
+      "technical-debt-ratchet",
+      "differential-quality",
+      "kotlin-quality",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ],
+    "required_tests": [
+      "InvoiceWriteCoordinator I1 new deterministic identity/time",
+      "InvoiceWriteCoordinator I2 supplied identity preservation",
+      "InvoiceWriteCoordinator I3 create path ordering",
+      "InvoiceWriteCoordinator I4 edit routing",
+      "InvoiceWriteCoordinator I5 authorization failure",
+      "InvoiceWriteCoordinator I6 validation failure",
+      "InvoiceWriteCoordinator I7 post-commit boundary",
+      "InvoiceWriteCoordinator I8 duplicate/idempotent write",
+      "SyncManager S1 profile readiness",
+      "SyncManager S2 invalid work scope",
+      "SyncManager S3 persist-before-wake",
+      "SyncManager S4 wake disabled",
+      "SyncManager S5 V2 routing",
+      "SyncManager S6 legacy routing",
+      "SyncManager S7 continuation scheduling",
+      "SyncManager S8 cancellation/epoch guard",
+      "SyncManager S9 deterministic timestamps"
+    ]
+  }
+}

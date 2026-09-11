@@ -1,0 +1,12 @@
+PASS: auth legacy/deep-link identifiers absent
+PASS: AndroidManifest.xml parses
+PASS: auth strings.xml parses
+PASS: single ResetPassword navigation after OTP verification
+PASS: AuthGateway recovery methods are mandatory (no compatibility fallback)
+PASS: v382 Supabase migration packaged
+PASS LIVE SERVER: password -> AUTHORIZED
+PASS LIVE SERVER: recovery -> ACCOUNT_BLOCKED
+PASS LIVE SERVER: email/signup -> AUTHORIZED
+PASS LIVE SERVER ACL: anon=false, authenticated=true, service_role=true
+BLOCKED_ENVIRONMENT: Gradle 8.9 unavailable; services.gradle.org unreachable
+HOSTED_AUTH_CONFIG_PENDING: Recovery email template must use {{ .Token }} and old redirect allow-list entry must be removed

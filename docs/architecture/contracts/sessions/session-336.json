@@ -1,0 +1,122 @@
+{
+  "session": {
+    "id": 336,
+    "input_sha256": "9e343c3df0165a27ef40bf31e09c900eef2996539f668315679f8cc6faf30c76",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_336_INPUT_SNAPSHOT.json",
+    "scope": "CASH MULTI-DEVICE CONVERGENCE AND EXPENSE DEPENDENCY REPAIR",
+    "allowed_modules": [
+      ":data:database",
+      ":data:operations",
+      ":data:sync"
+    ],
+    "allowed_files": [
+      "SESSION_336_FINAL.md",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/CashRegisterDao.kt",
+      "data/operations/src/main/kotlin/com/verto/app/utils/CashRegisterManager.kt",
+      "data/operations/src/main/kotlin/com/verto/app/data/repository/ExpenseRepository.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedStrongerSyncChangeApplier.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/CashMovementAuthoritativeProjection336.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushEngine.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/CashMovementProjectionUpdate336.kt",
+      "data/operations/src/main/kotlin/com/verto/app/utils/CashDependency336.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/push/DependencyEligibility336.kt",
+      "data/sync/src/test/kotlin/com/verto/app/data/sync/pull/CashMovementAuthoritativeProjection336Test.kt",
+      "data/operations/src/test/kotlin/com/verto/app/data/repository/ExpenseCashDependency336Test.kt",
+      "tools/quality/verto_finance_v336.py",
+      "docs/architecture/contracts/sessions/session-336.json",
+      "docs/architecture/verification/SESSION_336_INPUT_SNAPSHOT.json",
+      "docs/architecture/verification/SESSION_336_INPUT_MANIFEST.sha256",
+      "docs/finance/SESSION_336_*",
+      "CHANGELOG.md",
+      "docs/INDEX.md",
+      "docs/DOCUMENTATION_INVENTORY.md"
+    ],
+    "forbidden_files": [
+      "supabase/migrations/**",
+      "gradle/**",
+      "build.gradle.kts",
+      "settings.gradle.kts",
+      "gradle/libs.versions.toml",
+      "feature/**",
+      "app/src/main/**"
+    ],
+    "scope_amendments": [
+      {
+        "id": "336-TESTABILITY-1",
+        "reason": "A pure dependency-state seam mirrors the unchanged UnifiedSyncPushEngine parent-state policy for focused state-matrix tests; production push semantics remain unchanged.",
+        "production_scope_changed": false
+      },
+      {
+        "id": "336-PROJECTION-1",
+        "reason": "A Room partial-update DTO limits authoritative reconciliation to cash movement projection columns while preserving immutable intent and schema 83.",
+        "production_scope_changed": true
+      }
+    ]
+  },
+  "architecture": {
+    "invariants": [
+      "cash movement immutable intent excludes server causal balance projections",
+      "amount_minor is the monetary authority and Double columns are compatibility projections",
+      "cash register remains server authoritative and is not changed by cash movement reconciliation",
+      "expense-derived cash mutations depend on the justifying expense mutation",
+      "cash dependency is never self-referential and rejected/missing/unacknowledged parents remain blocked",
+      "Session 334 fixed-point atomicity and Session 335 bounded server-authoritative sync invariants remain preserved",
+      "Room schema remains 83 and no server SQL migration is introduced"
+    ],
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "client-authored cash register authority",
+      "full-history cash movement push",
+      "server-wins overwrite of immutable cash intent",
+      "refund delivery without expense mutation dependency",
+      "new Gradle or database dependency"
+    ]
+  },
+  "verification": {
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "dependency",
+      "contract-compatibility",
+      "feature-scalability-admission",
+      "data-ownership",
+      "persistence-boundary",
+      "transaction-contract",
+      "migration-schema",
+      "persistence-ratchet",
+      "technical-debt-ratchet",
+      "differential-quality",
+      "kotlin-quality",
+      "maintainability-testability",
+      "behavioral-mutations",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build"
+    ],
+    "required_tests": [
+      ">=26 focused cash convergence/dependency behavioral assertions",
+      "A then B and B then A server reorder convergence",
+      "three-device deterministic convergence",
+      "semantic cash intent corruption remains fail-closed",
+      "authoritative projection reconciliation does not mutate cash register",
+      "expense create/update-increase/update-decrease/void dependency matrix",
+      "missing/pending/leased/retry/rejected/review dependency blocking",
+      "M1-M14 mutation evidence",
+      "Session 334 and Session 335 regression checks"
+    ],
+    "verification_commands": [
+      "python3 tools/quality/verto_finance_v336.py --root .",
+      "python3 tools/quality/verto_finance_sync_v335.py --root .",
+      "python3 tools/quality/verto_finance_behavior_v334.py",
+      "bash scripts/ci/run-quality-gate.sh <stage> 336",
+      "bash gradlew --no-daemon testDebugUnitTest",
+      "bash gradlew --no-daemon detekt",
+      "bash gradlew --no-daemon lintDebug",
+      "bash gradlew --no-daemon assembleDebug"
+    ]
+  }
+}

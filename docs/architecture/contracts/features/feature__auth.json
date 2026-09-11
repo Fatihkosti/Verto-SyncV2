@@ -1,0 +1,83 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.auth.domain.repository.AuthGateway",
+      "com.verto.app.feature.auth.domain.repository.SplashSessionGateway"
+    ],
+    "external_dependencies": [
+      "implementation:libs.androidx.activity.compose",
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core",
+      "testImplementation:libs.junit"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app"
+    ],
+    "internal_packages": [
+      "com.verto.app.feature.auth.application",
+      "com.verto.app.feature.auth.domain.model",
+      "com.verto.app.feature.auth.domain.repository",
+      "com.verto.app.feature.auth.presentation",
+      "com.verto.app.feature.auth.presentation.splash"
+    ],
+    "outgoing_dependencies": [
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem"
+    ],
+    "public_api": [
+      "com.verto.app.feature.auth.application.AuthSessionCoordinator",
+      "com.verto.app.feature.auth.data.AuthGatewayAdapter",
+      "com.verto.app.feature.auth.domain.model.AuthInviteDetails",
+      "com.verto.app.feature.auth.domain.model.AuthenticatedUser",
+      "com.verto.app.feature.auth.domain.repository.ActiveProfileStatus",
+      "com.verto.app.feature.auth.domain.repository.AuthGateway",
+      "com.verto.app.feature.auth.domain.repository.SplashSessionGateway",
+      "com.verto.app.feature.auth.integration.DefaultAuthSessionCoordinator",
+      "com.verto.app.feature.auth.integration.SplashSessionGatewayAdapter",
+      "com.verto.app.feature.auth.presentation.JoinOrgScreen",
+      "com.verto.app.feature.auth.presentation.LoginScreen",
+      "com.verto.app.feature.auth.presentation.PasswordResetSentScreen",
+      "com.verto.app.feature.auth.presentation.RegisterScreen",
+      "com.verto.app.feature.auth.presentation.ResetPasswordScreen",
+      "com.verto.app.feature.auth.presentation.splash.SplashScreen"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [
+      "ActiveProfileStatus",
+      "AuthGateway",
+      "SplashSessionGateway"
+    ],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:auth",
+    "name": "feature/auth",
+    "owner": ":feature:auth",
+    "purpose": "Production capability implemented by :feature:auth; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [],
+    "legacy_cross_feature_debt": []
+  },
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "4e659bbd684a727bba05ddd7bfca8dc98c79bf437e9f939c894cd88e17fe5542",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v318"
+  }
+}

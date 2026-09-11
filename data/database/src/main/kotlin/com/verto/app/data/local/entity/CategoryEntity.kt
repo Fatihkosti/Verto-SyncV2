@@ -1,0 +1,13 @@
+package com.verto.app.data.local.entity
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
+import java.util.UUID
+
+@Serializable
+@Entity(tableName = "categories")
+data class CategoryEntity(
+    @PrimaryKey val id: String = UUID.randomUUID().toString(),
+    val name: String
+)

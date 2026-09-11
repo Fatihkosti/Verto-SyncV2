@@ -1,0 +1,9 @@
+{
+  "status": "NO_NEW_DOCUMENTATION_ERRORS",
+  "baseline": "provided B09-V02 gate result, not a fresh input rerun",
+  "baseline_errors": 141,
+  "current_errors": 141,
+  "new_errors": [],
+  "resolved_errors": [],
+  "full_documentation_gate": "FAIL"
+}

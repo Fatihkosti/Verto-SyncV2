@@ -1,0 +1,115 @@
+{
+  "$id": "verto-change-contract-v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "architecture": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_new_dependencies": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "forbidden_dependencies": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "invariants": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "invariants",
+        "allowed_new_dependencies",
+        "forbidden_dependencies"
+      ],
+      "type": "object"
+    },
+    "session": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_files": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "allowed_modules": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "baseline_snapshot": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "forbidden_files": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "input_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "scope": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "input_sha256",
+        "baseline_snapshot",
+        "scope",
+        "allowed_modules",
+        "allowed_files",
+        "forbidden_files"
+      ],
+      "type": "object"
+    },
+    "verification": {
+      "additionalProperties": false,
+      "properties": {
+        "required_gates": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "required_tests": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "required_tests",
+        "required_gates"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "session",
+    "architecture",
+    "verification"
+  ],
+  "title": "Verto Session Change Contract",
+  "type": "object"
+}

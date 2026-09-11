@@ -1,0 +1,101 @@
+{
+  "format": "verto-dao-decomposition-v325",
+  "session": 325,
+  "targets": [
+    {
+      "dao": "UnifiedSyncDao",
+      "before": {
+        "loc": 872,
+        "functions": 53,
+        "transaction_identities": [
+          "enqueueMutation",
+          "insertConflictChecked",
+          "requestOrchestrationGeneration",
+          "readOrchestrationGenerations",
+          "markOrchestrationDrainedIfIdle",
+          "insertInboxChecked"
+        ]
+      },
+      "after": {
+        "stable_facade_loc": 23,
+        "cohesive_contracts": [
+          "UnifiedSyncOutboxDao",
+          "UnifiedSyncConflictDao",
+          "UnifiedSyncOrchestrationDao",
+          "UnifiedSyncInboxDao",
+          "UnifiedSyncCursorDao"
+        ],
+        "transaction_identities_preserved": [
+          "enqueueMutation",
+          "insertConflictChecked",
+          "requestOrchestrationGeneration",
+          "readOrchestrationGenerations",
+          "markOrchestrationDrainedIfIdle",
+          "insertInboxChecked"
+        ],
+        "behavior_change": "none declared",
+        "characterization": "static identity/parity evidence; runtime tests blocked by Gradle environment"
+      }
+    },
+    {
+      "dao": "InvoiceDao",
+      "before": {
+        "loc": 760,
+        "functions": 83,
+        "transaction_identities": [
+          "insertInvoice",
+          "insertInvoices",
+          "insertInvoicesFromRemote",
+          "updateInvoice",
+          "insertInvoiceWithItemsAtomic",
+          "updateInvoiceWithItemsAtomic"
+        ]
+      },
+      "after": {
+        "stable_facade_loc": 66,
+        "cohesive_contracts": [
+          "InvoiceReadDao",
+          "InvoiceWriteDao",
+          "InvoiceReportingDao",
+          "InvoiceSyncDao",
+          "InvoiceItemDao",
+          "InvoiceAggregateTransactionDao",
+          "InvoiceFinancialEventDao"
+        ],
+        "transaction_identities_preserved": [
+          "insertInvoice",
+          "insertInvoices",
+          "insertInvoicesFromRemote",
+          "updateInvoice",
+          "insertInvoiceWithItemsAtomic",
+          "updateInvoiceWithItemsAtomic"
+        ],
+        "behavior_change": "none declared",
+        "characterization": "static identity/parity evidence; runtime tests blocked by Gradle environment"
+      }
+    },
+    {
+      "dao": "LogisticsDao",
+      "before": {
+        "loc": 577,
+        "functions": 104,
+        "transaction_identities": []
+      },
+      "after": {
+        "stable_facade_loc": 20,
+        "cohesive_contracts": [
+          "LogisticsShipmentCoreDao",
+          "LogisticsJourneyDao",
+          "LogisticsPartnerDocumentDao",
+          "LogisticsCostPaymentDao",
+          "LogisticsPlanningDao",
+          "LogisticsRecoveryReceivingDao",
+          "LogisticsEventCustomsDao"
+        ],
+        "transaction_identities_preserved": [],
+        "behavior_change": "none declared",
+        "characterization": "static identity/parity evidence; runtime tests blocked by Gradle environment"
+      }
+    }
+  ]
+}

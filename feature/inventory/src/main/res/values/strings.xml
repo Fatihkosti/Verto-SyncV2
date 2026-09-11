@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="inventory_ds_01832579160f">العبوة: %1$s قطعة</string>
+    <string name="inventory_ds_0726b053ba4c">%1$s%2$s</string>
+    <string name="inventory_ds_09dffe980782">وحدة (كرتونة / دستة...)</string>
+    <string name="inventory_ds_0bd33d38d2bd">لا توجد حركات مسجلة لهذا الصنف</string>
+    <string name="inventory_ds_10a56ee1bf16">الكمية الجديدة</string>
+    <string name="inventory_ds_10fea4bb0feb">الموقع في المخزن</string>
+    <string name="inventory_ds_1198266d5f80">%1$s ← %2$s</string>
+    <string name="inventory_ds_158f6654aebb">مثال: 10</string>
+    <string name="inventory_ds_15b8dd4725b4">منخفض</string>
+    <string name="inventory_ds_1b220ac954f1">📍</string>
+    <string name="inventory_ds_1d984e1ff78a">المخزون الراكد</string>
+    <string name="inventory_ds_1f461120cfd1">افتراضي: 5</string>
+    <string name="inventory_ds_210c2d153c70">اختر صنفاً من المخزون</string>
+    <string name="inventory_ds_21aa4eac4eee">النواقص حسب المورد</string>
+    <string name="inventory_ds_221887727fdc">📦</string>
+    <string name="inventory_ds_248529e37cb5">شراء: %1$s ج</string>
+    <string name="inventory_ds_24db4b5a9540">خدمي</string>
+    <string name="inventory_ds_2748940eb641">ترتيب: %1$s</string>
+    <string name="inventory_ds_2aa3693faed8">بدون تصنيف</string>
+    <string name="inventory_ds_32c448444746">إجمالي الأصناف</string>
+    <string name="inventory_ds_38d84dcdf542">لا توجد نواقص حالياً</string>
+    <string name="inventory_ds_39154a603a00">عدّل الأسعار مباشرة — ثم اضغط حفظ</string>
+    <string name="inventory_ds_3987a12855d6">تصدير CSV</string>
+    <string name="inventory_ds_3b774bd75789">خدمة</string>
+    <string name="inventory_ds_3ba38ead5b1d">اللوجستيات والشحنات</string>
+    <string name="inventory_ds_3c0a773ac355">نوع التعديل</string>
+    <string name="inventory_ds_40e4a2cbdb2d">الباركود</string>
+    <string name="inventory_ds_47ece41c3a21">هل تريد حذف التصنيف "%1$s"؟</string>
+    <string name="inventory_ds_47f1a4429bb0">لا توجد تصنيفات بعد
+اضغط إضافة لإنشاء تصنيف جديد</string>
+    <string name="inventory_ds_50836ecf83b8">راكد</string>
+    <string name="inventory_ds_51e2d55ba4bb">%1$s ج</string>
+    <string name="inventory_ds_56390caa2af4">سعر البيع</string>
+    <string name="inventory_ds_58eed3c5f3b1">تعديل الأسعار بالجملة</string>
+    <string name="inventory_ds_5914f8e0f08d">آخر حركة :</string>
+    <string name="inventory_ds_5ac5e9c7e239">قائمة الأصناف</string>
+    <string name="inventory_ds_5ad608e6138f">🛠️</string>
+    <string name="inventory_ds_5c2ae54e45d5">اسم الوحدة</string>
+    <string name="inventory_ds_5c4dae5d71bb">اختر الفترة الزمنية:</string>
+    <string name="inventory_ds_629ab4482661">وحدة: %1$s</string>
+    <string name="inventory_ds_65d73b418ed7">سعر الشراء (للعرض فقط)</string>
+    <string name="inventory_ds_686d835a4151">اختر التصنيف للتصدير</string>
+    <string name="inventory_ds_68dc0483bdfe">حذف الصنف</string>
+    <string name="inventory_ds_6a4ef561481c">المزيد</string>
+    <string name="inventory_ds_6a7ef7aff897">إعداد الوحدة</string>
+    <string name="inventory_ds_6aedb06ee837">إضافة صنف</string>
+    <string name="inventory_ds_6d3b8a57de85">سعر الشراء</string>
+    <string name="inventory_ds_6ed1d6c4bb65">اضغط + لإضافة صنف من المخزون</string>
+    <string name="inventory_ds_6ee2fa67a8d5">تقرير المخزون الراكد</string>
+    <string name="inventory_ds_70ed8292b81e">تصنيف :</string>
+    <string name="inventory_ds_71a677e8a8df">في المستند المطبوع</string>
+    <string name="inventory_ds_747b8db5d687">استارتر 3v هابري</string>
+    <string name="inventory_ds_76f6f159e463">جديدة</string>
+    <string name="inventory_ds_770c11e048d1">تصدير PDF</string>
+    <string name="inventory_ds_7b5ad10f0f58">لا توجد تصنيفات بعد.
+أضف تصنيفات من قائمة المخزون ← ⋮ ← إدارة التصنيفات</string>
+    <string name="inventory_ds_7db46f8a18e8">250,000.0</string>
+    <string name="inventory_ds_835b649f6c2b">حذف التصنيف</string>
+    <string name="inventory_ds_83ae0760c53f">لا توجد أصناف قابلة للتعديل</string>
+    <string name="inventory_ds_8ae0259f650f">بيع: %1$s ج</string>
+    <string name="inventory_ds_8c76dc0145cc">سعر البيع *</string>
+    <string name="inventory_ds_8cec3e98a6a1">اسم الصنف</string>
+    <string name="inventory_ds_95eeaed8bd8b">وحدة</string>
+    <string name="inventory_ds_9691c608abac">الصنف الخدمي يظهر في الفواتير ولا يؤثر على حسابات الأرباح.</string>
+    <string name="inventory_ds_96e68dbbae46">حد التنبيه</string>
+    <string name="inventory_ds_98fb38194248">مثال: كرتونة، دستة</string>
+    <string name="inventory_ds_9a79be611e02">99</string>
+    <string name="inventory_ds_9d0ea9bc645d">الكمية الحالية</string>
+    <string name="inventory_ds_9f22ffde0566">إدارة التصنيفات</string>
+    <string name="inventory_ds_9f72554d71a2">اضغط مطولاً للتعديل</string>
+    <string name="inventory_ds_9f860c086e4e">275,000.0</string>
+    <string name="inventory_ds_a110ee7d3866">البند المرتبط (القطعة)</string>
+    <string name="inventory_ds_a9d487241b73">اختر تصنيفاً</string>
+    <string name="inventory_ds_a9ea9ec210c7">سجل حركات: %1$s</string>
+    <string name="inventory_ds_aca7ffce062e">أسعار البيع فقط</string>
+    <string name="inventory_ds_acb0f477ff78">📋</string>
+    <string name="inventory_ds_b18ceda4c68f">خيارات الصنف</string>
+    <string name="inventory_ds_b57596f18b10">سجل الحركات</string>
+    <string name="inventory_ds_b7065380b4cc">العبوة (عدد القطع)</string>
+    <string name="inventory_ds_b9f1f675ce91">هامش</string>
+    <string name="inventory_ds_bf3a3673e472">بيع</string>
+    <string name="inventory_ds_c43acabd84f6">إبحث عن صنف...</string>
+    <string name="inventory_ds_c48e5f785436">شراء</string>
+    <string name="inventory_ds_c7655bda0748">تصفية حسب التصنيف</string>
+    <string name="inventory_ds_c79f71243f41">%1$s</string>
+    <string name="inventory_ds_c7b987d93279">صنف مكرر</string>
+    <string name="inventory_ds_cabd7731e3fd">إظهار التاريخ</string>
+    <string name="inventory_ds_cce5050d9e16">كشف الأسعار</string>
+    <string name="inventory_ds_cd67d6d941f1">نافد</string>
+    <string name="inventory_ds_cdc233f91d61">لا يوجد أصناف بعد</string>
+    <string name="inventory_ds_d0065b7ffda9">النواقص في المخزون</string>
+    <string name="inventory_ds_d491c01caf90">اختر المنتجات</string>
+    <string name="inventory_ds_d697a2b1a7ee">المخزون</string>
+    <string name="inventory_ds_d6cf229ee82a">%1$s صنف</string>
+    <string name="inventory_ds_dc42087e53de">تحديد الكل</string>
+    <string name="inventory_ds_defe5f59699b">ابحث بالاسم...</string>
+    <string name="inventory_ds_e198a6c8f8ab">%1$s يوم</string>
+    <string name="inventory_ds_e3177298b83d">هل تريد حذف "%1$s"؟</string>
+    <string name="inventory_ds_e551e1bff940">استيراد CSV</string>
+    <string name="inventory_ds_e5b564928c56">الكمية الحالية: %1$s</string>
+    <string name="inventory_ds_e7e95c0baef2">مثال: رف A3</string>
+    <string name="inventory_ds_ea1329523e64">اسم التصنيف الجديد...</string>
+    <string name="inventory_ds_eac09a5b854a">حركات</string>
+    <string name="inventory_ds_ecf727ea048d">•</string>
+    <string name="inventory_ds_edc47290ed60">📝</string>
+    <string name="inventory_ds_f1253d477491">طباعة بالأسعار</string>
+    <string name="inventory_ds_f26b72e41fe8">تعديل المخزون</string>
+    <string name="inventory_ds_f2d19c084052">خيارات إضافية</string>
+    <string name="inventory_ds_f2e2bbc10b16">تعديل الصنف</string>
+    <string name="inventory_ds_f439d8b5601e">إضافة صنف خدمي</string>
+    <string name="inventory_ds_fa1f4593291b">رقم القطعة</string>
+    <string name="inventory_ds_fdfd1fbb9a5b">آخر تعديل: %1$s</string>
+    <string name="inventory_ds_ff514dc7dd5f">اسم الخدمة (مثال: أجرة تركيب)</string>
+
+    <!-- Session 298: owner-local hardcoded string migration. -->
+    <string name="inventory_v298_012125e0fd75" translatable="false">"حفظ الصنف"</string>
+    <string name="inventory_v298_012125e0fd75_2" translatable="false">"حفظ التعديلات"</string>
+    <string name="inventory_v298_0e9f3da7b75a" translatable="false">"تعديل صنف"</string>
+    <string name="inventory_v298_16d819776545" translatable="false">"مورد: %1$s"</string>
+    <string name="inventory_v298_1d8942bec592" translatable="false">"تم النسخ"</string>
+    <string name="inventory_v298_1ef61de9484b" translatable="false">"سعر البيع: %1$s"</string>
+    <string name="inventory_v298_2183806367be" translatable="false">"بدون مورد"</string>
+    <string name="inventory_v298_35c213600b8d" translatable="false">"بدون مورد"</string>
+    <string name="inventory_v298_38b4ae76c09d" translatable="false">"صنف مخزون"</string>
+    <string name="inventory_v298_4d2c2f190e89" translatable="false">"سعر البيع: %1$s  |  سعر الشراء: %2$s"</string>
+    <string name="inventory_v298_5dcd5144563e" translatable="false">"متوفر"</string>
+    <string name="inventory_v298_74e4918ecd4d" translatable="false">"لا توجد نتائج للبحث"</string>
+    <string name="inventory_v298_8c51de644a7b" translatable="false">"إنشاء PDF بدون أسعار"</string>
+    <string name="inventory_v298_8c51de644a7b_2" translatable="false">"إنشاء PDF بالأسعار"</string>
+    <string name="inventory_v298_8cc0625ed7f2" translatable="false">"إضافة صنف من المخزون"</string>
+    <string name="inventory_v298_9995c255ec8e" translatable="false">"لا توجد أصناف في المخزون\nاضغط + لإضافة صنف"</string>
+    <string name="inventory_v298_9aedd2a63971" translatable="false">"تخفيض"</string>
+    <string name="inventory_v298_9aedd2a63971_2" translatable="false">"زيادة"</string>
+    <string name="inventory_v298_9aedd2a63971_3" translatable="false">"%1$s ج"</string>
+    <string name="inventory_v298_9aedd2a63971_4" translatable="false">"%1$s%%"</string>
+    <string name="inventory_v298_9aedd2a63971_5" translatable="false">"%1$s %2$s على %3$s منتج"</string>
+    <string name="inventory_v298_b2aae88c3149" translatable="false">"سيتم حفظ الأسعار الجديدة لكل المنتجات"</string>
+    <string name="inventory_v298_b9c97effb520" translatable="false">"%.0f"</string>
+    <string name="inventory_v298_b9c97effb520_2" translatable="false">"%1$s ج"</string>
+    <string name="inventory_v298_ba490730492f" translatable="false">"المبلغ (ج)"</string>
+    <string name="inventory_v298_ba490730492f_2" translatable="false">"النسبة (%)"</string>
+    <string name="inventory_v298_bf85a6454f86" translatable="false">"اختر تصنيفاً..."</string>
+    <string name="inventory_v298_d251feaa4e3e" translatable="false">"تطبيق على %1$s منتج"</string>
+    <string name="inventory_v298_d251feaa4e3e_2" translatable="false">"حفظ الأسعار"</string>
+    <string name="inventory_v298_db22ff7e5ec4" translatable="false">"بحث في المخزون"</string>
+    <string name="inventory_v298_ea6a63b9ba9a" translatable="false">"كل التصنيفات"</string>
+    <string name="inventory_v298_ed08dee7d56d" translatable="false">"- %1$s"</string>
+    <string name="inventory_v298_fa69fb1e2b5a" translatable="false">"تطبيق التعديل؟"</string>
+    <string name="inventory_v298_fa69fb1e2b5a_2" translatable="false">"حفظ الأسعار؟"</string>
+
+    <!-- Session 298 legacy hardcoded closure. -->
+    <string name="inventory_v298_permission_edit_denied" translatable="false">"لا تملك صلاحية تعديل الأصناف"</string>
+    <string name="inventory_v298_permission_price_denied" translatable="false">"لا تملك صلاحية تعديل الأسعار"</string>
+    <string name="inventory_v298_permission_import_denied" translatable="false">"لا تملك صلاحية استيراد ملفات المخزون"</string>
+    <string name="inventory_v298_permission_export_denied" translatable="false">"لا تملك صلاحية تصدير بيانات المخزون"</string>
+
+    <!-- v376 price-list templates and live-inventory flow. -->
+    <string name="price_list_title" translatable="false">كشف أسعار</string>
+    <string name="price_list_add_item" translatable="false">إضافة صنف</string>
+    <string name="price_list_templates" translatable="false">القوالب</string>
+    <string name="price_list_save_as_template" translatable="false">حفظ كقالب</string>
+    <string name="price_list_selected_count" translatable="false">%1$d صنف في الكشف</string>
+    <string name="price_list_clear" translatable="false">مسح الكل</string>
+    <string name="price_list_empty_title" translatable="false">ابدأ بإضافة صنف أو قالب</string>
+    <string name="price_list_empty_subtitle" translatable="false">الأسعار والتوفر تُقرأ مباشرة من المخزون</string>
+    <string name="price_list_available" translatable="false">متوفر: %1$d</string>
+    <string name="price_list_out_of_stock" translatable="false">غير متوفر</string>
+    <string name="price_list_price_override" translatable="false">سعر مخصص</string>
+    <string name="price_list_price" translatable="false">السعر</string>
+    <string name="price_list_show_date" translatable="false">إظهار التاريخ</string>
+    <string name="price_list_show_prices" translatable="false">إظهار الأسعار</string>
+    <string name="price_list_pdf" translatable="false">إنشاء ومشاركة PDF</string>
+    <string name="price_list_search_inventory" translatable="false">ابحث بالاسم أو رقم القطعة</string>
+    <string name="price_list_no_search_results" translatable="false">لا توجد أصناف مطابقة</string>
+    <string name="price_list_templates_title" translatable="false">قوالب كشف الأسعار</string>
+    <string name="price_list_template_new" translatable="false">قالب جديد</string>
+    <string name="price_list_template_all" translatable="false">إضافة الكل (%1$d)</string>
+    <string name="price_list_template_available" translatable="false">المتوفر فقط (%1$d)</string>
+    <string name="price_list_template_edit" translatable="false">تعديل القالب</string>
+    <string name="price_list_template_delete" translatable="false">حذف القالب</string>
+    <string name="price_list_template_delete_confirm" translatable="false">حذف قالب «%1$s»؟</string>
+    <string name="price_list_template_name" translatable="false">اسم القالب</string>
+    <string name="price_list_template_items_count" translatable="false">%1$d بند · المتوفر الآن %2$d</string>
+    <string name="price_list_template_selected_count" translatable="false">تم اختيار %1$d صنف</string>
+    <string name="price_list_template_add_from_inventory" translatable="false">إضافة من المخزون</string>
+    <string name="price_list_template_done_adding" translatable="false">تمت الإضافة</string>
+    <string name="price_list_template_no_items" translatable="false">لا توجد بنود داخل القالب</string>
+    <string name="price_list_template_create" translatable="false">إنشاء القالب</string>
+    <string name="price_list_template_save" translatable="false">حفظ التعديل</string>
+    <string name="price_list_template_empty" translatable="false">لا توجد قوالب بعد</string>
+    <string name="price_list_template_favorite" translatable="false">مفضلة</string>
+    <string name="price_list_template_unfavorite" translatable="false">إزالة من المفضلة</string>
+    <string name="price_list_part_number" translatable="false">رقم القطعة: %1$s</string>
+
+</resources>

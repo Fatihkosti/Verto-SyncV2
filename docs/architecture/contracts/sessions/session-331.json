@@ -1,0 +1,22 @@
+{
+  "architecture": {
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": ["Room schema or migration", "server SQL/API redesign", "business-rule change", "sync protocol change", "UI/navigation redesign", "plugin framework", "service locator", "foreign DAO/entity/repository implementation"],
+    "invariants": ["every feature has one admission entry and budget", "dependency cycles remain zero", "foreign persistence access remains zero", "active compatibility drift remains zero", "risk-appropriate test and rollout evidence is present"]
+  },
+  "metadata": {"behavioral_intent": "feature admission and scalability budget hardening", "phase": "6/6 Scalability & Future Extension", "predecessor_session": 330},
+  "session": {
+    "id": 331,
+    "input_sha256": "6e483fa09f279bac58e599eecd88eb326db9290a34501206b52d815ae3fcfcaf",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_331_INPUT_SNAPSHOT.json",
+    "scope": "FEATURE ADMISSION / SCALABILITY BUDGETS / EXTENSION READINESS",
+    "allowed_modules": [":app", ":feature:auth", ":feature:commission", ":feature:dashboard", ":feature:dashboard:api", ":feature:expenses", ":feature:integration:optimal", ":feature:inventory", ":feature:invoice", ":feature:management", ":feature:messages", ":feature:notifications", ":feature:organization", ":feature:party", ":feature:payment", ":feature:profile", ":feature:reports", ":feature:settings", ":feature:shipment"],
+    "allowed_files": ["docs/architecture/contracts/**", "docs/architecture/verification/SESSION_331_INPUT_SNAPSHOT.json", "docs/architecture/verification/FEATURE_*.json", "docs/architecture/verification/SCALABILITY_*.json", "docs/architecture/ADDING_A_FEATURE.md", "docs/architecture/ADDING_AN_INTEGRATION.md", "docs/architecture/SCALABILITY_MODEL.md", "tools/architecture/verto_feature_admission_guard.py", "tools/architecture/fixtures/**", "scripts/ci/run-quality-gate.sh", "scripts/ci/run-source-of-truth-admission.sh", "docs/DOCUMENTATION_INVENTORY.md"],
+    "forbidden_files": ["supabase/**", "functions/**", "sql/**", "app/schemas/**", "data/database/src/main/**", "feature/*/src/main/**", "data/sync/src/main/**", "app/src/main/**", "settings.gradle.kts", "build.gradle.kts"],
+    "forbidden_changes": ["business logic", "database schema", "server/API redesign", "UI/navigation redesign", "new runtime framework"]
+  },
+  "verification": {
+    "required_gates": ["change-contract", "architecture", "dependency", "contract-compatibility", "feature-scalability-admission", "data-ownership", "persistence-boundary", "transaction-contract", "migration-schema", "persistence-ratchet", "technical-debt-ratchet", "differential-quality", "kotlin-quality", "maintainability-testability", "documentation", "design-system", "design-system-diff", "detekt", "lint", "tests", "debug-build", "source-of-truth-admission"],
+    "required_tests": ["feature admission guard self-test", "compatibility guard self-test", "testability guard self-test", "positive admission fixture", "negative critical-test fixture"]
+  }
+}

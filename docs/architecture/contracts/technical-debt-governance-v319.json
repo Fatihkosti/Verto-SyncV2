@@ -1,0 +1,41 @@
+{
+  "format": "verto-technical-debt-governance-v319-v1",
+  "kotlin_quality_metrics": {
+    "architecture_violation_count": 18,
+    "broad_catches": 32,
+    "dependency_cycles": 0,
+    "excessive_parameter_lists": 654,
+    "exposed_mutable_state": 2,
+    "global_scope": 0,
+    "large_files_over_500": 28,
+    "lateinit_var": 4,
+    "long_functions": 488,
+    "manual_coroutine_scopes": 1,
+    "not_null_assertions": 7,
+    "production_kotlin_files": 1194
+  },
+  "legacy_architecture_identities": [
+    "VARCH-003|feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/domain/model/OptimalAttachment.kt|Domain imports another feature: messages",
+    "VARCH-003|feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/domain/model/OptimalChat.kt|Domain imports another feature: messages",
+    "VARCH-003|feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/domain/port/OptimalMessagingPort.kt|Domain imports another feature: messages",
+    "VARCH-003|feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/domain/port/OptimalOwnerPorts.kt|Domain imports another feature: invoice",
+    "VARCH-005|feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/quickstock/QuickStockCountPdfGenerator.kt|Application imports Room/local/remote infrastructure",
+    "VARCH-005|feature/party/src/main/kotlin/com/verto/app/feature/party/application/CalculateClientBalanceUseCase.kt|Application imports Room/local/remote infrastructure",
+    "VARCH-012|:feature:expenses|Unauthorized feature module dependency -> :feature:dashboard:api",
+    "VARCH-012|:feature:integration:optimal|Unauthorized feature module dependency -> :feature:dashboard:api",
+    "VARCH-012|:feature:integration:optimal|Unauthorized feature module dependency -> :feature:invoice",
+    "VARCH-012|:feature:integration:optimal|Unauthorized feature module dependency -> :feature:management",
+    "VARCH-012|:feature:integration:optimal|Unauthorized feature module dependency -> :feature:messages",
+    "VARCH-012|:feature:integration:optimal|Unauthorized feature module dependency -> :feature:party",
+    "VARCH-012|:feature:integration:optimal|Unauthorized feature module dependency -> :feature:payment",
+    "VARCH-012|:feature:inventory|Unauthorized feature module dependency -> :feature:dashboard:api",
+    "VARCH-012|:feature:invoice|Unauthorized feature module dependency -> :feature:dashboard:api",
+    "VARCH-012|:feature:party|Unauthorized feature module dependency -> :feature:dashboard:api",
+    "VARCH-012|:feature:payment|Unauthorized feature module dependency -> :feature:dashboard:api",
+    "VARCH-012|:feature:shipment|Unauthorized feature module dependency -> :feature:dashboard:api"
+  ],
+  "policy": "Historical ceiling anchor: later admitted baselines may tighten only; expansion is fail-closed.",
+  "rule_catalog_count": 30,
+  "source_version": "v319",
+  "source_zip_sha256": "cd9e22fa9803d52081c3df4de174279eb893d2c7ecd997c0d9f76523d3699b49"
+}

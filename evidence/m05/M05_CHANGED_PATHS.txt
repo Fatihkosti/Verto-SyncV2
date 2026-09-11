@@ -1,0 +1,25 @@
+# M05 changed paths
+app/src/main/kotlin/com/verto/app/di/optimal/OptimalSyncBridge.kt
+app/src/main/kotlin/com/verto/app/di/optimal/OptimalSyncBridgeModule.kt
+data/database/src/main/kotlin/com/verto/app/data/local/dao/ClientCreditDao.kt
+data/database/src/main/kotlin/com/verto/app/data/local/dao/InventoryCostDao.kt
+data/database/src/main/kotlin/com/verto/app/data/local/dao/InventorySyncDao.kt
+data/database/src/main/kotlin/com/verto/app/data/local/dao/InvoiceFinancialEventDao.kt
+data/database/src/main/kotlin/com/verto/app/data/local/dao/OptimalOutboxDao.kt
+data/database/src/main/kotlin/com/verto/app/data/local/dao/PartyRoleDao.kt
+data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncOrchestrationDao.kt
+data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncOutboxDao.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManagerPorts.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/SyncV2PushBridgeModule.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorker.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/push/SyncV2PushCoordinator.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedFinancialOwner310Route.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedStrongerOutboxPushEngine.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncConflictEngine.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPartyPushBridge.kt
+data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushEngine.kt
+data/sync/src/test/kotlin/com/verto/app/data/sync/SyncManagerTest.kt
+feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/application/OptimalOutboxSyncParticipant.kt
+tools/architecture/__pycache__/verto_arch_guard.cpython-313.pyc
+tools/m05/verify_m05.py

@@ -1,0 +1,28 @@
+{
+  "format": "verto-maintainability-testability-baseline-v1",
+  "session": 329,
+  "source": "v328",
+  "metrics": {
+    "critical_flows_required": 5,
+    "critical_flows_covered": 5,
+    "direct_invoice_tests": 7,
+    "direct_sync_tests": 9,
+    "contract_test_suites": 8,
+    "negative_critical_tests": 8,
+    "required_mutations": 8,
+    "detected_mutations": 8,
+    "production_test_hooks": 0,
+    "sleep_based_protected_tests": 0,
+    "invoice_direct_wall_clock_calls": 0,
+    "invoice_direct_random_uuid_calls": 0,
+    "sync_direct_context_calls": 0,
+    "sync_direct_worker_calls": 0,
+    "sync_direct_database_orchestration_calls": 0,
+    "sync_direct_wall_clock_calls": 0
+  },
+  "measurement_notes": [
+    "Critical flow evidence is registered from existing deterministic and persistence tests.",
+    "Coverage percentage is intentionally not used as the definition of done.",
+    "Gradle execution remains separately reported when the environment blocks it."
+  ]
+}

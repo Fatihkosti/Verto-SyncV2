@@ -1,0 +1,335 @@
+{
+  "checks": [
+    {
+      "detail": "",
+      "name": "room_schema_83",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "migration_82_83_registered",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "expense_range_index",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "expense_category_index",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_reference_index",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_register_pending_retired",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_write_room_atomic",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_outbox_delta",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_payload_minor",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_payload_write_id",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_payload_no_balance",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_payload_no_double",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "stable_movement_identity",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_idempotency_conflict",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_org_scope",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "signed_delta_once",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "expense_cash_dependency",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "manual_cash_no_duplicate_outbox",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "manual_cash_no_register_outbox",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "owner310_types",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "owner310_validator",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "owner310_materialization",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "expense_bounded_lookup",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_bounded_lookup",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "v2_no_full_history_scan",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "push_uses_financial_route",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "legacy_owner_filter",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "ownership_covers_three",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "v2_paused_no_fallback",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "push_default_50",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "push_scan_500",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "push_more_available",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "pull_page_100",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "pull_pages_5",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "pull_changes_1000",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "pull_more_available",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_cash_rpc",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_cash_row_lock",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_cash_write_id",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_cash_minor_delta",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_cash_secondary_register",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_cash_unique_write",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_expense_update_hardened",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_indexes_added",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "large_fixture_expenses",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "large_fixture_cash",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "large_fixture_outbox",
+      "status": "PASS"
+    },
+    {
+      "detail": "rows=500",
+      "name": "large_fixture_bounded_push",
+      "status": "PASS"
+    },
+    {
+      "detail": "SEARCH expenses USING INDEX index_expenses_lifecycle_date (lifecycle_state=? AND date>? AND date<?)",
+      "name": "query_plan_expense_range",
+      "status": "PASS"
+    },
+    {
+      "detail": "SEARCH expenses USING INDEX index_expenses_lifecycle_date (lifecycle_state=? AND date>? AND date<?) USE TEMP B-TREE FOR GROUP BY",
+      "name": "query_plan_expense_category",
+      "status": "PASS"
+    },
+    {
+      "detail": "SCAN cash_register_movements USING INDEX index_cash_register_movements_createdAt",
+      "name": "query_plan_cash_recent",
+      "status": "PASS"
+    },
+    {
+      "detail": "SEARCH sync_outbox USING COVERING INDEX index_sync_outbox_delivery (organization_id=? AND state=? AND next_attempt_at<?) USE TEMP B-TREE FOR ORDER BY",
+      "name": "query_plan_outbox",
+      "status": "PASS"
+    },
+    {
+      "detail": "[{\"caught\": true, \"name\": \"re_enable_register\"}, {\"caught\": true, \"name\": \"full_history\"}, {\"caught\": true, \"name\": \"remove_write_id\"}, {\"caught\": true, \"name\": \"remove_idempotency\"}, {\"caught\": true, \"name\": \"receipt_identity\"}, {\"caught\": true, \"name\": \"org_scope\"}, {\"caught\": true, \"name\": \"client_register_lww\"}, {\"caught\": true, \"name\": \"expense_index\"}, {\"caught\": true, \"name\": \"more_available\"}, {\"caught\": true, \"name\": \"silent_fallback\"}, {\"caught\": true, \"name\": \"owner310_route\"}]",
+      "name": "mutation_evidence_all",
+      "status": "PASS"
+    }
+  ],
+  "failed": [],
+  "fixture": {
+    "bounded_rows": 500,
+    "cash_movements": 250000,
+    "device_benchmark": false,
+    "elapsed_host_seconds": 0.836,
+    "expenses": 100000,
+    "outbox": 25000,
+    "pending_retry": 5000,
+    "query_plans": {
+      "cash_recent": "SCAN cash_register_movements USING INDEX index_cash_register_movements_createdAt",
+      "expense_category": "SEARCH expenses USING INDEX index_expenses_lifecycle_date (lifecycle_state=? AND date>? AND date<?) USE TEMP B-TREE FOR GROUP BY",
+      "expense_range": "SEARCH expenses USING INDEX index_expenses_lifecycle_date (lifecycle_state=? AND date>? AND date<?)",
+      "outbox_eligible": "SEARCH sync_outbox USING COVERING INDEX index_sync_outbox_delivery (organization_id=? AND state=? AND next_attempt_at<?) USE TEMP B-TREE FOR ORDER BY"
+    }
+  },
+  "format": "verto-finance-sync-v335-static-v1",
+  "mutation_evidence": [
+    {
+      "caught": true,
+      "name": "re_enable_register"
+    },
+    {
+      "caught": true,
+      "name": "full_history"
+    },
+    {
+      "caught": true,
+      "name": "remove_write_id"
+    },
+    {
+      "caught": true,
+      "name": "remove_idempotency"
+    },
+    {
+      "caught": true,
+      "name": "receipt_identity"
+    },
+    {
+      "caught": true,
+      "name": "org_scope"
+    },
+    {
+      "caught": true,
+      "name": "client_register_lww"
+    },
+    {
+      "caught": true,
+      "name": "expense_index"
+    },
+    {
+      "caught": true,
+      "name": "more_available"
+    },
+    {
+      "caught": true,
+      "name": "silent_fallback"
+    },
+    {
+      "caught": true,
+      "name": "owner310_route"
+    }
+  ],
+  "passed": 53,
+  "status": "PASS",
+  "total": 53
+}

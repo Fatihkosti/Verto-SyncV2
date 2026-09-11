@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="legacy_ui_f0b5c8ab3dcb">اختر صورة</string>
+    <string name="legacy_ui_65de8039dcae">تغيير الصورة</string>
+    <string name="legacy_ui_25e3c9737ca2">توليد كود الانضمام</string>
+    <string name="legacy_ui_84f7e0956030">جاري التوليد...</string>
+    <string name="legacy_ui_559a1f710780">تم النسخ!</string>
+    <string name="legacy_ui_b26f5e506bed">نسخ الكود</string>
+    <string name="legacy_ui_300d6bdbe2ff">صلاحيات الموظف</string>
+    <string name="legacy_ui_0c7ccaf3ffe7">جاري الحفظ...</string>
+    <string name="legacy_ui_d49e74ff0775">حفظ الصلاحيات</string>
+    <string name="legacy_ui_deff75511735">تعذر تحميل صلاحيات الموظف</string>
+    <string name="legacy_ui_cfe5aad0ac8d">بيانات الفواتير والعمليات السابقة ستبقى محفوظة.</string>
+    <string name="legacy_ui_c662f8583007">؟</string>
+    <string name="legacy_ui_fd5b50ab3eca">%1$d/%2$d</string>
+
+    <string name="ds_002f7b7310f1">كود للاستخدام مرة واحدة · صالح لمدة 72 ساعة</string>
+
+    <string name="ds_0c4b96d5041d">إنشاء كود انضمام</string>
+    <string name="ds_1ae880b0ff93">سيتم إلغاء صلاحيات %1$s وتعطيل حسابه.
+</string>
+
+    <string name="ds_27b688a70b70">الكود جاهز للموظف %1$s</string>
+
+
+    <string name="ds_32919de9ba0a">بيانات المؤسسة</string>
+    <string name="ds_401c37828f9d">الصلاحيات</string>
+    <string name="ds_4c16231c900a">تاريخ الانضمام الفعلي</string>
+    <string name="ds_4c25c236bd1c">الشعار</string>
+    <string name="ds_4cf946e067d2">لا يوجد موظفون بعد</string>
+
+    <string name="ds_583750c2489a">الإرسال الفعلي غير مربوط في هذه المرحلة</string>
+    <string name="ds_59539fc909e2">اسم المحل</string>
+    <string name="ds_5e9b46c91615">تفاصيل الموظف</string>
+    <string name="ds_68b53f81b403">ملاحظة: التعديلات تُطبَّق بعد إعادة تسجيل الدخول</string>
+    <string name="ds_6951dce35650">المسمى الوظيفي</string>
+    <string name="ds_75124a0090df">المدينة</string>
+    <string name="ds_7cb3970d3acd">العملة (مثال: ريال، جنيه، دينار)</string>
+    <string name="ds_819198e224b2">الأداء</string>
+    <string name="ds_84895944a04a">%1$s موظف</string>
+    <string name="ds_8d9c2b2664ee">تم حفظ بيانات المؤسسة</string>
+    <string name="ds_8da173f0cf53">كود انضمام جديد</string>
+
+
+    <string name="ds_942623106f7d">بيانات الموظف</string>
+    <string name="ds_9830d6fd532b">التوقيع</string>
+    <string name="ds_9bc331c7a422">إدارة الموظفين</string>
+    <string name="ds_a0b026caf37a">معطّل</string>
+    <string name="ds_a541e096620c">حذف الموظف؟</string>
+    <string name="ds_aedf9e63de35">تم حفظ الصلاحيات بنجاح</string>
+    <string name="ds_b25718d00d28">بيانات المحل</string>
+
+    <string name="ds_baffa49c77ea">العنوان</string>
+    <string name="ds_c6e12b82d972">كود جديد</string>
+    <string name="ds_cb791d19dc7d">الشعار والتوقيع سيُستخدمان تلقائياً في الفواتير والطباعة</string>
+    <string name="ds_d14b027c8063">توقيع المؤسسة</string>
+    <string name="ds_d17dd3001f17">شعار المؤسسة</string>
+    <string name="ds_d7e51a87a516">انضم: %1$s</string>
+    <string name="ds_da6da8025c9d">جارٍ تحميل بيانات الأداء…</string>
+    <string name="ds_db60c2237150">تعذّر تحميل الأداء: %1$s</string>
+    <string name="ds_dcb228c08334">أنشئ كود انضمام وشاركه مع موظفيك
+حتى يتمكنوا من الانضمام للمؤسسة</string>
+    <string name="ds_e64f9e1c97c4">إدارة الصلاحيات</string>
+
+
+    <!-- Session 298 legacy hardcoded closure. -->
+    <string name="organization_v298_section_sales" translatable="false">"المبيعات"</string>
+    <string name="organization_v298_section_purchases" translatable="false">"المشتريات"</string>
+    <string name="organization_v298_section_clients" translatable="false">"العملاء والموردون"</string>
+    <string name="organization_v298_section_inventory" translatable="false">"المخزون"</string>
+    <string name="organization_v298_section_reports" translatable="false">"التقارير"</string>
+    <string name="organization_v298_section_expenses" translatable="false">"المصاريف"</string>
+    <string name="organization_v298_section_payments" translatable="false">"المدفوعات والصندوق"</string>
+    <string name="organization_v298_section_commission" translatable="false">"العمولات"</string>
+    <string name="organization_v298_section_marketing" translatable="false">"لوحات المسوّقين"</string>
+    <string name="organization_v298_section_shipments" translatable="false">"الشحنات"</string>
+</resources>

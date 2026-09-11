@@ -1,0 +1,11 @@
+failure_class,examples,outbox_transition,worker_result,workmanager_retry,retry_after_authority,user_action_required,terminal_or_nonterminal,v311_rule,evidence
+TRANSIENT_NETWORK,timeout/socket/502/503/504,RETRY same identity,retry bounded,yes,outbox next_attempt_at + WM backoff,no,nonterminal,only transport pressure retries,SyncReliability.kt
+RATE_LIMITED,429,RETRY same identity,retry bounded,yes,receipt retryAfter or bounded delay,no,nonterminal,no busy loop,UnifiedSyncPushEngine.kt
+AUTHENTICATION,401/403/JWT,RETRY/pending identity preserved,success/no-op until valid session,no,session recovery,yes,nonterminal,never business REJECTED solely for auth,UnifiedSyncPushEngine.kt
+VALIDATION,malformed/unsupported payload,terminal/review per data plane,failure,no,none,yes,terminal,fail closed,SyncReliability.kt
+PERMANENT_PROTOCOL,idempotency/protocol inconsistency,terminal/review,failure,no,none,yes,terminal,no network retry,SyncReliability.kt
+CONFLICT_DOMAIN,CONFLICT/REQUIRES_REVIEW,conflict engine,success/no-op,no,domain resolution,maybe,terminal-or-review,not network retry,SyncReliability.kt
+STALE_SCOPE,wrong org/user/epoch,no mutation,success/no-op,no,new session scheduling,no,nonterminal,zero domain/network mutation,SyncManager.kt
+RECOVERY_REQUIRED,BOOTSTRAP_REQUIRED/cursor expiry,unchanged,success/deferred,no,Session 313,yes,nonterminal,no timestamp fallback,SyncManager.kt
+LOCAL_STORAGE_FAILURE,Room/SQLite/disk,unchanged,failure,no,operator/storage recovery,yes,nonterminal,not mislabeled network,SyncReliability.kt
+CANCELLED,coroutine cancellation,unchanged,rethrow,no,structured cancellation,no,nonterminal,no terminal mutation,SyncWorker.kt

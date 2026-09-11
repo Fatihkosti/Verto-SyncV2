@@ -1,0 +1,38 @@
+{
+  "format": "verto-persistence-migration-policy-v326",
+  "session": 326,
+  "default": "NO_SCHEMA_CHANGE_UNLESS_CRITICAL_JUSTIFIED_GAP",
+  "required_fields": [
+    "migration_id",
+    "from_version",
+    "to_version",
+    "owner",
+    "reason",
+    "backward_compatibility",
+    "data_transform",
+    "rollback_strategy",
+    "schema_export",
+    "migration_test",
+    "verification",
+    "release_risk"
+  ],
+  "failure_conditions": [
+    "missing from/to",
+    "migration gap",
+    "schema changed without version movement",
+    "version moved without migration",
+    "missing genuine exported schema",
+    "missing migration test",
+    "manual schema artifact used as evidence",
+    "destructive migration fallback"
+  ],
+  "current_decision": {
+    "room_schema_version": 81,
+    "schema_change_in_326": false,
+    "migration_required": false,
+    "schema_fingerprint_must_remain_identical": true,
+    "server_sql_changes": false
+  },
+  "owner": "architecture/data-persistence",
+  "verified_against": "SESSION_326_INPUT_SNAPSHOT"
+}

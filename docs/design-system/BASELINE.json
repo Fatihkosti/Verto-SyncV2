@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 290,
+  "source": "Verto-v289",
+  "policy": "migration-no-growth-only",
+  "snapshotId": "2190006e6dc08447af5bc7152f4d77e7b4f8da492830da69e82fb6162d70c38d",
+  "metrics": {
+    "legacyFocusedHardcodedCount": 88,
+    "hardcodedUserFacingStringsFull": 472,
+    "coreVisibleLiteralDebt": 10,
+    "rawMaterialMustWrap": 214,
+    "forbiddenMaterial": 0,
+    "rawDpOutsideApprovedTokenFiles": 22,
+    "rawSpOutsideApprovedTokenFiles": 0,
+    "rawColorOutsideApprovedTokenFiles": 0,
+    "rawMotionDurations": 5,
+    "coreBoundaryViolations": 0,
+    "designSystemDomainStringCount": 1064,
+    "externalDesignSystemDomainStringReferences": 1591,
+    "expiredExceptions": 0,
+    "permanentExceptions": 0,
+    "duplicateGuardedPrimitives": 0
+  },
+  "debtByFileRule": {
+    "app/src/main/kotlin/com/verto/app/ui/navigation/DrawerDestinationRegistry.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 3
+    },
+    "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchGridLayout.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 1
+    },
+    "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commissionreport/MarketerCommissionReportViewModel.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 1
+    },
+    "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsViewModel.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 2
+    },
+    "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UsersDashboardSections.kt": {
+      "HARDCODED_TEXT_LITERAL": 1
+    },
+    "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalPresentationState.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 6
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryDialogComponents.kt": {
+      "HARDCODED_TEXT_LITERAL": 1
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryPermissionGate.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 4
+    },
+    "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryViewModel.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 1
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/OrganizationPermissionSections.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 10
+    },
+    "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/PermissionSectionCard.kt": {
+      "HARDCODED_TEXT_LITERAL": 1
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientPaymentComponents.kt": {
+      "HARDCODED_TEXT_LITERAL": 1
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientPaymentScreen.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 1,
+      "HARDCODED_TEXT_LITERAL": 1
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt": {
+      "HARDCODED_TEXT_LITERAL": 2
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientStatementScreen.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 1,
+      "HARDCODED_TEXT_LITERAL": 7
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientsListScreen.kt": {
+      "HARDCODED_TEXT_LITERAL": 2
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/shared/PartyDashboardComponents.kt": {
+      "HARDCODED_TEXT_LITERAL": 1
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/shared/PartyStatementComponents.kt": {
+      "HARDCODED_TEXT_LITERAL": 5
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierPaymentScreen.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 1
+    },
+    "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierStatementScreen.kt": {
+      "HARDCODED_CONTENT_DESCRIPTION": 1,
+      "HARDCODED_SEMANTIC_LABEL": 1,
+      "HARDCODED_TEXT_LITERAL": 8
+    },
+    "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDraftUi.kt": {
+      "HARDCODED_TEXT_LITERAL": 1
+    },
+    "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtFormComponents.kt": {
+      "HARDCODED_TEXT_LITERAL": 1
+    },
+    "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/InvoiceTypePermissionPolicy.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 2
+    },
+    "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt": {
+      "HARDCODED_TEXT_LITERAL": 5
+    },
+    "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/CashFlowStatement.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 1,
+      "HARDCODED_TEXT_LITERAL": 3
+    },
+    "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/ProfitLossStatement.kt": {
+      "HARDCODED_SEMANTIC_LABEL": 1,
+      "HARDCODED_TEXT_LITERAL": 6
+    },
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailDialogs.kt": {
+      "HARDCODED_TEXT_LITERAL": 3
+    },
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailSections.kt": {
+      "HARDCODED_TEXT_LITERAL": 1
+    },
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseSheet.kt": {
+      "HARDCODED_TEXT_LITERAL": 1
+    }
+  },
+  "materialByComponent": {
+    "Card": 55,
+    "IconButton": 109,
+    "ModalBottomSheet": 10,
+    "ScrollableTabRow": 2,
+    "TabRow": 6,
+    "TopAppBar": 32
+  },
+  "baselineRole": "HISTORICAL_NO_GROWTH_REFERENCE",
+  "finalGateAllowance": false,
+  "activeExceptionLedger": "config/design-system/v291-exceptions.json"
+}

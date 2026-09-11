@@ -1,0 +1,33 @@
+{
+  "DIFFERENTIAL_QUALITY_GATE": "PASS",
+  "changed_files": [
+    "docs/DOCUMENTATION_INVENTORY.md",
+    "scripts/ci/run-quality-gate.sh",
+    "scripts/ci/run-source-of-truth-admission.sh"
+  ],
+  "changed_production_files": [],
+  "deleted_files": [],
+  "format": "verto-technical-debt-differential-v1",
+  "improved_identities": [],
+  "input_sha256": "c9487a46904b138b9c77bc498a1b37e3073619d9d1be8fe09f7110313e7e909f",
+  "input_tree_fingerprint": "324940a4c00325f615d7ded7422a91526d3f7d31c81f608fe109b59642b06322",
+  "new_files": [
+    "docs/architecture/contracts/complexity-baseline-v324.json",
+    "docs/architecture/contracts/sessions/session-324.json",
+    "docs/architecture/verification/SESSION_324_INPUT_SNAPSHOT.json",
+    "docs/architecture/verification/TECHNICAL_DEBT_HARDENING_v324.json",
+    "docs/architecture/verification/TECHNICAL_DEBT_HARDENING_v324.md",
+    "docs/architecture/verification/TECHNICAL_DEBT_RATCHET_VERIFY_v324.json",
+    "docs/architecture/verification/TECHNICAL_DEBT_REGISTRY_VERIFY_v324.json",
+    "docs/quality/technical-debt-ratchet-v324.json",
+    "docs/quality/technical-debt-registry.json",
+    "tools/technical_debt/dependency_gate.py",
+    "tools/technical_debt/tests/test_verify.py",
+    "tools/technical_debt/verify.py"
+  ],
+  "new_violations": [],
+  "removed_violations": [],
+  "session": 324,
+  "status": "PASS",
+  "worsened_identities": []
+}

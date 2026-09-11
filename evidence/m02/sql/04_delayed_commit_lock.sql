@@ -1,0 +1,11 @@
+-- Re-executable pattern for two concurrent sessions against a NON-PRODUCTION test organization.
+-- Session A:
+-- begin;
+-- select public.verto_m02_hold_revision_lock_test('<TEST_ORG_UUID>'::uuid,20);
+-- -- function holds the same pg_advisory_xact_lock family used by revision assignment
+-- commit;
+-- Session B while A is still active:
+-- begin;
+-- select pg_try_advisory_xact_lock(hashtextextended('verto-sync-revision:'||'<TEST_ORG_UUID>',0)) as acquired_while_delayed;
+-- rollback;
+-- Expected: false. Repeat after A commits; expected: true.

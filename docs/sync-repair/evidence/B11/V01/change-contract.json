@@ -1,0 +1,94 @@
+{
+  "session": {
+    "id": 4251101,
+    "input_sha256": "db0eb5ae27697a72dd4ce2829128b292334e6380f2a403b3c53f1b76f8a6198f",
+    "baseline_snapshot": "docs/sync-repair/evidence/B11/V01/input-tree.json",
+    "scope": "B11 local implementation explicitly requested: durable conflict evidence/review UI, explicit authorized decision paths, supersedes proof chain, immutable protection, schema100, tests/evidence. No B12 or server write.",
+    "allowed_modules": [
+      ":app",
+      ":data:database",
+      ":data:sync",
+      "docs",
+      "tools"
+    ],
+    "allowed_files": [
+      "CHANGELOG.md",
+      "EVIDENCE_INDEX.md",
+      "SYNC_IMPLEMENTATION_MAP.md",
+      "VERTO_SYNC_REPAIR_BACKLOG_AR.md",
+      "app/src/main/kotlin/com/verto/app/feature/sync/di/SyncConflictReviewModule.kt",
+      "app/src/main/kotlin/com/verto/app/feature/sync/presentation/SyncViewModel.kt",
+      "app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt",
+      "app/src/main/kotlin/com/verto/app/ui/navigation/AppNavigation.kt",
+      "app/src/test/kotlin/com/verto/app/feature/sync/di/ConflictResolutionPermissionPolicyB11Test.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations99To100.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRecoveryDao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRepairV2Dao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncConflictDao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncOutboxDao.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncPersistenceSupport.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncRepairV2Entities.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/UnifiedSyncEntities.kt",
+      "data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogB11Test.kt",
+      "data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogM03Test.kt",
+      "data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogSyncRepairV2Test.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/FrozenMutationStore.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/conflict/SyncConflictReviewService.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/ownership/SyncOwnershipRegistry.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncConflictEngine.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushEngine.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/OutboxIdentityDigest.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryRegistry.kt",
+      "data/sync/src/test/kotlin/com/verto/app/data/sync/conflict/SyncConflictRedactorB11Test.kt",
+      "data/sync/src/test/kotlin/com/verto/app/data/sync/conflict/SyncConflictResolutionPolicyB11Test.kt",
+      "docs/DOCUMENTATION_INVENTORY.md",
+      "docs/sync-repair/evidence/B11/V01/**",
+      "tools/test_sync_b11_sqlite.py",
+      "tools/test_sync_b11_static.py"
+    ],
+    "forbidden_files": [
+      "VERTO_SYNC_REPAIR_EXECUTION_CONTRACT_AR.md",
+      "SYNC_CONTRACT_V2.schema.json",
+      "data/operations/**",
+      "data/network/**",
+      "domain/**",
+      "feature/**",
+      "gradle/**",
+      "supabase/**",
+      "app/schemas/**",
+      "docs/sync-repair/evidence/B10/**"
+    ]
+  },
+  "architecture": {
+    "invariants": [
+      "No automatic conflict winner/LWW/amount merge.",
+      "Immutable financial/inventory facts cannot be overwritten by generic review.",
+      "Old frozen mutation bytes never change; superseded is not ACK.",
+      "Unknown outcome cannot be discarded; replacement closes old only with authoritative proof.",
+      "Newer local intent remains protected when an older conflict is resolved."
+    ],
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "new runtime dependency",
+      "legacy conflict fallback",
+      "automatic server-wins policy"
+    ]
+  },
+  "verification": {
+    "required_tests": [
+      "B11 static contract probe",
+      "B11 native SQLite 99→100/proof immutability probe",
+      "Gradle/KSP/Hilt compile and generated schema100",
+      "Room migration99→100 + fresh100 guards",
+      "T30 both decisions + matching echo + permission denial + changed remote + OUTCOME_UNKNOWN + newer-local ordering"
+    ],
+    "required_gates": [
+      "change-contract",
+      "documentation",
+      "G-B10",
+      "G-B11"
+    ]
+  }
+}

@@ -1,0 +1,381 @@
+{
+  "aggregateRegistryCount": 34,
+  "attachmentBinaryInPayloadCount": 0,
+  "blockers": [],
+  "buildExecuted": false,
+  "checks": [
+    {
+      "detail": "307",
+      "name": "input_manifest_session",
+      "status": "PASS"
+    },
+    {
+      "detail": "4f0cd4c334c510b0863645ebc56e2ce667460ae08916b7a88d65d8f812cfc413",
+      "name": "input_zip_sha",
+      "status": "PASS"
+    },
+    {
+      "detail": "1696",
+      "name": "input_archive_entries",
+      "status": "PASS"
+    },
+    {
+      "detail": "78",
+      "name": "input_room_78",
+      "status": "PASS"
+    },
+    {
+      "detail": "True",
+      "name": "v306_handoff307",
+      "status": "PASS"
+    },
+    {
+      "detail": "[]",
+      "name": "v306_blockers_empty",
+      "status": "PASS"
+    },
+    {
+      "detail": "78",
+      "name": "v306_room_after_78",
+      "status": "PASS"
+    },
+    {
+      "detail": "48da86c2e5e558eddaf6b07f89f6474013ddc66a85a132e8a01bf8e64afae233",
+      "name": "protected:data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt",
+      "status": "PASS"
+    },
+    {
+      "detail": "16eab4a5533bf791e860281c08c142c2fa8d0f618471a1b54b7189f2f6c03a43",
+      "name": "protected:data/sync/src/main/kotlin/com/verto/app/data/sync/SyncWorker.kt",
+      "status": "PASS"
+    },
+    {
+      "detail": "f5671b96b17c3f562391f97e7c9562f83c246f08d5f4921186ba4282a78270b6",
+      "name": "protected:data/sync/src/main/kotlin/com/verto/app/data/sync/RealtimeManager.kt",
+      "status": "PASS"
+    },
+    {
+      "detail": "3cd5bb3b019e094ee4209860bd3796620477861b55cd5aac8c54140e32234f48",
+      "name": "protected:data/preferences/src/main/kotlin/com/verto/app/utils/SyncPreferencesStore.kt",
+      "status": "PASS"
+    },
+    {
+      "detail": "9553e1801dcf756f619ea2c28fd1bf8534f18fa32e4f74c2743cedc5460a7e6c",
+      "name": "protected:data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncContract.kt",
+      "status": "PASS"
+    },
+    {
+      "detail": "9e35f020993e3caa21171ab6a311605f2bcfa58a910bf7814f22e157b5af7fe9",
+      "name": "protected:data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncAggregateRegistry.kt",
+      "status": "PASS"
+    },
+    {
+      "detail": "d0d89b1a6d8309e92c48cace4b30f934d8c83bcd3d75fcc0a2b3946a1d434557",
+      "name": "protected:app/schemas/com.verto.app.data.local.AppDatabase/78.json",
+      "status": "PASS"
+    },
+    {
+      "detail": "c6ebef781c7343f967acb9b14ce3918de242653d9fabb3171f34c064b98f8eb8",
+      "name": "protected:data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations77To78.kt",
+      "status": "PASS"
+    },
+    {
+      "detail": "79",
+      "name": "room_version_79",
+      "status": "WAIVED_KNOWN_EXCEPTION"
+    },
+    {
+      "detail": "",
+      "name": "migration_78_79_registered",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "no_destructive_migration",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "organization_settings_table",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "attachment_table",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "expense_lifecycle_columns",
+      "status": "PASS"
+    },
+    {
+      "detail": "schema78 fixture migrated to schema79 changed structures",
+      "name": "sqlite_static_migration_78_79",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "persisted_sequence_authority",
+      "status": "WAIVED_KNOWN_EXCEPTION"
+    },
+    {
+      "detail": "",
+      "name": "idempotency_conflict_preserved",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "payload_bound_preserved",
+      "status": "WAIVED_KNOWN_EXCEPTION"
+    },
+    {
+      "detail": "",
+      "name": "writer_registry_validation",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "writer_tenant_nonblank",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "writer_canonical_payload",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "writer_no_network",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "matrix_columns",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "matrix_status_values",
+      "status": "PASS"
+    },
+    {
+      "detail": "0",
+      "name": "matrix_no_blocked",
+      "status": "PASS"
+    },
+    {
+      "detail": "registry=34 covered=34 missing=[]",
+      "name": "all_34_registry_aggregates",
+      "status": "PASS"
+    },
+    {
+      "detail": "16/16",
+      "name": "owner307_registry_exact",
+      "status": "PASS"
+    },
+    {
+      "detail": "16/16; missing=[]",
+      "name": "owner307_16_closed",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "matrix_evidence_symbols",
+      "status": "PASS"
+    },
+    {
+      "detail": "[]",
+      "name": "exclusions_exact_no_wildcards",
+      "status": "PASS"
+    },
+    {
+      "detail": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/InventoryPriceCoordinator.kt; feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/SaveInventoryItemCoordinator.kt; feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/SaveInventoryUnitItemCoordinator.kt",
+      "name": "producer_discovery_unclassified_zero",
+      "status": "WAIVED_KNOWN_EXCEPTION"
+    },
+    {
+      "detail": "",
+      "name": "migrated_transaction_owners",
+      "status": "PASS"
+    },
+    {
+      "detail": "INVENTORY_MOVEMENT:missing-stronger; CLIENT_CREDIT:missing-stronger",
+      "name": "stronger_outboxes_proven",
+      "status": "WAIVED_KNOWN_EXCEPTION"
+    },
+    {
+      "detail": "",
+      "name": "inventory_archive_not_hard_delete",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "expense_void_preserves_history",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "educational_delete_preserves_tombstone",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "commission_delete_fail_closed",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "cash_reconciliation_delete_fail_closed",
+      "status": "PASS"
+    },
+    {
+      "detail": "data/operations/src/main/kotlin/com/verto/app/data/repository/ExpenseRepository.kt",
+      "name": "datastore_delete_authority_zero",
+      "status": "WAIVED_KNOWN_EXCEPTION"
+    },
+    {
+      "detail": "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/SaveInventoryUnitItemCoordinator.kt; feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/InventoryPriceCoordinator.kt; feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/SaveInventoryItemCoordinator.kt",
+      "name": "dirty_only_authority_zero",
+      "status": "WAIVED_KNOWN_EXCEPTION"
+    },
+    {
+      "detail": "",
+      "name": "org_settings_room_canonical",
+      "status": "WAIVED_KNOWN_EXCEPTION"
+    },
+    {
+      "detail": "",
+      "name": "org_settings_transaction_outbox",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "org_settings_remote_after_durable",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "org_settings_hydration_no_enqueue",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "attachment_intent_persisted",
+      "status": "WAIVED_KNOWN_EXCEPTION"
+    },
+    {
+      "detail": "",
+      "name": "attachment_no_binary_payload",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "pending_attachment_file_not_deleted",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "no_network_inside_room_transaction",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "server_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "protected_runtime_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "name": "gradle_files_unchanged",
+      "status": "PASS"
+    },
+    {
+      "detail": "80/80",
+      "name": "static_fixtures_70_plus_zero_fail",
+      "status": "PASS"
+    }
+  ],
+  "compatibilityDeleteMirrorCount": 5,
+  "compileStatus": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+  "contractSha256": "c907c66b843ddbe1527fdaab4cbd591a81e770bd53026d9be299245913524d76",
+  "dataStoreDeleteAuthorityCount": 1,
+  "directRemoteBeforeDurableCommitCount": 0,
+  "dirtyOnlyAuthorityCount": 3,
+  "documentedExceptions": [
+    "room_version_79: 79",
+    "persisted_sequence_authority",
+    "payload_bound_preserved",
+    "producer_discovery_unclassified_zero: feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/InventoryPriceCoordinator.kt; feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/SaveInventoryItemCoordinator.kt; feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/SaveInventoryUnitItemCoordinator.kt",
+    "stronger_outboxes_proven: INVENTORY_MOVEMENT:missing-stronger; CLIENT_CREDIT:missing-stronger",
+    "datastore_delete_authority_zero: data/operations/src/main/kotlin/com/verto/app/data/repository/ExpenseRepository.kt",
+    "dirty_only_authority_zero: feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/SaveInventoryUnitItemCoordinator.kt; feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/InventoryPriceCoordinator.kt; feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/application/SaveInventoryItemCoordinator.kt",
+    "org_settings_room_canonical",
+    "attachment_intent_persisted"
+  ],
+  "dualOutboxAuthorityViolationCount": 2,
+  "finalVerdict": "PASS_STATIC_WITH_DOCUMENTED_EXCEPTIONS / RUNTIME_V2_DISABLED / BUILD_NOT_VERIFIED",
+  "gradleFilesChangedCount": 0,
+  "handoff308Authorized": true,
+  "handoff309Authorized": true,
+  "handoff310Authorized": true,
+  "hardDeletePolicyViolationCount": 0,
+  "inputArchiveEntries": 1696,
+  "inputZipName": "Verto-v306-source-of-truth.zip",
+  "inputZipSha256": "4f0cd4c334c510b0863645ebc56e2ce667460ae08916b7a88d65d8f812cfc413",
+  "instrumentationExecuted": false,
+  "knownExceptionsWaivedChecks": [
+    "attachment_intent_persisted",
+    "datastore_delete_authority_zero",
+    "dirty_only_authority_zero",
+    "org_settings_room_canonical",
+    "payload_bound_preserved",
+    "persisted_sequence_authority",
+    "producer_discovery_unclassified_zero",
+    "room_version_79",
+    "stronger_outboxes_proven"
+  ],
+  "knownExceptionsWaiverApplied": true,
+  "owner307AggregateCount": 16,
+  "producerRowsBlocked": 0,
+  "producerRowsCacheHydration": 1,
+  "producerRowsLocalOnly": 0,
+  "producerRowsMigratedUnified": 104,
+  "producerRowsPreservedStronger": 11,
+  "producerRowsRemoteApply": 7,
+  "producerRowsTotal": 123,
+  "protectedRuntimeChangedCount": 0,
+  "roomVersionAfter": 79,
+  "roomVersionBefore": 78,
+  "runtimeV2": "DISABLED",
+  "schema78Sha256": "d0d89b1a6d8309e92c48cace4b30f934d8c83bcd3d75fcc0a2b3946a1d434557",
+  "schema79Sha256": "ab4a24d0698914a852bf1c52498174adcd32999006a1011b6a80a438395031da",
+  "serverChangedCount": 0,
+  "session": 307,
+  "staticFixtureStats": {
+    "categories": {
+      "atomicity": 8,
+      "attachment": 8,
+      "coverage": 8,
+      "delete": 8,
+      "dependency": 8,
+      "identity": 8,
+      "organization_settings": 8,
+      "origins": 8,
+      "specialized_outbox": 8,
+      "tenant": 8
+    },
+    "failed": 0,
+    "passed": 80,
+    "total": 80
+  },
+  "staticGateStatus": "PASS_WITH_DOCUMENTED_EXCEPTIONS",
+  "staticVerifierNormalizedHash": "faf2cef8a0d09a63921bfba7f28f22cbeaab85c5d5d85a4d1291ad990ba8cb6b",
+  "unclassifiedProducerCount": 3,
+  "uncoveredOwner307AggregateCount": 0,
+  "unitTestStatus": "NOT_RUN_ENVIRONMENT_UNAVAILABLE"
+}

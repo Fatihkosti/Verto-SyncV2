@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="optimal_ds_02c2c39dd5d7">اسم الشركة</string>
+    <string name="optimal_ds_0431055571b0">لا توجد شركات مطابقة</string>
+    <string name="optimal_ds_0f4d51166aad">عرض النتائج</string>
+    <string name="optimal_ds_0fd53029cf2d">%1$s فاتورة</string>
+    <string name="optimal_ds_16d1d073f4da">جارٍ التسجيل %1$s</string>
+    <string name="optimal_ds_17137a20b58d">لا توجد أقسام Optimal متاحة لحسابك</string>
+    <string name="optimal_ds_1c6509e5ac6c">تفاصيل الصيانة</string>
+    <string name="optimal_ds_1f1803f93c58">البحث باسم الشركة</string>
+    <string name="optimal_ds_2a4870412f6a">لا توجد أخطاء مزامنة تحتاج متابعة</string>
+    <string name="optimal_ds_2d6d4e97be91">صالح لمدة 24 ساعة ولمرة واحدة</string>
+    <string name="optimal_ds_315d9cef1ec5">فاتورة #%1$s • %2$s</string>
+    <string name="optimal_ds_32631d94e937">رسائل Optimal</string>
+    <string name="optimal_ds_37ee22938d5e">اختر القسم الذي تريد متابعته</string>
+    <string name="optimal_ds_3ba6b3be53ef">ينتهي: %1$s</string>
+    <string name="optimal_ds_3d860f5eb1dc">تاريخ السجل: %1$s</string>
+    <string name="optimal_ds_3db2703543fe">السائق/المندوب: %1$s</string>
+    <string name="optimal_ds_46e6841e2136">نسخ</string>
+    <string name="optimal_ds_47b19a6e2cde">البحث في المحادثات</string>
+    <string name="optimal_ds_48e7374cc78d">سجل الصيانة</string>
+    <string name="optimal_ds_4d2088ca692d">ملاحظات الصيانة</string>
+    <string name="optimal_ds_4e093d635fc8">فواتير الشركات</string>
+    <string name="optimal_ds_5193a46114f3">Optimal</string>
+    <string name="optimal_ds_53861d6315a4">%1$s — %2$s</string>
+    <string name="optimal_ds_53c242387ac7">إدارة التكامل</string>
+    <string name="optimal_ds_561f709eafd1">لا تملك صلاحية إرسال رسائل Optimal</string>
+    <string name="optimal_ds_5a39172b8820">طريقة الإغلاق</string>
+    <string name="optimal_ds_5ccae9b36e3f">حالة الفاتورة</string>
+    <string name="optimal_ds_5ed20b433039">سجّلها: %1$s</string>
+    <string name="optimal_ds_5ff08eaeb1dc">• %1$s</string>
+    <string name="optimal_ds_61abccfe7e3c">أرشفة المحادثة</string>
+    <string name="optimal_ds_64d753fae6de">اللوحة: %1$s</string>
+    <string name="optimal_ds_67abb8eabfb2">اختر شركة مسجلة ضمن عملاء Verto، ثم ولّد لها كود الانضمام إلى Optimal.</string>
+    <string name="optimal_ds_79080b808c5b">إرسال التسجيل</string>
+    <string name="optimal_ds_7b7cee7ed9a8">إلغاء التسجيل</string>
+    <string name="optimal_ds_7c5f3902bc70">إضافة مرفق</string>
+    <string name="optimal_ds_82947d4cda79">الشركة: %1$s</string>
+    <string name="optimal_ds_83515367e5ee">تسجيل صوتي</string>
+    <string name="optimal_ds_8994e61f8932">معاينة التسجيل</string>
+    <string name="optimal_ds_940efd24f1d8">تم</string>
+    <string name="optimal_ds_a224df30e2d8">عدد الفواتير: %1$s</string>
+    <string name="optimal_ds_a64057ab2a3a">صورة صيانة</string>
+    <string name="optimal_ds_a69aa5a4ce4c">حركة عكس</string>
+    <string name="optimal_ds_a8d9bb06f339">فاتورة #%1$s</string>
+    <string name="optimal_ds_aae685886f0c">السيارة أو اللوحة</string>
+    <string name="optimal_ds_ad51e7c08e52">حالة المزامنة: %1$s</string>
+    <string name="optimal_ds_b06271c09698">تصفية فواتير الشركات</string>
+    <string name="optimal_ds_b70c5444eb82">إيقاف التسجيل</string>
+    <string name="optimal_ds_b73e88df7170">اكتب رسالة</string>
+    <string name="optimal_ds_c0b0c29020c9">حذف التسجيل</string>
+    <string name="optimal_ds_c1c6feb8a7a7">الشركة</string>
+    <string name="optimal_ds_c507b0a279f8">الفاتورة: %1$s</string>
+    <string name="optimal_ds_c75f125c6fd3">%1$s • %2$s</string>
+    <string name="optimal_ds_cbc75aa194b3">الكاميرا</string>
+    <string name="optimal_ds_d1da2729994a">PDF أو Word</string>
+    <string name="optimal_ds_d603b6287052">%1$s × %2$s</string>
+    <string name="optimal_ds_d8857a571008">سجل التعامل</string>
+    <string name="optimal_ds_d94d702d8343">التاريخ</string>
+    <string name="optimal_ds_d96db3cf6533">ملغاة</string>
+    <string name="optimal_ds_db29f09b178c">تصفية سجل الصيانة</string>
+    <string name="optimal_ds_e08ca265fdea">اختيار</string>
+    <string name="optimal_ds_e2672b124068">السائق/المندوب</string>
+    <string name="optimal_ds_e3660ae25952">كود ربط Optimal</string>
+    <string name="optimal_ds_e7af1b200781">الصورة غير متاحة</string>
+    <string name="optimal_ds_e9f10a5f924c">بحث داخل السجل</string>
+    <string name="optimal_ds_f1163732e614">الصور والفيديو</string>
+    <string name="optimal_ds_f75baa39fe1a">لا توجد أحداث لهذه الشركة</string>
+    <string name="optimal_ds_fa397324da26">شركات Optimal</string>
+    <string name="optimal_ds_faf440447b46">يدوية</string>
+    <string name="optimal_ds_ff57a1126112">أخطاء مزامنة Optimal</string>
+
+    <!-- Session 298: owner-local hardcoded string migration. -->
+    <string name="optimal_v298_03fb35bb323f" translatable="false">"مسح البحث والفلاتر"</string>
+    <string name="optimal_v298_05c234ba811b" translatable="false">"سيارة شركة قيد الصيانة"</string>
+    <string name="optimal_v298_05c234ba811b_2" translatable="false">"سيارة تجاوزت مدة الصيانة"</string>
+    <string name="optimal_v298_0810f8d3cda1" translatable="false">"توليد كود"</string>
+    <string name="optimal_v298_0810f8d3cda1_2" translatable="false">"جارٍ توليد الكود"</string>
+    <string name="optimal_v298_0fe8087b7208" translatable="false">"فشل"</string>
+    <string name="optimal_v298_15eb510b67b7" translatable="false">"تشغيل المعاينة"</string>
+    <string name="optimal_v298_15eb510b67b7_2" translatable="false">"إيقاف المعاينة"</string>
+    <string name="optimal_v298_1b8e0dfe6074" translatable="false">"لا توجد نتائج مطابقة"</string>
+    <string name="optimal_v298_2a4cd71cb43d" translatable="false">"تفاصيل الشركة"</string>
+    <string name="optimal_v298_37b662f5ece8" translatable="false">" • %1$s"</string>
+    <string name="optimal_v298_3987c8d4b60c" translatable="false">"غير مرتبطة"</string>
+    <string name="optimal_v298_3987c8d4b60c_2" translatable="false">"مرتبطة بـOptimal"</string>
+    <string name="optimal_v298_3e5b5db19699" translatable="false">"رسالة صورة"</string>
+    <string name="optimal_v298_40b1451f2f20" translatable="false">"الفلاتر"</string>
+    <string name="optimal_v298_40b1451f2f20_2" translatable="false">"مفعّلة"</string>
+    <string name="optimal_v298_4a680b5c99a9" translatable="false">"غير مرتبطة"</string>
+    <string name="optimal_v298_4a680b5c99a9_2" translatable="false">"مرتبطة بـOptimal"</string>
+    <string name="optimal_v298_537651aaefc3" translatable="false">"مسح الفلاتر"</string>
+    <string name="optimal_v298_53b416726a2d" translatable="false">"الفلاتر مفعّلة"</string>
+    <string name="optimal_v298_550302ee580d" translatable="false">"إلى"</string>
+    <string name="optimal_v298_600d9190a03c" translatable="false">"لا توجد محادثات مطابقة"</string>
+    <string name="optimal_v298_6353c35965cf" translatable="false">" • "</string>
+    <string name="optimal_v298_6b60a98dd565" translatable="false">"غير مرتبطة"</string>
+    <string name="optimal_v298_6b60a98dd565_2" translatable="false">"مرتبطة"</string>
+    <string name="optimal_v298_6cac93616868" translatable="false">" • "</string>
+    <string name="optimal_v298_7e67e821420c" translatable="false">"رسالة مستند"</string>
+    <string name="optimal_v298_85cc8edf7d80" translatable="false">"رسالة صوتية"</string>
+    <string name="optimal_v298_8663eff2edf6" translatable="false">"لا توجد رسائل بعد"</string>
+    <string name="optimal_v298_8bbdcd4769f1" translatable="false">"لا توجد فواتير مطابقة"</string>
+    <string name="optimal_v298_8ee17e0bc8b9" translatable="false">"مستخدم غير محدد"</string>
+    <string name="optimal_v298_913faab4fb17" translatable="false">"لا توجد ملاحظات"</string>
+    <string name="optimal_v298_9a8dd53cd07e" translatable="false">"إلى تاريخ"</string>
+    <string name="optimal_v298_a454b68eef4a" translatable="false">"رسالة فيديو"</string>
+    <string name="optimal_v298_a4a3132ad269" translatable="false">"رسالة نصية"</string>
+    <string name="optimal_v298_a4a3c104c832" translatable="false">"جارٍ الإعادة"</string>
+    <string name="optimal_v298_a8b457832563" translatable="false">" • آخر محاولة: %1$s"</string>
+    <string name="optimal_v298_aa819c6cd4ea" translatable="false">"من تاريخ"</string>
+    <string name="optimal_v298_aa819c6cd4ea_2" translatable="false">"من %1$s"</string>
+    <string name="optimal_v298_b4e20891fe09" translatable="false">"تم الاستلام"</string>
+    <string name="optimal_v298_b93dd2bcc8af" translatable="false">"لا توجد فواتير لشركات Optimal المرتبطة"</string>
+    <string name="optimal_v298_c240b67b54f4" translatable="false">"لا توجد نتائج مطابقة"</string>
+    <string name="optimal_v298_c7b3d17a0511" translatable="false">"تصفية"</string>
+    <string name="optimal_v298_cdd98d09807c" translatable="false">"إلى %1$s"</string>
+    <string name="optimal_v298_e11d1da2c545" translatable="false">"المحاولات: %1$s"</string>
+    <string name="optimal_v298_e2f803163b77" translatable="false">"دفعة"</string>
+    <string name="optimal_v298_e2f803163b77_2" translatable="false">"عكس دفعة"</string>
+    <string name="optimal_v298_e3816d19fffc" translatable="false">"آخر مرسل: "</string>
+    <string name="optimal_v298_e5097a86be4f" translatable="false">"من"</string>
+    <string name="optimal_v298_e7d8bd5ceda6" translatable="false">"لا توجد محادثات نشطة"</string>
+    <string name="optimal_v298_e9887e25e92d" translatable="false">"قيد الإرسال"</string>
+    <string name="optimal_v298_f2699018c107" translatable="false">"تم الإرسال"</string>
+    <string name="optimal_v298_f53778497d91" translatable="false">"لا توجد شركات مسجلة ضمن العملاء. أضف الشركة كعميل أولًا."</string>
+    <string name="optimal_v298_f89a8bcd6ece" translatable="false">"المحادثة"</string>
+    <string name="optimal_v298_fd7787d78574" translatable="false">"لا توجد سجلات صيانة"</string>
+
+    <!-- Session 298 legacy hardcoded closure. -->
+    <string name="optimal_v298_home_companies" translatable="false">"الشركات"</string>
+    <string name="optimal_v298_home_messages" translatable="false">"الرسائل"</string>
+    <string name="optimal_v298_home_invoices" translatable="false">"الفواتير"</string>
+    <string name="optimal_v298_home_maintenance" translatable="false">"الصيانة"</string>
+    <string name="optimal_v298_home_codes" translatable="false">"انضمام شركة"</string>
+    <string name="optimal_v298_home_sync_issues" translatable="false">"أخطاء المزامنة"</string>
+</resources>

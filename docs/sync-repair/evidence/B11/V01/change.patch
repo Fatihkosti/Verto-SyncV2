@@ -1,0 +1,2588 @@
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,3 +1,12 @@
++## Verto sync repair B11-V01 — explicit conflict review implemented; runtime acceptance blocked — 2026-09-11
++- Replaced automatic conflict winner/rebase behavior with durable human review for generic optimistic-version aggregates; non-generic financial/inventory/state-machine facts fail closed as `DOMAIN_CORRECTION_REQUIRED`.
++- Added immutable local/remote conflict evidence, append-only decision audit, redacted field-diff UI, authorization checks, and explicit server-accept / local-resend actions.
++- Server acceptance records `SUPERSEDED_WITH_PROOF` rather than ACK and preserves newer local intent instead of overwriting it. Local resend creates a new frozen mutation on the exact displayed server version and links it with `supersedes_mutation_id`; the old mutation remains pending-proof until authoritative receipt/echo proves the replacement.
++- Added matching-echo resolution and predecessor/order handling so later local intents remain protected while a replacement proves the superseded conflict.
++- Added Room99→100 migration for the new lifecycle states/evidence/audit/supersedes relation and append-only guards, including fresh-schema open guards for conflict proof and frozen outbox semantics.
++- Added B11 policy/redaction/permission tests plus host static and SQLite contract probes; both host probes PASS. Gradle8.9/Android/Room/KSP/Hilt/Compose runtime and T30 remain NOT_RUN because the wrapper distribution is unavailable offline and network access is unavailable.
++- G-B10 and G-B11 remain BLOCKED; no server, production data, APK, GitHub, or Drive action occurred. Delivery remains WIP_NOT_RELEASE_READY.
++
+ ## Verto sync repair B10-V01 — durable scoped inbox; acceptance blocked — 2026-09-10
+ - Implemented B10 locally at the user's explicit request, starting from the verified B09-V02 product tree (1,851/1,851 entries match). This permits implementation, not a waiver of G-B09/G-B10 or production activation.
+ - Split complete-group receipt/manifest/cursor CAS from atomic per-group business apply. Added touched-key/dependency metadata, six explicit states, exact replay checks, derived DTO child protection, and covered-prefix applied checkpoints.
+--- a/EVIDENCE_INDEX.md
++++ b/EVIDENCE_INDEX.md
+@@ -137,6 +137,14 @@
+   keystores and credentials never enter this repository.
+ - Raw backups, user payloads, JWTs, and secrets remain outside the repository.
+ 
++## B11-V01 — explicit conflict review implementation; G-B11 BLOCKED
++
++- Report: `docs/sync-repair/evidence/B11/V01/session-report.md`.
++- Actual command results and blocked runtime command: `docs/sync-repair/evidence/B11/V01/commands-and-results.md`.
++- Host probes: `static-results.txt` and `sqlite-results.txt`; both PASS within source/native-SQLite scope only.
++- Product identity/change evidence: `input-validation.json`, `product-tree.json`, `changed-files.json`, `change.patch`, `runtime-environment.json`, `verification-summary.json`.
++- Runtime acceptance remains absent: no Gradle/KSP/Hilt/Room schema100 export, Compose/device flow, authoritative receipt/echo integration, or T30 PASS. B10 predecessor gate remains blocked.
++
+ ## B10-V01 — current local implementation; G-B10 BLOCKED
+ 
+ - Report: `docs/sync-repair/evidence/B10/V01/session-report.md`.
+--- a/SYNC_IMPLEMENTATION_MAP.md
++++ b/SYNC_IMPLEMENTATION_MAP.md
+@@ -1,6 +1,6 @@
+ # Verto sync repair implementation map
+ 
+-This map is current through `B10-V01` local implementation. The financial materializer and durable Inbox are wired in production source, but G-B09/G-B10 validation is BLOCKED. Earlier verification cells are historical evidence, not current full-build/Room PASS.
++This map is current through `B11-V01` local implementation. The financial materializer, durable Inbox, and explicit conflict-review path are wired in production source, but G-B09/G-B10/G-B11 validation is BLOCKED. Earlier verification cells are historical evidence, not current full-build/Room PASS.
+ 
+ | Contract area | Production implementation | Verification |
+ |---|---|---|
+@@ -27,7 +27,7 @@
+ | Real Hilt/pull/transaction path | Pull Engine → ChangeApplier → StrongerApplier → FinancialMaterializerV2 → DAO; inject EffectVerifier/PendingProtection | Source trace, not a successful Hilt build. Complete group business → verify effects/readback → applied financial version → every inbox APPLIED → page cursor CAS, same Room transaction. |
+ | Snapshot cutover reuse | `recovery/UnifiedSyncSnapshotApplier.kt` | Financial baseline must be actual positive server baseline; no synthetic financial version/revision; full B13 bootstrap/pruning remains deferred. |
+ 
+-See `docs/sync-repair/evidence/B09/V01/materialization-map.md` for full paths, signature trace and owner boundaries. Session resumes at B09.01 verification; B10 is not started.
++See `docs/sync-repair/evidence/B09/V01/materialization-map.md` for full paths, signature trace and owner boundaries. B09 verification remains blocked; B10 and B11 now also contain local implementation but do not inherit a runtime PASS.
+ 
+ ## B09-V02 identity correction
+ 
+@@ -41,8 +41,7 @@
+ false conflict in the real Kotlin semantic validator with a stubbed codec. The after-run
+ passes three identity assertions and 347 mapping/Money assertions. The 612 source/SQLite
+ model checks pass separately. These are not JSON/Room/KSP/Hilt execution. Added 3 JVM and
+-2 Room regression methods; totals 12/33 remain NOT_RUN. G-B09 is BLOCKED, NEXT is B09.01,
+-and B10 has not been started. Full detail: `docs/sync-repair/evidence/B09/V02/session-report.md`.
++2 Room regression methods; totals 12/33 remain NOT_RUN. G-B09 is BLOCKED; later B10/B11 local implementation does not close that predecessor gate. Full detail: `docs/sync-repair/evidence/B09/V02/session-report.md`.
+ 
+ ## B10 durable Inbox implementation and validation boundary
+ 
+@@ -57,4 +56,18 @@
+ | Schema98→99 | `AppDatabaseMigrations98To99.kt`, `MigrationCatalog`, three metadata entities + actual DAO | 20 migration statements executed in native SQLite; generated schema99/Room validation NOT_RUN |
+ | B08 server wire binding | `SupabaseUnifiedSyncPullRemote` → `verto_pull_sync_changes_v2` | required exact interface in B10 evidence/wire-contract.md; no deployment/existence assertion |
+ 
+-The three new tables store group dependencies/touched keys/apply scheduling metadata; `sync_inbox` remains the single payload authority. The adapter does not turn a receipt into an APPLIED fact. Worker scheduling still uses the existing authenticated, network-constrained worker; network-free coordinator transactions do not claim independent offline worker availability. B11 review UI and B08/B20 SQL acceptance are not implemented by this visit.
++The three B10 tables store group dependencies/touched keys/apply scheduling metadata; `sync_inbox` remains the single payload authority. The adapter does not turn a receipt into an APPLIED fact. Worker scheduling still uses the existing authenticated, network-constrained worker; network-free coordinator transactions do not claim independent offline worker availability. B08/B20 SQL acceptance remains unimplemented/unverified.
++
++
++## B11 explicit conflict-review implementation and validation boundary
++
++| Requirement | Actual implementation | Evidence / limitation |
++|---|---|---|
++| Persist both sides and traceable differences | `UnifiedSyncConflictEngine`; `SyncConflictReviewEvidenceEntity`; `SyncConflictReviewService`; `NavigationDrawerContent` | full local/remote JSON + SHA-256 stored; UI redacts secrets before diff/preview; Gradle/Compose runtime NOT_RUN |
++| Explicit authorized server choice | `SyncConflictReviewService.acceptServer`; `SessionSyncConflictDecisionAuthorizer` | records append-only audit and `SUPERSEDED_WITH_PROOF`, never ACK; preserves newer local intent; runtime permission flow NOT_RUN |
++| Explicit resend on displayed remote version | `SyncConflictReviewService.resendLocal`; `FrozenMutationStore.captureUnified(... useUnresolvedPredecessor=false)` | new immutable mutation uses exact displayed `baseVersion`, carries `supersedes_mutation_id`; old waits for proof |
++| Replacement proof / later local ordering | `FrozenMutationStore.finalizeReplacementProofChain`; `resolvedPredecessorServerVersion`; `UnifiedSyncPushEngine.eligibility` | replacement may pass only its superseded parent; ordinary later intent remains blocked until proof, then chains to actual acknowledged version |
++| Immutable and unknown-outcome protection | `UnifiedSyncConflictPolicy`; `SyncConflictResolutionPolicy`; conflict UI | non-`OPTIMISTIC_VERSION` => `DOMAIN_CORRECTION_REQUIRED`; unknown outcome disables decision; no automatic server-wins/LWW/amount merge |
++| Schema/integrity | `AppDatabaseMigrations99To100`; `MigrationCatalog`; `AppDatabase` open callback | outbox proof states + conflict evidence/audit + supersedes relation; append-only/frozen guards; native SQLite probe PASS, Room schema100 export NOT_RUN |
++
++B11 host probes PASS only for static source invariants and native SQLite DDL behavior. G-B10/G-B11 and T30 remain blocked until Gradle/Room/Android plus real receipt/echo scenarios run.
+--- a/VERTO_SYNC_REPAIR_BACKLOG_AR.md
++++ b/VERTO_SYNC_REPAIR_BACKLOG_AR.md
+@@ -34,20 +34,20 @@
+ EXECUTION_BRANCH: NO_GIT_TREE_HASH_MODE
+ LAST_WORKING_PRODUCT_COMMIT: null
+ LAST_VERIFIED_PRODUCT_COMMIT: null
+-LAST_PRODUCT_TREE_SHA256: 2c9379972d1d9db3f52d96f0a2dbe2325f77558e53bf3ef97265e1f3ee90eda0
+-WORKTREE_CHECKPOINT: B10-V01
++LAST_PRODUCT_TREE_SHA256: 2af04ead841b8dc8cf8234250caa88f2785131261f422bd5266672bad6c912a9
++WORKTREE_CHECKPOINT: B11-V01
+ OVERALL_STATUS: IN_PROGRESS_WITH_BLOCKERS
+ EXECUTION_MODE: EXECUTION_TREE_HASH_MODE
+-CURRENT_SESSION: B10
+-CURRENT_TASK: B10.05
++CURRENT_SESSION: B11
++CURRENT_TASK: B11.05
+ CURRENT_VISIT: 1
+ LAST_COMPLETED_SESSION: B06
+-LAST_CHECKPOINT_ID: B10-V01
+-NEXT_SESSION: B10
+-NEXT_TASK: B10.01
+-NEXT_ACTION: 'B10.01: تحقق Gradle/JSON وRoom وmigration98→99 ثم kill/replay والتبعيات والحصة؛ أصلح الفشل وأغلق G-B09 وG-B10 بالدليل؛ طابق RPC وcanonical bytes مع B08/B20؛ لا تبدأ B11 تلقائيًا.'
+-NEXT_ACTION_PRECONDITIONS: 'استأنف B10-V01؛ يلزم Gradle8.9 واعتماديات المشروع وAndroid SDK وجهاز/محاكي؛ الأوامر في evidence/B10/V01/commands-and-results.md؛ لا SQL حي ولا ادعاء توفر RPC الجديد.'
+-RESUME_FROM: 'طلب المستخدم نفذ b10 سمح بتنفيذها محليًا رغم G-B09 المعلقة؛ كتبت أقسام B10.01–05 والاختبارات وترحيل99؛ 15 SQLite و12 سياسة Kotlin و612 B09 model و347 mapping/3 semantic نجحت ضمن حدودها؛ G-B09/G-B10 BLOCKED؛ لم تبدأ B11.'
++LAST_CHECKPOINT_ID: B11-V01
++NEXT_SESSION: B11
++NEXT_TASK: B11.01
++NEXT_ACTION: 'B11.01: شغّل Gradle/KSP/Room لتثبيت schema100 وترحيل99→100، ثم اختبر مساري القرار والصدى المطابق ورفض الصلاحية وتغير النسخة/OUTCOME_UNKNOWN وترتيب النية الأحدث؛ أغلق G-B10 ثم G-B11 بالدليل؛ لا تبدأ B12.'
++NEXT_ACTION_PRECONDITIONS: 'استأنف B11-V01؛ يلزم Gradle8.9 واعتماديات المشروع وAndroid SDK/Room وجهاز أو محاكي؛ B10/B08 ما زالت بواباتهما معلقة؛ الأوامر في evidence/B11/V01/commands-and-results.md؛ لا SQL حي أو نشر.'
++RESUME_FROM: 'طلب المستخدم نفذ b11 سمح بتنفيذها محليًا رغم G-B10 المعلقة؛ مسارا القرار وواجهة التدقيق والأدلة الدائمة وترحيل100 مكتوبة؛ B11 static وSQLite contract PASS فقط؛ Gradle/Room/T30/G-B11 BLOCKED؛ لا تبدأ B12.'
+ COMPLETED_SESSIONS: 5
+ TOTAL_SESSIONS: 22
+ COMPLETED_TASKS: 28
+@@ -58,7 +58,7 @@
+ TESTS_BLOCKED: 0
+ TESTS_NOT_RUN: 50
+ TESTS_RECHECK_REQUIRED: 0
+-ACTIVE_BLOCKER_IDS: [B02-BLK-01, B02-BLK-02, B09-BLK-01, B10-BLK-01, B10-BLK-02]
++ACTIVE_BLOCKER_IDS: [B02-BLK-01, B02-BLK-02, B09-BLK-01, B10-BLK-01, B10-BLK-02, B11-BLK-01]
+ WORK_IN_FLIGHT: []
+ BACKUP_GATE: BLOCKED_BACKUP_UNVERIFIED
+ LIVE_SERVER_CONTRACT_GATE: PASS_READ_ONLY_CATALOG_EXPORT
+@@ -68,8 +68,8 @@
+ RELEASE_DELIVERY_AUTHORIZATION: NOT_RECORDED
+ USER_DEVICE_CASE_STATUS: NOT_VERIFIED
+ PRODUCTION_DEPLOYMENT_STATUS: NOT_STARTED
+-LAST_UPDATED_AT: '2026-09-10'
+-LAST_UPDATED_BY: 'B10-V01؛ Inbox دائم وتطبيق مجموعات مستقل؛ تفويض كتابة محلية صريح لا إعفاء اختبارات؛ لا نشر أو بناء APK'
++LAST_UPDATED_AT: '2026-09-11'
++LAST_UPDATED_BY: 'B11-V01؛ حل تعارض بشري محفوظ وإثبات supersedes؛ تفويض كتابة محلية صريح لا إعفاء اختبارات؛ لا نشر أو APK'
+ ```
+ <!-- BACKLOG_STATE_END -->
+ 
+@@ -167,7 +167,7 @@
+ | [B08](#b08) | E2 | قراءة الخادم القانونية وDelta وBootstrap | B07 | TODO | 0/5 | NOT_EVALUATED | — |
+ | [B09](#b09) | E3 | التطبيق المالي الفعلي داخل Room | B03، B04، B06 | BLOCKED | 0/5 | BLOCKED | B09-V02: إصلاح shared writeId مع حفظ factId؛ 33 Room و12 JVM تنتظر التشغيل؛ G-B09 BLOCKED |
+ | [B10](#b10) | E3 | Inbox الدائم والتبعيات والصفحات الكبيرة | B05، B09 | BLOCKED | 0/5 | BLOCKED | B10-V01: الكود والاختبارات وترحيل99 مكتوبة؛ 15 SQLite و12 policy نجحت محليًا؛ Room/JSON/B08 غير متحققة |
+-| [B11](#b11) | E3 | واجهة حل التعارض والتدقيق | B10 | TODO | 0/5 | NOT_EVALUATED | — |
++| [B11](#b11) | E3 | واجهة حل التعارض والتدقيق | B10 | BLOCKED | 0/5 | BLOCKED | B11-V01: التنفيذ المحلي مكتوب؛ static/SQLite PASS؛ Gradle/Room/T30 وG-B10/G-B11 معلقة |
+ | [B12](#b12) | E3 | المصروف القابل للتحديث وتاريخ النقد | B06، B09، B11 | TODO | 0/5 | NOT_EVALUATED | — |
+ | [B13](#b13) | E3 | Bootstrap الآمن فوق البيانات المعلقة | B04، B05، B10، B11 | TODO | 0/5 | NOT_EVALUATED | — |
+ | [B14](#b14) | E4 | مخطط M03 وإصلاح الفواتير والدفعات والأدوار | B05، B06، B13 | TODO | 0/5 | NOT_EVALUATED | — |
+@@ -187,7 +187,7 @@
+ | E0 | B01–B02 | المصدر والنسخ والتعريفات مثبتة، أو BLOCKED صريح لا PASS. | BLOCKED | B01 PASS؛ B02 نسخة الجهاز/البيئة المعزولة BLOCKED مع تجاوز الفرع المدفوع |
+ | E1 | B03–B05 | اختبارات الهجرة وCAS وثبات المحتوى والحماية تجتاز. | PASS | B03–B05 PASS محليًا؛ B05 JVM 95/95 وAndroid 12/12 وapp compile؛ لا يرقّي Txx أو بوابة E2 |
+ | E2 | B06–B08 | round-trip PostgreSQL وإسقاط الرد ومنع ازدواج الأثر تجتاز. | NOT_EVALUATED | — |
+-| E3 | B09–B13 | استعادة مالية كاملة فوق قاعدة نظيفة وفوق pending محمي، مع تكرار آمن. | BLOCKED | B10-V01 تنفيذ محلي بطلب المستخدم؛ G-B09/G-B10 وB07/B08 غير متحققة؛ لا تكامل جهازين |
++| E3 | B09–B13 | استعادة مالية كاملة فوق قاعدة نظيفة وفوق pending محمي، مع تكرار آمن. | BLOCKED | B11-V01 تنفيذ محلي بطلب المستخدم؛ G-B09/G-B10/G-B11 وB07/B08 غير متحققة؛ لا تكامل جهازين |
+ | E4 | B14–B16 | لا مصدر مجهول مخفي؛ نتائج dry-run ثم اختبارات قاعدة الحالة متطابقة. | NOT_EVALUATED | — |
+ | E5 | B17–B19 | لا pending مع COMPLETED، وملف حقيقي موثق بعد انقطاع وتشغيل. | NOT_EVALUATED | — |
+ | E6 | B20–B22 | كل معايير القسم 21 مثبتة؛ التقرير لا يرقّي اختبارات لم تُنفذ. | NOT_EVALUATED | — |
+@@ -528,11 +528,11 @@
+ 
+ | المهمة | التنفيذ المحدد | دليل اكتمال المهمة | الحالة | الدليل/commit |
+ |---|---|---|---|---|
+-| B11.01 | اعرض نوع السجل وسبب الخلاف والنسخة المحلية والبعيدة والحقول المختلفة بصورة قابلة للتتبع دون أسرار. | واجهة تقرأ الحالة الدائمة لا رسالة عامة؛ كلا المحتويين وبصمتهما محفوظان. | TODO | — |
+-| B11.02 | لmutable فقط نفذ اختيار اعتماد السيرفر بصلاحية مستخدم وحفظ النسخة المحلية والنية وسجل القرار. | SUPERSEDED_WITH_PROOF بمصدر القرار لا ACK؛ لا إنهاء نية outcome مجهول قبل إيصالها. | TODO | — |
+-| B11.03 | نفذ إعادة إرسال التعديل المحلي باختيار صريح على النسخة البعيدة المعروضة، ومراجعة domain وmutation جديدة تشير إلى supersedes. | الطلب القديم ثابت؛ baseVersion الجديدة من النسخة المعتمدة؛ الإغلاق بعد receipt الجديدة/تخلٍ موثق. | TODO | — |
+-| B11.04 | امنع استبدال immutable facts؛ استخدم فقط أمر عكس/تصحيح موجود مثبت في المجال، وإلا DOMAIN_CORRECTION_REQUIRED. | لا last-write-wins/server-wins آلي ولا دمج مبالغ ولا زر يستبدل حقيقة دفع/مخزون. | TODO | — |
+-| B11.05 | اختبر الخيارين، الصدى المطابق، رفض الصلاحية، وتغير النسخة/مجهول المصير؛ اجعل حسم الحالة يوقظ التطبيق الدائم. | G-B11/T30 ضمن البيئة المستخدمة، مع سجل قبل/بعد وbytes/receipts؛ لا فقد للنسخة التي رفض المستخدم التخلي عنها. | TODO | — |
++| B11.01 | اعرض نوع السجل وسبب الخلاف والنسخة المحلية والبعيدة والحقول المختلفة بصورة قابلة للتتبع دون أسرار. | واجهة تقرأ الحالة الدائمة لا رسالة عامة؛ كلا المحتويين وبصمتهما محفوظان. | BLOCKED | B11-V01: UI + durable evidence + redaction مكتوبة؛ static PASS؛ Gradle/Compose/Room NOT_RUN |
++| B11.02 | لmutable فقط نفذ اختيار اعتماد السيرفر بصلاحية مستخدم وحفظ النسخة المحلية والنية وسجل القرار. | SUPERSEDED_WITH_PROOF بمصدر القرار لا ACK؛ لا إنهاء نية outcome مجهول قبل إيصالها. | BLOCKED | B11-V01: auth/CAS/audit/superseded proof مكتوبة؛ تحفظ newer local intent؛ runtime NOT_RUN |
++| B11.03 | نفذ إعادة إرسال التعديل المحلي باختيار صريح على النسخة البعيدة المعروضة، ومراجعة domain وmutation جديدة تشير إلى supersedes. | الطلب القديم ثابت؛ baseVersion الجديدة من النسخة المعتمدة؛ الإغلاق بعد receipt الجديدة/تخلٍ موثق. | BLOCKED | B11-V01: replacement mutation + exact displayed base + supersedes proof chain مكتوبة؛ runtime NOT_RUN |
++| B11.04 | امنع استبدال immutable facts؛ استخدم فقط أمر عكس/تصحيح موجود مثبت في المجال، وإلا DOMAIN_CORRECTION_REQUIRED. | لا last-write-wins/server-wins آلي ولا دمج مبالغ ولا زر يستبدل حقيقة دفع/مخزون. | BLOCKED | B11-V01: غير OPTIMISTIC_VERSION يفشل إلى DOMAIN_CORRECTION_REQUIRED بلا أزرار أو auto-winner؛ runtime NOT_RUN |
++| B11.05 | اختبر الخيارين، الصدى المطابق، رفض الصلاحية، وتغير النسخة/مجهول المصير؛ اجعل حسم الحالة يوقظ التطبيق الدائم. | G-B11/T30 ضمن البيئة المستخدمة، مع سجل قبل/بعد وbytes/receipts؛ لا فقد للنسخة التي رفض المستخدم التخلي عنها. | BLOCKED | B11-V01: static/SQLite contract PASS؛ Gradle/Room/UI/T30 actual environment NOT_RUN |
+ 
+ **بوابة الجلسة:** G-B11: مسارا القرار المحددان يعملان على الكود الفعلي ويحتفظان بالدليل؛ حقائق immutable ومجهول المصير محميان.
+ 
+@@ -892,7 +892,7 @@
+ | T27 | مجموعة X متعارضة ومجموعة Y مستقلة | B10 | NOT_RUN | NONE | B10-V01: 24 JVM و14 Room Inbox +34 مالية مرفقة؛ 15 SQLite/12 policy precursors فقط | JSON/Room/kill/B08 NOT_RUN؛ ليس إثبات Txx أو جهازين |
+ | T28 | مجموعة لاحقة تمس X أو تعتمد عليها | B10 | NOT_RUN | NONE | B10-V01: 24 JVM و14 Room Inbox +34 مالية مرفقة؛ 15 SQLite/12 policy precursors فقط | JSON/Room/kill/B08 NOT_RUN؛ ليس إثبات Txx أو جهازين |
+ | T29 | دفعة قبل أصلها، وعكس قبل الدفع الأصلي | B10 | NOT_RUN | NONE | B10-V01: 24 JVM و14 Room Inbox +34 مالية مرفقة؛ 15 SQLite/12 policy precursors فقط | JSON/Room/kill/B08 NOT_RUN؛ ليس إثبات Txx أو جهازين |
+-| T30 | مستخدم يحسم mutable conflict بخياري القسم 13.4 | B11 | NOT_RUN | NONE | — | — |
++| T30 | مستخدم يحسم mutable conflict بخياري القسم 13.4 | B11 | NOT_RUN | NONE | B11-V01: static/SQLite contract precursors PASS | Gradle/Room/UI والـreceipt/echo الفعلي لم يعمل؛ لا ترقية إلى PASS |
+ | T31 | Bootstrap B نظيفة من حالة مالية متعددة العمليات | B13 | NOT_RUN | NONE | B09-V02: source/SQLite/Kotlin precursors فقط؛ 33 Room و12 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
+ | T32 | Bootstrap فوق جرد 200/CLOSED محلي و100/OPEN بعيدة | B13 | NOT_RUN | NONE | — | — |
+ | T33 | Bootstrap مع pending في كل owner وبمرفق | B13 | NOT_RUN | NONE | — | — |
+@@ -972,6 +972,7 @@
+ 
+ | B10-BLK-01 | B10.01–B10.05 | `BLOCKED_BUILD_RUNTIME_ENVIRONMENT`؛ Gradle8.9 غير مخزن ولا SDK/adb/emulator؛ Kotlin1.9 المتاح ليس compiler2.1 المشروع | `evidence/B10/V01/runtime-environment.json` و`commands-and-results.md` | يمنع JSON/Room/KSP/Hilt وexport99 واختبارات kill/device وإغلاق G-B10 | كود محلي وSQLite/policy/signature tests ضمن حدودها | تشغيل الأوامر على بيئة مجهزة ثم إصلاح الفشل وتسجيل الأدلة؛ لا إعادة شبكة هنا | OPEN؛ B10-V01، 2026-09-10 |
+ | B10-BLK-02 | B10.01/B10.04/B10.05 | `BLOCKED_INBOX_V2_SERVER_INTEGRATION` عائق ربط تنظيمي؛ عميل B10 يطلب RPC/manifest وcanonical bytes جديدة لم تختبر على SQL | `evidence/B10/V01/wire-contract.md`؛ B08 ما زالت غير مغلقة | يمنع التفعيل/قبول round-trip/G-B10 المتكاملة؛ لا ادعاء غياب الدالة حيًا من بحث لم يتم | تنفيذ واجهة العميل والمخطط والاختبارات المحلية فقط | B08/B20 على PostgreSQL معزول: مطابقة التفويض وأسماء المعاملات/البيان و1001/2MiB والاحتفاظ؛ لا fallback قديم | OPEN؛ B10-V01، بلا اتصال أو نشر سيرفر |
++| B11-BLK-01 | B11.01–B11.05 | `BLOCKED_BUILD_RUNTIME_ENVIRONMENT` + `BLOCKED_PREDECESSOR_GATE_B10`؛ Gradle8.9 غير مخزن وG-B10 لم تغلق | `docs/sync-repair/evidence/B11/V01/runtime-environment.json` و`commands-and-results.md` | يمنع compile/KSP/Room/schema100/UI وT30 وإغلاق G-B11 | فحص static/SQLite وكتابة الاختبارات والتوثيق فقط | بيئة Gradle/Android مجهزة ثم إغلاق B10 وإعادة B11 actual tests/receipts | OPEN؛ B11-V01، 2026-09-11 |
+ 
+ **قواعد التسجيل:** استخدم رموز العقد حيث تنطبق، مثل BLOCKED_BACKUP_UNVERIFIED وBLOCKED_LIVE_CONTRACT_UNVERIFIED وBLOCKED_OWNER_UNPROVEN وM03_ORG_SCOPE_UNPROVEN وSOURCE_DATA_MISSING وOUTCOME_UNKNOWN وBLOCKED_SIGNING. عائق سير عمل جديد يسمى بوضوح عائقًا تنظيميًا، لا رمز خطأ مزامنة مزعوم في التطبيق.
+ 
+@@ -985,6 +986,7 @@
+ 
+ | القرار/الانحراف | قسم العقد | ما اكتشف بالدليل | أثره على المهام/البيانات | القرار المعتمد ومصدر تفويضه | الحالة |
+ |---|---|---|---|---|---|
++| بدء كتابة B11 مع بقاء G-B10 معلقة | ترتيب اعتماديات B11 وC§4.3؛ لا تعديل التصميم المرجعي | رسالة المستخدم الحالية «نفذ التالي b11» | يسمح بكتابة B11 والاختبارات المحلية؛ لا يغلق B10/B11 أو T30 ولا يبيح نشرًا | تفويض المستخدم الصريح في 2026-09-11؛ المصدر B10-V01 نفسه | ACCEPTED_LOCAL_IMPLEMENTATION_ONLY؛ لا TEST_WAIVER ولا LIVE_WRITE_AUTHORIZATION |
+ | بدء كتابة B10 مع بقاء تحقق B09 معلقًا | ترتيب اعتماديات B10 وC§4.3؛ لا تعديل التصميم المرجعي | أحدث رسالة المستخدم بعد تسليم B09-V02 هي «نفذ b10» | يسمح بكتابة B10 والاختبارات المحلية، لا إغلاق اعتمادياتها/بوابتها أو نشرها | تفويض المستخدم الصريح في هذه الزيارة؛ المصدر B09-V02 نفسه | ACCEPTED_LOCAL_IMPLEMENTATION_ONLY؛ لا TEST_WAIVER ولا LIVE_WRITE_AUTHORIZATION |
+ | اعتماد المجلد الحالي بدل إعادة فك حاوية ZIP غير المتوفرة | C§4.1 وB01.01/B01.03 | المستخدم أكد أن `Verto-425.zip` هو مجلد المشروع الحالي؛ بصمة ما قبل التنفيذ محفوظة؛ P01–P24 = 23/24 وP04 غائب | يثبت مصدر التنفيذ ببصمة شجرة لا hash الحاوية؛ يجب ألا تفترض الجلسات اللاحقة وجود P04 | توضيح المستخدم في زيارة B01-V02؛ `SOURCE_BASELINE.json` و`SOURCE_DIFF.md` | ACCEPTED_FOR_EXECUTION؛ hash حاوية ZIP غير مدعى |
+ | عدم إنشاء Supabase branch أثناء B02 | C§4.3 وB02.04 | المتاح هو default production branch فقط؛ إنشاء فرع تغيير خارجي قد يترتب عليه تكلفة ولا يوجد baseline/fixture كامل | تبقى بيئة الاختبار محجوبة ولا يجري أي SQL حي؛ يسمح بالعمل المحلي المستقل فقط | حدود التفويض الحالية وقاعدة عدم توسيع الأثر؛ `TEST_ENVIRONMENT_AND_FENCE.md` | ACCEPTED_SAFETY_STOP؛ يحتاج مدخلات/تفويضًا جديدًا |
+@@ -1014,6 +1016,7 @@
+ 
+ | B09-V02 | B09 / الزيارة 2 | 2026-09-10 / 2026-09-10 (UTC؛ أوقات البيئة والسجلات) | لا Git؛ `65aacd59b1c7...` / `2aa1a4e16d9e...` | لا إغلاق؛ تصحيح validator وإضافة 5 اختبارات | G-B09 BLOCKED؛ before FAIL/after semantic PASS مع stubs؛ 347 mapping و612 model PASS؛ 12 JVM/33 Room NOT_RUN | B09-BLK-01؛ B02-BLK-01/02 محفوظان | B09.01 |
+ | B10-V01 | B10 / الزيارة 1 | 2026-09-10 / 2026-09-10 UTC | لا Git؛ input `2aa1a4e16d9e...`؛ output في product-tree.json | لا إغلاق رسمي؛ كتابة B10.01–B10.05 بطلب صريح | G-B10 BLOCKED؛ 15 SQLite و12 policy PASS؛ 24 JVM/14 Inbox Room و34 مالية NOT_RUN ببيئتها | B10-BLK-01/02؛ B09/B02 محفوظة | B10.01 |
++| B11-V01 | B11 / الزيارة 1 | 2026-09-11 / 2026-09-11 UTC | لا Git؛ input `2c937997...` / output `2af04ead...` | لا إغلاق رسمي؛ تنفيذ B11.01–B11.05 محليًا بطلب صريح | G-B11 BLOCKED؛ B11 static وnative SQLite PASS؛ Gradle/Room/UI/T30 NOT_RUN | B11-BLK-01؛ B10/B09/B02 محفوظة | B11.01 |
+ 
+ سطر الحالة الابتدائية أعلاه محفوظ تاريخيًا في نص الوثيقة، وأول زيارة تنفيذ فعلية هي B01-V01 المسجلة هنا.
+ 
+@@ -1362,6 +1365,27 @@
+ DELIVERY: WIP_NOT_RELEASE_READY ZIP؛ لا APK ولا إعلان جاهزية إطلاق
+ ```
+ 
++
++### 9.14 سجل B11-V01 — حل تعارض صريح مع دليل دائم
++
++```text
++CHECKPOINT_ID: B11-V01
++INPUT_ARCHIVE: Verto-425-B10-V01-WIP_NOT_RELEASE_READY(1).zip
++INPUT_ARCHIVE_SHA256: db0eb5ae27697a72dd4ce2829128b292334e6380f2a403b3c53f1b76f8a6198f
++SOURCE_VALIDATION: product tree input يطابق B10-V01 = 2c9379972d1d9db3f52d96f0a2dbe2325f77558e53bf3ef97265e1f3ee90eda0
++AUTHORIZATION: رسالة المستخدم «نفذ التالي b11»؛ كتابة محلية رغم G-B10 المعلقة، لا إسقاط بوابة
++IMPLEMENTED: conflict evidence/audit append-only؛ redacted diff UI؛ explicit accept-server/resend-local؛ SUPERSEDED_WITH_PROOF/pending-proof؛ replacement baseVersion exact؛ immutable→DOMAIN_CORRECTION_REQUIRED؛ matching echo/proof chain؛ newer-local preservation
++SCHEMA: Room target100؛ migration99→100 توسع outbox states وتضيف supersedes/evidence/audit؛ fresh-open integrity guards؛ لا export100 مولد
++ACTUAL_CHECKS: python tools/test_sync_b11_static.py PASS؛ python tools/test_sync_b11_sqlite.py PASS؛ py_compile PASS
++NOT_RUN: Gradle8.9/Kotlin2.1 compile؛ KSP/Hilt/Room migration helper/fresh100؛ Compose UI runtime؛ Android/device؛ B10 integration؛ T30 actual receipt/echo
++SESSION_FINAL_STATE: BLOCKED؛ لا مهمة DONE؛ G-B10/G-B11 BLOCKED
++LIVE_OR_DATA_ACTIONS: NONE؛ لا SQL/APK/GitHub/Drive أو تعديل بيانات حية
++NEXT_SESSION/NEXT_TASK: B11/B11.01
++NEXT_ACTION: شغّل Gradle/KSP/Room/schema100 ثم سيناريوهات القرار/echo/permission/version-change/outcome-unknown/newer-local ordering؛ أغلق G-B10 ثم G-B11؛ لا B12
++DO_NOT_REPEAT: لا auto server-wins/LWW/amount merge؛ لا ACK لنية superseded؛ لا تغيير bytes القديمة؛ لا اعتبار static/SQLite بديل Room/T30
++EVIDENCE: docs/sync-repair/evidence/B11/V01؛ product-tree.json/change.patch/changed-files.json/session-report.md
++DELIVERY: WIP_NOT_RELEASE_READY ZIP؛ لا APK ولا إعلان جاهزية إطلاق
++```
+ 
+ ### 9.2 قالب سجل نهاية الجلسة
+ 
+--- a/app/src/main/kotlin/com/verto/app/feature/sync/di/SyncConflictReviewModule.kt
++++ b/app/src/main/kotlin/com/verto/app/feature/sync/di/SyncConflictReviewModule.kt
+@@ -0,0 +1,43 @@
++package com.verto.app.feature.sync.di
++
++import com.verto.app.core.session.domain.SessionReader
++import com.verto.app.data.remote.PermissionProvider
++import com.verto.app.data.sync.conflict.SyncConflictDecisionActor
++import com.verto.app.data.sync.conflict.SyncConflictDecisionAuthorizer
++import dagger.Binds
++import dagger.Module
++import dagger.hilt.InstallIn
++import dagger.hilt.components.SingletonComponent
++import javax.inject.Inject
++import javax.inject.Singleton
++
++@Singleton
++class SessionSyncConflictDecisionAuthorizer @Inject constructor(
++    private val sessionReader: SessionReader,
++    private val permissionProvider: PermissionProvider,
++) : SyncConflictDecisionAuthorizer {
++    override suspend fun requireAuthorized(organizationId: String): SyncConflictDecisionActor {
++        val snapshot = sessionReader.snapshot()
++        require(snapshot.organization.id.isNotBlank() && snapshot.organization.id == organizationId) { "SCOPE_MISMATCH" }
++        require(snapshot.user.id.isNotBlank()) { "AUTH_REQUIRED" }
++        // Conflict resolution is intentionally privileged and fail-closed; no entity permission is guessed.
++        val settingsOrgData = permissionProvider.canNow { it.settingsOrgData }
++        val allowed = ConflictResolutionPermissionPolicy.allowed(snapshot.role, settingsOrgData)
++        if (!allowed) throw SecurityException("CONFLICT_RESOLUTION_PERMISSION_DENIED")
++        return SyncConflictDecisionActor(snapshot.user.id, snapshot.role.ifBlank { "unknown" })
++    }
++}
++
++internal object ConflictResolutionPermissionPolicy {
++    fun allowed(role: String, settingsOrgData: Boolean): Boolean = role == "admin" || settingsOrgData
++}
++
++@Module
++@InstallIn(SingletonComponent::class)
++abstract class SyncConflictReviewModule {
++    @Binds
++    @Singleton
++    abstract fun bindSyncConflictDecisionAuthorizer(
++        implementation: SessionSyncConflictDecisionAuthorizer,
++    ): SyncConflictDecisionAuthorizer
++}
+--- a/app/src/main/kotlin/com/verto/app/feature/sync/presentation/SyncViewModel.kt
++++ b/app/src/main/kotlin/com/verto/app/feature/sync/presentation/SyncViewModel.kt
+@@ -3,6 +3,10 @@
+ import androidx.lifecycle.ViewModel
+ import androidx.lifecycle.viewModelScope
+ import com.verto.app.data.sync.PersistedSyncReport
++import com.verto.app.core.session.domain.SessionReader
++import com.verto.app.data.sync.conflict.SyncConflictReviewRecord
++import com.verto.app.data.sync.conflict.SyncConflictReviewService
++import com.verto.app.data.sync.conflict.SyncConflictResolutionException
+ import com.verto.app.data.sync.SyncOperationOutcome
+ import com.verto.app.data.sync.SyncCoordinatorPhase
+ import com.verto.app.data.sync.SyncOperations
+@@ -19,11 +23,16 @@
+ 
+ @HiltViewModel
+ class SyncViewModel @Inject constructor(
+-    private val syncOperations: SyncOperations
++    private val syncOperations: SyncOperations,
++    private val conflictReviewService: SyncConflictReviewService,
++    private val sessionReader: SessionReader,
+ ) : ViewModel() {
+ 
+     private val _syncState = MutableStateFlow<SyncState>(SyncState.Idle)
+     val syncState = _syncState.asStateFlow()
++
++    private val _conflictReviewState = MutableStateFlow(SyncConflictReviewUiState())
++    val conflictReviewState: StateFlow<SyncConflictReviewUiState> = _conflictReviewState.asStateFlow()
+ 
+     val drawerSyncState: StateFlow<DrawerSyncUiState> = combine(
+         syncOperations.lastReport,
+@@ -79,6 +88,66 @@
+         }
+     }
+ 
++    fun refreshConflictReviews() {
++        viewModelScope.launch {
++            _conflictReviewState.value = _conflictReviewState.value.copy(loading = true, errorMessage = null)
++            runCatching {
++                val organizationId = sessionReader.snapshot().organization.id
++                require(organizationId.isNotBlank()) { "AUTH_REQUIRED" }
++                conflictReviewService.listForOrganization(organizationId)
++            }.onSuccess { rows ->
++                _conflictReviewState.value = SyncConflictReviewUiState(items = rows)
++            }.onFailure { error ->
++                _conflictReviewState.value = _conflictReviewState.value.copy(
++                    loading = false, errorMessage = error.toConflictUserMessage(),
++                )
++            }
++        }
++    }
++
++    fun acceptServerConflict(conflictId: String, displayedServerVersion: Long) {
++        resolveConflict(conflictId) {
++            conflictReviewService.acceptServer(conflictId, displayedServerVersion)
++        }
++    }
++
++    fun resendLocalConflict(conflictId: String, displayedServerVersion: Long) {
++        resolveConflict(conflictId) {
++            val result = conflictReviewService.resendLocal(conflictId, displayedServerVersion)
++            // Decision is already durable; a scheduling failure must not misreport it as rolled back.
++            syncOperations.requestSync()
++            result
++        }
++    }
++
++    private fun resolveConflict(conflictId: String, block: suspend () -> Any) {
++        if (_conflictReviewState.value.resolvingConflictId != null) return
++        viewModelScope.launch {
++            _conflictReviewState.value = _conflictReviewState.value.copy(
++                resolvingConflictId = conflictId, errorMessage = null,
++            )
++            runCatching { block() }
++                .onSuccess { refreshConflictReviews() }
++                .onFailure { error ->
++                    _conflictReviewState.value = _conflictReviewState.value.copy(
++                        resolvingConflictId = null, errorMessage = error.toConflictUserMessage(),
++                    )
++                }
++        }
++    }
++
++    private fun Throwable.toConflictUserMessage(): String {
++        val code = (this as? SyncConflictResolutionException)?.code ?: message.orEmpty()
++        return when {
++            code.contains("PERMISSION_DENIED") -> "لا تملك صلاحية حسم تعارض المزامنة"
++            code.contains("OUTCOME_UNKNOWN") -> "مصير الطلب السابق غير مثبت؛ لا يمكن إسقاط النسخة المحلية"
++            code.contains("REMOTE_VERSION_CHANGED") -> "تغيّرت نسخة الخادم؛ حدّث التعارض قبل اتخاذ القرار"
++            code.contains("DOMAIN_CORRECTION_REQUIRED") -> "هذه حقيقة غير قابلة للاستبدال؛ استخدم مسار التصحيح/العكس المعتمد"
++            code.contains("STATE_CHANGED") -> "تغيّرت حالة التعارض؛ أعد فتح المراجعة"
++            else -> com.verto.app.utils.ErrorHumanizer.humanize(this)
++        }
++    }
++
+     override fun onCleared() {
+         super.onCleared()
+         syncOperations.stopRealtime()
+@@ -89,6 +158,13 @@
+ 
+     fun resetState() { _syncState.value = SyncState.Idle }
+ }
++
++data class SyncConflictReviewUiState(
++    val loading: Boolean = false,
++    val items: List<SyncConflictReviewRecord> = emptyList(),
++    val resolvingConflictId: String? = null,
++    val errorMessage: String? = null,
++)
+ 
+ data class DrawerSyncOperationUi(
+     val label: String,
+--- a/app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt
++++ b/app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt
+@@ -84,6 +84,7 @@
+ import com.verto.app.R
+ import com.verto.app.feature.sync.presentation.DrawerSyncDomainUi
+ import com.verto.app.feature.sync.presentation.DrawerSyncUiState
++import com.verto.app.feature.sync.presentation.SyncConflictReviewUiState
+ import com.verto.app.feature.sync.presentation.formatDateTime
+ import com.verto.app.ui.navigation.DrawerDestination
+ import com.verto.app.ui.navigation.DrawerDestinationRegistry
+@@ -96,18 +97,23 @@
+ fun VertoNavigationDrawerContent(
+     uiState: DrawerNavigationUiState,
+     syncState: DrawerSyncUiState,
++    conflictReviewState: SyncConflictReviewUiState,
+     selectedDestinationId: String?,
+     homeSelected: Boolean,
+     onHomeClick: () -> Unit,
+     onDestinationClick: (String) -> Unit,
+     onSectionToggle: (DrawerSection) -> Unit,
+     onSyncNow: () -> Unit,
++    onOpenConflictReview: () -> Unit,
++    onAcceptServerConflict: (String, Long) -> Unit,
++    onResendLocalConflict: (String, Long) -> Unit,
+     onClose: () -> Unit,
+ ) {
+     val visibleBySection = remember(uiState.permissions, uiState.role) {
+         DrawerDestinationRegistry.visibleBySection(uiState.permissions, uiState.role)
+     }
+     var showSyncDetails by rememberSaveable { mutableStateOf(false) }
++    var showConflictReview by rememberSaveable { mutableStateOf(false) }
+ 
+     Column(
+         modifier = Modifier
+@@ -184,7 +190,22 @@
+         SyncStatusDialog(
+             state = syncState,
+             onSyncNow = onSyncNow,
++            onReviewConflicts = {
++                showSyncDetails = false
++                showConflictReview = true
++                onOpenConflictReview()
++            },
+             onDismiss = { showSyncDetails = false },
++        )
++    }
++
++    if (showConflictReview) {
++        SyncConflictReviewDialog(
++            state = conflictReviewState,
++            onRefresh = onOpenConflictReview,
++            onAcceptServer = onAcceptServerConflict,
++            onResendLocal = onResendLocalConflict,
++            onDismiss = { showConflictReview = false },
+         )
+     }
+ }
+@@ -294,7 +315,12 @@
+ }
+ 
+ @Composable
+-private fun SyncStatusDialog(state: DrawerSyncUiState, onSyncNow: () -> Unit, onDismiss: () -> Unit) {
++private fun SyncStatusDialog(
++    state: DrawerSyncUiState,
++    onSyncNow: () -> Unit,
++    onReviewConflicts: () -> Unit,
++    onDismiss: () -> Unit,
++) {
+     val defaultExpanded = state.domains.firstOrNull { it.failed.isNotEmpty() }?.key ?: "general"
+     var expandedKey by rememberSaveable(state.attemptedAtMillis) { mutableStateOf<String?>(defaultExpanded) }
+     AlertDialog(
+@@ -345,6 +371,12 @@
+                 if (state.domains.isEmpty() && !state.inProgress) {
+                     item { Text(androidx.compose.ui.res.stringResource(R.string.ds_8d8f3ac3ea42)) }
+                 }
++
++                if (state.requiresReviewCount > 0L) {
++                    item(key = "sync_conflict_review") {
++                        TextButton(onClick = onReviewConflicts) { Text("مراجعة التعارضات") }
++                    }
++                }
+             }
+         },
+         confirmButton = {
+@@ -355,6 +387,76 @@
+         dismissButton = {
+             TextButton(onClick = onDismiss) { Text(androidx.compose.ui.res.stringResource(com.verto.core.common.R.string.common_action_close)) }
+         },
++    )
++}
++
++@Composable
++private fun SyncConflictReviewDialog(
++    state: SyncConflictReviewUiState,
++    onRefresh: () -> Unit,
++    onAcceptServer: (String, Long) -> Unit,
++    onResendLocal: (String, Long) -> Unit,
++    onDismiss: () -> Unit,
++) {
++    AlertDialog(
++        onDismissRequest = onDismiss,
++        title = { Text("مراجعة تعارضات المزامنة") },
++        text = {
++            LazyColumn(
++                modifier = Modifier.fillMaxWidth(),
++                verticalArrangement = Arrangement.spacedBy(AppChromeDimensions.dp12),
++            ) {
++                if (state.loading) {
++                    item(key = "conflict_loading") { CircularProgressIndicator() }
++                }
++                state.errorMessage?.let { message ->
++                    item(key = "conflict_error") { Text(message, color = MaterialTheme.colorScheme.error) }
++                }
++                items(state.items, key = { it.conflictId }) { item ->
++                    val resolving = state.resolvingConflictId == item.conflictId
++                    val canResolve = item.state == "OPEN" && item.mutable && item.outcomeProven && !resolving
++                    Column(verticalArrangement = Arrangement.spacedBy(AppChromeDimensions.dp6)) {
++                        Text("${item.aggregateType} · ${item.aggregateId}", fontWeight = FontWeight.Bold)
++                        Text("سبب التعارض: ${item.reason}", style = MaterialTheme.typography.bodySmall)
++                        val localVersionLabel = item.localBaseVersion?.let { "v$it" } ?: "إنشاء جديد"
++                        Text("أساس المحلي $localVersionLabel — الخادم v${item.remoteVersion} — صيغة p${item.localPayloadVersion}", style = MaterialTheme.typography.bodySmall)
++                        Text("بصمة المحلي: ${item.localFingerprint}", style = MaterialTheme.typography.labelSmall)
++                        Text("بصمة الخادم: ${item.remoteFingerprint}", style = MaterialTheme.typography.labelSmall)
++                        if (!item.outcomeProven) {
++                            Text("مصير الطلب السابق غير مثبت؛ الحسم معطّل.", color = MaterialTheme.colorScheme.error)
++                        } else if (!item.mutable || item.state == "DOMAIN_CORRECTION_REQUIRED") {
++                            Text("حقيقة غير قابلة للاستبدال؛ يلزم مسار تصحيح/عكس معتمد.", color = MaterialTheme.colorScheme.error)
++                        } else if (item.state == "WAITING_REPLACEMENT_RECEIPT") {
++                            Text("تم إنشاء تعديل بديل؛ ينتظر إثبات الاستلام.")
++                        }
++                        if (item.differences.isNotEmpty()) {
++                            Text("الحقول المختلفة:", fontWeight = FontWeight.SemiBold)
++                            item.differences.take(12).forEach { diff ->
++                                Text("${diff.path}: ${diff.local} → ${diff.remote}", style = MaterialTheme.typography.bodySmall)
++                            }
++                        }
++                        Text("النسخة المحلية (منقحة):\n${item.localPreviewJson}", style = MaterialTheme.typography.bodySmall)
++                        Text("نسخة الخادم (منقحة):\n${item.remotePreviewJson}", style = MaterialTheme.typography.bodySmall)
++                        if (canResolve) {
++                            Row(horizontalArrangement = Arrangement.spacedBy(AppChromeDimensions.dp8)) {
++                                TextButton(onClick = { onAcceptServer(item.conflictId, item.remoteVersion) }) {
++                                    Text("اعتماد نسخة الخادم")
++                                }
++                                TextButton(onClick = { onResendLocal(item.conflictId, item.remoteVersion) }) {
++                                    Text("إعادة إرسال تعديلي")
++                                }
++                            }
++                        }
++                        HorizontalDivider()
++                    }
++                }
++                if (!state.loading && state.items.isEmpty() && state.errorMessage == null) {
++                    item(key = "conflict_empty") { Text("لا توجد تعارضات تحتاج قرارًا.") }
++                }
++            }
++        },
++        confirmButton = { TextButton(onClick = onRefresh) { Text("تحديث") } },
++        dismissButton = { TextButton(onClick = onDismiss) { Text("إغلاق") } },
+     )
+ }
+ 
+--- a/app/src/main/kotlin/com/verto/app/ui/navigation/AppNavigation.kt
++++ b/app/src/main/kotlin/com/verto/app/ui/navigation/AppNavigation.kt
+@@ -36,6 +36,7 @@
+     val drawerViewModel: DrawerNavigationViewModel = hiltViewModel()
+     val drawerUiState by drawerViewModel.uiState.collectAsStateWithLifecycle()
+     val drawerSyncUiState by syncViewModel.drawerSyncState.collectAsStateWithLifecycle()
++    val conflictReviewUiState by syncViewModel.conflictReviewState.collectAsStateWithLifecycle()
+ 
+     val navBackStackEntry by navController.currentBackStackEntryAsState()
+     val currentRoute = navBackStackEntry?.destination?.route ?: "splash"
+@@ -130,12 +131,16 @@
+                     VertoNavigationDrawerContent(
+                         uiState = drawerUiState,
+                         syncState = drawerSyncUiState,
++                        conflictReviewState = conflictReviewUiState,
+                         selectedDestinationId = selectedDestination?.id,
+                         homeSelected = currentRoute == Screen.Home.route,
+                         onHomeClick = ::navigateHome,
+                         onDestinationClick = ::navigateFromDrawer,
+                         onSectionToggle = drawerViewModel::toggleSection,
+                         onSyncNow = syncViewModel::push,
++                        onOpenConflictReview = syncViewModel::refreshConflictReviews,
++                        onAcceptServerConflict = syncViewModel::acceptServerConflict,
++                        onResendLocalConflict = syncViewModel::resendLocalConflict,
+                         onClose = { scope.launch { drawerState.close() } },
+                     )
+                 }
+--- a/app/src/test/kotlin/com/verto/app/feature/sync/di/ConflictResolutionPermissionPolicyB11Test.kt
++++ b/app/src/test/kotlin/com/verto/app/feature/sync/di/ConflictResolutionPermissionPolicyB11Test.kt
+@@ -0,0 +1,11 @@
++package com.verto.app.feature.sync.di
++
++import org.junit.Assert.assertFalse
++import org.junit.Assert.assertTrue
++import org.junit.Test
++
++class ConflictResolutionPermissionPolicyB11Test {
++    @Test fun `admin is authorized`() = assertTrue(ConflictResolutionPermissionPolicy.allowed("admin", false))
++    @Test fun `employee with org-data permission is authorized`() = assertTrue(ConflictResolutionPermissionPolicy.allowed("employee", true))
++    @Test fun `employee without org-data permission is rejected`() = assertFalse(ConflictResolutionPermissionPolicy.allowed("employee", false))
++}
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt
+@@ -131,6 +131,8 @@
+         SyncInboxEntity::class,
+         SyncCursorEntity::class,
+         SyncConflictEntity::class,
++        SyncConflictReviewEvidenceEntity::class,
++        SyncConflictResolutionAuditEntity::class,
+         SyncSequenceStateEntity::class,
+         OrganizationSettingsLocalEntity::class,
+         SyncAttachmentTransferEntity::class,
+@@ -235,6 +237,7 @@
+                             installInvoiceReturnIntegrityGuards(db)
+                             installPurchaseCycleIntegrityGuards(db)
+                             installPartyHistoricalDeleteGuard(db)
++                            installB11ConflictIntegrityGuards(db)
+                         }
+                     })
+                     .build()
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations99To100.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations99To100.kt
+@@ -0,0 +1,219 @@
++package com.verto.app.data.local
++
++import androidx.room.migration.Migration
++import androidx.sqlite.db.SupportSQLiteDatabase
++
++/** B11: additive, immutable conflict-review evidence and append-only decision audit. */
++val MIGRATION_99_100 = object : Migration(99, 100) {
++    override fun migrate(db: SupportSQLiteDatabase) {
++        // B11 adds proof-bearing superseded states. Rebuild the v99 table so SQLite's v78 CHECK
++        // accepts them while preserving every semantic/lease invariant and every existing row.
++        db.execSQL("DROP TRIGGER IF EXISTS `sync_outbox_semantic_immutable`")
++        db.execSQL("DROP TRIGGER IF EXISTS `sync_outbox_no_delete`")
++        db.execSQL("DROP INDEX IF EXISTS `index_sync_outbox_org_local_sequence`")
++        db.execSQL("DROP INDEX IF EXISTS `index_sync_outbox_aggregate_sequence`")
++        db.execSQL("DROP INDEX IF EXISTS `index_sync_outbox_delivery`")
++        db.execSQL("DROP INDEX IF EXISTS `index_sync_outbox_aggregate_delivery`")
++        db.execSQL("DROP INDEX IF EXISTS `index_sync_outbox_dependency`")
++        db.execSQL("ALTER TABLE `sync_outbox` RENAME TO `sync_outbox_b11_old`")
++        db.execSQL(
++            """
++            CREATE TABLE `sync_outbox` (
++                `mutation_id` TEXT NOT NULL PRIMARY KEY,
++                `organization_id` TEXT NOT NULL,
++                `aggregate_type` TEXT NOT NULL,
++                `aggregate_id` TEXT NOT NULL,
++                `operation_type` TEXT NOT NULL,
++                `base_version` INTEGER,
++                `local_sequence` INTEGER NOT NULL,
++                `aggregate_sequence` INTEGER NOT NULL,
++                `payload_version` INTEGER NOT NULL,
++                `payload_json` TEXT NOT NULL,
++                `semantic_fingerprint` TEXT NOT NULL,
++                `command_batch_id` TEXT,
++                `command_order` INTEGER,
++                `depends_on_mutation_id` TEXT,
++                `state` TEXT NOT NULL DEFAULT 'PENDING',
++                `attempt_count` INTEGER NOT NULL DEFAULT 0,
++                `last_error_type` TEXT,
++                `last_error_code` TEXT,
++                `next_attempt_at` INTEGER NOT NULL DEFAULT 0,
++                `lease_owner` TEXT,
++                `lease_token` TEXT,
++                `lease_scope_epoch` INTEGER,
++                `lease_expires_at` INTEGER,
++                `acked_server_revision` INTEGER,
++                `acked_server_version` INTEGER,
++                `receipt_status` TEXT,
++                `created_at` INTEGER NOT NULL,
++                `acked_at` INTEGER,
++                CHECK (trim(`mutation_id`) <> ''),
++                CHECK (trim(`organization_id`) <> ''),
++                CHECK (trim(`aggregate_type`) <> ''),
++                CHECK (trim(`aggregate_id`) <> ''),
++                CHECK (`operation_type` IN ('UPSERT','DELETE','COMMAND','ARCHIVE','VOID','REVERSE','CANCEL')),
++                CHECK (`local_sequence` > 0),
++                CHECK (`aggregate_sequence` > 0),
++                CHECK (`payload_version` > 0),
++                CHECK (length(CAST(`payload_json` AS BLOB)) <= 524288),
++                CHECK (trim(`semantic_fingerprint`) <> ''),
++                CHECK (`attempt_count` >= 0),
++                CHECK ((`command_batch_id` IS NULL AND `command_order` IS NULL) OR (trim(`command_batch_id`) <> '' AND `command_order` >= 0)),
++                CHECK (`depends_on_mutation_id` IS NULL OR (trim(`depends_on_mutation_id`) <> '' AND `depends_on_mutation_id` <> `mutation_id`)),
++                CHECK (`state` IN ('PENDING','LEASED','RETRY','ACKNOWLEDGED','REQUIRES_REVIEW','REJECTED','SUPERSEDED_PENDING_PROOF','SUPERSEDED_WITH_PROOF')),
++                CHECK ((`state` = 'LEASED' AND trim(`lease_owner`) <> '' AND trim(`lease_token`) <> '' AND `lease_expires_at` IS NOT NULL)
++                    OR (`state` <> 'LEASED' AND `lease_owner` IS NULL AND `lease_token` IS NULL AND `lease_expires_at` IS NULL))
++            )
++            """.trimIndent()
++        )
++        db.execSQL(
++            """
++            INSERT INTO `sync_outbox` (
++                mutation_id,organization_id,aggregate_type,aggregate_id,operation_type,base_version,
++                local_sequence,aggregate_sequence,payload_version,payload_json,semantic_fingerprint,
++                command_batch_id,command_order,depends_on_mutation_id,state,attempt_count,last_error_type,
++                last_error_code,next_attempt_at,lease_owner,lease_token,lease_scope_epoch,lease_expires_at,
++                acked_server_revision,acked_server_version,receipt_status,created_at,acked_at
++            ) SELECT
++                mutation_id,organization_id,aggregate_type,aggregate_id,operation_type,base_version,
++                local_sequence,aggregate_sequence,payload_version,payload_json,semantic_fingerprint,
++                command_batch_id,command_order,depends_on_mutation_id,state,attempt_count,last_error_type,
++                last_error_code,next_attempt_at,lease_owner,lease_token,lease_scope_epoch,lease_expires_at,
++                acked_server_revision,acked_server_version,receipt_status,created_at,acked_at
++            FROM `sync_outbox_b11_old`
++            """.trimIndent()
++        )
++        db.execSQL("DROP TABLE `sync_outbox_b11_old`")
++        db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_sync_outbox_org_local_sequence` ON `sync_outbox` (`organization_id`, `local_sequence`)")
++        db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_sync_outbox_aggregate_sequence` ON `sync_outbox` (`organization_id`, `aggregate_type`, `aggregate_id`, `aggregate_sequence`)")
++        db.execSQL("CREATE INDEX IF NOT EXISTS `index_sync_outbox_delivery` ON `sync_outbox` (`organization_id`, `state`, `next_attempt_at`, `local_sequence`)")
++        db.execSQL("CREATE INDEX IF NOT EXISTS `index_sync_outbox_aggregate_delivery` ON `sync_outbox` (`organization_id`, `aggregate_type`, `aggregate_id`, `state`, `aggregate_sequence`)")
++        db.execSQL("CREATE INDEX IF NOT EXISTS `index_sync_outbox_dependency` ON `sync_outbox` (`depends_on_mutation_id`)")
++        db.execSQL(
++            """
++            CREATE TRIGGER `sync_outbox_semantic_immutable`
++            BEFORE UPDATE OF `mutation_id`,`organization_id`,`aggregate_type`,`aggregate_id`,`operation_type`,`base_version`,`local_sequence`,`aggregate_sequence`,`payload_version`,`payload_json`,`semantic_fingerprint`,`command_batch_id`,`command_order`,`depends_on_mutation_id`,`created_at`
++            ON `sync_outbox`
++            BEGIN SELECT RAISE(ABORT, 'FAIL_LOCAL_SYNC_IMMUTABILITY'); END
++            """.trimIndent()
++        )
++        db.execSQL(
++            """
++            CREATE TRIGGER `sync_outbox_no_delete`
++            BEFORE DELETE ON `sync_outbox`
++            BEGIN SELECT RAISE(ABORT, 'SYNC_OUTBOX_PRUNING_DISABLED_V306'); END
++            """.trimIndent()
++        )
++
++        // B11 replacement intent points at the superseded mutation without abusing causal dependency.
++        db.execSQL("ALTER TABLE sync_mutation_packet ADD COLUMN supersedes_mutation_id TEXT")
++        db.execSQL("CREATE INDEX IF NOT EXISTS index_sync_mutation_packet_supersedes ON sync_mutation_packet (supersedes_mutation_id)")
++        db.execSQL(
++            """
++            CREATE TABLE IF NOT EXISTS `sync_conflict_review_evidence` (
++                `conflict_id` TEXT NOT NULL,
++                `organization_id` TEXT NOT NULL,
++                `mutation_id` TEXT NOT NULL,
++                `local_payload_json` TEXT NOT NULL,
++                `local_payload_sha256` TEXT NOT NULL,
++                `local_semantic_fingerprint` TEXT NOT NULL,
++                `local_base_version` INTEGER,
++                `remote_payload_json` TEXT NOT NULL,
++                `remote_payload_sha256` TEXT NOT NULL,
++                `server_revision` INTEGER,
++                `server_version` INTEGER NOT NULL,
++                `outcome_proof` TEXT NOT NULL,
++                `created_at` INTEGER NOT NULL,
++                PRIMARY KEY(`conflict_id`),
++                CHECK(trim(`organization_id`) <> ''),
++                CHECK(trim(`mutation_id`) <> ''),
++                CHECK(length(`local_payload_sha256`) = 64),
++                CHECK(length(`remote_payload_sha256`) = 64),
++                CHECK(`server_version` > 0),
++                CHECK(`outcome_proof` IN ('PROVEN_CONFLICT','OUTCOME_UNKNOWN'))
++            )
++            """.trimIndent()
++        )
++        db.execSQL("CREATE INDEX IF NOT EXISTS `index_sync_conflict_review_evidence_org_created` ON `sync_conflict_review_evidence` (`organization_id`,`created_at`)")
++        db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_sync_conflict_review_evidence_mutation` ON `sync_conflict_review_evidence` (`mutation_id`)")
++        db.execSQL(
++            """
++            CREATE TABLE IF NOT EXISTS `sync_conflict_resolution_audit` (
++                `decision_id` TEXT NOT NULL,
++                `conflict_id` TEXT NOT NULL,
++                `organization_id` TEXT NOT NULL,
++                `mutation_id` TEXT NOT NULL,
++                `decision_type` TEXT NOT NULL,
++                `actor_id` TEXT,
++                `actor_role` TEXT,
++                `local_payload_sha256` TEXT NOT NULL,
++                `remote_payload_sha256` TEXT NOT NULL,
++                `expected_server_version` INTEGER NOT NULL,
++                `resolution_mutation_id` TEXT,
++                `proof_type` TEXT NOT NULL,
++                `proof_reference` TEXT,
++                `before_state` TEXT NOT NULL,
++                `after_state` TEXT NOT NULL,
++                `decided_at` INTEGER NOT NULL,
++                PRIMARY KEY(`decision_id`),
++                CHECK(trim(`organization_id`) <> ''),
++                CHECK(trim(`mutation_id`) <> ''),
++                CHECK(length(`local_payload_sha256`) = 64),
++                CHECK(length(`remote_payload_sha256`) = 64),
++                CHECK(`expected_server_version` > 0)
++            )
++            """.trimIndent()
++        )
++        db.execSQL("CREATE INDEX IF NOT EXISTS `index_sync_conflict_resolution_audit_conflict_time` ON `sync_conflict_resolution_audit` (`conflict_id`,`decided_at`)")
++        db.execSQL("CREATE INDEX IF NOT EXISTS `index_sync_conflict_resolution_audit_resolution_mutation` ON `sync_conflict_resolution_audit` (`resolution_mutation_id`)")
++        installB11ConflictIntegrityGuards(db)
++    }
++}
++
++/** Ensures fresh schema-100 installs get the same append-only guards as 99→100 upgrades. */
++internal fun installB11ConflictIntegrityGuards(db: SupportSQLiteDatabase) {
++    // B11 decisions depend on the original local intent remaining byte-stable on fresh installs too.
++    db.execSQL(
++        """
++        CREATE TRIGGER IF NOT EXISTS `sync_outbox_semantic_immutable`
++        BEFORE UPDATE OF `mutation_id`,`organization_id`,`aggregate_type`,`aggregate_id`,`operation_type`,`base_version`,`local_sequence`,`aggregate_sequence`,`payload_version`,`payload_json`,`semantic_fingerprint`,`command_batch_id`,`command_order`,`depends_on_mutation_id`,`created_at`
++        ON `sync_outbox`
++        BEGIN SELECT RAISE(ABORT, 'FAIL_LOCAL_SYNC_IMMUTABILITY'); END
++        """.trimIndent()
++    )
++    db.execSQL(
++        """
++        CREATE TRIGGER IF NOT EXISTS `sync_outbox_no_delete`
++        BEFORE DELETE ON `sync_outbox`
++        BEGIN SELECT RAISE(ABORT, 'SYNC_OUTBOX_PRUNING_DISABLED_V306'); END
++        """.trimIndent()
++    )
++    db.execSQL(
++        """
++        CREATE TRIGGER IF NOT EXISTS `sync_conflict_review_evidence_immutable`
++        BEFORE UPDATE ON `sync_conflict_review_evidence`
++        BEGIN SELECT RAISE(ABORT, 'FAIL_CONFLICT_EVIDENCE_IMMUTABLE'); END
++        """.trimIndent()
++    )
++    db.execSQL(
++        """
++        CREATE TRIGGER IF NOT EXISTS `sync_conflict_review_evidence_no_delete`
++        BEFORE DELETE ON `sync_conflict_review_evidence`
++        BEGIN SELECT RAISE(ABORT, 'FAIL_CONFLICT_EVIDENCE_IMMUTABLE'); END
++        """.trimIndent()
++    )
++    db.execSQL(
++        """
++        CREATE TRIGGER IF NOT EXISTS `sync_conflict_resolution_audit_immutable`
++        BEFORE UPDATE ON `sync_conflict_resolution_audit`
++        BEGIN SELECT RAISE(ABORT, 'FAIL_CONFLICT_AUDIT_IMMUTABLE'); END
++        """.trimIndent()
++    )
++    db.execSQL(
++        """
++        CREATE TRIGGER IF NOT EXISTS `sync_conflict_resolution_audit_no_delete`
++        BEFORE DELETE ON `sync_conflict_resolution_audit`
++        BEGIN SELECT RAISE(ABORT, 'FAIL_CONFLICT_AUDIT_IMMUTABLE'); END
++        """.trimIndent()
++    )
++}
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt
+@@ -3,7 +3,7 @@
+ import androidx.room.migration.Migration
+ 
+ /** المصدر الوحيد لتسلسل Room المدعوم. */
+-const val ROOM_SCHEMA_VERSION: Int = 99
++const val ROOM_SCHEMA_VERSION: Int = 100
+ 
+ val ALL_MIGRATIONS: Array<Migration> = arrayOf(
+     MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5,
+@@ -16,7 +16,7 @@
+     MIGRATION_29_30, MIGRATION_30_31, MIGRATION_31_32, MIGRATION_32_33,
+     MIGRATION_33_34, MIGRATION_34_35, MIGRATION_35_36, MIGRATION_36_37,
+     MIGRATION_37_38, MIGRATION_38_39, MIGRATION_39_40, MIGRATION_40_41,
+-    MIGRATION_41_42, MIGRATION_42_43, MIGRATION_43_44, MIGRATION_44_45, MIGRATION_45_46, MIGRATION_46_47, MIGRATION_47_48, MIGRATION_48_49, MIGRATION_49_50, MIGRATION_50_51, MIGRATION_51_52, MIGRATION_52_53, MIGRATION_53_54, MIGRATION_54_55, MIGRATION_55_56, MIGRATION_56_57, MIGRATION_57_58, MIGRATION_58_59, MIGRATION_59_60, MIGRATION_60_61, MIGRATION_61_62, MIGRATION_62_63, MIGRATION_63_64, MIGRATION_64_65, MIGRATION_65_66, MIGRATION_66_67, MIGRATION_67_68, MIGRATION_68_69, MIGRATION_69_70, MIGRATION_70_71, MIGRATION_71_72, MIGRATION_72_73, MIGRATION_73_74, MIGRATION_74_75, MIGRATION_75_76, MIGRATION_76_77, MIGRATION_77_78, MIGRATION_78_79, MIGRATION_79_80, MIGRATION_80_81, MIGRATION_81_82, MIGRATION_82_83, MIGRATION_83_84, MIGRATION_84_85, MIGRATION_85_86, MIGRATION_86_87, MIGRATION_87_88, MIGRATION_88_89, MIGRATION_89_90, MIGRATION_90_91, MIGRATION_91_92, MIGRATION_92_93, MIGRATION_93_94, MIGRATION_94_95, MIGRATION_95_96, MIGRATION_96_97, MIGRATION_97_98, MIGRATION_98_99
++    MIGRATION_41_42, MIGRATION_42_43, MIGRATION_43_44, MIGRATION_44_45, MIGRATION_45_46, MIGRATION_46_47, MIGRATION_47_48, MIGRATION_48_49, MIGRATION_49_50, MIGRATION_50_51, MIGRATION_51_52, MIGRATION_52_53, MIGRATION_53_54, MIGRATION_54_55, MIGRATION_55_56, MIGRATION_56_57, MIGRATION_57_58, MIGRATION_58_59, MIGRATION_59_60, MIGRATION_60_61, MIGRATION_61_62, MIGRATION_62_63, MIGRATION_63_64, MIGRATION_64_65, MIGRATION_65_66, MIGRATION_66_67, MIGRATION_67_68, MIGRATION_68_69, MIGRATION_69_70, MIGRATION_70_71, MIGRATION_71_72, MIGRATION_72_73, MIGRATION_73_74, MIGRATION_74_75, MIGRATION_75_76, MIGRATION_76_77, MIGRATION_77_78, MIGRATION_78_79, MIGRATION_79_80, MIGRATION_80_81, MIGRATION_81_82, MIGRATION_82_83, MIGRATION_83_84, MIGRATION_84_85, MIGRATION_85_86, MIGRATION_86_87, MIGRATION_87_88, MIGRATION_88_89, MIGRATION_89_90, MIGRATION_90_91, MIGRATION_91_92, MIGRATION_92_93, MIGRATION_93_94, MIGRATION_94_95, MIGRATION_95_96, MIGRATION_96_97, MIGRATION_97_98, MIGRATION_98_99, MIGRATION_99_100
+ )
+ 
+ /** يعيد المسار المتصل فقط، ويفشل مغلقًا إذا ظهرت فجوة أو تكرار. */
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRecoveryDao.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRecoveryDao.kt
+@@ -44,7 +44,7 @@
+     @Query("SELECT EXISTS(SELECT 1 FROM sync_inbox WHERE scope_id = :scopeId AND server_revision = :revision AND apply_state = 'APPLIED')")
+     suspend fun hasAppliedInboxAnchor(scopeId: String, revision: Long): Boolean
+ 
+-    @Query("SELECT COUNT(*) FROM sync_outbox WHERE organization_id = :organizationId AND state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW')")
++    @Query("SELECT COUNT(*) FROM sync_outbox WHERE organization_id = :organizationId AND state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF')")
+     suspend fun unifiedOutboxDepth(organizationId: String): Long
+ 
+     @Query("""
+@@ -69,13 +69,13 @@
+     @Query("SELECT COUNT(*) FROM sync_attachment_transfer WHERE organization_id = :organizationId AND state NOT IN ('COMPLETED','CANCELLED')")
+     suspend fun attachmentOutboxDepth(organizationId: String): Long
+ 
+-    @Query("SELECT MIN(created_at) FROM sync_outbox WHERE organization_id = :organizationId AND state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW')")
++    @Query("SELECT MIN(created_at) FROM sync_outbox WHERE organization_id = :organizationId AND state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF')")
+     suspend fun oldestUnifiedPendingAt(organizationId: String): Long?
+ 
+-    @Query("SELECT COALESCE(SUM(attempt_count),0) FROM sync_outbox WHERE organization_id = :organizationId AND state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW')")
++    @Query("SELECT COALESCE(SUM(attempt_count),0) FROM sync_outbox WHERE organization_id = :organizationId AND state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF')")
+     suspend fun unifiedRetryCount(organizationId: String): Long
+ 
+-    @Query("SELECT COUNT(*) FROM sync_conflict WHERE organization_id = :organizationId AND state NOT IN ('RESOLVED','ACKNOWLEDGED')")
++    @Query("SELECT COUNT(*) FROM sync_conflict WHERE organization_id = :organizationId AND state IN ('OPEN','DOMAIN_CORRECTION_REQUIRED','WAITING_REPLACEMENT_RECEIPT')")
+     suspend fun unifiedConflictCount(organizationId: String): Long
+ 
+     @Query("SELECT COUNT(*) FROM inventory_sync_conflicts WHERE organization_id = :organizationId AND status NOT IN ('RESOLVED','ACKNOWLEDGED')")
+@@ -138,7 +138,7 @@
+     @Query("SELECT COALESCE(SUM(attempt_count),0) FROM optimal_outbox WHERE organization_id=:organizationId AND status NOT IN ('SYNCED','ACKNOWLEDGED')")
+     suspend fun optimalRetryCount(organizationId: String): Long
+ 
+-    @Query("SELECT COUNT(*) FROM sync_outbox WHERE organization_id=:organizationId AND state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW')")
++    @Query("SELECT COUNT(*) FROM sync_outbox WHERE organization_id=:organizationId AND state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF')")
+     suspend fun activeUnifiedMutationCount(organizationId: String): Long
+ 
+     @Query("SELECT * FROM sync_bootstrap_stage WHERE scope_id=:scopeId AND bootstrap_session_id=:sessionId AND aggregate_type=:aggregateType AND partition_key=:partitionKey ORDER BY aggregate_id ASC")
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRepairV2Dao.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRepairV2Dao.kt
+@@ -219,7 +219,7 @@
+     @Query("SELECT state FROM sync_attachment_transfer WHERE organization_id=:organizationId AND transfer_id=:sourceId LIMIT 1")
+     abstract suspend fun readAttachmentSourceState(organizationId: String, sourceId: String): String?
+ 
+-    @Query("SELECT COUNT(*) FROM sync_outbox WHERE organization_id=:organizationId AND state <> 'ACKNOWLEDGED'")
++    @Query("SELECT COUNT(*) FROM sync_outbox WHERE organization_id=:organizationId AND state NOT IN ('ACKNOWLEDGED','SUPERSEDED_WITH_PROOF')")
+     abstract suspend fun countUnconfirmedUnified(organizationId: String): Long
+ 
+     @Query("SELECT COUNT(*) FROM financial_outbox WHERE organization_id=:organizationId AND sync_state NOT IN ('ACKNOWLEDGED','SYNCED')")
+@@ -249,7 +249,7 @@
+     @Query(
+         """SELECT EXISTS(SELECT 1 FROM sync_outbox
+            WHERE organization_id=:organizationId AND aggregate_type=:aggregateType
+-             AND aggregate_id=:aggregateId AND state <> 'ACKNOWLEDGED')"""
++             AND aggregate_id=:aggregateId AND state NOT IN ('ACKNOWLEDGED','SUPERSEDED_WITH_PROOF'))"""
+     )
+     abstract suspend fun hasUnconfirmedUnifiedAggregate(
+         organizationId: String,
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncConflictDao.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncConflictDao.kt
+@@ -1,50 +1,37 @@
+ package com.verto.app.data.local.dao
+ 
+-import androidx.room.Dao
+ import androidx.room.Insert
+ import androidx.room.OnConflictStrategy
+ import androidx.room.Query
+ import androidx.room.Transaction
+ import com.verto.app.data.local.entity.SyncConflictEntity
+-import com.verto.app.data.local.entity.SyncCursorEntity
+-import com.verto.app.data.local.entity.SyncInboxEntity
+-import com.verto.app.data.local.entity.SyncOutboxEntity
+-import com.verto.app.data.local.entity.SyncSequenceStateEntity
+-import java.security.MessageDigest
++import com.verto.app.data.local.entity.SyncConflictResolutionAuditEntity
++import com.verto.app.data.local.entity.SyncConflictReviewEvidenceEntity
+ 
+-/**
+- * Session 306 persistence primitives only. No network/worker/runtime wiring belongs here.
+- *
+- * Canonical future producer boundary (Session 307):
+- * AppDatabase.withTransaction { domain write; enqueueMutation(...) }.
+- *
+- * Canonical future pull boundary (Session 308):
+- * AppDatabase.withTransaction { insertInboxChecked(...); domain apply; advanceCursorOrThrow(...) }.
+- * Nested Room transactions join the caller transaction, so sequence/outbox and inbox/cursor remain
+- * representable inside one database commit without DataStore or network authority.
+- */
+-
++/** Durable B11 conflict-review persistence. Business resolution stays outside the DAO. */
+ interface UnifiedSyncConflictDao {
+-    // ── Session 309 durable conflict state ────────────────────────────────────────────────────
+-
+     @Insert(onConflict = OnConflictStrategy.IGNORE)
+-    abstract suspend fun insertConflictRaw(entity: SyncConflictEntity): Long
++    suspend fun insertConflictRaw(entity: SyncConflictEntity): Long
+ 
+     @Query("SELECT * FROM sync_conflict WHERE mutation_id = :mutationId LIMIT 1")
+-    abstract suspend fun getConflictByMutationId(mutationId: String): SyncConflictEntity?
++    suspend fun getConflictByMutationId(mutationId: String): SyncConflictEntity?
+ 
+     @Query("SELECT * FROM sync_conflict WHERE conflict_id = :conflictId LIMIT 1")
+-    abstract suspend fun getConflict(conflictId: String): SyncConflictEntity?
++    suspend fun getConflict(conflictId: String): SyncConflictEntity?
++
++    @Query("SELECT * FROM sync_conflict WHERE resolution_mutation_id = :mutationId LIMIT 1")
++    suspend fun getConflictByResolutionMutationId(mutationId: String): SyncConflictEntity?
+ 
+     @Query(
+         """
+         SELECT * FROM sync_conflict
+-        WHERE organization_id = :organizationId AND state = 'OPEN'
++        WHERE organization_id = :organizationId
++          AND state IN ('OPEN','DOMAIN_CORRECTION_REQUIRED','WAITING_REPLACEMENT_RECEIPT')
+         ORDER BY created_at, conflict_id
+         LIMIT :limit
+         """
+     )
+-    abstract suspend fun listOpenConflictsRaw(organizationId: String, limit: Int): List<SyncConflictEntity>
++    suspend fun listOpenConflictsRaw(organizationId: String, limit: Int): List<SyncConflictEntity>
+ 
+     suspend fun listOpenConflicts(organizationId: String, limit: Int): List<SyncConflictEntity> {
+         require(limit in 1..MAX_WORKER_OPERATIONS_PER_RUN)
+@@ -53,7 +40,7 @@
+ 
+     /** Duplicate authoritative receipt is a no-op; divergent replay fails closed. */
+     @Transaction
+-    open suspend fun insertConflictChecked(entity: SyncConflictEntity): UnifiedConflictInsertResult {
++    suspend fun insertConflictChecked(entity: SyncConflictEntity): UnifiedConflictInsertResult {
+         validateConflict(entity)
+         val inserted = insertConflictRaw(entity)
+         if (inserted != -1L) return UnifiedConflictInsertResult.INSERTED
+@@ -62,40 +49,50 @@
+         return UnifiedConflictInsertResult.DUPLICATE
+     }
+ 
++    @Insert(onConflict = OnConflictStrategy.IGNORE)
++    suspend fun insertConflictEvidenceRaw(entity: SyncConflictReviewEvidenceEntity): Long
++
++    @Query("SELECT * FROM sync_conflict_review_evidence WHERE conflict_id=:conflictId LIMIT 1")
++    suspend fun getConflictEvidence(conflictId: String): SyncConflictReviewEvidenceEntity?
++
++    @Transaction
++    suspend fun insertConflictEvidenceChecked(entity: SyncConflictReviewEvidenceEntity) {
++        validateConflictEvidence(entity)
++        val inserted = insertConflictEvidenceRaw(entity)
++        if (inserted != -1L) return
++        val stored = checkNotNull(getConflictEvidence(entity.conflictId))
++        require(stored == entity) { "FAIL_DIVERGENT_CONFLICT_EVIDENCE_REPLAY" }
++    }
++
++    @Insert(onConflict = OnConflictStrategy.ABORT)
++    suspend fun insertConflictDecision(entity: SyncConflictResolutionAuditEntity)
++
++    @Query("SELECT * FROM sync_conflict_resolution_audit WHERE conflict_id=:conflictId ORDER BY decided_at,decision_id")
++    suspend fun listConflictDecisions(conflictId: String): List<SyncConflictResolutionAuditEntity>
++
+     @Query(
+         """
+         UPDATE sync_conflict
+-        SET state = :state,
+-            resolution_mutation_id = :resolutionMutationId,
+-            resolved_at = :resolvedAt
+-        WHERE conflict_id = :conflictId
+-          AND state = 'OPEN'
++        SET state=:newState,
++            resolution_mutation_id=:resolutionMutationId,
++            resolved_at=:resolvedAt
++        WHERE conflict_id=:conflictId AND state=:expectedState
+         """
+     )
+-    abstract suspend fun resolveConflictRaw(
++    suspend fun transitionConflict(
+         conflictId: String,
+-        state: String,
++        expectedState: String,
++        newState: String,
+         resolutionMutationId: String?,
+-        resolvedAt: Long,
++        resolvedAt: Long?,
+     ): Int
+-
+-    suspend fun resolveConflict(
+-        conflictId: String,
+-        state: String,
+-        resolutionMutationId: String? = null,
+-        resolvedAt: Long,
+-    ): Int {
+-        require(state in RESOLVED_CONFLICT_STATES) { "invalid resolved conflict state" }
+-        return resolveConflictRaw(conflictId, state, resolutionMutationId, resolvedAt)
+-    }
+ 
+     @Query(
+         """
+         SELECT COUNT(*) FROM sync_outbox
+         WHERE organization_id = :organizationId
+-          AND state IN ('PENDING','LEASED','RETRY')
++          AND state IN ('PENDING','LEASED','RETRY','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF')
+         """
+     )
+-    abstract suspend fun countBacklog(organizationId: String): Long
+-
++    suspend fun countBacklog(organizationId: String): Long
+ }
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncOutboxDao.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncOutboxDao.kt
+@@ -356,6 +356,47 @@
+         return markUnleasedTerminalRaw(mutationId, expectedSemanticFingerprint, terminalState, errorType, errorCode)
+     }
+ 
++    /** B11 explicit user resolution. These transitions never mutate the frozen request bytes. */
++    @Query(
++        """
++        UPDATE sync_outbox SET state='SUPERSEDED_PENDING_PROOF',
++            last_error_type='CONFLICT', last_error_code='REPLACEMENT_AWAITING_PROOF',
++            lease_owner=NULL, lease_token=NULL, lease_scope_epoch=NULL, lease_expires_at=NULL
++        WHERE mutation_id=:mutationId AND organization_id=:organizationId
++          AND semantic_fingerprint=:expectedSemanticFingerprint AND state='REQUIRES_REVIEW'
++        """
++    )
++    abstract suspend fun markReviewSupersededPendingProof(
++        mutationId: String, organizationId: String, expectedSemanticFingerprint: String,
++    ): Int
++
++    @Query(
++        """
++        UPDATE sync_outbox SET state='SUPERSEDED_WITH_PROOF',
++            last_error_type='CONFLICT_RESOLVED', last_error_code=:proofCode, acked_at=:resolvedAt,
++            lease_owner=NULL, lease_token=NULL, lease_scope_epoch=NULL, lease_expires_at=NULL
++        WHERE mutation_id=:mutationId AND organization_id=:organizationId
++          AND semantic_fingerprint=:expectedSemanticFingerprint AND state='REQUIRES_REVIEW'
++        """
++    )
++    abstract suspend fun markReviewSupersededWithProof(
++        mutationId: String, organizationId: String, expectedSemanticFingerprint: String,
++        proofCode: String, resolvedAt: Long,
++    ): Int
++
++    @Query(
++        """
++        UPDATE sync_outbox SET state='SUPERSEDED_WITH_PROOF',
++            last_error_type='CONFLICT_RESOLVED', last_error_code=:proofCode, acked_at=:resolvedAt
++        WHERE mutation_id=:mutationId AND organization_id=:organizationId
++          AND semantic_fingerprint=:expectedSemanticFingerprint AND state='SUPERSEDED_PENDING_PROOF'
++        """
++    )
++    abstract suspend fun proveSupersededMutation(
++        mutationId: String, organizationId: String, expectedSemanticFingerprint: String,
++        proofCode: String, resolvedAt: Long,
++    ): Int
++
+     @Query("SELECT COUNT(*) FROM sync_outbox WHERE organization_id=:organizationId AND state='REQUIRES_REVIEW'")
+     abstract suspend fun countRequiresReview(organizationId: String): Long
+ 
+@@ -399,6 +440,40 @@
+         """
+     )
+     abstract suspend fun recoverExpiredLeases(organizationId: String, now: Long): Int
++
++    /** B11 replacement may jump only over local intents created after its superseded parent. */
++    @Query(
++        """
++        SELECT parent.aggregate_sequence FROM sync_conflict c
++        JOIN sync_outbox parent ON parent.mutation_id = c.mutation_id
++        WHERE c.resolution_mutation_id = :replacementMutationId
++          AND c.organization_id = :organizationId
++          AND c.state = 'WAITING_REPLACEMENT_RECEIPT'
++          AND parent.state = 'SUPERSEDED_PENDING_PROOF'
++        LIMIT 1
++        """
++    )
++    abstract suspend fun replacementParentSequence(
++        organizationId: String,
++        replacementMutationId: String,
++    ): Long?
++
++    @Query(
++        """
++        SELECT COUNT(*) FROM sync_outbox
++        WHERE organization_id = :organizationId
++          AND aggregate_type = :aggregateType
++          AND aggregate_id = :aggregateId
++          AND aggregate_sequence < :aggregateSequence
++          AND state = 'SUPERSEDED_PENDING_PROOF'
++        """
++    )
++    abstract suspend fun countOlderSupersededPendingProof(
++        organizationId: String,
++        aggregateType: String,
++        aggregateId: String,
++        aggregateSequence: Long,
++    ): Int
+ 
+     /** Same-aggregate delivery must not leapfrog an older active mutation. */
+     @Query(
+@@ -441,7 +516,7 @@
+           AND organization_id = :organizationId
+           AND aggregate_type = :aggregateType
+           AND aggregate_id = :aggregateId
+-          AND state IN ('PENDING','LEASED','RETRY')
++          AND state IN ('PENDING','LEASED','RETRY','REQUIRES_REVIEW')
+         """
+     )
+     abstract suspend fun acknowledgeByAuthoritativeEcho(
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncPersistenceSupport.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/dao/UnifiedSyncPersistenceSupport.kt
+@@ -20,9 +20,11 @@
+     "AUTO_REBASE_SAFE", "SERVER_WINS_SAFE", "LOCAL_RETRY_WITH_NEW_BASE", "REQUIRES_REVIEW", "REJECTED"
+ )
+ internal val CONFLICT_STATES = setOf(
+-    "OPEN", "RESOLVED_SERVER_WINS", "RESOLVED_RETRY_QUEUED", "RESOLVED_REJECTED"
++    "OPEN", "DOMAIN_CORRECTION_REQUIRED", "WAITING_REPLACEMENT_RECEIPT",
++    "RESOLVED_SERVER_ACCEPTED", "RESOLVED_REPLACEMENT_PROVED", "RESOLVED_MATCHING_ECHO",
++    // Read compatibility for pre-B11 rows. New code never creates these automatic outcomes.
++    "RESOLVED_SERVER_WINS", "RESOLVED_RETRY_QUEUED", "RESOLVED_REJECTED"
+ )
+-internal val RESOLVED_CONFLICT_STATES = CONFLICT_STATES - "OPEN"
+ 
+ internal fun validateMutationDraft(draft: UnifiedSyncMutationDraft) {
+     require(draft.mutationId.isNotBlank())
+@@ -69,6 +71,17 @@
+     require(entity.authoritativePayloadJson.isNotBlank())
+     require(entity.resolutionRequirement in CONFLICT_REQUIREMENTS) { "FAIL_CONFLICT_REQUIREMENT_UNKNOWN" }
+     require(entity.state in CONFLICT_STATES) { "invalid conflict state" }
++}
++
++
++internal fun validateConflictEvidence(entity: com.verto.app.data.local.entity.SyncConflictReviewEvidenceEntity) {
++    require(entity.conflictId.isNotBlank() && entity.organizationId.isNotBlank() && entity.mutationId.isNotBlank())
++    require(entity.localPayloadJson.isNotBlank() && entity.remotePayloadJson.isNotBlank())
++    require(entity.localPayloadSha256.matches(Regex("[0-9a-f]{64}")))
++    require(entity.remotePayloadSha256.matches(Regex("[0-9a-f]{64}")))
++    require(entity.localSemanticFingerprint.isNotBlank())
++    require(entity.serverVersion > 0)
++    require(entity.outcomeProof in setOf("PROVEN_CONFLICT", "OUTCOME_UNKNOWN"))
+ }
+ 
+ internal fun validateCursor(entity: SyncCursorEntity) {
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncRepairV2Entities.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncRepairV2Entities.kt
+@@ -52,6 +52,7 @@
+         ),
+         Index(value = ["batch_id"], name = "index_sync_mutation_packet_batch"),
+         Index(value = ["predecessor_mutation_id"], name = "index_sync_mutation_packet_predecessor"),
++        Index(value = ["supersedes_mutation_id"], name = "index_sync_mutation_packet_supersedes"),
+     ],
+ )
+ data class SyncMutationPacketEntity(
+@@ -67,6 +68,7 @@
+     @ColumnInfo(name = "version_family") val versionFamily: String,
+     @ColumnInfo(name = "initial_base_version") val initialBaseVersion: Long?,
+     @ColumnInfo(name = "predecessor_mutation_id") val predecessorMutationId: String?,
++    @ColumnInfo(name = "supersedes_mutation_id") val supersedesMutationId: String?,
+     @ColumnInfo(name = "batch_id") val batchId: String?,
+     @ColumnInfo(name = "wire_json") val wireJson: String?,
+     @ColumnInfo(name = "wire_sha256") val wireSha256: String?,
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/entity/UnifiedSyncEntities.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/entity/UnifiedSyncEntities.kt
+@@ -111,6 +111,57 @@
+     @ColumnInfo(name = "resolved_at") val resolvedAt: Long?,
+ )
+ 
++/** B11: immutable proof bundle used by the human conflict-review flow. */
++@Entity(
++    tableName = "sync_conflict_review_evidence",
++    indices = [
++        Index(value = ["organization_id", "created_at"], name = "index_sync_conflict_review_evidence_org_created"),
++        Index(value = ["mutation_id"], unique = true, name = "index_sync_conflict_review_evidence_mutation"),
++    ],
++)
++data class SyncConflictReviewEvidenceEntity(
++    @PrimaryKey @ColumnInfo(name = "conflict_id") val conflictId: String,
++    @ColumnInfo(name = "organization_id") val organizationId: String,
++    @ColumnInfo(name = "mutation_id") val mutationId: String,
++    @ColumnInfo(name = "local_payload_json") val localPayloadJson: String,
++    @ColumnInfo(name = "local_payload_sha256") val localPayloadSha256: String,
++    @ColumnInfo(name = "local_semantic_fingerprint") val localSemanticFingerprint: String,
++    @ColumnInfo(name = "local_base_version") val localBaseVersion: Long?,
++    @ColumnInfo(name = "remote_payload_json") val remotePayloadJson: String,
++    @ColumnInfo(name = "remote_payload_sha256") val remotePayloadSha256: String,
++    @ColumnInfo(name = "server_revision") val serverRevision: Long?,
++    @ColumnInfo(name = "server_version") val serverVersion: Long,
++    @ColumnInfo(name = "outcome_proof") val outcomeProof: String,
++    @ColumnInfo(name = "created_at") val createdAt: Long,
++)
++
++/** B11: append-only decision/proof trail. Payloads stay in evidence; audit rows store hashes only. */
++@Entity(
++    tableName = "sync_conflict_resolution_audit",
++    indices = [
++        Index(value = ["conflict_id", "decided_at"], name = "index_sync_conflict_resolution_audit_conflict_time"),
++        Index(value = ["resolution_mutation_id"], name = "index_sync_conflict_resolution_audit_resolution_mutation"),
++    ],
++)
++data class SyncConflictResolutionAuditEntity(
++    @PrimaryKey @ColumnInfo(name = "decision_id") val decisionId: String,
++    @ColumnInfo(name = "conflict_id") val conflictId: String,
++    @ColumnInfo(name = "organization_id") val organizationId: String,
++    @ColumnInfo(name = "mutation_id") val mutationId: String,
++    @ColumnInfo(name = "decision_type") val decisionType: String,
++    @ColumnInfo(name = "actor_id") val actorId: String?,
++    @ColumnInfo(name = "actor_role") val actorRole: String?,
++    @ColumnInfo(name = "local_payload_sha256") val localPayloadSha256: String,
++    @ColumnInfo(name = "remote_payload_sha256") val remotePayloadSha256: String,
++    @ColumnInfo(name = "expected_server_version") val expectedServerVersion: Long,
++    @ColumnInfo(name = "resolution_mutation_id") val resolutionMutationId: String?,
++    @ColumnInfo(name = "proof_type") val proofType: String,
++    @ColumnInfo(name = "proof_reference") val proofReference: String?,
++    @ColumnInfo(name = "before_state") val beforeState: String,
++    @ColumnInfo(name = "after_state") val afterState: String,
++    @ColumnInfo(name = "decided_at") val decidedAt: Long,
++)
++
+ /** Session 306: scope-bound opaque continuation state. Numeric revisions are diagnostic anchors only. */
+ @Entity(tableName = "sync_cursor")
+ data class SyncCursorEntity(
+--- a/data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogB11Test.kt
++++ b/data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogB11Test.kt
+@@ -0,0 +1,17 @@
++package com.verto.app.data.local
++
++import org.junit.Assert.assertEquals
++import org.junit.Assert.assertTrue
++import org.junit.Test
++
++class MigrationCatalogB11Test {
++    @Test
++    fun `B11 conflict review migration is current and connected`() {
++        assertEquals(100, ROOM_SCHEMA_VERSION)
++        assertEquals(99, MIGRATION_99_100.startVersion)
++        assertEquals(100, MIGRATION_99_100.endVersion)
++        val path = migrationPath(99)
++        assertEquals(listOf(99), path.map { it.startVersion })
++        assertTrue(path.last().endVersion == 100)
++    }
++}
+--- a/data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogM03Test.kt
++++ b/data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogM03Test.kt
+@@ -7,7 +7,7 @@
+ class MigrationCatalogM03Test {
+     @Test
+     fun `M03 advances Room schema exactly once`() {
+-        assertEquals(98, ROOM_SCHEMA_VERSION)
++        assertEquals(100, ROOM_SCHEMA_VERSION)
+         assertEquals(95, MIGRATION_95_96.startVersion)
+         assertEquals(96, MIGRATION_95_96.endVersion)
+     }
+--- a/data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogSyncRepairV2Test.kt
++++ b/data/database/src/test/kotlin/com/verto/app/data/local/MigrationCatalogSyncRepairV2Test.kt
+@@ -7,7 +7,7 @@
+ class MigrationCatalogSyncRepairV2Test {
+     @Test
+     fun `sync repair advances schema exactly once`() {
+-        assertEquals(98, ROOM_SCHEMA_VERSION)
++        assertEquals(100, ROOM_SCHEMA_VERSION)
+         assertEquals(96, MIGRATION_96_97.startVersion)
+         assertEquals(97, MIGRATION_96_97.endVersion)
+     }
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/FrozenMutationStore.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/FrozenMutationStore.kt
+@@ -3,6 +3,7 @@
+ import androidx.room.withTransaction
+ import com.verto.app.data.local.AppDatabase
+ import com.verto.app.data.local.entity.SyncMutationPacketEntity
++import com.verto.app.data.local.entity.SyncConflictResolutionAuditEntity
+ import com.verto.app.data.local.entity.SyncOutboxEntity
+ import com.verto.app.data.sync.ownership.PendingSourceRef
+ import com.verto.app.data.sync.ownership.ProtectedSyncKey
+@@ -57,6 +58,8 @@
+     suspend fun captureUnified(
+         row: SyncOutboxEntity,
+         businessIdentity: String = row.aggregateId,
++        supersedesMutationId: String? = null,
++        useUnresolvedPredecessor: Boolean = true,
+         versionFamily: String = row.aggregateType,
+         protectedContent: Map<ProtectedSyncKey, String> = mapOf(
+             ProtectedSyncKey(row.aggregateType, row.aggregateId) to sha256Utf8(row.payloadJson),
+@@ -73,15 +76,19 @@
+             check(existing.sourceOwner == SyncSourceOwner.UNIFIED.tableName &&
+                 existing.sourceId == row.mutationId && existing.businessIdentity == businessIdentity &&
+                 existing.versionFamily == versionFamily && existing.intentJson == expectedIntent &&
+-                existing.intentHash == sha256Utf8(expectedIntent) && existing.batchId == row.commandBatchId) {
++                existing.intentHash == sha256Utf8(expectedIntent) && existing.batchId == row.commandBatchId &&
++                existing.supersedesMutationId == supersedesMutationId &&
++                (useUnresolvedPredecessor || (existing.predecessorMutationId == null && existing.initialBaseVersion == row.baseVersion))) {
+                 "FAIL_IDEMPOTENCY_CONFLICT"
+             }
+             return existing
+         }
+ 
+-        val predecessor = dao.readLatestUnresolvedUnifiedPredecessor(
+-            row.organizationId, versionFamily, businessIdentity, row.mutationId,
+-        )
++        val predecessor = if (useUnresolvedPredecessor) {
++            dao.readLatestUnresolvedUnifiedPredecessor(
++                row.organizationId, versionFamily, businessIdentity, row.mutationId,
++            )
++        } else null
+         val generations = linkedMapOf<ProtectedSyncKey, com.verto.app.data.local.entity.SyncLocalGenerationEntity>()
+         protectedContent.forEach { (key, hash) ->
+             generations[key] = dao.recordLocalGeneration(
+@@ -106,6 +113,7 @@
+                 row.organizationId, versionFamily, row.aggregateId,
+             ),
+             predecessorMutationId = predecessor?.mutationId,
++            supersedesMutationId = supersedesMutationId,
+             batchId = row.commandBatchId,
+             wireJson = null,
+             wireSha256 = null,
+@@ -167,6 +175,7 @@
+             versionFamily = intent.versionFamily,
+             initialBaseVersion = intent.initialBaseVersion,
+             predecessorMutationId = intent.predecessorMutationId,
++            supersedesMutationId = null,
+             batchId = intent.batchId,
+             wireJson = null,
+             wireSha256 = null,
+@@ -201,12 +210,7 @@
+         }
+ 
+         val baseVersion = packet.predecessorMutationId?.let { predecessorId ->
+-            val predecessor = checkNotNull(dao.getOutbox(predecessorId)) { "PREDECESSOR_MISSING" }
+-            check(predecessor.organizationId == organizationId) { "SCOPE_MISMATCH" }
+-            check(predecessor.state == "ACKNOWLEDGED" && predecessor.ackedServerVersion != null) {
+-                "PREDECESSOR_NOT_ACKNOWLEDGED"
+-            }
+-            predecessor.ackedServerVersion
++            resolvedPredecessorServerVersion(dao, organizationId, predecessorId)
+         } ?: packet.initialBaseVersion
+         val wireJson = FrozenMutationCodec.encodeWire(packet.intentJson, baseVersion)
+         val hash = sha256Utf8(wireJson)
+@@ -216,6 +220,35 @@
+             "FROZEN_WIRE_CONTENT_MISMATCH"
+         }
+         return FrozenMutationBytes(mutationId, wireJson, hash, baseVersion)
++    }
++
++    /** B11: a later frozen intent may still point to a mutation explicitly superseded during review. */
++    private suspend fun resolvedPredecessorServerVersion(
++        dao: com.verto.app.data.local.dao.UnifiedSyncDao,
++        organizationId: String,
++        predecessorId: String,
++    ): Long {
++        val predecessor = checkNotNull(dao.getOutbox(predecessorId)) { "PREDECESSOR_MISSING" }
++        check(predecessor.organizationId == organizationId) { "SCOPE_MISMATCH" }
++        if (predecessor.state == "ACKNOWLEDGED") {
++            return checkNotNull(predecessor.ackedServerVersion) { "PREDECESSOR_VERSION_MISSING" }
++        }
++        if (predecessor.state == "SUPERSEDED_WITH_PROOF") {
++            val conflict = checkNotNull(dao.getConflictByMutationId(predecessorId)) { "SUPERSEDED_PROOF_MISSING" }
++            check(conflict.organizationId == organizationId) { "SCOPE_MISMATCH" }
++            if (conflict.state == "RESOLVED_REPLACEMENT_PROVED") {
++                val replacementId = checkNotNull(conflict.resolutionMutationId) { "REPLACEMENT_PROOF_MISSING" }
++                val replacement = checkNotNull(dao.getOutbox(replacementId)) { "REPLACEMENT_PROOF_MISSING" }
++                check(replacement.organizationId == organizationId && replacement.state == "ACKNOWLEDGED") {
++                    "REPLACEMENT_NOT_ACKNOWLEDGED"
++                }
++                return checkNotNull(replacement.ackedServerVersion) { "REPLACEMENT_VERSION_MISSING" }
++            }
++            if (conflict.state == "RESOLVED_SERVER_ACCEPTED") {
++                return checkNotNull(predecessor.ackedServerVersion) { "PREDECESSOR_VERSION_MISSING" }
++            }
++        }
++        error("PREDECESSOR_NOT_ACKNOWLEDGED")
+     }
+ 
+     suspend fun recordDispatch(bytes: FrozenMutationBytes, organizationId: String, dispatchedAt: Long) {
+@@ -265,6 +298,13 @@
+         pendingProtection.releaseAfterTerminal(
+             PendingSourceRef(organizationId, SyncSourceOwner.UNIFIED, mutationId),
+         )
++        finalizeReplacementProofChain(
++            organizationId = organizationId,
++            provedMutationId = mutationId,
++            proofType = "MATCHING_RECEIPT",
++            proofReference = receiptRequestHash,
++            provedAt = acknowledgedAt,
++        )
+         if (localChanged) FrozenAckOutcome.ACKNOWLEDGED_LOCAL_CHANGED
+         else FrozenAckOutcome.ACKNOWLEDGED_CURRENT
+     }
+@@ -298,9 +338,107 @@
+             pendingProtection.releaseAfterTerminal(
+                 PendingSourceRef(organizationId, SyncSourceOwner.UNIFIED, mutationId),
+             )
++            resolveMatchingEchoConflict(organizationId, mutationId, serverRevision, contentHash, acknowledgedAt)
++            finalizeReplacementProofChain(
++                organizationId = organizationId,
++                provedMutationId = mutationId,
++                proofType = "MATCHING_AUTHORITATIVE_ECHO",
++                proofReference = "$serverRevision:$contentHash",
++                provedAt = acknowledgedAt,
++            )
+             if (localChanged) FrozenAckOutcome.ACKNOWLEDGED_LOCAL_CHANGED
+             else FrozenAckOutcome.ACKNOWLEDGED_CURRENT
+         }
++    }
++
++    /** Closes only the parent intent whose replacement is now proved by receipt/echo. */
++    private suspend fun finalizeReplacementProofChain(
++        organizationId: String,
++        provedMutationId: String,
++        proofType: String,
++        proofReference: String?,
++        provedAt: Long,
++    ) {
++        check(database.inTransaction()) { "CONFLICT_PROOF_TRANSACTION_REQUIRED" }
++        val dao = database.unifiedSyncDao()
++        var childMutationId = provedMutationId
++        repeat(16) {
++            val parent = dao.getConflictByResolutionMutationId(childMutationId) ?: return
++            if (parent.organizationId != organizationId || parent.state != "WAITING_REPLACEMENT_RECEIPT") return
++            val evidence = dao.getConflictEvidence(parent.conflictId) ?: error("CONFLICT_EVIDENCE_MISSING")
++            val old = dao.getOutbox(parent.mutationId) ?: error("CONFLICT_LOCAL_INTENT_MISSING")
++            check(old.state == "SUPERSEDED_PENDING_PROOF") { "CONFLICT_STATE_CHANGED" }
++            check(dao.proveSupersededMutation(
++                old.mutationId, old.organizationId, old.semanticFingerprint, "REPLACEMENT_PROVED", provedAt,
++            ) == 1) { "CONFLICT_STATE_CHANGED" }
++            check(dao.transitionConflict(
++                parent.conflictId, "WAITING_REPLACEMENT_RECEIPT", "RESOLVED_REPLACEMENT_PROVED",
++                childMutationId, provedAt,
++            ) == 1) { "CONFLICT_STATE_CHANGED" }
++            dao.insertConflictDecision(
++                SyncConflictResolutionAuditEntity(
++                    decisionId = java.util.UUID.randomUUID().toString(),
++                    conflictId = parent.conflictId,
++                    organizationId = organizationId,
++                    mutationId = old.mutationId,
++                    decisionType = "REPLACEMENT_PROVED",
++                    actorId = null,
++                    actorRole = null,
++                    localPayloadSha256 = evidence.localPayloadSha256,
++                    remotePayloadSha256 = evidence.remotePayloadSha256,
++                    expectedServerVersion = evidence.serverVersion,
++                    resolutionMutationId = childMutationId,
++                    proofType = proofType,
++                    proofReference = proofReference,
++                    beforeState = "WAITING_REPLACEMENT_RECEIPT",
++                    afterState = "RESOLVED_REPLACEMENT_PROVED",
++                    decidedAt = provedAt,
++                )
++            )
++            pendingProtection.releaseAfterTerminal(
++                PendingSourceRef(organizationId, SyncSourceOwner.UNIFIED, old.mutationId),
++            )
++            childMutationId = old.mutationId
++        }
++        error("CONFLICT_SUPERSEDES_CHAIN_TOO_DEEP")
++    }
++
++    private suspend fun resolveMatchingEchoConflict(
++        organizationId: String,
++        mutationId: String,
++        serverRevision: Long,
++        contentHash: String,
++        resolvedAt: Long,
++    ) {
++        check(database.inTransaction()) { "CONFLICT_PROOF_TRANSACTION_REQUIRED" }
++        val dao = database.unifiedSyncDao()
++        val conflict = dao.getConflictByMutationId(mutationId) ?: return
++        if (conflict.organizationId != organizationId || conflict.state !in setOf("OPEN", "DOMAIN_CORRECTION_REQUIRED")) return
++        val evidence = dao.getConflictEvidence(conflict.conflictId) ?: error("CONFLICT_EVIDENCE_MISSING")
++        if (dao.transitionConflict(
++                conflict.conflictId, conflict.state, "RESOLVED_MATCHING_ECHO", null, resolvedAt,
++            ) != 1) return
++        dao.insertConflictDecision(
++            SyncConflictResolutionAuditEntity(
++                decisionId = java.util.UUID.randomUUID().toString(),
++                conflictId = conflict.conflictId,
++                organizationId = organizationId,
++                mutationId = mutationId,
++                decisionType = "MATCHING_ECHO",
++                actorId = null,
++                actorRole = null,
++                localPayloadSha256 = evidence.localPayloadSha256,
++                remotePayloadSha256 = evidence.remotePayloadSha256,
++                expectedServerVersion = evidence.serverVersion,
++                resolutionMutationId = null,
++                proofType = "AUTHORITATIVE_ECHO",
++                proofReference = "$serverRevision:$contentHash",
++                beforeState = conflict.state,
++                afterState = "RESOLVED_MATCHING_ECHO",
++                decidedAt = resolvedAt,
++            )
++        )
++        dao.requestInboxApplyForOrganization(organizationId, resolvedAt)
+     }
+ }
+ 
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/conflict/SyncConflictReviewService.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/conflict/SyncConflictReviewService.kt
+@@ -0,0 +1,411 @@
++package com.verto.app.data.sync.conflict
++
++import androidx.room.withTransaction
++import com.verto.app.data.local.AppDatabase
++import com.verto.app.data.local.dao.UnifiedSyncMutationDraft
++import com.verto.app.data.local.entity.SyncConflictResolutionAuditEntity
++import com.verto.app.data.local.entity.SyncConflictReviewEvidenceEntity
++import com.verto.app.data.sync.FrozenMutationStore
++import com.verto.app.data.sync.SyncChange
++import com.verto.app.data.sync.SyncMutation
++import com.verto.app.data.sync.SyncMutationOperation
++import com.verto.app.data.sync.UnifiedSyncAggregateRegistry
++import com.verto.app.data.sync.UnifiedSyncConflictPolicy
++import com.verto.app.data.sync.UnifiedSyncContractRules
++import com.verto.app.data.sync.ownership.PendingSourceRef
++import com.verto.app.data.sync.ownership.SyncPendingProtection
++import com.verto.app.data.sync.ownership.SyncSourceOwner
++import com.verto.app.data.sync.pull.UnifiedSyncChangeApplier
++import java.util.UUID
++import javax.inject.Inject
++import javax.inject.Singleton
++import kotlinx.serialization.json.Json
++import kotlinx.serialization.json.JsonArray
++import kotlinx.serialization.json.JsonElement
++import kotlinx.serialization.json.JsonNull
++import kotlinx.serialization.json.JsonObject
++import kotlinx.serialization.json.JsonPrimitive
++
++/** Identity written to the append-only conflict decision audit after authorization succeeds. */
++data class SyncConflictDecisionActor(val userId: String, val role: String)
++
++/** App/session layer supplies authorization; the data layer never assumes admin rights. */
++fun interface SyncConflictDecisionAuthorizer {
++    suspend fun requireAuthorized(organizationId: String): SyncConflictDecisionActor
++}
++
++data class SyncConflictFieldDiff(val path: String, val local: String, val remote: String)
++
++data class SyncConflictReviewRecord(
++    val conflictId: String,
++    val aggregateType: String,
++    val aggregateId: String,
++    val reason: String,
++    val state: String,
++    val localBaseVersion: Long?,
++    val localPayloadVersion: Int,
++    val remoteVersion: Long,
++    val localFingerprint: String,
++    val remoteFingerprint: String,
++    val localPreviewJson: String,
++    val remotePreviewJson: String,
++    val differences: List<SyncConflictFieldDiff>,
++    val mutable: Boolean,
++    val outcomeProven: Boolean,
++    val resolutionMutationId: String?,
++)
++
++data class SyncConflictResolutionResult(val conflictId: String, val replacementMutationId: String? = null)
++
++class SyncConflictResolutionException(val code: String, message: String) : IllegalStateException("$code: $message")
++
++@Singleton
++class SyncConflictReviewService @Inject constructor(
++    private val database: AppDatabase,
++    private val frozenMutationStore: FrozenMutationStore,
++    private val pendingProtection: SyncPendingProtection,
++    private val applier: UnifiedSyncChangeApplier,
++    private val authorizer: SyncConflictDecisionAuthorizer,
++) {
++    suspend fun listForOrganization(organizationId: String, limit: Int = 100): List<SyncConflictReviewRecord> {
++        require(organizationId.isNotBlank())
++        return database.unifiedSyncDao().listOpenConflicts(organizationId, limit).map { conflict ->
++            val evidence = requireEvidence(conflict)
++            check(evidence.organizationId == organizationId && evidence.mutationId == conflict.mutationId) {
++                "SCOPE_MISMATCH"
++            }
++            val local = SyncConflictRedactor.redact(evidence.localPayloadJson)
++            val remote = SyncConflictRedactor.redact(evidence.remotePayloadJson)
++            SyncConflictReviewRecord(
++                conflictId = conflict.conflictId,
++                aggregateType = conflict.aggregateType,
++                aggregateId = conflict.aggregateId,
++                reason = conflict.conflictCode,
++                state = conflict.state,
++                localBaseVersion = evidence.localBaseVersion,
++                localPayloadVersion = conflict.localPayloadVersion,
++                remoteVersion = conflict.serverVersion,
++                localFingerprint = evidence.localPayloadSha256,
++                remoteFingerprint = evidence.remotePayloadSha256,
++                localPreviewJson = SyncConflictRedactor.preview(local),
++                remotePreviewJson = SyncConflictRedactor.preview(remote),
++                differences = SyncConflictRedactor.diff(local, remote),
++                mutable = SyncConflictResolutionPolicy.isGenericMutable(conflict.aggregateType),
++                outcomeProven = evidence.outcomeProof == "PROVEN_CONFLICT",
++                resolutionMutationId = conflict.resolutionMutationId,
++            )
++        }
++    }
++
++    /** B11.02: explicit server choice; only for generic versioned mutable aggregates. */
++    suspend fun acceptServer(conflictId: String, expectedServerVersion: Long): SyncConflictResolutionResult {
++        val initial = loadConflict(conflictId)
++        val actor = authorizer.requireAuthorized(initial.first.organizationId)
++        return database.withTransaction {
++            val (conflict, evidence) = loadConflict(conflictId)
++            val dao = database.unifiedSyncDao()
++            SyncConflictResolutionPolicy.requireDecisionAllowed(
++                aggregateType = conflict.aggregateType,
++                state = conflict.state,
++                outcomeProof = evidence.outcomeProof,
++                evidenceServerVersion = evidence.serverVersion,
++                displayedServerVersion = expectedServerVersion,
++                latestKnownServerVersion = dao.latestKnownServerVersion(
++                    conflict.organizationId, conflict.aggregateType, conflict.aggregateId,
++                ),
++            )
++            val old = dao.getOutbox(conflict.mutationId)
++                ?: throw SyncConflictResolutionException("CONFLICT_LOCAL_INTENT_MISSING", conflict.mutationId)
++            check(old.organizationId == conflict.organizationId && old.state == "REQUIRES_REVIEW") {
++                "CONFLICT_STATE_CHANGED"
++            }
++            val serverRevision = evidence.serverRevision
++                ?: throw SyncConflictResolutionException("OUTCOME_UNKNOWN", "missing authoritative revision")
++            val remote = json.parseToJsonElement(evidence.remotePayloadJson) as? JsonObject
++                ?: throw SyncConflictResolutionException("CONFLICT_REMOTE_PAYLOAD_INVALID", conflictId)
++
++            // C§8.7: resolving an older intent must not overwrite a newer local edit. In that case
++            // only the old intent is superseded; the later intent/reference keeps current local state dirty.
++            val newerLocalIntent = dao.countChangedProtectedKeys(
++                conflict.organizationId, SyncSourceOwner.UNIFIED.tableName, old.mutationId,
++            ) > 0 || dao.countLaterUnresolvedProtectedMutations(
++                conflict.organizationId, SyncSourceOwner.UNIFIED.tableName, old.mutationId,
++            ) > 0
++            if (!newerLocalIntent) {
++                // Accepting the extant server version materializes that exact version, never merged JSON.
++                applier.apply(
++                    SyncChange(
++                        revision = serverRevision,
++                        organizationId = conflict.organizationId,
++                        syncScopeId = "conflict-review",
++                        aggregateType = conflict.aggregateType,
++                        aggregateId = conflict.aggregateId,
++                        operationType = SyncMutationOperation.UPSERT,
++                        entityVersion = expectedServerVersion,
++                        payloadVersion = old.payloadVersion,
++                        payload = remote,
++                        originMutationId = conflict.mutationId,
++                        transactionId = "conflict-review:${conflict.conflictId}",
++                        transactionOrder = 0,
++                        transactionSize = 1,
++                        changedAtEpochMillis = System.currentTimeMillis(),
++                    )
++                )
++            }
++            val now = System.currentTimeMillis()
++            check(dao.markReviewSupersededWithProof(
++                old.mutationId, old.organizationId, old.semanticFingerprint, "USER_ACCEPTED_SERVER", now,
++            ) == 1) { "CONFLICT_STATE_CHANGED" }
++            check(dao.transitionConflict(
++                conflict.conflictId, "OPEN", "RESOLVED_SERVER_ACCEPTED", null, now,
++            ) == 1) { "CONFLICT_STATE_CHANGED" }
++            dao.insertConflictDecision(
++                audit(conflict.conflictId, old.mutationId, conflict.organizationId, evidence,
++                    "ACCEPT_SERVER", actor, null,
++                    if (newerLocalIntent) "AUTHORIZED_USER_DECISION_PRESERVE_NEWER_LOCAL" else "AUTHORIZED_USER_DECISION",
++                    actor.userId,
++                    "OPEN", "RESOLVED_SERVER_ACCEPTED", now)
++            )
++            pendingProtection.releaseAfterTerminal(PendingSourceRef(old.organizationId, SyncSourceOwner.UNIFIED, old.mutationId))
++            SyncConflictResolutionResult(conflict.conflictId)
++        }
++    }
++
++    /** B11.03: create a new immutable mutation on the exact displayed remote version. */
++    suspend fun resendLocal(conflictId: String, expectedServerVersion: Long): SyncConflictResolutionResult {
++        val initial = loadConflict(conflictId)
++        val actor = authorizer.requireAuthorized(initial.first.organizationId)
++        return database.withTransaction {
++            val (conflict, evidence) = loadConflict(conflictId)
++            val dao = database.unifiedSyncDao()
++            SyncConflictResolutionPolicy.requireDecisionAllowed(
++                aggregateType = conflict.aggregateType,
++                state = conflict.state,
++                outcomeProof = evidence.outcomeProof,
++                evidenceServerVersion = evidence.serverVersion,
++                displayedServerVersion = expectedServerVersion,
++                latestKnownServerVersion = dao.latestKnownServerVersion(
++                    conflict.organizationId, conflict.aggregateType, conflict.aggregateId,
++                ),
++            )
++            val old = dao.getOutbox(conflict.mutationId)
++                ?: throw SyncConflictResolutionException("CONFLICT_LOCAL_INTENT_MISSING", conflict.mutationId)
++            check(old.organizationId == conflict.organizationId && old.state == "REQUIRES_REVIEW") {
++                "CONFLICT_STATE_CHANGED"
++            }
++            if (old.commandBatchId != null) {
++                throw SyncConflictResolutionException("DOMAIN_CORRECTION_REQUIRED", "batched command needs domain-specific correction")
++            }
++            val contract = UnifiedSyncAggregateRegistry.requireById(old.aggregateType)
++            if (contract.payloadVersion != old.payloadVersion) {
++                throw SyncConflictResolutionException("CONFLICT_LOCAL_SCHEMA_STALE", "payload version changed")
++            }
++            val payload = json.parseToJsonElement(old.payloadJson) as? JsonObject
++                ?: throw SyncConflictResolutionException("CONFLICT_LOCAL_PAYLOAD_INVALID", old.mutationId)
++            val operation = runCatching { SyncMutationOperation.valueOf(old.operationType) }
++                .getOrElse { throw SyncConflictResolutionException("CONFLICT_LOCAL_OPERATION_INVALID", old.operationType) }
++            val now = System.currentTimeMillis()
++            check(dao.markReviewSupersededPendingProof(
++                old.mutationId, old.organizationId, old.semanticFingerprint,
++            ) == 1) { "CONFLICT_STATE_CHANGED" }
++
++            val replacement = dao.enqueueMutation(
++                UnifiedSyncMutationDraft(
++                    mutationId = UUID.randomUUID().toString(),
++                    organizationId = old.organizationId,
++                    aggregateType = old.aggregateType,
++                    aggregateId = old.aggregateId,
++                    operationType = old.operationType,
++                    baseVersion = expectedServerVersion,
++                    payloadVersion = old.payloadVersion,
++                    payloadJson = old.payloadJson,
++                    commandBatchId = null,
++                    commandOrder = null,
++                    dependsOnMutationId = null,
++                    createdAt = now,
++                ),
++                updatedAt = now,
++            )
++            UnifiedSyncContractRules.requireValidMutation(
++                SyncMutation(
++                    mutationId = replacement.mutationId,
++                    organizationId = replacement.organizationId,
++                    aggregateType = replacement.aggregateType,
++                    aggregateId = replacement.aggregateId,
++                    operationType = operation,
++                    baseVersion = replacement.baseVersion,
++                    localSequence = replacement.localSequence,
++                    aggregateSequence = replacement.aggregateSequence,
++                    payloadVersion = replacement.payloadVersion,
++                    payload = payload,
++                    createdAtEpochMillis = replacement.createdAt,
++                )
++            )
++            frozenMutationStore.captureUnified(replacement, supersedesMutationId = old.mutationId, useUnresolvedPredecessor = false)
++            check(dao.transitionConflict(
++                conflict.conflictId, "OPEN", "WAITING_REPLACEMENT_RECEIPT", replacement.mutationId, null,
++            ) == 1) { "CONFLICT_STATE_CHANGED" }
++            dao.insertConflictDecision(
++                audit(conflict.conflictId, old.mutationId, conflict.organizationId, evidence,
++                    "RESEND_LOCAL", actor, replacement.mutationId, "AUTHORIZED_USER_DECISION", actor.userId,
++                    "OPEN", "WAITING_REPLACEMENT_RECEIPT", now)
++            )
++            // Supersedes relation is durable in the packet, conflict row, and audit; old frozen bytes are untouched.
++            dao.requestInboxApplyForOrganization(conflict.organizationId, now)
++            SyncConflictResolutionResult(conflict.conflictId, replacement.mutationId)
++        }
++    }
++
++    private suspend fun loadConflict(conflictId: String): Pair<com.verto.app.data.local.entity.SyncConflictEntity, SyncConflictReviewEvidenceEntity> {
++        val dao = database.unifiedSyncDao()
++        val conflict = dao.getConflict(conflictId)
++            ?: throw SyncConflictResolutionException("CONFLICT_NOT_FOUND", conflictId)
++        val evidence = requireEvidence(conflict)
++        check(conflict.organizationId == evidence.organizationId && conflict.mutationId == evidence.mutationId) { "SCOPE_MISMATCH" }
++        return conflict to evidence
++    }
++
++    /** B11 upgrade bridge: old OPEN reviews are converted to immutable evidence before display/action. */
++    private suspend fun requireEvidence(
++        conflict: com.verto.app.data.local.entity.SyncConflictEntity,
++    ): SyncConflictReviewEvidenceEntity {
++        database.unifiedSyncDao().getConflictEvidence(conflict.conflictId)?.let { return it }
++        return database.withTransaction {
++            val dao = database.unifiedSyncDao()
++            dao.getConflictEvidence(conflict.conflictId)?.let { return@withTransaction it }
++            val outbox = dao.getOutbox(conflict.mutationId)
++                ?: throw SyncConflictResolutionException("CONFLICT_LOCAL_INTENT_MISSING", conflict.mutationId)
++            val packet = dao.readMutationPacket(conflict.organizationId, conflict.mutationId)
++            val proof = if (
++                outbox.ackedServerRevision != null && conflict.requestHash != null &&
++                packet?.wireSha256 != null && conflict.requestHash == packet.wireSha256
++            ) "PROVEN_CONFLICT" else "OUTCOME_UNKNOWN"
++            val evidence = SyncConflictReviewEvidenceEntity(
++                conflictId = conflict.conflictId,
++                organizationId = conflict.organizationId,
++                mutationId = conflict.mutationId,
++                localPayloadJson = outbox.payloadJson,
++                localPayloadSha256 = com.verto.app.data.sync.sha256Utf8(outbox.payloadJson),
++                localSemanticFingerprint = outbox.semanticFingerprint,
++                localBaseVersion = outbox.baseVersion,
++                remotePayloadJson = conflict.authoritativePayloadJson,
++                remotePayloadSha256 = com.verto.app.data.sync.sha256Utf8(conflict.authoritativePayloadJson),
++                serverRevision = outbox.ackedServerRevision,
++                serverVersion = conflict.serverVersion,
++                outcomeProof = proof,
++                createdAt = conflict.createdAt,
++            )
++            dao.insertConflictEvidenceChecked(evidence)
++            evidence
++        }
++    }
++
++    private fun audit(
++        conflictId: String,
++        mutationId: String,
++        organizationId: String,
++        evidence: SyncConflictReviewEvidenceEntity,
++        decisionType: String,
++        actor: SyncConflictDecisionActor?,
++        resolutionMutationId: String?,
++        proofType: String,
++        proofReference: String?,
++        beforeState: String,
++        afterState: String,
++        now: Long,
++    ) = SyncConflictResolutionAuditEntity(
++        decisionId = UUID.randomUUID().toString(),
++        conflictId = conflictId,
++        organizationId = organizationId,
++        mutationId = mutationId,
++        decisionType = decisionType,
++        actorId = actor?.userId,
++        actorRole = actor?.role,
++        localPayloadSha256 = evidence.localPayloadSha256,
++        remotePayloadSha256 = evidence.remotePayloadSha256,
++        expectedServerVersion = evidence.serverVersion,
++        resolutionMutationId = resolutionMutationId,
++        proofType = proofType,
++        proofReference = proofReference,
++        beforeState = beforeState,
++        afterState = afterState,
++        decidedAt = now,
++    )
++
++    companion object {
++        private val json = Json { ignoreUnknownKeys = false; explicitNulls = true }
++    }
++}
++
++/** Pure fail-closed policy used by both decision paths and JVM tests. */
++object SyncConflictResolutionPolicy {
++    fun isGenericMutable(aggregateType: String): Boolean =
++        UnifiedSyncAggregateRegistry.requireById(aggregateType).conflictPolicy == UnifiedSyncConflictPolicy.OPTIMISTIC_VERSION
++
++    fun requireDecisionAllowed(
++        aggregateType: String,
++        state: String,
++        outcomeProof: String,
++        evidenceServerVersion: Long,
++        displayedServerVersion: Long,
++        latestKnownServerVersion: Long?,
++    ) {
++        if (!isGenericMutable(aggregateType)) {
++            throw SyncConflictResolutionException("DOMAIN_CORRECTION_REQUIRED", aggregateType)
++        }
++        if (state != "OPEN") throw SyncConflictResolutionException("CONFLICT_STATE_CHANGED", state)
++        if (outcomeProof != "PROVEN_CONFLICT") {
++            throw SyncConflictResolutionException("OUTCOME_UNKNOWN", "old mutation outcome is not proven")
++        }
++        if (evidenceServerVersion != displayedServerVersion ||
++            (latestKnownServerVersion != null && latestKnownServerVersion != displayedServerVersion)) {
++            throw SyncConflictResolutionException("CONFLICT_REMOTE_VERSION_CHANGED", "displayed remote version is stale")
++        }
++    }
++}
++
++/** Pure B11 projection: redact secrets before UI and expose deterministic differing field paths. */
++object SyncConflictRedactor {
++    private val json = Json { explicitNulls = true; prettyPrint = true }
++    private val secret = Regex("(?i)(password|passcode|secret|token|authorization|api[_-]?key|otp|pin|private[_-]?uri|signed[_-]?url|refresh[_-]?token)")
++
++    fun redact(raw: String): JsonElement = redactElement(Json.parseToJsonElement(raw))
++
++    fun preview(value: JsonElement, maxChars: Int = 4_000): String {
++        val rendered = json.encodeToString(JsonElement.serializer(), value)
++        return if (rendered.length <= maxChars) rendered else rendered.take(maxChars) + "\n…[truncated]"
++    }
++
++    fun diff(local: JsonElement, remote: JsonElement, limit: Int = 50): List<SyncConflictFieldDiff> {
++        val out = mutableListOf<SyncConflictFieldDiff>()
++        collectDiff("$", local, remote, out, limit)
++        return out
++    }
++
++    private fun redactElement(value: JsonElement): JsonElement = when (value) {
++        is JsonObject -> JsonObject(value.mapValues { (key, child) ->
++            if (secret.containsMatchIn(key)) JsonPrimitive("[REDACTED]") else redactElement(child)
++        })
++        is JsonArray -> JsonArray(value.map(::redactElement))
++        else -> value
++    }
++
++    private fun collectDiff(path: String, a: JsonElement?, b: JsonElement?, out: MutableList<SyncConflictFieldDiff>, limit: Int) {
++        if (out.size >= limit || a == b) return
++        if (a is JsonObject && b is JsonObject) {
++            (a.keys + b.keys).toSortedSet().forEach { key ->
++                if (out.size < limit) collectDiff("$path.$key", a[key], b[key], out, limit)
++            }
++            return
++        }
++        val av = a?.let { compact(it) } ?: "<missing>"
++        val bv = b?.let { compact(it) } ?: "<missing>"
++        out += SyncConflictFieldDiff(path, av, bv)
++    }
++
++    private fun compact(value: JsonElement): String = when (value) {
++        JsonNull -> "null"
++        is JsonPrimitive -> value.toString().take(180)
++        else -> value.toString().take(180)
++    }
++}
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/ownership/SyncOwnershipRegistry.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/ownership/SyncOwnershipRegistry.kt
+@@ -7,7 +7,7 @@
+     val sourceIdColumn: String,
+     val terminalStates: Set<String>,
+ ) {
+-    UNIFIED("sync_outbox", "mutation_id", setOf("ACKNOWLEDGED")),
++    UNIFIED("sync_outbox", "mutation_id", setOf("ACKNOWLEDGED", "SUPERSEDED_WITH_PROOF")),
+     FINANCIAL("financial_outbox", "event_id", setOf("ACKNOWLEDGED", "SYNCED")),
+     PARTY_ROLE("party_sync_outbox", "id", setOf("ACKNOWLEDGED", "SYNCED")),
+     INVENTORY_STOCK("inventory_stock_outbox", "id", setOf("ACKNOWLEDGED", "SYNCED")),
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncConflictEngine.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncConflictEngine.kt
+@@ -2,30 +2,25 @@
+ 
+ import androidx.room.withTransaction
+ import com.verto.app.data.local.AppDatabase
+-import com.verto.app.data.local.dao.UnifiedSyncMutationDraft
+ import com.verto.app.data.local.entity.SyncConflictEntity
++import com.verto.app.data.local.entity.SyncConflictReviewEvidenceEntity
+ import com.verto.app.data.local.entity.SyncOutboxEntity
+-import com.verto.app.data.sync.SyncChange
+-import com.verto.app.data.sync.FrozenMutationStore
+-import com.verto.app.data.sync.SyncConflictResolutionRequirement
+-import com.verto.app.data.sync.SyncMutationOperation
+ import com.verto.app.data.sync.SyncReceiptStatus
++import com.verto.app.data.sync.UnifiedSyncAggregateRegistry
++import com.verto.app.data.sync.UnifiedSyncConflictPolicy
+ import com.verto.app.data.sync.UnifiedSyncPushResponse
+-import com.verto.app.data.sync.pull.UnifiedSyncChangeApplier
++import com.verto.app.data.sync.sha256Utf8
+ import java.security.MessageDigest
+-import java.util.UUID
+ import javax.inject.Inject
+ import javax.inject.Singleton
+ import kotlinx.serialization.encodeToString
+ import kotlinx.serialization.json.Json
+ import kotlinx.serialization.json.JsonObject
+ 
+-/** Session 309 durable conflict state machine. It never performs network I/O. */
++/** B11: conflicts are captured for explicit review. This engine never chooses a business winner. */
+ @Singleton
+ class UnifiedSyncConflictEngine @Inject constructor(
+     private val database: AppDatabase,
+-    private val applier: UnifiedSyncChangeApplier,
+-    private val frozenMutationStore: FrozenMutationStore,
+ ) {
+     private val json = Json { encodeDefaults = true; explicitNulls = true }
+ 
+@@ -50,149 +45,86 @@
+             ?: throw UnifiedSyncPushFailure("SERVER_PROTOCOL_INCONSISTENCY", "missing conflictCode")
+         val requirement = response.resolutionRequirement
+             ?: throw UnifiedSyncPushFailure("FAIL_CONFLICT_REQUIREMENT_UNKNOWN", "missing resolution requirement")
+-
+-        val entity = SyncConflictEntity(
+-            conflictId = deterministicConflictId(outbox.organizationId, outbox.mutationId, serverVersion, conflictCode),
+-            mutationId = outbox.mutationId,
+-            organizationId = outbox.organizationId,
+-            aggregateType = outbox.aggregateType,
+-            aggregateId = outbox.aggregateId,
+-            conflictCode = conflictCode,
+-            localPayloadVersion = outbox.payloadVersion,
+-            serverVersion = serverVersion,
+-            authoritativePayloadJson = canonical(authoritative),
+-            resolutionRequirement = requirement.name,
+-            state = "OPEN",
+-            requestHash = receipt.requestHash,
+-            resolutionMutationId = null,
+-            createdAt = now,
+-            resolvedAt = null,
+-        )
++        val authoritativeJson = canonical(authoritative)
++        val capability = UnifiedSyncAggregateRegistry.requireById(outbox.aggregateType).conflictPolicy
++        val reviewState = if (capability == UnifiedSyncConflictPolicy.OPTIMISTIC_VERSION) {
++            "OPEN"
++        } else {
++            "DOMAIN_CORRECTION_REQUIRED"
++        }
++        val conflictId = deterministicConflictId(outbox.organizationId, outbox.mutationId, serverVersion, conflictCode)
+ 
+         return database.withTransaction {
+             val dao = database.unifiedSyncDao()
+-            // A delayed response must not perform any local conflict side effect after the row was
+-            // re-leased or made terminal by another caller/authoritative echo. Check ownership before
+-            // inserting the durable conflict or applying/rebasing authoritative state.
+             val live = dao.getOutbox(outbox.mutationId)
+             if (live == null || live.state != "LEASED" || live.leaseToken != leaseToken ||
+-                live.leaseScopeEpoch != scopeEpoch ||
+-                live.semanticFingerprint != outbox.semanticFingerprint) {
++                live.leaseScopeEpoch != scopeEpoch || live.semanticFingerprint != outbox.semanticFingerprint) {
+                 return@withTransaction UnifiedSyncConflictOutcome.STALE_LEASE_RESULT
+             }
+             require(live.organizationId == outbox.organizationId &&
+-                live.aggregateType == outbox.aggregateType &&
+-                live.aggregateId == outbox.aggregateId) {
++                live.aggregateType == outbox.aggregateType && live.aggregateId == outbox.aggregateId) {
+                 "SERVER_PROTOCOL_INCONSISTENCY: live outbox identity drift"
+             }
+-            dao.insertConflictChecked(entity)
+-            when (requirement) {
+-                SyncConflictResolutionRequirement.SERVER_WINS_SAFE -> {
+-                    applyAuthoritativeServerState(outbox, receipt.serverRevision, serverVersion, authoritative, now)
+-                    val terminal = dao.markTerminal(
+-                        mutationId = outbox.mutationId,
+-                        leaseToken = leaseToken,
+-                        scopeEpoch = scopeEpoch,
+-                        expectedSemanticFingerprint = outbox.semanticFingerprint,
+-                        terminalState = "ACKNOWLEDGED",
+-                        serverRevision = receipt.serverRevision,
+-                        serverVersion = serverVersion,
+-                        receiptStatus = "CONFLICT",
+-                        ackedAt = now,
+-                    )
+-                    if (terminal != 1) return@withTransaction UnifiedSyncConflictOutcome.STALE_LEASE_RESULT
+-                    check(dao.resolveConflict(entity.conflictId, "RESOLVED_SERVER_WINS", resolvedAt = now) == 1 ||
+-                        dao.getConflict(entity.conflictId)?.state == "RESOLVED_SERVER_WINS")
+-                    UnifiedSyncConflictOutcome.RESOLVED_SERVER_WINS
+-                }
+ 
+-                SyncConflictResolutionRequirement.LOCAL_RETRY_WITH_NEW_BASE -> {
+-                    val newMutationId = UUID.randomUUID().toString()
+-                    val draft = UnifiedSyncMutationDraft(
+-                        mutationId = newMutationId,
+-                        organizationId = outbox.organizationId,
+-                        aggregateType = outbox.aggregateType,
+-                        aggregateId = outbox.aggregateId,
+-                        operationType = outbox.operationType,
+-                        baseVersion = serverVersion,
+-                        payloadVersion = outbox.payloadVersion,
+-                        payloadJson = outbox.payloadJson,
+-                        commandBatchId = outbox.commandBatchId,
+-                        commandOrder = outbox.commandOrder,
+-                        dependsOnMutationId = null,
+-                        createdAt = now,
+-                    )
+-                    val rebased = dao.enqueueMutation(draft, updatedAt = now)
+-                    frozenMutationStore.captureUnified(rebased)
+-                    check(rebased.mutationId != outbox.mutationId) { "FAIL_REBASE_REUSED_MUTATION_ID" }
+-                    val terminal = dao.markTerminal(
+-                        mutationId = outbox.mutationId,
+-                        leaseToken = leaseToken,
+-                        scopeEpoch = scopeEpoch,
+-                        expectedSemanticFingerprint = outbox.semanticFingerprint,
+-                        terminalState = "ACKNOWLEDGED",
+-                        serverRevision = receipt.serverRevision,
+-                        serverVersion = serverVersion,
+-                        receiptStatus = "CONFLICT",
+-                        ackedAt = now,
+-                    )
+-                    if (terminal != 1) return@withTransaction UnifiedSyncConflictOutcome.STALE_LEASE_RESULT
+-                    check(dao.resolveConflict(entity.conflictId, "RESOLVED_RETRY_QUEUED", rebased.mutationId, now) == 1 ||
+-                        dao.getConflict(entity.conflictId)?.resolutionMutationId == rebased.mutationId)
+-                    UnifiedSyncConflictOutcome.RETRY_QUEUED
+-                }
++            val packet = dao.readMutationPacket(outbox.organizationId, outbox.mutationId)
++            val proof = if (
++                receipt.serverRevision != null && receipt.requestHash != null &&
++                packet?.wireSha256 != null && receipt.requestHash == packet.wireSha256
++            ) "PROVEN_CONFLICT" else "OUTCOME_UNKNOWN"
+ 
+-                SyncConflictResolutionRequirement.REJECTED -> {
+-                    val terminal = dao.markTerminal(
+-                        outbox.mutationId, leaseToken, scopeEpoch, outbox.semanticFingerprint, "REJECTED", receipt.serverRevision, serverVersion, "CONFLICT", now,
+-                    )
+-                    if (terminal != 1) return@withTransaction UnifiedSyncConflictOutcome.STALE_LEASE_RESULT
+-                    check(dao.resolveConflict(entity.conflictId, "RESOLVED_REJECTED", resolvedAt = now) == 1 ||
+-                        dao.getConflict(entity.conflictId)?.state == "RESOLVED_REJECTED")
+-                    UnifiedSyncConflictOutcome.REJECTED
+-                }
+-
+-                SyncConflictResolutionRequirement.AUTO_REBASE_SAFE,
+-                SyncConflictResolutionRequirement.REQUIRES_REVIEW -> {
+-                    // No generic JSON merge is legal. Until an aggregate-specific deterministic adapter exists,
+-                    // AUTO_REBASE_SAFE degrades only to durable review, never to LWW.
+-                    val terminal = dao.markTerminal(
+-                        outbox.mutationId, leaseToken, scopeEpoch, outbox.semanticFingerprint, "REQUIRES_REVIEW", receipt.serverRevision, serverVersion, "CONFLICT", null,
+-                    )
+-                    if (terminal != 1) return@withTransaction UnifiedSyncConflictOutcome.STALE_LEASE_RESULT
+-                    UnifiedSyncConflictOutcome.REQUIRES_REVIEW
+-                }
++            val conflict = SyncConflictEntity(
++                conflictId = conflictId,
++                mutationId = outbox.mutationId,
++                organizationId = outbox.organizationId,
++                aggregateType = outbox.aggregateType,
++                aggregateId = outbox.aggregateId,
++                conflictCode = conflictCode,
++                localPayloadVersion = outbox.payloadVersion,
++                serverVersion = serverVersion,
++                authoritativePayloadJson = authoritativeJson,
++                resolutionRequirement = requirement.name,
++                state = reviewState,
++                requestHash = receipt.requestHash,
++                resolutionMutationId = null,
++                createdAt = now,
++                resolvedAt = null,
++            )
++            dao.insertConflictChecked(conflict)
++            dao.insertConflictEvidenceChecked(
++                SyncConflictReviewEvidenceEntity(
++                    conflictId = conflictId,
++                    organizationId = outbox.organizationId,
++                    mutationId = outbox.mutationId,
++                    localPayloadJson = outbox.payloadJson,
++                    localPayloadSha256 = sha256Utf8(outbox.payloadJson),
++                    localSemanticFingerprint = outbox.semanticFingerprint,
++                    localBaseVersion = outbox.baseVersion,
++                    remotePayloadJson = authoritativeJson,
++                    remotePayloadSha256 = sha256Utf8(authoritativeJson),
++                    serverRevision = receipt.serverRevision,
++                    serverVersion = serverVersion,
++                    outcomeProof = proof,
++                    createdAt = now,
++                )
++            )
++            val terminal = dao.markTerminal(
++                mutationId = outbox.mutationId,
++                leaseToken = leaseToken,
++                scopeEpoch = scopeEpoch,
++                expectedSemanticFingerprint = outbox.semanticFingerprint,
++                terminalState = "REQUIRES_REVIEW",
++                serverRevision = receipt.serverRevision,
++                serverVersion = serverVersion,
++                receiptStatus = "CONFLICT",
++                ackedAt = null,
++            )
++            if (terminal != 1) return@withTransaction UnifiedSyncConflictOutcome.STALE_LEASE_RESULT
++            if (reviewState == "DOMAIN_CORRECTION_REQUIRED") {
++                UnifiedSyncConflictOutcome.DOMAIN_CORRECTION_REQUIRED
++            } else {
++                UnifiedSyncConflictOutcome.REQUIRES_REVIEW
+             }
+         }
+-    }
+-
+-    private suspend fun applyAuthoritativeServerState(
+-        outbox: SyncOutboxEntity,
+-        serverRevision: Long?,
+-        serverVersion: Long,
+-        authoritative: JsonObject,
+-        now: Long,
+-    ) {
+-        // A conflict authoritative payload represents the current extant server state; apply as REMOTE UPSERT.
+-        // UnifiedSyncChangeApplier is explicitly no-enqueue since Session 308.
+-        applier.apply(
+-            SyncChange(
+-                revision = serverRevision ?: 1L,
+-                organizationId = outbox.organizationId,
+-                syncScopeId = "conflict-reconciliation",
+-                aggregateType = outbox.aggregateType,
+-                aggregateId = outbox.aggregateId,
+-                operationType = SyncMutationOperation.UPSERT,
+-                entityVersion = serverVersion,
+-                payloadVersion = outbox.payloadVersion,
+-                payload = authoritative,
+-                originMutationId = outbox.mutationId,
+-                transactionId = "conflict:${outbox.mutationId}",
+-                transactionOrder = 0,
+-                transactionSize = 1,
+-                changedAtEpochMillis = now,
+-            )
+-        )
+     }
+ 
+     fun deterministicConflictId(
+@@ -210,9 +142,7 @@
+ }
+ 
+ enum class UnifiedSyncConflictOutcome {
+-    RESOLVED_SERVER_WINS,
+-    RETRY_QUEUED,
+     REQUIRES_REVIEW,
+-    REJECTED,
++    DOMAIN_CORRECTION_REQUIRED,
+     STALE_LEASE_RESULT,
+ }
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushEngine.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushEngine.kt
+@@ -161,7 +161,11 @@
+                 if (terminal == 1) review += 1 else stale += 1
+                 continue
+             }
+-            if (receipt.status != SyncReceiptStatus.RETRYABLE && receipt.requestHash.isNullOrBlank()) {
++            // B11 must durably expose CONFLICT with an unproven/missing request hash as OUTCOME_UNKNOWN;
++            // do not short-circuit it into a generic invisible review row.
++            if (receipt.status != SyncReceiptStatus.RETRYABLE &&
++                receipt.status != SyncReceiptStatus.CONFLICT &&
++                receipt.requestHash.isNullOrBlank()) {
+                 val terminal = database.unifiedSyncDao().markTerminal(
+                     row.mutationId, leaseToken, scopeEpoch, row.semanticFingerprint, "REQUIRES_REVIEW", receipt.serverRevision,
+                     receipt.serverVersion, "REJECTED", null,
+@@ -223,10 +227,8 @@
+ 
+                 SyncReceiptStatus.CONFLICT -> {
+                     when (conflictEngine.reconcile(row, leaseToken, scopeEpoch, response, System.currentTimeMillis())) {
+-                        UnifiedSyncConflictOutcome.RESOLVED_SERVER_WINS,
+-                        UnifiedSyncConflictOutcome.RETRY_QUEUED -> acknowledged += 1
+-                        UnifiedSyncConflictOutcome.REQUIRES_REVIEW -> review += 1
+-                        UnifiedSyncConflictOutcome.REJECTED -> rejected += 1
++                        UnifiedSyncConflictOutcome.REQUIRES_REVIEW,
++                        UnifiedSyncConflictOutcome.DOMAIN_CORRECTION_REQUIRED -> review += 1
+                         UnifiedSyncConflictOutcome.STALE_LEASE_RESULT -> stale += 1
+                     }
+                 }
+@@ -266,18 +268,24 @@
+                 else -> return "DEPENDENCY_FAILED"
+             }
+         }
++        val replacementParentSequence = dao.replacementParentSequence(row.organizationId, row.mutationId)
++        if (replacementParentSequence == null && dao.countOlderSupersededPendingProof(
++                row.organizationId, row.aggregateType, row.aggregateId, row.aggregateSequence,
++            ) > 0
++        ) return "SUPERSEDED_PARENT_AWAITING_REPLACEMENT_PROOF"
++        val orderingBarrier = replacementParentSequence ?: row.aggregateSequence
+         if (dao.countOlderTerminalBlockers(
+                 row.organizationId,
+                 row.aggregateType,
+                 row.aggregateId,
+-                row.aggregateSequence,
++                orderingBarrier,
+             ) > 0
+         ) return "PREDECESSOR_REQUIRES_REVIEW"
+         if (dao.countOlderActiveMutations(
+                 row.organizationId,
+                 row.aggregateType,
+                 row.aggregateId,
+-                row.aggregateSequence,
++                orderingBarrier,
+             ) > 0
+         ) return "AGGREGATE_SEQUENCE_BLOCKED"
+         return null
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/OutboxIdentityDigest.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/OutboxIdentityDigest.kt
+@@ -7,7 +7,7 @@
+ object OutboxIdentityDigest {
+     fun compute(db: SupportSQLiteDatabase, organizationId: String): String {
+         val rows = mutableListOf<String>()
+-        collect(db, "SELECT mutation_id,organization_id,aggregate_type,aggregate_id,state,semantic_fingerprint FROM sync_outbox WHERE organization_id='${safe(organizationId)}' AND state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW') ORDER BY mutation_id", "unified", rows)
++        collect(db, "SELECT mutation_id,organization_id,aggregate_type,aggregate_id,state,semantic_fingerprint FROM sync_outbox WHERE organization_id='${safe(organizationId)}' AND state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF') ORDER BY mutation_id", "unified", rows)
+         collect(db, "SELECT operation_id,aggregate_type,aggregate_id,state FROM party_sync_outbox WHERE state IN ('PENDING','RETRY') ORDER BY operation_id", "party", rows)
+         collect(db, "SELECT event_id,organization_id,write_id,aggregate_id,sync_state FROM financial_outbox WHERE organization_id='${safe(organizationId)}' AND sync_state NOT IN ('SYNCED','ACKNOWLEDGED') ORDER BY event_id", "financial", rows)
+         collect(db, "SELECT command_id,organization_id,movement_id,item_id,sync_state FROM inventory_stock_outbox WHERE organization_id='${safe(organizationId)}' AND sync_state NOT IN ('SYNCED','ACKNOWLEDGED') ORDER BY command_id", "inventory_stock", rows)
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryRegistry.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryRegistry.kt
+@@ -43,15 +43,15 @@
+         r("PARTY_ROLE", 11, PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE, "party_sync_outbox", "party-v2",
+             "DELETE FROM party_roles WHERE organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='PARTY_ROLE' AND s.aggregate_id=(party_roles.party_id || ':' || party_roles.role)) AND NOT EXISTS (SELECT 1 FROM party_sync_outbox o WHERE o.aggregate_id=party_roles.party_id AND o.state IN ('PENDING','RETRY'))"),
+         r("CUSTOMER_PROFILE", 12, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "party-v2",
+-            "DELETE FROM customer_profiles WHERE customer_profiles.organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='CUSTOMER_PROFILE' AND s.aggregate_id=customer_profiles.party_id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='CUSTOMER_PROFILE' AND o.aggregate_id=customer_profiles.party_id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
++            "DELETE FROM customer_profiles WHERE customer_profiles.organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='CUSTOMER_PROFILE' AND s.aggregate_id=customer_profiles.party_id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='CUSTOMER_PROFILE' AND o.aggregate_id=customer_profiles.party_id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF'))"),
+         r("SUPPLIER_PROFILE", 13, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "party-v2",
+-            "DELETE FROM supplier_profiles WHERE supplier_profiles.organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='SUPPLIER_PROFILE' AND s.aggregate_id=supplier_profiles.party_id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='SUPPLIER_PROFILE' AND o.aggregate_id=supplier_profiles.party_id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
+-        r("CATEGORY", 20, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM categories WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='CATEGORY' AND s.aggregate_id=categories.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='CATEGORY' AND o.aggregate_id=categories.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
+-        r("INVENTORY_UNIT", 21, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM inventory_units WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='INVENTORY_UNIT' AND s.aggregate_id=inventory_units.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='INVENTORY_UNIT' AND o.aggregate_id=inventory_units.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
++            "DELETE FROM supplier_profiles WHERE supplier_profiles.organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='SUPPLIER_PROFILE' AND s.aggregate_id=supplier_profiles.party_id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='SUPPLIER_PROFILE' AND o.aggregate_id=supplier_profiles.party_id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF'))"),
++        r("CATEGORY", 20, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM categories WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='CATEGORY' AND s.aggregate_id=categories.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='CATEGORY' AND o.aggregate_id=categories.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF'))"),
++        r("INVENTORY_UNIT", 21, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM inventory_units WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='INVENTORY_UNIT' AND s.aggregate_id=inventory_units.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='INVENTORY_UNIT' AND o.aggregate_id=inventory_units.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF'))"),
+         r("INVENTORY_ITEM", 22, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX),
+-        r("ITEM_CATEGORY", 23, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM item_categories WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='ITEM_CATEGORY' AND s.aggregate_id=item_categories.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='ITEM_CATEGORY' AND o.aggregate_id=item_categories.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
++        r("ITEM_CATEGORY", 23, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM item_categories WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='ITEM_CATEGORY' AND s.aggregate_id=item_categories.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='ITEM_CATEGORY' AND o.aggregate_id=item_categories.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF'))"),
+         r("PRICE_LIST", 24, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307",
+-            "DELETE FROM price_list_templates WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='PRICE_LIST' AND s.aggregate_id=price_list_templates.id) AND organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=price_list_templates.organization_id AND o.aggregate_type='PRICE_LIST' AND o.aggregate_id=price_list_templates.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
++            "DELETE FROM price_list_templates WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='PRICE_LIST' AND s.aggregate_id=price_list_templates.id) AND organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=price_list_templates.organization_id AND o.aggregate_type='PRICE_LIST' AND o.aggregate_id=price_list_templates.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF'))"),
+         r("PURCHASE_ORDER", 30, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX),
+         r("GOODS_RECEIPT", 31, PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE, "inventory_stock_outbox", "owner310"),
+         r("PURCHASE_MATCH", 32, PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE, "financial_outbox", "owner310"),
+@@ -67,14 +67,14 @@
+         r("INVENTORY_MOVEMENT", 50, PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE, "inventory_stock_outbox", "owner310"),
+         r("INVENTORY_COST_REVISION", 51, PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE, "inventory_cost_outbox", "owner310"),
+         r("COST_ALLOCATION", 52, PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE, "inventory_cost_outbox", "owner310"),
+-        r("BUDGET", 60, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM budgets WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='BUDGET' AND s.aggregate_id=budgets.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='BUDGET' AND o.aggregate_id=budgets.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
+-        r("NOTE", 61, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM notes WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='NOTE' AND s.aggregate_id=notes.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='NOTE' AND o.aggregate_id=notes.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
+-        r("REMINDER", 62, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM client_reminders WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='REMINDER' AND s.aggregate_id=client_reminders.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='REMINDER' AND o.aggregate_id=client_reminders.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
++        r("BUDGET", 60, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM budgets WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='BUDGET' AND s.aggregate_id=budgets.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='BUDGET' AND o.aggregate_id=budgets.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF'))"),
++        r("NOTE", 61, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM notes WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='NOTE' AND s.aggregate_id=notes.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='NOTE' AND o.aggregate_id=notes.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF'))"),
++        r("REMINDER", 62, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM client_reminders WHERE NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='REMINDER' AND s.aggregate_id=client_reminders.id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='REMINDER' AND o.aggregate_id=client_reminders.id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF'))"),
+         r("ORGANIZATION_SETTINGS", 63, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX),
+-        r("EDUCATIONAL_CONTENT", 64, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM educational_topics WHERE organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='EDUCATIONAL_CONTENT' AND s.aggregate_id=educational_topics.topic_id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='EDUCATIONAL_CONTENT' AND o.aggregate_id=educational_topics.topic_id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
++        r("EDUCATIONAL_CONTENT", 64, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner307", "DELETE FROM educational_topics WHERE organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='EDUCATIONAL_CONTENT' AND s.aggregate_id=educational_topics.topic_id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='EDUCATIONAL_CONTENT' AND o.aggregate_id=educational_topics.topic_id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF'))"),
+         r("NOTIFICATION", 65, PendingLocalRecoveryStrategy.SERVER_READ_ONLY_NO_LOCAL_PENDING, "none", "server", "DELETE FROM notifications WHERE organizationId=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='NOTIFICATION' AND s.aggregate_id=notifications.id)"),
+         r("TEAM_OBSERVATION", 66, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX, "sync_outbox", "owner403",
+-            "DELETE FROM team_observations WHERE organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='TEAM_OBSERVATION' AND s.aggregate_id=team_observations.observation_id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='TEAM_OBSERVATION' AND o.aggregate_id=team_observations.observation_id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW'))"),
++            "DELETE FROM team_observations WHERE organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='TEAM_OBSERVATION' AND s.aggregate_id=team_observations.observation_id) AND NOT EXISTS (SELECT 1 FROM sync_outbox o WHERE o.organization_id=? AND o.aggregate_type='TEAM_OBSERVATION' AND o.aggregate_id=team_observations.observation_id AND o.state IN ('PENDING','RETRY','LEASED','REQUIRES_REVIEW','SUPERSEDED_PENDING_PROOF'))"),
+         r("SHIPMENT", 70, PendingLocalRecoveryStrategy.REPLAY_FROM_UNIFIED_OUTBOX),
+         r("OPTIMAL_VEHICLE", 80, PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE, "optimal_outbox", "owner310", "DELETE FROM optimal_vehicles WHERE organization_id=? AND NOT EXISTS (SELECT 1 FROM sync_bootstrap_stage s WHERE s.scope_id=? AND s.bootstrap_session_id=? AND s.aggregate_type='OPTIMAL_VEHICLE' AND s.aggregate_id=optimal_vehicles.remote_vehicle_id) AND NOT EXISTS (SELECT 1 FROM optimal_outbox o WHERE o.organization_id=? AND o.aggregate_type='VEHICLE' AND o.aggregate_id=optimal_vehicles.remote_vehicle_id AND o.status NOT IN ('SYNCED','ACKNOWLEDGED'))"),
+         r("OPTIMAL_MAINTENANCE", 81, PendingLocalRecoveryStrategy.PRESERVE_STRONGER_LOCAL_STATE, "optimal_outbox", "owner310"),
+--- a/data/sync/src/test/kotlin/com/verto/app/data/sync/conflict/SyncConflictRedactorB11Test.kt
++++ b/data/sync/src/test/kotlin/com/verto/app/data/sync/conflict/SyncConflictRedactorB11Test.kt
+@@ -0,0 +1,26 @@
++package com.verto.app.data.sync.conflict
++
++import org.junit.Assert.assertEquals
++import org.junit.Assert.assertFalse
++import org.junit.Assert.assertTrue
++import org.junit.Test
++
++class SyncConflictRedactorB11Test {
++    @Test
++    fun `redacts secrets before presenting local and remote payloads`() {
++        val redacted = SyncConflictRedactor.preview(
++            SyncConflictRedactor.redact("""{"name":"A","token":"top-secret","nested":{"otp":"123456"}}""")
++        )
++        assertTrue(redacted.contains("[REDACTED]"))
++        assertFalse(redacted.contains("top-secret"))
++        assertFalse(redacted.contains("123456"))
++    }
++
++    @Test
++    fun `reports deterministic differing field paths`() {
++        val local = SyncConflictRedactor.redact("""{"name":"A","qty":1,"nested":{"x":4}}""")
++        val remote = SyncConflictRedactor.redact("""{"name":"B","qty":1,"nested":{"x":7}}""")
++        val diffs = SyncConflictRedactor.diff(local, remote)
++        assertEquals(listOf("$.name", "$.nested.x"), diffs.map { it.path })
++    }
++}
+--- a/data/sync/src/test/kotlin/com/verto/app/data/sync/conflict/SyncConflictResolutionPolicyB11Test.kt
++++ b/data/sync/src/test/kotlin/com/verto/app/data/sync/conflict/SyncConflictResolutionPolicyB11Test.kt
+@@ -0,0 +1,49 @@
++package com.verto.app.data.sync.conflict
++
++import org.junit.Assert.assertEquals
++import org.junit.Assert.fail
++import org.junit.Test
++
++class SyncConflictResolutionPolicyB11Test {
++    @Test
++    fun `mutable proven conflict on displayed version is eligible`() {
++        SyncConflictResolutionPolicy.requireDecisionAllowed(
++            aggregateType = "INVENTORY_ITEM",
++            state = "OPEN",
++            outcomeProof = "PROVEN_CONFLICT",
++            evidenceServerVersion = 7,
++            displayedServerVersion = 7,
++            latestKnownServerVersion = 7,
++        )
++    }
++
++    @Test
++    fun `immutable payment cannot be replaced`() {
++        assertCode("DOMAIN_CORRECTION_REQUIRED") {
++            SyncConflictResolutionPolicy.requireDecisionAllowed("PAYMENT", "OPEN", "PROVEN_CONFLICT", 7, 7, 7)
++        }
++    }
++
++    @Test
++    fun `outcome unknown blocks both user decision paths`() {
++        assertCode("OUTCOME_UNKNOWN") {
++            SyncConflictResolutionPolicy.requireDecisionAllowed("INVENTORY_ITEM", "OPEN", "OUTCOME_UNKNOWN", 7, 7, 7)
++        }
++    }
++
++    @Test
++    fun `changed server version invalidates displayed decision`() {
++        assertCode("CONFLICT_REMOTE_VERSION_CHANGED") {
++            SyncConflictResolutionPolicy.requireDecisionAllowed("INVENTORY_ITEM", "OPEN", "PROVEN_CONFLICT", 7, 7, 8)
++        }
++    }
++
++    private fun assertCode(expected: String, block: () -> Unit) {
++        try {
++            block()
++            fail("expected $expected")
++        } catch (e: SyncConflictResolutionException) {
++            assertEquals(expected, e.code)
++        }
++    }
++}
+--- a/docs/DOCUMENTATION_INVENTORY.md
++++ b/docs/DOCUMENTATION_INVENTORY.md
+@@ -11,6 +11,8 @@
+ 
+ | Current path | Original v314 path | Classification | Responsibility/domain | Canonical? | Current/historical | Path-coupled? | Referenced by executable tool? | Referenced by source? | Indexed? | Move decision | Archive destination | Superseded by | Duplicate of | Last verified against | Pre-v315 SHA-256 | Notes |
+ |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
++| `docs/sync-repair/evidence/B11/V01/session-report.md` | NEW_IN_B11_V01 | Supporting evidence | Sync conflict review | no | Current | no | no | no | yes | NEW_SESSION_EVIDENCE | — | — | — | B11-V01 local source/SQLite only | NEW | Explicit conflict review implementation, proof-chain design and blocked runtime acceptance. |
++| `docs/sync-repair/evidence/B11/V01/commands-and-results.md` | NEW_IN_B11_V01 | Supporting evidence | Sync conflict review | no | Current | no | no | no | yes | NEW_SESSION_EVIDENCE | — | — | — | B11-V01 local source/SQLite only | NEW | Actual static/SQLite/Gradle-block results and exact runtime acceptance commands. |
+ | `docs/sync-repair/evidence/B09/V02/session-report.md` | NEW_IN_B09_V02 | Supporting evidence | Sync financial materialization | no | Current | no | no | no | yes | NEW_SESSION_EVIDENCE | — | — | — | B09-V02 source/smoke only | NEW | B09-V02 shared-write identity repair, evidence limits and blocked acceptance. |
+ | `docs/sync-repair/evidence/B10/V01/session-report.md` | NEW_IN_B10_V01 | Supporting evidence | Durable Inbox | no | Current | no | no | no | yes | NEW_SESSION_EVIDENCE | — | — | — | B10-V01 local source only | NEW | B10 client implementation, verification limits, migration and server integration blockers. |
+ | `docs/sync-repair/evidence/B10/V01/commands-and-results.md` | NEW_IN_B10_V01 | Supporting evidence | Durable Inbox | no | Current | no | no | no | yes | NEW_SESSION_EVIDENCE | — | — | — | B10-V01 local source only | NEW | Observed offline runs and precise NOT_RUN Android/Gradle acceptance commands. |
+--- a/tools/test_sync_b11_sqlite.py
++++ b/tools/test_sync_b11_sqlite.py
+@@ -0,0 +1,109 @@
++#!/usr/bin/env python3
++"""Host-side contract probe for B11 migration 99→100.
++Not a substitute for Room MigrationTestHelper; it verifies SQLite DDL/state invariants without Android/Gradle.
++"""
++import re
++import sqlite3
++from pathlib import Path
++
++src = Path('data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations99To100.kt').read_text()
++pattern = re.compile(r'db\.execSQL\(\s*(?:"""(.*?)"""\.trimIndent\(\)|"((?:[^"\\]|\\.)*)")\s*\)', re.S)
++statements = []
++for match in pattern.finditer(src):
++    triple, single = match.groups()
++    if triple is not None:
++        lines = triple.splitlines()
++        nonblank = [len(line) - len(line.lstrip()) for line in lines if line.strip()]
++        indent = min(nonblank) if nonblank else 0
++        statements.append('\n'.join(line[indent:] for line in lines).strip())
++    else:
++        statements.append(bytes(single, 'utf8').decode('unicode_escape'))
++assert len(statements) >= 20, len(statements)
++
++db = sqlite3.connect(':memory:')
++db.executescript(
++    """
++    CREATE TABLE sync_outbox (
++      mutation_id TEXT NOT NULL PRIMARY KEY, organization_id TEXT NOT NULL,
++      aggregate_type TEXT NOT NULL, aggregate_id TEXT NOT NULL, operation_type TEXT NOT NULL,
++      base_version INTEGER, local_sequence INTEGER NOT NULL, aggregate_sequence INTEGER NOT NULL,
++      payload_version INTEGER NOT NULL, payload_json TEXT NOT NULL, semantic_fingerprint TEXT NOT NULL,
++      command_batch_id TEXT, command_order INTEGER, depends_on_mutation_id TEXT,
++      state TEXT NOT NULL DEFAULT 'PENDING', attempt_count INTEGER NOT NULL DEFAULT 0,
++      last_error_type TEXT, last_error_code TEXT, next_attempt_at INTEGER NOT NULL DEFAULT 0,
++      lease_owner TEXT, lease_token TEXT, lease_scope_epoch INTEGER, lease_expires_at INTEGER,
++      acked_server_revision INTEGER, acked_server_version INTEGER, receipt_status TEXT,
++      created_at INTEGER NOT NULL, acked_at INTEGER,
++      CHECK(state IN ('PENDING','LEASED','RETRY','ACKNOWLEDGED','REQUIRES_REVIEW','REJECTED'))
++    );
++    CREATE TABLE sync_mutation_packet (
++      organization_id TEXT NOT NULL, mutation_id TEXT NOT NULL,
++      PRIMARY KEY(organization_id,mutation_id)
++    );
++    """
++)
++db.execute(
++    """INSERT INTO sync_outbox(
++      mutation_id,organization_id,aggregate_type,aggregate_id,operation_type,base_version,
++      local_sequence,aggregate_sequence,payload_version,payload_json,semantic_fingerprint,
++      state,created_at
++    ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)""",
++    ('m','o','PARTY_IDENTITY','a','UPSERT',1,1,1,1,'{"name":"local"}','fp','REQUIRES_REVIEW',1),
++)
++
++for sql in statements:
++    db.execute(sql)
++
++# Migration preserves rows and enables the two proof-bearing lifecycle states.
++row = db.execute("SELECT payload_json,state FROM sync_outbox WHERE mutation_id='m'").fetchone()
++assert row == ('{"name":"local"}', 'REQUIRES_REVIEW'), row
++db.execute("UPDATE sync_outbox SET state='SUPERSEDED_PENDING_PROOF' WHERE mutation_id='m'")
++db.execute("UPDATE sync_outbox SET state='SUPERSEDED_WITH_PROOF' WHERE mutation_id='m'")
++assert db.execute("SELECT state FROM sync_outbox WHERE mutation_id='m'").fetchone()[0] == 'SUPERSEDED_WITH_PROOF'
++
++# Semantic bytes remain immutable and rows cannot be pruned.
++for stmt, expected in [
++    ("UPDATE sync_outbox SET payload_json='{}' WHERE mutation_id='m'", 'FAIL_LOCAL_SYNC_IMMUTABILITY'),
++    ("DELETE FROM sync_outbox WHERE mutation_id='m'", 'SYNC_OUTBOX_PRUNING_DISABLED_V306'),
++]:
++    try:
++        db.execute(stmt)
++        raise AssertionError(f'unexpectedly allowed: {stmt}')
++    except sqlite3.IntegrityError as exc:
++        assert expected in str(exc), (expected, str(exc))
++
++packet_cols = {r[1] for r in db.execute('PRAGMA table_info(sync_mutation_packet)')}
++assert 'supersedes_mutation_id' in packet_cols
++
++evidence_cols = {r[1] for r in db.execute('PRAGMA table_info(sync_conflict_review_evidence)')}
++assert {'local_payload_json','remote_payload_json','local_payload_sha256','remote_payload_sha256','local_base_version','outcome_proof'} <= evidence_cols
++sha = 'a' * 64
++db.execute(
++    "INSERT INTO sync_conflict_review_evidence VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
++    ('c','o','m','{}',sha,'sf',1,'{}',sha,1,2,'PROVEN_CONFLICT',3),
++)
++for stmt in [
++    "UPDATE sync_conflict_review_evidence SET local_payload_json='x' WHERE conflict_id='c'",
++    "DELETE FROM sync_conflict_review_evidence WHERE conflict_id='c'",
++]:
++    try:
++        db.execute(stmt)
++        raise AssertionError(f'evidence mutation unexpectedly allowed: {stmt}')
++    except sqlite3.IntegrityError as exc:
++        assert 'FAIL_CONFLICT_EVIDENCE_IMMUTABLE' in str(exc)
++
++db.execute(
++    "INSERT INTO sync_conflict_resolution_audit VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
++    ('d','c','o','m','ACCEPT_SERVER','u','admin',sha,sha,2,None,'AUTHORIZED_USER_DECISION','u','OPEN','RESOLVED_SERVER_ACCEPTED',3),
++)
++for stmt in [
++    "UPDATE sync_conflict_resolution_audit SET after_state='x' WHERE decision_id='d'",
++    "DELETE FROM sync_conflict_resolution_audit WHERE decision_id='d'",
++]:
++    try:
++        db.execute(stmt)
++        raise AssertionError(f'audit mutation unexpectedly allowed: {stmt}')
++    except sqlite3.IntegrityError as exc:
++        assert 'FAIL_CONFLICT_AUDIT_IMMUTABLE' in str(exc)
++
++print('B11_SQLITE_CONTRACT: PASS')
+--- a/tools/test_sync_b11_static.py
++++ b/tools/test_sync_b11_static.py
+@@ -0,0 +1,42 @@
++#!/usr/bin/env python3
++from pathlib import Path
++engine=Path('data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncConflictEngine.kt').read_text()
++service=Path('data/sync/src/main/kotlin/com/verto/app/data/sync/conflict/SyncConflictReviewService.kt').read_text()
++frozen=Path('data/sync/src/main/kotlin/com/verto/app/data/sync/FrozenMutationStore.kt').read_text()
++ui=Path('app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt').read_text()
++auth=Path('app/src/main/kotlin/com/verto/app/feature/sync/di/SyncConflictReviewModule.kt').read_text()
++push=Path('data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushEngine.kt').read_text()
++migration=Path('data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations99To100.kt').read_text()
++appdb=Path('data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt').read_text()
++recovery=Path('data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryRegistry.kt').read_text()
++digest=Path('data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/OutboxIdentityDigest.kt').read_text()
++assert 'SERVER_WINS_SAFE ->' not in engine
++assert 'LOCAL_RETRY_WITH_NEW_BASE ->' not in engine
++assert 'applier.apply' not in engine
++assert 'terminalState = "REQUIRES_REVIEW"' in engine
++assert 'DOMAIN_CORRECTION_REQUIRED' in engine
++assert 'PROVEN_CONFLICT' in engine and 'OUTCOME_UNKNOWN' in engine
++assert 'markReviewSupersededWithProof' in service and 'RESOLVED_SERVER_ACCEPTED' in service
++assert 'baseVersion = expectedServerVersion' in service
++assert 'payloadJson = old.payloadJson' in service
++assert 'markReviewSupersededPendingProof' in service and 'WAITING_REPLACEMENT_RECEIPT' in service
++assert 'captureUnified(replacement, supersedesMutationId = old.mutationId, useUnresolvedPredecessor = false)' in service
++assert 'UnifiedSyncConflictPolicy.OPTIMISTIC_VERSION' in service
++assert 'DOMAIN_CORRECTION_REQUIRED' in service
++assert 'finalizeReplacementProofChain' in frozen and 'RESOLVED_REPLACEMENT_PROVED' in frozen
++assert 'resolvedPredecessorServerVersion' in frozen and 'RESOLVED_REPLACEMENT_PROVED' in frozen
++assert 'replacementParentSequence' in push and 'SUPERSEDED_PARENT_AWAITING_REPLACEMENT_PROOF' in push
++assert 'AUTHORIZED_USER_DECISION_PRESERVE_NEWER_LOCAL' in service
++assert 'resolveMatchingEchoConflict' in frozen and 'RESOLVED_MATCHING_ECHO' in frozen
++assert 'settingsOrgData' in auth and 'CONFLICT_RESOLUTION_PERMISSION_DENIED' in auth
++for text in ['سبب التعارض','بصمة المحلي','بصمة الخادم','النسخة المحلية','نسخة الخادم','اعتماد نسخة الخادم','إعادة إرسال تعديلي']:
++    assert text in ui, text
++assert '[REDACTED]' in service
++
++assert 'SUPERSEDED_PENDING_PROOF' in migration and 'SUPERSEDED_WITH_PROOF' in migration
++assert 'installB11ConflictIntegrityGuards(db)' in migration
++assert 'installB11ConflictIntegrityGuards(db)' in appdb
++assert 'local_base_version' in migration and 'localBaseVersion = outbox.baseVersion' in engine
++assert "receipt.status != SyncReceiptStatus.CONFLICT" in push
++assert 'SUPERSEDED_PENDING_PROOF' in recovery and 'SUPERSEDED_PENDING_PROOF' in digest
++print('B11_STATIC_CONTRACT: PASS')

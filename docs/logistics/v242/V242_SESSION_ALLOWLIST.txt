@@ -1,0 +1,14 @@
+# v242 allowed delta from v241
+Verto-v242-report.md
+docs/logistics/v242/V242_IMPLEMENTATION_CONTRACT.md
+docs/logistics/v242/V242_SESSION_ALLOWLIST.txt
+tools/verify_v242_logistics_quality.py
+core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt
+feature/shipment/build.gradle.kts
+gradle/libs.versions.toml
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsFormControls.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningScreen.kt
+feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237Steps.kt
+feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LogisticsV242EndToEndIntegrationTest.kt
+feature/shipment/src/androidTest/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV242UiQualityTest.kt

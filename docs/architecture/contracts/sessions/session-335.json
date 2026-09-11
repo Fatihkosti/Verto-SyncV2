@@ -1,0 +1,109 @@
+{
+  "architecture": {
+    "allowed_new_dependencies": [],
+    "forbidden_dependencies": [
+      "client-authored cash register authority",
+      "full-history cash push in V2 owner mode",
+      "silent V2-to-legacy financial fallback",
+      "unbounded owner310 materialization",
+      "unadmitted production external Gradle dependency"
+    ],
+    "invariants": [
+      "cash register is server authoritative under V2 finance ownership",
+      "cash movement mutation identity is stable and idempotent",
+      "cash movement push work is bounded by durable outbox batches",
+      "owner310 expense and cash movement commands use the stronger route",
+      "legacy finance sync is disabled whenever V2 finance owns the aggregate",
+      "expense and cash queries added by Session 335 are backed by measured query-plan evidence",
+      "Room schema 82 to 83 is append-only and does not rewrite financial history",
+      "Session 334 fixed-point and reversal invariants remain preserved"
+    ]
+  },
+  "session": {
+    "id": 335,
+    "input_sha256": "d8169f0e420a19c2fe16db528cae68733db9114e6815dc75c22e9e30be7dc423",
+    "baseline_snapshot": "docs/architecture/verification/SESSION_335_INPUT_SNAPSHOT.json",
+    "scope": "CASH AND EXPENSES SYNC AUTHORITY PERFORMANCE AND CONVERGENCE",
+    "allowed_modules": [
+      ":app",
+      ":data:database",
+      ":data:operations",
+      ":data:sync",
+      ":feature:payment"
+    ],
+    "allowed_files": [
+      "SESSION_335_FINAL.md",
+      "app/src/main/kotlin/com/verto/app/di/InfrastructureModule.kt",
+      "app/src/main/kotlin/com/verto/app/feature/expenses/bridge/ExpensesOperationsAdapter.kt",
+      "data/database/src/androidTest/kotlin/com/verto/app/data/local/FinanceMigration335Test.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations82To83.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt",
+      "data/database/src/main/kotlin/com/verto/app/data/local/entity/InvoicePaymentEntities.kt",
+      "data/operations/src/main/kotlin/com/verto/app/utils/CashRegisterDependencies.kt",
+      "data/operations/src/main/kotlin/com/verto/app/utils/CashMovementSyncWriter.kt",
+      "data/operations/src/main/kotlin/com/verto/app/utils/CashRegisterManager.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedFinancialOwner310Route.kt",
+      "data/sync/src/main/kotlin/com/verto/app/data/sync/push/UnifiedSyncPushEngine.kt",
+      "feature/payment/src/main/kotlin/com/verto/app/feature/payment/data/sync/CashSyncParticipant.kt",
+      "feature/payment/src/main/kotlin/com/verto/app/feature/payment/data/sync/CashSyncOwnership335.kt",
+      "supabase/migrations/20260823060000_v335_finance_sync_authority.sql",
+      "tools/quality/verto_finance_sync_v335.py",
+      "docs/DOCUMENTATION_INVENTORY.md",
+      "docs/architecture/contracts/sessions/session-335.json",
+      "docs/architecture/verification/SESSION_335_INPUT_SNAPSHOT.json",
+      "docs/finance/SESSION_335_*"
+    ],
+    "forbidden_files": [
+      "settings.gradle.kts",
+      "build.gradle.kts",
+      "gradle/libs.versions.toml",
+      "functions/**",
+      "feature/inventory/**",
+      "feature/shipment/**"
+    ],
+    "scope_amendments": [
+      {
+        "id": "335-OVERRIDE-1",
+        "reason": "User explicitly authorized proceeding despite Session 334 handoff=false caused by environment-blocked Gradle/Room runtime evidence. The blocker remains documented and is not converted to PASS.",
+        "production_scope_changed": false
+      }
+    ]
+  },
+  "verification": {
+    "required_gates": [
+      "change-contract",
+      "architecture",
+      "dependency",
+      "contract-compatibility",
+      "feature-scalability-admission",
+      "data-ownership",
+      "persistence-boundary",
+      "transaction-contract",
+      "migration-schema",
+      "persistence-ratchet",
+      "technical-debt-ratchet",
+      "differential-quality",
+      "kotlin-quality",
+      "maintainability-testability",
+      "behavioral-mutations",
+      "documentation",
+      "design-system",
+      "design-system-diff",
+      "detekt",
+      "lint",
+      "tests",
+      "debug-build",
+      "source-of-truth-admission"
+    ],
+    "required_tests": [
+      "Session 334 financial regression preservation",
+      "cash movement stable idempotency identity",
+      "owner310 stronger-route validation",
+      "V2 financial dual-writer suppression",
+      "100k expense and 250k cash movement bounded-work fixture",
+      "Room 82 to 83 migration",
+      "two-device cash convergence",
+      "server command replay and concurrent duplicate behavior"
+    ]
+  }
+}

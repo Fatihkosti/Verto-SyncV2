@@ -1,0 +1,9 @@
+{
+  "format": "verto-forward-technical-debt-admission-v1",
+  "session": 321,
+  "historical_baseline": "docs/architecture/contracts/technical-debt-baseline.json",
+  "historical_baseline_policy": "IMMUTABLE_EVIDENCE",
+  "admitted_legacy_architecture_identities": [],
+  "targeted_rules": ["VARCH-003", "VARCH-005", "VARCH-012"],
+  "reappearance_policy": "FAIL_REMOVED_DEBT_REAPPEARED"
+}

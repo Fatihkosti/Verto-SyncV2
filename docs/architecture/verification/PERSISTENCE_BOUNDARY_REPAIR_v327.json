@@ -1,0 +1,76 @@
+{
+  "build_blocker": {
+    "classification": "external network dependency unavailable before task graph execution",
+    "dependency": "https://services.gradle.org/distributions/gradle-8.9-bin.zip",
+    "error": "java.net.UnknownHostException: services.gradle.org",
+    "stage": "Gradle wrapper bootstrap"
+  },
+  "format": "verto-persistence-boundary-repair-v327",
+  "gates": {
+    "architecture_guard": "PASS",
+    "change_contract": "PASS",
+    "dependency_gate": "PASS",
+    "design_system": "PASS",
+    "design_system_diff": "PASS",
+    "differential_quality": "PASS",
+    "documentation": "PASS",
+    "gradle_assemble_debug": "BLOCKED_ENVIRONMENT",
+    "gradle_detekt": "BLOCKED_ENVIRONMENT",
+    "gradle_lint": "BLOCKED_ENVIRONMENT",
+    "gradle_tests": "BLOCKED_ENVIRONMENT",
+    "kotlin_quality": "PASS",
+    "migration_schema": "PASS",
+    "persistence_boundary": "PASS",
+    "persistence_ownership": "PASS",
+    "persistence_ratchet": "PASS",
+    "source_of_truth_admission": "BLOCKED_ENVIRONMENT",
+    "technical_debt_ratchet": "PASS",
+    "transaction_contract": "PASS"
+  },
+  "historical_evidence": {
+    "v325_v326_rewritten": false
+  },
+  "input": {
+    "deferred_adapter_storage_refs": 49,
+    "foreign_dao_refs": 23,
+    "foreign_files": 13,
+    "version": "v326"
+  },
+  "invariants": {
+    "baseline_inflation": false,
+    "business_behavior_intent": "preserved",
+    "room_schema_version": 81,
+    "schema_changed": false,
+    "server_sql_changed": false
+  },
+  "mutation_tests": {
+    "mutation_foreign_app_bridge": {
+      "status": "PASS"
+    },
+    "mutation_foreign_data_operations": {
+      "status": "PASS"
+    },
+    "mutation_foreign_feature_data_adapter": {
+      "status": "PASS"
+    },
+    "mutation_foreign_room_entity": {
+      "status": "PASS"
+    },
+    "mutation_owner_local_dao": {
+      "status": "PASS"
+    },
+    "mutation_unclassified_consumer": {
+      "status": "PASS"
+    }
+  },
+  "result": {
+    "foreign_direct_dao_access": 0,
+    "foreign_files": 0,
+    "foreign_room_entity_access": 0,
+    "infrastructure_storage_access": 2,
+    "owner_local_storage_access": 28,
+    "unclassified_persistence_access": 0
+  },
+  "session": 327,
+  "status": "BLOCKED_ENVIRONMENT"
+}

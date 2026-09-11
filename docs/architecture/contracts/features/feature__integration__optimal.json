@@ -1,0 +1,136 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.integration.optimal.domain.port.OptimalPartyMirrorPort"
+    ],
+    "external_dependencies": [
+      "implementation:libs.androidx.activity.compose",
+      "implementation:libs.androidx.compose.foundation",
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.coil.compose",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core",
+      "implementation:libs.kotlinx.serialization.core",
+      "implementation:libs.supabase.bom",
+      "implementation:libs.supabase.postgrest",
+      "testImplementation:libs.junit",
+      "testImplementation:libs.kotlinx.coroutines.test"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app"
+    ],
+    "internal_packages": [
+      "com.verto.app.feature.integration.optimal.application",
+      "com.verto.app.feature.integration.optimal.application.activityevent",
+      "com.verto.app.feature.integration.optimal.application.pendingaction",
+      "com.verto.app.feature.integration.optimal.data",
+      "com.verto.app.feature.integration.optimal.data.activityevent",
+      "com.verto.app.feature.integration.optimal.data.pendingaction",
+      "com.verto.app.feature.integration.optimal.di",
+      "com.verto.app.feature.integration.optimal.domain.model",
+      "com.verto.app.feature.integration.optimal.domain.port",
+      "com.verto.app.feature.integration.optimal.domain.repository",
+      "com.verto.app.feature.integration.optimal.navigation",
+      "com.verto.app.feature.integration.optimal.presentation"
+    ],
+    "outgoing_dependencies": [
+      ":core:audit",
+      ":core:common",
+      ":core:designsystem",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":feature:dashboard:api"
+    ],
+    "public_api": [
+      "com.verto.app.feature.integration.optimal.application.ObserveCompanyInvoiceAccessUseCase",
+      "com.verto.app.feature.integration.optimal.application.OptimalOutboxSyncParticipant",
+      "com.verto.app.feature.integration.optimal.domain.model.OPTIMAL_OUTBOX_SYNC_PARTICIPANT_KEY",
+      "com.verto.app.feature.integration.optimal.domain.port.OptimalPartyMirrorPort",
+      "com.verto.app.feature.integration.optimal.domain.port.OptimalPartyMirrorRecord",
+      "com.verto.app.feature.integration.optimal.domain.port.OptimalSyncCoordinator",
+      "com.verto.app.feature.integration.optimal.domain.port.OptimalSyncScheduler",
+      "com.verto.app.feature.integration.optimal.domain.port.OptimalSyncScope",
+      "com.verto.app.feature.integration.optimal.navigation.OptimalNavigation",
+      "com.verto.app.feature.integration.optimal.presentation.CompanyInvoicesScreen",
+      "com.verto.app.feature.integration.optimal.presentation.MaintenanceDetailsScreen",
+      "com.verto.app.feature.integration.optimal.presentation.MaintenanceRecordsScreen",
+      "com.verto.app.feature.integration.optimal.presentation.OptimalChatScreen",
+      "com.verto.app.feature.integration.optimal.presentation.OptimalCodesScreen",
+      "com.verto.app.feature.integration.optimal.presentation.OptimalCompaniesScreen",
+      "com.verto.app.feature.integration.optimal.presentation.OptimalCompanyDetailsScreen",
+      "com.verto.app.feature.integration.optimal.presentation.OptimalConversationsScreen",
+      "com.verto.app.feature.integration.optimal.presentation.OptimalHomeScreen",
+      "com.verto.app.feature.integration.optimal.presentation.SyncIssuesScreen"
+    ]
+  },
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [
+      "BackendContractBlocked",
+      "BackendNotConfigured",
+      "CompanyAlreadyLinked",
+      "CompanyUnavailable",
+      "GuardedOptimalRegistrationRepository",
+      "MaintenanceFollowUpRepository",
+      "NetworkError",
+      "OptimalClock",
+      "OptimalCompanyInvoicesRepository",
+      "OptimalCompanyRepository",
+      "OptimalHomeAccessSource",
+      "OptimalHomeLocalCounters",
+      "OptimalMaintenanceDetailsRepository",
+      "OptimalMaintenanceRecordsRepository",
+      "OptimalMaintenanceRepository",
+      "OptimalOutboxRepository",
+      "OptimalRegistrationCode",
+      "OptimalRegistrationRepository",
+      "OptimalRegistrationResult",
+      "OptimalVehicleRepository",
+      "PermissionDenied",
+      "RemoteResponseRejected",
+      "RoomMaintenanceFollowUpRepository",
+      "RoomOptimalCompanyInvoicesRepository",
+      "RoomOptimalCompanyRepository",
+      "RoomOptimalMaintenanceRecordsRepository",
+      "RoomOptimalMaintenanceRepository",
+      "RoomOptimalOutboxRepository",
+      "RoomOptimalVehicleRepository",
+      "SessionUnavailable",
+      "Success"
+    ],
+    "owned_tables": []
+  },
+  "feature": {
+    "module": ":feature:integration:optimal",
+    "name": "feature/integration/optimal",
+    "owner": ":feature:integration:optimal",
+    "purpose": "Production capability implemented by :feature:integration:optimal; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [
+      ":feature:dashboard:api"
+    ],
+    "legacy_cross_feature_debt": []
+  },
+  "provides_contracts": ["optimal.messaging.v1"],
+  "consumes_contracts": [],
+  "deprecated_contracts": [],
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "e5474be6845d25b47dbf5e8f587dd52ea3a9c3feeafb60c6d7368b4e8b3197a7",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v327"
+  }
+}

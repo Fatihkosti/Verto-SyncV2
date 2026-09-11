@@ -1,0 +1,9 @@
+PASS: Room 94 semantic cutover is FK-safe
+PASS: ClientEntity removed; inert Android compatibility tombstone only
+PASS: No runtime clientType/clientTypes authority remains
+PASS: Sync and Optimal local reads use Party V2
+PASS: Backup v6 preserves Party V2 and v4/v5 checksum compatibility
+PASS: Local Supabase migration history contains the full remote v387 cutover
+PASS migration 93->94: legacy classification erased; Party V2 and FKs preserved
+PARTY_386_MIGRATION_92_93=PASS
+PASS: Party V2 static gate complete

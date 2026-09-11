@@ -1,0 +1,20 @@
+
+PASS policy: admissionIncludesWalIndexAndRollbackReserve
+PASS policy: canonicalGroupLimitIsInclusive
+PASS policy: fetchLimitStopsAtQuotaAndRemainsConservative
+PASS policy: firstGroupExceptionDoesNotResetAtNextPage
+PASS policy: firstGroupMayBe9991000Or1001WithoutSplitting
+PASS policy: identicalReplayConsumesNoQuotaEvenWhenDiskIsFull
+PASS policy: independentAppliedYDoesNotJumpOverWaitingX
+PASS policy: invalidCoverageAndOverlappingGroupsFailClosed
+PASS policy: lastCompleteGroupNotLargestObservedRevisionDefinesCheckpoint
+PASS policy: laterGroupMustFitAndIntegerOverflowCannotGrantAdmission
+PASS policy: scopeCanCrossQuotaOnlyWhileBeforeQuotaAndByOneLegalGroup
+PASS policy: settlingXReleasesTheCoveredAppliedPrefixIncludingScopedRevisionGaps
+12 real policy test methods executed. JUnit assertion-only shim; no Android/Room/JSON claim.
+
+
+data/sync/src/main/kotlin/com/verto/app/data/sync/pull/DurableInboxApplyCoordinator.kt:233:21: error: smart cast to 'Long' is impossible, because 'change.entityVersion' is a public API property declared in different module
+                    change.entityVersion, change.revision, sha256Utf8(mapper.canonicalJson(change.payload)),
+                    ^
+

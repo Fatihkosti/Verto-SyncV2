@@ -1,0 +1,96 @@
+{
+  "checkpoint": "B09-V02",
+  "input_archive_sha256": "33c67ceab661921e0fb0e64e3f3025a195894fba36f503fe4ee0ccd0ee2f122b",
+  "modified": [
+    {
+      "path": "CHANGELOG.md",
+      "before_sha256": "e36c733de715be944e0e4db57d772f135a5c63624647fe7efd28c4e36303feb5",
+      "after_sha256": "42ec1bf93ba90bf4d9cbb44d3d6dac9fdb68599c4ea065b0b728dc31aefcffe5"
+    },
+    {
+      "path": "EVIDENCE_INDEX.md",
+      "before_sha256": "4663f4eccc18bc5e634da87b90f8b8717bba74f64da8d132143090e83e97b7ce",
+      "after_sha256": "937f7bcbf4403ebd37ae2fc3e8d4556f5f14741f5711007469c9bde6e573185a"
+    },
+    {
+      "path": "SYNC_IMPLEMENTATION_MAP.md",
+      "before_sha256": "70e976d30f0f511cf697a1e2b7d95a5ac360726369db5f1bf3ff85687d2487c3",
+      "after_sha256": "4371bcfa425929c7f568fa6cfc8fbee1b49ded4dc2bb72c194719ab71a102d10"
+    },
+    {
+      "path": "VERTO_SYNC_REPAIR_BACKLOG_AR.md",
+      "before_sha256": "ed7364b4128a0488ce6a57828afc63adf94cc674e271ebe26313a95014f8d2ab",
+      "after_sha256": "899bbe4112a44de5dc5d4ab8308287e2da6d869ab91ca66799ead3bb44fcabf7"
+    },
+    {
+      "path": "data/sync/src/androidTest/kotlin/com/verto/app/data/sync/pull/FinancialMaterializerV2InstrumentedTest.kt",
+      "before_sha256": "105e2258a397ae729525e2e0eba799e808af8ee0db82ee81196d0d76725a61fd",
+      "after_sha256": "f5109c11b28b56283af0ec55f7d5eb0b4e967d34b13dc6de4e7021adb79c82ed"
+    },
+    {
+      "path": "data/sync/src/main/kotlin/com/verto/app/data/sync/pull/FinancialMaterializationContractV2.kt",
+      "before_sha256": "5f5eb45d8ea8132a71600ff0ad8f759dc05135d1f2e06e0226b25666740b5856",
+      "after_sha256": "9f315c16b4c867dc66060e5706ae2dfe6dd02f71b919e96700d9b7602b721972"
+    },
+    {
+      "path": "data/sync/src/test/kotlin/com/verto/app/data/sync/pull/FinancialMaterializationContractV2Test.kt",
+      "before_sha256": "ccee79217eda71b56b76af721f8a099b69819dcf1c79430b303383c1482c70ad",
+      "after_sha256": "d53c5cbdf95374983f81659b4ca09b45718d9fad46ec69d25547df17e0b455cf"
+    },
+    {
+      "path": "docs/CANONICAL_DOCUMENT_MAP.md",
+      "before_sha256": "1646d1f6dbb40b7bd0ea2243797995bb5a8e388b68d517f30424b04488f55bc1",
+      "after_sha256": "67967eadee23150c52613c26313044f8265bd102dd8e2e2a343a96a47245e5f5"
+    },
+    {
+      "path": "docs/DOCUMENTATION_INVENTORY.md",
+      "before_sha256": "03cefbef85d31127f1f702925e15430f8259cd545386fb380b8cc90461cd0f1a",
+      "after_sha256": "24584bd6bb62ce5d927e503320cef34f465f293b4c9705a41d19159d29bf57d8"
+    },
+    {
+      "path": "docs/api/idempotency.md",
+      "before_sha256": "711aae2402d991acccf62d9102eb8d8a961aa8573f2125bbdcf6f0e0d83ebd70",
+      "after_sha256": "49884c2933b0b1ee85152fca6f26cc70744ee554a056f7450b1fdf983142ad7d"
+    },
+    {
+      "path": "tools/test_sync_b09_kotlin_smoke.py",
+      "before_sha256": "5ef86b835b5d3ff8b71230f7e7c85ad425875db86adadf6a5dbbedda61a6948c",
+      "after_sha256": "39c06ac6af496d7d53bfd950a0868cb305fd0c8e16cf9f2c986c4b9781f65444"
+    }
+  ],
+  "added_paths": [
+    "docs/sync-repair/evidence/B09/V02/artifact-hashes.sha256",
+    "docs/sync-repair/evidence/B09/V02/b06-producers-regression.log",
+    "docs/sync-repair/evidence/B09/V02/b06-schema-regression.log",
+    "docs/sync-repair/evidence/B09/V02/change-contract-result.json",
+    "docs/sync-repair/evidence/B09/V02/change-contract.json",
+    "docs/sync-repair/evidence/B09/V02/change-contract.log",
+    "docs/sync-repair/evidence/B09/V02/change.patch",
+    "docs/sync-repair/evidence/B09/V02/changed-files.json",
+    "docs/sync-repair/evidence/B09/V02/ci-gates/documentation-documentation.log",
+    "docs/sync-repair/evidence/B09/V02/ci-gates/documentation.status",
+    "docs/sync-repair/evidence/B09/V02/commands-and-results.md",
+    "docs/sync-repair/evidence/B09/V02/delivery-validation.json",
+    "docs/sync-repair/evidence/B09/V02/documentation-baseline.json",
+    "docs/sync-repair/evidence/B09/V02/documentation-baseline.log",
+    "docs/sync-repair/evidence/B09/V02/documentation-delta.json",
+    "docs/sync-repair/evidence/B09/V02/documentation-direct.log",
+    "docs/sync-repair/evidence/B09/V02/documentation-gate.json",
+    "docs/sync-repair/evidence/B09/V02/documentation-integrated.log",
+    "docs/sync-repair/evidence/B09/V02/input-tree.json",
+    "docs/sync-repair/evidence/B09/V02/input-validation.json",
+    "docs/sync-repair/evidence/B09/V02/kotlin-smoke-after.log",
+    "docs/sync-repair/evidence/B09/V02/local-gates.json",
+    "docs/sync-repair/evidence/B09/V02/product-tree.json",
+    "docs/sync-repair/evidence/B09/V02/runtime-environment.json",
+    "docs/sync-repair/evidence/B09/V02/runtime-preflight.log",
+    "docs/sync-repair/evidence/B09/V02/runtime-preflight.py",
+    "docs/sync-repair/evidence/B09/V02/session-report.md",
+    "docs/sync-repair/evidence/B09/V02/shared-write-before.log",
+    "docs/sync-repair/evidence/B09/V02/sqlite-model-dump.sql",
+    "docs/sync-repair/evidence/B09/V02/sqlite-static-results.json",
+    "docs/sync-repair/evidence/B09/V02/sqlite-static.log"
+  ],
+  "deleted": [],
+  "note": "New evidence hashes are in artifact-hashes.sha256, excluding that manifest itself to avoid circular hashes. Patch covers changed pre-existing text files."
+}

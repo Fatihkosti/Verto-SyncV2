@@ -1,0 +1,1782 @@
+{
+  "schemaVersion": 302,
+  "publicApiSurface": {
+    "declarationCount": 37,
+    "uniqueSymbolCount": 37,
+    "publicFunctionCount": 34,
+    "supportingTypeCount": 2,
+    "supportingPropertyCount": 1,
+    "officialVisualComponentCount": 33,
+    "publicZeroConsumerCount": 0,
+    "duplicatePublicSymbolCount": 0,
+    "declarations": [
+      {
+        "symbol": "WhatsAppIcon",
+        "kind": "prop",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/AppIcons.kt",
+        "line": 8,
+        "signature": "val WhatsAppIcon: ImageVector by lazy {",
+        "externalCallCount": 4,
+        "externalFileCount": 3,
+        "externalModuleCount": 1,
+        "files": [
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientContactTopBar.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardComponents.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardComponents.kt"
+        ],
+        "modules": [
+          "feature/party"
+        ],
+        "callSyntaxEvidence": [],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "b2cb4bba7e25c2883b229c6a6c001eb9867f1783c39c77fecb24f8da71f8dc31"
+      },
+      {
+        "symbol": "VertoButton",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/CanonicalComponents.kt",
+        "line": 33,
+        "signature": "fun VertoButton( onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true, shape: androidx.compose.ui.graphics.Shape = androidx.compose.foundation.shape.RoundedCornerShape(VertoRadius.md), colors: ButtonColors = ButtonDefaults.buttonColors( containerColor = AccentPrimary, disabledContainerColor = com.verto.app.ui.theme.DisabledContainer, ), contentPadding: PaddingValues = ButtonDefaults.ContentPadding, interactionSource: MutableInteractionSource? = null, content: @Composable androidx.compose.foundation.layout.RowScope.() -> Unit, ) {",
+        "externalCallCount": 78,
+        "externalFileCount": 45,
+        "externalModuleCount": 12,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionComponents.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchResultSections.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/onboarding/OnboardingScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/onboarding/SetupNameScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintTabContent.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/OrganizationPrintSettingsDialog.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailComponents.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionDialogs.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionOverviewSections.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionSheets.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/WithdrawFlowDialogs.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commissionreport/MarketerCommissionReportScreen.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesDialogs.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/SyncIssuesScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/BulkPriceEditScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/CategoryManagementScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListScreen.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreenComponents.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/CreateInviteScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailComponents.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeePermissionsScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeesScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientPaymentScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierPaymentScreen.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDialogs.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDraftUi.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtScreen.kt",
+          "feature/profile/src/main/kotlin/com/verto/app/feature/profile/presentation/ProfileEditDialog.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/BudgetEditorSheet.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/CashCountSheet.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/AdvancedFiltersSheet.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/CashReconciliationCard.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/CreateLogisticsShipmentScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsCenterScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailContent.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailDialogs.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailSections.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV239MovementExecutionSections.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentCostSettlementScreen.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/commission",
+          "feature/expenses",
+          "feature/integration/optimal",
+          "feature/inventory",
+          "feature/invoice",
+          "feature/organization",
+          "feature/party",
+          "feature/payment",
+          "feature/profile",
+          "feature/reports",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 1,
+        "signatureFingerprint": "81960cfb3ed9b40e52c2b6105f0876869d18fb08f95c1c8cf363def451cd9ef8"
+      },
+      {
+        "symbol": "VertoOutlinedButton",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/CanonicalComponents.kt",
+        "line": 59,
+        "signature": "fun VertoOutlinedButton( onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true, shape: androidx.compose.ui.graphics.Shape = androidx.compose.foundation.shape.RoundedCornerShape(VertoRadius.md), border: BorderStroke? = BorderStroke(VertoStroke.thin, BorderColor), colors: ButtonColors = ButtonDefaults.outlinedButtonColors(), contentPadding: PaddingValues = ButtonDefaults.ContentPadding, interactionSource: MutableInteractionSource? = null, content: @Composable androidx.compose.foundation.layout.RowScope.() -> Unit, ) {",
+        "externalCallCount": 63,
+        "externalFileCount": 35,
+        "externalModuleCount": 12,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchResultSections.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailComponents.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionDialogs.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionOverviewSections.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/WithdrawFlowDialogs.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesDialogs.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemComponents.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreenComponents.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/OrganizationSettingsScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/CreateInviteScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailComponents.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeePermissionsScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeesScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientStatementScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierStatementScreen.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDialogs.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtScreen.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/InvoiceMaintenanceSection.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/BudgetEditorSheet.kt",
+          "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/SettingsBackupSection.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailContent.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailDialogs.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailSections.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV239MovementExecutionSections.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseCard.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseStep.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237StationStep.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237Steps.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV238Steps.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/commission",
+          "feature/expenses",
+          "feature/integration/optimal",
+          "feature/inventory",
+          "feature/invoice",
+          "feature/organization",
+          "feature/party",
+          "feature/payment",
+          "feature/reports",
+          "feature/settings",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "65151bf2c1c05e637fedfa5ad794cbafd1eddaef93ad2f39e9b2f82f267808ac"
+      },
+      {
+        "symbol": "VertoOutlinedTextField",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/CanonicalComponents.kt",
+        "line": 84,
+        "signature": "fun VertoOutlinedTextField( value: String, onValueChange: (String) -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true, readOnly: Boolean = false, textStyle: TextStyle = androidx.compose.material3.LocalTextStyle.current, label: @Composable (() -> Unit)? = null, placeholder: @Composable (() -> Unit)? = null, leadingIcon: @Composable (() -> Unit)? = null, trailingIcon: @Composable (() -> Unit)? = null, prefix: @Composable (() -> Unit)? = null, suffix: @Composable (() -> Unit)? = null, supportingText: @Composable (() -> Unit)? = null, isError: Boolean = false, visualTransformation: VisualTransformation = VisualTransformation.None, keyboardOptions: KeyboardOptions = KeyboardOptions.Default, keyboardActions: KeyboardActions = KeyboardActions(), singleLine: Boolean = false, maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE, minLines: Int = 1, shape: androidx.compose.ui.graphics.Shape = androidx.compose.foundation.shape.RoundedCornerShape(VertoRadius.sm), colors: TextFieldColors = OutlinedTextFieldDefaults.colors(), ) {",
+        "externalCallCount": 81,
+        "externalFileCount": 39,
+        "externalModuleCount": 15,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchSections.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailComponents.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/AuthComponents.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionDialogs.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/WithdrawFlowDialogs.kt",
+          "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsScreen.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesDialogs.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/CompanyInvoicesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompaniesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalConversationsScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemComponents.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemSections.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/BulkPriceEditScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/CategoryManagementScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryDialogComponents.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListComponents.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListScreen.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/activeinvoices/ActiveInvoicesScreen.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreenComponents.kt",
+          "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/ChatDetailScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/CreateInviteScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientPaymentScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientsListScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierPaymentScreen.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDialogs.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtItemComponents.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/InvoiceMaintenanceSection.kt",
+          "feature/profile/src/main/kotlin/com/verto/app/feature/profile/presentation/ProfileEditDialog.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/BudgetEditorSheet.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/CashCountSheet.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailDialogs.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV239MovementPreparation.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/auth",
+          "feature/commission",
+          "feature/dashboard",
+          "feature/expenses",
+          "feature/integration/optimal",
+          "feature/inventory",
+          "feature/invoice",
+          "feature/messages",
+          "feature/organization",
+          "feature/party",
+          "feature/payment",
+          "feature/profile",
+          "feature/reports",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "557e18efeea1516846ca2ce5eef7660339ddbf87682f93d700d2d42fa62d0b92"
+      },
+      {
+        "symbol": "DateRangePickerDialog",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/DateRangePickerDialog.kt",
+        "line": 25,
+        "signature": "fun DateRangePickerDialog( initialFrom: Long?, initialTo: Long?, onConfirm: (Long, Long) -> Unit, onDismiss: () -> Unit ) {",
+        "externalCallCount": 2,
+        "externalFileCount": 2,
+        "externalModuleCount": 2,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailScreen.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionManagementScreen.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/commission"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)",
+          "fully-qualified"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "15dc9ffe182ff0b5412cb23e5a299b0ddee42f475b51d2049cf03fa299dffd55"
+      },
+      {
+        "symbol": "VertoIconButton",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt",
+        "line": 25,
+        "signature": "fun VertoIconButton( onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true, content: @Composable () -> Unit, ) {",
+        "externalCallCount": 109,
+        "externalFileCount": 61,
+        "externalModuleCount": 17,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/auditlog/AuditLogScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeEducationalContent.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeQuickActionComponents.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchSections.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintRouteScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailScreen.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionManagementScreen.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commissionreport/MarketerCommissionReportScreen.kt",
+          "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsScreen.kt",
+          "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/leaderboard/LeaderboardScreen.kt",
+          "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UsersDashboardContent.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesDialogs.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/CompanyInvoicesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceDetailsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatComponents.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompaniesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompanyDetailsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalConversationsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalHomeScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/SyncIssuesScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemSections.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/BulkPriceEditScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/CategoryManagementScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryDialogComponents.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryListComponents.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreenComponents.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListComponents.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/activeinvoices/ActiveInvoicesScreen.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreenComponents.kt",
+          "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/BenzineManagementScreen.kt",
+          "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementScreen.kt",
+          "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/ChatDetailScreen.kt",
+          "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/MessagesScreen.kt",
+          "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/presentation/NotificationsScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/OrganizationSettingsScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/CreateInviteScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeePermissionsScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeesScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientComponents.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientContactTopBar.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientStatementScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/competitor/CompetitorScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/shared/PartyDashboardComponents.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierStatementScreen.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtItemComposer.kt",
+          "feature/profile/src/main/kotlin/com/verto/app/feature/profile/presentation/ProfileEditDialog.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/ReportsScreen.kt",
+          "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/ThemesScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237Steps.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/commission",
+          "feature/dashboard",
+          "feature/expenses",
+          "feature/integration/optimal",
+          "feature/inventory",
+          "feature/invoice",
+          "feature/management",
+          "feature/messages",
+          "feature/notifications",
+          "feature/organization",
+          "feature/party",
+          "feature/payment",
+          "feature/profile",
+          "feature/reports",
+          "feature/settings",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 1,
+        "signatureFingerprint": "e646fa83af648a444ff492e2c21a44397e32238d82bd28c46bdbef228cedc94e"
+      },
+      {
+        "symbol": "VertoTopAppBar",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt",
+        "line": 41,
+        "signature": "fun VertoTopAppBar( title: @Composable () -> Unit, navigationIcon: @Composable () -> Unit = {}, actions: @Composable RowScope.() -> Unit = {}, colors: TopAppBarColors? = null, ) {",
+        "externalCallCount": 32,
+        "externalFileCount": 31,
+        "externalModuleCount": 11,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintRouteScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailScreen.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionManagementScreen.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commissionreport/MarketerCommissionReportScreen.kt",
+          "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsScreen.kt",
+          "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/leaderboard/LeaderboardScreen.kt",
+          "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UsersDashboardContent.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/CompanyInvoicesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceDetailsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompaniesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompanyDetailsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalConversationsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalHomeScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/SyncIssuesScreen.kt",
+          "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/BenzineManagementScreen.kt",
+          "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementScreen.kt",
+          "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/ChatDetailScreen.kt",
+          "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/MessagesScreen.kt",
+          "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/presentation/NotificationsScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/OrganizationSettingsScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/CreateInviteScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeePermissionsScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeesScreen.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/ReportsScreen.kt",
+          "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/ThemesScreen.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/commission",
+          "feature/dashboard",
+          "feature/expenses",
+          "feature/integration/optimal",
+          "feature/management",
+          "feature/messages",
+          "feature/notifications",
+          "feature/organization",
+          "feature/reports",
+          "feature/settings"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "c1f1660661939415d43820438573566516fd1e2018fec032357439b3e5293c38"
+      },
+      {
+        "symbol": "VertoBottomSheet",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt",
+        "line": 65,
+        "signature": "fun VertoBottomSheet( onDismissRequest: () -> Unit, modifier: Modifier = Modifier, sheetState: SheetState = rememberModalBottomSheetState(), shape: Shape = BottomSheetDefaults.ExpandedShape, containerColor: Color = BottomSheetDefaults.ContainerColor, dragHandle: @Composable (() -> Unit)? = { BottomSheetDefaults.DragHandle() }, content: @Composable ColumnScope.() -> Unit, ) {",
+        "externalCallCount": 10,
+        "externalFileCount": 10,
+        "externalModuleCount": 5,
+        "files": [
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionDialogs.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionSheets.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/CompanyInvoicesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryDialogComponents.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/BudgetEditorSheet.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/CashCountSheet.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/AdvancedFiltersSheet.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/export/UnifiedExportDialog.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseSheet.kt"
+        ],
+        "modules": [
+          "feature/commission",
+          "feature/integration/optimal",
+          "feature/inventory",
+          "feature/reports",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "d883b0c8f589e726c409aa800823fe45092624763ced7da69b2183cad062d851"
+      },
+      {
+        "symbol": "VertoTabRow",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt",
+        "line": 86,
+        "signature": "fun VertoTabRow( selectedTabIndex: Int, modifier: Modifier = Modifier, containerColor: Color, contentColor: Color, indicator: (@Composable (tabPositions: List<TabPosition>) -> Unit)? = null, tabs: @Composable () -> Unit, ) {",
+        "externalCallCount": 6,
+        "externalFileCount": 6,
+        "externalModuleCount": 4,
+        "files": [
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionSheets.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/competitor/CompetitorScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardScreen.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/ReportsScreen.kt"
+        ],
+        "modules": [
+          "feature/commission",
+          "feature/expenses",
+          "feature/party",
+          "feature/reports"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "01c78fad9fa74c8305f031f5ee3911145cd439cb95179dbde89f99bf49dc3acc"
+      },
+      {
+        "symbol": "VertoScrollableTabRow",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt",
+        "line": 115,
+        "signature": "fun VertoScrollableTabRow( selectedTabIndex: Int, modifier: Modifier = Modifier, containerColor: Color, contentColor: Color, edgePadding: Dp, indicator: (@Composable (tabPositions: List<TabPosition>) -> Unit)? = null, tabs: @Composable () -> Unit, ) {",
+        "externalCallCount": 2,
+        "externalFileCount": 2,
+        "externalModuleCount": 2,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintRouteScreen.kt",
+          "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/components/operations/InventoryHealthCard.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/reports"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "96c0ee86788fa8283c609c11faa89374606a3645a9587a0f37a1e89865e4a361"
+      },
+      {
+        "symbol": "SettingsCard",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+        "line": 47,
+        "signature": "fun SettingsCard(content: @Composable ColumnScope.() -> Unit) {",
+        "externalCallCount": 19,
+        "externalFileCount": 8,
+        "externalModuleCount": 4,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintRouteScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintTabContent.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt",
+          "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/presentation/NotificationsScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/OrganizationSettingsScreen.kt",
+          "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/InvoicePrintComponents.kt",
+          "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/SettingsBackupSection.kt",
+          "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/ThemesScreen.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/notifications",
+          "feature/organization",
+          "feature/settings"
+        ],
+        "callSyntaxEvidence": [
+          "Name { ... }",
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "0026b5d2d6a4b881634add78442a95059c55715a89752804531d78e3ba6bec97"
+      },
+      {
+        "symbol": "SettingsSectionHeader",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+        "line": 60,
+        "signature": "fun SettingsSectionHeader(title: String) {",
+        "externalCallCount": 31,
+        "externalFileCount": 6,
+        "externalModuleCount": 4,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintRouteScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintTabContent.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt",
+          "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/presentation/NotificationsScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/OrganizationSettingsScreen.kt",
+          "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/ThemesScreen.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/notifications",
+          "feature/organization",
+          "feature/settings"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "f57114c3daecfdca479e9109190bdaf53de076dfdff3cd73069de48d4c2286b0"
+      },
+      {
+        "symbol": "SettingsDivider",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+        "line": 75,
+        "signature": "fun SettingsDivider() {",
+        "externalCallCount": 16,
+        "externalFileCount": 4,
+        "externalModuleCount": 3,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintRouteScreen.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt",
+          "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/presentation/NotificationsScreen.kt",
+          "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/ThemesScreen.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/notifications",
+          "feature/settings"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "c77c53724bef52047be83140b6054176c8642a2d719597a1c5a588a245b72379"
+      },
+      {
+        "symbol": "SettingsNavRow",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+        "line": 83,
+        "signature": "fun SettingsNavRow( title: String, subtitle: String = \"\", icon: ImageVector, iconTint: Color = AccentPrimary, titleColor: Color = TextPrimary, trailingIcon: ImageVector = Icons.AutoMirrored.Filled.ArrowForward, onClick: () -> Unit, ) {",
+        "externalCallCount": 10,
+        "externalFileCount": 1,
+        "externalModuleCount": 1,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt"
+        ],
+        "modules": [
+          "app"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "af76ac114fe18cb74d98d82395f5a0bd4b76db527b523d635f40f2cc8bf4ea97"
+      },
+      {
+        "symbol": "DialogTextField",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+        "line": 135,
+        "signature": "fun DialogTextField( label: String, value: String, onValueChange: (String) -> Unit, keyboardType: KeyboardType = KeyboardType.Text, enabled: Boolean = true, modifier: Modifier = Modifier, leadingIcon: @Composable (() -> Unit)? = null, ) {",
+        "externalCallCount": 8,
+        "externalFileCount": 3,
+        "externalModuleCount": 3,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/settings/OrganizationPrintSettingsDialog.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/OrganizationSettingsScreen.kt",
+          "feature/profile/src/main/kotlin/com/verto/app/feature/profile/presentation/ProfileEditDialog.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/organization",
+          "feature/profile"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "8652c6e829ff539ce808ef5b46e001a68426244812f44adb947a9ed6b1c5f2a7"
+      },
+      {
+        "symbol": "dialogFieldColors",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+        "line": 158,
+        "signature": "fun dialogFieldColors() = OutlinedTextFieldDefaults.colors( focusedBorderColor = AccentPrimary, unfocusedBorderColor = BorderColor, focusedContainerColor = BgDeep, unfocusedContainerColor = BgDeep, focusedTextColor = TextPrimary, unfocusedTextColor = TextPrimary, focusedLabelColor = AccentPrimary, unfocusedLabelColor = TextMuted, )",
+        "externalCallCount": 4,
+        "externalFileCount": 2,
+        "externalModuleCount": 2,
+        "files": [
+          "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+          "feature/profile/src/main/kotlin/com/verto/app/feature/profile/presentation/ProfileEditDialog.kt"
+        ],
+        "modules": [
+          "core/designsystem",
+          "feature/profile"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 1,
+        "signatureFingerprint": "891204f81db26a676c27033ac157b12e504b2b0db32109a56acd0c90f9231704"
+      },
+      {
+        "symbol": "VertoLinearValueProgress",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+        "line": 63,
+        "signature": "fun VertoLinearValueProgress(progress: Float, modifier: Modifier = Modifier) {",
+        "externalCallCount": 2,
+        "externalFileCount": 2,
+        "externalModuleCount": 2,
+        "files": [
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt"
+        ],
+        "modules": [
+          "feature/party",
+          "feature/payment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "347cccd619bb006b160f89394a4973d167b1442264b5b202e14522cb89c96e45"
+      },
+      {
+        "symbol": "VertoCard",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+        "line": 87,
+        "signature": "fun VertoCard( modifier: Modifier = Modifier, onClick: (() -> Unit)? = null, shape: Shape? = null, colors: CardColors? = null, elevation: CardElevation? = null, border: BorderStroke? = null, contentPadding: PaddingValues? = null, content: @Composable ColumnScope.() -> Unit, ) {",
+        "externalCallCount": 59,
+        "externalFileCount": 31,
+        "externalModuleCount": 10,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailComponents.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionCards.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionDialogs.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionOverviewSections.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionSheets.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/WithdrawFlowDialogs.kt",
+          "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commissionreport/MarketerCommissionReportScreen.kt",
+          "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsScreen.kt",
+          "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/leaderboard/LeaderboardScreen.kt",
+          "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UsersDashboardSections.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/CompanyInvoicesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceDetailsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatComponents.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompaniesScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompanyDetailsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalConversationsScreen.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalHomeSectionCard.kt",
+          "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/SyncIssuesScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryListComponents.kt",
+          "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/BenzineManagementScreen.kt",
+          "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementIntegrationCard.kt",
+          "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/MessagesScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/CreateInviteScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailComponents.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeesScreen.kt",
+          "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/PermissionSectionCard.kt",
+          "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/InvoicePrintPreview.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningDefinitionStep.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/commission",
+          "feature/dashboard",
+          "feature/integration/optimal",
+          "feature/inventory",
+          "feature/management",
+          "feature/messages",
+          "feature/organization",
+          "feature/settings",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 1,
+        "signatureFingerprint": "cf5be62c5b7815be7a1da9346552897b505464084a499fde62fc8d8c49341b1e"
+      },
+      {
+        "symbol": "VertoTopBar",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+        "line": 148,
+        "signature": "fun VertoTopBar( title: String, onBack: (() -> Unit)? = null, backContentDescription: String? = null, actions: @Composable RowScope.() -> Unit = {}, ) {",
+        "externalCallCount": 18,
+        "externalFileCount": 18,
+        "externalModuleCount": 6,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/auditlog/AuditLogScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/BulkPriceEditScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/CategoryManagementScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListScreen.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/activeinvoices/ActiveInvoicesScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientContactTopBar.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientPaymentScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientStatementScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientsListScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/competitor/CompetitorScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierPaymentScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierStatementScreen.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPlanningScaffold.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/inventory",
+          "feature/invoice",
+          "feature/party",
+          "feature/payment",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "74af924f73f8994d8f8168ea4fbb66f0598692ea79823508d971960eeece58d2"
+      },
+      {
+        "symbol": "AmountText",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+        "line": 189,
+        "signature": "fun AmountText( amount: Double, currencyLabel: String, color: Color = GoldPrimary, large: Boolean = false, ) {",
+        "externalCallCount": 3,
+        "externalFileCount": 2,
+        "externalModuleCount": 2,
+        "files": [
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreenComponents.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt"
+        ],
+        "modules": [
+          "feature/invoice",
+          "feature/party"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "9ece120a795f9a86bb1b4a4e23db13608167bed6bb89be0a16310c3eeebbf8fc"
+      },
+      {
+        "symbol": "KpiMini",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+        "line": 218,
+        "signature": "fun KpiMini(label: String, value: String, color: Color, modifier: Modifier = Modifier) {",
+        "externalCallCount": 10,
+        "externalFileCount": 2,
+        "externalModuleCount": 1,
+        "files": [
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardScreen.kt"
+        ],
+        "modules": [
+          "feature/party"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "b3333702977c311a149e7cf6eb64f9659a88d53645037d92a7e50aa903f1f33e"
+      },
+      {
+        "symbol": "InfoChip",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+        "line": 240,
+        "signature": "fun InfoChip( icon: ImageVector, label: String, value: String, color: Color, modifier: Modifier = Modifier, ) {",
+        "externalCallCount": 3,
+        "externalFileCount": 3,
+        "externalModuleCount": 1,
+        "files": [
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/competitor/CompetitorScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardScreen.kt"
+        ],
+        "modules": [
+          "feature/party"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "c3a41043edb67df543965666790d91e024607b0d8544dff9bdafa683e8df30ec"
+      },
+      {
+        "symbol": "VertoStatusTone",
+        "kind": "type",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "line": 76,
+        "signature": "enum class VertoStatusTone {",
+        "externalCallCount": 80,
+        "externalFileCount": 12,
+        "externalModuleCount": 4,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/components/PermissionGate.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeScreenContent.kt",
+          "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+          "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgSections.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/PasswordResetSentScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237StationStep.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237Steps.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV238Steps.kt"
+        ],
+        "modules": [
+          "app",
+          "core/designsystem",
+          "feature/auth",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [],
+        "coreInternalCallCount": 58,
+        "signatureFingerprint": "2c91d8807b9eac702c14ccae5603390e5a4ad68ffce2d65f9d445b84e82260c3"
+      },
+      {
+        "symbol": "VertoStatusBanner",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "line": 123,
+        "signature": "fun VertoStatusBanner( title: String, message: String, tone: VertoStatusTone, modifier: Modifier = Modifier, actionLabel: String? = null, onAction: (() -> Unit)? = null, ) {",
+        "externalCallCount": 5,
+        "externalFileCount": 3,
+        "externalModuleCount": 2,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/components/PermissionGate.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeScreenContent.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 2,
+        "signatureFingerprint": "1e0a74f7c0f75f37d7768dd77ca8dde5d5c74806aa4075133ffb98fecac4200c"
+      },
+      {
+        "symbol": "VertoEmptyStateVariant",
+        "kind": "type",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "line": 188,
+        "signature": "enum class VertoEmptyStateVariant { Card, Plain }",
+        "externalCallCount": 12,
+        "externalFileCount": 6,
+        "externalModuleCount": 5,
+        "files": [
+          "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/CategoryManagementScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreenComponents.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreenComponents.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreen.kt"
+        ],
+        "modules": [
+          "core/designsystem",
+          "feature/expenses",
+          "feature/inventory",
+          "feature/invoice",
+          "feature/party"
+        ],
+        "callSyntaxEvidence": [],
+        "coreInternalCallCount": 5,
+        "signatureFingerprint": "8c866bbd5abf07453ebda434037936f36164efd6331288ec9201d046a2b04ae6"
+      },
+      {
+        "symbol": "VertoEmptyState",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "line": 191,
+        "signature": "fun VertoEmptyState( message: String, modifier: Modifier = Modifier, title: String? = null, icon: ImageVector? = Icons.Filled.Info, iconText: String? = null, variant: VertoEmptyStateVariant = VertoEmptyStateVariant.Card, actionLabel: String? = null, onAction: (() -> Unit)? = null, ) {",
+        "externalCallCount": 11,
+        "externalFileCount": 9,
+        "externalModuleCount": 6,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeActivityFeed.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionComponents.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeQuickActions.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/CategoryManagementScreen.kt",
+          "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreenComponents.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreenComponents.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/expenses",
+          "feature/inventory",
+          "feature/invoice",
+          "feature/party",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "54e620eafb95cdd2665020086f0a6b57189671df76bb7714558736b1239c900c"
+      },
+      {
+        "symbol": "VertoLoadingState",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "line": 267,
+        "signature": "fun VertoLoadingState( message: String, modifier: Modifier = Modifier, ) {",
+        "externalCallCount": 5,
+        "externalFileCount": 4,
+        "externalModuleCount": 4,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/components/PermissionGate.kt",
+          "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/invoice",
+          "feature/payment",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 2,
+        "signatureFingerprint": "3087195aa5f511025649129dec949b19736733b7caf3e8f01c11d6dbda63985c"
+      },
+      {
+        "symbol": "VertoConfirmationDialog",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "line": 298,
+        "signature": "fun VertoConfirmationDialog( title: String, message: String, confirmLabel: String, onConfirm: () -> Unit, onDismiss: () -> Unit, destructive: Boolean = false, dismissLabel: String = stringResource(R.string.verto_action_cancel), ) {",
+        "externalCallCount": 3,
+        "externalFileCount": 1,
+        "externalModuleCount": 1,
+        "files": [
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningScreen.kt"
+        ],
+        "modules": [
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "dd1dd72a8f7496dfb79dc1a10a11d9e77e5a3828cfe4bb8f7929e05a7267cd59"
+      },
+      {
+        "symbol": "VertoTextField",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "line": 103,
+        "signature": "fun VertoTextField( value: String, onValueChange: (String) -> Unit, label: String, modifier: Modifier = Modifier, placeholder: String = \"\", isRequired: Boolean = false, isOptional: Boolean = false, isError: Boolean = false, leadingIcon: @Composable (() -> Unit)? = null, trailingIcon: @Composable (() -> Unit)? = null, trailingText: String? = null, singleLine: Boolean = true, keyboardType: KeyboardType = KeyboardType.Text, imeAction: ImeAction = ImeAction.Next, keyboardActions: KeyboardActions = KeyboardActions(), visualTransformation: VisualTransformation = VisualTransformation.None, supportingText: String? = null, errorText: String? = null, successText: String? = null, enabled: Boolean = true, readOnly: Boolean = false, accessibilityDescription: String? = null, ) {",
+        "externalCallCount": 85,
+        "externalFileCount": 18,
+        "externalModuleCount": 7,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeExpenseDialog.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeScreenSupport.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/onboarding/SetupNameScreen.kt",
+          "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgSections.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/PasswordResetSentScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+          "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesDialogs.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientComponents.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDialogs.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningDefinitionStep.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237StationStep.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV238Steps.kt"
+        ],
+        "modules": [
+          "app",
+          "core/designsystem",
+          "feature/auth",
+          "feature/expenses",
+          "feature/party",
+          "feature/payment",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 1,
+        "signatureFingerprint": "0bfe58d70d46c6830b08efc236a75cb7d9f49b9a04c059edf6b76554d81c05d1"
+      },
+      {
+        "symbol": "VertoPasswordField",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "line": 225,
+        "signature": "fun VertoPasswordField( value: String, onValueChange: (String) -> Unit, label: String, modifier: Modifier = Modifier, placeholder: String = \"\", isRequired: Boolean = false, isError: Boolean = false, imeAction: ImeAction = ImeAction.Done, keyboardActions: KeyboardActions = KeyboardActions(), supportingText: String? = null, errorText: String? = null, successText: String? = null, enabled: Boolean = true, readOnly: Boolean = false, accessibilityDescription: String? = null, showPasswordDescription: String = stringResource(R.string.verto_password_show), hidePasswordDescription: String = stringResource(R.string.verto_password_hide), ) {",
+        "externalCallCount": 7,
+        "externalFileCount": 4,
+        "externalModuleCount": 1,
+        "files": [
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgSections.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/ResetPasswordScreen.kt"
+        ],
+        "modules": [
+          "feature/auth"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "d960493896a62ff903c117314956c4cfebfbd2e3f9816dc59c1ac94e4dc28f0f"
+      },
+      {
+        "symbol": "VertoPrimaryButton",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "line": 287,
+        "signature": "fun VertoPrimaryButton( text: String, onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true, isLoading: Boolean = false, loadingDescription: String = stringResource(R.string.verto_loading), ) {",
+        "externalCallCount": 23,
+        "externalFileCount": 19,
+        "externalModuleCount": 5,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeEducationalContent.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeExpenseDialog.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionDetails.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeQuickActionComponents.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeScreenSupport.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgSections.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/PasswordResetSentScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/ResetPasswordScreen.kt",
+          "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientScreen.kt",
+          "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPartnerDirectoryScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPlanningScaffold.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailContent.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseSheet.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV230Steps.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentReceivingScreen.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/auth",
+          "feature/party",
+          "feature/payment",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "abf493927eb09648e36a2a8c1f45e66e6237bd3379df90c7f48590153e159707"
+      },
+      {
+        "symbol": "VertoSecondaryButton",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "line": 331,
+        "signature": "fun VertoSecondaryButton( text: String, onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true, ) {",
+        "externalCallCount": 23,
+        "externalFileCount": 14,
+        "externalModuleCount": 3,
+        "files": [
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeExpenseDialog.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionComponents.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionDetails.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeQuickActionComponents.kt",
+          "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeScreenSupport.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsFormControls.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPlanningScaffold.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailContent.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailSections.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseStep.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV230Steps.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentReceivingScreen.kt"
+        ],
+        "modules": [
+          "app",
+          "feature/auth",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "08d6911b5304e16c719c95ab4d5612f44431c43a60c0176bed17484805f30190"
+      },
+      {
+        "symbol": "VertoInlineStatus",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "line": 353,
+        "signature": "fun VertoInlineStatus( message: String, tone: VertoStatusTone, modifier: Modifier = Modifier, ) {",
+        "externalCallCount": 16,
+        "externalFileCount": 7,
+        "externalModuleCount": 2,
+        "files": [
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgSections.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/PasswordResetSentScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237StationStep.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237Steps.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV238Steps.kt"
+        ],
+        "modules": [
+          "feature/auth",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "81644632a62d0f647a70b7a6be1725475973f13f00bde7a3196700124aa9db9c"
+      },
+      {
+        "symbol": "VertoFormSectionHeader",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "line": 392,
+        "signature": "fun VertoFormSectionHeader( title: String, modifier: Modifier = Modifier, description: String? = null, ) {",
+        "externalCallCount": 4,
+        "externalFileCount": 2,
+        "externalModuleCount": 1,
+        "files": [
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgSections.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt"
+        ],
+        "modules": [
+          "feature/auth"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "2c5017acad4d79ea14103be9ec3d590b9386325e6d8c5d5703973bcee8c02cde"
+      },
+      {
+        "symbol": "VertoStepIndicator",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "line": 418,
+        "signature": "fun VertoStepIndicator( currentStep: Int, totalSteps: Int, modifier: Modifier = Modifier, label: String? = null, ) {",
+        "externalCallCount": 2,
+        "externalFileCount": 2,
+        "externalModuleCount": 1,
+        "files": [
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgContent.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt"
+        ],
+        "modules": [
+          "feature/auth"
+        ],
+        "callSyntaxEvidence": [
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "be6c10e8b8627634b944deb780dbb14d597642e9559c02d0e476eb27514e82ff"
+      },
+      {
+        "symbol": "VertoFormCard",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "line": 458,
+        "signature": "fun VertoFormCard( modifier: Modifier = Modifier, contentPadding: PaddingValues = PaddingValues(VertoSpacing.xl), contentSpacing: Dp = VertoSpacing.md, content: @Composable ColumnScope.() -> Unit, ) {",
+        "externalCallCount": 15,
+        "externalFileCount": 9,
+        "externalModuleCount": 2,
+        "files": [
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgContent.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/PasswordResetSentScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/ResetPasswordScreen.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237StationStep.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237Steps.kt",
+          "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV238Steps.kt"
+        ],
+        "modules": [
+          "feature/auth",
+          "feature/shipment"
+        ],
+        "callSyntaxEvidence": [
+          "Name { ... }",
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "3cc86c2c2ce272c8266c1a6a5b61c816de2caf7c6cb018ba03795556862ac1fb"
+      },
+      {
+        "symbol": "VertoAuthScaffold",
+        "kind": "fun",
+        "file": "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoScreenScaffolds.kt",
+        "line": 38,
+        "signature": "fun VertoAuthScaffold( modifier: Modifier = Modifier, contentMaxWidth: Dp = VertoComponentSize.formContentMaxWidth, contentPadding: PaddingValues = PaddingValues( horizontal = VertoSize.screenHorizontalPadding, vertical = VertoSpacing.xxl, ), verticalArrangement: Arrangement.Vertical = Arrangement.Top, content: @Composable ColumnScope.() -> Unit, ) {",
+        "externalCallCount": 5,
+        "externalFileCount": 5,
+        "externalModuleCount": 1,
+        "files": [
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgContent.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/PasswordResetSentScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+          "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/ResetPasswordScreen.kt"
+        ],
+        "modules": [
+          "feature/auth"
+        ],
+        "callSyntaxEvidence": [
+          "Name { ... }",
+          "Name(...)"
+        ],
+        "coreInternalCallCount": 0,
+        "signatureFingerprint": "6c6ab4fcc86065e46560b287f9ad08276e82458397b9b9c1794606e9dc99c822"
+      }
+    ]
+  },
+  "components": {
+    "Button": {
+      "count": 4,
+      "files": [
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/CanonicalComponents.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt"
+      ]
+    },
+    "OutlinedButton": {
+      "count": 2,
+      "files": [
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/CanonicalComponents.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt"
+      ]
+    },
+    "TextButton": {
+      "count": 255,
+      "files": [
+        "app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt",
+        "app/src/main/kotlin/com/verto/app/ui/components/ReportsFilterBar.kt",
+        "app/src/main/kotlin/com/verto/app/ui/integration/optimal/OptimalCompanyInvoiceRouteScreen.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/auditlog/AuditLogScreen.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeEducationalContent.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/onboarding/OnboardingScreen.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintRouteScreen.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/settings/InvoicePrintTabContent.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/settings/OrganizationPrintSettingsDialog.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailComponents.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailScreen.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/DateRangePickerDialog.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgSections.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/PasswordResetSentScreen.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionDialogs.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionManagementScreen.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/WithdrawFlowDialogs.kt",
+        "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsScreen.kt",
+        "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UsersDashboardSections.kt",
+        "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/CompanyInvoicesScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalHomeScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemComponents.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemContent.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/BulkPriceEditScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/CategoryManagementScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryDialogComponents.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListScreen.kt",
+        "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/activeinvoices/ActiveInvoicesScreen.kt",
+        "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt",
+        "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementScreen.kt",
+        "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/ChatDetailScreen.kt",
+        "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/MessagesScreen.kt",
+        "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/presentation/NotificationsScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/OrganizationSettingsScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/CreateInviteScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailComponents.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeePermissionsScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientComponents.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientDashboardScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientPaymentScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientStatementScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientsListScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/competitor/CompetitorScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierDashboardScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierPaymentScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierStatementScreen.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDialogs.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDraftUi.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtItemComponents.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtScreenEffects.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt",
+        "feature/profile/src/main/kotlin/com/verto/app/feature/profile/presentation/ProfileEditDialog.kt",
+        "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/bottomsheets/CashCountSheet.kt",
+        "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/components/core/AdvancedFiltersSheet.kt",
+        "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/BudgetVsActualCard.kt",
+        "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/SettingsBackupSection.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/CreateLogisticsShipmentScreen.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsFormControls.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailContent.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailDialogs.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailSections.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV239MovementPreparation.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningDefinitionStep.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseCard.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseSheet.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseStep.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237StationStep.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237Steps.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV238Steps.kt"
+      ]
+    },
+    "OutlinedTextField": {
+      "count": 3,
+      "files": [
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/CanonicalComponents.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SettingsPrimitives.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt"
+      ]
+    },
+    "TextField": {
+      "count": 0,
+      "files": []
+    },
+    "Checkbox": {
+      "count": 11,
+      "files": [
+        "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/BulkPriceEditScreen.kt",
+        "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/PermissionSectionCard.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientPaymentComponents.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreen.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV239MovementPreparation.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseCard.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseSheet.kt"
+      ]
+    },
+    "RadioButton": {
+      "count": 2,
+      "files": [
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237Steps.kt"
+      ]
+    },
+    "Switch": {
+      "count": 5,
+      "files": [
+        "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/PermissionSectionCard.kt"
+      ]
+    },
+    "IconButton": {
+      "count": 3,
+      "files": [
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt"
+      ]
+    },
+    "AlertDialog": {
+      "count": 84,
+      "files": [
+        "app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/auditlog/AuditLogScreen.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/settings/OrganizationPrintSettingsDialog.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailComponents.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionDialogs.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/WithdrawFlowDialogs.kt",
+        "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsScreen.kt",
+        "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemComponents.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/AddEditItemContent.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/BulkPriceEditScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/CategoryManagementScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryDialogComponents.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/pricelist/PriceListScreen.kt",
+        "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt",
+        "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/ChatDetailScreen.kt",
+        "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/MessagesScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailComponents.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeePermissionsScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientPaymentScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientsListScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierPaymentScreen.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDialogs.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDraftUi.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtItemComponents.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtScreenEffects.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt",
+        "feature/profile/src/main/kotlin/com/verto/app/feature/profile/presentation/ProfileEditDialog.kt",
+        "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/SettingsBackupSection.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/CreateLogisticsShipmentScreen.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsFormControls.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailDialogs.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailSections.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV239MovementPreparation.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseSheet.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237Steps.kt"
+      ]
+    },
+    "ModalBottomSheet": {
+      "count": 1,
+      "files": [
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/MaterialWrappers.kt"
+      ]
+    },
+    "LinearProgressIndicator": {
+      "count": 7,
+      "files": [
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchScreen.kt",
+        "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreenComponents.kt",
+        "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/ChatDetailScreen.kt",
+        "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/components/financial/BudgetVsActualCard.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2OperationalComponents.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237StationStep.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV238Steps.kt"
+      ]
+    },
+    "CircularProgressIndicator": {
+      "count": 51,
+      "files": [
+        "app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt",
+        "app/src/main/kotlin/com/verto/app/ui/integration/optimal/OptimalCompanyInvoiceRouteScreen.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/auditlog/AuditLogScreen.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeQuickActionComponents.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/settings/OrganizationPrintSettingsDialog.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/settings/SettingsRouteScreen.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/WithdrawFlowDialogs.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commissionreport/MarketerCommissionReportScreen.kt",
+        "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/leaderboard/LeaderboardScreen.kt",
+        "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UsersDashboardSections.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/CompanyInvoicesScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceDetailsScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatComponents.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompaniesScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompanyDetailsScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalConversationsScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalHomeScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/SyncIssuesScreen.kt",
+        "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/activeinvoices/ActiveInvoicesScreen.kt",
+        "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementScreen.kt",
+        "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/ChatDetailScreen.kt",
+        "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/MessagesScreen.kt",
+        "feature/notifications/src/main/kotlin/com/verto/app/feature/notifications/presentation/NotificationsScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/OrganizationSettingsScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/CreateInviteScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeePermissionsScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeesScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientsListScreen.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDraftUi.kt",
+        "feature/profile/src/main/kotlin/com/verto/app/feature/profile/presentation/ProfileEditDialog.kt",
+        "feature/reports/src/main/kotlin/com/verto/app/feature/reports/presentation/ReportsScreen.kt",
+        "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/SettingsBackupSection.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseStep.kt"
+      ]
+    },
+    "VertoCard": {
+      "count": 60,
+      "files": [
+        "app/src/main/kotlin/com/verto/app/ui/components/NavigationDrawerContent.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailComponents.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/SharedComponents.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionCards.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionDialogs.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionOverviewSections.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/CommissionSheets.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commission/WithdrawFlowDialogs.kt",
+        "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commissionreport/MarketerCommissionReportScreen.kt",
+        "feature/dashboard/src/main/kotlin/com/verto/app/feature/dashboard/presentation/education/EducationalTopicsScreen.kt",
+        "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/leaderboard/LeaderboardScreen.kt",
+        "feature/dashboard/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UsersDashboardSections.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/CompanyInvoicesScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceDetailsScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceRecordsScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalChatComponents.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCodesScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompaniesScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalCompanyDetailsScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalConversationsScreen.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/OptimalHomeSectionCard.kt",
+        "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/SyncIssuesScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryListComponents.kt",
+        "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/BenzineManagementScreen.kt",
+        "feature/management/src/main/kotlin/com/verto/app/feature/management/presentation/ManagementIntegrationCard.kt",
+        "feature/messages/src/main/kotlin/com/verto/app/ui/screens/messages/MessagesScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/CreateInviteScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeeDetailComponents.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/EmployeesScreen.kt",
+        "feature/organization/src/main/kotlin/com/verto/app/feature/organization/presentation/team/PermissionSectionCard.kt",
+        "feature/settings/src/main/kotlin/com/verto/app/feature/settings/presentation/InvoicePrintPreview.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningDefinitionStep.kt"
+      ]
+    },
+    "VertoTextField": {
+      "count": 86,
+      "files": [
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeExpenseDialog.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeScreenSupport.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/onboarding/SetupNameScreen.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgSections.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/PasswordResetSentScreen.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+        "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesDialogs.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientComponents.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtDialogs.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningDefinitionStep.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV237StationStep.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV238Steps.kt"
+      ]
+    },
+    "VertoPrimaryButton": {
+      "count": 24,
+      "files": [
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeEducationalContent.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeExpenseDialog.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionDetails.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeQuickActionComponents.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeScreenSupport.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/JoinOrgSections.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/PasswordResetSentScreen.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/ResetPasswordScreen.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/addclient/AddEditClientScreen.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/payment/AddPaymentScreen.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPartnerDirectoryScreen.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPlanningScaffold.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailContent.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseSheet.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV230Steps.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentReceivingScreen.kt"
+      ]
+    },
+    "VertoSecondaryButton": {
+      "count": 24,
+      "files": [
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeExpenseDialog.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionComponents.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionDetails.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeQuickActionComponents.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeScreenSupport.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/VertoFormComponents.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/LoginScreen.kt",
+        "feature/auth/src/main/kotlin/com/verto/app/feature/auth/presentation/RegisterScreen.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsFormControls.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPlanningScaffold.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailContent.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsShipmentDetailSections.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningPurchaseStep.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentPlanningV230Steps.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/ShipmentReceivingScreen.kt"
+      ]
+    },
+    "VertoStatusBanner": {
+      "count": 6,
+      "files": [
+        "app/src/main/kotlin/com/verto/app/ui/components/PermissionGate.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeScreenContent.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt"
+      ]
+    },
+    "VertoLoadingState": {
+      "count": 6,
+      "files": [
+        "app/src/main/kotlin/com/verto/app/ui/components/PermissionGate.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreen.kt",
+        "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtScreen.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt"
+      ]
+    },
+    "VertoEmptyState": {
+      "count": 12,
+      "files": [
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeActivityFeed.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomePendingActionComponents.kt",
+        "app/src/main/kotlin/com/verto/app/ui/screens/home/HomeQuickActions.kt",
+        "core/designsystem/src/main/kotlin/com/verto/app/ui/components/UiStateComponents.kt",
+        "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/CategoryManagementScreen.kt",
+        "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryScreenComponents.kt",
+        "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/invoice/InvoiceScreenComponents.kt",
+        "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreen.kt",
+        "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Components.kt"
+      ]
+    }
+  },
+  "localComponentDeclarations": {
+    "Content": [
+      "app/src/main/kotlin/com/verto/app/ui/screens/home/search/HomeSearchViewModel.kt",
+      "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PresentationModels.kt",
+      "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PresentationModels.kt",
+      "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PresentationModels.kt",
+      "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PresentationModels.kt",
+      "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PresentationModels.kt",
+      "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PresentationModels.kt",
+      "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PresentationModels.kt"
+    ],
+    "InvoiceCard": [
+      "feature/invoice/src/main/kotlin/com/verto/app/feature/invoice/presentation/activeinvoices/ActiveInvoicesScreen.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt"
+    ],
+    "InvoiceItemRow": [
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/presentation/MaintenanceDetailsScreen.kt",
+      "feature/payment/src/main/kotlin/com/verto/app/feature/payment/presentation/adddebt/AddDebtItemComponents.kt"
+    ],
+    "MessageConversationSummaryRow": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/MessageConversationDao.kt",
+      "feature/messages/src/main/kotlin/com/verto/app/feature/messages/data/RoomMessageOwnerAdapter.kt"
+    ],
+    "MovementRow": [
+      "feature/expenses/src/main/kotlin/com/verto/app/ui/screens/expenses/ExpensesScreen.kt",
+      "feature/inventory/src/main/kotlin/com/verto/app/feature/inventory/presentation/inventory/InventoryDialogComponents.kt"
+    ],
+    "OperationalMaintenanceFollowUpRow": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/OptimalMaintenanceFollowUpDao.kt",
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/RoomMaintenanceFollowUpRepository.kt"
+    ],
+    "OptimalCompanyInvoiceReadRow": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/OptimalCompanyInvoiceReadDao.kt",
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/RoomOptimalCompanyInvoicesRepository.kt"
+    ],
+    "OptimalCompanyReadRow": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/OptimalCompanyReadDao.kt",
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/RoomOptimalCompanyRepository.kt"
+    ],
+    "OptimalMaintenanceAuditRow": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/OptimalMaintenanceDetailsReadDao.kt",
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/OptimalMaintenanceInvoiceQueryAdapter.kt"
+    ],
+    "OptimalMaintenanceDetailsHeaderRow": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/OptimalMaintenanceDetailsReadDao.kt",
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/OptimalMaintenanceInvoiceQueryAdapter.kt"
+    ],
+    "OptimalMaintenanceImageReadRow": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/OptimalMaintenanceDetailsReadDao.kt",
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/OptimalMaintenanceInvoiceQueryAdapter.kt",
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/OptimalMaintenanceInvoiceQueryAdapter.kt"
+    ],
+    "OptimalMaintenanceInvoiceItemRow": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/OptimalMaintenanceDetailsReadDao.kt",
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/OptimalMaintenanceInvoiceQueryAdapter.kt"
+    ],
+    "OptimalMaintenancePaymentRow": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/OptimalMaintenanceDetailsReadDao.kt",
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/OptimalMaintenanceInvoiceQueryAdapter.kt"
+    ],
+    "OptimalMaintenanceRecordReadRow": [
+      "data/database/src/main/kotlin/com/verto/app/data/local/dao/OptimalMaintenanceReadDao.kt",
+      "feature/integration/optimal/src/main/kotlin/com/verto/app/feature/integration/optimal/data/RoomOptimalMaintenanceRecordsRepository.kt"
+    ],
+    "ReminderDialog": [
+      "app/src/main/kotlin/com/verto/app/ui/screens/usersdashboard/UserDashboardDetailComponents.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/client/ClientScreenComponents.kt"
+    ],
+    "SummaryCard": [
+      "feature/commission/src/main/kotlin/com/verto/app/ui/screens/commissionreport/MarketerCommissionReportScreen.kt",
+      "feature/party/src/main/kotlin/com/verto/app/feature/party/presentation/supplier/SupplierPaymentScreen.kt"
+    ]
+  }
+}

@@ -1,0 +1,1560 @@
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,3 +1,12 @@
++## Verto sync repair B13-V01 — sealed bootstrap over protected local work; acceptance blocked — 2026-09-11
++- Added durable `STAGED` → `STAGED_VERIFIED` bootstrap states, schema 101 seal fields, snapshot digest/coverage/high-watermark/delta-token verification, and resumable staging.
++- Added full unresolved-work protection manifest across unified/Party/financial/inventory/Optimal outboxes, attachments, pending references, frozen mutation/batch bytes, and captured local-content generations.
++- Promotion now rechecks `SyncPendingProtection` per row inside the cutover transaction; protected rows remain local as `WAITING_LOCAL`, unprotected rows use REMOTE_APPLY, and applied server authority is written only after materialization.
++- Added explicit tombstone policy/version checks and kept absence-pruning disabled for financial/inventory/local rows without proven deletion authority.
++- Reworked M03 gating so bootstrap staging may progress while migration evidence is unresolved, destructive promotion/pull remain blocked, and unrelated prepared push work still gets an independent push opportunity.
++- B13 static 48/48, native SQLite, and B06/B11/B12 regression precursors PASS. Gradle/Room/Android could not run because Gradle 8.9 is unavailable offline; B08 server seal fields are also absent from checked-in SQL.
++- G-B13 remains BLOCKED; T18/T31–T34/T46 remain NOT_RUN. No live SQL, production data, APK, GitHub or Drive action occurred. Delivery remains WIP_NOT_RELEASE_READY.
++
+ ## Verto sync repair B12-V01 — mutable/versioned expense implemented; integration acceptance blocked — 2026-09-11
+ - Kept expense identity stable across update/VOID and added versioned before/after revision intent with hashes, actor, captured base version, and append-only local/server history.
+ - Frozen the expense revision and its cash delta in the producer transaction; expense and cash mutations share one batch/dependency chain so retry does not recompute from newer state.
+--- a/EVIDENCE_INDEX.md
++++ b/EVIDENCE_INDEX.md
+@@ -3,6 +3,17 @@
+ This index belongs to plan `VERTO-SYNC-REPAIR-BACKLOG-01`. It records evidence
+ locations and runnable project commands; it does not promote an unexecuted Txx
+ test to PASS.
++
++## B13-V01
++
++- Session evidence: `docs/sync-repair/evidence/B13/V01/`
++- Static safety gate: `static-results.txt` — 48/48 PASS.
++- Native SQLite migration/rollback precursor: `sqlite-results.txt` — PASS.
++- Regression precursors: `regression-results.txt` — B06/B11/B12 PASS.
++- Gradle attempt: `gradle-first-failure.txt` — BLOCKED because Gradle 8.9 wrapper distribution is unavailable without network.
++- Server contract check: checked-in migrations contain no B13 `snapshot_digest_sha256` / `coverage_aggregate_types` / `delta_token`; live acceptance remains blocked by B08.
++- `verification-summary.json`, `product-tree.json`, `changed-files.json`, `change.patch`, and `artifact-hashes.sha256` preserve exact B13-V01 evidence.
++- G-B13 is BLOCKED; T18/T31–T34/T46 remain NOT_RUN.
+ 
+ ## B01-V01
+ 
+--- a/SYNC_IMPLEMENTATION_MAP.md
++++ b/SYNC_IMPLEMENTATION_MAP.md
+@@ -1,6 +1,6 @@
+ # Verto sync repair implementation map
+ 
+-This map is current through `B12-V01` local implementation. The financial materializer, durable Inbox, explicit conflict-review path, and mutable/versioned expense path are wired in production source, but G-B09/G-B10/G-B11/G-B12 validation is BLOCKED. Earlier verification cells are historical evidence, not current full-build/Room PASS.
++This map is current through `B13-V01` local implementation. The financial materializer, durable Inbox, explicit conflict-review path, mutable/versioned expense path, and sealed bootstrap protection path are wired in production source, but G-B09/G-B10/G-B11/G-B12/G-B13 validation is BLOCKED. Earlier verification cells are historical evidence, not current full-build/Room PASS.
+ 
+ | Contract area | Production implementation | Verification |
+ |---|---|---|
+@@ -14,6 +14,19 @@
+ | Retry immutability | `UnifiedFinancialOwner310Route.prepare` accepts only the persisted outbox row and registry; no database dependency | `UnifiedFinancialOwner310RouteV2Test` |
+ 
+ The PostgreSQL application, v2 remote round-trip and two-device scenarios remain owned by B07/B08/B20. B09 source implementation is present below; actual Room/Hilt/Gradle execution remains unverified.
++
++## B13 sealed bootstrap and protected-local promotion boundary
++
++| Requirement | Actual implementation | Evidence / limitation |
++|---|---|---|
++| Durable sealed staging | `SyncRecoveryEntities.kt`; `AppDatabaseMigrations100To101.kt`; `BootstrapSealPolicy.kt`; `UnifiedSyncRecoveryEngine.kt` | count/digest/exact 35-type coverage/high-watermark/delta-token must verify before `STAGED_VERIFIED`; static/native SQLite PASS; Room NOT_RUN |
++| Protected intent/content seal | `RecoveryProtectionManifest.kt`; `SyncPendingProtection.kt`; frozen generation/reference tables | hashes unresolved owner rows, attachments, frozen packets/batches, pending references and producer-captured business content hashes; actual Room before/after T33 NOT_RUN |
++| Safe promotion | `UnifiedSyncSnapshotApplier.kt` | rechecks protection per row inside cutover; protected remote rows become `WAITING_LOCAL`; unprotected rows apply remotely; no absence prune |
++| Tombstones/version authority | `UnifiedSyncSnapshotApplier.kt`; `UnifiedRemoteMaterialization.kt` | explicit tombstone policy + version required for tombstones; non-financial applied version is recorded only after materialization in same transaction |
++| M03 coexistence | `SyncManager.kt`; `SyncManagerPorts.kt` | migration-review evidence blocks promotion/pull but permits staging and one independent prepared push; JVM tests supplied, Gradle NOT_RUN |
++| Server seal | `UnifiedSyncBootstrapWire.kt`; `SupabaseUnifiedSyncBootstrapRemote` | client fails closed when seal fields are absent; checked-in B08 SQL has not implemented them, so live promotion/T18/T31–T34 are BLOCKED |
++
++B13 is locally implemented but not accepted. `docs/sync-repair/evidence/B13/V01/` is authoritative for the 48 static checks, native SQLite precursor, regression results, and environment/server blockers.
+ 
+ ## B09 implementation and current verification boundary
+ 
+--- a/VERTO_SYNC_REPAIR_BACKLOG_AR.md
++++ b/VERTO_SYNC_REPAIR_BACKLOG_AR.md
+@@ -34,20 +34,20 @@
+ EXECUTION_BRANCH: NO_GIT_TREE_HASH_MODE
+ LAST_WORKING_PRODUCT_COMMIT: null
+ LAST_VERIFIED_PRODUCT_COMMIT: null
+-LAST_PRODUCT_TREE_SHA256: 150e580c12b9d1609f7cb4a7b48eafe680d7bfa0488561225a46b395238e035e
+-WORKTREE_CHECKPOINT: B12-V01
++LAST_PRODUCT_TREE_SHA256: 158fccae5d886f47b1101453d64406522512e8666a2b5cbcf0be6cdfad5a9711
++WORKTREE_CHECKPOINT: B13-V01
+ OVERALL_STATUS: IN_PROGRESS_WITH_BLOCKERS
+ EXECUTION_MODE: EXECUTION_TREE_HASH_MODE
+-CURRENT_SESSION: B12
+-CURRENT_TASK: B12.05
++CURRENT_SESSION: B13
++CURRENT_TASK: B13.05
+ CURRENT_VISIT: 1
+ LAST_COMPLETED_SESSION: B06
+-LAST_CHECKPOINT_ID: B12-V01
+-NEXT_SESSION: B12
+-NEXT_TASK: B12.01
+-NEXT_ACTION: 'B12.01: شغّل Gradle/Room على الشجرة الحالية ثم T21/T27، وثبّت expense_revision_history وcash facts؛ بعد توفر B07 اختبر SQL الذري لمجموعة expense+cash؛ لا تغلق G-B12 أو R08 قبل الدليل الفعلي.'
+-NEXT_ACTION_PRECONDITIONS: 'استأنف B12-V01؛ يلزم Gradle8.9 واعتماديات المشروع وAndroid SDK/Room وجهاز أو محاكي؛ ويلزم B07 atomic server batch وPostgreSQL معزول لإثبات المسار النقدي؛ الأوامر في evidence/B12/V01/commands-and-results.md؛ لا SQL حي أو نشر تم.'
+-RESUME_FROM: 'طلب المستخدم نفذ b12 سمح بتنفيذها محليًا رغم B09/B11 المعلقتين؛ mutable/versioned expense والنية المجمدة وdelta النقدي وhistory المحلي/SQL ومطبق الاستلام مكتوبة؛ static/SQLite/schema/pure-Kotlin PASS فقط؛ Gradle/Room/T21/T27/SQL الذري/G-B12 BLOCKED.'
++LAST_CHECKPOINT_ID: B13-V01
++NEXT_SESSION: B13
++NEXT_TASK: B13.01
++NEXT_ACTION: 'B13.01: استأنف قبول B13 على بيئة Gradle8.9/Android/Room؛ شغّل migration100→101 واختبارات recovery/kill/T32–T34. بعد تنفيذ B08 seal fields شغّل T31/T18 والتكامل الفعلي؛ لا تبدأ B14 ولا تغلق G-B13 قبل الدليل.'
++NEXT_ACTION_PRECONDITIONS: 'استأنف B13-V01؛ يلزم Gradle8.9 واعتماديات المشروع وAndroid SDK/Room ثم B08 server bootstrap seal/digest/coverage/high-watermark/delta-token وتكامل فعلي؛ الأوامر في evidence/B13/V01/commands-and-results.md؛ لا SQL حي أو نشر تم.'
++RESUME_FROM: 'طلب المستخدم نفذ التالي بعد B12؛ B13 مكتوبة محليًا: staging دائم، seal كامل، manifest حماية محتوى، WAITING_LOCAL، version authority، tombstone fail-closed، M03 promotion gate واستئناف transient/auth. static48/48 وSQLite/regressions PASS؛ Gradle/Room وB08/live T18/T31–T34/G-B13 BLOCKED.'
+ COMPLETED_SESSIONS: 5
+ TOTAL_SESSIONS: 22
+ COMPLETED_TASKS: 28
+@@ -58,7 +58,7 @@
+ TESTS_BLOCKED: 0
+ TESTS_NOT_RUN: 50
+ TESTS_RECHECK_REQUIRED: 0
+-ACTIVE_BLOCKER_IDS: [B02-BLK-01, B02-BLK-02, B09-BLK-01, B10-BLK-01, B10-BLK-02, B11-BLK-01, B12-BLK-01, B12-BLK-02]
++ACTIVE_BLOCKER_IDS: [B02-BLK-01, B02-BLK-02, B09-BLK-01, B10-BLK-01, B10-BLK-02, B11-BLK-01, B12-BLK-01, B12-BLK-02, B13-BLK-01, B13-BLK-02]
+ WORK_IN_FLIGHT: []
+ BACKUP_GATE: BLOCKED_BACKUP_UNVERIFIED
+ LIVE_SERVER_CONTRACT_GATE: PASS_READ_ONLY_CATALOG_EXPORT
+@@ -69,7 +69,7 @@
+ USER_DEVICE_CASE_STATUS: NOT_VERIFIED
+ PRODUCTION_DEPLOYMENT_STATUS: NOT_STARTED
+ LAST_UPDATED_AT: '2026-09-11'
+-LAST_UPDATED_BY: 'B11-V01؛ حل تعارض بشري محفوظ وإثبات supersedes؛ تفويض كتابة محلية صريح لا إعفاء اختبارات؛ لا نشر أو APK'
++LAST_UPDATED_BY: 'B13-V01؛ Bootstrap آمن محليًا مع staging/seal/protection manifest وWAITING_LOCAL؛ قبول Gradle/Room/B08/live integration محجوب؛ لا نشر أو APK'
+ ```
+ <!-- BACKLOG_STATE_END -->
+ 
+@@ -169,7 +169,7 @@
+ | [B10](#b10) | E3 | Inbox الدائم والتبعيات والصفحات الكبيرة | B05، B09 | BLOCKED | 0/5 | BLOCKED | B10-V01: الكود والاختبارات وترحيل99 مكتوبة؛ 15 SQLite و12 policy نجحت محليًا؛ Room/JSON/B08 غير متحققة |
+ | [B11](#b11) | E3 | واجهة حل التعارض والتدقيق | B10 | BLOCKED | 0/5 | BLOCKED | B11-V01: التنفيذ المحلي مكتوب؛ static/SQLite PASS؛ Gradle/Room/T30 وG-B10/G-B11 معلقة |
+ | [B12](#b12) | E3 | المصروف القابل للتحديث وتاريخ النقد | B06، B09، B11 | BLOCKED | 0/5 | BLOCKED | B12-V01 |
+-| [B13](#b13) | E3 | Bootstrap الآمن فوق البيانات المعلقة | B04، B05، B10، B11 | TODO | 0/5 | NOT_EVALUATED | — |
++| [B13](#b13) | E3 | Bootstrap الآمن فوق البيانات المعلقة | B04، B05، B10، B11 | BLOCKED | 0/5 | BLOCKED | B13-V01: التنفيذ المحلي مكتوب؛ static48/48 وSQLite/regressions PASS؛ Gradle/Room/B08/T18/T31–T34 غير متحققة |
+ | [B14](#b14) | E4 | مخطط M03 وإصلاح الفواتير والدفعات والأدوار | B05، B06، B13 | TODO | 0/5 | NOT_EVALUATED | — |
+ | [B15](#b15) | E4 | تصنيف Optimal وربط حاجز M03 | B14 | TODO | 0/5 | NOT_EVALUATED | — |
+ | [B16](#b16) | E4 | ترميم APPLIED القديمة والتوفيق مع المصادر | B09، B13، B14، B15 | TODO | 0/5 | NOT_EVALUATED | — |
+@@ -187,7 +187,7 @@
+ | E0 | B01–B02 | المصدر والنسخ والتعريفات مثبتة، أو BLOCKED صريح لا PASS. | BLOCKED | B01 PASS؛ B02 نسخة الجهاز/البيئة المعزولة BLOCKED مع تجاوز الفرع المدفوع |
+ | E1 | B03–B05 | اختبارات الهجرة وCAS وثبات المحتوى والحماية تجتاز. | PASS | B03–B05 PASS محليًا؛ B05 JVM 95/95 وAndroid 12/12 وapp compile؛ لا يرقّي Txx أو بوابة E2 |
+ | E2 | B06–B08 | round-trip PostgreSQL وإسقاط الرد ومنع ازدواج الأثر تجتاز. | NOT_EVALUATED | — |
+-| E3 | B09–B13 | استعادة مالية كاملة فوق قاعدة نظيفة وفوق pending محمي، مع تكرار آمن. | BLOCKED | B11-V01 تنفيذ محلي بطلب المستخدم؛ G-B09/G-B10/G-B11 وB07/B08 غير متحققة؛ لا تكامل جهازين |
++| E3 | B09–B13 | استعادة مالية كاملة فوق قاعدة نظيفة وفوق pending محمي، مع تكرار آمن. | BLOCKED | B13-V01 يضيف bootstrap آمن محليًا؛ G-B09/G-B10/G-B11/G-B12/G-B13 وB07/B08 غير متحققة؛ لا تكامل فعلي أو جهازين |
+ | E4 | B14–B16 | لا مصدر مجهول مخفي؛ نتائج dry-run ثم اختبارات قاعدة الحالة متطابقة. | NOT_EVALUATED | — |
+ | E5 | B17–B19 | لا pending مع COMPLETED، وملف حقيقي موثق بعد انقطاع وتشغيل. | NOT_EVALUATED | — |
+ | E6 | B20–B22 | كل معايير القسم 21 مثبتة؛ التقرير لا يرقّي اختبارات لم تُنفذ. | NOT_EVALUATED | — |
+@@ -584,11 +584,11 @@
+ 
+ | المهمة | التنفيذ المحدد | دليل اكتمال المهمة | الحالة | الدليل/commit |
+ |---|---|---|---|---|
+-| B13.01 | احفظ snapshot كاملة في staging وتحقق من session/coverage/counts/digest/watermark/token قبل الترقية؛ اجعل مراحل الاستعادة دائمة قابلة للاستئناف. | snapshot منتهية/فارغة/ناقصة أو scope متغير لا تمسح قاعدة غير مؤكدة. | TODO | — |
+-| B13.02 | التقط بيان hashes للنيات والصفوف والملفات المحمية، وأعد فحص حماية كل صف داخل معاملة promotion لا من نتيجة الجرد القديمة. | الكتابات التي وصلت بعد staging محمية أيضًا؛ جميع المالكين مستخدمون لا financial_outbox فقط. | TODO | — |
+-| B13.03 | اترك المحمي محليًا وادخل البعيدة WAITING_LOCAL؛ طبق غير المحمي بـREMOTE_APPLY وحدّث authority النسخ داخل معاملته. | 200/CLOSED تبقى أمام 100/OPEN؛ تعديل بعد Bootstrap يستعمل applied version 9 لا null/observed بديلة. | TODO | — |
+-| B13.04 | طبق شروط tombstone/النطاق/المراجع والحذف المسموح لـCRUD فقط؛ لا تنقية مالية/مخزنية من الغياب، ولا حذف صف بلا مؤسسة مثبتة. | اختبارات كل owner والمرفقات وعدم وجود إثبات المؤسسة؛ hashes قبل/بعد متطابقة للبيانات المحمية. | TODO | — |
+-| B13.05 | اختبر قتل العملية في حدود staging/promotion وتغيير المؤسسة وإعادة الاستئناف؛ اربط بوابة M03 بحيث تسمح staging/الدفع المستقل دون ترقية مدمرة. | G-B13 Room كامل؛ T31/T18 عبر خادم فعلي وBootstrap نظيف يُعتمد فقط عند توفر B08 والتكامل. | TODO | — |
++| B13.01 | احفظ snapshot كاملة في staging وتحقق من session/coverage/counts/digest/watermark/token قبل الترقية؛ اجعل مراحل الاستعادة دائمة قابلة للاستئناف. | snapshot منتهية/فارغة/ناقصة أو scope متغير لا تمسح قاعدة غير مؤكدة. | BLOCKED | B13-V01: كود + static/SQLite PASS؛ Room/B08/live acceptance غير متاح |
++| B13.02 | التقط بيان hashes للنيات والصفوف والملفات المحمية، وأعد فحص حماية كل صف داخل معاملة promotion لا من نتيجة الجرد القديمة. | الكتابات التي وصلت بعد staging محمية أيضًا؛ جميع المالكين مستخدمون لا financial_outbox فقط. | BLOCKED | B13-V01: content manifest لكل owners + recheck داخل tx؛ runtime acceptance محجوب |
++| B13.03 | اترك المحمي محليًا وادخل البعيدة WAITING_LOCAL؛ طبق غير المحمي بـREMOTE_APPLY وحدّث authority النسخ داخل معاملته. | 200/CLOSED تبقى أمام 100/OPEN؛ تعديل بعد Bootstrap يستعمل applied version 9 لا null/observed بديلة. | BLOCKED | B13-V01: WAITING_LOCAL/APPLIED + same-tx authority مكتوبة؛ T18/T32/Room غير مشغلة |
++| B13.04 | طبق شروط tombstone/النطاق/المراجع والحذف المسموح لـCRUD فقط؛ لا تنقية مالية/مخزنية من الغياب، ولا حذف صف بلا مؤسسة مثبتة. | اختبارات كل owner والمرفقات وعدم وجود إثبات المؤسسة؛ hashes قبل/بعد متطابقة للبيانات المحمية. | BLOCKED | B13-V01: explicit tombstone fail-closed ولا absence prune؛ T33/Room/live غير مشغلة |
++| B13.05 | اختبر قتل العملية في حدود staging/promotion وتغيير المؤسسة وإعادة الاستئناف؛ اربط بوابة M03 بحيث تسمح staging/الدفع المستقل دون ترقية مدمرة. | G-B13 Room كامل؛ T31/T18 عبر خادم فعلي وBootstrap نظيف يُعتمد فقط عند توفر B08 والتكامل. | BLOCKED | B13-V01: SQLite rollback/process boundary + M03 static PASS؛ Android/kill/B08/T31/T18 NOT_RUN |
+ 
+ **بوابة الجلسة:** G-B13: لا يتغير محتوى محمي أو bytes نية، والنسخ تغذى بعد تطبيق فعلي، وكل فشل استعادة قابل للاستئناف. اختلاف hashes يمنع الاكتمال.
+ 
+@@ -880,7 +880,7 @@
+ | T15 | يقبل السيرفر الطلب وتسقط الاستجابة ثم يعدّل A السجل | B07 | NOT_RUN | NONE | — | — |
+ | T16 | نفس mutationId مع body أو baseVersion مختلف | B07 | NOT_RUN | NONE | — | — |
+ | T17 | تعديلان Offline للكيان نفسه | B05 | NOT_RUN | NONE | — | — |
+-| T18 | تعديل صنف موجود، وتعديل قالب بعد Bootstrap نسخة 9 | B13 | NOT_RUN | NONE | — | — |
++| T18 | تعديل صنف موجود، وتعديل قالب بعد Bootstrap نسخة 9 | B13 | NOT_RUN | NONE | B13-V01: authority-after-apply static PASS فقط | Room/B08/live scenario غير مشغّل |
+ | T19 | مخزون وتكلفة وCLIENT_CREDIT عبر الخادم | B08 | NOT_RUN | NONE | — | — |
+ | T20 | missing field، overflow، currency/cost unknown تاريخية | B06 | NOT_RUN | PARTIAL_LOCAL_NOT_TXX | B06-V01 validator precursor PASS | لا round-trip server/Room؛ السيناريو الكامل لاحق |
+ | T21 | تعديل ملاحظة مصروف ثم 10000→15000 ثم VOID | B12 | NOT_RUN | PARTIAL_LOCAL_NOT_TXX | B12-V01: pure Kotlin/static deltas 0/-5000/+15000 PASS | التطبيق/Room/SQL الفعلي لم يعمل؛ لا ترقية إلى PASS |
+@@ -893,10 +893,10 @@
+ | T28 | مجموعة لاحقة تمس X أو تعتمد عليها | B10 | NOT_RUN | NONE | B10-V01: 24 JVM و14 Room Inbox +34 مالية مرفقة؛ 15 SQLite/12 policy precursors فقط | JSON/Room/kill/B08 NOT_RUN؛ ليس إثبات Txx أو جهازين |
+ | T29 | دفعة قبل أصلها، وعكس قبل الدفع الأصلي | B10 | NOT_RUN | NONE | B10-V01: 24 JVM و14 Room Inbox +34 مالية مرفقة؛ 15 SQLite/12 policy precursors فقط | JSON/Room/kill/B08 NOT_RUN؛ ليس إثبات Txx أو جهازين |
+ | T30 | مستخدم يحسم mutable conflict بخياري القسم 13.4 | B11 | NOT_RUN | NONE | B11-V01: static/SQLite contract precursors PASS | Gradle/Room/UI والـreceipt/echo الفعلي لم يعمل؛ لا ترقية إلى PASS |
+-| T31 | Bootstrap B نظيفة من حالة مالية متعددة العمليات | B13 | NOT_RUN | NONE | B09-V02: source/SQLite/Kotlin precursors فقط؛ 33 Room و12 JVM مرفقة | G-B09 محجوبة؛ ليس تشغيل Txx ولا إثبات جهازين |
+-| T32 | Bootstrap فوق جرد 200/CLOSED محلي و100/OPEN بعيدة | B13 | NOT_RUN | NONE | — | — |
+-| T33 | Bootstrap مع pending في كل owner وبمرفق | B13 | NOT_RUN | NONE | — | — |
+-| T34 | Snapshot فارغة/منتهية/ناقصة أو scope تغير | B13 | NOT_RUN | NONE | — | — |
++| T31 | Bootstrap B نظيفة من حالة مالية متعددة العمليات | B13 | NOT_RUN | NONE | B13-V01: staging/seal/promotion static+SQLite precursors؛ B09-V02 financial precursors | B08/Room/live integration غير مشغّل؛ ليس PASS |
++| T32 | Bootstrap فوق جرد 200/CLOSED محلي و100/OPEN بعيدة | B13 | NOT_RUN | NONE | B13-V01: protection recheck وWAITING_LOCAL static PASS | actual Room scenario غير مشغّل |
++| T33 | Bootstrap مع pending في كل owner وبمرفق | B13 | NOT_RUN | NONE | B13-V01: manifest يغطي owners/attachment في static probe | hash-before/after actual Room scenario غير مشغّل |
++| T34 | Snapshot فارغة/منتهية/ناقصة أو scope تغير | B13 | NOT_RUN | NONE | B13-V01: seal/state-machine static + SQLite rollback precursor | RPC/scope-change runtime scenario غير مشغّل |
+ | T35 | 999 و1000 و1001 تغيير في أول مجموعة قانونية | B10 | NOT_RUN | NONE | B10-V01: 24 JVM و14 Room Inbox +34 مالية مرفقة؛ 15 SQLite/12 policy precursors فقط | JSON/Room/kill/B08 NOT_RUN؛ ليس إثبات Txx أو جهازين |
+ | T36 | مجموعة عند حد 2MiB وأخرى فوقه | B10 | NOT_RUN | NONE | B10-V01: 24 JVM و14 Room Inbox +34 مالية مرفقة؛ 15 SQLite/12 policy precursors فقط | JSON/Room/kill/B08 NOT_RUN؛ ليس إثبات Txx أو جهازين |
+ | T37 | بلوغ حد Inbox/نفاد القرص | B10 | NOT_RUN | NONE | B10-V01: 24 JVM و14 Room Inbox +34 مالية مرفقة؛ 15 SQLite/12 policy precursors فقط | JSON/Room/kill/B08 NOT_RUN؛ ليس إثبات Txx أو جهازين |
+@@ -975,6 +975,8 @@
+ | B11-BLK-01 | B11.01–B11.05 | `BLOCKED_BUILD_RUNTIME_ENVIRONMENT` + `BLOCKED_PREDECESSOR_GATE_B10`؛ Gradle8.9 غير مخزن وG-B10 لم تغلق | `docs/sync-repair/evidence/B11/V01/runtime-environment.json` و`commands-and-results.md` | يمنع compile/KSP/Room/schema100/UI وT30 وإغلاق G-B11 | فحص static/SQLite وكتابة الاختبارات والتوثيق فقط | بيئة Gradle/Android مجهزة ثم إغلاق B10 وإعادة B11 actual tests/receipts | OPEN؛ B11-V01، 2026-09-11 |
+ | B12-BLK-01 | B12.01–B12.05 | `BLOCKED_BUILD_RUNTIME_ENVIRONMENT`؛ Gradle8.9 غير مخزن والـwrapper يحتاج شبكة | `docs/sync-repair/evidence/B12/V01/gradle-first-failure.txt` و`commands-and-results.md` | يمنع compile/KSP/Room واختبارات T21/T27 الفعلية وإغلاق الجزء المحلي من G-B12 | static/SQLite/pure Kotlin وكتابة الاختبارات والتوثيق فقط | بيئة Gradle8.9/Android/Room مجهزة ثم تشغيل أوامر B12 الموثقة | OPEN؛ B12-V01، 2026-09-11 |
+ | B12-BLK-02 | B12.04–B12.05 | `B12_EXPENSE_BATCH_REQUIRED` / `BLOCKED_PREDECESSOR_B07`؛ atomic expense+cash server batch غير متاح/غير مثبت بعد | `supabase/migrations/20260911001500_b12_expense_versioned_history.sql` و`docs/sync-repair/evidence/B12/V01/session-report.md` | يمنع اعتماد تعديل مبلغ/VOID على الخادم وإثبات SQL النقدي وG-B12/R08 | note-only server path والكود المحلي؛ nonzero cash يفشل مغلقًا قبل أي write | نفذ/ثبت B07 atomic batch في PostgreSQL معزول ثم T21/T27 end-to-end ومطابقة history/cash | OPEN؛ B12-V01، 2026-09-11 |
++| B13-BLK-01 | B13.01–B13.05 | `BLOCKED_BUILD_RUNTIME_ENVIRONMENT`؛ Gradle8.9 غير مخزن والـwrapper فشل بـUnknownHostException | `docs/sync-repair/evidence/B13/V01/gradle-first-failure.txt` و`runtime-environment.json` | يمنع compile/KSP/Room schema101 واختبارات process-kill/Android وإغلاق G-B13 | static/native SQLite/regression فقط؛ لا ترقية بوابة | بيئة Gradle8.9/Android/Room مجهزة ثم أوامر B13 الموثقة | OPEN؛ B13-V01، 2026-09-11 |
++| B13-BLK-02 | B13.01/B13.05 | `BLOCKED_BOOTSTRAP_SEAL_SERVER_INTEGRATION` + predecessors B10/B11؛ B08 لم يثبت حقول digest/coverage/high-watermark/delta-token المطلوبة | `data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncBootstrapWire.kt` و`docs/sync-repair/evidence/B13/V01/session-report.md` | يمنع promotion فعليًا واختبارات T18/T31–T34/live G-B13 | الكود يفشل مغلقًا عند غياب seal؛ staging/local protection implementation مسموح | نفذ B08 contract على PostgreSQL معزول ثم round-trip/Room وتحقق hashes قبل/بعد | OPEN؛ B13-V01، 2026-09-11 |
+ 
+ **قواعد التسجيل:** استخدم رموز العقد حيث تنطبق، مثل BLOCKED_BACKUP_UNVERIFIED وBLOCKED_LIVE_CONTRACT_UNVERIFIED وBLOCKED_OWNER_UNPROVEN وM03_ORG_SCOPE_UNPROVEN وSOURCE_DATA_MISSING وOUTCOME_UNKNOWN وBLOCKED_SIGNING. عائق سير عمل جديد يسمى بوضوح عائقًا تنظيميًا، لا رمز خطأ مزامنة مزعوم في التطبيق.
+ 
+@@ -1020,6 +1022,7 @@
+ | B10-V01 | B10 / الزيارة 1 | 2026-09-10 / 2026-09-10 UTC | لا Git؛ input `2aa1a4e16d9e...`؛ output في product-tree.json | لا إغلاق رسمي؛ كتابة B10.01–B10.05 بطلب صريح | G-B10 BLOCKED؛ 15 SQLite و12 policy PASS؛ 24 JVM/14 Inbox Room و34 مالية NOT_RUN ببيئتها | B10-BLK-01/02؛ B09/B02 محفوظة | B10.01 |
+ | B11-V01 | B11 / الزيارة 1 | 2026-09-11 / 2026-09-11 UTC | لا Git؛ input `2c937997...` / output `2af04ead...` | لا إغلاق رسمي؛ تنفيذ B11.01–B11.05 محليًا بطلب صريح | G-B11 BLOCKED؛ B11 static وnative SQLite PASS؛ Gradle/Room/UI/T30 NOT_RUN | B11-BLK-01؛ B10/B09/B02 محفوظة | B11.01 |
+ | B12-V01 | B12 / الزيارة 1 | 2026-09-11 / 2026-09-11 UTC | لا Git؛ input B11 legacy `2af04ead...`؛ expanded baseline `bf610527...` / output `150e580c...` | لا إغلاق رسمي؛ تنفيذ B12.01–B12.05 محليًا بطلب صريح | G-B12 BLOCKED؛ static22/SQLite/schema/pure Kotlin PASS؛ Gradle/Room/T21/T27/PostgreSQL NOT_RUN | B12-BLK-01/02؛ B11/B09/B02 محفوظة | B12.01 |
++| B13-V01 | B13 / الزيارة 1 | 2026-09-11 / 2026-09-11 UTC | لا Git؛ input documented B12 `150e580c...` (recomputed under B13 explicit algorithm `4880ac00...`) / output `158fccae...` | لا إغلاق رسمي؛ تنفيذ B13.01–B13.05 محليًا بطلب صريح | G-B13 BLOCKED؛ static48/48 وSQLite/regressions PASS؛ Gradle/Room/B08/T18/T31–T34 NOT_RUN | B13-BLK-01/02؛ B10/B11/B12 blockers محفوظة | B13.01 |
+ 
+ سطر الحالة الابتدائية أعلاه محفوظ تاريخيًا في نص الوثيقة، وأول زيارة تنفيذ فعلية هي B01-V01 المسجلة هنا.
+ 
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabase.kt
+@@ -138,6 +138,7 @@
+         SyncAttachmentTransferEntity::class,
+         SyncRecoveryStateEntity::class,
+         SyncBootstrapStageEntity::class,
++        SyncRecoveryProtectionManifestEntity::class,
+         SyncHealthStateEntity::class,
+         SyncLegacyMigrationEntryEntity::class,
+         SyncLegacyMigrationStateEntity::class,
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations100To101.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations100To101.kt
+@@ -0,0 +1,55 @@
++package com.verto.app.data.local
++
++import androidx.room.migration.Migration
++import androidx.sqlite.db.SupportSQLiteDatabase
++
++/** B13: durable bootstrap seal, staged promotion states and protection-content manifest. */
++val MIGRATION_100_101 = object : Migration(100, 101) {
++    override fun migrate(db: SupportSQLiteDatabase) {
++        db.execSQL("ALTER TABLE sync_recovery_state ADD COLUMN expected_snapshot_digest TEXT")
++        db.execSQL("ALTER TABLE sync_recovery_state ADD COLUMN expected_coverage_json TEXT")
++        db.execSQL("ALTER TABLE sync_recovery_state ADD COLUMN bootstrap_high_watermark INTEGER")
++        db.execSQL("ALTER TABLE sync_recovery_state ADD COLUMN bootstrap_delta_token TEXT")
++        db.execSQL("ALTER TABLE sync_recovery_state ADD COLUMN stage_verified_at INTEGER")
++
++        db.execSQL("ALTER TABLE sync_bootstrap_stage ADD COLUMN is_tombstone INTEGER NOT NULL DEFAULT 0")
++        db.execSQL("ALTER TABLE sync_bootstrap_stage ADD COLUMN promotion_state TEXT NOT NULL DEFAULT 'STAGED'")
++        db.execSQL("ALTER TABLE sync_bootstrap_stage ADD COLUMN wait_reason TEXT")
++        db.execSQL("ALTER TABLE sync_bootstrap_stage ADD COLUMN applied_at INTEGER")
++
++        db.execSQL(
++            """
++            CREATE TABLE IF NOT EXISTS sync_recovery_protection_manifest (
++                scope_id TEXT NOT NULL,
++                bootstrap_session_id TEXT NOT NULL,
++                organization_id TEXT NOT NULL,
++                combined_sha256 TEXT NOT NULL,
++                unified_sha256 TEXT NOT NULL,
++                party_sha256 TEXT NOT NULL,
++                financial_sha256 TEXT NOT NULL,
++                inventory_stock_sha256 TEXT NOT NULL,
++                inventory_cost_sha256 TEXT NOT NULL,
++                optimal_sha256 TEXT NOT NULL,
++                attachment_sha256 TEXT NOT NULL,
++                pending_reference_sha256 TEXT NOT NULL,
++                mutation_packet_sha256 TEXT NOT NULL,
++                local_generation_sha256 TEXT NOT NULL,
++                captured_at INTEGER NOT NULL,
++                PRIMARY KEY(scope_id, bootstrap_session_id),
++                CHECK(length(combined_sha256)=64),
++                CHECK(length(unified_sha256)=64),
++                CHECK(length(party_sha256)=64),
++                CHECK(length(financial_sha256)=64),
++                CHECK(length(inventory_stock_sha256)=64),
++                CHECK(length(inventory_cost_sha256)=64),
++                CHECK(length(optimal_sha256)=64),
++                CHECK(length(attachment_sha256)=64),
++                CHECK(length(pending_reference_sha256)=64),
++                CHECK(length(mutation_packet_sha256)=64),
++                CHECK(length(local_generation_sha256)=64)
++            )
++            """.trimIndent()
++        )
++        db.execSQL("CREATE INDEX IF NOT EXISTS index_sync_recovery_protection_manifest_org ON sync_recovery_protection_manifest (organization_id)")
++    }
++}
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt
+@@ -3,7 +3,7 @@
+ import androidx.room.migration.Migration
+ 
+ /** المصدر الوحيد لتسلسل Room المدعوم. */
+-const val ROOM_SCHEMA_VERSION: Int = 100
++const val ROOM_SCHEMA_VERSION: Int = 101
+ 
+ val ALL_MIGRATIONS: Array<Migration> = arrayOf(
+     MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5,
+@@ -16,7 +16,7 @@
+     MIGRATION_29_30, MIGRATION_30_31, MIGRATION_31_32, MIGRATION_32_33,
+     MIGRATION_33_34, MIGRATION_34_35, MIGRATION_35_36, MIGRATION_36_37,
+     MIGRATION_37_38, MIGRATION_38_39, MIGRATION_39_40, MIGRATION_40_41,
+-    MIGRATION_41_42, MIGRATION_42_43, MIGRATION_43_44, MIGRATION_44_45, MIGRATION_45_46, MIGRATION_46_47, MIGRATION_47_48, MIGRATION_48_49, MIGRATION_49_50, MIGRATION_50_51, MIGRATION_51_52, MIGRATION_52_53, MIGRATION_53_54, MIGRATION_54_55, MIGRATION_55_56, MIGRATION_56_57, MIGRATION_57_58, MIGRATION_58_59, MIGRATION_59_60, MIGRATION_60_61, MIGRATION_61_62, MIGRATION_62_63, MIGRATION_63_64, MIGRATION_64_65, MIGRATION_65_66, MIGRATION_66_67, MIGRATION_67_68, MIGRATION_68_69, MIGRATION_69_70, MIGRATION_70_71, MIGRATION_71_72, MIGRATION_72_73, MIGRATION_73_74, MIGRATION_74_75, MIGRATION_75_76, MIGRATION_76_77, MIGRATION_77_78, MIGRATION_78_79, MIGRATION_79_80, MIGRATION_80_81, MIGRATION_81_82, MIGRATION_82_83, MIGRATION_83_84, MIGRATION_84_85, MIGRATION_85_86, MIGRATION_86_87, MIGRATION_87_88, MIGRATION_88_89, MIGRATION_89_90, MIGRATION_90_91, MIGRATION_91_92, MIGRATION_92_93, MIGRATION_93_94, MIGRATION_94_95, MIGRATION_95_96, MIGRATION_96_97, MIGRATION_97_98, MIGRATION_98_99, MIGRATION_99_100
++    MIGRATION_41_42, MIGRATION_42_43, MIGRATION_43_44, MIGRATION_44_45, MIGRATION_45_46, MIGRATION_46_47, MIGRATION_47_48, MIGRATION_48_49, MIGRATION_49_50, MIGRATION_50_51, MIGRATION_51_52, MIGRATION_52_53, MIGRATION_53_54, MIGRATION_54_55, MIGRATION_55_56, MIGRATION_56_57, MIGRATION_57_58, MIGRATION_58_59, MIGRATION_59_60, MIGRATION_60_61, MIGRATION_61_62, MIGRATION_62_63, MIGRATION_63_64, MIGRATION_64_65, MIGRATION_65_66, MIGRATION_66_67, MIGRATION_67_68, MIGRATION_68_69, MIGRATION_69_70, MIGRATION_70_71, MIGRATION_71_72, MIGRATION_72_73, MIGRATION_73_74, MIGRATION_74_75, MIGRATION_75_76, MIGRATION_76_77, MIGRATION_77_78, MIGRATION_78_79, MIGRATION_79_80, MIGRATION_80_81, MIGRATION_81_82, MIGRATION_82_83, MIGRATION_83_84, MIGRATION_84_85, MIGRATION_85_86, MIGRATION_86_87, MIGRATION_87_88, MIGRATION_88_89, MIGRATION_89_90, MIGRATION_90_91, MIGRATION_91_92, MIGRATION_92_93, MIGRATION_93_94, MIGRATION_94_95, MIGRATION_95_96, MIGRATION_96_97, MIGRATION_97_98, MIGRATION_98_99, MIGRATION_99_100, MIGRATION_100_101
+ )
+ 
+ /** يعيد المسار المتصل فقط، ويفشل مغلقًا إذا ظهرت فجوة أو تكرار. */
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRecoveryDao.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRecoveryDao.kt
+@@ -8,6 +8,7 @@
+ import com.verto.app.data.local.entity.SyncHealthStateEntity
+ import com.verto.app.data.local.entity.SyncCursorEntity
+ import com.verto.app.data.local.entity.SyncRecoveryStateEntity
++import com.verto.app.data.local.entity.SyncRecoveryProtectionManifestEntity
+ 
+ @Dao
+ interface SyncRecoveryDao {
+@@ -37,6 +38,21 @@
+ 
+     @Query("SELECT COUNT(*) FROM sync_bootstrap_stage WHERE scope_id = :scopeId AND bootstrap_session_id = :sessionId")
+     suspend fun countStage(scopeId: String, sessionId: String): Long
++
++    @Query("UPDATE sync_bootstrap_stage SET promotion_state=:promotionState, wait_reason=:waitReason, applied_at=:appliedAt WHERE scope_id=:scopeId AND bootstrap_session_id=:sessionId AND ordinal=:ordinal")
++    suspend fun markStagePromotion(scopeId: String, sessionId: String, ordinal: Long, promotionState: String, waitReason: String?, appliedAt: Long?): Int
++
++    @Insert(onConflict = OnConflictStrategy.REPLACE)
++    suspend fun upsertProtectionManifest(manifest: SyncRecoveryProtectionManifestEntity)
++
++    @Query("SELECT * FROM sync_recovery_protection_manifest WHERE scope_id=:scopeId AND bootstrap_session_id=:sessionId LIMIT 1")
++    suspend fun getProtectionManifest(scopeId: String, sessionId: String): SyncRecoveryProtectionManifestEntity?
++
++    @Query("DELETE FROM sync_recovery_protection_manifest WHERE scope_id=:scopeId AND bootstrap_session_id != :keepSessionId")
++    suspend fun clearStaleProtectionManifests(scopeId: String, keepSessionId: String): Int
++
++    @Query("DELETE FROM sync_recovery_protection_manifest WHERE scope_id=:scopeId AND bootstrap_session_id=:sessionId")
++    suspend fun clearProtectionManifest(scopeId: String, sessionId: String): Int
+ 
+     @Query("SELECT MAX(ordinal) FROM sync_bootstrap_stage WHERE scope_id = :scopeId AND bootstrap_session_id = :sessionId")
+     suspend fun maxStageOrdinal(scopeId: String, sessionId: String): Long?
+--- a/data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncRecoveryEntities.kt
++++ b/data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncRecoveryEntities.kt
+@@ -4,7 +4,7 @@
+ import androidx.room.Entity
+ import androidx.room.Index
+ 
+-/** Session 313: scope-bound durable bootstrap/recovery authority. */
++/** Session 313/B13: scope-bound durable bootstrap/recovery authority. */
+ @Entity(tableName = "sync_recovery_state", primaryKeys = ["scope_id"])
+ data class SyncRecoveryStateEntity(
+     @ColumnInfo(name = "scope_id") val scopeId: String,
+@@ -27,9 +27,14 @@
+     @ColumnInfo(name = "started_at") val startedAt: Long?,
+     @ColumnInfo(name = "updated_at") val updatedAt: Long,
+     @ColumnInfo(name = "completed_at") val completedAt: Long?,
++    @ColumnInfo(name = "expected_snapshot_digest") val expectedSnapshotDigest: String? = null,
++    @ColumnInfo(name = "expected_coverage_json") val expectedCoverageJson: String? = null,
++    @ColumnInfo(name = "bootstrap_high_watermark") val bootstrapHighWatermark: Long? = null,
++    @ColumnInfo(name = "bootstrap_delta_token") val bootstrapDeltaToken: String? = null,
++    @ColumnInfo(name = "stage_verified_at") val stageVerifiedAt: Long? = null,
+ )
+ 
+-/** Session 313: raw authoritative snapshot staging. Never a live-domain table. */
++/** B13: raw authoritative snapshot staging. Never a live-domain table. */
+ @Entity(
+     tableName = "sync_bootstrap_stage",
+     primaryKeys = ["scope_id", "bootstrap_session_id", "ordinal"],
+@@ -49,6 +54,37 @@
+     @ColumnInfo(name = "payload_json") val payloadJson: String,
+     @ColumnInfo(name = "partition_key") val partitionKey: String,
+     @ColumnInfo(name = "content_fingerprint") val contentFingerprint: String,
++    @ColumnInfo(name = "is_tombstone", defaultValue = "0") val isTombstone: Boolean = false,
++    @ColumnInfo(name = "promotion_state", defaultValue = "'STAGED'") val promotionState: String = "STAGED",
++    @ColumnInfo(name = "wait_reason") val waitReason: String? = null,
++    @ColumnInfo(name = "applied_at") val appliedAt: Long? = null,
++)
++
++/**
++ * B13 durable before-promotion content seal. Each component hashes every persisted column of the
++ * unresolved owner rows or protection metadata named by the column; captured_at is diagnostic only.
++ */
++@Entity(
++    tableName = "sync_recovery_protection_manifest",
++    primaryKeys = ["scope_id", "bootstrap_session_id"],
++    indices = [Index(value = ["organization_id"], name = "index_sync_recovery_protection_manifest_org")],
++)
++data class SyncRecoveryProtectionManifestEntity(
++    @ColumnInfo(name = "scope_id") val scopeId: String,
++    @ColumnInfo(name = "bootstrap_session_id") val bootstrapSessionId: String,
++    @ColumnInfo(name = "organization_id") val organizationId: String,
++    @ColumnInfo(name = "combined_sha256") val combinedSha256: String,
++    @ColumnInfo(name = "unified_sha256") val unifiedSha256: String,
++    @ColumnInfo(name = "party_sha256") val partySha256: String,
++    @ColumnInfo(name = "financial_sha256") val financialSha256: String,
++    @ColumnInfo(name = "inventory_stock_sha256") val inventoryStockSha256: String,
++    @ColumnInfo(name = "inventory_cost_sha256") val inventoryCostSha256: String,
++    @ColumnInfo(name = "optimal_sha256") val optimalSha256: String,
++    @ColumnInfo(name = "attachment_sha256") val attachmentSha256: String,
++    @ColumnInfo(name = "pending_reference_sha256") val pendingReferenceSha256: String,
++    @ColumnInfo(name = "mutation_packet_sha256") val mutationPacketSha256: String,
++    @ColumnInfo(name = "local_generation_sha256") val localGenerationSha256: String,
++    @ColumnInfo(name = "captured_at") val capturedAt: Long,
+ )
+ 
+ /** Session 313: privacy-safe operational metadata only. */
+--- a/data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncBootstrapRemote.kt
++++ b/data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncBootstrapRemote.kt
+@@ -34,7 +34,13 @@
+             "FAIL_BOOTSTRAP_INCOMPLETE: bootstrap identity/cursor/page token missing"
+         }
+         require(w.snapshotRowCount >= 0) { "FAIL_BOOTSTRAP_INCOMPLETE: negative snapshot row count" }
+-        return SyncBootstrapStart(scope, w.bootstrapSessionId, w.baselineRevision, w.baselineCursor, w.snapshotRowCount, w.firstPageToken, w.expiresAtEpochMillis)
++        return SyncBootstrapStart(
++            scope = scope, bootstrapSessionId = w.bootstrapSessionId, baselineRevision = w.baselineRevision,
++            baselineCursor = w.baselineCursor, expectedSnapshotRows = w.snapshotRowCount,
++            expectedSnapshotDigest = w.snapshotDigestSha256, coverageAggregateTypes = w.coverageAggregateTypes,
++            highWatermark = w.highWatermark, deltaToken = w.deltaToken,
++            firstPageToken = w.firstPageToken, expiresAtEpochMillis = w.expiresAtEpochMillis,
++        )
+     }
+ 
+     override suspend fun pullPage(sessionId: String, pageToken: String, limit: Int): SyncBootstrapPage {
+@@ -45,7 +51,7 @@
+         ).decodeAs<UnifiedSyncBootstrapPageWire>()
+         return SyncBootstrapPage(
+             w.bootstrapSessionId, w.baselineCursor,
+-            w.rows.map { SyncBootstrapRow(it.ordinal, it.aggregateType, it.aggregateId, it.entityVersion, it.payloadVersion, it.payload, it.partitionKey) },
++            w.rows.map { SyncBootstrapRow(it.ordinal, it.aggregateType, it.aggregateId, it.entityVersion, it.payloadVersion, it.payload, it.partitionKey, it.isTombstone) },
+             w.hasMore, w.nextPageToken, w.snapshotComplete,
+         )
+     }
+--- a/data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncBootstrapWire.kt
++++ b/data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncBootstrapWire.kt
+@@ -16,6 +16,10 @@
+     @SerialName("baseline_revision") val baselineRevision: Long? = null,
+     @SerialName("baseline_cursor") val baselineCursor: String,
+     @SerialName("snapshot_row_count") val snapshotRowCount: Long,
++    @SerialName("snapshot_digest_sha256") val snapshotDigestSha256: String? = null,
++    @SerialName("coverage_aggregate_types") val coverageAggregateTypes: List<String>? = null,
++    @SerialName("high_watermark") val highWatermark: Long? = null,
++    @SerialName("delta_token") val deltaToken: String? = null,
+     @SerialName("first_page_token") val firstPageToken: String,
+     @SerialName("expires_at_epoch_millis") val expiresAtEpochMillis: Long,
+ )
+@@ -36,6 +40,7 @@
+     val payloadVersion: Int,
+     val payload: JsonObject = JsonObject(emptyMap()),
+     val partitionKey: String,
++    @SerialName("is_tombstone") val isTombstone: Boolean = false,
+ )
+ 
+ @Serializable
+@@ -80,6 +85,10 @@
+     val expectedSnapshotRows: Long,
+     val firstPageToken: String,
+     val expiresAtEpochMillis: Long,
++    val expectedSnapshotDigest: String? = null,
++    val coverageAggregateTypes: List<String>? = null,
++    val highWatermark: Long? = null,
++    val deltaToken: String? = null,
+ )
+ 
+ data class SyncBootstrapRow(
+@@ -90,6 +99,7 @@
+     val payloadVersion: Int,
+     val payload: JsonObject,
+     val partitionKey: String,
++    val isTombstone: Boolean = false,
+ )
+ 
+ data class SyncBootstrapPage(
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt
+@@ -148,16 +148,29 @@
+             )
+             validateScope(scope)
+             val preflightRecovery = v2Engine.requiredRecoveryReason(scope.organizationId) { validateScope(scope) }
+-            check(preflightRecovery == null || migrationReviewCount == 0) {
+-                "M03_LOCAL_MIGRATION_REVIEW_REQUIRED:$migrationReviewCount"
+-            }
++            var recoveryPromotionBlockedByMigrationEvidence = false
++            var recoveryContinuationDeferredByMigrationEvidence = false
+             if (preflightRecovery != null) {
+-                when (v2Engine.runRecovery(scope.organizationId, preflightRecovery, scopeGuard = { validateScope(scope) })) {
++                when (v2Engine.runRecovery(
++                    scope.organizationId, preflightRecovery,
++                    promotionAllowed = migrationReviewCount == 0,
++                    scopeGuard = { validateScope(scope) },
++                )) {
+                     RecoveryRunOutcome.READY -> Unit
+                     RecoveryRunOutcome.CONTINUATION_REQUIRED -> {
+-                        orchestration.enqueueContinuation(scope)
+-                        publishV2ReportBestEffort(scope, SyncCoordinatorPhase.CONTINUATION_PENDING)
+-                        return@withLock SyncDrainResult.CONTINUATION_SCHEDULED
++                        if (migrationReviewCount > 0) {
++                            // M03 permits staging to progress, but unrelated prepared local work must
++                            // still get one push opportunity before the continuation is scheduled.
++                            recoveryContinuationDeferredByMigrationEvidence = true
++                        } else {
++                            orchestration.enqueueContinuation(scope)
++                            publishV2ReportBestEffort(scope, SyncCoordinatorPhase.CONTINUATION_PENDING)
++                            return@withLock SyncDrainResult.CONTINUATION_SCHEDULED
++                        }
++                    }
++                    RecoveryRunOutcome.PROMOTION_BLOCKED -> {
++                        check(migrationReviewCount > 0) { "RECOVERY_PROMOTION_BLOCKED_WITHOUT_M03_EVIDENCE" }
++                        recoveryPromotionBlockedByMigrationEvidence = true
+                     }
+                     RecoveryRunOutcome.AUTH_BLOCKED -> {
+                         publishV2ReportBestEffort(scope, SyncCoordinatorPhase.AUTH_BLOCKED, failureCategory = SyncReportFailureCategory.AUTHENTICATION)
+@@ -183,6 +196,13 @@
+                 } else {
+                     v2Engine.markPushSuccess(scope.organizationId)
+                 }
++                if (recoveryPromotionBlockedByMigrationEvidence || recoveryContinuationDeferredByMigrationEvidence) {
++                    // Do not pull or promote while M03 organization evidence is unresolved. The
++                    // independent push above is safe because it preserves its own frozen scope.
++                    orchestration.enqueueContinuation(scope)
++                    publishV2ReportBestEffort(scope, SyncCoordinatorPhase.CONTINUATION_PENDING)
++                    return@withLock SyncDrainResult.CONTINUATION_SCHEDULED
++                }
+                 validateScope(scope)
+                 val pull = v2Engine.pull(scope.organizationId)
+                 if (pull.outcome == UnifiedSyncPullOutcome.CAUGHT_UP) {
+@@ -195,9 +215,17 @@
+                 ) {
+                     val reason = v2Engine.requiredRecoveryReason(scope.organizationId) { validateScope(scope) }
+                         ?: RecoveryReason.CURSOR_CORRUPT
+-                    when (v2Engine.runRecovery(scope.organizationId, reason, scopeGuard = { validateScope(scope) })) {
++                    when (v2Engine.runRecovery(
++                        scope.organizationId, reason, promotionAllowed = migrationReviewCount == 0,
++                        scopeGuard = { validateScope(scope) },
++                    )) {
+                         RecoveryRunOutcome.READY -> return@repeat
+                         RecoveryRunOutcome.CONTINUATION_REQUIRED -> {
++                            orchestration.enqueueContinuation(scope)
++                            publishV2ReportBestEffort(scope, SyncCoordinatorPhase.CONTINUATION_PENDING)
++                            return@withLock SyncDrainResult.CONTINUATION_SCHEDULED
++                        }
++                        RecoveryRunOutcome.PROMOTION_BLOCKED -> {
+                             orchestration.enqueueContinuation(scope)
+                             publishV2ReportBestEffort(scope, SyncCoordinatorPhase.CONTINUATION_PENDING)
+                             return@withLock SyncDrainResult.CONTINUATION_SCHEDULED
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManagerPorts.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManagerPorts.kt
+@@ -195,6 +195,7 @@
+     suspend fun runRecovery(
+         organizationId: String,
+         reason: RecoveryReason,
++        promotionAllowed: Boolean,
+         scopeGuard: suspend () -> Unit,
+     ): RecoveryRunOutcome
+     suspend fun pushAvailable(scope: SyncWorkScope): UnifiedSyncPushRunResult
+@@ -222,8 +223,9 @@
+     override suspend fun runRecovery(
+         organizationId: String,
+         reason: RecoveryReason,
++        promotionAllowed: Boolean,
+         scopeGuard: suspend () -> Unit,
+-    ): RecoveryRunOutcome = recovery.run(organizationId, reason, scopeGuard = scopeGuard)
++    ): RecoveryRunOutcome = recovery.run(organizationId, reason, promotionAllowed = promotionAllowed, scopeGuard = scopeGuard)
+ 
+     override suspend fun pushAvailable(scope: SyncWorkScope): UnifiedSyncPushRunResult = push.pushAvailable(scope)
+     override suspend fun pull(organizationId: String): UnifiedSyncPullResult = pull.pull(organizationId)
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedRemoteMaterialization.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedRemoteMaterialization.kt
+@@ -48,9 +48,9 @@
+     override val payload: JsonObject,
+     /** Server-provided bootstrap baseline; diagnostic/materialization anchor only, never a cursor. */
+     override val revision: Long,
++    override val operationType: SyncMutationOperation = SyncMutationOperation.UPSERT,
++    override val deletedAtEpochMillis: Long? = null,
+ ) : UnifiedRemoteMaterialization {
+     override val isBootstrap = true
+-    override val operationType: SyncMutationOperation = SyncMutationOperation.UPSERT
+     override val changedAtEpochMillis: Long = 0L
+-    override val deletedAtEpochMillis: Long? = null
+ }
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/BootstrapSealPolicy.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/BootstrapSealPolicy.kt
+@@ -0,0 +1,63 @@
++package com.verto.app.data.sync.recovery
++
++import com.verto.app.data.local.entity.SyncBootstrapStageEntity
++import com.verto.app.data.local.entity.SyncRecoveryStateEntity
++import com.verto.app.data.sync.UnifiedSyncAggregateRegistry
++import java.security.MessageDigest
++import kotlinx.serialization.json.Json
++import kotlinx.serialization.json.JsonArray
++import kotlinx.serialization.json.jsonPrimitive
++
++/** B13 server/client snapshot-seal contract. Missing or divergent seal fields fail closed. */
++object BootstrapSealPolicy {
++    private val json = Json { ignoreUnknownKeys = false }
++    private val requiredCoverage = UnifiedSyncAggregateRegistry.byId.keys.sorted()
++    private val sha256 = Regex("^[0-9a-f]{64}$")
++
++    fun verify(state: SyncRecoveryStateEntity, rows: List<SyncBootstrapStageEntity>) {
++        val expectedRows = state.expectedSnapshotRows
++            ?: throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "expected snapshot row count missing")
++        if (rows.size.toLong() != expectedRows) {
++            throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "staged=${rows.size} expected=$expectedRows")
++        }
++        val expectedDigest = state.expectedSnapshotDigest?.lowercase()
++            ?: throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SEAL_MISSING", "snapshot digest missing")
++        if (!sha256.matches(expectedDigest)) {
++            throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SEAL_INVALID", "snapshot digest is not sha256")
++        }
++        val coverageRaw = state.expectedCoverageJson
++            ?: throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SEAL_MISSING", "coverage aggregate types missing")
++        val coverage = runCatching {
++            (json.parseToJsonElement(coverageRaw) as JsonArray).map { it.jsonPrimitive.content }.sorted()
++        }.getOrElse {
++            throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SEAL_INVALID", "coverage aggregate types malformed", it)
++        }
++        if (coverage != requiredCoverage) {
++            throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SNAPSHOT_COVERAGE", "coverage is not exactly 35/35")
++        }
++        val highWatermark = state.bootstrapHighWatermark
++            ?: throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SEAL_MISSING", "high watermark missing")
++        if (highWatermark <= 0L || (state.baselineRevision != null && state.baselineRevision != highWatermark)) {
++            throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SEAL_INVALID", "high watermark/baseline mismatch")
++        }
++        val deltaToken = state.bootstrapDeltaToken
++            ?: throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SEAL_MISSING", "delta token missing")
++        if (deltaToken.isBlank() || deltaToken != state.baselineCursor) {
++            throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SEAL_INVALID", "delta token/baseline cursor mismatch")
++        }
++        val actualDigest = snapshotDigest(rows)
++        if (actualDigest != expectedDigest) {
++            throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SEAL_DIGEST", "staged snapshot digest mismatch")
++        }
++    }
++
++    /** Contract digest: stable ordinal + the canonical row fingerprint + tombstone bit. */
++    fun snapshotDigest(rows: List<SyncBootstrapStageEntity>): String = sha256(
++        rows.sortedBy { it.ordinal }.joinToString("\n") {
++            "${it.ordinal}|${it.contentFingerprint}|${if (it.isTombstone) 1 else 0}"
++        }
++    )
++
++    private fun sha256(value: String): String = MessageDigest.getInstance("SHA-256")
++        .digest(value.toByteArray(Charsets.UTF_8)).joinToString("") { "%02x".format(it) }
++}
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/RecoveryProtectionManifest.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/RecoveryProtectionManifest.kt
+@@ -0,0 +1,122 @@
++package com.verto.app.data.sync.recovery
++
++import android.database.Cursor
++import androidx.sqlite.db.SupportSQLiteDatabase
++import com.verto.app.data.local.entity.SyncRecoveryProtectionManifestEntity
++import java.security.MessageDigest
++
++/**
++ * B13 full-content seal for unresolved local work. Unlike OutboxIdentityDigest this hashes every
++ * persisted column of each unresolved owner row, frozen mutation/batch bytes, pending references,
++ * local content-generation hashes and attachment metadata/checksums.
++ */
++object RecoveryProtectionManifest {
++    fun capture(
++        db: SupportSQLiteDatabase,
++        scopeId: String,
++        sessionId: String,
++        organizationId: String,
++        capturedAt: Long,
++    ): SyncRecoveryProtectionManifestEntity {
++        val org = safe(organizationId)
++        val unified = digestQuery(db,
++            "SELECT * FROM sync_outbox WHERE organization_id='$org' AND state NOT IN ('ACKNOWLEDGED','SUPERSEDED_WITH_PROOF') ORDER BY mutation_id",
++            "sync_outbox")
++        val party = digestQuery(db,
++            "SELECT o.* FROM party_sync_outbox o WHERE o.state NOT IN ('ACKNOWLEDGED','SYNCED') " +
++                "AND EXISTS (SELECT 1 FROM party_roles r WHERE r.organization_id='$org' AND r.party_id=o.aggregate_id) ORDER BY o.id",
++            "party_sync_outbox")
++        val financial = digestQuery(db,
++            "SELECT * FROM financial_outbox WHERE organization_id='$org' AND sync_state NOT IN ('ACKNOWLEDGED','SYNCED') ORDER BY event_id",
++            "financial_outbox")
++        val inventoryStock = digestQuery(db,
++            "SELECT * FROM inventory_stock_outbox WHERE organization_id='$org' AND sync_state NOT IN ('ACKNOWLEDGED','SYNCED') ORDER BY id",
++            "inventory_stock_outbox")
++        val inventoryCost = digestQuery(db,
++            "SELECT * FROM inventory_cost_outbox WHERE organization_id='$org' AND sync_state NOT IN ('ACKNOWLEDGED','SYNCED') ORDER BY id",
++            "inventory_cost_outbox")
++        val optimal = digestQuery(db,
++            "SELECT * FROM optimal_outbox WHERE organization_id='$org' AND status NOT IN ('ACKNOWLEDGED','SYNCED') ORDER BY event_id",
++            "optimal_outbox")
++        val attachment = digestQuery(db,
++            "SELECT * FROM sync_attachment_transfer WHERE organization_id='$org' AND state NOT IN ('COMPLETED','CANCELLED') ORDER BY transfer_id",
++            "sync_attachment_transfer")
++        val pending = digestQuery(db,
++            "SELECT * FROM sync_pending_reference WHERE organization_id='$org' ORDER BY source_owner,source_id,protected_type,protected_id",
++            "sync_pending_reference")
++        val packets = digestMany(db, listOf(
++            "sync_mutation_packet" to "SELECT * FROM sync_mutation_packet WHERE organization_id='$org' ORDER BY mutation_id",
++            "sync_write_batch" to "SELECT * FROM sync_write_batch WHERE organization_id='$org' ORDER BY batch_id",
++            "sync_write_batch_member" to "SELECT * FROM sync_write_batch_member WHERE organization_id='$org' ORDER BY batch_id,member_order",
++        ))
++        // sync_local_generation.content_hash is captured transactionally from the producer's actual
++        // protected business snapshot; hashing the complete rows proves those content seals survive.
++        val generations = digestQuery(db,
++            "SELECT * FROM sync_local_generation WHERE organization_id='$org' ORDER BY aggregate_type,aggregate_id",
++            "sync_local_generation")
++        val combined = sha256(listOf(
++            unified, party, financial, inventoryStock, inventoryCost, optimal, attachment,
++            pending, packets, generations,
++        ).joinToString("\n"))
++        return SyncRecoveryProtectionManifestEntity(
++            scopeId, sessionId, organizationId, combined, unified, party, financial,
++            inventoryStock, inventoryCost, optimal, attachment, pending, packets, generations, capturedAt,
++        )
++    }
++
++    fun sameContent(a: SyncRecoveryProtectionManifestEntity, b: SyncRecoveryProtectionManifestEntity): Boolean =
++        a.scopeId == b.scopeId && a.bootstrapSessionId == b.bootstrapSessionId && a.organizationId == b.organizationId &&
++            a.combinedSha256 == b.combinedSha256 && a.unifiedSha256 == b.unifiedSha256 &&
++            a.partySha256 == b.partySha256 && a.financialSha256 == b.financialSha256 &&
++            a.inventoryStockSha256 == b.inventoryStockSha256 && a.inventoryCostSha256 == b.inventoryCostSha256 &&
++            a.optimalSha256 == b.optimalSha256 && a.attachmentSha256 == b.attachmentSha256 &&
++            a.pendingReferenceSha256 == b.pendingReferenceSha256 && a.mutationPacketSha256 == b.mutationPacketSha256 &&
++            a.localGenerationSha256 == b.localGenerationSha256
++
++    private fun digestMany(db: SupportSQLiteDatabase, queries: List<Pair<String, String>>): String {
++        val lines = mutableListOf<String>()
++        queries.forEach { (label, sql) -> collect(db, sql, label, lines) }
++        return sha256(lines.joinToString("\n"))
++    }
++
++    private fun digestQuery(db: SupportSQLiteDatabase, sql: String, label: String): String {
++        val lines = mutableListOf<String>()
++        collect(db, sql, label, lines)
++        return sha256(lines.joinToString("\n"))
++    }
++
++    private fun collect(db: SupportSQLiteDatabase, sql: String, label: String, out: MutableList<String>) {
++        db.query(sql).use { cursor ->
++            val columns = cursor.columnNames.toList()
++            while (cursor.moveToNext()) {
++                val encoded = columns.indices.joinToString("|") { i -> "${columns[i]}=${encodeCell(cursor, i)}" }
++                out += "$label|$encoded"
++            }
++        }
++    }
++
++    private fun encodeCell(cursor: Cursor, index: Int): String = when (cursor.getType(index)) {
++        Cursor.FIELD_TYPE_NULL -> "N:"
++        Cursor.FIELD_TYPE_INTEGER -> "I:${cursor.getLong(index)}"
++        Cursor.FIELD_TYPE_FLOAT -> "F:${java.lang.Double.toHexString(cursor.getDouble(index))}"
++        Cursor.FIELD_TYPE_STRING -> "S:${escape(cursor.getString(index))}"
++        Cursor.FIELD_TYPE_BLOB -> "B:${cursor.getBlob(index).joinToString("") { "%02x".format(it.toInt() and 0xff) }}"
++        else -> error("UNSUPPORTED_SQLITE_STORAGE_CLASS")
++    }
++
++    private fun escape(value: String): String = buildString(value.length) {
++        value.forEach { ch ->
++            when (ch) {
++                '\\' -> append("\\\\")
++                '|' -> append("\\|")
++                '\n' -> append("\\n")
++                '\r' -> append("\\r")
++                else -> append(ch)
++            }
++        }
++    }
++
++    private fun safe(value: String): String = value.replace("'", "''")
++    private fun sha256(value: String): String = MessageDigest.getInstance("SHA-256")
++        .digest(value.toByteArray(Charsets.UTF_8)).joinToString("") { "%02x".format(it) }
++}
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryEngine.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryEngine.kt
+@@ -15,6 +15,7 @@
+ import java.security.MessageDigest
+ import javax.inject.Inject
+ import javax.inject.Singleton
++import kotlinx.coroutines.CancellationException
+ import kotlinx.serialization.json.JsonArray
+ import kotlinx.serialization.json.JsonElement
+ import kotlinx.serialization.json.JsonNull
+@@ -24,14 +25,14 @@
+ class UnifiedSyncRecoveryFailure(val code: String, detail: String, cause: Throwable? = null) :
+     IllegalStateException("$code: $detail", cause)
+ 
+-enum class RecoveryRunOutcome { READY, CONTINUATION_REQUIRED, AUTH_BLOCKED }
++enum class RecoveryRunOutcome { READY, CONTINUATION_REQUIRED, PROMOTION_BLOCKED, AUTH_BLOCKED }
+ 
+ enum class RecoveryReason {
+     INITIAL_BOOTSTRAP, CURSOR_EXPIRED, CURSOR_CORRUPT, SCOPE_CHANGED, LOCAL_ANCHOR_MISSING,
+     RECONCILIATION_MISMATCH, MANUAL_SAFE_RESYNC, BOOTSTRAP_SESSION_RESTART,
+ }
+ 
+-/** Session 313 durable recovery state machine. All network waits are outside Room transactions. */
++/** B13 durable recovery state machine. Network waits are never held inside Room transactions. */
+ @Singleton
+ class UnifiedSyncRecoveryEngine @Inject constructor(
+     private val database: AppDatabase,
+@@ -48,13 +49,15 @@
+         val cursor = database.unifiedSyncDao().getCursor(scope.scopeId)
+         if (state == null) return RecoveryReason.INITIAL_BOOTSTRAP
+         validateRecoveryIdentity(state, scope)
+-        if (state.state == STATE_IN_PROGRESS || state.state == STATE_RECOVERY_REQUIRED || state.state == "NOT_STARTED") {
++        if (state.state in setOf(STATE_IN_PROGRESS, STATE_STAGED, STATE_STAGED_VERIFIED, STATE_RECOVERY_REQUIRED, "NOT_STARTED")) {
+             return runCatching { RecoveryReason.valueOf(state.reason) }.getOrDefault(RecoveryReason.CURSOR_CORRUPT)
+         }
+         if (state.state != STATE_READY || cursor == null || cursor.state != CURSOR_ACTIVE || cursor.cursorToken.isBlank()) {
+             return RecoveryReason.CURSOR_CORRUPT
+         }
+-        cursor.lastAppliedChangeRevision?.let { if (!database.syncRecoveryDao().hasAppliedInboxAnchor(scope.scopeId, it)) return RecoveryReason.LOCAL_ANCHOR_MISSING }
++        cursor.lastAppliedChangeRevision?.let {
++            if (!database.syncRecoveryDao().hasAppliedInboxAnchor(scope.scopeId, it)) return RecoveryReason.LOCAL_ANCHOR_MISSING
++        }
+         return null
+     }
+ 
+@@ -62,6 +65,7 @@
+         organizationId: String,
+         reason: RecoveryReason,
+         pageBudget: Int = DEFAULT_PAGE_BUDGET,
++        promotionAllowed: Boolean = true,
+         scopeGuard: suspend () -> Unit,
+     ): RecoveryRunOutcome {
+         require(organizationId.isNotBlank()) { "FAIL_BOOTSTRAP_SCOPE_MISMATCH: organizationId blank" }
+@@ -75,7 +79,25 @@
+         var state = ensureBootstrapSession(scope, reason, scopeGuard)
+         var pages = 0
+         var restarted = false
+-        while (pages < pageBudget) {
++        while (true) {
++            if (state.state == STATE_STAGED) {
++                state = verifyStaging(scope, state, scopeGuard)
++            }
++            if (state.state == STATE_STAGED_VERIFIED) {
++                if (!promotionAllowed) return RecoveryRunOutcome.PROMOTION_BLOCKED
++                return try {
++                    captureProtectionManifest(scope, state, scopeGuard)
++                    cutover(scope, state, scopeGuard)
++                    RecoveryRunOutcome.READY
++                } catch (failure: UnifiedSyncRecoveryFailure) {
++                    persistFailure(scope, state, failure.code, preserveStaging = true)
++                    throw failure
++                }
++            }
++            if (pages >= pageBudget) return RecoveryRunOutcome.CONTINUATION_REQUIRED
++            if (state.state != STATE_IN_PROGRESS) {
++                state = startFresh(scope, RecoveryReason.BOOTSTRAP_SESSION_RESTART, state, scopeGuard)
++            }
+             scopeGuard()
+             if (state.bootstrapSessionId.isNullOrBlank() || state.nextPageToken.isNullOrBlank()) {
+                 state = startFresh(scope, RecoveryReason.BOOTSTRAP_SESSION_RESTART, state, scopeGuard)
+@@ -88,28 +110,20 @@
+                     restarted = true
+                     continue
+                 }
+-                persistFailure(scope, state, failure.code)
++                persistFailure(scope, state, failure.code, preserveStaging = true)
++                if (failure.code == "AUTH_BLOCKED") return RecoveryRunOutcome.AUTH_BLOCKED
+                 throw failure
+             }
+             scopeGuard()
+             validatePage(scope, state, page)
+             state = persistPage(scope, state, page, scopeGuard)
+             pages++
+-            if (page.snapshotComplete) {
+-                val count = database.syncRecoveryDao().countStage(scope.scopeId, state.bootstrapSessionId!!)
+-                if (count != state.expectedSnapshotRows) {
+-                    persistFailure(scope, state, "FAIL_BOOTSTRAP_INCOMPLETE")
+-                    throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "staged=$count expected=${state.expectedSnapshotRows}")
+-                }
+-                cutover(scope, state, scopeGuard)
+-                return RecoveryRunOutcome.READY
+-            }
++            if (page.snapshotComplete) continue
+             if (!page.hasMore || state.nextPageToken.isNullOrBlank()) {
+-                persistFailure(scope, state, "FAIL_BOOTSTRAP_INCOMPLETE")
++                persistFailure(scope, state, "FAIL_BOOTSTRAP_INCOMPLETE", preserveStaging = true)
+                 throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "non-complete page lost continuation")
+             }
+         }
+-        return RecoveryRunOutcome.CONTINUATION_REQUIRED
+     }
+ 
+     private suspend fun ensureBootstrapSession(
+@@ -121,9 +135,12 @@
+         if (existing != null) {
+             validateRecoveryIdentity(existing, scope)
+             if (existing.state == STATE_IN_PROGRESS && !existing.bootstrapSessionId.isNullOrBlank() && !existing.nextPageToken.isNullOrBlank()) return existing
++            if (existing.state in setOf(STATE_STAGED, STATE_STAGED_VERIFIED) && !existing.bootstrapSessionId.isNullOrBlank()) return existing
+             if (existing.state == STATE_READY) {
+                 val cursor = database.unifiedSyncDao().getCursor(scope.scopeId)
+-                if (cursor != null && cursor.state == CURSOR_ACTIVE && cursor.cursorToken.isNotBlank()) return existing.copy(state = STATE_RECOVERY_REQUIRED, reason = reason.name)
++                if (cursor != null && cursor.state == CURSOR_ACTIVE && cursor.cursorToken.isNotBlank()) {
++                    return existing.copy(state = STATE_RECOVERY_REQUIRED, reason = reason.name)
++                }
+             }
+         }
+         return startFresh(scope, reason, existing, guard)
+@@ -142,6 +159,9 @@
+             throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SCOPE_MISMATCH", "bootstrap handshake is not bound to trusted scope")
+         }
+         val now = System.currentTimeMillis()
++        val coverageJson = start.coverageAggregateTypes?.let { values ->
++            JsonArray(values.sorted().map { JsonPrimitive(it) }).toString()
++        }
+         val state = SyncRecoveryStateEntity(
+             scopeId = scope.scopeId, organizationId = scope.organizationId, syncPrincipalId = scope.syncPrincipalId,
+             contractFamily = scope.contractFamily, contractVersion = scope.contractVersion, scopeDefinitionVersion = scope.scopeDefinitionVersion,
+@@ -150,11 +170,19 @@
+             expectedSnapshotRows = start.expectedSnapshotRows, stagedSnapshotRows = 0L,
+             recoveryGeneration = (prior?.recoveryGeneration ?: 0L) + 1L, attemptCount = (prior?.attemptCount ?: 0) + 1,
+             lastErrorCode = null, startedAt = now, updatedAt = now, completedAt = null,
++            expectedSnapshotDigest = start.expectedSnapshotDigest?.lowercase(), expectedCoverageJson = coverageJson,
++            bootstrapHighWatermark = start.highWatermark, bootstrapDeltaToken = start.deltaToken, stageVerifiedAt = null,
+         )
+         database.withTransaction {
+-            database.syncRecoveryDao().clearStaleStages(scope.scopeId, start.bootstrapSessionId)
+-            prior?.bootstrapSessionId?.takeIf { it != start.bootstrapSessionId }?.let { database.syncRecoveryDao().clearStage(scope.scopeId, it) }
+-            database.syncRecoveryDao().upsertRecoveryState(state)
++            val dao = database.syncRecoveryDao()
++            dao.clearStaleStages(scope.scopeId, start.bootstrapSessionId)
++            dao.clearStaleProtectionManifests(scope.scopeId, start.bootstrapSessionId)
++            prior?.bootstrapSessionId?.takeIf { it != start.bootstrapSessionId }?.let {
++                dao.clearStage(scope.scopeId, it)
++                dao.clearProtectionManifest(scope.scopeId, it)
++            }
++            dao.clearProtectionManifest(scope.scopeId, start.bootstrapSessionId)
++            dao.upsertRecoveryState(state)
+         }
+         return state
+     }
+@@ -182,12 +210,11 @@
+             throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "invalid bootstrap row identity")
+         }
+         val aggregate = UnifiedSyncAggregateRegistry.findById(row.aggregateType)
+-            ?: throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_UNKNOWN_AGGREGATE", row.aggregateType)
++            ?: throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_SNAPSHOT_COVERAGE", row.aggregateType)
+         if (row.payloadVersion != aggregate.payloadVersion) throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_PAYLOAD_VERSION", row.aggregateType)
+         if (canonical(row.payload).toByteArray(Charsets.UTF_8).size > MAX_SNAPSHOT_ROW_BYTES) {
+             throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "snapshot payload exceeds 1 MiB")
+         }
+-        // Scope is carried by the server bootstrap session itself; rows cannot override tenant identity.
+         require(scope.scopeId.isNotBlank())
+     }
+ 
+@@ -201,26 +228,29 @@
+         val dao = database.syncRecoveryDao()
+         val updatedAt = System.currentTimeMillis()
+         return database.withTransaction {
+-            val live = dao.getRecoveryState(scope.scopeId) ?: throw UnifiedSyncRecoveryFailure("FAIL_STALE_RECOVERY_SCOPE", "recovery state vanished")
++            val live = dao.getRecoveryState(scope.scopeId)
++                ?: throw UnifiedSyncRecoveryFailure("FAIL_STALE_RECOVERY_SCOPE", "recovery state vanished")
+             validateRecoveryIdentity(live, scope)
+             if (live.state != STATE_IN_PROGRESS || live.bootstrapSessionId != state.bootstrapSessionId || live.nextPageToken != state.nextPageToken) {
+                 throw UnifiedSyncRecoveryFailure("FAIL_STALE_RECOVERY_SCOPE", "stale recovery page commit")
+             }
+-            val bootstrapSessionId = live.bootstrapSessionId
++            val sessionId = live.bootstrapSessionId
+                 ?: throw UnifiedSyncRecoveryFailure("FAIL_STALE_RECOVERY_SCOPE", "bootstrap session missing")
+-            val existingMax = dao.maxStageOrdinal(scope.scopeId, bootstrapSessionId) ?: 0L
++            val existingMax = dao.maxStageOrdinal(scope.scopeId, sessionId) ?: 0L
+             var lastNewOrdinal = existingMax
+             page.rows.forEach { row ->
+                 val fingerprint = fingerprint(row)
+                 val entity = SyncBootstrapStageEntity(
+-                    scope.scopeId, bootstrapSessionId, row.ordinal, row.aggregateType, row.aggregateId,
+-                    row.entityVersion, row.payloadVersion, canonical(row.payload), row.partitionKey, fingerprint,
++                    scopeId = scope.scopeId, bootstrapSessionId = sessionId, ordinal = row.ordinal,
++                    aggregateType = row.aggregateType, aggregateId = row.aggregateId, entityVersion = row.entityVersion,
++                    payloadVersion = row.payloadVersion, payloadJson = canonical(row.payload), partitionKey = row.partitionKey,
++                    contentFingerprint = fingerprint, isTombstone = row.isTombstone,
+                 )
+                 val inserted = dao.insertStage(entity)
+                 if (inserted == -1L) {
+-                    val old = dao.getStageIdentity(scope.scopeId, bootstrapSessionId, row.aggregateType, row.aggregateId)
++                    val old = dao.getStageIdentity(scope.scopeId, sessionId, row.aggregateType, row.aggregateId)
+                         ?: throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_DUPLICATE_DIVERGENT_ROW", "duplicate ordinal/identity mismatch")
+-                    if (old.contentFingerprint != fingerprint || old.ordinal != row.ordinal) {
++                    if (old.contentFingerprint != fingerprint || old.ordinal != row.ordinal || old.isTombstone != row.isTombstone) {
+                         throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_DUPLICATE_DIVERGENT_ROW", "divergent duplicate ${row.aggregateType}/${row.aggregateId}")
+                     }
+                 } else {
+@@ -228,20 +258,85 @@
+                     lastNewOrdinal = row.ordinal
+                 }
+             }
+-            val count = dao.countStage(scope.scopeId, bootstrapSessionId)
+-            val expectedSnapshotRows = live.expectedSnapshotRows
+-            if (expectedSnapshotRows != null && count > expectedSnapshotRows) {
++            val count = dao.countStage(scope.scopeId, sessionId)
++            val expected = live.expectedSnapshotRows
++            if (expected != null && count > expected) {
+                 throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "staged row count exceeded handshake")
+             }
++            if (page.snapshotComplete && expected != null && count != expected) {
++                throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "staged=$count expected=$expected")
++            }
+             val next = live.copy(
+-                nextPageToken = page.nextPageToken,
+-                stagedSnapshotRows = count,
+-                updatedAt = updatedAt,
+-                lastErrorCode = null,
++                state = if (page.snapshotComplete) STATE_STAGED else STATE_IN_PROGRESS,
++                nextPageToken = page.nextPageToken, stagedSnapshotRows = count, updatedAt = updatedAt,
++                lastErrorCode = null, stageVerifiedAt = null,
+             )
+             dao.upsertRecoveryState(next)
+             next
+         }
++    }
++
++    private suspend fun verifyStaging(
++        scope: SyncScope,
++        state: SyncRecoveryStateEntity,
++        guard: suspend () -> Unit,
++    ): SyncRecoveryStateEntity {
++        guard()
++        val dao = database.syncRecoveryDao()
++        val sessionId = state.bootstrapSessionId
++            ?: throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "staging session missing")
++        try {
++            val verified = database.withTransaction {
++                val live = dao.getRecoveryState(scope.scopeId)
++                    ?: throw UnifiedSyncRecoveryFailure("FAIL_STALE_RECOVERY_SCOPE", "staging state missing")
++                validateRecoveryIdentity(live, scope)
++                if (live.bootstrapSessionId != sessionId || live.state != STATE_STAGED) {
++                    throw UnifiedSyncRecoveryFailure("FAIL_STALE_RECOVERY_SCOPE", "staging verification authority mismatch")
++                }
++                val rows = dao.listStage(scope.scopeId, sessionId)
++                BootstrapSealPolicy.verify(live, rows)
++                val now = System.currentTimeMillis()
++                live.copy(state = STATE_STAGED_VERIFIED, stageVerifiedAt = now, lastErrorCode = null, updatedAt = now)
++                    .also { dao.upsertRecoveryState(it) }
++            }
++            guard()
++            return verified
++        } catch (failure: UnifiedSyncRecoveryFailure) {
++            val now = System.currentTimeMillis()
++            database.withTransaction {
++                val latest = dao.getRecoveryState(scope.scopeId)
++                if (latest?.bootstrapSessionId == sessionId && latest.state == STATE_STAGED) {
++                    dao.upsertRecoveryState(latest.copy(lastErrorCode = normalizeFailureCode(failure.code), updatedAt = now))
++                }
++            }
++            throw failure
++        }
++    }
++
++    private suspend fun captureProtectionManifest(
++        scope: SyncScope,
++        state: SyncRecoveryStateEntity,
++        guard: suspend () -> Unit,
++    ) {
++        guard()
++        val now = System.currentTimeMillis()
++        database.withTransaction {
++            val dao = database.syncRecoveryDao()
++            val live = dao.getRecoveryState(scope.scopeId)
++                ?: throw UnifiedSyncRecoveryFailure("FAIL_STALE_RECOVERY_SCOPE", "manifest state missing")
++            validateRecoveryIdentity(live, scope)
++            val sessionId = live.bootstrapSessionId
++                ?: throw UnifiedSyncRecoveryFailure("FAIL_RECOVERY_PROTECTION_MANIFEST_MISSING", "session missing")
++            if (live.state != STATE_STAGED_VERIFIED || state.bootstrapSessionId != sessionId) {
++                throw UnifiedSyncRecoveryFailure("FAIL_STALE_RECOVERY_SCOPE", "manifest authority mismatch")
++            }
++            dao.upsertProtectionManifest(
++                RecoveryProtectionManifest.capture(
++                    database.openHelper.writableDatabase, scope.scopeId, sessionId, scope.organizationId, now,
++                )
++            )
++        }
++        guard()
+     }
+ 
+     private suspend fun cutover(scope: SyncScope, state: SyncRecoveryStateEntity, guard: suspend () -> Unit) {
+@@ -249,26 +344,42 @@
+         val dao = database.syncRecoveryDao()
+         val now = System.currentTimeMillis()
+         database.withTransaction {
+-            val live = dao.getRecoveryState(scope.scopeId) ?: throw UnifiedSyncRecoveryFailure("FAIL_STALE_RECOVERY_SCOPE", "cutover state missing")
++            val live = dao.getRecoveryState(scope.scopeId)
++                ?: throw UnifiedSyncRecoveryFailure("FAIL_STALE_RECOVERY_SCOPE", "cutover state missing")
+             validateRecoveryIdentity(live, scope)
+-            val bootstrapSessionId = live.bootstrapSessionId
++            val sessionId = live.bootstrapSessionId
+                 ?: throw UnifiedSyncRecoveryFailure("FAIL_RECOVERY_NONATOMIC_CUTOVER", "cutover session missing")
+             val baselineCursor = live.baselineCursor
+                 ?: throw UnifiedSyncRecoveryFailure("FAIL_RECOVERY_NONATOMIC_CUTOVER", "cutover cursor missing")
+-            if (live.state != STATE_IN_PROGRESS || bootstrapSessionId != state.bootstrapSessionId || baselineCursor.isBlank()) {
++            if (live.state != STATE_STAGED_VERIFIED || sessionId != state.bootstrapSessionId || baselineCursor.isBlank()) {
+                 throw UnifiedSyncRecoveryFailure("FAIL_RECOVERY_NONATOMIC_CUTOVER", "cutover authority mismatch")
+             }
+-            val expected = live.expectedSnapshotRows ?: throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "expected count missing")
+-            if (dao.countStage(scope.scopeId, bootstrapSessionId) != expected) {
++            val expected = live.expectedSnapshotRows
++                ?: throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "expected count missing")
++            if (dao.countStage(scope.scopeId, sessionId) != expected) {
+                 throw UnifiedSyncRecoveryFailure("FAIL_BOOTSTRAP_INCOMPLETE", "stage incomplete at cutover")
+             }
+-            snapshotApplier.materializeAndPrune(scope, bootstrapSessionId, live.baselineRevision)
++            val manifest = dao.getProtectionManifest(scope.scopeId, sessionId)
++                ?: throw UnifiedSyncRecoveryFailure("FAIL_RECOVERY_PROTECTION_MANIFEST_MISSING", "promotion manifest missing")
++            val before = RecoveryProtectionManifest.capture(
++                database.openHelper.writableDatabase, scope.scopeId, sessionId, scope.organizationId, manifest.capturedAt,
++            )
++            if (!RecoveryProtectionManifest.sameContent(manifest, before)) {
++                throw UnifiedSyncRecoveryFailure("FAIL_RECOVERY_PROTECTION_MANIFEST_STALE", "local intent changed after manifest capture")
++            }
++            snapshotApplier.materializeAndPrune(scope, sessionId, live.baselineRevision)
++            val after = RecoveryProtectionManifest.capture(
++                database.openHelper.writableDatabase, scope.scopeId, sessionId, scope.organizationId, manifest.capturedAt,
++            )
++            if (!RecoveryProtectionManifest.sameContent(before, after)) {
++                throw UnifiedSyncRecoveryFailure("FAIL_RECOVERY_PROTECTION_HASH_CHANGED", "promotion changed protected intent bytes")
++            }
+             dao.installBootstrapCursor(
+                 SyncCursorEntity(
+                     scopeId = scope.scopeId, organizationId = scope.organizationId, syncPrincipalId = scope.syncPrincipalId,
+                     contractFamily = scope.contractFamily, contractVersion = scope.contractVersion,
+                     scopeDefinitionVersion = scope.scopeDefinitionVersion, cursorToken = baselineCursor,
+-                    lastAppliedChangeRevision = null, pageHighWatermark = live.baselineRevision,
++                    lastAppliedChangeRevision = null, pageHighWatermark = live.bootstrapHighWatermark ?: live.baselineRevision,
+                     minAvailableRevision = null, state = CURSOR_ACTIVE, updatedAt = now,
+                 )
+             )
+@@ -280,21 +391,31 @@
+                     lastFailureCategory = null, lastFailureCode = null,
+                     lastReconciliationAt = oldHealth?.lastReconciliationAt,
+                     lastReconciliationStatus = oldHealth?.lastReconciliationStatus,
+-                    lastObservedServerRevision = live.baselineRevision,
++                    lastObservedServerRevision = live.bootstrapHighWatermark ?: live.baselineRevision,
+                     fullResyncCount = (oldHealth?.fullResyncCount ?: 0L) + 1L, updatedAt = now,
+                 )
+             )
+-            dao.upsertRecoveryState(live.copy(state = STATE_READY, nextPageToken = null, stagedSnapshotRows = expected, lastErrorCode = null, updatedAt = now, completedAt = now))
+-            // Retain the trusted server-base snapshot shadow for reconciliation; the next bootstrap clears stale sessions.
+-        }
+-    }
+-
+-    private suspend fun persistFailure(scope: SyncScope, state: SyncRecoveryStateEntity, code: String) {
++            dao.upsertRecoveryState(
++                live.copy(state = STATE_READY, nextPageToken = null, stagedSnapshotRows = expected,
++                    lastErrorCode = null, updatedAt = now, completedAt = now)
++            )
++        }
++    }
++
++    private suspend fun persistFailure(
++        scope: SyncScope,
++        state: SyncRecoveryStateEntity,
++        code: String,
++        preserveStaging: Boolean = false,
++    ) {
+         val safe = normalizeFailureCode(code)
+         val now = System.currentTimeMillis()
+         database.withTransaction {
+             val live = database.syncRecoveryDao().getRecoveryState(scope.scopeId) ?: state
+-            database.syncRecoveryDao().upsertRecoveryState(live.copy(state = STATE_RECOVERY_REQUIRED, lastErrorCode = safe, updatedAt = now))
++            val nextState = if (preserveStaging && live.state in setOf(STATE_IN_PROGRESS, STATE_STAGED, STATE_STAGED_VERIFIED)) {
++                live.state
++            } else STATE_RECOVERY_REQUIRED
++            database.syncRecoveryDao().upsertRecoveryState(live.copy(state = nextState, lastErrorCode = safe, updatedAt = now))
+         }
+     }
+ 
+@@ -306,7 +427,8 @@
+     }
+ 
+     private fun fingerprint(row: SyncBootstrapRow): String = sha256(
+-        listOf(row.aggregateType, row.aggregateId, row.entityVersion?.toString() ?: "∅", row.payloadVersion.toString(), row.partitionKey, canonical(row.payload)).joinToString("|")
++        listOf(row.aggregateType, row.aggregateId, row.entityVersion?.toString() ?: "∅", row.payloadVersion.toString(),
++            row.partitionKey, if (row.isTombstone) "1" else "0", canonical(row.payload)).joinToString("|")
+     )
+ 
+     private fun canonical(element: JsonElement): String = when (element) {
+@@ -317,9 +439,13 @@
+         else -> element.toString()
+     }
+ 
+-    private fun sha256(value: String): String = MessageDigest.getInstance("SHA-256").digest(value.toByteArray(Charsets.UTF_8)).joinToString("") { "%02x".format(it) }
+-
+-    private suspend fun <T> classifyRemote(block: suspend () -> T): T = try { block() } catch (t: Throwable) {
++    private fun sha256(value: String): String = MessageDigest.getInstance("SHA-256")
++        .digest(value.toByteArray(Charsets.UTF_8)).joinToString("") { "%02x".format(it) }
++
++    private suspend fun <T> classifyRemote(block: suspend () -> T): T = try {
++        block()
++    } catch (t: Throwable) {
++        if (t is CancellationException) throw t
+         val message = generateSequence(t) { it.cause }.joinToString(" ") { it.message.orEmpty() }
+         val code = when {
+             message.contains("BOOTSTRAP_RESTART_REQUIRED", true) -> "BOOTSTRAP_RESTART_REQUIRED"
+@@ -339,6 +465,8 @@
+         const val PAGE_SIZE = 100
+         const val MAX_SNAPSHOT_ROW_BYTES = 1_048_576
+         const val STATE_IN_PROGRESS = "IN_PROGRESS"
++        const val STATE_STAGED = "STAGED"
++        const val STATE_STAGED_VERIFIED = "STAGED_VERIFIED"
+         const val STATE_READY = "READY"
+         const val STATE_RECOVERY_REQUIRED = "RECOVERY_REQUIRED"
+         const val CURSOR_ACTIVE = "ACTIVE"
+--- a/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncSnapshotApplier.kt
++++ b/data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncSnapshotApplier.kt
+@@ -2,21 +2,21 @@
+ 
+ import com.verto.app.data.local.AppDatabase
+ import com.verto.app.data.local.entity.SyncBootstrapStageEntity
++import com.verto.app.data.sync.SyncMutationOperation
+ import com.verto.app.data.sync.SyncScope
+ import com.verto.app.data.sync.UnifiedSyncAggregateRegistry
++import com.verto.app.data.sync.UnifiedSyncDeletePolicy
+ import com.verto.app.data.sync.ownership.ProtectedSyncKey
+ import com.verto.app.data.sync.ownership.SyncPendingProtection
+ import com.verto.app.data.sync.pull.SyncSnapshotMaterialization
+ import com.verto.app.data.sync.pull.UnifiedSyncChangeApplier
++import java.security.MessageDigest
+ import javax.inject.Inject
+ import javax.inject.Singleton
+ import kotlinx.serialization.json.Json
+ import kotlinx.serialization.json.jsonObject
+ 
+-/**
+- * Snapshot materialization boundary. It never writes sync_inbox, never enqueues outbox work and
+- * never constructs a SyncChange. Caller owns the single Room cutover transaction.
+- */
++/** B13 snapshot promotion boundary. Caller owns the one Room cutover transaction. */
+ @Singleton
+ class UnifiedSyncSnapshotApplier @Inject constructor(
+     private val database: AppDatabase,
+@@ -27,6 +27,9 @@
+ 
+     suspend fun materializeAndPrune(scope: SyncScope, sessionId: String, baselineRevision: Long?) {
+         check(database.inTransaction()) { "REMOTE_APPLY_TRANSACTION_REQUIRED" }
++        val revision = requireNotNull(baselineRevision?.takeIf { it > 0L }) {
++            "BOOTSTRAP_BASELINE_REVISION_MISSING"
++        }
+         val financialBatch = domainApplier.beginFinancialBatch(scope.organizationId, scope.scopeId)
+         val recoveryDao = database.syncRecoveryDao()
+         val rows = recoveryDao.listStage(scope.scopeId, sessionId)
+@@ -38,7 +41,30 @@
+         for (row in ordered) {
+             val contract = UnifiedSyncAggregateRegistry.requireById(row.aggregateType)
+             require(row.payloadVersion == contract.payloadVersion) { "FAIL_BOOTSTRAP_PAYLOAD_VERSION: ${row.aggregateType}" }
+-            if (shouldPreservePending(scope, row)) continue
++
++            // This is deliberately repeated inside the promotion transaction. A write committed after
++            // the staging inventory but before promotion is therefore still protected.
++            if (shouldPreservePending(scope, row)) {
++                check(recoveryDao.markStagePromotion(
++                    scope.scopeId, sessionId, row.ordinal, STATE_WAITING_LOCAL, "PENDING_LOCAL_MUTATION", null,
++                ) == 1) { "FAIL_RECOVERY_STAGE_STATE" }
++                continue
++            }
++
++            if (row.isTombstone && contract.deletePolicy !in setOf(
++                    UnifiedSyncDeletePolicy.VERSIONED_DELETE, UnifiedSyncDeletePolicy.TOMBSTONE,
++                )
++            ) {
++                throw UnifiedSyncRecoveryFailure(
++                    "FAIL_BOOTSTRAP_TOMBSTONE_POLICY", "${row.aggregateType} does not permit bootstrap tombstone",
++                )
++            }
++            if (row.isTombstone && row.entityVersion == null) {
++                throw UnifiedSyncRecoveryFailure(
++                    "FAIL_BOOTSTRAP_TOMBSTONE_VERSION_MISSING", "${row.aggregateType}/${row.aggregateId}",
++                )
++            }
++
+             val payload = json.parseToJsonElement(row.payloadJson).jsonObject
+             domainApplier.applySnapshot(
+                 SyncSnapshotMaterialization(
+@@ -49,26 +75,48 @@
+                     entityVersion = row.entityVersion,
+                     payloadVersion = row.payloadVersion,
+                     payload = payload,
+-                    revision = if (row.aggregateType in setOf("INVOICE", "PAYMENT")) {
+-                        requireNotNull(baselineRevision?.takeIf { it > 0 }) { "FINANCIAL_BOOTSTRAP_BASELINE_MISSING" }
+-                    } else baselineRevision?.coerceAtLeast(1L) ?: row.entityVersion?.coerceAtLeast(1L) ?: 1L,
++                    revision = revision,
++                    operationType = if (row.isTombstone) SyncMutationOperation.DELETE else SyncMutationOperation.UPSERT,
++                    deletedAtEpochMillis = if (row.isTombstone) System.currentTimeMillis() else null,
+                 ), financialBatch,
+             )
++
++            // Financial FULL materializers own their entity-version writes. Every other server-versioned
++            // row records applied authority only after the domain apply succeeded, in this same tx.
++            if (row.aggregateType !in FINANCIAL_TYPES && row.entityVersion != null) {
++                database.unifiedSyncDao().recordAppliedVersion(
++                    organizationId = scope.organizationId,
++                    scopeId = scope.scopeId,
++                    versionFamily = row.aggregateType,
++                    aggregateId = row.aggregateId,
++                    appliedVersion = row.entityVersion,
++                    appliedRevision = revision,
++                    contentHash = sha256Utf8(row.payloadJson),
++                    tombstone = row.isTombstone,
++                    updatedAt = System.currentTimeMillis(),
++                )
++            }
++            check(recoveryDao.markStagePromotion(
++                scope.scopeId, sessionId, row.ordinal, STATE_APPLIED, null, System.currentTimeMillis(),
++            ) == 1) { "FAIL_RECOVERY_STAGE_STATE" }
+         }
+         domainApplier.completeFinancialBatch(financialBatch)
+ 
+-        // B13 will re-enable absence pruning only after it enumerates each local row and runs this
+-        // same content-aware protection. The old per-table SQL bypassed pending references.
+-
++        // No absence-pruning in B13. Financial/inventory rows are never deleted merely because a
++        // sealed snapshot omits them; explicit scoped tombstones are the only hard-delete input.
+         val after = OutboxIdentityDigest.compute(db, scope.organizationId)
+         check(before == after) { "FAIL_RECOVERY_OUTBOX_LOSS: pending outbox identity digest changed during cutover" }
+     }
+ 
+-    private suspend fun shouldPreservePending(scope: SyncScope, row: SyncBootstrapStageEntity): Boolean {
+-        return pendingProtection.isProtected(
+-            scope.organizationId,
+-            ProtectedSyncKey(row.aggregateType, row.aggregateId),
+-        )
++    private suspend fun shouldPreservePending(scope: SyncScope, row: SyncBootstrapStageEntity): Boolean =
++        pendingProtection.isProtected(scope.organizationId, ProtectedSyncKey(row.aggregateType, row.aggregateId))
++
++    private fun sha256Utf8(value: String): String = MessageDigest.getInstance("SHA-256")
++        .digest(value.toByteArray(Charsets.UTF_8)).joinToString("") { "%02x".format(it) }
++
++    private companion object {
++        val FINANCIAL_TYPES = setOf("INVOICE", "PAYMENT")
++        const val STATE_WAITING_LOCAL = "WAITING_LOCAL"
++        const val STATE_APPLIED = "APPLIED"
+     }
+-
+ }
+--- a/data/sync/src/test/kotlin/com/verto/app/data/sync/SyncManagerTest.kt
++++ b/data/sync/src/test/kotlin/com/verto/app/data/sync/SyncManagerTest.kt
+@@ -79,6 +79,39 @@
+         val result = fixture.manager.drainOrchestration(scope)
+ 
+         assertEquals(SyncDrainResult.CONTINUATION_SCHEDULED, result)
++        assertEquals(listOf(scope to 0L), fixture.scheduler.continuations)
++    }
++
++    @Test
++    fun `m03 review allows one independent push but blocks bootstrap promotion and pull`() = runTest {
++        val fixture = Fixture()
++        fixture.runtime.migrationReviewCount = 1
++        fixture.engine.reason = RecoveryReason.CURSOR_CORRUPT
++        fixture.engine.recoveryOutcome = RecoveryRunOutcome.PROMOTION_BLOCKED
++        val scope = fixture.manager.currentWorkScope()!!
++
++        val result = fixture.manager.drainOrchestration(scope)
++
++        assertEquals(SyncDrainResult.CONTINUATION_SCHEDULED, result)
++        assertFalse(fixture.engine.lastPromotionAllowed)
++        assertEquals(1, fixture.engine.pushCount)
++        assertEquals(0, fixture.engine.pullCount)
++        assertEquals(listOf(scope to 0L), fixture.scheduler.continuations)
++    }
++
++    @Test
++    fun `m03 review does not let bootstrap continuation starve independent push`() = runTest {
++        val fixture = Fixture()
++        fixture.runtime.migrationReviewCount = 1
++        fixture.engine.reason = RecoveryReason.CURSOR_CORRUPT
++        fixture.engine.recoveryOutcome = RecoveryRunOutcome.CONTINUATION_REQUIRED
++        val scope = fixture.manager.currentWorkScope()!!
++
++        val result = fixture.manager.drainOrchestration(scope)
++
++        assertEquals(SyncDrainResult.CONTINUATION_SCHEDULED, result)
++        assertEquals(1, fixture.engine.pushCount)
++        assertEquals(0, fixture.engine.pullCount)
+         assertEquals(listOf(scope to 0L), fixture.scheduler.continuations)
+     }
+ 
+@@ -225,6 +258,7 @@
+         var epoch = 1L
+         var lastOrganizationId = "org"
+         var legacyRuns = 0
++        var migrationReviewCount = 0
+         private var report: String? = null
+ 
+         override suspend fun currentPrincipal() = principal
+@@ -235,6 +269,7 @@
+             categoryIds = emptySet(), commissionIds = emptySet(), unitIds = emptySet(),
+             budgetIds = emptySet(), reconciliationIds = emptySet(),
+         )
++        override suspend fun prepareLegacyV2Migration(scope: SyncWorkScope, deletions: SyncDeletionSnapshot, now: Long) = migrationReviewCount
+         override suspend fun getPersistedSyncReport(organizationId: String, userId: String) = report
+         override suspend fun setPersistedSyncReport(organizationId: String, userId: String, reportJson: String) {
+             report = reportJson
+@@ -312,6 +347,8 @@
+         var pushSuccessCount = 0
+         var unconfirmed = false
+         var pushCount = 0
++        var pullCount = 0
++        var lastPromotionAllowed = true
+         var onPush: (() -> Unit)? = null
+         val failures = mutableListOf<Pair<String, String>>()
+ 
+@@ -326,9 +363,11 @@
+         override suspend fun runRecovery(
+             organizationId: String,
+             reason: RecoveryReason,
++            promotionAllowed: Boolean,
+             scopeGuard: suspend () -> Unit,
+         ): RecoveryRunOutcome {
+             scopeGuard()
++            lastPromotionAllowed = promotionAllowed
+             return recoveryOutcome
+         }
+ 
+@@ -338,8 +377,10 @@
+             return pushResult
+         }
+ 
+-        override suspend fun pull(organizationId: String) =
+-            UnifiedSyncPullResult(UnifiedSyncPullOutcome.CAUGHT_UP, pagesCommitted = 0, changesAccounted = 0)
++        override suspend fun pull(organizationId: String): UnifiedSyncPullResult {
++            pullCount += 1
++            return UnifiedSyncPullResult(UnifiedSyncPullOutcome.CAUGHT_UP, pagesCommitted = 0, changesAccounted = 0)
++        }
+ 
+         override suspend fun markPushSuccess(organizationId: String) { pushSuccessCount += 1 }
+         override suspend fun markPullSuccess(organizationId: String) = Unit
+--- a/tools/test_sync_b13_sqlite.py
++++ b/tools/test_sync_b13_sqlite.py
+@@ -0,0 +1,77 @@
++#!/usr/bin/env python3
++import sqlite3, hashlib, sys
++
++con = sqlite3.connect(':memory:')
++con.executescript('''
++CREATE TABLE sync_recovery_state (
++ scope_id TEXT PRIMARY KEY, organization_id TEXT NOT NULL, sync_principal_id TEXT NOT NULL,
++ contract_family TEXT NOT NULL, contract_version INTEGER NOT NULL, scope_definition_version INTEGER NOT NULL,
++ state TEXT NOT NULL, reason TEXT NOT NULL, bootstrap_session_id TEXT, baseline_cursor TEXT,
++ baseline_revision INTEGER, next_page_token TEXT, expected_snapshot_rows INTEGER,
++ staged_snapshot_rows INTEGER NOT NULL DEFAULT 0, recovery_generation INTEGER NOT NULL DEFAULT 0,
++ attempt_count INTEGER NOT NULL DEFAULT 0, last_error_code TEXT, started_at INTEGER, updated_at INTEGER NOT NULL, completed_at INTEGER
++);
++CREATE TABLE sync_bootstrap_stage (
++ scope_id TEXT NOT NULL, bootstrap_session_id TEXT NOT NULL, ordinal INTEGER NOT NULL,
++ aggregate_type TEXT NOT NULL, aggregate_id TEXT NOT NULL, entity_version INTEGER,
++ payload_version INTEGER NOT NULL, payload_json TEXT NOT NULL, partition_key TEXT NOT NULL,
++ content_fingerprint TEXT NOT NULL, PRIMARY KEY(scope_id,bootstrap_session_id,ordinal)
++);
++''')
++
++migration_sql = [
++"ALTER TABLE sync_recovery_state ADD COLUMN expected_snapshot_digest TEXT",
++"ALTER TABLE sync_recovery_state ADD COLUMN expected_coverage_json TEXT",
++"ALTER TABLE sync_recovery_state ADD COLUMN bootstrap_high_watermark INTEGER",
++"ALTER TABLE sync_recovery_state ADD COLUMN bootstrap_delta_token TEXT",
++"ALTER TABLE sync_recovery_state ADD COLUMN stage_verified_at INTEGER",
++"ALTER TABLE sync_bootstrap_stage ADD COLUMN is_tombstone INTEGER NOT NULL DEFAULT 0",
++"ALTER TABLE sync_bootstrap_stage ADD COLUMN promotion_state TEXT NOT NULL DEFAULT 'STAGED'",
++"ALTER TABLE sync_bootstrap_stage ADD COLUMN wait_reason TEXT",
++"ALTER TABLE sync_bootstrap_stage ADD COLUMN applied_at INTEGER",
++]
++for sql in migration_sql: con.execute(sql)
++con.executescript('''
++CREATE TABLE sync_recovery_protection_manifest (
++ scope_id TEXT NOT NULL, bootstrap_session_id TEXT NOT NULL, organization_id TEXT NOT NULL,
++ combined_sha256 TEXT NOT NULL, unified_sha256 TEXT NOT NULL, party_sha256 TEXT NOT NULL,
++ financial_sha256 TEXT NOT NULL, inventory_stock_sha256 TEXT NOT NULL, inventory_cost_sha256 TEXT NOT NULL,
++ optimal_sha256 TEXT NOT NULL, attachment_sha256 TEXT NOT NULL, pending_reference_sha256 TEXT NOT NULL,
++ mutation_packet_sha256 TEXT NOT NULL, local_generation_sha256 TEXT NOT NULL, captured_at INTEGER NOT NULL,
++ PRIMARY KEY(scope_id, bootstrap_session_id),
++ CHECK(length(combined_sha256)=64), CHECK(length(unified_sha256)=64), CHECK(length(party_sha256)=64),
++ CHECK(length(financial_sha256)=64), CHECK(length(inventory_stock_sha256)=64), CHECK(length(inventory_cost_sha256)=64),
++ CHECK(length(optimal_sha256)=64), CHECK(length(attachment_sha256)=64), CHECK(length(pending_reference_sha256)=64),
++ CHECK(length(mutation_packet_sha256)=64), CHECK(length(local_generation_sha256)=64)
++);
++CREATE INDEX index_sync_recovery_protection_manifest_org ON sync_recovery_protection_manifest(organization_id);
++''')
++
++stage_cols = {r[1]: r for r in con.execute('PRAGMA table_info(sync_bootstrap_stage)')}
++assert stage_cols['is_tombstone'][4] == '0'
++assert stage_cols['promotion_state'][4] == "'STAGED'"
++state_cols = {r[1] for r in con.execute('PRAGMA table_info(sync_recovery_state)')}
++for col in ['expected_snapshot_digest','expected_coverage_json','bootstrap_high_watermark','bootstrap_delta_token','stage_verified_at']:
++    assert col in state_cols
++h = hashlib.sha256(b'x').hexdigest()
++vals = ['s','b','o'] + [h]*11 + [1]
++con.execute('INSERT INTO sync_recovery_protection_manifest VALUES (' + ','.join('?'*len(vals)) + ')', vals)
++try:
++    bad = ['s2','b2','o'] + ['bad'] + [h]*10 + [1]
++    con.execute('INSERT INTO sync_recovery_protection_manifest VALUES (' + ','.join('?'*len(bad)) + ')', bad)
++    raise AssertionError('sha check did not reject')
++except sqlite3.IntegrityError:
++    pass
++
++# Process-boundary precursor: staged state survives a rolled-back promotion transaction.
++con.execute("INSERT INTO sync_recovery_state(scope_id,organization_id,sync_principal_id,contract_family,contract_version,scope_definition_version,state,reason,bootstrap_session_id,baseline_cursor,expected_snapshot_rows,updated_at) VALUES('scope','org','p','f',1,1,'STAGED_VERIFIED','INITIAL_BOOTSTRAP','sess','delta',1,1)")
++con.execute("INSERT INTO sync_bootstrap_stage(scope_id,bootstrap_session_id,ordinal,aggregate_type,aggregate_id,payload_version,payload_json,partition_key,content_fingerprint) VALUES('scope','sess',1,'NOTE','n1',1,'{}','p','abc')")
++con.commit()
++try:
++    con.execute('BEGIN')
++    con.execute("UPDATE sync_bootstrap_stage SET promotion_state='APPLIED' WHERE scope_id='scope'")
++    raise RuntimeError('simulated process failure')
++except RuntimeError:
++    con.rollback()
++assert con.execute("SELECT promotion_state FROM sync_bootstrap_stage WHERE scope_id='scope'").fetchone()[0] == 'STAGED'
++print('B13_SQLITE_CONTRACT=PASS')
+--- a/tools/verify_b13_bootstrap_safety.py
++++ b/tools/verify_b13_bootstrap_safety.py
+@@ -0,0 +1,83 @@
++#!/usr/bin/env python3
++from pathlib import Path
++import sys
++
++ROOT = Path(__file__).resolve().parents[1]
++def read(rel): return (ROOT / rel).read_text(encoding='utf-8')
++
++def check(name, ok, detail=''):
++    global failures
++    if ok:
++        print(f'PASS {name}')
++    else:
++        failures += 1
++        print(f'FAIL {name} {detail}'.rstrip())
++
++failures = 0
++entity = read('data/database/src/main/kotlin/com/verto/app/data/local/entity/SyncRecoveryEntities.kt')
++migration = read('data/database/src/main/kotlin/com/verto/app/data/local/AppDatabaseMigrations100To101.kt')
++catalog = read('data/database/src/main/kotlin/com/verto/app/data/local/MigrationCatalog.kt')
++dao = read('data/database/src/main/kotlin/com/verto/app/data/local/dao/SyncRecoveryDao.kt')
++wire = read('data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncBootstrapWire.kt')
++remote = read('data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncBootstrapRemote.kt')
++seal = read('data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/BootstrapSealPolicy.kt')
++manifest = read('data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/RecoveryProtectionManifest.kt')
++engine = read('data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncRecoveryEngine.kt')
++applier = read('data/sync/src/main/kotlin/com/verto/app/data/sync/recovery/UnifiedSyncSnapshotApplier.kt')
++manager = read('data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManager.kt')
++ports = read('data/sync/src/main/kotlin/com/verto/app/data/sync/SyncManagerPorts.kt')
++material = read('data/sync/src/main/kotlin/com/verto/app/data/sync/pull/UnifiedRemoteMaterialization.kt')
++
++check('schema-101', 'ROOM_SCHEMA_VERSION: Int = 101' in catalog and 'MIGRATION_100_101' in catalog)
++check('recovery-seal-columns', all(x in entity for x in ['expected_snapshot_digest','expected_coverage_json','bootstrap_high_watermark','bootstrap_delta_token','stage_verified_at']))
++check('stage-promotion-columns', all(x in entity for x in ['is_tombstone','promotion_state','wait_reason','applied_at']))
++check('protection-manifest-table', 'sync_recovery_protection_manifest' in entity and 'combined_sha256' in entity)
++check('migration-state-columns', all(x in migration for x in ['expected_snapshot_digest','expected_coverage_json','bootstrap_high_watermark','bootstrap_delta_token','stage_verified_at']))
++check('migration-stage-columns', all(x in migration for x in ['is_tombstone','promotion_state','wait_reason','applied_at']))
++check('migration-manifest-sha-checks', migration.count('CHECK(length(') >= 11)
++check('dao-stage-promotion', 'markStagePromotion' in dao)
++check('dao-manifest-persistence', all(x in dao for x in ['upsertProtectionManifest','getProtectionManifest','clearProtectionManifest']))
++check('wire-seal', all(x in wire for x in ['snapshot_digest_sha256','coverage_aggregate_types','high_watermark','delta_token']))
++check('wire-tombstone', 'is_tombstone' in wire and 'isTombstone' in remote)
++check('seal-count', 'rows.size.toLong() != expectedRows' in seal)
++check('seal-digest', 'actualDigest != expectedDigest' in seal and 'contentFingerprint' in seal)
++check('seal-coverage', 'coverage != requiredCoverage' in seal and 'UnifiedSyncAggregateRegistry.byId.keys.sorted()' in seal)
++check('seal-high-watermark', 'highWatermark <= 0L' in seal and 'baselineRevision != highWatermark' in seal)
++check('seal-delta-token', 'deltaToken != state.baselineCursor' in seal)
++check('durable-staged-state', 'STATE_STAGED = "STAGED"' in engine and 'STATE_STAGED_VERIFIED = "STAGED_VERIFIED"' in engine)
++check('seal-atomic-verify', 'database.withTransaction' in engine[engine.index('private suspend fun verifyStaging'):engine.index('private suspend fun captureProtectionManifest')])
++check('transient-auth-preserve', 'preserveStaging = true' in engine and 'RecoveryRunOutcome.AUTH_BLOCKED' in engine)
++check('cancellation-rethrow', 'if (t is CancellationException) throw t' in engine)
++check('manifest-unified-owner', 'FROM sync_outbox' in manifest)
++check('manifest-party-owner', 'FROM party_sync_outbox' in manifest)
++check('manifest-financial-owner', 'FROM financial_outbox' in manifest)
++check('manifest-inventory-stock-owner', 'FROM inventory_stock_outbox' in manifest)
++check('manifest-inventory-cost-owner', 'FROM inventory_cost_outbox' in manifest)
++check('manifest-optimal-owner', 'FROM optimal_outbox' in manifest)
++check('manifest-attachment-owner', 'FROM sync_attachment_transfer' in manifest and 'content' in manifest.lower())
++check('manifest-pending-reference', 'FROM sync_pending_reference' in manifest)
++check('manifest-frozen-packets', all(x in manifest for x in ['sync_mutation_packet','sync_write_batch','sync_write_batch_member']))
++check('manifest-local-content-generation', 'sync_local_generation' in manifest and 'content_hash' in manifest)
++check('manifest-storage-class-exact', all(x in manifest for x in ['FIELD_TYPE_INTEGER','FIELD_TYPE_FLOAT','FIELD_TYPE_STRING','FIELD_TYPE_BLOB']))
++check('manifest-blob-exact-bytes', 'cursor.getBlob(index)' in manifest)
++check('manifest-before-after', all(x in engine for x in ['FAIL_RECOVERY_PROTECTION_MANIFEST_STALE','FAIL_RECOVERY_PROTECTION_HASH_CHANGED','RecoveryProtectionManifest.sameContent']))
++check('one-cutover-room-tx', 'snapshotApplier.materializeAndPrune' in engine and 'database.withTransaction' in engine)
++check('per-row-protection-recheck', 'for (row in ordered)' in applier and 'shouldPreservePending(scope, row)' in applier)
++check('waiting-local', 'STATE_WAITING_LOCAL' in applier and 'PENDING_LOCAL_MUTATION' in applier)
++check('applied-stage-state', 'STATE_APPLIED' in applier and 'markStagePromotion' in applier)
++check('applied-version-after-domain-apply', applier.index('domainApplier.applySnapshot') < applier.index('recordAppliedVersion'))
++check('no-synthetic-bootstrap-revision', 'coerceAtLeast(1L)' not in applier and 'BOOTSTRAP_BASELINE_REVISION_MISSING' in applier)
++check('explicit-tombstone-policy', 'FAIL_BOOTSTRAP_TOMBSTONE_POLICY' in applier and 'SyncMutationOperation.DELETE' in applier)
++check('no-absence-prune', 'No absence-pruning in B13' in applier and 'pruneSql' not in applier)
++check('no-clear-all-tables', 'clearAllTables' not in engine + applier)
++check('snapshot-operation-propagated', 'override val operationType: SyncMutationOperation = SyncMutationOperation.UPSERT' in material)
++check('m03-promotion-gate-port', 'promotionAllowed: Boolean' in ports and 'promotionAllowed = promotionAllowed' in ports)
++check('m03-promotion-blocked', 'RecoveryRunOutcome.PROMOTION_BLOCKED' in manager and 'promotionAllowed = migrationReviewCount == 0' in manager)
++check('m03-independent-push-before-block-return', manager.index('val push = v2Engine.pushAvailable(scope)') < manager.index('recoveryPromotionBlockedByMigrationEvidence || recoveryContinuationDeferredByMigrationEvidence'))
++check('m03-continuation-does-not-starve-push', 'recoveryContinuationDeferredByMigrationEvidence = true' in manager)
++check('m03-no-pull-while-blocked', manager.index('recoveryPromotionBlockedByMigrationEvidence || recoveryContinuationDeferredByMigrationEvidence') < manager.index('val pull = v2Engine.pull(scope.organizationId)'))
++
++if failures:
++    print(f'B13_STATIC_GATE=FAIL failures={failures}')
++    sys.exit(1)
++print('B13_STATIC_GATE=PASS checks=48')

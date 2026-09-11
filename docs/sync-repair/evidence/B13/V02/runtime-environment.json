@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-09-11",
+  "python": "3.13.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "java": "openjdk version \"21.0.11\" 2026-04-21\nOpenJDK Runtime Environment (build 21.0.11+10-1-deb13u2-Debian)\nOpenJDK 64-Bit Server VM (build 21.0.11+10-1-deb13u2-Debian, mixed mode, sharing)",
+  "gradle_8_9_distribution_cache": "PARTIAL_LOCK_ONLY_NO_DISTRIBUTION",
+  "gradle_cache_path": "/root/.gradle/wrapper/dists/gradle-8.9-bin/90cnw93cvbtalezasaz0blq0a",
+  "android_sdk_detected": false,
+  "gradle_compile_attempt": "BLOCKED",
+  "gradle_blocker": "Wrapper attempted services.gradle.org and failed UnknownHostException; no cached Gradle 8.9 distribution.",
+  "room_android_runtime": "NOT_RUN",
+  "server_b13_seal_fields_checked_in": false,
+  "live_server_actions": "NONE"
+}

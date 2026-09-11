@@ -1,0 +1,45 @@
+{
+  "format": "verto-phase-6-reverification-v333",
+  "session": 333,
+  "status": "BLOCKED_ENVIRONMENT",
+  "structural_status": "PASS_STATIC",
+  "contract_compatibility": {
+    "status": "PASS",
+    "critical_contracts": 4,
+    "semantic_test_definitions": 4,
+    "invalid_contract_test_evidence": 0,
+    "symbol_only_contract_tests_counted": 0,
+    "breaking_active_contract_changes": 0,
+    "unknown_consumers": 0,
+    "unknown_providers": 0
+  },
+  "feature_admission": {
+    "status": "PASS",
+    "feature_admission_self_tests": 12,
+    "scalability_self_tests": 8,
+    "unadmitted_external_production_dependencies": 0
+  },
+  "semantic_contract_execution": {
+    "status": "BLOCKED_ENVIRONMENT",
+    "executed": 0,
+    "required": 4,
+    "critical_semantic_mutation_detected": false
+  },
+  "gradle_status": "BLOCKED_ENVIRONMENT",
+  "blocked_reason": "Gradle wrapper cannot download Gradle 8.9: java.net.UnknownHostException: services.gradle.org.",
+  "static_gates": {
+    "change_contract": "PASS",
+    "architecture": "PASS",
+    "dependency": "PASS",
+    "contract_compatibility": "PASS",
+    "feature_scalability_admission": "PASS",
+    "persistence": "PASS",
+    "technical_debt_ratchet": "PASS",
+    "differential_quality": "PASS",
+    "kotlin_quality": "PASS",
+    "maintainability_testability": "PASS",
+    "design_system": "PASS",
+    "design_system_diff": "PASS",
+    "documentation": "PASS"
+  }
+}

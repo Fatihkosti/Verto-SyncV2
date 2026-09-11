@@ -1,0 +1,134 @@
+{
+  "architecture": {
+    "exposed_ports": [
+      "com.verto.app.feature.payment.application.port.PaymentDebtWorkflowPort",
+      "com.verto.app.feature.payment.application.port.PaymentInvoiceSummaryPort",
+      "com.verto.app.feature.payment.application.port.PurchaseShipmentGateway",
+      "com.verto.app.feature.payment.domain.port.AdvanceCreditPort",
+      "com.verto.app.feature.payment.domain.port.PaymentAuthorizationPort",
+      "com.verto.app.feature.payment.domain.port.PaymentCashPort",
+      "com.verto.app.feature.payment.domain.port.PaymentCompanyTimelinePort",
+      "com.verto.app.feature.payment.domain.port.PaymentIntegrationOutboxPort",
+      "com.verto.app.feature.payment.domain.port.PaymentRemotePort",
+      "com.verto.app.feature.payment.domain.port.PaymentReversalPort",
+      "com.verto.app.feature.payment.domain.port.PaymentStorePort",
+      "com.verto.app.feature.payment.domain.port.PaymentTransactionPort",
+      "com.verto.app.feature.payment.domain.port.PurchaseReceiptPaymentGuardPort"
+    ],
+    "external_dependencies": [
+      "implementation:libs.androidx.activity.compose",
+      "implementation:libs.androidx.core.ktx",
+      "implementation:libs.androidx.lifecycle.runtime.compose",
+      "implementation:libs.androidx.lifecycle.runtime.ktx",
+      "implementation:libs.androidx.lifecycle.viewmodel.compose",
+      "implementation:libs.androidx.material.icons.extended",
+      "implementation:libs.androidx.material3",
+      "implementation:libs.hilt.navigation.compose",
+      "implementation:libs.kotlinx.coroutines.core",
+      "testImplementation:libs.junit",
+      "testImplementation:libs.kotlinx.coroutines.test"
+    ],
+    "forbidden_dependencies": [
+      "ALL_UNDECLARED_PROJECT_DEPENDENCIES",
+      "OTHER_FEATURE_INTERNAL_IMPLEMENTATION",
+      "FOREIGN_ENTITY_DAO_OR_STORAGE_IMPLEMENTATION"
+    ],
+    "incoming_dependencies": [
+      ":app",
+      ":data:operations"
+    ],
+    "internal_packages": [
+      "com.verto.app.feature.payment.application",
+      "com.verto.app.feature.payment.application.activityevent",
+      "com.verto.app.feature.payment.application.command",
+      "com.verto.app.feature.payment.application.model",
+      "com.verto.app.feature.payment.application.port",
+      "com.verto.app.feature.payment.application.quickaction",
+      "com.verto.app.feature.payment.application.search",
+      "com.verto.app.feature.payment.data.activityevent",
+      "com.verto.app.feature.payment.data.search",
+      "com.verto.app.feature.payment.data.sync",
+      "com.verto.app.feature.payment.di",
+      "com.verto.app.feature.payment.domain.model",
+      "com.verto.app.feature.payment.domain.port",
+      "com.verto.app.feature.payment.presentation",
+      "com.verto.app.feature.payment.presentation.invoiceeditor",
+      "com.verto.app.feature.payment.presentation.payment"
+    ],
+    "outgoing_dependencies": [
+      ":core:audit",
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:session",
+      ":data:database",
+      ":data:network",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ],
+    "public_api": [
+      "com.verto.app.feature.payment.application.command.BulkPaymentAllocator",
+      "com.verto.app.feature.payment.application.model.*",
+      "com.verto.app.feature.payment.application.model.PurchaseShipmentCreateCommand",
+      "com.verto.app.feature.payment.application.model.PurchaseShipmentOption",
+      "com.verto.app.feature.payment.application.port.PaymentDebtWorkflowPort",
+      "com.verto.app.feature.payment.application.port.PaymentInvoiceSummaryPort",
+      "com.verto.app.feature.payment.application.port.PurchaseShipmentGateway",
+      "com.verto.app.feature.payment.domain.model.AdvanceCreditRecord",
+      "com.verto.app.feature.payment.domain.model.PaymentAllocationRecord",
+      "com.verto.app.feature.payment.domain.model.PaymentIntegrationEventKind",
+      "com.verto.app.feature.payment.domain.model.PaymentInvoice",
+      "com.verto.app.feature.payment.domain.model.PaymentInvoiceCategory",
+      "com.verto.app.feature.payment.domain.model.PaymentOperationResult",
+      "com.verto.app.feature.payment.domain.model.PaymentRecord",
+      "com.verto.app.feature.payment.domain.model.PersistPaymentIntegrationCommand",
+      "com.verto.app.feature.payment.domain.model.RealizedFxEventRecord",
+      "com.verto.app.feature.payment.domain.port.AdvanceCreditPort",
+      "com.verto.app.feature.payment.domain.port.CompanyPaymentTimelineItem",
+      "com.verto.app.feature.payment.domain.port.PaymentAtomicPersistenceCoordinator",
+      "com.verto.app.feature.payment.domain.port.PaymentAuthorizationPort",
+      "com.verto.app.feature.payment.domain.port.PaymentCashPort",
+      "com.verto.app.feature.payment.domain.port.PaymentCompanyTimelinePort",
+      "com.verto.app.feature.payment.domain.port.PaymentIntegrationOutboxPort",
+      "com.verto.app.feature.payment.domain.port.PaymentRemotePort",
+      "com.verto.app.feature.payment.domain.port.PaymentReversalPort",
+      "com.verto.app.feature.payment.domain.port.PaymentStorePort",
+      "com.verto.app.feature.payment.domain.port.PaymentTransactionPort",
+      "com.verto.app.feature.payment.domain.port.PurchasePaymentGuardRequest",
+      "com.verto.app.feature.payment.domain.port.PurchaseReceiptPaymentGuardPort",
+      "com.verto.app.feature.payment.presentation.invoiceeditor.InvoiceEditorScreen",
+      "com.verto.app.feature.payment.presentation.payment.AddPaymentScreen"
+    ]
+  },
+  "consumes_contracts": [
+    "dashboard.home-search.v1"
+  ],
+  "data": {
+    "owned_entities": [],
+    "owned_repositories": [],
+    "owned_tables": []
+  },
+  "deprecated_contracts": [],
+  "feature": {
+    "module": ":feature:payment",
+    "name": "feature/payment",
+    "owner": ":feature:payment",
+    "purpose": "Production capability implemented by :feature:payment; behavior remains defined by current v318 source and canonical feature documentation."
+  },
+  "integration": {
+    "allowed_cross_feature_ports": [],
+    "allowed_public_api_dependencies": [
+      ":feature:dashboard:api"
+    ],
+    "legacy_cross_feature_debt": []
+  },
+  "provides_contracts": [
+    "payment.purchase-shipment.v1"
+  ],
+  "verification": {
+    "public_api_surface_algorithm": "verto-top-level-public-surface-v1",
+    "public_api_surface_hash": "ae54ff07fe2a9a6fa38aec89300d522f4fd392cb4d50f622fd2118b3bf097fbd",
+    "source_sha256": "187ea40c612068563b8b57833bdfe6c38b7beea8b3b12352326b34e0727cc311",
+    "verified_against": "v354-notifications-repair"
+  }
+}

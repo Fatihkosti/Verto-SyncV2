@@ -1,0 +1,101 @@
+{
+  "session": 305,
+  "contractRevision": "SESSION_305_FINAL_REVISED_V2",
+  "inputZipSha256": "68088f78fbd47033b0a4acdab23804c06e68d82c7ce8ef34dd49f4c1aafd4b1e",
+  "inputArchiveEntries": 2535,
+  "serverDumpName": "schema(2).sql",
+  "serverDumpSha256": "fb83bf253fefe7f7b684a41dc5df6e06b0aa933a2c13e26cb835842e1c7f9ea8",
+  "serverDumpBytes": 568177,
+  "serverDumpLines": 16352,
+  "postgresVersion": "17.6",
+  "pgDumpVersion": "17.11",
+  "v304ContractFamily": "verto-unified-sync",
+  "v304ContractVersion": 1,
+  "v304AuthorityFingerprints": "PASS",
+  "revision2CoverageReconciliation": "PASS",
+  "gradleGate": "TOOL_ERROR_NON_BLOCKING_PREEXISTING",
+  "androidBuildPassClaim": false,
+  "roomVersionBefore": 77,
+  "roomVersionAfter": 77,
+  "productionKotlinChangedCount": 0,
+  "preexistingSqlChangedCount": 0,
+  "gradleFilesChangedCount": 0,
+  "newMigrationFiles": [
+    "supabase/migrations/20260821062000_v305_verto_unified_sync_server.sql"
+  ],
+  "newMigrationSha256": "a2daf28b3a05b35907267bfc766fc6919ba5c28613854c0c0d68ee186313e908",
+  "newServerObjectsCount": 21,
+  "newServerObjects": [
+    "public.verto_sync_change_revision_seq",
+    "public.verto_sync_contract",
+    "public.verto_sync_scopes",
+    "public.verto_sync_change_log",
+    "public.verto_sync_receipts",
+    "public.verto_sync_cursor_tokens",
+    "public.verto_sync_snapshot_state",
+    "public.verto_sync_bootstrap_sessions",
+    "public.verto_sync_bootstrap_rows",
+    "public.verto_sync_bootstrap_page_tokens",
+    "public.verto_sync_manifest_partition_tokens",
+    "public.verto_expected_payload_version",
+    "public.verto_current_visibility_fingerprint",
+    "public.verto_validate_sync_scope",
+    "public.verto_resolve_sync_scope",
+    "public.verto_assign_sync_change_revision",
+    "public.verto_reject_sync_change_log_mutation",
+    "public.verto_reject_sync_receipt_mutation",
+    "public.verto_encode_sync_cursor",
+    "public.verto_decode_sync_cursor",
+    "public.verto_begin_sync_bootstrap"
+  ],
+  "scopeAuthorityStatus": "STATIC_PASS: auth.uid + active app_users membership + role/full employee_permissions fingerprint",
+  "revisionAlgorithm": "global sequence + per-organization pg_advisory_xact_lock before allocation; gaps allowed",
+  "safeWatermarkAlgorithm": "max committed visible revision at Pull statement snapshot; never sequence last_value",
+  "commitVisibilityProofStatus": "STATIC_PROOF_COMPLETE / DATABASE_ADVERSARIAL_EXECUTION_BLOCKED",
+  "changeLogAppendOnlyStatus": "STATIC_PASS: UPDATE/DELETE guard + direct app grants revoked",
+  "cursorPolicyStatus": "STATIC_PASS: server-owned opaque UUID token registry bound to scope/revision; no client arithmetic",
+  "bootstrapStatus": "STATIC_IMPLEMENTED: same org lock + baseline cursor + materialized snapshot rows; runtime DB tests blocked",
+  "transactionGroupStatus": "STATIC_IMPLEMENTED: group-level count/byte pagination; 1MiB normal, 2MiB hard group ceiling",
+  "writePathCoverageTotals": {
+    "aggregateCount": 34,
+    "mappingRows": 89,
+    "presence": {
+      "PRESENT_IN_EXACT_DUMP": 65,
+      "ABSENT_IN_EXACT_DUMP": 24
+    },
+    "status": {
+      "DEFERRED_WITH_EXPLICIT_OWNER": 46,
+      "SERVER_ONLY_DOCUMENTED": 2,
+      "EXISTING_STRONGER_STREAM": 17,
+      "INERT_UNTIL_OWNER_SESSION": 24
+    },
+    "unknown": 0
+  },
+  "tenantIsolationStatus": "STATIC_IMPLEMENTED / DATABASE_ADVERSARIAL_EXECUTION_BLOCKED",
+  "retentionDecisionStatus": "ACCEPTED_OWNER_DECISION_V2; changeLog=120d tombstone=120d receipt=180d; production pruning disabled",
+  "budgetDecisionStatus": "ACCEPTED_OWNER_DECISION_V2; pull=100 default/200 max, page=1MiB, group=2MiB, bootstrapTTL=1800s",
+  "tenKTestStats": {
+    "pythonSemanticModelGenerated": 10000,
+    "pythonSemanticModelStatus": "PASS",
+    "databaseSyntheticChangesExecuted": 0,
+    "databaseStatus": "BLOCKED_RUNTIME_UNAVAILABLE"
+  },
+  "fixtureStats": {
+    "total": 92,
+    "passed": 92,
+    "failed": 0
+  },
+  "staticGateStatus": "PASS_STATIC_GATES",
+  "staticVerifierDeterministicSha256": "7ec1a6c33207970db29f131351735caf1b993b6db6101ee405d4e6cd3602db16",
+  "databaseTestStatus": "DATABASE_EXECUTION_BLOCKED: psql/postgres/initdb/pg_ctl absent",
+  "migrationAppliedToDatabase": false,
+  "cutover": false,
+  "androidV2Runtime": false,
+  "legacyRuntimeUnchanged": true,
+  "finalVerdict": "SERVER_STATIC_COMPLETE / DATABASE_EXECUTION_BLOCKED",
+  "blockers": [
+    "DATABASE_EXECUTION_BLOCKED"
+  ],
+  "handoff306Authorized": false,
+  "outputZipSha256": "COMPUTED_AFTER_PACKAGING_IN_EXTERNAL_DELIVERY_METADATA"
+}

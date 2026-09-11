@@ -1,0 +1,817 @@
+{
+  "architecture_guard": "PASS",
+  "build": "NOT_RUN_FAIL_FAST_AFTER_DETEKT_BLOCKED_ENVIRONMENT",
+  "change_contract_gate": "PASS",
+  "characterization_tests": [
+    "LogisticsV234ContractCharacterizationTest",
+    "LogisticsV239ExecutionTest",
+    "LogisticsV240StationCustomsExecutionTest",
+    "LogisticsV242EndToEndIntegrationTest",
+    "LogisticsV241FinalReceivingTest",
+    "LogisticsV241CancellationPolicyTest"
+  ],
+  "complexity_gate": "PASS",
+  "data_ownership_gate": "PASS",
+  "dependency_admission_gate": "PASS",
+  "dependency_graph_after": {
+    "cycles": [],
+    "shipment_edges": [
+      ":core:audit",
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:notification",
+      ":core:session",
+      ":data:database",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ]
+  },
+  "dependency_graph_before": {
+    "cycles": [],
+    "shipment_edges": [
+      ":core:audit",
+      ":core:common",
+      ":core:crash",
+      ":core:designsystem",
+      ":core:notification",
+      ":core:session",
+      ":data:database",
+      ":data:sync",
+      ":feature:dashboard:api"
+    ]
+  },
+  "design_system_diff_gate": "PASS",
+  "design_system_gate": "PASS",
+  "detekt": "BLOCKED_ENVIRONMENT: Gradle 8.9 distribution unavailable; services.gradle.org DNS resolution failed",
+  "documentation_gate": "PASS",
+  "environment_blocker": "java.net.UnknownHostException: services.gradle.org while Gradle wrapper attempted gradle-8.9-bin.zip",
+  "extracted_components": [
+    {
+      "classes": [
+        {
+          "class_lines": 36,
+          "constructor_dependencies": 7,
+          "name": "DefaultLogisticsPlanningOperations"
+        },
+        {
+          "class_lines": 10,
+          "constructor_dependencies": 0,
+          "name": "LogisticsPlanningOperations"
+        }
+      ],
+      "coupling_imports": 5,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/LogisticsPlanningOperations.kt",
+      "file_lines": 57,
+      "layer": "application",
+      "responsibility": "LogisticsPlanningOperations"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 119,
+          "constructor_dependencies": 2,
+          "name": "LogisticsPlanningOrchestrator"
+        },
+        {
+          "class_lines": 139,
+          "constructor_dependencies": 3,
+          "name": "LogisticsPlanningWorkflowArtifacts"
+        },
+        {
+          "class_lines": 129,
+          "constructor_dependencies": 7,
+          "name": "LogisticsPlanningWorkflowCommand"
+        },
+        {
+          "class_lines": 156,
+          "constructor_dependencies": 4,
+          "name": "LogisticsPlanningWorkflowCore"
+        },
+        {
+          "class_lines": 181,
+          "constructor_dependencies": 5,
+          "name": "LogisticsPlanningWorkflowCost"
+        },
+        {
+          "class_lines": 197,
+          "constructor_dependencies": 6,
+          "name": "LogisticsPlanningWorkflowCostMoney"
+        },
+        {
+          "class_lines": 189,
+          "constructor_dependencies": 6,
+          "name": "LogisticsPlanningWorkflowCostScope"
+        },
+        {
+          "class_lines": 161,
+          "constructor_dependencies": 3,
+          "name": "LogisticsPlanningWorkflowDocument"
+        },
+        {
+          "class_lines": 167,
+          "constructor_dependencies": 4,
+          "name": "LogisticsPlanningWorkflowDocumentScope"
+        },
+        {
+          "class_lines": 174,
+          "constructor_dependencies": 5,
+          "name": "LogisticsPlanningWorkflowDocumentSource"
+        },
+        {
+          "class_lines": 144,
+          "constructor_dependencies": 3,
+          "name": "LogisticsPlanningWorkflowRoute"
+        },
+        {
+          "class_lines": 150,
+          "constructor_dependencies": 4,
+          "name": "LogisticsPlanningWorkflowSchedule"
+        },
+        {
+          "class_lines": 134,
+          "constructor_dependencies": 3,
+          "name": "LogisticsPlanningWorkflowSubmission"
+        }
+      ],
+      "coupling_imports": 1,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/LogisticsPlanningOrchestrator.kt",
+      "file_lines": 204,
+      "layer": "application",
+      "responsibility": "LogisticsPlanningOrchestrator"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 119,
+          "constructor_dependencies": 7,
+          "name": "LogisticsCorrectionWriter"
+        }
+      ],
+      "coupling_imports": 3,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsCorrectionWriter.kt",
+      "file_lines": 126,
+      "layer": "presentation",
+      "responsibility": "LogisticsCorrectionWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 80,
+          "constructor_dependencies": 6,
+          "name": "LogisticsCostWriter"
+        }
+      ],
+      "coupling_imports": 6,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsCostWriter.kt",
+      "file_lines": 90,
+      "layer": "presentation",
+      "responsibility": "LogisticsCostWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 167,
+          "constructor_dependencies": 3,
+          "name": "LogisticsCustodyWriter"
+        },
+        {
+          "class_lines": 175,
+          "constructor_dependencies": 6,
+          "name": "LogisticsOperationalHandoffContext"
+        },
+        {
+          "class_lines": 181,
+          "constructor_dependencies": 4,
+          "name": "LogisticsOperationalHandoffPlan"
+        },
+        {
+          "class_lines": 187,
+          "constructor_dependencies": 4,
+          "name": "LogisticsOperationalHandoffTarget"
+        }
+      ],
+      "coupling_imports": 3,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsCustodyWriter.kt",
+      "file_lines": 195,
+      "layer": "presentation",
+      "responsibility": "LogisticsCustodyWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 91,
+          "constructor_dependencies": 5,
+          "name": "LogisticsCustomsCargoWriter"
+        }
+      ],
+      "coupling_imports": 4,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsCustomsCargoWriter.kt",
+      "file_lines": 99,
+      "layer": "presentation",
+      "responsibility": "LogisticsCustomsCargoWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 66,
+          "constructor_dependencies": 4,
+          "name": "LogisticsCustomsPlanningWriter"
+        }
+      ],
+      "coupling_imports": 2,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsCustomsPlanningWriter.kt",
+      "file_lines": 72,
+      "layer": "presentation",
+      "responsibility": "LogisticsCustomsPlanningWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 48,
+          "constructor_dependencies": 6,
+          "name": "LogisticsDraftPlanningWriter"
+        }
+      ],
+      "coupling_imports": 11,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsDraftPlanningWriter.kt",
+      "file_lines": 63,
+      "layer": "presentation",
+      "responsibility": "LogisticsDraftPlanningWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 24,
+          "constructor_dependencies": 2,
+          "name": "Costs"
+        },
+        {
+          "class_lines": 28,
+          "constructor_dependencies": 2,
+          "name": "Create"
+        },
+        {
+          "class_lines": 27,
+          "constructor_dependencies": 2,
+          "name": "Detail"
+        },
+        {
+          "class_lines": 1,
+          "constructor_dependencies": 0,
+          "name": "LogisticsRouteKind"
+        },
+        {
+          "class_lines": 8,
+          "constructor_dependencies": 0,
+          "name": "LogisticsRouteTarget"
+        },
+        {
+          "class_lines": 23,
+          "constructor_dependencies": 2,
+          "name": "Partners"
+        },
+        {
+          "class_lines": 26,
+          "constructor_dependencies": 2,
+          "name": "Plan"
+        },
+        {
+          "class_lines": 25,
+          "constructor_dependencies": 2,
+          "name": "Receive"
+        }
+      ],
+      "coupling_imports": 5,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsFeatureRoute.kt",
+      "file_lines": 268,
+      "layer": "presentation",
+      "responsibility": "LogisticsFeatureRoute"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 129,
+          "constructor_dependencies": 7,
+          "name": "LogisticsJourneyWriter"
+        }
+      ],
+      "coupling_imports": 4,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsJourneyWriter.kt",
+      "file_lines": 138,
+      "layer": "presentation",
+      "responsibility": "LogisticsJourneyWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 92,
+          "constructor_dependencies": 5,
+          "name": "LogisticsMovementPreparationWriter"
+        }
+      ],
+      "coupling_imports": 2,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsMovementPreparationWriter.kt",
+      "file_lines": 99,
+      "layer": "presentation",
+      "responsibility": "LogisticsMovementPreparationWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 85,
+          "constructor_dependencies": 6,
+          "name": "LogisticsDocumentWriteRequest"
+        },
+        {
+          "class_lines": 91,
+          "constructor_dependencies": 4,
+          "name": "LogisticsDocumentWriteScope"
+        },
+        {
+          "class_lines": 98,
+          "constructor_dependencies": 5,
+          "name": "LogisticsDocumentWriteSource"
+        },
+        {
+          "class_lines": 77,
+          "constructor_dependencies": 6,
+          "name": "LogisticsPartnerDocumentWriter"
+        }
+      ],
+      "coupling_imports": 2,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPartnerDocumentWriter.kt",
+      "file_lines": 106,
+      "layer": "presentation",
+      "responsibility": "LogisticsPartnerDocumentWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 95,
+          "constructor_dependencies": 4,
+          "name": "LogisticsPlanningWriter"
+        }
+      ],
+      "coupling_imports": 2,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPlanningWriter.kt",
+      "file_lines": 101,
+      "layer": "presentation",
+      "responsibility": "LogisticsPlanningWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 78,
+          "constructor_dependencies": 5,
+          "name": "LogisticsReceivingBatchWriter"
+        }
+      ],
+      "coupling_imports": 5,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsReceivingBatchWriter.kt",
+      "file_lines": 88,
+      "layer": "presentation",
+      "responsibility": "LogisticsReceivingBatchWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 54,
+          "constructor_dependencies": 6,
+          "name": "LogisticsReceivingWriter"
+        }
+      ],
+      "coupling_imports": 5,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsReceivingWriter.kt",
+      "file_lines": 64,
+      "layer": "presentation",
+      "responsibility": "LogisticsReceivingWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 112,
+          "constructor_dependencies": 6,
+          "name": "LogisticsRecoveryWriter"
+        }
+      ],
+      "coupling_imports": 3,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsRecoveryWriter.kt",
+      "file_lines": 119,
+      "layer": "presentation",
+      "responsibility": "LogisticsRecoveryWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 72,
+          "constructor_dependencies": 6,
+          "name": "LogisticsRoutePlanningWriter"
+        }
+      ],
+      "coupling_imports": 8,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsRoutePlanningWriter.kt",
+      "file_lines": 85,
+      "layer": "presentation",
+      "responsibility": "LogisticsRoutePlanningWriter"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 37,
+          "constructor_dependencies": 6,
+          "name": "LogisticsSettlementWriter"
+        }
+      ],
+      "coupling_imports": 6,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsSettlementWriter.kt",
+      "file_lines": 47,
+      "layer": "presentation",
+      "responsibility": "LogisticsSettlementWriter"
+    },
+    {
+      "classes": [],
+      "coupling_imports": 4,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2DraftActions.kt",
+      "file_lines": 163,
+      "layer": "presentation",
+      "responsibility": "LogisticsV2DraftActions"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 8,
+          "constructor_dependencies": 5,
+          "name": "LogisticsActualTimeCorrectionDraft"
+        },
+        {
+          "class_lines": 21,
+          "constructor_dependencies": 4,
+          "name": "LogisticsCostProofDraft"
+        },
+        {
+          "class_lines": 49,
+          "constructor_dependencies": 4,
+          "name": "LogisticsDraftAutosaveCoordinator"
+        },
+        {
+          "class_lines": 29,
+          "constructor_dependencies": 6,
+          "name": "LogisticsPaidCostEditDraft"
+        },
+        {
+          "class_lines": 49,
+          "constructor_dependencies": 4,
+          "name": "LogisticsPurchasePlanAutosaveCoordinator"
+        },
+        {
+          "class_lines": 13,
+          "constructor_dependencies": 7,
+          "name": "LogisticsRecoveryCostDraft"
+        },
+        {
+          "class_lines": 7,
+          "constructor_dependencies": 4,
+          "name": "LogisticsRecoveryDraft"
+        },
+        {
+          "class_lines": 7,
+          "constructor_dependencies": 3,
+          "name": "LogisticsRecoveryLineDraft"
+        },
+        {
+          "class_lines": 14,
+          "constructor_dependencies": 7,
+          "name": "LogisticsShortageSettlementDraft"
+        },
+        {
+          "class_lines": 15,
+          "constructor_dependencies": 5,
+          "name": "LogisticsUnplannedLocationDraft"
+        },
+        {
+          "class_lines": 11,
+          "constructor_dependencies": 6,
+          "name": "LogisticsUnplannedStationDraft"
+        }
+      ],
+      "coupling_imports": 15,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2DraftSupport.kt",
+      "file_lines": 216,
+      "layer": "presentation",
+      "responsibility": "LogisticsV2DraftSupport"
+    },
+    {
+      "classes": [],
+      "coupling_imports": 4,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2ExecutionActions.kt",
+      "file_lines": 273,
+      "layer": "presentation",
+      "responsibility": "LogisticsV2ExecutionActions"
+    },
+    {
+      "classes": [],
+      "coupling_imports": 4,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PlanningActionsA.kt",
+      "file_lines": 171,
+      "layer": "presentation",
+      "responsibility": "LogisticsV2PlanningActionsA"
+    },
+    {
+      "classes": [],
+      "coupling_imports": 4,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PlanningActionsB.kt",
+      "file_lines": 165,
+      "layer": "presentation",
+      "responsibility": "LogisticsV2PlanningActionsB"
+    },
+    {
+      "classes": [],
+      "coupling_imports": 4,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2ReceivingSettlementActions.kt",
+      "file_lines": 147,
+      "layer": "presentation",
+      "responsibility": "LogisticsV2ReceivingSettlementActions"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 68,
+          "constructor_dependencies": 1,
+          "name": "LogisticsV2StateStore"
+        }
+      ],
+      "coupling_imports": 3,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2StateStore.kt",
+      "file_lines": 76,
+      "layer": "presentation",
+      "responsibility": "LogisticsV2StateStore"
+    },
+    {
+      "classes": [
+        {
+          "class_lines": 43,
+          "constructor_dependencies": 4,
+          "name": "LogisticsExecutionWorkflow"
+        },
+        {
+          "class_lines": 38,
+          "constructor_dependencies": 6,
+          "name": "LogisticsPlanningWorkflow"
+        },
+        {
+          "class_lines": 20,
+          "constructor_dependencies": 3,
+          "name": "LogisticsReadWorkflow"
+        },
+        {
+          "class_lines": 23,
+          "constructor_dependencies": 3,
+          "name": "LogisticsReceivingSettlementWorkflow"
+        }
+      ],
+      "coupling_imports": 3,
+      "file": "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Workflows.kt",
+      "file_lines": 138,
+      "layer": "presentation",
+      "responsibility": "LogisticsV2Workflows"
+    }
+  ],
+  "feature_manifest_gate": "PASS",
+  "files_added": [
+    "docs/architecture/contracts/complexity-baseline-v322.json",
+    "docs/architecture/contracts/sessions/session-322.json",
+    "docs/architecture/verification/ARCHITECTURE_DRIFT_v322.json",
+    "docs/architecture/verification/MODULARITY_HARDENING_v322.json",
+    "docs/architecture/verification/MODULARITY_HARDENING_v322.md",
+    "docs/architecture/verification/SESSION_322_INPUT_SNAPSHOT.json",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/LogisticsPlanningOperations.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/application/LogisticsPlanningOrchestrator.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsCorrectionWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsCostWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsCustodyWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsCustomsCargoWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsCustomsPlanningWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsDraftPlanningWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsFeatureRoute.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsJourneyWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsMovementPreparationWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPartnerDocumentWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsPlanningWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsReceivingBatchWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsReceivingWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsRecoveryWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsRoutePlanningWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsSettlementWriter.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2DraftActions.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2DraftSupport.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2ExecutionActions.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PlanningActionsA.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2PlanningActionsB.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2ReceivingSettlementActions.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2StateStore.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2Workflows.kt",
+    "feature/shipment/src/test/kotlin/com/verto/app/feature/shipment/application/LogisticsPlanningOrchestratorTest.kt"
+  ],
+  "files_modified": [
+    "app/src/main/kotlin/com/verto/app/ui/navigation/InventoryShipmentsNavGraph.kt",
+    "docs/DOCUMENTATION_INVENTORY.md",
+    "docs/architecture/contracts/features/feature__shipment.json",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2OperationalComponents.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2OperationalReads.kt",
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2ViewModel.kt",
+    "tools/architecture/complexity_guard.py",
+    "tools/architecture/verto_arch_guard.py"
+  ],
+  "files_removed": [
+    "feature/shipment/src/main/kotlin/com/verto/app/feature/shipment/presentation/logisticsv2/LogisticsV2OperationalWriter.kt"
+  ],
+  "final_verdict": "IMPLEMENTED_STATIC_MODULARITY_V322 / FINAL_ADMISSION_BLOCKED_ENVIRONMENT",
+  "forbidden_surface_changes": [],
+  "format": "verto-modularity-hardening-v322",
+  "guard_regression_tests": "PASS (18/18)",
+  "historical_architecture_baseline_count": 18,
+  "input_freeze": "PASS",
+  "input_sha256": "3ecd256c1909ff2e474f4812a885770708488bf2cdec145884675f3303cdae07",
+  "input_zip_name": "Verto-v321-dependency-repair-final-admission-blocked-environment.zip",
+  "kotlin_quality": "PASS",
+  "large_file_count_after": 26,
+  "large_file_count_before": 28,
+  "legacy_debt_after": 0,
+  "legacy_debt_before": 0,
+  "lint": "NOT_RUN_FAIL_FAST_AFTER_DETEKT_BLOCKED_ENVIRONMENT",
+  "logistics_planning_orchestrator_test": "PRESENT; NOT_RUN because Gradle stage is blocked by environment",
+  "navgraph_presentation_imports_after": 4,
+  "navgraph_presentation_imports_before": 19,
+  "new_architecture_identity_count": 0,
+  "new_cycle_count": 0,
+  "new_external_dependency_count": 0,
+  "new_project_dependency_count": 0,
+  "new_public_data_implementation_symbol_count": 0,
+  "new_waiver_count": 0,
+  "plan_sha256": "fd04d47a1b03fcad0afa0aa93312396ea630cea366e3eb46ebf42a5921eb0979",
+  "predecessor_handoff_322_authorized": true,
+  "predecessor_session_321_sha": "3414c45826129bb4ae09079d9e6ac20aad069904026d14891ecde801c19efac4",
+  "public_api_after": {
+    "application": 9,
+    "data": 1,
+    "domain": 93,
+    "presentation": 12,
+    "total": 115
+  },
+  "public_api_before": {
+    "application": 9,
+    "data": 1,
+    "domain": 93,
+    "presentation": 27,
+    "total": 130
+  },
+  "public_api_gate": "PASS",
+  "public_data_implementation_symbols_after": [
+    "com.verto.app.feature.shipment.data.sync.LogisticsV2SyncRuntime"
+  ],
+  "public_data_implementation_symbols_before": [
+    "com.verto.app.feature.shipment.data.sync.LogisticsV2SyncRuntime"
+  ],
+  "public_data_note": "One v321 inherited LogisticsV2SyncRuntime data symbol remains unchanged. Session 322 forbids data/** edits; no new data implementation exposure was added.",
+  "public_presentation_remaining": [
+    {
+      "consumer": "app/.../bridge/LogisticsDraftProgressDataStore.kt",
+      "reason": "Existing app composition persistence bridge contract; moving persistence ownership is outside behavior-preserving Session 322.",
+      "retirement_path": "Move draft persistence contract behind an application-owned port in a dedicated follow-up without changing stored semantics.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsCostDraft"
+    },
+    {
+      "consumer": "app/.../bridge/LogisticsDraftProgressDataStore.kt",
+      "reason": "Existing app composition persistence bridge contract; moving persistence ownership is outside behavior-preserving Session 322.",
+      "retirement_path": "Move draft persistence contract behind an application-owned port in a dedicated follow-up without changing stored semantics.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsDraftProgress"
+    },
+    {
+      "consumer": "app/.../bridge/LogisticsDraftProgressDataStore.kt",
+      "reason": "Existing app composition persistence bridge contract; moving persistence ownership is outside behavior-preserving Session 322.",
+      "retirement_path": "Move draft persistence contract behind an application-owned port in a dedicated follow-up without changing stored semantics.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsDraftProgressStore"
+    },
+    {
+      "consumer": "app/.../bridge/LogisticsDraftProgressDataStore.kt",
+      "reason": "Existing app composition persistence bridge contract; moving persistence ownership is outside behavior-preserving Session 322.",
+      "retirement_path": "Move draft persistence contract behind an application-owned port in a dedicated follow-up without changing stored semantics.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsFinalReceivingDraftSnapshot"
+    },
+    {
+      "consumer": "app/.../bridge/LogisticsDraftProgressDataStore.kt",
+      "reason": "Existing app composition persistence bridge contract; moving persistence ownership is outside behavior-preserving Session 322.",
+      "retirement_path": "Move draft persistence contract behind an application-owned port in a dedicated follow-up without changing stored semantics.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsFinalReceivingLineSnapshot"
+    },
+    {
+      "consumer": "app/.../bridge/LogisticsDraftProgressDataStore.kt",
+      "reason": "Existing app composition persistence bridge contract; moving persistence ownership is outside behavior-preserving Session 322.",
+      "retirement_path": "Move draft persistence contract behind an application-owned port in a dedicated follow-up without changing stored semantics.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsPendingDocumentDraft"
+    },
+    {
+      "consumer": "app/.../bridge/LogisticsDraftProgressDataStore.kt",
+      "reason": "Existing app composition persistence bridge contract; moving persistence ownership is outside behavior-preserving Session 322.",
+      "retirement_path": "Move draft persistence contract behind an application-owned port in a dedicated follow-up without changing stored semantics.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsPlanningStep"
+    },
+    {
+      "consumer": "app/.../ui/navigation/InventoryShipmentsNavGraph.kt",
+      "reason": "Minimal app composition/navigation entry contract after screen/state internals were hidden.",
+      "retirement_path": "Retain as stable composition-root API; reassess only if feature-owned navigation is adopted.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsRouteEntry"
+    },
+    {
+      "consumer": "app/.../ui/navigation/InventoryShipmentsNavGraph.kt",
+      "reason": "Minimal app composition/navigation entry contract after screen/state internals were hidden.",
+      "retirement_path": "Retain as stable composition-root API; reassess only if feature-owned navigation is adopted.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsRouteKind"
+    },
+    {
+      "consumer": "app/.../ui/navigation/InventoryShipmentsNavGraph.kt",
+      "reason": "Minimal app composition/navigation entry contract after screen/state internals were hidden.",
+      "retirement_path": "Retain as stable composition-root API; reassess only if feature-owned navigation is adopted.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsRouteTarget"
+    },
+    {
+      "consumer": "app/.../bridge/LogisticsDraftProgressDataStore.kt",
+      "reason": "Existing app composition persistence bridge contract; moving persistence ownership is outside behavior-preserving Session 322.",
+      "retirement_path": "Move draft persistence contract behind an application-owned port in a dedicated follow-up without changing stored semantics.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsRouteWorkspaceSnapshot"
+    },
+    {
+      "consumer": "app/.../ui/navigation/InventoryShipmentsNavGraph.kt",
+      "reason": "Minimal app composition/navigation entry contract after screen/state internals were hidden.",
+      "retirement_path": "Retain as stable composition-root API; reassess only if feature-owned navigation is adopted.",
+      "symbol": "com.verto.app.feature.shipment.presentation.logisticsv2.LogisticsV2Access"
+    }
+  ],
+  "quality_gate_governance_self_test": "PASS",
+  "ratchet": {
+    "operational_writer_grandfathering_removed": true,
+    "viewmodel_class_lines_ceiling": 332,
+    "viewmodel_constructor_dependencies_ceiling": 6,
+    "viewmodel_coupling_imports_ceiling": 11,
+    "viewmodel_file_lines_ceiling": 348
+  },
+  "room_version": 81,
+  "session_322_contract_sha256": "443a2da012c727919747bbfcc79b6e5728d5ad39bdc103b0fe3ef338302fbe55",
+  "session_id": 322,
+  "source_of_truth_admission": "FAIL",
+  "tests": "NOT_RUN_FAIL_FAST_AFTER_DETEKT_BLOCKED_ENVIRONMENT",
+  "undeclared_dependencies": {
+    "manifest_external": [],
+    "manifest_project": [],
+    "phantom_project": [],
+    "undeclared_external": [],
+    "undeclared_project": []
+  },
+  "unified_quality_gate_run": {
+    "result": "BLOCKED_AT_DETEKT_ENVIRONMENT",
+    "run_id": "v322-20260822T141320Z-6029",
+    "static_prefix_passed": [
+      "change-contract",
+      "architecture",
+      "kotlin-quality",
+      "documentation",
+      "design-system",
+      "design-system-diff"
+    ]
+  },
+  "viewmodel_metrics_after": {
+    "class_lines": 332,
+    "constructor_dependencies": 6,
+    "coupling_imports": 11,
+    "file_lines": 348
+  },
+  "viewmodel_metrics_before": {
+    "class_lines": 1249,
+    "constructor_dependencies": 54,
+    "coupling_imports": 71,
+    "file_lines": 1325
+  },
+  "workflows_extracted": [
+    "Draft/Header",
+    "Purchase Planning",
+    "Route/Customs Planning",
+    "Movement Execution",
+    "Customs Execution",
+    "Receiving",
+    "Shortage/Recovery",
+    "Cost/Settlement",
+    "Partner/Document",
+    "Operational Correction/Follow-up/Cancel"
+  ],
+  "writer_metrics_after": {
+    "file_exists": false,
+    "status": "RETIRED"
+  },
+  "writer_metrics_before": {
+    "class_lines": 1168,
+    "constructor_dependencies": 48,
+    "coupling_imports": 116,
+    "file_lines": 1487
+  }
+}

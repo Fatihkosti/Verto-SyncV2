@@ -1,0 +1,57 @@
+{
+  "format": "verto-session-336-gate-results-v1",
+  "session": 336,
+  "static_finance_336": {
+    "status": "PASS",
+    "behavioral": "34/34",
+    "mutations": "14/14 DETECTED",
+    "source_guards": "18/18"
+  },
+  "session_335_regression": {
+    "status": "PASS",
+    "detail": "53/53"
+  },
+  "session_334_regression": {
+    "status": "BLOCKED_ENVIRONMENT",
+    "detail": "source-extracted Kotlin mutation runner exceeded execution timeout on repeated attempts"
+  },
+  "static_gates": {
+    "change_contract": "PASS",
+    "architecture": "PASS",
+    "dependency": "PASS",
+    "contract_compatibility": "PASS",
+    "feature_scalability_admission": "PASS",
+    "data_ownership": "PASS",
+    "persistence_boundary": "PASS",
+    "transaction_contract": "PASS",
+    "persistence_ratchet": "PASS",
+    "technical_debt_ratchet": "PASS",
+    "differential_quality": "PASS",
+    "kotlin_quality": "PASS",
+    "maintainability_testability": "PASS",
+    "documentation": "PASS (direct verifier 283/283)",
+    "design_system": "PASS",
+    "design_system_diff": "PASS"
+  },
+  "environment_blocked": {
+    "migration_schema": "compiler-generated Room 83 export absent",
+    "gradle": "java.net.UnknownHostException: services.gradle.org",
+    "detekt": "Gradle bootstrap blocked",
+    "lint": "Gradle bootstrap blocked",
+    "unit_tests": "Gradle bootstrap blocked",
+    "assemble_debug": "Gradle bootstrap blocked",
+    "two_device_runtime": "independent device/emulator environment unavailable",
+    "source_of_truth_admission": "not admitted; required runtime/build evidence unavailable"
+  },
+  "schema": {
+    "before": 83,
+    "after": 83,
+    "migration": "NOT_REQUIRED",
+    "server_sql_change": "NOT_REQUIRED"
+  },
+  "final": {
+    "session": "PASS_STATIC_RUNTIME_BLOCKED",
+    "production_cutover": "NOT_AUTHORIZED",
+    "source_of_truth": "NOT_ADMITTED"
+  }
+}

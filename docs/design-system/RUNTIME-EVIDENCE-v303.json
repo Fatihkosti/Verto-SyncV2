@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 303,
+  "sourceArchive": "Verto-v302-implemented-static.zip",
+  "sourceSha256": "8790e35961c1c33badb7cd6731c82758fd17548252e76355e1151f9dcf70b090",
+  "environment": {
+    "javaVersion": "OpenJDK 21.0.11 (2026-04-21)",
+    "gradleWrapperRequestedVersion": "8.9",
+    "gradleVersion": null,
+    "agpVersion": "8.7.3",
+    "kotlinVersion": "2.1.0",
+    "composeBom": "2024.12.01",
+    "material3Version": "1.3.1",
+    "screenshotPluginVersion": null,
+    "screenshotPluginOfficialCompatibilityEvidence": null,
+    "screenshotPluginCompatibilityResult": "BLOCKED",
+    "deviceOrEmulator": null,
+    "apiLevel": null,
+    "density": null,
+    "locale": null,
+    "fontScale": null,
+    "theme": null,
+    "talkBackStatus": "NOT_RUN",
+    "animatorScales": null,
+    "adbAvailable": false
+  },
+  "commands": [
+    {
+      "id": "pre-inventory",
+      "command": "python3 tools/design_system_inventory.py --root . --json /tmp/v303-component-inventory.json --md /tmp/v303-component-inventory.md",
+      "exitCode": 0,
+      "result": "PASS",
+      "artifactPaths": [
+        "/tmp/v303-component-inventory.json",
+        "/tmp/v303-component-inventory.md"
+      ]
+    },
+    {
+      "id": "pre-migration",
+      "command": "python3 scripts/design-system-scan.py --gate migration --session 303 --json",
+      "exitCode": 0,
+      "result": "PASS",
+      "artifactPaths": []
+    },
+    {
+      "id": "pre-final",
+      "command": "python3 scripts/design-system-scan.py --gate final --session 303 --json",
+      "exitCode": 0,
+      "result": "PASS",
+      "artifactPaths": []
+    },
+    {
+      "id": "pre-diff",
+      "command": "python3 tools/design_system_diff_gate.py --root . --gate migration --session 303 --baseline docs/design-system/BASELINE.json",
+      "exitCode": 0,
+      "result": "PASS",
+      "artifactPaths": []
+    },
+    {
+      "id": "pre-contract",
+      "command": "python3 tools/verify_design_system_contract.py --root .",
+      "exitCode": 0,
+      "result": "PASS",
+      "artifactPaths": []
+    },
+    {
+      "id": "gradle-bootstrap",
+      "command": "./gradlew --version",
+      "exitCode": 1,
+      "result": "BLOCKED",
+      "artifactPaths": [],
+      "error": "java.net.UnknownHostException: services.gradle.org"
+    },
+    {
+      "id": "adb-runtime",
+      "command": "adb devices",
+      "exitCode": 127,
+      "result": "BLOCKED",
+      "artifactPaths": [],
+      "error": "adb: command not found"
+    }
+  ],
+  "runtimeGates": {
+    "screenshotPluginCompatibility": "BLOCKED",
+    "screenshotHarness": "BLOCKED",
+    "screenshotVerification": "NOT_RUN",
+    "goldenGeneration": "NOT_RUN",
+    "goldenReview": "NOT_RUN",
+    "coreAccessibilityAndroidTest": "NOT_RUN",
+    "shipmentV242UiQuality": "NOT_RUN",
+    "shipmentV300Responsive": "NOT_RUN",
+    "talkBack": "NOT_RUN",
+    "focusOrder": "NOT_RUN",
+    "fontScale2": "NOT_RUN",
+    "rtlRuntime": "NOT_RUN",
+    "reducedMotion": "NOT_RUN",
+    "coreCompile": "BLOCKED",
+    "coreAssemble": "BLOCKED",
+    "coreUnitTests": "BLOCKED",
+    "appCompile": "BLOCKED",
+    "appAssemble": "BLOCKED",
+    "repositoryUnitTests": "BLOCKED",
+    "detekt": "BLOCKED",
+    "lintDebug": "BLOCKED",
+    "qualityGate": "BLOCKED"
+  },
+  "artifactPaths": [
+    "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoAccessibilityTest.kt",
+    "core/designsystem/src/androidTest/kotlin/com/verto/app/ui/components/VertoTypographyResilienceTest.kt",
+    "docs/design-system/VISUAL-COVERAGE-v303.json",
+    "docs/design-system/ACCESSIBILITY-MANIFEST-v303.json",
+    "docs/design-system/TALKBACK-FOCUS-AUDIT-v303.md"
+  ],
+  "result": "BLOCKED",
+  "reason": "Official Compose Preview Screenshot Testing plugin compatibility could not be proven from local metadata, and Gradle 8.9 bootstrap is blocked by UnknownHostException: services.gradle.org."
+}

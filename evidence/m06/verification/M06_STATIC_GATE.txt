@@ -1,0 +1,66 @@
+PASS aggregate_registry_35 - live registry has 35 aggregate types
+PASS team_observation_in_live_registry - M02 live contract extension is included
+PASS pull_partition_18_17 - direct=18, owner310=17
+PASS pull_registry_exact_coverage - pull covers 35/35
+PASS recovery_registry_exact_coverage - recovery covers 35/35
+PASS direct_applier_budget - BUDGET has an explicit direct pull route
+PASS direct_applier_category - CATEGORY has an explicit direct pull route
+PASS direct_applier_customer_profile - CUSTOMER_PROFILE has an explicit direct pull route
+PASS direct_applier_educational_content - EDUCATIONAL_CONTENT has an explicit direct pull route
+PASS direct_applier_inventory_item - INVENTORY_ITEM has an explicit direct pull route
+PASS direct_applier_inventory_unit - INVENTORY_UNIT has an explicit direct pull route
+PASS direct_applier_item_category - ITEM_CATEGORY has an explicit direct pull route
+PASS direct_applier_note - NOTE has an explicit direct pull route
+PASS direct_applier_notification - NOTIFICATION has an explicit direct pull route
+PASS direct_applier_organization_settings - ORGANIZATION_SETTINGS has an explicit direct pull route
+PASS direct_applier_party_identity - PARTY_IDENTITY has an explicit direct pull route
+PASS direct_applier_party_role - PARTY_ROLE has an explicit direct pull route
+PASS direct_applier_price_list - PRICE_LIST has an explicit direct pull route
+PASS direct_applier_purchase_order - PURCHASE_ORDER has an explicit direct pull route
+PASS direct_applier_reminder - REMINDER has an explicit direct pull route
+PASS direct_applier_shipment - SHIPMENT has an explicit direct pull route
+PASS direct_applier_supplier_profile - SUPPLIER_PROFILE has an explicit direct pull route
+PASS direct_applier_team_observation - TEAM_OBSERVATION has an explicit direct pull route
+PASS stronger_route_cash_movement - CASH_MOVEMENT is delegated and materialized by stronger applier
+PASS stronger_route_cash_reconciliation - CASH_RECONCILIATION is delegated and materialized by stronger applier
+PASS stronger_route_cash_register - CASH_REGISTER is delegated and materialized by stronger applier
+PASS stronger_route_client_credit - CLIENT_CREDIT is delegated and materialized by stronger applier
+PASS stronger_route_commission_payment - COMMISSION_PAYMENT is delegated and materialized by stronger applier
+PASS stronger_route_cost_allocation - COST_ALLOCATION is delegated and materialized by stronger applier
+PASS stronger_route_expense - EXPENSE is delegated and materialized by stronger applier
+PASS stronger_route_goods_receipt - GOODS_RECEIPT is delegated and materialized by stronger applier
+PASS stronger_route_inventory_cost_revision - INVENTORY_COST_REVISION is delegated and materialized by stronger applier
+PASS stronger_route_inventory_movement - INVENTORY_MOVEMENT is delegated and materialized by stronger applier
+PASS stronger_route_invoice - INVOICE is delegated and materialized by stronger applier
+PASS stronger_route_optimal_follow_up - OPTIMAL_FOLLOW_UP is delegated and materialized by stronger applier
+PASS stronger_route_optimal_maintenance - OPTIMAL_MAINTENANCE is delegated and materialized by stronger applier
+PASS stronger_route_optimal_vehicle - OPTIMAL_VEHICLE is delegated and materialized by stronger applier
+PASS stronger_route_payment - PAYMENT is delegated and materialized by stronger applier
+PASS stronger_route_purchase_match - PURCHASE_MATCH is delegated and materialized by stronger applier
+PASS stronger_route_purchase_payment_override - PURCHASE_PAYMENT_OVERRIDE is delegated and materialized by stronger applier
+PASS whole_page_contract - client validates the complete server page contract before commit
+PASS transaction_boundary_contract - contract requires complete transaction groups and page boundary
+PASS nonempty_cursor_must_advance - every non-empty global page must advance the opaque server cursor
+PASS empty_page_cannot_advance - empty page cannot move cursor
+PASS cursor_expiry_forces_recovery - expired cursor becomes durable recovery obligation
+PASS inbox_anchor_required - cursor anchor is checked against APPLIED inbox state
+PASS page_commit_atomic - domain apply + inbox + cursor commit share one Room transaction
+PASS apply_before_cursor_advance - domain materialization completes before cursor CAS
+PASS pending_local_blocks_page - remote page cannot overwrite unresolved local intent
+PASS review_state_counts_as_active - REQUIRES_REVIEW is represented in active outbox semantics
+PASS financial_hard_delete_guard - pull has a central defense-in-depth guard against hard financial delete
+PASS bootstrap_scope_guard - scope is revalidated around bootstrap network/commit boundaries
+PASS bootstrap_pages_durable - snapshot pages are staged durably and atomically
+PASS bootstrap_cutover_atomic - snapshot materialization and baseline cursor install share one Room transaction
+PASS bootstrap_restart_supported - expired/invalid bootstrap can restart safely
+PASS outbox_digest_guard - recovery asserts pending outbox identity is unchanged by cutover
+PASS pending_snapshot_rows_preserved - snapshot does not overwrite locally pending aggregate state
+PASS price_list_authoritative_absence_prune - bootstrap absence removes stale deleted price-list templates
+PASS price_list_prune_preserves_pending - price-list prune excludes all active/review local intents
+PASS price_list_prune_sqlite_semantics - absent_deleted=True, authoritative_present_preserved=True, pending_preserved=True
+PASS server_pull_transaction_order - server page exports complete transaction membership metadata
+PASS server_page_boundary_true - server explicitly certifies page transaction boundary
+PASS server_bootstrap_revision_lock - bootstrap baseline is serialized with unified revision authority
+PASS server_snapshot_fixed_baseline - bootstrap snapshot is fixed at baseline revision
+PASS no_updated_at_cursor_authority - pull/recovery cursor authority is opaque server cursor, not device updated_at
+RESULT PASS (65/65)

@@ -1,0 +1,42 @@
+{
+  "blocked_reason": "Gradle wrapper distribution download failed: network is unreachable; default /root/.gradle lock path also unavailable.",
+  "contract_compatibility": {
+    "breaking_active_contract_changes": 0,
+    "invalid_contract_test_evidence": 0,
+    "status": "PASS",
+    "unknown_consumers": 0,
+    "unknown_providers": 0
+  },
+  "coverage": [
+    "architecture",
+    "dependency",
+    "persistence",
+    "maintainability/testability",
+    "contract compatibility",
+    "feature admission",
+    "scalability budgets",
+    "external dependency admission"
+  ],
+  "external_dependency_diff": {
+    "external_production_dependencies_after": 178,
+    "external_production_dependencies_before": 178,
+    "new_admitted_dependencies": 0,
+    "new_unadmitted_dependencies": 0,
+    "removed_dependencies": 0
+  },
+  "feature_admission": {
+    "feature_admission_self_tests": 12,
+    "scalability_self_tests": 8,
+    "status": "PASS",
+    "unadmitted_external_production_dependencies": 0
+  },
+  "format": "verto-phase-6-admission-v332",
+  "gradle_status": "BLOCKED_ENVIRONMENT",
+  "limitations": [
+    "License/security metadata marked NOT_VERIFIED_OFFLINE.",
+    "Binary ABI and runtime performance are not proven by static parser."
+  ],
+  "session": 332,
+  "status": "BLOCKED_ENVIRONMENT",
+  "structural_status": "PASS_STATIC"
+}

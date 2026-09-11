@@ -1,0 +1,30 @@
+{
+  "session": 307,
+  "authorizedByUser": true,
+  "authorization": "User explicitly instructed: تجاوز الإخفاقات التسعة، وثّق حالتها، وأكمل 307.",
+  "scope": "Static verifier exceptions only; no claim that the original contract's zero-exception gate was met.",
+  "waivedChecks": [
+    "room_version_79",
+    "persisted_sequence_authority",
+    "payload_bound_preserved",
+    "producer_discovery_unclassified_zero",
+    "stronger_outboxes_proven",
+    "datastore_delete_authority_zero",
+    "dirty_only_authority_zero",
+    "org_settings_room_canonical",
+    "attachment_intent_persisted"
+  ],
+  "knownState": {
+    "room_version_79": "Schema 79 exists and migration 78→79 passes SQLite fixture; verifier's exact catalog token check still fails.",
+    "persisted_sequence_authority": "v306 UnifiedSyncDao sequence semantics remain protected, but verifier's textual heuristic does not recognize current implementation shape.",
+    "payload_bound_preserved": "v306 outbox payload contract remains structurally protected; verifier's textual 524288 token check does not match current source layout.",
+    "producer_discovery_unclassified_zero": "Three inventory coordinator files still contain legacy isDirty=true signatures outside matrix file-level discovery despite migrated downstream capture.",
+    "stronger_outboxes_proven": "Two PRESERVED_STRONGER_OUTBOX rows (INVENTORY_MOVEMENT, CLIENT_CREDIT) do not expose the verifier's expected outbox token in the exact producer file.",
+    "datastore_delete_authority_zero": "ExpenseRepository retains a legacy addPending deletion compatibility call without the verifier's expected compatibility marker wording.",
+    "dirty_only_authority_zero": "Same three inventory coordinator files retain legacy dirty markers; authoritative migrated capture is downstream but heuristic remains file-based.",
+    "org_settings_room_canonical": "Room mirror and transaction/outbox checks pass, but the canonical-name textual heuristic does not match the implementation symbol.",
+    "attachment_intent_persisted": "Attachment queue/schema and binary exclusion checks pass, but LogisticsDocumentAdapters symbol names differ from the verifier's exact enqueueAttachmentIntent/contentChecksum/objectKey heuristic."
+  },
+  "riskAcceptance": "These exceptions are documented debt for later cleanup. V2 network runtime remains disabled, so they are not represented as runtime-verified behavior.",
+  "originalContractDeviation": true
+}
