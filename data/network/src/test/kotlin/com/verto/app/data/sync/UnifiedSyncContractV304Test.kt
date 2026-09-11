@@ -21,7 +21,8 @@ class UnifiedSyncContractV304Test {
 
     @Test fun `contract identity is stable and versioned`() {
         assertEquals("verto-unified-sync", UNIFIED_SYNC_CONTRACT_FAMILY)
-        assertEquals(1, UNIFIED_SYNC_CONTRACT_VERSION)
+        assertEquals(SYNC_REPAIR_CONTRACT_VERSION, UNIFIED_SYNC_CONTRACT_VERSION)
+        assertEquals(2, UNIFIED_SYNC_CONTRACT_VERSION)
     }
 
     @Test fun `mutation serialization round trip preserves required identity`() {
