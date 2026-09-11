@@ -29,7 +29,8 @@ interface UnifiedSyncPushRemote {
     suspend fun applyFrozen(wireJson: String, wireSha256: String, leaseToken: String): UnifiedSyncPushResponse
 
     /** Sends an already-sealed multi-owner batch without reconstructing any member bytes. */
-    suspend fun applyFrozenBatch(wireJson: String, wireSha256: String): List<UnifiedSyncPushResponse>
+    suspend fun applyFrozenBatch(wireJson: String, wireSha256: String): List<UnifiedSyncPushResponse> =
+        error("ATOMIC_BATCH_REMOTE_UNAVAILABLE")
 }
 
 @Singleton
