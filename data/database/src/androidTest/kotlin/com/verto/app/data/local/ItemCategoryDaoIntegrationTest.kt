@@ -23,7 +23,7 @@ class ItemCategoryDaoIntegrationTest {
         db.itemCategoryDao().insertCategory(ItemCategoryEntity("1","i","Beta"))
         assertEquals("Beta",db.itemCategoryDao().getAllItemCategoriesSync().first{it.id=="1"}.category)
     }
-    @Test fun deletingItemCascadesCategoryRows() = runTest {
-        val item=InventoryItemEntity(id="i",name="Item"); db.inventoryDao().insertItem(item); db.itemCategoryDao().insertCategory(ItemCategoryEntity("1","i","A")); db.inventoryDao().deleteItem(item.id); assertTrue(db.itemCategoryDao().getAllItemCategoriesSync().isEmpty())
+    @Test fun archivingItemPreservesCategoryHistory() = runTest {
+        val item=InventoryItemEntity(id="i",name="Item"); db.inventoryDao().insertItem(item); db.itemCategoryDao().insertCategory(ItemCategoryEntity("1","i","A")); db.inventoryDao().deleteItem(item.id); assertEquals(1, db.itemCategoryDao().getAllItemCategoriesSync().size)
     }
 }
