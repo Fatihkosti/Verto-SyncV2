@@ -49,9 +49,10 @@ class LogisticsV300ResponsiveTest {
                 LocalDensity provides Density(baseDensity.density, fontScale = fontScale),
             ) {
                 VertoTheme {
-                    // SelectedInvoicePlanningCard adds 12dp horizontal padding on each side.
-                    // This makes BoxWithConstraints receive exactly availableWidth.
-                    Box(Modifier.width(availableWidth + 24.dp)) {
+                    // The card adds 12dp padding on each side and its 1dp border consumes the
+                    // remaining edge pixels on the device. Compensate both so the adaptive
+                    // BoxWithConstraints receives the requested width at the exact boundary.
+                    Box(Modifier.width(availableWidth + 26.dp)) {
                         SelectedInvoicePlanningCard(
                             source = source,
                             canManage = true,

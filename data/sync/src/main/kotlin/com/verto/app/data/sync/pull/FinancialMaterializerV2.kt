@@ -85,9 +85,9 @@ class FinancialMaterializerV2 @Inject constructor(
             requireContract((snapshot.expectedFinancialStreamVersion ?: 0L) == (applied ?: 0L),
                 "WAITING_DEPENDENCY", "financial expected applied version")
         }
-        scopedAuthority?.lastAppliedRevision?.let {
-            requireContract(context.revision >= it, "FINANCIAL_VERSION_CONFLICT", "applied revision regression")
-        }
+        // A dependency may be materialized after its dependent was received. The financial
+        // stream version remains the domain-order fence; the scope revision watermark must
+        // stay monotonic rather than rejecting that valid dependency-order drain.
         // Clean legacy rows do not magically acquire authority. Only identical projections may be
         // adopted while filling proven missing facts; differing unversioned data waits for repair.
         if (existing != null && applied == null) {
@@ -186,7 +186,11 @@ class FinancialMaterializerV2 @Inject constructor(
             versions.recordAppliedVersion(
                 organizationId = batch.organizationId, scopeId = batch.scopeId, versionFamily = VERSION_FAMILY,
                 aggregateId = invoiceId, appliedVersion = write.snapshot.financialStreamVersion,
-                appliedRevision = write.context.revision, contentHash = write.snapshot.businessContentHash,
+                appliedRevision = maxOf(
+                    write.initialScopeAuthority?.lastAppliedRevision ?: write.context.revision,
+                    write.context.revision,
+                ),
+                contentHash = write.snapshot.businessContentHash,
                 tombstone = false, updatedAt = System.currentTimeMillis(),
             )
         }
