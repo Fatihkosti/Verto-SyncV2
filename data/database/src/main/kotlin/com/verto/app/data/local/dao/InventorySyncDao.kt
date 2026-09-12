@@ -81,12 +81,12 @@ suspend fun getMovementById(movementId: String): InventoryMovementEntity?
 @Query("UPDATE inventory_stock_outbox SET sync_state = 'ACKNOWLEDGED', ack_sequence = :serverSequence, acknowledged_at = :acknowledgedAt, last_error = NULL WHERE id = :id AND sync_state <> 'ACKNOWLEDGED'")
 suspend fun acknowledgeInventoryStockOutboxRaw(id: String, serverSequence: Long, acknowledgedAt: Long): Int
 
-@Query("UPDATE inventory_movements SET server_sequence=:serverSequence, server_accepted_at=:acknowledgedAt WHERE id=(SELECT movement_id FROM inventory_stock_outbox WHERE id=:outboxId) AND (server_sequence IS NULL OR server_sequence=:serverSequence)")
-suspend fun acknowledgeInventoryMovementRaw(outboxId: String, serverSequence: Long, acknowledgedAt: Long): Int
+@Query("UPDATE inventory_movements SET server_sequence=:serverSequence WHERE id=(SELECT movement_id FROM inventory_stock_outbox WHERE id=:outboxId) AND (server_sequence IS NULL OR server_sequence=:serverSequence)")
+suspend fun acknowledgeInventoryMovementRaw(outboxId: String, serverSequence: Long): Int
 
 @Transaction
 suspend fun acknowledgeInventoryStockOutbox(id: String, serverSequence: Long, acknowledgedAt: Long = System.currentTimeMillis()): Int {
-    check(acknowledgeInventoryMovementRaw(id, serverSequence, acknowledgedAt) == 1) { "inventory movement acknowledgement mismatch" }
+    check(acknowledgeInventoryMovementRaw(id, serverSequence) == 1) { "inventory movement acknowledgement mismatch" }
     return acknowledgeInventoryStockOutboxRaw(id, serverSequence, acknowledgedAt)
 }
 
@@ -107,6 +107,9 @@ suspend fun nextInventoryStockRetryAt(organizationId: String, now: Long): Long?
 
 @Insert(onConflict = OnConflictStrategy.IGNORE)
 suspend fun insertInventorySyncConflict(conflict: InventorySyncConflictEntity): Long
+
+@Insert(onConflict = OnConflictStrategy.IGNORE)
+suspend fun insertPulledInventoryMovementRaw(movement: InventoryMovementEntity): Long
 
 @Query("SELECT COALESCE((SELECT last_server_sequence FROM inventory_sync_cursors WHERE organization_id = :organizationId), 0)")
 suspend fun getInventoryServerCursor(organizationId: String): Long
@@ -129,7 +132,20 @@ suspend fun applyPulledInventoryMovements(
         require(movement.organizationId == organizationId && (movement.serverSequence ?: 0L) <= serverCursor) {
             "inventory pull organization/cursor mismatch"
         }
-        insertMovementIgnore(movement)
+        if (insertPulledInventoryMovementRaw(movement) == -1L) {
+            val existing = checkNotNull(getMovementById(movement.id)) { "inventory movement disappeared during apply" }
+            require(existing.copy(
+                unitPrice = movement.unitPrice,
+                recordedAt = movement.recordedAt,
+                serverAcceptedAt = movement.serverAcceptedAt,
+                serverSequence = movement.serverSequence,
+                createdBy = movement.createdBy,
+            ) == movement) { "immutable inventory movement conflict" }
+            check(updateMovementServerAuthority(
+                movement.id, organizationId, movement.unitPrice, movement.recordedAt,
+                movement.serverAcceptedAt, checkNotNull(movement.serverSequence), movement.createdBy,
+            ) == 1) { "inventory movement server authority mismatch" }
+        }
     }
     putInventorySyncCursor(
         InventorySyncCursorEntity(organizationId, serverCursor, getInventoryCostServerCursor(organizationId), now)
@@ -148,12 +164,53 @@ suspend fun applyPulledInventoryCostRevisions(
         require(revision.organizationId == organizationId && (revision.costSequence ?: 0L) <= costCursor) {
             "inventory cost pull organization/cursor mismatch"
         }
-        insertCostRevisionOnce(revision)
+        val inserted = insertCostRevisionOnce(revision)
+        if (!inserted) {
+            val existing = checkNotNull(getCostRevisionById(revision.costRevisionId)) {
+                "inventory cost revision disappeared during apply"
+            }
+            require(existing.copy(
+                costSequence = revision.costSequence,
+                recordedAt = revision.recordedAt,
+                createdBy = revision.createdBy,
+            ) == revision) { "immutable inventory cost revision conflict" }
+            check(updateCostServerAuthority(
+                revision.costRevisionId, organizationId, checkNotNull(revision.costSequence),
+                revision.recordedAt, revision.createdBy,
+            ) == 1) { "inventory cost server authority mismatch" }
+        }
     }
     putInventorySyncCursor(
         InventorySyncCursorEntity(organizationId, getInventoryServerCursor(organizationId), costCursor, now)
     )
 }
+
+@Query("""UPDATE inventory_movements
+          SET unitPrice=:unitPrice, recorded_at=:recordedAt, server_accepted_at=:serverAcceptedAt,
+              server_sequence=:serverSequence, created_by=:createdBy
+          WHERE id=:movementId AND organization_id=:organizationId
+            AND (server_sequence IS NULL OR server_sequence=:serverSequence)""")
+suspend fun updateMovementServerAuthority(
+    movementId: String,
+    organizationId: String,
+    unitPrice: Double,
+    recordedAt: Long?,
+    serverAcceptedAt: Long?,
+    serverSequence: Long,
+    createdBy: String?,
+): Int
+
+@Query("""UPDATE inventory_cost_revisions
+          SET cost_sequence=:costSequence, recorded_at=:recordedAt, created_by=:createdBy
+          WHERE cost_revision_id=:costRevisionId AND organization_id=:organizationId
+            AND (cost_sequence IS NULL OR cost_sequence=:costSequence)""")
+suspend fun updateCostServerAuthority(
+    costRevisionId: String,
+    organizationId: String,
+    costSequence: Long,
+    recordedAt: Long,
+    createdBy: String,
+): Int
 
 @Query(
     """

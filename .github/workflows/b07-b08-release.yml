@@ -36,6 +36,14 @@ jobs:
       - name: Make Gradle wrapper executable
         run: chmod +x gradlew
 
+      - name: Verify Supabase endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --retry 3 --connect-timeout 10 \
+            --header "apikey: ${SUPABASE_ANON_KEY}" \
+            "${SUPABASE_URL}/rest/v1/" >/dev/null
+
       - name: Unit tests
         run: ./gradlew --stacktrace testDebugUnitTest
 

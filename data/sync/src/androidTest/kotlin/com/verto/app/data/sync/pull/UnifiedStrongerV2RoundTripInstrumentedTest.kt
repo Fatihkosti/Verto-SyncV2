@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.verto.app.data.local.AppDatabase
+import com.verto.app.data.local.entity.InventoryItemEntity
 import com.verto.app.data.sync.SyncChange
 import com.verto.app.data.sync.SyncMutationOperation
 import com.verto.app.data.sync.ownership.SyncPendingProtection
@@ -34,6 +35,9 @@ class UnifiedStrongerV2RoundTripInstrumentedTest {
             database,
             FinancialMaterializerV2(database, protection, FinancialEffectVerifierV2(database, protection)),
         )
+        runBlocking {
+            database.inventoryDao().insertItem(InventoryItemEntity(id = "item-1", name = "B08 fixture", isDirty = false))
+        }
     }
 
     @After
