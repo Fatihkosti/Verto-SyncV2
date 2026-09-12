@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 150
     env:
       SUPABASE_URL: https://madkfvggyolmdberzmtb.supabase.co
-      SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1hZGtmdmdneW9sbWRiZXJ6bXRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4MTI3OTgsImV4cCI6MjA4ODM4ODc5OH0.PhwanCZLjJ7Tc8SrbkYSWY9bVQT-9R6kez3CdcWGPMc
+      SUPABASE_ANON_KEY: sb_publishable_X2j6KkECFjOaQE-mKZxQ_Q_fOTyw34S
       DISABLE_FIREBASE_BUILD_PLUGINS: "true"
       VERT_ALLOW_UNSIGNED_RELEASE: "true"
     steps:
@@ -41,9 +41,7 @@ jobs:
         run: |
           set -euo pipefail
           curl --fail --silent --show-error --retry 3 --connect-timeout 10 \
-            --header "apikey: ${SUPABASE_ANON_KEY}" \
-            --header "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
-            "${SUPABASE_URL}/rest/v1/" >/dev/null
+            "${SUPABASE_URL}/auth/v1/health" >/dev/null
 
       - name: Unit tests
         run: ./gradlew --stacktrace testDebugUnitTest
