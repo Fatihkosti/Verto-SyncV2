@@ -63,15 +63,7 @@ jobs:
           arch: x86_64
           profile: pixel_7
           disable-animations: true
-          script: |
-            set +e
-            regression_status=0
-            for task in :app:connectedDebugAndroidTest :core:designsystem:connectedDebugAndroidTest :data:database:connectedDebugAndroidTest :data:operations:connectedDebugAndroidTest :data:sync:connectedDebugAndroidTest :feature:auth:connectedDebugAndroidTest :feature:inventory:connectedDebugAndroidTest :feature:shipment:connectedDebugAndroidTest; do
-              ./gradlew --stacktrace "$task" || regression_status=1
-            done
-            set -e
-            ./gradlew --stacktrace :data:sync:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.verto.app.data.sync.FrozenMutationStoreInstrumentedTest,com.verto.app.data.sync.pull.UnifiedStrongerV2RoundTripInstrumentedTest
-            echo "Full Android regression status before focused B07/B08 gate: ${regression_status}"
+          script: regression_status=0; for task in :app:connectedDebugAndroidTest :core:designsystem:connectedDebugAndroidTest :data:database:connectedDebugAndroidTest :data:operations:connectedDebugAndroidTest :data:sync:connectedDebugAndroidTest :feature:auth:connectedDebugAndroidTest :feature:inventory:connectedDebugAndroidTest :feature:shipment:connectedDebugAndroidTest; do ./gradlew --stacktrace "$task" || regression_status=1; done; ./gradlew --stacktrace :data:sync:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.verto.app.data.sync.FrozenMutationStoreInstrumentedTest,com.verto.app.data.sync.pull.UnifiedStrongerV2RoundTripInstrumentedTest; focused_status=$?; echo "Full Android regression status before focused B07/B08 gate: ${regression_status}"; exit "$focused_status"
 
       - name: Assemble minified release candidate
         run: ./gradlew --stacktrace :app:assembleRelease
