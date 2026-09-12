@@ -26,12 +26,14 @@ data class SyncV2SpecializedPushResult(
 @Singleton
 class SyncV2PushCoordinator @Inject constructor(
     private val database: AppDatabase,
+    private val atomicBatches: SyncV2AtomicBatchPushEngine,
     private val generic: UnifiedSyncPushEngine,
     private val party: UnifiedSyncPartyPushBridge,
     private val stronger: UnifiedStrongerOutboxPushEngine,
     private val specialized: Set<@JvmSuppressWildcards SyncV2SpecializedPushBridge>,
 ) {
     suspend fun pushAvailable(scope: SyncWorkScope): UnifiedSyncPushRunResult {
+        val batchResult = atomicBatches.pushAvailable(scope.organizationId)
         val genericResult = generic.pushAvailable(scope.organizationId, scope.sessionEpoch)
         val partyResult = party.pushAvailable(scope.organizationId)
         val strongerResult = stronger.pushAvailable(scope.organizationId)
@@ -50,7 +52,7 @@ class SyncV2PushCoordinator @Inject constructor(
         val persistentRejected = database.unifiedSyncDao().countRejected(scope.organizationId) +
             database.partyRoleDao().countPartyRoleRejected()
         val specialBacklog = specializedResults.sumOf { it.backlog }
-        val immediateMore = genericResult.outcome == UnifiedSyncPushOutcome.MORE_AVAILABLE ||
+        val immediateMore = batchResult.immediateMore || genericResult.outcome == UnifiedSyncPushOutcome.MORE_AVAILABLE ||
             partyResult.immediateMore || strongerResult.immediateMore || specializedResults.any { it.immediateMore }
         val next = listOfNotNull(
             genericResult.nextEligibleAt,
@@ -61,9 +63,9 @@ class SyncV2PushCoordinator @Inject constructor(
 
         return UnifiedSyncPushRunResult(
             outcome = if (immediateMore) UnifiedSyncPushOutcome.MORE_AVAILABLE else UnifiedSyncPushOutcome.CAUGHT_UP,
-            sent = genericResult.sent + partyResult.attempted + strongerResult.sent + specialSent,
-            acknowledged = genericResult.acknowledged + partyResult.acknowledged + strongerResult.acknowledged + specialAck,
-            retried = genericResult.retried + partyResult.retried + strongerResult.retried + specialRetry,
+            sent = batchResult.sent + genericResult.sent + partyResult.attempted + strongerResult.sent + specialSent,
+            acknowledged = batchResult.acknowledged + genericResult.acknowledged + partyResult.acknowledged + strongerResult.acknowledged + specialAck,
+            retried = batchResult.retried + genericResult.retried + partyResult.retried + strongerResult.retried + specialRetry,
             requiresReview = persistentReview.coerceAtMost(Int.MAX_VALUE.toLong()).toInt() + specialReview,
             rejected = persistentRejected.coerceAtMost(Int.MAX_VALUE.toLong()).toInt() + specialRejected,
             staleLeaseResults = genericResult.staleLeaseResults,

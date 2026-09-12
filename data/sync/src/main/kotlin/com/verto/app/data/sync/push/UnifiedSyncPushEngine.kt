@@ -60,6 +60,10 @@ class UnifiedSyncPushEngine @Inject constructor(
 
         for (row in candidates) {
             if (sent >= maxMutationsPerInvocation) break
+            if (row.commandBatchId != null) {
+                blocked += 1
+                continue
+            }
             val eligibility = eligibility(row)
             if (eligibility != null) {
                 if (eligibility in TERMINAL_DEPENDENCY_CODES) {

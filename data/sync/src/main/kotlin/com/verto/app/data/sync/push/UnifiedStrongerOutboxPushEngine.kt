@@ -29,6 +29,9 @@ class UnifiedStrongerOutboxPushEngine @Inject constructor(
 
         val financialRows = database.invoiceDao().getReadyFinancialOutbox(organizationId, now, limitPerSource)
         for (row in financialRows) {
+            if (database.unifiedSyncDao().readMutationPacketBySource(
+                    organizationId, "financial_outbox", row.eventId,
+                )?.batchId != null) continue
             val source = try {
                 UnifiedStrongerSourceFactory.financial(row)
             } catch (failure: Throwable) {
@@ -96,6 +99,9 @@ class UnifiedStrongerOutboxPushEngine @Inject constructor(
 
         val stockRows = database.inventoryDao().getPendingInventoryStockOutbox(organizationId, now, limitPerSource)
         for (outbox in stockRows) {
+            if (database.unifiedSyncDao().readMutationPacketBySource(
+                    organizationId, "inventory_stock_outbox", outbox.id,
+                )?.batchId != null) continue
             val movement = database.inventoryDao().getMovementById(outbox.movementId)
             if (movement == null || movement.organizationId != organizationId) {
                 database.inventoryDao().reviewInventoryStockOutbox(outbox.id, "M05_MOVEMENT_MISSING_OR_SCOPE")
@@ -151,6 +157,9 @@ class UnifiedStrongerOutboxPushEngine @Inject constructor(
 
         val costRows = database.inventoryDao().getPendingInventoryCostOutbox(organizationId, now, limitPerSource)
         for (outbox in costRows) {
+            if (database.unifiedSyncDao().readMutationPacketBySource(
+                    organizationId, "inventory_cost_outbox", outbox.id,
+                )?.batchId != null) continue
             val revision = database.inventoryDao().getCostRevisionById(outbox.costRevisionId)
             if (revision == null || revision.organizationId != organizationId) {
                 database.inventoryDao().reviewInventoryCostOutbox(outbox.id, "M05_COST_REVISION_MISSING_OR_SCOPE")

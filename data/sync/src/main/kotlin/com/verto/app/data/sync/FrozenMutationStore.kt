@@ -5,6 +5,7 @@ import com.verto.app.data.local.AppDatabase
 import com.verto.app.data.local.entity.SyncMutationPacketEntity
 import com.verto.app.data.local.entity.SyncConflictResolutionAuditEntity
 import com.verto.app.data.local.entity.SyncOutboxEntity
+import com.verto.app.data.local.entity.SyncWriteBatchMemberEntity
 import com.verto.app.data.sync.ownership.PendingSourceRef
 import com.verto.app.data.sync.ownership.ProtectedSyncKey
 import com.verto.app.data.sync.ownership.SyncPendingProtection
@@ -257,6 +258,84 @@ class FrozenMutationStore @Inject constructor(
             "FROZEN_WIRE_CONTENT_MISMATCH"
         }
         database.unifiedSyncDao().recordFirstDispatch(organizationId, bytes.mutationId, dispatchedAt)
+    }
+
+    /**
+     * Commits local acknowledgement of a server-atomic batch in one Room transaction. Every
+     * receipt is proven against the immutable member bytes before any owner row is advanced.
+     */
+    suspend fun acknowledgeSealedBatch(
+        organizationId: String,
+        batchId: String,
+        members: List<SyncWriteBatchMemberEntity>,
+        receipts: List<SyncReceipt>,
+        acknowledgedAt: Long,
+    ): Int = database.withTransaction {
+        require(organizationId.isNotBlank() && batchId.isNotBlank()) { "SCOPE_MISMATCH" }
+        val dao = database.unifiedSyncDao()
+        val batch = checkNotNull(dao.readWriteBatch(organizationId, batchId)) { "BATCH_MANIFEST_MISSING" }
+        check(members.size == batch.memberCount && members.map { it.memberOrder } == members.indices.toList()) {
+            "BATCH_MEMBERSHIP_MISMATCH"
+        }
+        val byMutation = receipts.associateBy { it.mutationId }
+        check(byMutation.size == receipts.size && receipts.size == members.size) {
+            "SERVER_PROTOCOL_INCONSISTENCY:BATCH_RECEIPT_COVERAGE"
+        }
+        members.forEach { member ->
+            check(member.organizationId == organizationId && member.batchId == batchId) { "SCOPE_MISMATCH" }
+            val packet = checkNotNull(dao.readMutationPacket(organizationId, member.mutationId)) {
+                "BATCH_PACKET_MISSING"
+            }
+            val receipt = checkNotNull(byMutation[member.mutationId]) {
+                "SERVER_PROTOCOL_INCONSISTENCY:BATCH_MEMBER_RECEIPT_MISSING"
+            }
+            check(packet.sourceOwner == member.sourceOwner && packet.sourceId == member.sourceId &&
+                packet.batchId == batchId && packet.wireSha256 != null &&
+                receipt.requestHash == packet.wireSha256 &&
+                receipt.status in setOf(SyncReceiptStatus.APPLIED, SyncReceiptStatus.REPLAYED, SyncReceiptStatus.NO_OP)) {
+                "SERVER_PROTOCOL_INCONSISTENCY:BATCH_MEMBER_RECEIPT_MISMATCH"
+            }
+        }
+        members.forEach { member ->
+            val receipt = checkNotNull(byMutation[member.mutationId])
+            val changed = when (member.sourceOwner) {
+                SyncSourceOwner.UNIFIED.tableName -> dao.acknowledgeSealedUnifiedSource(
+                    organizationId, member.mutationId, receipt.serverRevision, receipt.serverVersion,
+                    receipt.status.name, acknowledgedAt,
+                )
+                SyncSourceOwner.FINANCIAL.tableName -> {
+                    val revision = receipt.serverRevision ?: error("SERVER_PROTOCOL_INCONSISTENCY:MISSING_FINANCIAL_REVISION")
+                    check(revision > 0L)
+                    database.invoiceDao().acknowledgeFinancialOutbox(member.sourceId, revision, acknowledgedAt)
+                }
+                SyncSourceOwner.INVENTORY_STOCK.tableName -> {
+                    val sequence = receipt.serverVersion ?: error("SERVER_PROTOCOL_INCONSISTENCY:MISSING_SERVER_SEQUENCE")
+                    check(sequence > 0L)
+                    database.inventoryDao().acknowledgeInventoryStockOutbox(member.sourceId, sequence, acknowledgedAt)
+                }
+                SyncSourceOwner.INVENTORY_COST.tableName -> {
+                    val sequence = receipt.serverVersion ?: error("SERVER_PROTOCOL_INCONSISTENCY:MISSING_COST_SEQUENCE")
+                    check(sequence > 0L)
+                    database.inventoryDao().acknowledgeInventoryCostOutbox(member.sourceId, sequence, acknowledgedAt)
+                }
+                SyncSourceOwner.PARTY_ROLE.tableName ->
+                    database.partyRoleDao().markPartyRoleTerminal(member.sourceId, "ACKNOWLEDGED")
+                SyncSourceOwner.OPTIMAL.tableName -> dao.acknowledgeSealedOptimalSource(
+                    organizationId, member.sourceId, receipt.serverVersion, acknowledgedAt,
+                )
+                else -> error("BATCH_SOURCE_OWNER_UNSUPPORTED:${member.sourceOwner}")
+            }
+            check(changed == 1) { "BATCH_SOURCE_STATE_CHANGED:${member.sourceOwner}:${member.sourceId}" }
+            pendingProtection.releaseAfterTerminal(
+                PendingSourceRef(organizationId, SyncSourceOwner.fromTable(member.sourceOwner), member.sourceId),
+            )
+            if (member.sourceOwner == SyncSourceOwner.UNIFIED.tableName) {
+                finalizeReplacementProofChain(
+                    organizationId, member.mutationId, "MATCHING_BATCH_RECEIPT", receipt.requestHash, acknowledgedAt,
+                )
+            }
+        }
+        members.size
     }
 
     suspend fun acknowledgeUnified(

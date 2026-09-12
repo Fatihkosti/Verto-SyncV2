@@ -1,23 +1,27 @@
 name: B07-B08 Release Candidate
 
 on:
+  workflow_dispatch:
   push:
     branches: [b07-b08-release-20260912]
-    paths:
-      - .github/workflows/b07-b08-release.yml
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   validate-build:
     runs-on: ubuntu-latest
     timeout-minutes: 150
     env:
-      SUPABASE_URL: https://madkfvggyolmdberzmtb.supabase.co
-      SUPABASE_ANON_KEY: sb_publishable_X2j6KkECFjOaQE-mKZxQ_Q_fOTyw34S
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
       DISABLE_FIREBASE_BUILD_PLUGINS: "true"
-      VERT_ALLOW_UNSIGNED_RELEASE: "true"
+      VERT_RELEASE_STORE_FILE: ${{ github.workspace }}/.signing/verto-release.jks
+      VERT_RELEASE_KEYSTORE_BASE64: ${{ secrets.VERT_RELEASE_KEYSTORE_BASE64 }}
+      VERT_RELEASE_STORE_PASSWORD: ${{ secrets.VERT_RELEASE_STORE_PASSWORD }}
+      VERT_RELEASE_KEY_ALIAS: ${{ secrets.VERT_RELEASE_KEY_ALIAS }}
+      VERT_RELEASE_KEY_PASSWORD: ${{ secrets.VERT_RELEASE_KEY_PASSWORD }}
+      VERT_RELEASE_STORE_TYPE: JKS
     steps:
       - name: Checkout execution branch
         uses: actions/checkout@v4
@@ -25,46 +29,18 @@ jobs:
           fetch-depth: 0
           ref: b07-b08-release-20260912
 
-      - name: Apply release/V2 build contract patch
+      - name: Validate protected build inputs
         shell: bash
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-
-          contract = Path('data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncContract.kt')
-          text = contract.read_text()
-          old = 'const val UNIFIED_SYNC_CONTRACT_VERSION: Int = 1'
-          new = 'const val UNIFIED_SYNC_CONTRACT_VERSION: Int = 2'
-          if old in text:
-              text = text.replace(old, new, 1)
-          elif new not in text:
-              raise SystemExit('Unified sync contract version declaration not found')
-          contract.write_text(text)
-
-          p = Path('app/build.gradle.kts')
-          text = p.read_text()
-          anchor = 'val supabaseAnonKey = secureProperty("SUPABASE_ANON_KEY")\n'
-          if 'val allowUnsignedRelease' not in text:
-              if anchor not in text:
-                  raise SystemExit('Supabase config anchor missing')
-              text = text.replace(anchor, anchor + 'val allowUnsignedRelease = providers.environmentVariable("VERT_ALLOW_UNSIGNED_RELEASE").orNull?.equals("true", ignoreCase = true) == true\n', 1)
-          text = text.replace('if (isReleaseBuild && !hasReleaseSigningConfig) {', 'if (isReleaseBuild && !hasReleaseSigningConfig && !allowUnsignedRelease) {')
-          text = text.replace('if (isReleaseBuild && resolvedReleaseStoreFile?.isFile != true) {', 'if (isReleaseBuild && !allowUnsignedRelease && resolvedReleaseStoreFile?.isFile != true) {')
-          text = text.replace('versionCode = 1\n        versionName = "1.0"', 'versionCode = 426\n        versionName = "1.0.426"', 1)
-          text = text.replace('signingConfig = signingConfigs.getByName("release")', 'if (hasReleaseSigningConfig) signingConfig = signingConfigs.getByName("release")', 1)
-          p.write_text(text)
-          PY
-
-      - name: Commit deterministic source patch
-        shell: bash
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add app/build.gradle.kts data/network/src/main/kotlin/com/verto/app/data/sync/UnifiedSyncContract.kt
-          if ! git diff --cached --quiet; then
-            git commit -m "B07-B08 switch unified contract to V2 and allow explicit unsigned CI"
-            git push origin HEAD:b07-b08-release-20260912
-          fi
+          set -euo pipefail
+          required=(SUPABASE_URL SUPABASE_ANON_KEY VERT_RELEASE_STORE_PASSWORD VERT_RELEASE_KEY_ALIAS VERT_RELEASE_KEY_PASSWORD)
+          for name in "${required[@]}"; do
+            test -n "${!name:-}" || { echo "Missing required protected input: $name"; exit 1; }
+          done
+          test -n "$VERT_RELEASE_KEYSTORE_BASE64" || { echo "Missing required protected input: VERT_RELEASE_KEYSTORE_BASE64"; exit 1; }
+          mkdir -p .signing
+          printf '%s' "$VERT_RELEASE_KEYSTORE_BASE64" | base64 --decode > .signing/verto-release.jks
+          test -s .signing/verto-release.jks
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -96,24 +72,25 @@ jobs:
           disable-animations: true
           script: ./gradlew --stacktrace connectedDebugAndroidTest
 
-      - name: Assemble minified unsigned release
+      - name: Assemble signed minified release
         run: ./gradlew --stacktrace :app:assembleRelease
 
-      - name: Collect release and signing tools
+      - name: Verify and collect signed release
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p dist/android-build-tools/lib
           APK="$(find app/build/outputs/apk/release -maxdepth 1 -type f -name '*.apk' | head -n1)"
           test -n "$APK"
-          cp "$APK" dist/Verto-b07b08-release-unsigned.apk
+          "$BT/apksigner" verify --verbose --print-certs "$APK" > dist/APK-SIGNATURE-VERIFICATION.txt
+          cp "$APK" dist/Verto-B07-B08-release.apk
           BT="$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n1)"
           cp "$BT/apksigner" dist/android-build-tools/apksigner
           cp "$BT/zipalign" dist/android-build-tools/zipalign
           cp "$BT/lib/apksigner.jar" dist/android-build-tools/lib/apksigner.jar
           chmod +x dist/android-build-tools/apksigner dist/android-build-tools/zipalign
-          git archive --format=zip --output=dist/Verto-b07b08done.zip HEAD
-          sha256sum dist/Verto-b07b08-release-unsigned.apk dist/Verto-b07b08done.zip > dist/SHA256SUMS-unsigned.txt
+          git archive --format=zip --output=dist/Verto-B07-B08-DONE.zip HEAD
+          sha256sum dist/Verto-B07-B08-release.apk dist/Verto-B07-B08-DONE.zip > dist/SHA256SUMS.txt
 
       - name: Upload release outputs
         uses: actions/upload-artifact@v4

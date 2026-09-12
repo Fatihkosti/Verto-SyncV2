@@ -7,6 +7,40 @@ import com.verto.app.data.local.entity.SyncWriteBatchEntity
 /** Read-only scheduling surface for atomic V2 write batches. Source rows keep their original ownership. */
 interface SyncWriteBatchDispatchDao {
     @Query(
+        """UPDATE sync_outbox
+           SET state='ACKNOWLEDGED', acked_server_revision=:serverRevision,
+               acked_server_version=:serverVersion, receipt_status=:receiptStatus,
+               acked_at=:acknowledgedAt, lease_owner=NULL, lease_token=NULL,
+               lease_scope_epoch=NULL, lease_expires_at=NULL,
+               last_error_type=NULL, last_error_code=NULL
+           WHERE organization_id=:organizationId AND mutation_id=:mutationId
+             AND state IN ('PENDING','RETRY','LEASED')"""
+    )
+    suspend fun acknowledgeSealedUnifiedSource(
+        organizationId: String,
+        mutationId: String,
+        serverRevision: Long?,
+        serverVersion: Long?,
+        receiptStatus: String,
+        acknowledgedAt: Long,
+    ): Int
+
+    @Query(
+        """UPDATE optimal_outbox
+           SET status='SYNCED', remote_version=:serverVersion, synced_at=:acknowledgedAt,
+               next_attempt_at=NULL, lease_owner=NULL, lease_token=NULL,
+               lease_expires_at=NULL, last_error=NULL, updated_at=:acknowledgedAt
+           WHERE organization_id=:organizationId AND event_id=:eventId
+             AND status NOT IN ('SYNCED','ACKNOWLEDGED')"""
+    )
+    suspend fun acknowledgeSealedOptimalSource(
+        organizationId: String,
+        eventId: String,
+        serverVersion: Long?,
+        acknowledgedAt: Long,
+    ): Int
+
+    @Query(
         """SELECT * FROM sync_mutation_packet
            WHERE organization_id=:organizationId AND source_owner=:sourceOwner AND source_id=:sourceId
            ORDER BY created_at DESC LIMIT 1"""
