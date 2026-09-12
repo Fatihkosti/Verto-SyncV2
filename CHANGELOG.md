@@ -177,6 +177,16 @@ This changelog starts with the v315 documentation foundation. Earlier release/se
 
 ## Unreleased
 
+### B07/B08 — atomic Sync V2 batches and legal server reads — 2026-09-12
+
+- Added the sealed-batch V2 push route with immutable first-dispatch evidence, exact receipt validation, transactional owner acknowledgement, replay recovery, and exclusion of batch members from singleton/legacy routes.
+- Completed the Auth-derived Supabase V2 capability/scope/batch/receipt contract with raw-text hashing, deterministic locking, atomic revisions/facts/receipts, tenant isolation, and fail-closed protocol validation.
+- Completed authoritative Aggregate/Delta/Bootstrap reads with complete transaction groups, opaque scope-bound cursors, stable sealed snapshots, exact coverage/digest, and the 1000-row/2 MiB limits.
+- Made inventory movement, inventory cost revision, and client credit receivers preserve server ordering/timestamps and Minor values through decode and Room; immutable replay mismatches now fail closed.
+- Canonicalized every locally produced inventory movement with the app's stable installation device identity before freezing its V2 intent; missing identity now rolls the owning transaction back instead of creating an incomplete outbox item.
+- Verified the live PostgreSQL concurrency/replay gate (two concurrent calls plus ten replays with one durable effect), rollback/idempotency/security cases, Bootstrap 1000+179 paging, legal first group of 1001, and exact 2 MiB boundary.
+- Added the B07/B08 GitHub Actions release-candidate gate. Release signing uses the previously supplied release keystore outside the repository; credential values are never committed.
+
 ### v362 Error migration to structured classification — 2026-08-24
 
 - Migrated user-visible exception paths in organization, dashboard education, invoices, expenses, parties, commissions, Optimal integration, payments, shipment/logistics, and sync away from direct `Throwable.message`.
