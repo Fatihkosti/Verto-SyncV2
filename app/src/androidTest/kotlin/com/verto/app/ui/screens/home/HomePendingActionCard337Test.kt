@@ -43,7 +43,7 @@ class HomePendingActionCard337Test {
         var dismissed = 0
         compose.setContent {
             VertoTheme {
-                HomePendingActionCard(
+                PendingActionCard(
                     event = event(),
                     onOpen = {},
                     onAction = { executed = it.id },
@@ -73,7 +73,7 @@ class HomePendingActionCard337Test {
         compose.setContent {
             density = LocalDensity.current.density
             VertoTheme {
-                HomePendingActionCard(
+                PendingActionCard(
                     event = event(),
                     onOpen = {},
                     onAction = {},
@@ -97,7 +97,7 @@ class HomePendingActionCard337Test {
             ) {
                 VertoTheme {
                     Box(Modifier.width(320.dp).height(800.dp).testTag("pending-root")) {
-                        HomePendingActionCard(
+                        PendingActionCard(
                             event = event(
                                 title = "عنوان حدث طويل لاختبار التكبير مئتين بالمئة",
                                 summary = "ملخص طويل يجب ألا يختفي أو يتداخل مع الإجراء الأساسي في البطاقة",
