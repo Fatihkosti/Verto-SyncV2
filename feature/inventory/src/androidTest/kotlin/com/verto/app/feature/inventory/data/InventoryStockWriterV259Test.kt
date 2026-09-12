@@ -10,6 +10,9 @@ import com.verto.app.core.session.model.SessionState
 import com.verto.app.data.local.AppDatabase
 import com.verto.app.data.local.entity.InventoryItemEntity
 import com.verto.app.data.local.entity.InventoryStockOutboxEntity
+import com.verto.app.data.sync.FrozenMutationStore
+import com.verto.app.data.sync.SpecializedMutationCaptureV2
+import com.verto.app.data.sync.ownership.SyncPendingProtection
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -42,6 +45,7 @@ class InventoryStockWriterV259Test {
             authorization = object : InventoryStockWriteAuthorization {
                 override suspend fun canAdjust() = true
             },
+            specializedCapture = specializedCapture(),
         )
     }
 
@@ -132,12 +136,17 @@ class InventoryStockWriterV259Test {
             authorization = object : InventoryStockWriteAuthorization {
                 override suspend fun canAdjust() = false
             },
+            specializedCapture = specializedCapture(),
         )
 
         assertTrue(denied.adjust("item", 7, "سبب", "adjust-denied").isFailure)
         assertTrue(writer.adjust("item", 7, "", "adjust-blank").isFailure)
         assertEquals(5, db.inventoryDao().getItemByIdSync("item")!!.quantity)
     }
+
+    private fun specializedCapture() = SpecializedMutationCaptureV2(
+        FrozenMutationStore(db, SyncPendingProtection(db)),
+    )
 
     private object FakeSessionReader : SessionReader {
         private val user = CurrentUser(id = "user", name = "Tester")
