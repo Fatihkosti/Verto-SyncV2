@@ -13,6 +13,7 @@ data class AtomicBatchPushRunResult(
     val acknowledged: Int = 0,
     val retried: Int = 0,
     val immediateMore: Boolean = false,
+    val nextEligibleAt: Long? = null,
 )
 
 /** Dispatches each durable sealed manifest as one immutable server transaction. */
@@ -30,10 +31,12 @@ class SyncV2AtomicBatchPushEngine @Inject constructor(
         var sent = 0
         var acknowledged = 0
         var retried = 0
+        var nextEligibleAt: Long? = null
         candidates.forEach { batch ->
             val members = database.unifiedSyncDao().listWriteBatchMembers(organizationId, batch.batchId)
             check(members.size == batch.memberCount) { "BATCH_MEMBERSHIP_MISMATCH" }
             val frozen = batches.prepareOnce(organizationId, batch.batchId, System.currentTimeMillis())
+            frozenStore.recordBatchDispatch(organizationId, batch.batchId, members, System.currentTimeMillis())
             val responses = try {
                 sent += members.size
                 remote.applyFrozenBatch(frozen.wireJson, frozen.wireSha256)
@@ -41,6 +44,7 @@ class SyncV2AtomicBatchPushEngine @Inject constructor(
                 if (failure is CancellationException) throw failure
                 if (isRetryable(failure)) {
                     retried += members.size
+                    nextEligibleAt = minOf(nextEligibleAt ?: Long.MAX_VALUE, System.currentTimeMillis() + RETRY_DELAY_MS)
                     return@forEach
                 }
                 throw failure
@@ -49,7 +53,7 @@ class SyncV2AtomicBatchPushEngine @Inject constructor(
                 organizationId, batch.batchId, members, responses.map { it.receipt }, System.currentTimeMillis(),
             )
         }
-        return AtomicBatchPushRunResult(sent, acknowledged, retried, candidates.size >= limit)
+        return AtomicBatchPushRunResult(sent, acknowledged, retried, candidates.size >= limit, nextEligibleAt)
     }
 
     private fun isRetryable(failure: Throwable): Boolean {
@@ -57,5 +61,9 @@ class SyncV2AtomicBatchPushEngine @Inject constructor(
         return message.contains("429") || message.contains("too many requests", true) ||
             message.contains("timeout", true) || message.contains("network", true) ||
             message.contains("connection", true)
+    }
+
+    private companion object {
+        const val RETRY_DELAY_MS = 1_000L
     }
 }

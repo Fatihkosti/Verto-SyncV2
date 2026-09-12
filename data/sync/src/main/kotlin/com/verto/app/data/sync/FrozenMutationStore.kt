@@ -260,6 +260,29 @@ class FrozenMutationStore @Inject constructor(
         database.unifiedSyncDao().recordFirstDispatch(organizationId, bytes.mutationId, dispatchedAt)
     }
 
+    /** Records dispatch evidence for every immutable batch member before transport starts. */
+    suspend fun recordBatchDispatch(
+        organizationId: String,
+        batchId: String,
+        members: List<SyncWriteBatchMemberEntity>,
+        dispatchedAt: Long,
+    ) = database.withTransaction {
+        val dao = database.unifiedSyncDao()
+        val batch = checkNotNull(dao.readWriteBatch(organizationId, batchId)) { "BATCH_MANIFEST_MISSING" }
+        check(members.size == batch.memberCount && members.map { it.memberOrder } == members.indices.toList()) {
+            "BATCH_MEMBERSHIP_MISMATCH"
+        }
+        members.forEach { member ->
+            check(member.organizationId == organizationId && member.batchId == batchId) { "SCOPE_MISMATCH" }
+            val packet = checkNotNull(dao.readMutationPacket(organizationId, member.mutationId)) {
+                "BATCH_PACKET_MISSING"
+            }
+            check(packet.batchId == batchId && packet.wireJson != null && packet.wireSha256 != null &&
+                sha256Utf8(packet.wireJson) == packet.wireSha256) { "FROZEN_WIRE_CONTENT_MISMATCH" }
+            dao.recordFirstDispatch(organizationId, member.mutationId, dispatchedAt)
+        }
+    }
+
     /**
      * Commits local acknowledgement of a server-atomic batch in one Room transaction. Every
      * receipt is proven against the immutable member bytes before any owner row is advanced.
@@ -325,7 +348,22 @@ class FrozenMutationStore @Inject constructor(
                 )
                 else -> error("BATCH_SOURCE_OWNER_UNSUPPORTED:${member.sourceOwner}")
             }
-            check(changed == 1) { "BATCH_SOURCE_STATE_CHANGED:${member.sourceOwner}:${member.sourceId}" }
+            if (changed != 1) {
+                val owner = SyncSourceOwner.fromTable(member.sourceOwner)
+                val state = when (owner) {
+                    SyncSourceOwner.UNIFIED -> dao.readUnifiedSourceState(organizationId, member.sourceId)
+                    SyncSourceOwner.FINANCIAL -> dao.readFinancialSourceState(organizationId, member.sourceId)
+                    SyncSourceOwner.PARTY_ROLE -> dao.readPartyRoleSourceState(organizationId, member.sourceId)
+                    SyncSourceOwner.INVENTORY_STOCK -> dao.readInventoryStockSourceState(organizationId, member.sourceId)
+                    SyncSourceOwner.INVENTORY_COST -> dao.readInventoryCostSourceState(organizationId, member.sourceId)
+                    SyncSourceOwner.OPTIMAL -> dao.readOptimalSourceState(organizationId, member.sourceId)
+                    SyncSourceOwner.ATTACHMENT -> dao.readAttachmentSourceState(organizationId, member.sourceId)
+                    SyncSourceOwner.SERVER_ONLY -> null
+                }
+                check(state != null && !owner.isPending(state)) {
+                    "BATCH_SOURCE_STATE_CHANGED:${member.sourceOwner}:${member.sourceId}"
+                }
+            }
             pendingProtection.releaseAfterTerminal(
                 PendingSourceRef(organizationId, SyncSourceOwner.fromTable(member.sourceOwner), member.sourceId),
             )

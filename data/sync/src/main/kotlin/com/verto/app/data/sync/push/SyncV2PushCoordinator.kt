@@ -55,6 +55,7 @@ class SyncV2PushCoordinator @Inject constructor(
         val immediateMore = batchResult.immediateMore || genericResult.outcome == UnifiedSyncPushOutcome.MORE_AVAILABLE ||
             partyResult.immediateMore || strongerResult.immediateMore || specializedResults.any { it.immediateMore }
         val next = listOfNotNull(
+            batchResult.nextEligibleAt,
             genericResult.nextEligibleAt,
             partyResult.nextEligibleAt,
             strongerResult.nextEligibleAt,
