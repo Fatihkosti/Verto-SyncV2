@@ -21,13 +21,11 @@ import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertIsNotSelected
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNode
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.verto.app.ui.theme.VertoTheme
-import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
@@ -195,7 +193,10 @@ class VertoAccessibilityTest {
         }
 
         val banner = compose.onNodeWithContentDescription("خطأ. تعذر الحفظ").fetchSemanticsNode()
-        assertNotNull("Status banner must expose live-region semantics", banner.config.getOrNull(SemanticsProperties.LiveRegion))
+        assertTrue(
+            "Status banner must expose live-region semantics",
+            banner.config.contains(SemanticsProperties.LiveRegion),
+        )
         compose.onNodeWithText("إعادة المحاولة").assertHasClickAction()
     }
 
