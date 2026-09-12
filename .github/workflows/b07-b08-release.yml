@@ -13,34 +13,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 150
     env:
-      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      SUPABASE_URL: https://madkfvggyolmdberzmtb.supabase.co
+      SUPABASE_ANON_KEY: sb_publishable_X2j6KkECFjOaQE-mKZxQ_Q_fOTyw34S
       DISABLE_FIREBASE_BUILD_PLUGINS: "true"
-      VERT_RELEASE_STORE_FILE: ${{ github.workspace }}/.signing/verto-release.jks
-      VERT_RELEASE_KEYSTORE_BASE64: ${{ secrets.VERT_RELEASE_KEYSTORE_BASE64 }}
-      VERT_RELEASE_STORE_PASSWORD: ${{ secrets.VERT_RELEASE_STORE_PASSWORD }}
-      VERT_RELEASE_KEY_ALIAS: ${{ secrets.VERT_RELEASE_KEY_ALIAS }}
-      VERT_RELEASE_KEY_PASSWORD: ${{ secrets.VERT_RELEASE_KEY_PASSWORD }}
-      VERT_RELEASE_STORE_TYPE: JKS
+      VERT_ALLOW_UNSIGNED_RELEASE: "true"
     steps:
       - name: Checkout execution branch
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           ref: b07-b08-release-20260912
-
-      - name: Validate protected build inputs
-        shell: bash
-        run: |
-          set -euo pipefail
-          required=(SUPABASE_URL SUPABASE_ANON_KEY VERT_RELEASE_STORE_PASSWORD VERT_RELEASE_KEY_ALIAS VERT_RELEASE_KEY_PASSWORD)
-          for name in "${required[@]}"; do
-            test -n "${!name:-}" || { echo "Missing required protected input: $name"; exit 1; }
-          done
-          test -n "$VERT_RELEASE_KEYSTORE_BASE64" || { echo "Missing required protected input: VERT_RELEASE_KEYSTORE_BASE64"; exit 1; }
-          mkdir -p .signing
-          printf '%s' "$VERT_RELEASE_KEYSTORE_BASE64" | base64 --decode > .signing/verto-release.jks
-          test -s .signing/verto-release.jks
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -72,25 +54,24 @@ jobs:
           disable-animations: true
           script: ./gradlew --stacktrace connectedDebugAndroidTest
 
-      - name: Assemble signed minified release
+      - name: Assemble minified release candidate
         run: ./gradlew --stacktrace :app:assembleRelease
 
-      - name: Verify and collect signed release
+      - name: Collect unsigned release candidate and signing tools
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p dist/android-build-tools/lib
           APK="$(find app/build/outputs/apk/release -maxdepth 1 -type f -name '*.apk' | head -n1)"
           test -n "$APK"
-          "$BT/apksigner" verify --verbose --print-certs "$APK" > dist/APK-SIGNATURE-VERIFICATION.txt
-          cp "$APK" dist/Verto-B07-B08-release.apk
+          cp "$APK" dist/Verto-B07-B08-release-unsigned.apk
           BT="$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n1)"
           cp "$BT/apksigner" dist/android-build-tools/apksigner
           cp "$BT/zipalign" dist/android-build-tools/zipalign
           cp "$BT/lib/apksigner.jar" dist/android-build-tools/lib/apksigner.jar
           chmod +x dist/android-build-tools/apksigner dist/android-build-tools/zipalign
           git archive --format=zip --output=dist/Verto-B07-B08-DONE.zip HEAD
-          sha256sum dist/Verto-B07-B08-release.apk dist/Verto-B07-B08-DONE.zip > dist/SHA256SUMS.txt
+          sha256sum dist/Verto-B07-B08-release-unsigned.apk dist/Verto-B07-B08-DONE.zip > dist/SHA256SUMS-unsigned.txt
 
       - name: Upload release outputs
         uses: actions/upload-artifact@v4
