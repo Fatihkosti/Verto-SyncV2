@@ -76,6 +76,7 @@ android {
         applicationId = "com.verto.app"
         versionCode = 426
         versionName = "1.0.426"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
@@ -181,6 +182,7 @@ dependencies {
     testImplementation(kotlin("test"))
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation("androidx.test:runner:1.6.2")
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.test.manifest)

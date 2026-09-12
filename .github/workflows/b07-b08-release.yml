@@ -60,7 +60,16 @@ jobs:
           arch: x86_64
           profile: pixel_7
           disable-animations: true
-          script: ./gradlew --stacktrace connectedDebugAndroidTest
+          script: |
+            ./gradlew --stacktrace \
+              :app:connectedDebugAndroidTest \
+              :core:designsystem:connectedDebugAndroidTest \
+              :data:database:connectedDebugAndroidTest \
+              :data:operations:connectedDebugAndroidTest \
+              :data:sync:connectedDebugAndroidTest \
+              :feature:auth:connectedDebugAndroidTest \
+              :feature:inventory:connectedDebugAndroidTest \
+              :feature:shipment:connectedDebugAndroidTest
 
       - name: Assemble minified release candidate
         run: ./gradlew --stacktrace :app:assembleRelease
