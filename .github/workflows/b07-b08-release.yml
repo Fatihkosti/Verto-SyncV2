@@ -41,6 +41,7 @@ jobs:
         run: |
           set -euo pipefail
           curl --fail --silent --show-error --retry 3 --connect-timeout 10 \
+            --header "apikey: ${SUPABASE_ANON_KEY}" \
             "${SUPABASE_URL}/auth/v1/health" >/dev/null
 
       - name: Unit tests
