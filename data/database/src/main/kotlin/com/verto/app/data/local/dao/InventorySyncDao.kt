@@ -55,6 +55,7 @@ suspend fun getReversalForMovement(movementId: String): InventoryMovementEntity?
         occurred_at = COALESCE(occurred_at, createdAt),
         recorded_at = COALESCE(recorded_at, :recordedAt),
         created_by = COALESCE(created_by, :actorId),
+        device_id = COALESCE(NULLIF(device_id, ''), :deviceId),
         contract_version = 2
     WHERE write_id = :commandId
     """
@@ -63,6 +64,7 @@ suspend fun canonicalizeMovementsForWrite(
     organizationId: String,
     commandId: String,
     actorId: String,
+    deviceId: String,
     recordedAt: Long,
 ): Int
 

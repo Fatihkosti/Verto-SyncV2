@@ -1,5 +1,6 @@
 package com.verto.app.feature.inventory.data
 
+import android.content.Context
 import androidx.room.withTransaction
 import com.verto.app.core.session.domain.SessionReader
 import com.verto.app.data.local.AppDatabase
@@ -13,6 +14,8 @@ import com.verto.app.data.sync.SpecializedMutationCaptureV2
 import com.verto.app.data.sync.ownership.ProtectedSyncKey
 import com.verto.app.data.sync.ownership.SyncSourceOwner
 import com.verto.app.data.sync.push.UnifiedStrongerSourceFactory
+import com.verto.app.notifications.FcmTokenStore
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -25,6 +28,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class InventoryStockWriter @Inject constructor(
+    @ApplicationContext private val appContext: Context,
     private val database: AppDatabase,
     private val inventoryDao: InventoryDao,
     private val sessionReader: SessionReader,
@@ -273,6 +277,8 @@ class InventoryStockWriter @Inject constructor(
         val actorId = session.user.id
         require(organizationId.isNotBlank()) { "inventory organization identity is required" }
         require(actorId.isNotBlank()) { "inventory actor identity is required" }
+        val deviceId = FcmTokenStore.deviceId(appContext)
+        require(deviceId.isNotBlank()) { "inventory device identity is required" }
         val now = System.currentTimeMillis()
         val guard = InventoryWriteGuardEntity().apply {
             id = "$organizationId:$commandId"
@@ -293,6 +299,7 @@ class InventoryStockWriter @Inject constructor(
                 organizationId = organizationId,
                 commandId = commandId,
                 actorId = actorId,
+                deviceId = deviceId,
                 recordedAt = now,
             )
             val movements = inventoryDao.getMovementsByWriteId(commandId)

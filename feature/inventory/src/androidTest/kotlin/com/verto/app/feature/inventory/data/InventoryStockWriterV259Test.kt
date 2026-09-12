@@ -29,6 +29,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class InventoryStockWriterV259Test {
+    private val context = ApplicationProvider.getApplicationContext<android.content.Context>()
     private lateinit var db: AppDatabase
     private lateinit var writer: InventoryStockWriter
 
@@ -39,6 +40,7 @@ class InventoryStockWriterV259Test {
             AppDatabase::class.java,
         ).build()
         writer = InventoryStockWriter(
+            appContext = context,
             database = db,
             inventoryDao = db.inventoryDao(),
             sessionReader = FakeSessionReader,
@@ -130,6 +132,7 @@ class InventoryStockWriterV259Test {
     fun manualAdjustment_requiresPermissionAndReason() = runTest {
         db.inventoryDao().insertItem(InventoryItemEntity(id = "item", name = "Part", quantity = 5))
         val denied = InventoryStockWriter(
+            appContext = context,
             database = db,
             inventoryDao = db.inventoryDao(),
             sessionReader = FakeSessionReader,
