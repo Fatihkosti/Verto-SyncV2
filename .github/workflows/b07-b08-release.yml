@@ -42,6 +42,7 @@ jobs:
           set -euo pipefail
           curl --fail --silent --show-error --retry 3 --connect-timeout 10 \
             --header "apikey: ${SUPABASE_ANON_KEY}" \
+            --header "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
             "${SUPABASE_URL}/rest/v1/" >/dev/null
 
       - name: Unit tests
