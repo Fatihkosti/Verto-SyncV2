@@ -2,6 +2,7 @@ package com.verto.app.ui.components
 
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
@@ -18,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
+import com.verto.app.ui.theme.VertoSize
 
 /** Material3 ownership wrappers used by Session 299 migrations. */
 
@@ -30,7 +32,7 @@ fun VertoIconButton(
 ) {
     IconButton(
         onClick = onClick,
-        modifier = modifier,
+        modifier = modifier.sizeIn(minWidth = VertoSize.minTouchTarget, minHeight = VertoSize.minTouchTarget),
         enabled = enabled,
         content = content,
     )

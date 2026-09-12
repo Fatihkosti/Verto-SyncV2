@@ -322,6 +322,7 @@ fun VertoConfirmationDialog(
         confirmButton = {
             Button(
                 onClick = onConfirm,
+                modifier = Modifier.heightIn(min = VertoSize.minTouchTarget),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = confirmColor,
                     contentColor = confirmContentColor,
@@ -329,7 +330,10 @@ fun VertoConfirmationDialog(
             ) { Text(confirmLabel, color = confirmContentColor, fontWeight = FontWeight.Bold) }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text(dismissLabel, color = TextSecondary) }
+            TextButton(
+                onClick = onDismiss,
+                modifier = Modifier.heightIn(min = VertoSize.minTouchTarget),
+            ) { Text(dismissLabel, color = TextSecondary) }
         },
     )
 }

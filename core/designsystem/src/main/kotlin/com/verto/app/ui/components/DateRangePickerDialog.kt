@@ -2,6 +2,7 @@ package com.verto.app.ui.components
 
 import com.verto.app.ui.theme.VertoSpacing
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.material3.DatePicker
@@ -16,6 +17,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.verto.core.designsystem.R
+import androidx.compose.ui.unit.dp
 
 /**
  * حوار اختيار فترة (من/إلى) مشترك. يُرجع البداية (00:00) والنهاية (نهاية اليوم) بالـ millis.
@@ -35,17 +37,23 @@ fun DateRangePickerDialog(
     DatePickerDialog(
         onDismissRequest = onDismiss,
         confirmButton = {
-            TextButton(onClick = {
+            TextButton(
+                modifier = Modifier.heightIn(min = 48.dp),
+                onClick = {
                 if (step == 0) { if (fromState.selectedDateMillis != null) step = 1 }
                 else {
                     val f = fromState.selectedDateMillis ?: return@TextButton
                     val t = toState.selectedDateMillis   ?: return@TextButton
                     onConfirm(minOf(f, t), maxOf(f, t) + 86_399_999L)
                 }
-            }) { Text(if (step == 0) stringResource(R.string.verto_action_next) else stringResource(R.string.verto_action_confirm)) }
+                },
+            ) { Text(if (step == 0) stringResource(R.string.verto_action_next) else stringResource(R.string.verto_action_confirm)) }
         },
         dismissButton = {
-            TextButton(onClick = { if (step == 1) step = 0 else onDismiss() }) {
+            TextButton(
+                modifier = Modifier.heightIn(min = 48.dp),
+                onClick = { if (step == 1) step = 0 else onDismiss() },
+            ) {
                 Text(if (step == 1) stringResource(R.string.verto_navigate_back) else stringResource(R.string.verto_action_cancel))
             }
         }

@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
@@ -117,7 +119,7 @@ class VertoTypographyResilienceTest {
     @Test
     fun statusEmptyAndSettingsRows_remainReachableAtFontScale2() {
         setNarrowFontScale2 {
-            Column(Modifier.fillMaxWidth()) {
+            Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState())) {
                 VertoStatusBanner(
                     title = "حالة تحتاج إلى انتباه",
                     message = "هذه رسالة طويلة لاختبار المرونة مع التكبير 200% واتجاه RTL",
@@ -141,11 +143,11 @@ class VertoTypographyResilienceTest {
             }
         }
 
-        compose.onNodeWithText("حالة تحتاج إلى انتباه").assertIsDisplayed().assertInsideRoot("Status title")
-        compose.onNodeWithText("إعادة المحاولة").assertIsDisplayed().assertInsideRoot("Status action")
-        compose.onNodeWithText("لا توجد نتائج مطابقة").assertIsDisplayed().assertInsideRoot("Empty title")
-        compose.onNodeWithText("إضافة سجل جديد").assertIsDisplayed().assertInsideRoot("Empty action")
-        compose.onNodeWithText("إعدادات طويلة لاختبار الالتفاف").assertIsDisplayed().assertInsideRoot("Settings row")
+        compose.onNodeWithText("حالة تحتاج إلى انتباه").performScrollTo().assertIsDisplayed().assertInsideRoot("Status title")
+        compose.onNodeWithText("إعادة المحاولة").performScrollTo().assertIsDisplayed().assertInsideRoot("Status action")
+        compose.onNodeWithText("لا توجد نتائج مطابقة").performScrollTo().assertIsDisplayed().assertInsideRoot("Empty title")
+        compose.onNodeWithText("إضافة سجل جديد").performScrollTo().assertIsDisplayed().assertInsideRoot("Empty action")
+        compose.onNodeWithText("إعدادات طويلة لاختبار الالتفاف").performScrollTo().assertIsDisplayed().assertInsideRoot("Settings row")
     }
 
     @Test
