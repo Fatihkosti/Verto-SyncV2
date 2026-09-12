@@ -94,17 +94,19 @@ class UnifiedStrongerSyncChangeApplier @Inject constructor(
 
     private suspend fun applyClientCredit(c: UnifiedRemoteMaterialization) {
         val p = c.payload.objOrSelf("materialization")
+        check(p.reqString("id") == c.aggregateId) { "SCOPE_MISMATCH: client credit identity" }
+        val amountMinor = p.reqLong("amountMinor")
         database.clientCreditDao().insertCreditFromRemote(
             ClientCreditEntity(
                 id = c.aggregateId,
                 clientId = p.reqString("clientId"),
-                amount = p.reqDouble("amount"),
-                amountMinor = p.reqLong("amountMinor"),
-                note = p.string("note"),
-                sourcePaymentId = p.string("sourcePaymentId"),
-                createdAt = p.long("createdAt") ?: c.changedAtEpochMillis,
-                employeeId = p.string("employeeId"),
-                employeeName = p.string("employeeName"),
+                amount = Money.ofMinor(amountMinor).toLegacyDouble(),
+                amountMinor = amountMinor,
+                note = p.requiredStringAllowEmpty("note"),
+                sourcePaymentId = p.reqString("sourcePaymentId"),
+                createdAt = p.reqLong("createdAt"),
+                employeeId = p.requiredStringAllowEmpty("employeeId"),
+                employeeName = p.requiredStringAllowEmpty("employeeName"),
                 isDirty = false,
             )
         )
@@ -187,36 +189,41 @@ class UnifiedStrongerSyncChangeApplier @Inject constructor(
     private suspend fun applyInventoryMovement(c: UnifiedRemoteMaterialization) {
         val p=c.payload.objOrSelf("movement")
         val signed=p.reqLong("signedBaseQuantity")
+        val unitPriceMinor = p.reqLong("unitPriceMinor")
+        val serverSequence = p.reqLong("serverSequence").also { require(it > 0L) { "CONTRACT_FIELD_INVALID: serverSequence" } }
+        val contractVersion = p.reqInt("contractVersion").also { require(it == 2) { "CONTRACT_VERSION_INVALID" } }
         val row=InventoryMovementEntity(
-            id=c.aggregateId, itemId=p.reqString("itemId"), invoiceId=p.string("invoiceId"), clientId=p.string("clientId"),
-            movementType=enumValue<MovementType>(p.string("movementType", if (signed >= 0) "IN" else "OUT")), quantity=p.int("quantity") ?: kotlin.math.abs(signed).toInt(),
-            quantityBefore=p.int("quantityBefore") ?: 0, quantityAfter=p.int("quantityAfter") ?: 0,
-            unitPrice=p.double("unitPrice") ?: 0.0, unitPriceMinor=p.long("unitPriceMinor") ?: 0L, note=p.string("note"),
-            shipmentId=p.string("shipmentId"), sourceType=p.string("sourceType"), sourceId=p.string("sourceId"),
-            sourceVersion=p.int("sourceVersion") ?: 1, writeId=p.string("writeId"), organizationId=c.organizationId,
-            movementKind=enumValue<InventoryMovementKind>(p.reqString("movementKind")), signedBaseQuantity=signed, sourceLineId=p.nullableString("sourceLineId"),
-            commandId=p.reqString("commandId"), idempotencyKey=p.reqString("idempotencyKey"), postingGroupId=p.nullableString("postingGroupId"),
-            reversesMovementId=p.nullableString("reversesMovementId"), conversionFactorSnapshot=p.nullableString("conversionFactorSnapshot"),
-            occurredAt=p.long("occurredAt"), recordedAt=p.long("recordedAt"), serverAcceptedAt=p.long("serverAcceptedAt"),
-            serverSequence=p.reqLong("serverSequence"), createdBy=p.nullableString("createdBy"), deviceId=p.nullableString("deviceId"),
-            contractVersion=p.int("contractVersion") ?: 2, createdAt=p.long("createdAt") ?: c.changedAtEpochMillis,
+            id=c.aggregateId, itemId=p.reqString("itemId"), invoiceId=p.requiredStringAllowEmpty("invoiceId"), clientId=p.requiredStringAllowEmpty("clientId"),
+            movementType=enumValue<MovementType>(p.reqString("movementType")), quantity=p.reqInt("quantity"),
+            quantityBefore=p.reqInt("quantityBefore"), quantityAfter=p.reqInt("quantityAfter"),
+            unitPrice=Money.ofMinor(unitPriceMinor).toLegacyDouble(), unitPriceMinor=unitPriceMinor, note=p.requiredStringAllowEmpty("note"),
+            shipmentId=p.requiredStringAllowEmpty("shipmentId"), sourceType=p.requiredStringAllowEmpty("sourceType"), sourceId=p.requiredStringAllowEmpty("sourceId"),
+            sourceVersion=p.reqInt("sourceVersion"), writeId=p.requiredStringAllowEmpty("writeId"), organizationId=c.organizationId,
+            movementKind=enumValue<InventoryMovementKind>(p.reqString("movementKind")), signedBaseQuantity=signed, sourceLineId=p.requiredNullableString("sourceLineId"),
+            commandId=p.reqString("commandId"), idempotencyKey=p.reqString("idempotencyKey"), postingGroupId=p.requiredNullableString("postingGroupId"),
+            reversesMovementId=p.requiredNullableString("reversesMovementId"), conversionFactorSnapshot=p.reqString("conversionFactorSnapshot"),
+            occurredAt=p.reqLong("occurredAt"), recordedAt=p.reqLong("recordedAt"), serverAcceptedAt=p.reqLong("serverAcceptedAt"),
+            serverSequence=serverSequence, createdBy=p.requiredNullableString("createdBy"), deviceId=p.reqString("deviceId"),
+            contractVersion=contractVersion, createdAt=p.reqLong("createdAt"),
         )
         database.inventoryDao().applyPulledInventoryMovements(c.organizationId, listOf(row), row.serverSequence!!, c.changedAtEpochMillis)
     }
 
     private suspend fun applyInventoryCost(c: UnifiedRemoteMaterialization) {
         val p=c.payload.objOrSelf("costRevision")
+        val costSequence = p.reqLong("costSequence").also { require(it > 0L) { "CONTRACT_FIELD_INVALID: costSequence" } }
+        val contractVersion = p.reqInt("contractVersion").also { require(it == 2) { "CONTRACT_VERSION_INVALID" } }
         val row=InventoryCostRevisionEntity(
             costRevisionId=c.aggregateId, organizationId=c.organizationId, itemId=p.reqString("itemId"), sourceType=p.reqString("sourceType"),
-            sourceId=p.reqString("sourceId"), sourceLineId=p.nullableString("sourceLineId"), revisionKind=enumValue<InventoryCostRevisionKind>(p.reqString("revisionKind")),
+            sourceId=p.reqString("sourceId"), sourceLineId=p.requiredNullableString("sourceLineId"), revisionKind=enumValue<InventoryCostRevisionKind>(p.reqString("revisionKind")),
             directPurchaseCostMinor=p.reqLong("directPurchaseCostMinor"), landedCostPerBaseUnitMinor=p.reqLong("landedCostPerBaseUnitMinor"),
             approvedInventoryCostMinor=p.reqLong("approvedInventoryCostMinor"), currencyCode=p.reqString("currencyCode"),
-            exchangeRateSnapshot=p.reqString("exchangeRateSnapshot"), allocationBasis=p.string("allocationBasis"),
-            allocationResidualMinor=p.long("allocationResidualMinor") ?: 0L, isProvisional=p.bool("isProvisional", false),
-            reversesCostRevisionId=p.nullableString("reversesCostRevisionId"), commandId=p.reqString("commandId"),
-            idempotencyKey=p.reqString("idempotencyKey"), costSequence=p.reqLong("costSequence"), approvedAt=p.reqLong("approvedAt"),
-            recordedAt=p.reqLong("recordedAt"), createdBy=p.string("createdBy", "REMOTE"), deviceId=p.string("deviceId", "REMOTE"),
-            contractVersion=p.int("contractVersion") ?: 2,
+            exchangeRateSnapshot=p.reqString("exchangeRateSnapshot"), allocationBasis=p.requiredStringAllowEmpty("allocationBasis"),
+            allocationResidualMinor=p.reqLong("allocationResidualMinor"), isProvisional=p.reqBool("isProvisional"),
+            reversesCostRevisionId=p.requiredNullableString("reversesCostRevisionId"), commandId=p.reqString("commandId"),
+            idempotencyKey=p.reqString("idempotencyKey"), costSequence=costSequence, approvedAt=p.reqLong("approvedAt"),
+            recordedAt=p.reqLong("recordedAt"), createdBy=p.reqString("createdBy"), deviceId=p.reqString("deviceId"),
+            contractVersion=contractVersion,
         )
         database.inventoryDao().applyPulledInventoryCostRevisions(c.organizationId, listOf(row), row.costSequence!!, c.changedAtEpochMillis)
     }
@@ -411,6 +418,12 @@ private fun JsonObject.primitive310(name:String):JsonPrimitive? = this[name] as?
 private fun JsonObject.string(name:String, default:String=""):String = primitive310(name)?.content ?: default
 private fun JsonObject.nullableString(name:String):String? = primitive310(name)?.content?.takeUnless { it=="null" || it.isBlank() }
 private fun JsonObject.reqString(name:String):String = primitive310(name)?.content?.takeIf { it.isNotBlank() } ?: throw UnifiedSyncPullFailure("VALIDATION", "missing field $name")
+private fun JsonObject.requiredStringAllowEmpty(name:String):String = primitive310(name)?.content?.takeUnless { it == "null" }
+    ?: throw UnifiedSyncPullFailure("VALIDATION", "missing field $name")
+private fun JsonObject.requiredNullableString(name:String):String? {
+    if (!containsKey(name)) throw UnifiedSyncPullFailure("VALIDATION", "missing field $name")
+    return nullableString(name)
+}
 private fun JsonObject.long(name:String):Long? = primitive310(name)?.longOrNull
 private fun JsonObject.reqLong(name:String):Long = long(name) ?: throw UnifiedSyncPullFailure("VALIDATION", "missing field $name")
 private fun JsonObject.int(name:String):Int? = primitive310(name)?.intOrNull
@@ -418,3 +431,5 @@ private fun JsonObject.reqInt(name:String):Int = int(name) ?: throw UnifiedSyncP
 private fun JsonObject.double(name:String):Double? = primitive310(name)?.doubleOrNull
 private fun JsonObject.reqDouble(name:String):Double = double(name) ?: throw UnifiedSyncPullFailure("VALIDATION", "missing field $name")
 private fun JsonObject.bool(name:String, default:Boolean):Boolean = primitive310(name)?.booleanOrNull ?: default
+private fun JsonObject.reqBool(name:String):Boolean = primitive310(name)?.booleanOrNull
+    ?: throw UnifiedSyncPullFailure("VALIDATION", "missing field $name")

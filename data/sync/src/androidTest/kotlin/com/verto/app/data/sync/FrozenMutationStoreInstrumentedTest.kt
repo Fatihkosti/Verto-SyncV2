@@ -152,4 +152,37 @@ class FrozenMutationStoreInstrumentedTest {
         assertEquals("PENDING", database.unifiedSyncDao().getOutbox("bm-1")!!.state)
         assertEquals("PENDING", database.unifiedSyncDao().getOutbox("bm-2")!!.state)
     }
+
+    @Test
+    fun sealedBatchAcknowledgementIsAtomicAndReplaySafe() = runBlocking {
+        database.withTransaction {
+            writer.enqueue("org", "NOTE", "note-1", "UPSERT", mapOf("text" to "a"), mutationId = "ack-1", commandBatchId = "batch-ack", commandOrder = 0, createdAt = 10)
+            writer.enqueue("org", "REMINDER", "reminder-1", "UPSERT", mapOf("title" to "b"), mutationId = "ack-2", commandBatchId = "batch-ack", commandOrder = 1, createdAt = 11)
+            batches.seal("org", "batch-ack", listOf("ack-1", "ack-2"), 12)
+        }
+        batches.prepareOnce("org", "batch-ack", 13)
+        val dao = database.unifiedSyncDao()
+        val members = dao.listWriteBatchMembers("org", "batch-ack")
+        store.recordBatchDispatch("org", "batch-ack", members, 14)
+        val firstHash = dao.readMutationPacket("org", "ack-1")!!.wireSha256!!
+        val secondHash = dao.readMutationPacket("org", "ack-2")!!.wireSha256!!
+        assertEquals(14L, dao.readMutationPacket("org", "ack-1")!!.firstDispatchAt)
+
+        val mismatched = listOf(
+            SyncReceipt(SyncReceiptStatus.APPLIED, "ack-1", "note-1", serverVersion = 1, serverRevision = 20, requestHash = firstHash),
+            SyncReceipt(SyncReceiptStatus.APPLIED, "ack-2", "reminder-1", serverVersion = 1, serverRevision = 21, requestHash = "f".repeat(64)),
+        )
+        assertTrue(runCatching { store.acknowledgeSealedBatch("org", "batch-ack", members, mismatched, 15) }.isFailure)
+        assertEquals("PENDING", dao.getOutbox("ack-1")!!.state)
+        assertEquals("PENDING", dao.getOutbox("ack-2")!!.state)
+
+        val accepted = listOf(
+            SyncReceipt(SyncReceiptStatus.APPLIED, "ack-1", "note-1", serverVersion = 1, serverRevision = 20, requestHash = firstHash),
+            SyncReceipt(SyncReceiptStatus.APPLIED, "ack-2", "reminder-1", serverVersion = 1, serverRevision = 21, requestHash = secondHash),
+        )
+        assertEquals(2, store.acknowledgeSealedBatch("org", "batch-ack", members, accepted, 16))
+        assertEquals("ACKNOWLEDGED", dao.getOutbox("ack-1")!!.state)
+        assertEquals("ACKNOWLEDGED", dao.getOutbox("ack-2")!!.state)
+        assertEquals(2, store.acknowledgeSealedBatch("org", "batch-ack", members, accepted, 17))
+    }
 }
