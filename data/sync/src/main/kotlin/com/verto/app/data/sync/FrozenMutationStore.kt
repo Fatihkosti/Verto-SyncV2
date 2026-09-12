@@ -277,8 +277,11 @@ class FrozenMutationStore @Inject constructor(
             val packet = checkNotNull(dao.readMutationPacket(organizationId, member.mutationId)) {
                 "BATCH_PACKET_MISSING"
             }
-            check(packet.batchId == batchId && packet.wireJson != null && packet.wireSha256 != null &&
-                sha256Utf8(packet.wireJson) == packet.wireSha256) { "FROZEN_WIRE_CONTENT_MISMATCH" }
+            val wireJson = checkNotNull(packet.wireJson) { "FROZEN_WIRE_CONTENT_MISMATCH" }
+            val wireSha256 = checkNotNull(packet.wireSha256) { "FROZEN_WIRE_CONTENT_MISMATCH" }
+            check(packet.batchId == batchId && sha256Utf8(wireJson) == wireSha256) {
+                "FROZEN_WIRE_CONTENT_MISMATCH"
+            }
             dao.recordFirstDispatch(organizationId, member.mutationId, dispatchedAt)
         }
     }
